@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ URL::asset('css/public.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>

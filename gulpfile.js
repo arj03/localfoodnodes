@@ -15,5 +15,15 @@ require('laravel-elixir-vue');
  */
 
 elixir(mix => {
-    mix.sass('public.sass').sass('admin.sass');
+    mix.sass([
+        'public.sass',
+        'admin.sass'
+    ]);
+
+    mix.version([
+        'css/public.css',
+        'css/admin.css',
+        './public/js-apps/node-map.js',
+        './public/js-apps/producer-node-map.js',
+    ]);
 });

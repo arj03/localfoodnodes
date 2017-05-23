@@ -8,8 +8,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ URL::asset('css/public.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('css/admin.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src="/js/jquery-ui.1.12.1.min.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>

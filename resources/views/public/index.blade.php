@@ -114,5 +114,5 @@
     <link rel="stylesheet" href="/css/leaflet/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-    <script src="/js-apps/node-map.js?v0.1"></script>
+    <script src="{{ elixir('/js-apps/node-map.js') }}"></script>
 @endsection
