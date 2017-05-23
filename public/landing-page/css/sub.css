@@ -1,0 +1,173 @@
+/**
+ * SUB SITES
+ */
+.landing-page-team .team-header {
+    background: url('../images/team.jpg') top center no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+.landing-page-producer .producer-header {
+    background: url('../images/producer.jpg') center center no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+.landing-page-node .node-header {
+    background: url('../images/node.jpg') top center no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+.landing-page-team h2 .sub {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.landing-page .navbar {
+    border: 0;
+    border-radius: 0;
+    background: #ccc;
+    font-family: 'montserrat';
+    margin-bottom: 0;
+}
+
+.landing-page-team .navbar {
+    background: url(../images/background2.jpg) center bottom no-repeat;
+    background-size: cover;
+}
+
+.landing-page-read-more .navbar {
+    background: url(../images/background3.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.landing-page-node .navbar {
+    background: url(../images/background4.jpg) center top no-repeat;
+    background-size: cover;
+}
+
+.landing-page-producer .navbar {
+    background: url(../images/background5.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.landing-page-node-step-by-step .navbar {
+    background: url(../images/background6.jpg) center bottom no-repeat;
+    background-size: cover;
+}
+
+.landing-page-node-faq .navbar {
+    background: url(../images/background7.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+
+.landing-page .navbar h1 {
+    padding-top: 75px;
+    text-align: center;
+    background: url(../images/logo.png) top center no-repeat;
+    background-size: 75px auto;
+    margin-top: 0;
+}
+.landing-page .navbar a {
+    color: #fff !important;
+}
+.landing-page .navbar-desktop .navbar-brand {
+    display: block;
+    height: 100px;
+    width: 100px;
+    background: url('../images/logo.png') center center no-repeat;
+    background-size: 70px;
+    text-indent: -9999px;
+}
+.landing-page .navbar-mobile button {
+    color: #fff;
+    border-color: #fff;
+}
+.landing-page .navbar-mobile .icon-bar {
+    background-color: #fff;
+}
+.landing-page .navbar-mobile button:hover,
+.landing-page .navbar-mobile button:focus {
+    background: transparent;
+}
+
+
+
+.content {
+    background: #fff;
+    margin-top: 50px;
+}
+.content p {
+    text-align: justify;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #333;
+}
+.content h2 {
+    text-align: center;
+}
+.content .quote {
+    font-style: italic;
+    font-size: 20px;
+    margin: 40px;
+}
+.content .image {
+    background: url(../images/background.jpg) no-repeat;
+    background-size: 200px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+.content a {
+    color: #a9d29c;
+}
+.content a:hover {
+    text-decoration: underline;
+}
+
+.faq-box {
+    box-shadow: 0 0 10px 0px #666;
+    text-align: left;
+}
+.faq-box h3 {
+    font-size: 18px;
+}
+
+u {
+    text-decoration: none;
+}
+
+.reg-modal,
+.reg-modal:hover,
+.reg-modal:active,
+.reg-modal:focus {
+    display: block;
+    margin: 20px auto;
+    background: #a9d29c;
+    border-color: #99c28c;
+    color: #fff;
+}
+
+.modal-footer .btn-primary,
+.modal-footer .btn-primary:hover,
+.modal-footer .btn-primary:active,
+.modal-footer .btn-primary:focus {
+    border-color: #99c28c;
+    background: #a9d29c;
+    color: #fff;
+}
+
+.landing-page-node-faq .content h2 {
+    margin-top: 50px;
+}
+
+.landing-page-team .content img {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}

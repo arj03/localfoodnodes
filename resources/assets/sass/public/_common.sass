@@ -1,0 +1,132 @@
+html
+  height: 100%
+  font-size: 14px !important
+body
+  height: 100%
+  background: #f1f0ea
+  font-family: 'Raleway', sans-serif
+  color: #333
+  font-weight: 400
+  font-size: 14px !important
+  line-height: 1.5em
+  > .page
+    min-height: calc(100vh - 250px)
+
+.body-text
+  line-height: 1.7em
+  color: #333
+
+  h1, h2, h3, h4
+    span
+      display: block
+      font-size: 1.3rem
+      color: #aaa
+      text-transform: none
+
+ul
+  padding-left: 0
+  list-style: none
+  &.list
+    list-style: disc
+    padding-left: 15px
+img
+  width: 100%
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'montserrat'
+  text-transform: uppercase
+
+a
+  color: #188092
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus
+    color: #188092
+  &.dropdown-item
+    color: inherit
+
+.hidden
+  display: none
+
+a
+  &.btn
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus
+      color: #fff
+
+.master-alerts
+  position: fixed
+  top: 20px
+  right: 20px
+  z-index: 9999
+  .alert
+    width: 300px
+    background: #333
+    background: rgba(0, 0, 0, 0.7)
+    color: #fff
+    border: 0
+    font-family: 'montserrat'
+    margin-bottom: 10px
+    border-radius: 5px
+    .close
+      color: inherit
+
+.header-image
+  position: absolute
+
+// Checkout 1-2-3 list
+.info-list
+  margin-top: 20px
+  li
+    p
+      float: left
+      width: calc(100% - 40px)
+      margin-bottom: 1rem
+    .info-count
+      float: left
+      background: #efcb6b
+      border-radius: 15px
+      height: 30px
+      width: 30px
+      text-align: center
+      line-height: 30px
+      color: #fff
+      font-weight: 700
+      margin-right: 10px
+      position: relative
+      top: 4px
+    ul
+      padding-left: 40px
+      list-style: disc
+      margin: 10px 0
+
+// Checkbox tags
+.tags
+  flex-wrap: wrap
+  overflow: hidden
+  .tag
+    float: left
+    input[type=checkbox]
+      display: none
+    input[type=checkbox] + label
+      cursor: pointer
+      display: inline-block
+      padding: 0.7em 0.5em 0.5em
+      margin: 0 8px 4px 0
+      font-size: 75%
+      font-weight: 500
+      line-height: 1
+      color: #fff
+      text-align: center
+      white-space: nowrap
+      vertical-align: baseline
+      border-radius: .25rem
+      background-color: #636c72
+      &:hover
+        background-color: #4b5257
+    input[type=checkbox]:checked + label
+      background-color: #8fb773

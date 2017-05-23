@@ -1,0 +1,55 @@
+@media (min-width: 992px)
+  body.public
+    &.logged-in
+      .page
+        flex-direction: row
+        .content
+          width: calc(100% - 300px)
+
+body.page
+  .body-text
+    p
+      max-width: 600px
+
+body.public
+  .page
+    background: #f1f0ea
+    overflow: hidden
+    display: flex
+    align-items: stretch
+    flex-direction: column
+
+    .content
+      width: 100%
+      float: left
+      background: #f1f0ea
+      z-index: 0
+
+      .container-fluid
+        padding: 0
+
+    .top-container
+      margin-top: -200px
+
+    .card
+      .card-header
+        font-weight: 700
+        color: #fff
+        background: #a9322a
+        border: 0
+
+    .header
+      #map
+        height: 500px
+        width: 100%
+        z-index: 0
+        border-bottom: 5px solid #e2d7b9
+      .top
+        background: #a9322a
+        color: #fff
+        padding: 30px
+        h1
+          margin: 0
+          font-weight: 700
+        a
+          color: #fff

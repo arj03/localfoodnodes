@@ -1,0 +1,141 @@
+/* Bootstrap 3 fallback */
+/* Remove when datepicker is updated to support bootstrap 4 */
+.glyphicon-chevron-up
+  &::before
+    font: normal normal normal 14px/1 FontAwesome
+    content: "\f077"
+.glyphicon-chevron-down
+  &::before
+    font: normal normal normal 14px/1 FontAwesome
+    content: "\f078"
+.glyphicon-chevron-left
+  &::before
+    font: normal normal normal 14px/1 FontAwesome
+    content: "\f053"
+.glyphicon-chevron-right
+  &::before
+    font: normal normal normal 14px/1 FontAwesome
+    content: "\f054"
+
+/* Other Bootstrap overrides */
+.card
+  margin-bottom: 30px
+  box-shadow: #ccc 0 1px 8px -2px
+  border: 0
+  border-radius: 0
+  .card-header
+    background: #fff
+    border-bottom: 1px solid #f1f0ec
+    text-transform: uppercase
+    display: flex
+    justify-content: space-between
+    border-radius: 0
+    .actions
+      a
+        color: #333
+        margin-left: 5px
+        .fa-plus-circle
+          font-size: 16px
+    &.toggle
+      cursor: pointer
+  .card-block
+    &.dashed
+      border-bottom: 1px dashed #ccc
+  .card-footer
+    border-color: #eee
+    background: #fff
+
+.dropdown-action-component
+  float: right
+  .dropdown-toggle
+    &::after
+      content: none
+
+.dropdown-action-component
+  display: inline-block
+  background-color: transparent
+  font-family: 'Raleway', sans-serif
+  text-transform: none
+  .dropdown-toggle
+    padding: 0
+    border: 0
+    color: #333
+    background-color: transparent
+    cursor: pointer
+    text-transform: capitalize
+    font-family: 'Raleway'
+    &:hover,
+    &:active,
+    &:focus
+      background: transparent
+      box-shadow: none
+    .caret
+      display: none
+  &.open
+    .dropdown-toggle
+      box-shadow: none
+      background-color: transparent
+  a
+    &.dropdown-item,
+      color: #333
+      &:hover,
+      &:active,
+      &:visited,
+      &:focus,
+        color: #333
+
+.form-group
+  label,
+  .form-control-feedback
+    font-family: 'montserrat'
+    font-weight: 400
+    &.form-check-label
+      font-family: inherit
+  legend
+    font-family: 'montserrat'
+    font-weight: 400
+    font-size: inherit
+
+.table
+  &.fixed
+    table-layout: fixed
+  thead
+    tr
+      th
+        font-family: 'montserrat'
+        font-weight: 400
+        border-bottom: 1px solid #ddd
+        border-top: 0
+  tbody
+    tr
+      &:hover
+        background-color: #fafafa
+      .dropdown
+        > .badge
+          cursor: pointer
+      a
+        .fa
+          color: #333
+
+.btn
+  cursor: pointer
+
+input[type=submit],
+.btn
+  text-transform: uppercase
+  font-family: 'montserrat'
+
+.btn-success
+  background: #8fb773
+  color: #fff
+  border: 0
+  &:hover,
+  &:active,
+  &:focus
+    color: #fff
+    background: #8fb773
+
+.badge
+  padding: 0.5em
+  &.badge-success
+    background: #8fb773

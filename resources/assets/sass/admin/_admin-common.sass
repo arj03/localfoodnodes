@@ -1,0 +1,167 @@
+body.admin
+  .page
+    padding-bottom: 0
+    min-height: 100vh
+    background: #f1f0ea
+    display: flex
+    align-items: stretch
+    flex-direction: column
+
+    .content
+      width: 100%
+      background: #f1f0ea
+      z-index: 1
+      min-height: 100vh
+      > .container-fluid
+       background: #f1f0ea
+       min-height: 100vh
+
+    // Page header
+    .page-header
+      background: #fff
+      height: 60px
+      margin-bottom: 2rem
+      display: flex
+      align-items: center
+      text-transform: uppercase
+      box-shadow: #ccc 0 1px 8px -2px
+
+    .card
+      .card-header
+        background: #d6c69b
+        color: #fff
+        font-family: 'montserrat'
+        font-size: 16px
+        font-weight: bold
+        border: 0
+        border-radius: 0
+        .dropdown-action-component
+          .dropdown-toggle
+            color: #fff
+
+@media (min-width: 992px)
+  body.admin
+    .page
+      flex-direction: row
+      .content
+        width: calc(100% - 300px)
+
+.product-quantity-group
+  label
+    font-family: 'montserrat'
+  .merge-right
+    padding-right: 0
+    input
+      border-top-right-radius: 0
+      border-bottom-right-radius: 0
+      border-right: 0
+  .merge-left
+    padding-left: 0
+    select
+      background: #fafafa
+      cursor: pointer
+      border-top-left-radius: 0
+      border-bottom-left-radius: 0
+
+.image-card
+  .images
+    .image
+      position: relative
+      cursor: move
+      margin-bottom: 0
+      &:hover
+        .fa-trash
+          display: block !important
+      .image-inner
+        position: relative
+        img
+          background: #eee
+          min-height: 129px
+        .action-bar
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          padding: 5px
+          .fa
+            height: 30px
+            width: 30px
+            border-radius: 20px
+            text-align: center
+            line-height: 30px
+            color: #fff
+          #main-image
+            float: left
+            background: #41a25e
+          .fa-trash
+            display: none
+            float: right
+            background: #c9302c
+  .upload
+    height: 100%
+    min-height: 129px
+    width: 100%
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+    color: #ccc
+    font-family: 'montserrat'
+    text-transform: uppercase
+    border: 2px dashed #ccc
+    cursor: pointer
+    &:hover
+      background: #fafafa
+    b
+      margin: 15px
+
+    input
+      position: absolute
+      top: 0
+      right: 0
+      margin: 0
+      padding: 0
+      font-size: 20px
+      cursor: pointer
+      opacity: 0
+      filter: alpha(opacity=0)
+      height: 100%
+      width: 100%
+    #upload-image-counter
+      margin-top: 20px
+      color: #ccc
+      font-family: 'montserrat'
+      font-weight: bold
+
+/* THIRD PARTY */
+
+.mce-toolbar-grp
+  background-color: #fafafa !important
+  .mce-btn
+    background-color: #fafafa !important
+.mce-flow-layout
+  background-color: #fafafa !important
+
+// Flatpickr
+.picker
+  &.form-control
+    &:read-only
+      background-color: #fff
+
+.breadcrumbs
+  .crumb
+    color: #333
+    a
+      color: #333
+    &::after
+      content: '>'
+      position: relative
+      top: -2px
+      margin: 0 8px 0 10px
+    &:last-child
+      font-size: 1.2em
+      font-weight: bold
+      &::after
+        content: ''

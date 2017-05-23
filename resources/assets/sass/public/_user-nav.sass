@@ -1,0 +1,105 @@
+.user-nav
+  background: #d6c69b
+  color: #fff
+  padding-right: 0
+  padding-left: 0
+  min-height: 100vh
+  font-family: 'montserrat'
+  width: 300px
+  float: left
+  a
+    color: #fff
+    text-decoration: none
+    &:hover
+      color: #fff
+  .logo
+    line-height: 30px
+    font-size: 20px
+    font-family: 'montserrat'
+    font-weight: bold
+    text-transform: uppercase
+    color: #fff
+    padding: 15px
+    background: #c3b07b
+    img
+      height: 30px
+      width: auto
+  .block
+    padding: 15px 0px
+    .block-header
+      padding: 10px 15px
+      text-transform: uppercase
+      font-weight: bold
+      font-size: 16px
+      .fa
+        float: right
+      &:after
+        content: ''
+        display: block
+        border-bottom: 1px solid #eee
+        width: 270px
+        margin: 1px auto
+    ul
+      li
+        a,
+          text-transform: uppercase
+          display: block
+          padding: 5px 15px
+          width: 100%
+          &.active
+            background: #c3b07b
+            &:hover
+              background: #c3b07b
+          &:hover
+            background: #ccba89
+        > div
+          text-transform: uppercase
+          display: block
+          padding: 5px 15px
+          width: 100%
+        ul
+          li
+            a
+              text-transform: none
+              padding-left: 30px
+              &.active
+                background: #c3b07b
+                &:hover
+                  background: #c3b07b
+              &:hover
+                background: #ccba89
+
+      .cart
+        background: #97ab84
+        padding: 15px
+        margin-top: 15px
+
+  .block-divider
+    border-top: 1px solid #8ea27b
+    border-bottom: 1px solid #c9daba
+    width: 270px
+    margin: 15px auto
+
+.user-nav-responsive
+  margin-bottom: 20px
+  width: 100vw
+  .navbar-brand
+    height: 60px
+    img
+      height: 35px
+      width: auto
+  button
+    margin: 10px 0
+  .navbar-nav
+    li
+      a
+        display: block
+        padding: 10px 0
+        line-height: 1rem
+        color: #333
+        &:hover
+          background: inherit
+
+.nav-item-divider
+  border-bottom: 1px solid #eee
+  margin: 10px 0

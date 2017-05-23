@@ -1,0 +1,233 @@
+@mixin input-placeholder($color)
+  &::-webkit-input-placeholder
+    color: $color
+  &:-moz-placeholder
+    color: $color
+  &::-moz-placeholder
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+
+.public-index
+  .frontpage-section
+    position: relative
+    height: 100%
+    h2
+      font-size: 4em
+      text-align: center
+      &.bold
+        font-weight: 700
+      &.thin
+        font-weight: 200
+    p
+      font-size: 20px
+      line-height: 1.5em
+
+  // Header
+  .frontpage-header
+    background: url('/images/shutterstock_152320880_tomato_hands.jpg') center center
+    background-size: cover
+    color: #fff
+    height: 80vh
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    a
+      color: #fff
+      width: 300px
+      margin-top: 50px
+
+  // Map
+  .node-map
+    position: relative
+    text-align: center
+    min-height: 70vh
+    h2
+      padding-top: 50px
+      font-size: 4em
+      font-weight: 200
+      color: #333
+    .map-search
+      margin: 50px
+      .input-group
+        background: #c3b07b
+        .input-group-addon
+          background: transparent
+          border: 0
+          font-size: 2rem
+          padding: 20px
+          color: #fff
+          width: 15%
+        input
+          font-family: 'montserrat'
+          padding: 20px
+          border: 0
+          border-radius: 0
+          background: #d6c69b
+          color: #fff
+          @include input-placeholder(#fff)
+
+      .search-results
+        background: #e4d8bc
+        border-top: 1px solid #d0c4a8
+        text-align: left
+        font-family: 'montserrat'
+        position: absolute
+        z-index: 9999
+        width: 100%
+        left: 0
+        box-shadow: #ccc 0 1px 8px -2px
+        li
+          padding: 2px 10px
+          cursor: pointer
+          &.selected
+            background: #f2e6ca
+          b
+            text-transform: uppercase
+            color: #fff
+          p
+            font-size: 12px
+            margin: 0
+            color: #807762
+    .map-holder
+      height: 70vh
+
+  .local-food-impact
+    background: #90c0c5
+    padding: 15px 15px 0
+    h2
+      margin-bottom: 50px
+      color: #fff
+    .metrics
+      display: flex
+      justify-content: space-between
+      .metric
+        margin: 0 auto
+        padding: 10px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        color: #fff
+        b
+          font-weight: 700
+          font-size: 26px
+          line-height: 1.1em
+
+  .create-pushes
+    > h2
+      padding-top: 50px
+      padding-bottom: 50px
+      color: #333
+    .row
+      display: flex
+      align-items: stretch
+      color: #fff
+      > div
+        margin-left: 15px
+        background-size: cover
+        padding: 15px
+        height: 70vh
+        display: flex
+        flex-direction: column
+        justify-content: center
+        &:last-child
+          margin-right: 15px
+        h2
+          font-size: 3rem
+        a
+          text-align: center
+          margin: 50px auto 20px
+          width: 50%
+          font-size: 16px
+          line-height: 1.3em
+          font-weight: bold
+
+      .users
+        background-image: url('/images/shutterstock_436974091_crate.jpg')
+      .nodes
+        background-image: url('/images/shutterstock_326785574_gettogether.jpg')
+      .producers
+        background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
+
+
+  .upcoming-events
+    padding-top: 50px
+    padding-bottom: 50px
+    h2
+      margin-bottom: 50px
+    .events
+      .event
+        display: flex
+        align-items: stretch
+        margin-bottom: 20px
+        &:hover,
+        &:focus,
+        &:active
+          text-decoration: none
+        .date
+          display: flex
+          justify-content: center
+          align-items: center
+          flex-direction: column
+          width: 30%
+          height: 200px
+          float: left
+          background: #dccba7
+          font-family: 'montserrat'
+          font-weight: 700
+          color: #fff
+          .day
+            font-size: 4rem
+            line-height: 4rem
+
+        .info
+          width: 70%
+          float: left
+          background-size: cover
+          position: relative
+          background-color: #bbab89
+          .block
+            position: absolute
+            right: 20px
+            bottom: 20px
+            padding: 20px
+            margin-left: 20px
+            background: #333
+            background: rgba(0, 0, 0, 0.6)
+            color: #fff
+            h2
+              font-size: 1rem
+              margin-bottom: 1rem
+
+  .btn-outline
+    border: 1px solid #fff
+    padding: 20px
+    text-transform: uppercase
+    display: block
+    -webkit-transition: background-color 1s
+    transition: background-color 1s
+    font-weight: bold
+    margin: 20px auto
+    color: #fff
+    &:hover
+      background: rgba(255, 255, 255, 0.4)
+      text-decoration: none
+
+@media (max-width: 991px)
+  .public-index
+    .frontpage-section
+      .left,
+      .right
+        width: 100vw
+
+    .create-node
+      .row
+        height: auto
+
+// Hide things on front page when logged in
+body.public-index
+  &.logged-in
+    .frontpage-header
+      display: none

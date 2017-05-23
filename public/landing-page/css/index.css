@@ -1,0 +1,248 @@
+
+/**
+ * INDEX
+ */
+.landing-page-index .header {
+    position: relative;
+    background: #fff url('../images/background.jpg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    text-transform: uppercase;
+    min-height: 100%;
+    font-size: 20px;
+}
+.landing-page-index .header h1 {
+    line-height: 1.4em;
+}
+.landing-page-index #logo {
+    background: url('../images/logo.png') no-repeat;
+    background-size: 200px auto;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+.lfn-badge {
+    background: url(../images/badge5.png);
+    background-size: 100%;
+}
+.lfn-badge-inner {
+    background: url(../images/broccoli-black.png) no-repeat;
+    background-position: center 60px;
+    background-size: 50px;
+    padding-top: 20px;
+}
+.landing-page-index .launch {
+    font-family: 'montserrat';
+    color: #333;
+    height: 250px;
+    width: 250px;
+    margin: 50px auto 0;
+    text-align: center;
+}
+.landing-page-index .launch .first {
+    padding-top: 100px;
+    font-size: 37px;
+    line-height: 40px;
+}
+.landing-page-index .launch .second {
+    font-size: 20px;
+}
+.landing-page-index .header h1 {
+    font-size: 60px;
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    text-shadow: none;
+    color: #fff;
+}
+.landing-page-index .header .h1-sub {
+    text-align: center;
+}
+.landing-page-index .read-more {
+    display: block;
+    text-align: center;
+    font-family: 'montserrat';
+    margin: 20px auto;
+    left: calc(50% - 75px);
+    border: 1px solid #fff;
+    padding: 10px;
+    width: 150px;
+    font-size: 14px;
+    background: #fff;
+    color: #333;
+    border-color: #333;
+    text-transform: uppercase;
+}
+.landing-page-index .read-more:hover {
+    background: #a9d29c;
+    color: #fff;
+    border-color: #a9d29c;
+    text-decoration: none;
+}
+.landing-page-index .content {
+    padding: 50px 0;
+}
+
+.landing-page-index .metrics-section {
+    padding: 50px 0;
+    background: url(../images/signup-background.png);
+    background-size: cover;
+    background-position: bottom;
+}
+.landing-page-index .metrics-section .section-header {
+    color: #fff;
+}
+.landing-page-index .metrics-section .section-header h2 {
+    color: #fff;
+}
+
+.landing-page-index .signup {
+    padding: 40px 0 100px;
+    background: #95afbc;
+    color: #fff;
+}
+.landing-page-index .signup h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 60px;
+}
+.landing-page-index .signup h3 {
+    color: #fff;
+    text-align: center;
+}
+.landing-page-index .signup .box {
+    margin: 0 0 40px;
+}
+.landing-page-index .signup .newsletter {
+    background: #fff;
+    padding: 15px;
+    color: #333;
+    box-shadow: 0 0 10px 0px #666;
+}
+.landing-page-index .signup .newsletter h2,
+.landing-page-index .signup .newsletter h3 {
+    margin-top: 0;
+    color: #333;
+}
+.landing-page-index #mc_embed_signup .input[type=email] {
+    width: 500px;
+}
+.landing-page-index .form-divider {
+    border-top: 2px dashed #eee;
+    margin: 10px 0 10px;
+}
+.landing-page-index .donation {
+    background: #fff;
+    color: #333;
+    box-shadow: 0 0 10px 0px #666;
+}
+.landing-page-index .donation input[type=submit] {
+    width: 100%;
+    margin-top: 5px;
+    background: #28435b;
+    font-size: 18px;
+}
+.landing-page-index .donation h2,
+.landing-page-index .donation h3 {
+    color: #333;
+}
+.landing-page-index .donation-form .alert {
+    margin-bottom: 10px;
+}
+.landing-page-index .action-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+.landing-page-index .action-buttons button {
+    background: #28435b;
+    border: 0px;
+}
+.landing-page-index .action-buttons .read-more-link {
+    margin-top: 10px;
+}
+.landing-page-index .footer {
+    margin-top: 0;
+}
+
+
+
+
+.content {
+    background: #fff;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #333;
+    text-align: center;
+}
+.content .quote {
+    font-style: italic;
+    font-size: 20px;
+    margin: 40px;
+}
+.content .image {
+    background: url(../images/background.jpg) no-repeat;
+    background-size: 200px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+.content a {
+    color: #54bc73;
+}
+.content a:hover {
+    text-decoration: underline;
+}
+
+.modal-title {
+    color: #333;
+}
+
+.swish-text {
+    line-height: 60px;
+}
+
+.metrics {
+    margin-bottom: 50px;
+}
+.metric-circle {
+    background: #fff;
+    color: #333;
+    border-radius: 100px;
+    width: 200px;
+    line-height: 200px;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.metric-label {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+.payment-form {
+    display: none;
+}
+.payment-methods button {
+    width: 100%;
+}
+.payment-methods button img {
+    float: left;
+    height: 20px;
+}
+.card-disabled-info {
+    margin-top: 5px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+}
