@@ -78,18 +78,18 @@ return [
     'week' => 'Week',
 
     // How does it work
+    'how_does_it_work' => 'How does it work',
     'hdiw_intro' => 'Produkter skapas stegvis och parametrar väljs efterhand som passar just denna produkt bäst.',
-    'hdiw_item_1' => 'Ange namn och beskrivning samt välj tagg/ar för din produkt.',
-    'hdiw_item_2' => 'Skapa minst en varianter av produkten. T.ex. Hel låda ägg eller Hel lammlåda.',
-    'hdiw_item_2_1' => 'Ange enhet för INNEHÅLLET i din produktvariant (tex stycken eller kg).',
-    'hdiw_item_2_2' => 'Ange antal innehåll i EN produkt. T.ex. 6 st (ägg) eller 18 (kg kött).',
-    'hdiw_item_2_3' => 'Ange pris för produkten (tex 40 kr eller 139 kr).',
-    'hdiw_item_2_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
-    'hdiw_item_3' => 'Välj typ av produkt samt mängd av produkten du vill sälja.',
-    'hdiw_item_4' => 'Redigera datum och utlämningsplatser för din produkt.',
-    'hdiw_item_5' => 'Ladda upp bild/er som beskriver produkten.',
-    'hdiw_item_6' => 'Ange betalningsinformation samt hur långt innan leverans du senast måste ha  beställningar av produkten.',
-    'hdiw_item_7' => 'Se den produktkvantitet som visas i butiken medan du skapar i realtid genom verktyget “Produkt preview” här ovan.',
+    'hdiw_item_1' => 'Ange namn och beskrivning samt välj taggar för din produkt. Ladda upp bild/er som beskriver produkten. Ange betalningsinformation samt hur långt innan leverans du senast måste ha  beställningar av produkten.',
+    'hdiw_item_2' => 'Välj typ av produkt samt mängd av produkten du vill sälja.',
+    'hdiw_item_3' => 'Redigera datum och utlämningsplatser för din produkt.',
+
+    'hdiw_item_4' => 'Skapa minst en varianter av produkten. T.ex. Hel låda ägg eller Hel lammlåda.',
+    'hdiw_item_4_1' => 'Ange enhet för INNEHÅLLET i din produktvariant (tex stycken eller kg).',
+    'hdiw_item_4_2' => 'Ange antal innehåll i EN produkt. T.ex. 6 st (ägg) eller 18 (kg kött).',
+    'hdiw_item_4_3' => 'Ange pris för produkten (tex 40 kr eller 139 kr).',
+    'hdiw_item_4_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
+
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 
     //
