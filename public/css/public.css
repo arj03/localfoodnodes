@@ -487,6 +487,7 @@ body.public .page .header .top a {
 }
 
 .navbar .navbar-brand {
+  position: relative;
   color: #333;
   font-weight: bold;
   font-size: 20px;
@@ -500,6 +501,16 @@ body.public .page .header .top a {
 .navbar .navbar-brand img {
   height: 35px;
   width: auto;
+}
+
+.navbar .navbar-brand .beta {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 14px;
+  color: #8e3a35;
 }
 
 .navbar .navbar-toggler {
@@ -1380,6 +1391,7 @@ body.public-checkout table tbody tr a .fa {
 }
 
 .user-nav .logo {
+  position: relative;
   line-height: 30px;
   font-size: 20px;
   font-family: 'montserrat';
@@ -1393,6 +1405,16 @@ body.public-checkout table tbody tr a .fa {
 .user-nav .logo img {
   height: 30px;
   width: auto;
+}
+
+.user-nav .logo .beta {
+  position: absolute;
+  top: 32px;
+  right: 34px;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
 }
 
 .user-nav .block {
