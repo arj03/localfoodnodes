@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Product production')
+@section('title', {{ trans('admin/product.title') }})
 
 @section('content')
     @include('admin.page-header')
@@ -25,7 +25,7 @@
                                         @include('admin.field-error', ['field' => 'production_type'])
                                     </label>
                                     <select name="production_type" id="product-type" class="form-control">
-                                        <option value=''>Select product type</option>
+                                        <option value=''>{{ trans('admin/product.select_product_type') }}</option>
                                         @if (Request::old('production_type'))
                                             <option value="weekly" {{ Request::old('production_type') === 'weekly' ? 'selected' : '' }}>
                                                 {{ trans('admin/product.recurring_products_weekly') }}
@@ -38,7 +38,7 @@
                                             </option>
                                         @else
                                             <option value="weekly" {{ $product->productionType === 'weekly' ? 'selected' : '' }}>
-                                                {{ trans('admin/product.recurring_products') }}
+                                                {{ trans('admin/product.recurring_products_weekly') }}
                                             </option>
                                             <option value="occasional" {{ $product->productionType === 'occasional' ? 'selected' : '' }}>
                                                 {{ trans('admin/product.occasional_products') }}
