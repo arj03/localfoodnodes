@@ -36,5 +36,5 @@ return [
 
     'paragraph_5_2' => 'Betalning kan göras på vilket sätt som helst som funkar för producenten och konsumenten. Producenter kan indikera vilken typ av betalning de accepterar för varje produkt när du beställer. Betalningar kan göras i förväg, när ni träffas eller genom medhavd faktura och kan ta vilken form ni vill, som till exempel: kontant, Swish, bank överföringar eller komplementerande valutor.',
 
-    'quip' => 'Det var det. Det var allt. Let\'s go local.',
+    'quip' => 'Let\'s go local',
 ];

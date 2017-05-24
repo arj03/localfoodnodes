@@ -36,5 +36,5 @@ return [
 
     'paragraph_5_2' => 'Payment can be done in any way that works for the producer as well as for the consumer. Producers can indicate what type of payment they will accept for each product when you order. Payments can be made in advance, at the meet-up or by invoice and in any form, such as: cash, mobile payments, bank transfer or community currencies.',
 
-    'quip' => 'That\’s it. That\’s all. Let\'s go local',
+    'quip' => 'Let\'s go local',
 ];
