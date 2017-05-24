@@ -18,7 +18,7 @@ return [
 
     'paragraph_1_6' => '<i> Read more about our vision for the future of food, our economic philosophy, the background of the project and where we are heading here. (Coming Soon)</i>',
 
-    'header_2' => 'How it works in three easy steps:',
+    'header_2' => 'How it works',
 
     'header_3' => '1. Create an account and become a supporting member',
 

@@ -18,7 +18,7 @@ return [
 
     'paragraph_1_6' => '<i>Läs mer om vår vision för framtiden, vår ekonomiska filosofi, bakgrunden till projektet och vart vi är på väg här. (Kommer snart)<i> ',
 
-    'header_2' => 'Hur det fungerar i tre enkla steg:',
+    'header_2' => 'Så funkar det',
 
     'header_3' => '1. Skapa konto och bli stödmedlem',
 
