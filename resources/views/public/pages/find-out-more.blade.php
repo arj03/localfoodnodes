@@ -21,6 +21,6 @@
     <p>{{ trans('public/pages/find-out-more.paragraph_4_1') }}</p>
     <h3 class="mt-5 mb-3">{{ trans('public/pages/find-out-more.header_5') }}</h3>
     <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
-    <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
+    <p>{{ trans('public/pages/find-out-more.paragraph_5_2') }}</p>
     <p>{{ trans('public/pages/find-out-more.quip') }}.</p>
 @endsection

@@ -97,9 +97,8 @@
                     <div class="card-block">
                         {{ trans('public/checkout.after_placing_order') }}
                         <ul class="info-list">
-                            <li><span class="info-count">1</span><p>{{ trans('public/checkout.recieve_instruction') }}</p></li>
-                            <li><span class="info-count">2</span><p>{{ trans('public/checkout.notified') }}</p></li>
-                            <li><span class="info-count">3</span><p>{{ trans('public/checkout.pick_it_up') }}</p></li>
+                            <li><span class="info-count">1</span><p>{!! trans('public/checkout.recieve_instruction') !!}</p></li>
+                            <li><span class="info-count">2</span><p>{{ trans('public/checkout.pick_it_up') }}</p></li>
                         </ul>
                     </div>
                 </div>

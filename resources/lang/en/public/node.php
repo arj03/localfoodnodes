@@ -17,7 +17,7 @@ return [
     'leave' => 'Leave node',
     'locals' => 'Locals',
     'no_products' => 'There are no products available.',
-    'pick_up_order' => 'Pick up your order',
+    'pick_up_order' => 'Pick up spot',
     'pickup' => 'Pick up',
     'products' => 'Products',
     'producers' => 'Producers',

@@ -189,7 +189,7 @@
 
                 @if ($node->images()->count() > 0)
                     <div class="card image-card">
-                        <div class="card-header">{{ trans('public/node.') }}images</div>
+                        <div class="card-header">{{ trans('public/node.images') }}</div>
                         <div class="images slick-slider">
                             @foreach ($node->images() as $image)
                                 <a data-fancybox="gallery" href="{{ $image->url('medium') }}">
