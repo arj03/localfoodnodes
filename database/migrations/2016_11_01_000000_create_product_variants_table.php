@@ -19,6 +19,7 @@ class CreateProductVariantsTable extends Migration
             $table->string('name')->required();
             $table->integer('price')->required();
             $table->integer('package_amount')->required();
+            $table->boolean('main_variant')->required();
             $table->timestamps();
         });
     }
