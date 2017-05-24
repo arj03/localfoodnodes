@@ -1,9 +1,8 @@
 <?php
 
 return [
-    'avg_dist' => 'Average distance - producer to node',
+    'avg_dist' => 'Average distance<br><span class="small">producent - nod</span>',
     'calendar' => 'Node calendar',
-    'clear_date' => '(clear date)',
     'contact' => 'Contact node admin on ',
     'event' => 'Event',
     'filters' => 'Filters',

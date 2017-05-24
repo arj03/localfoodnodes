@@ -39,13 +39,8 @@
   border-radius: 0;
 }
 
-.card .card-header .actions a {
-  color: #333;
-  margin-left: 5px;
-}
-
-.card .card-header .actions a .fa-plus-circle {
-  font-size: 16px;
+.card .card-header a {
+  color: #fff;
 }
 
 .card .card-header.toggle {
@@ -492,6 +487,7 @@ body.public .page .header .top a {
 }
 
 .navbar .navbar-brand {
+  position: relative;
   color: #333;
   font-weight: bold;
   font-size: 20px;
@@ -505,6 +501,16 @@ body.public .page .header .top a {
 .navbar .navbar-brand img {
   height: 35px;
   width: auto;
+}
+
+.navbar .navbar-brand .beta {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 14px;
+  color: #8e3a35;
 }
 
 .navbar .navbar-toggler {
@@ -714,20 +720,21 @@ body.public-node .product-filter {
 }
 
 body.public-node .node-metrics {
+  padding-top: 40px;
   border-bottom: 1px solid #eee;
+  background: #c1534c;
+  color: #fff;
 }
 
 body.public-node .node-metrics .metric {
   margin-bottom: 5px;
-  display: -webkit-box;
-  display: flex;
+  text-align: center;
 }
 
 body.public-node .node-metrics .metric .value {
   font-size: 16px;
-  line-height: 1em;
+  line-height: 1.5em;
   font-weight: bold;
-  margin-right: 5px;
   font-family: 'montserrat';
 }
 
@@ -1384,6 +1391,7 @@ body.public-checkout table tbody tr a .fa {
 }
 
 .user-nav .logo {
+  position: relative;
   line-height: 30px;
   font-size: 20px;
   font-family: 'montserrat';
@@ -1397,6 +1405,16 @@ body.public-checkout table tbody tr a .fa {
 .user-nav .logo img {
   height: 30px;
   width: auto;
+}
+
+.user-nav .logo .beta {
+  position: absolute;
+  top: 32px;
+  right: 34px;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
 }
 
 .user-nav .block {

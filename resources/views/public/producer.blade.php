@@ -38,7 +38,7 @@
                                                 @if ($product->images()->count() > 0)
                                                     <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">
                                                 @else
-                                                    <img class="card-image-top" src="/images/product-image-placeholder-800.jpg">
+                                                    <img class="card-image-top" src="/images/product-image-placeholder.jpg">
                                                 @endif
 
                                                 <div class="card-block">
