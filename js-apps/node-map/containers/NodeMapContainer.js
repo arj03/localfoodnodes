@@ -8,6 +8,9 @@ import $ from 'jquery';
 
 import SearchResultComponent from '../components/SearchResultComponent';
 
+const rootElement = document.getElementById('node-map-component-root');
+const trans = JSON.parse(rootElement.dataset.trans);
+
 let map = null;
 let addedNodes = [];
 let visibleLatLng = [];
@@ -169,7 +172,7 @@ class NodeMapContainer extends Component {
                     </div>
                 </a>
                 <div className='body-text'>
-                    <a href={node.permalink.url} className="btn btn-success">Visit node <i className="fa fa-caret-right" style={{float: 'right'}}/></a>
+                    <a href={node.permalink.url} className="btn btn-success">{trans.visit_node} <i className="fa fa-caret-right" style={{float: 'right'}}/></a>
                 </div>
             </div>
         );
@@ -218,12 +221,12 @@ class NodeMapContainer extends Component {
         return (
             <div className='map container-fluid'>
                 <div className='body-text'>
-                    <h2>Go local - Find your node</h2>
+                    <h2>{trans.go_local}</h2>
                     <div className='row no-gutters map-search'>
                         <div className='col-12 col-lg-6 offset-lg-3'>
                             <div className='input-group'>
                                 <span className="input-group-addon"><i className="fa fa-search" /></span>
-                                <input value={this.state.searchString} type="text" className="form-control" placeholder="Find a node near you" onChange={this.search.bind(this)} />
+                                <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />
                             </div>
                             {searchResults}
                         </div>

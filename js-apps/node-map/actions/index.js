@@ -5,7 +5,7 @@ import superagent from 'superagent';
 import constants from '../constants';
 
 const request = superagentPromise(superagent, promise);
-const rootElement = 'node-map-component-root';
+const rootElement = document.getElementById('node-map-component-root');
 
 export function fetchContent(dispatch, params) {
     dispatch(requestContent());
@@ -85,7 +85,7 @@ export function receiveSearchGeo(data) {
 
 export function fetchUserLocation(dispatch) {
     // If user position is passed through root element
-    let userLocation = JSON.parse(document.getElementById(rootElement).dataset.userLocation);
+    let userLocation = JSON.parse(rootElement.dataset.userLocation);
     if (userLocation) {
         return dispatch(receiveUserLocation({
             latitude: userLocation.lat,
@@ -108,7 +108,7 @@ export function fetchUserLocation(dispatch) {
 }
 
 function getUserIp() {
-    let ip = document.getElementById(rootElement).dataset.ip;
+    let ip = rootElement.dataset.ip;
 
     if (ip === '::1') {
         // On localhost, use external service to get correct IP

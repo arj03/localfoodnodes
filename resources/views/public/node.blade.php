@@ -27,7 +27,7 @@
                         <div>
                             {{ trans('public/node.products') }}
                             @if (Request::has('date'))
-                                on {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}">{{ trans('public/node.clear_date') }}</a>
+                                - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
                             @endif
                         </div>
                         <div class="dropdown">
@@ -59,7 +59,7 @@
                                                 @if ($product->images()->count() > 0)
                                                     <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">
                                                 @else
-                                                    <img class="card-image-top" src="/images/product-image-placeholder-800.jpg">
+                                                    <img class="card-image-top" src="/images/product-image-placeholder.jpg">
                                                 @endif
 
                                                 <div class="card-block">
@@ -101,17 +101,19 @@
                 <div class="card">
                     <div class="card-header">{{ trans('public/node.info') }}</div>
                     <div class="card-block node-metrics">
-                        <div class="metric">
-                            <div class="value">{{ $node->userLinks()->count() }}</div>
-                            <div class="label">{{ trans('public/node.locals') }}</div>
-                        </div>
-                        <div class="metric">
-                            <div class="value">{{ $node->producerLinks()->count() }}</div>
-                            <div class="label">{{ trans('public/node.producers') }}</div>
-                        </div>
-                        <div class="metric">
-                            <div class="value">{{ $node->getAverageProducerDistance() }}km</div>
-                            <div class="label">{{ trans('public/node.avg_dist') }}</div>
+                        <div class="row">
+                            <div class="metric col-4">
+                                <div class="value">{{ $node->userLinks()->count() }}</div>
+                                <div class="label">{{ trans('public/node.locals') }}</div>
+                            </div>
+                            <div class="metric col-4">
+                                <div class="value">{{ $node->producerLinks()->count() }}</div>
+                                <div class="label">{{ trans('public/node.producers') }}</div>
+                            </div>
+                            <div class="metric col-4">
+                                <div class="value">{{ $node->getAverageProducerDistance() }}km</div>
+                                <div class="label">{!! trans('public/node.avg_dist') !!}</div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-block">
@@ -131,15 +133,15 @@
                             <p>{{ trans('public/node.contact') }} <a href="mailto:{{ $node->email }}">{{ $node->email }}</a></p>
                         @endif
                     </div>
-                    <div class="card-footer">
-                        @if (Auth::check())
+                    @if (Auth::check())
+                        <div class="card-footer">
                             @if ($user->isAddedToNode($node->id))
                                 <a class="btn btn-success w-100" href="/account/user/node/{{ $node->id }}">{{ trans('public/node.leave') }}</a>
                             @else
                                 <a class="btn btn-success w-100" href="/account/user/node/{{ $node->id }}">{{ trans('public/node.join') }}</a>
                             @endif
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 </div>
 
                 @if (isset($calendar))

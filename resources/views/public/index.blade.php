@@ -13,7 +13,8 @@
         </div>
     </div>
 
-    <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}"></div>
+    <?php $jsonTrans = json_encode(trans('public/index')); ?>
+    <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ $jsonTrans }}"></div>
 
     <div class="container-fluid frontpage-section local-food-impact hidden-md-down">
         <div class="container">

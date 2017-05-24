@@ -18,4 +18,7 @@ return [
     'upcoming' => 'Kommande event',
     'where' => 'Var: ',
     'when' => 'När: ',
+    'go_local' => 'Hitta din lokala utlämningsplats',
+    'find_node_near_you' => 'Hitta din lokala utlämningsplats',
+    'visit_node' => 'Besök noden',
 ];

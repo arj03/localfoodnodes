@@ -1,6 +1,6 @@
 <div class="row">
     <ul class="product-quick-links col-12 col-xl-8">
-        <li>
+        <li class="{{ Request::is('*/edit') ? 'active' : '' }}">
             <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/edit">
                 <i class="fa fa-check-circle completed"></i>
                 <!-- <i class="fa fa-cube"></i> -->
@@ -8,7 +8,7 @@
             </a>
         </li>
         @if ($product->variants()->count() > 0)
-            <li>
+            <li class="{{ Request::is('*/variants') ? 'active' : '' }}">
                 <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">
                     <i class="fa fa-check-circle completed"></i>
                     <!-- <i class="fa fa-cubes"></i> -->
@@ -16,7 +16,7 @@
                 </a>
             </li>
         @endif
-        <li>
+        <li class="{{ Request::is('*/production') ? 'active' : '' }}">
             <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">
                 @if ($product->productions()->count() > 0)
                     <i class="fa fa-check-circle completed"></i>
@@ -26,7 +26,7 @@
                 {{ trans('admin/producer.production') }}
             </a>
         </li>
-        <li>
+        <li class="{{ Request::is('*/deliveries') ? 'active' : '' }}">
             <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">
                 @if ($product->deliveryLinks()->count() > 0)
                     <i class="fa fa-check-circle completed"></i>

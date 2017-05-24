@@ -19,4 +19,7 @@ return [
     'upcoming' => 'Upcoming events',
     'where' => 'Where: ',
     'when' => 'When: ',
+    'go_local' => 'Go local - Find your node',
+    'find_node_near_you' => 'Find a node near you',
+    'visit_node' => 'Visit node',
 ];

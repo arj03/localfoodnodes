@@ -1,9 +1,8 @@
 <?php
 
 return [
-    'avg_dist' => 'Genomsnittsavstånd - producent till nod',
+    'avg_dist' => 'Snittsavstånd<br><span class="small">producent - nod</span>',
     'calendar' => 'Nod kalender',
-    'clear_date' => '(rensa datum)',
     'contact' => 'Kontakta nodadmin på ',
     'event' => 'Event',
     'filters' => 'Filter',
