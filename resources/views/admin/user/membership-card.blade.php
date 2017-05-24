@@ -4,10 +4,10 @@
         <div class="card">
             <div class="card-header">{{ trans('admin/user.membership_paid_title') }}</div>
             <div class="card-block">
-                {{ trans('admin/user.membership_paid', [
+                <p>{{ trans('admin/user.membership_paid', [
                     'date' => $user->getLatestMembershipPayment()->getDateOneYearForward()->format('Y-m-d'),
                     'days' => $user->getLatestMembershipPayment()->expiresInDays()
-                ]) }}
+                ]) }}</p>
 
                 <p><a class="btn btn-success" href="/account/user/membership">{{ trans('admin/user.membership_paid_link') }}</a></p>
             </div>

@@ -1,13 +1,14 @@
 @extends('public.layout')
 
 @section('content')
-    <div class="row justify-content-center mt-5">
-        <div class="col-12 col-lg-8">
-            <div class="card">
-                <div class="card-block body-text">
-                    @yield('page-content')
-                </div>
+    <div class="container-fluid header">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="bold">{{ $header }}</h2>
+                <h3 class="mb-5">{{ $subHeader }}</h3>
             </div>
         </div>
     </div>
+
+    @yield('page-content')
 @endsection

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User\User;
+use App\User\UserMembershipPayment;
+
 class PageController extends Controller
 {
     /**
@@ -31,6 +34,14 @@ class PageController extends Controller
 
     public function membership()
     {
-        return view('public.pages.membership');
+        $users = User::count();
+        $allPayments = UserMembershipPayment::get();
+        $totalMembershipPayments = $allPayments->pluck('amount')->sum() / 100;
+        $averageMembershipPayments = $totalMembershipPayments / $users;
+
+        return view('public.pages.membership', [
+            'users' => $users,
+            'averageMembership' => round($averageMembershipPayments)
+        ]);
     }
 }

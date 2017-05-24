@@ -347,10 +347,6 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active, a.btn:focus {
   }
 }
 
-body.page .body-text p {
-  max-width: 600px;
-}
-
 body.public .page {
   background: #f1f0ea;
   overflow: hidden;
@@ -405,6 +401,84 @@ body.public .page .header .top h1 {
 
 body.public .page .header .top a {
   color: #fff;
+}
+
+body.page .page .header {
+  background: url("/images/co-own.jpg") center center;
+  background-size: cover;
+  color: #fff;
+  height: 80vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+body.page .page .header h2 {
+  font-size: 4em;
+  text-align: center;
+}
+
+body.page .page .header h2.bold {
+  font-weight: 700;
+}
+
+body.page .page .header h2.thin {
+  font-weight: 200;
+}
+
+body.page .page .top-container .card {
+  padding: 50px;
+}
+
+body.page .page .card h2 {
+  font-weight: bold;
+  color: #666;
+}
+
+body.page .page .card .body-text {
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+.public-pages-membership .metrics {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.public-pages-membership .metrics .metric {
+  margin: 50px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.public-pages-membership .metrics .metric .value {
+  background: #efcb6b;
+  color: #fff;
+  font-size: 10vh;
+  width: 25vw;
+  line-height: 25vw;
+  border-radius: 25vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.public-pages-membership .metrics .metric .label {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 26px;
+  color: #ad9350;
 }
 
 .footer {
@@ -1086,6 +1160,98 @@ body.public-node .product-card .card-footer {
 .public-index .upcoming-events .events .event .info .block h2 {
   font-size: 1rem;
   margin-bottom: 1rem;
+}
+
+.public-index .membership {
+  background: url("/images/cows.jpg") center center;
+  background-size: cover;
+  color: #fff;
+  height: 80vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.public-index .membership .membership-content {
+  font-family: 'montserrat';
+  color: #fff;
+  text-transform: none;
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 100px;
+}
+
+.public-index .membership .membership-content.big {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.public-index .membership .membership-content.uppercase {
+  text-transform: uppercase;
+}
+
+.public-index .membership a {
+  color: #fff;
+  width: 300px;
+  margin-top: 50px;
+}
+
+.public-index .find-out-more .logo {
+  padding-top: 50px;
+  width: 10vw;
+  display: block;
+  margin: 0 auto;
+}
+
+.public-index .find-out-more > h2 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #333;
+}
+
+.public-index .find-out-more .row {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  color: #fff;
+}
+
+.public-index .find-out-more .row > div {
+  margin-left: 15px;
+  background-size: cover;
+  padding: 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+
+.public-index .find-out-more .row > div:last-child {
+  margin-right: 15px;
+}
+
+.public-index .find-out-more .row > div h2 {
+  font-size: 3rem;
+}
+
+.public-index .find-out-more .row .users {
+  background-image: url("/images/shutterstock_436974091_crate.jpg");
+}
+
+.public-index .find-out-more .row .nodes {
+  background-image: url("/images/shutterstock_326785574_gettogether.jpg");
+}
+
+.public-index .find-out-more .row .producers {
+  background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
 }
 
 .public-index .btn-outline {
