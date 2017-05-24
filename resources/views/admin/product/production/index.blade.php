@@ -28,7 +28,7 @@
                                         <option value=''>Select product type</option>
                                         @if (Request::old('production_type'))
                                             <option value="weekly" {{ Request::old('production_type') === 'weekly' ? 'selected' : '' }}>
-                                                {{ trans('admin/product.recurring_products') }}
+                                                {{ trans('admin/product.recurring_products_weekly') }}
                                             </option>
                                             <option value="occasional" {{ Request::old('production_type') === 'occasional' ? 'selected' : '' }}>
                                                 {{ trans('admin/product.occasional_products') }}
@@ -77,7 +77,7 @@
 
                         <!-- Weekly -->
                         <div class="card type-card" id="type-card-weekly">
-                            <div class="card-header">{{ trans('admin/product.recurring_products') }}</div>
+                            <div class="card-header">{{ trans('admin/product.recurring_products_weekly') }}</div>
                             <div class="card-block">
                                 <div class="form-group col-6">
                                     <label class="form-control-label" for="weekly_quantity">
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="card-block">
                                     <p>{{ trans('admin/product.weekly_adjustment') }}</p>
-                                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment">{{ trans('admin/product.adjust_production') }}</a>
+                                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment">{{ trans('admin/product.adjust_production_quantity_per_week') }}</a>
                                 </div>
                             </div>
                         </div>

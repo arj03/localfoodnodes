@@ -2,8 +2,8 @@
 
 return [
     'add_date' => 'Add date',
-    'adjust_production' => 'Adjust production',
-    'adjust_production_quantity_per_week' => 'Adjust production quantity per week',
+    'adjust_production_quantity_per_delivery' => 'Adjust production for specific deliveries',
+    'adjust_production_quantity_per_week' => 'Adjust production quantity for each week',
     'amount_per_package' => 'Amount per package',
     'back_to_producer' => 'Back to producer',
     'basic_information' => 'Basic information',
@@ -37,7 +37,8 @@ return [
     'no_delivery_dates' => 'Select delivery dates',
     'no_production' => 'Create production',
     'no_variants' => 'No variants',
-    'occasional_products' => 'Occasional products',
+    'occasional_products' => 'Occasional product',
+    'occasional_products_fresh_meat' => 'Occasional product - Fresh meat',
     'occasional_products_info' => 'Occasional is for refined products like honey and jam, fresh meat with specific slaughter dates and slow growing vegetables.',
     'occasional_specify_date_quantity' => 'Specify the date and quantity from which the product is available for delivery.',
     'other_options' => 'Other options (optional)',
@@ -56,7 +57,8 @@ return [
     'production_for_week' => 'Production for week',
     'quantity' => 'Quantity',
     'quantity_available' => 'Quantity available from the date above',
-    'recurring_products' => 'Recurring products',
+    'recurring_products_weekly' => 'Recurring product with stock set weekly',
+    'recurring_products_per_delivery' => 'Recurring product with stock set per delivery',
     'recurring_products_info' => 'Recurring products is suitable for eggs and fast growing vegetables.',
     'save' => 'Save',
     'save_product' => 'Save product',
@@ -93,5 +95,11 @@ return [
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 
     //
-    'weekly_adjustment' => 'Recurring products are produced continously for a period of time, and the quantity during this period can change. In the adjust production view you can correct your production by week.',
+
+
+    'delivery_adjustment' => 'Recurring product with stock set per delivery are produced continously and where the stock is set per delivery. Since the quantity of products can change from during the season you can adjust how many products you want to make available for each delivery over the season.',
+
+
+    'weekly_adjustment' => 'Recurring product with stock set weekly are products that are produced continously for a period of time and where the stock is administered per week. Since the quantity of products available can change from week to week during this period you can adjust the products that are available each week.',
+
 ];

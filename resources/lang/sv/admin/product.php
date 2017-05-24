@@ -2,7 +2,7 @@
 
 return [
     'add_date' => 'Lägg till datum',
-    'adjust_production' => 'Justera produktion',
+    'adjust_production_quantity_per_delivery' => 'Justera produktion specifikt per utlämning',
     'adjust_production_quantity_per_week' => 'Justera produktionskvantitet per vecka',
     'amount_per_package' => 'Kvantitet per förpackning',
     'back_to_producer' => 'Tillbaka till producent',
@@ -35,7 +35,8 @@ return [
     'number_of_csa_subscribers' => 'Antal CSA-prenumeranter',
     'number_of_products' => 'Antal produkter',
     'no_variants' => 'Inga varianter',
-    'occasional_products' => 'Sällanprodukter',
+    'occasional_products' => 'Sällanprodukt',
+    'occasional_products_fresh_meat' => 'Sällanprodukt - Färskt kött',
     'occasional_products_info' => 'Sällanprodukter är rafinerade produkter som t.ex. honung och sylt, färskt kött med specifika slaktdatum och långsamväxande grönsaker.',
     'occasional_specify_date_quantity' => 'Ange de datum och kvantitet från då produkten kommer kunna levereras.',
     'other_options' => 'Andra inställningar (valfritt)',
@@ -54,7 +55,8 @@ return [
     'production_for_week' => 'Produktion för vecka',
     'quantity' => 'Kvantitet',
     'quantity_available' => 'Kvantitet tillgänglig från datumet ovan',
-    'recurring_products' => 'Återkommande produkter',
+    'recurring_products_weekly' => 'Återkommande produkt med veckosaldo',
+    'recurring_products_per_delivery' => 'Återkommande produkt med leveranssaldo',
     'recurring_products_info' => 'Återkommande produkter passar t.ex. ägg och snabbt växande grönsaker.',
     'save' => 'Spara',
     'save_product' => 'Spara produkt',
@@ -65,7 +67,7 @@ return [
     'select_tags' => 'Välj passande taggar till produkten',
     'select_unit_product_content' => 'Välj enhet på produktinnehåll',
     'set_main_variant' => 'Välj som huvudvariant',
-    'specify_number_products' => 'Ange antalet produkter för varje leveranstillfälle',
+    'specify_number_products' => 'Ange antalet produkter tillgänliga per vecka',
     'update_deliveries' => 'Uppdatera leveransdatum',
     'update_production' => 'Updatera produktion',
     'variants' => 'Varianter',
@@ -91,5 +93,8 @@ return [
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 
     //
-    'weekly_adjustment' => 'Återkommande produkter är produkter som produceras kontinuerligt under en period, och kvaniteten kan variera under denna period. I vyn justera produktion har du möjlighet att ändra hur många förpackningar av produkten som du producerar vid de olika veckor under säsongen.',
+
+    'delivery_adjustment' => 'Återkommande produkter med leveranssaldo är produkter som produceras kontinuerligt under en period där saldon administreras per utläming. Eftersom kvaniteten kan variera under denna period så kan du i vyn justera produktionskvantitet per nod och utlämning ändra hur många produkter som du tillgängliggör vid de olika utlämningarna under säsongen.',
+
+    'weekly_adjustment' => 'Återkommande produkter med veckosaldo är produkter som produceras kontinuerligt under en period där saldon administreras per vecka. Eftersom kvaniteten kan variera under denna period så kan du i vyn justera produktionskvantitet per vecka ändra hur många produkter som du tillgängliggör vid de olika veckorna under säsongen. Produkter finns tillgängliga alla veckor där du har valt att göra minst en leverans',
 ];

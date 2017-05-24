@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'co_create' => 'Medskapa din lokala matförsörjning',
+    'co_create' => 'Tillsammans gör vi maten lokal',
     'create_node' => 'Skapa en utlämningsplats',
     'find_out_more' => 'Läs mer',
     'food_matters' => 'FOOD MATTERS',
@@ -11,7 +11,7 @@ return [
     'local_nodes' => 'Lokala utlämningsplatser',
     'local_producers' => 'Lokala producenter',
     'no_node' => 'Hittade du ingen utlämningsplats nära dig?',
-    'recreating' => 'Tillsammans gör vi maten lokal',
+    'recreating' => 'Återskapa vår lokala matmarknad',
     'sign_up' => 'Skapa konto och börja handla lokalt',
     'sign_up_button' => 'Skapa konto',
     'title' => 'Hitta lokala utlämningsplatser',

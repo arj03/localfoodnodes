@@ -11,7 +11,7 @@
                     <div class="address">{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
                 </div>
                 <div class="deliveries">
-                    <h1>{{ $node->delivery_weekday }} {{ $node->delivery_time }}</h1>
+                    <h1>{{ trans('public/weekdays.' . $node->delivery_weekday) }} {{ $node->delivery_time }}</h1>
                     <div>{{ trans('public/node.pick_up_order') }}</div>
                 </div>
             </div>
