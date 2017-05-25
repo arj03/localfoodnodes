@@ -47,7 +47,9 @@
                                                         </div>
                                                     </form>
                                                 </td>
-                                                <td class="text-right">{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</td>
+                                                <td class="text-right">
+                                                    <b>{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</b>
+                                                </td>
                                                 <td><a href="/checkout/item/{{ $cartDateItemLink->id }}/remove">
                                                     <i class="fa fa-times-circle"></i>
                                                 </a></td>
