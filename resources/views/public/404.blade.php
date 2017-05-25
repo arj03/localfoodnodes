@@ -6,7 +6,7 @@
     <div class="container">
         <div class="card mt-5">
             <div class="card-block">
-                {{ trans('public/404.no-page') }})
+                {!! trans('public/404.no-page') !!}
             </div>
         </div>
     </div>

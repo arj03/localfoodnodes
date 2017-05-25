@@ -10,7 +10,7 @@ return [
     'end_date_and_time' => 'End date and time',
     'fee' => 'Fee',
     'going' => 'going',
-    'hide_from_map' => 'Hide from map',
+    'hide_from_map' => 'Hide event',
     'information' => 'Information',
     'name' => 'Name',
     'no_events' => 'You have not created any events.',

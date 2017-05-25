@@ -10,7 +10,7 @@ return [
     'end_date_and_time' => 'Slutdatum och tid',
     'fee' => 'Avgift',
     'going' => 'Anmälda',
-    'hide_from_map' => 'Göm på karta',
+    'hide_from_map' => 'Göm evenemanget',
     'information' => 'Information',
     'name' => 'Namn',
     'no_events' => 'Du har inte skapat några evenemang.',

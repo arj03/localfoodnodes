@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between">
                 <div>
                     <h1>{{ $product->name }}</h1>
-                    <a href="/producer/{{ $producer->id }}">{{ $producer->name }}</a>
+                    <a href="{{ $producer->permalink()->url }}">{{ $producer->name }}</a>
                 </div>
             </div>
         </div>

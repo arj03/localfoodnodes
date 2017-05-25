@@ -178,7 +178,7 @@ class Event extends BaseModel
     public function getDatePeriod()
     {
         $interval = new \DateInterval('P1D');
-        return new \DatePeriod($this->start_datetime, $interval, $this->end_datetime->modify('+1 day'));
+        return new \DatePeriod($this->start_datetime, $interval, $this->end_datetime);
     }
 
     /**
