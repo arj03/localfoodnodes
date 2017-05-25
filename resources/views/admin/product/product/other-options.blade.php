@@ -21,9 +21,9 @@
             </fieldset>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label class="control-label col-12" for="deadline">{{ trans('admin/product.booking_deadline') }}</label>
-                <div class="input-group col-12 col-lg-6">
+            <div class="form-group col-12 col-lg-6">
+                <label class="control-label" for="deadline">{{ trans('admin/product.booking_deadline') }}</label>
+                <div class="input-group">
                     <input type="number" min="0" name="deadline" class="form-control" id="deadline" placeholder="0" value="{{ $product->deadline or '' }}">
                     <span class="input-group-addon">{{ trans('admin/product.days') }}</span>
                 </div>

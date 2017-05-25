@@ -1,9 +1,9 @@
 <?php
 
 return [
+    'artisan_food' => 'Artisan food',
     'beverage' => 'Beverage',
-    'cheese' => 'Cheese',
-    'dairy' => 'Diary',
+    'dairy_cheese' => 'Diary & cheese',
     'eggs' => 'Eggs',
     'fish' => 'Fish',
     'fruit_berries' => 'Fruit & berries',

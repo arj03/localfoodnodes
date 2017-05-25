@@ -1,9 +1,9 @@
 <?php
 
 return [
+    'artisan_food' => 'Mathantverk',
     'beverage' => 'Dryck',
-    'cheese' => 'Ost',
-    'dairy' => 'Mejeri',
+    'dairy_cheese' => 'Mejeri & ost',
     'eggs' => 'Ägg',
     'fish' => 'Fisk',
     'fruit_berries' => 'Frukt & bär',

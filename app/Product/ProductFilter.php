@@ -42,9 +42,9 @@ class ProductFilter
      */
     public static function tags() {
         return collect([
+            trans('public/tags.artisan_food'),
             trans('public/tags.beverage'),
-            trans('public/tags.cheese'),
-            trans('public/tags.dairy'),
+            trans('public/tags.dairy_cheese'),
             trans('public/tags.eggs'),
             trans('public/tags.fish'),
             trans('public/tags.fruit_berries'),
