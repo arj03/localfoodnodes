@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Facebook meta -->
-        <meta property="og:url" content="https://staging.localfoodnodes.org">
+        <meta property="og:url" content="http://staging.localfoodnodes.org">
         <meta property="og:type" content="blog"/>
         <meta property="og:title" content="Local Food Nodes">
         <meta property="og:description" content="We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again." />
