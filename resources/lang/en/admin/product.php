@@ -66,10 +66,12 @@ return [
     'save_variant' => 'Save variant',
     'select_delivery_dates' => 'Select delivery dates',
     'select_production_type' => 'Select production type',
+    'select_product_type' => 'Select product type',
     'select_tags' => 'Select suitable tags for the product',
     'select_unit_product_content' => 'Select unit for product content',
     'set_main_variant' => 'Set as main variant',
     'specify_number_products' => 'Specifiy the number of products for each delivery occasion',
+    'title' => 'Product production'
     'update_deliveries' => 'Update deliveries',
     'update_production' => 'Update production',
     'variants' => 'Variants',
