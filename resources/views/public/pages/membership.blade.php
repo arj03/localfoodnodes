@@ -21,12 +21,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
-                <div class="metrics">
-                    <div class="metric">
+                <div class="metrics row">
+                    <div class="metric col">
                         <div class="value">{{ $users }} <i class="fa fa-user"></i></div>
                         <div class="label">Supporting members</div>
                     </div>
-                    <div class="metric">
+                    <div class="metric col">
                         <div class="value">{{ $averageMembership }} SEK</div>
                         <div class="label">Average supporting fee</div>
                     </div>

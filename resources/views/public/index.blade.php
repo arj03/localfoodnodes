@@ -83,7 +83,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="thin">{{ trans('public/index.upcoming') }}</h2>
-                <div class="events">
+                <div class="events slick-slider">
                     @foreach ($events as $event)
                         <a href="{{ $event->permalink()->url }}" class="event">
                             <div class="date">
@@ -120,7 +120,7 @@
                 <div class="membership-content container">
                     Becoming a member makes you a co-funding part of the future of food. As supporting members, we all of us together, give ourselves the economic powers to choose the direction for the future of food.
                 </div>
-                <a href="/find-out-more" class="btn-outline">Read more about membership</a>
+                <a href="/membership" class="btn-outline">Read more about membership</a>
             </div>
         </div>
     </div>

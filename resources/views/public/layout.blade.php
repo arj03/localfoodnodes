@@ -3,6 +3,8 @@
     <head>
         <title>@yield('title') - Local Food Nodes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="Local Food Nodes"/>
+        <meta property="og:image" content="{{ URL::asset('images/nav-logo-dark.jpg') }}/>
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">

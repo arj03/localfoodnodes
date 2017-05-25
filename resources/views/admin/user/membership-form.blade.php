@@ -1,3 +1,7 @@
+<div class="master-alerts">
+    <div class="alert alert-danger payment-errors" style="display: none;"></div>
+</div>
+
 <form action="/account/user/membership/callback" method="POST" class="form" id="payment-form">
     {{ csrf_field() }}
     <div class="card">
@@ -34,6 +38,9 @@
                 <label class="form-control-label">{{ trans('admin/user.your_zip_code') }}</label>
                 <input type="number" class="form-control" size="6" data-stripe="address_zip" placeholder="{{ trans('admin/user.your_zip_code') }}" value="{{ $user->zip or '' }}">
             </div>
+        </div>
+        <div class="card-block">
+            <input type="submit" class="submit btn btn-success" value="{{ trans('admin/user.submit_payment') }}">
         </div>
     </div>
 </form>
