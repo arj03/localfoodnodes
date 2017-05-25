@@ -78,12 +78,14 @@
                             <thead>
                                 <tr>
                                     <td>{{ trans('admin/user.node_name') }}</td>
+                                    <td class="text-right"></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($user->nodeLinks() as $nodeLink)
                                     <tr>
                                         <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
+                                        <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

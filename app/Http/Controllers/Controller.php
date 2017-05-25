@@ -37,13 +37,5 @@ class Controller extends BaseController
 
             return $next($request);
         });
-
-        // Log controller action for debugging
-        $this->middleware(function ($request, $next) {
-            error_log(var_export('Requested: ' . $request->url(), true));
-            error_log(var_export('Routed to: ' . $request->route()->getAction()['uses'], true));
-
-            return $next($request);
-        });
     }
 }

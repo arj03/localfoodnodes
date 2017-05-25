@@ -771,83 +771,83 @@ body.public-product .info {
   margin-top: -150px;
 }
 
-body.public-node .node-content .node-admin {
+body.public-node-node .node-content .node-admin {
   margin-bottom: 20px;
 }
 
-body.public-node .node-content .node-admin .icon {
+body.public-node-node .node-content .node-admin .icon {
   float: left;
   font-size: 32px;
   color: #ccc;
 }
 
-body.public-node .node-content .node-admin .admin-info {
+body.public-node-node .node-content .node-admin .admin-info {
   overflow: hidden;
   margin-left: 40px;
 }
 
-body.public-node .node-content .content.content-left-margin {
+body.public-node-node .node-content .content.content-left-margin {
   margin-left: 40px;
 }
 
-body.public-node .product-filter {
+body.public-node-node .product-filter {
   border-bottom: 1px solid #eee;
 }
 
-body.public-node .node-metrics {
+body.public-node-node .node-metrics {
   padding-top: 40px;
   border-bottom: 1px solid #eee;
   background: #c1534c;
   color: #fff;
 }
 
-body.public-node .node-metrics .metric {
+body.public-node-node .node-metrics .metric {
   margin-bottom: 5px;
   text-align: center;
 }
 
-body.public-node .node-metrics .metric .value {
+body.public-node-node .node-metrics .metric .value {
   font-size: 16px;
   line-height: 1.5em;
   font-weight: bold;
   font-family: 'montserrat';
 }
 
-body.public-node .node-metrics .metric .label {
+body.public-node-node .node-metrics .metric .label {
   line-height: 16px;
 }
 
-body.public-producer .product-card,
-body.public-node .product-card {
+body.public-producer-producer .product-card,
+body.public-node-node .product-card {
   text-decoration: none;
   color: #333;
   padding: 10px;
 }
 
-body.public-producer .product-card:hover,
-body.public-node .product-card:hover {
+body.public-producer-producer .product-card:hover,
+body.public-node-node .product-card:hover {
   box-shadow: #ccc 0 1px 8px 0;
 }
 
-body.public-producer .product-card .image-placeholder,
-body.public-node .product-card .image-placeholder {
+body.public-producer-producer .product-card .image-placeholder,
+body.public-node-node .product-card .image-placeholder {
   background: #fafafa;
   font-size: 4rem;
 }
 
-body.public-producer .product-card .card-block,
-body.public-node .product-card .card-block {
+body.public-producer-producer .product-card .card-block,
+body.public-node-node .product-card .card-block {
   padding: 10px 0;
 }
 
-body.public-producer .product-card .card-block .producer-info,
-body.public-node .product-card .card-block .producer-info {
+body.public-producer-producer .product-card .card-block .producer-info,
+body.public-node-node .product-card .card-block .producer-info {
   font-size: 12px;
   line-height: 1.5em;
 }
 
-body.public-producer .product-card .card-block .title,
-body.public-node .product-card .card-block .title {
+body.public-producer-producer .product-card .card-block .title,
+body.public-node-node .product-card .card-block .title {
   font-weight: 700;
   font-family: 'montserrat';
   text-transform: uppercase;
@@ -855,8 +855,8 @@ body.public-node .product-card .card-block .title {
   color: #c3b07b;
 }
 
-body.public-producer .product-card .card-footer,
-body.public-node .product-card .card-footer {
+body.public-producer-producer .product-card .card-footer,
+body.public-node-node .product-card .card-footer {
   background: #fff;
   font-size: 12px;
   border: 0;
