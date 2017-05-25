@@ -16,6 +16,13 @@
             outline:none;
             text-decoration:none;
         }
+        a {
+            color: #188092;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         a img {
             border:0 none;
         }

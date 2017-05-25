@@ -27,7 +27,10 @@
                                             <tr style="vertical-align: top; border-top: 1px solid #eee;">
                                                 <td style="text-align:left; padding:10px;">{{ $orderDateItemLink->getItem()->getName() }}</td>
                                                 <td style="text-align:right; padding:10px;">{{ $orderDateItemLink->quantity }}</td>
-                                                <td style="text-align:left; padding:10px;">{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
+                                                <td style="text-align:left; padding:10px;">
+                                                    {{ $orderDateItemLink->getItem()->producer['name'] }}<br>
+                                                    <a href="mailto:{{ $orderDateItemLink->getItem()->producer['email'] }}">{{ $orderDateItemLink->getItem()->producer['email'] }}</a>
+                                                </td>
                                                 <td style="text-align:left; padding:10px;">{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                                 <td style="text-align:right; padding:10px;">{{ $orderDateItemLink->getPrice() }} {{ $orderDateItemLink->getItem()->producer['currency'] }}</td>
                                             </tr>
