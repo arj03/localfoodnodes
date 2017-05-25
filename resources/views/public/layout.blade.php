@@ -3,8 +3,14 @@
     <head>
         <title>@yield('title') - Local Food Nodes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Facebook meta -->
+        <meta property="og:url" content="https://localfoodnodes.org">
+        <meta property="og:type" content="blog"/>
         <meta property="og:title" content="Local Food Nodes">
-        <meta property="og:image" content="{{ URL::asset('images/nav-logo-dark.jpg') }}">
+        <meta property="og:description" content="We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again." />
+        <meta property="og:image" content="{{ URL::asset('images/facebook-shares.jpg') }}">
+
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
