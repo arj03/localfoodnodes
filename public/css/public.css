@@ -1295,18 +1295,7 @@ body.public-checkout table tbody tr {
 }
 
 body.public-checkout table tbody tr .quantity-column {
-  width: 150px;
-}
-
-body.public-checkout table tbody tr button,
-body.public-checkout table tbody tr a {
-  background: #fafafa;
-  cursor: pointer;
-}
-
-body.public-checkout table tbody tr button .fa,
-body.public-checkout table tbody tr a .fa {
-  color: #666;
+  width: 10px;
 }
 
 /* Generic */

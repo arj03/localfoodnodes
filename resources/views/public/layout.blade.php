@@ -3,9 +3,9 @@
     <head>
         <title>@yield('title') - Local Food Nodes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta property="og:title" content="Local Food Nodes"/>
-        <meta property="og:image" content="{{ URL::asset('images/nav-logo-dark.jpg') }}/>
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+        <meta property="og:title" content="Local Food Nodes">
+        <meta property="og:image" content="{{ URL::asset('images/nav-logo-dark.jpg') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -18,8 +18,8 @@
         <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
         <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>
 
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
     </head>
     <body class="public {{ $viewName }} {{ Auth::check() ? 'logged-in' : '' }}">
         <div class="page">
@@ -38,7 +38,7 @@
 
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script>
-            jQuery(document).ready(function() {
+            $(function() {
                 $('.slick-slider').slick({
                     arrows: false,
                     autoplay: true,

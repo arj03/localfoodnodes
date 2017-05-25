@@ -5,6 +5,7 @@ return [
     'become_member' => 'Become member',
     'cart' => 'Cart',
     'cart_empty' => 'Your cart is empty',
+    'delivery' => 'Delivery',
     'how_it_works' => 'How it works',
     'node' => 'Node',
     'pick_it_up' => 'The producer will deliver your order to the node on the date you requested. You just have to pick it up.',

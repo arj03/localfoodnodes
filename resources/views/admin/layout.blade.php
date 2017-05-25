@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
         <script src="https://unpkg.com/flatpickr"></script>
         <script type="text/javascript">
-            $(function () {
+            $(function() {
                 var bindDatepicker = function() {
                     // Datetime picker
                     $('.picker.datetime:not(.bound)').addClass('bound').flatpickr({

@@ -19,15 +19,15 @@
                 @if ($user->cartDates()->count() > 0)
                     @foreach ($user->cartDates() as $cartDate)
                         <div class="card">
-                            <div class="card-header">{{ $cartDate->date('Y-m-d') }}</div>
+                            <div class="card-header">{{ trans('public/checkout.delivery') }} {{ $cartDate->date('Y-m-d') }}</div>
                             <div class="card-block">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>{{ trans('public/checkout.product') }}</th>
-                                            <th>{{ trans('public/checkout.quantity') }}</th>
                                             <th>{{ trans('public/checkout.producer') }}</th>
                                             <th>{{ trans('public/checkout.node') }}</th>
+                                            <th>{{ trans('public/checkout.quantity') }}</th>
                                             <th class="text-right">{{ trans('public/checkout.price') }}</th>
                                         </tr>
                                     </thead>
@@ -37,24 +37,20 @@
                                                 <td>
                                                     {{ $cartDateItemLink->getItem()->getName() }}
                                                 </td>
+                                                <td>{{ $cartDateItemLink->getItem()->producer['name'] }}</td>
+                                                <td>{{ $cartDateItemLink->getItem()->node['name'] }}</td>
                                                 <td class="quantity-column">
                                                     <form action="/checkout/item/{{ $cartDateItemLink->id }}/update" method="post">
                                                         {{ csrf_field() }}
                                                         <div class="input-group">
-                                                           <input type="number" min="0" class="form-control" name="quantity" value="{{ $cartDateItemLink->quantity }}" placeholder="Quantity">
-
-                                                           <button type="submit" class="input-group-addon">
-                                                               <i class="fa fa-refresh"></i>
-                                                           </button>
-                                                           <a class="input-group-addon" href="/checkout/item/{{ $cartDateItemLink->id }}/remove">
-                                                               <i class="fa fa-trash"></i>
-                                                           </a>
+                                                           <input type="number" min="0" class="form-control quantity-input" name="quantity" value="{{ $cartDateItemLink->quantity }}" placeholder="Qty">
                                                         </div>
                                                     </form>
                                                 </td>
-                                                <td>{{ $cartDateItemLink->getItem()->producer['name'] }}</td>
-                                                <td>{{ $cartDateItemLink->getItem()->node['name'] }}</td>
                                                 <td class="text-right">{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</td>
+                                                <td><a href="/checkout/item/{{ $cartDateItemLink->id }}/remove">
+                                                    <i class="fa fa-times-circle"></i>
+                                                </a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -105,4 +101,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function() {
+            $('.quantity-input').on('change', function() {
+                $(this).closest('form').submit();
+            })
+        });
+    </script>
 @endsection

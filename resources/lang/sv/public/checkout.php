@@ -5,6 +5,7 @@ return [
     'become_member' => 'Bli medlem',
     'cart' => 'Varukorg',
     'cart_empty' => 'Din varukorg är tom',
+    'delivery' => 'Utlämning',
     'how_it_works' => 'Så fungerar det',
     'node' => 'Nod',
     'pick_it_up' => 'Producenten kommer leverera dina bokade produkter på det specificerade datumet och den specificerade noden. Du behöver bara vara där och hämta.',
