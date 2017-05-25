@@ -76,8 +76,24 @@
                         <div class="card-header">{{ trans('public/checkout.summary') }}</div>
                         <div class="card-block">
                             <table class="table">
-                                <tr><td>Items: {{ $user->cartItems()->count() }}</td></tr>
-                                <tr><td>Pickups: {{ $user->cartDates()->count() }}</td></tr>
+                                <thead>
+                                    <tr><th>Products</th></tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user->cartItems()->unique('product_id') as $cartItem)
+                                        <tr><td>{{ $cartItem->product['name'] }}</td></tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Producers</th></tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
+                                        <tr><td>{{ $cartItem->producer['name'] }}</td></tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                         <div class="card-footer">
