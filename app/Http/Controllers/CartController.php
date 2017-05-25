@@ -27,7 +27,7 @@ use App\Jobs\SendOrderEmails;
 
 use \DateTime;
 
-class CheckoutController extends Controller
+class CartController extends Controller
 {
     /**
      * Cart index action.
@@ -155,13 +155,21 @@ class CheckoutController extends Controller
      */
     private function addToCart($request, $user, $producer, $product, $variant, $node)
     {
-        // Get existing cart dates for node
+        // Get existing cart dates for node and create the ones missing
         $existingCartDates = $user->cartDates();
-        // Create the ones missing
         $this->createCartDates($request, $existingCartDates, $user, $node);
-
-        $cartItem = $this->createCartItem($user, $producer, $product, $node, $variant);
         $cartDates = $user->cartDates($request->input('delivery_dates'));
+
+        // Check if item's already in cart
+        if ($variant) {
+            $cartItem = $user->cartItem($product->id, $node->id, $variant->id);
+        } else {
+            $cartItem = $user->cartItem($product->id, $node->id);
+        }
+
+        if (!$cartItem) {
+            $cartItem = $this->createCartItem($user, $producer, $product, $node, $variant);
+        }
 
         $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);
 
@@ -183,10 +191,22 @@ class CheckoutController extends Controller
     {
         $errors = new Collection();
 
-        $cartQuantity = 0;
+        $existingCartDateItemLinks = new Collection();
+        $cartItem->cartDateItemLinks()->each(function($cartDateItemLink) use (&$existingCartDateItemLinks) {
+            $date = $cartDateItemLink->getDate()->date('Y-m-d');
+            $existingCartDateItemLinks->put($date, $cartDateItemLink);
+        });
 
+        $cartQuantity = 0;
         foreach ($cartDates as $cartDate) {
+            $existingCartDateItemLink = $existingCartDateItemLinks->get($cartDate->date('Y-m-d'));
+
             $quantity = $request->input('quantity');
+
+            // If date item link exists we just update the quantity
+            if ($existingCartDateItemLink) {
+                $quantity = $existingCartDateItemLink->quantity + $quantity;
+            }
 
             $deliveryLink = $product->deliveryLink($node->id, $cartDate->date('Y-m-d'));
             $availableQuantity = $deliveryLink->getAvailableQuantity($variant, $cartQuantity);
@@ -201,7 +221,12 @@ class CheckoutController extends Controller
                 $request->session()->flash('error', $errors->toArray());
             }
 
-            $this->createCartDateItemLink($user, $cartDate, $cartItem, $quantity);
+            if ($existingCartDateItemLink) {
+                $existingCartDateItemLink->quantity = $quantity;
+                $existingCartDateItemLink->save();
+            } else {
+                $this->createCartDateItemLink($user, $cartDate, $cartItem, $quantity);
+            }
         }
     }
 
@@ -304,118 +329,5 @@ class CheckoutController extends Controller
             'quantity' => $quantity,
             'ref' => 'LFN-' . substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 4)
         ]);
-    }
-
-    /**
-     * Create order action.
-     */
-    public function createOrder()
-    {
-        $user = Auth::user();
-
-        $errors = $this->validateOrder($user);
-        if ($errors->isEmpty()) {
-            $orders = $this->saveOrder($user);
-
-            \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($orders['orderDates']));
-
-            // Send producer emails
-            $orders['orderItems']->groupBy('producer_id')->each(function($orderItems) {
-                $producerEmail = $orderItems[0]->producer['email'];
-                \Mail::to($producerEmail)->send(new \App\Mail\ProducerOrder($orderItems));
-            });
-
-            $user->cartDateItemLinks()->each->delete();
-
-            return redirect('/account/user/orders');
-        }
-
-        return redirect()->back()->withErrors($errors);
-    }
-
-    /**
-     * Validate order quantity.
-     *
-     * @param Cart $cart
-     * @return Collection errors
-     */
-    private function validateOrder($user)
-    {
-        $errors = new MessageBag();
-        $user->cartDateItemLinks()->each(function($cartDateItemLink) use (&$errors) {
-            $cartItem = $cartDateItemLink->getItem();
-            $cartDate = $cartDateItemLink->getDate();
-
-            $product = Product::find($cartItem->product['id']);
-            $variant = $product->variants()->where('id', $cartItem->variant['id'])->first();
-            $deliveryLinks = $product->deliveryLinks($cartDateItemLink->node['id'], collect([$cartDate->date('Y-m-d')]));
-
-            $deliveryLinks->each(function($deliveryLink) use ($cartDateItemLink, $product, $variant, &$errors) {
-                $quantity = $deliveryLink->getAvailableQuantity($variant);
-
-                if ($quantity < $cartDateItemLink->quantity) {
-                    $errors->add('date_quantity_' . $deliveryLink->date('Y-m-d'), 'Your ordered quantity for ' . $cartDateItemLink->getItem()->getName() . ' exceeds the product quantity for ' . $deliveryLink->date('Y-m-d') . '. Only ' . $quantity . ' available.');
-                }
-            });
-        });
-
-        return $errors;
-    }
-
-    /**
-     * Save order
-     *
-     * @param Cart $cart
-     */
-    private function saveOrder($user)
-    {
-        $orderDates = new Collection();
-        $orderItems = new Collection();
-
-        $user->cartDateItemLinks()->each(function($cartDateItemLink) use ($user, &$orderDates, &$orderItems) {
-            $cartItem = $cartDateItemLink->getItem();
-            $cartDate = $cartDateItemLink->getDate();
-
-            $orderItem = OrderItem::create([
-                'user_id' => $user->id,
-                'user' => $user->getInfoForOrder(),
-                'node_id' => $cartItem->node['id'],
-                'node' => $cartItem->node,
-                'producer_id' => $cartItem->producer['id'],
-                'producer' => $cartItem->producer,
-                'product_id' => $cartItem->product['id'],
-                'product' => $cartItem->product,
-                'variant_id' => $cartItem->variant['id'],
-                'variant' => $cartItem->variant,
-            ]);
-
-            // Add to email data collection
-            $orderItems->push($orderItem);
-
-            $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->first();
-            if (!$orderDate) {
-                $orderDate = OrderDate::create([
-                    'user_id' => $user->id,
-                    'date' => $cartDate->date('Y-m-d'),
-                ]);
-            }
-
-            // Add to email data collection
-            $orderDates->push($orderDate);
-
-            $orderDateItemLink = OrderDateItemLink::create([
-                'user_id' => $user->id,
-                'producer_id' => $cartItem->producer['id'],
-                'order_item_id' => $orderItem->id,
-                'order_date_id' => $orderDate->id,
-                'quantity' => $cartDateItemLink->quantity,
-                'ref' => $cartDateItemLink->ref,
-            ]);
-        });
-
-        return [
-            'orderDates' => $orderDates,
-            'orderItems' => $orderItems,
-        ];
     }
 }

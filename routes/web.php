@@ -26,11 +26,11 @@ Route::group(['prefix' => '/password'], function () {
 
 // Cart
 Route::group(['prefix' => '/checkout', 'middleware' => 'auth.route'], function () {
-    Route::get('/', 'CheckoutController@index');
-    Route::post('/item/add', 'CheckoutController@addItem');
-    Route::post('/item/{CartDateItemLinkId}/update', 'CheckoutController@updateItem');
-    Route::get('/item/{CartDateItemLinkId}/remove', 'CheckoutController@removeItem');
-    Route::get('/order/create', 'CheckoutController@createOrder');
+    Route::get('/', 'CartController@index');
+    Route::post('/item/add', 'CartController@addItem');
+    Route::post('/item/{CartDateItemLinkId}/update', 'CartController@updateItem');
+    Route::get('/item/{CartDateItemLinkId}/remove', 'CartController@removeItem');
+    Route::get('/order/create', 'OrderController@createOrder');
 });
 
 // Account create

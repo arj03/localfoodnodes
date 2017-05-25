@@ -185,13 +185,30 @@ class User extends BaseUser
      */
     public function cartItems($productId = null)
     {
-        $cartItems = $this->hasMany('App\Cart\CartItem');
+        $cartItems = $this->hasMany('App\Cart\CartItem', 'user_id', 'id');
 
         if ($productId) {
             $cartItems->where('product_id', $productId);
         }
 
         return $cartItems->get();
+    }
+
+    /**
+     * Cart items.
+     *
+     * @param int $productId Filter on product id.
+     * @return Collection
+     */
+    public function cartItem($productId, $nodeId, $variantId = null)
+    {
+        $cartItems = $this->cartItems($productId)->where('node_id', $nodeId);
+
+        if ($variantId) {
+            $cartItems->where('variant_id', $variantId);
+        }
+
+        return $cartItems->first();
     }
 
     /**
