@@ -71,7 +71,7 @@ return [
     'select_unit_product_content' => 'Select unit for product content',
     'set_main_variant' => 'Set as main variant',
     'specify_number_products' => 'Specifiy the number of products for each delivery occasion',
-    'title' => 'Product production'
+    'title' => 'Product production',
     'update_deliveries' => 'Update deliveries',
     'update_production' => 'Update production',
     'variants' => 'Variants',

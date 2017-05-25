@@ -68,8 +68,8 @@ return [
     'select_tags' => 'Välj passande taggar till produkten',
     'select_unit_product_content' => 'Välj enhet på produktinnehåll',
     'set_main_variant' => 'Välj som huvudvariant',
-    'title' => 'Produkt produktion'
     'specify_number_products' => 'Ange antalet produkter tillgänliga per vecka',
+    'title' => 'Produkt produktion',
     'update_deliveries' => 'Uppdatera leveransdatum',
     'update_production' => 'Updatera produktion',
     'variants' => 'Varianter',
