@@ -61,7 +61,7 @@ class IndexController extends Controller
         $calendarMonth = $productFilter->getMonthDate();
         $calendar = new NodeCalendar($node);
 
-        return view('public.node', [
+        return view('public.node.node', [
             'node' => $node,
             'products' => $filteredProducts,
             'calendar'=> $calendar->get($request),
@@ -90,7 +90,7 @@ class IndexController extends Controller
     {
         $producer = Producer::find($id);
 
-        return view('public.producer', [
+        return view('public.producer.producer', [
             'producer' => $producer,
         ]);
     }
