@@ -4,11 +4,7 @@ namespace App\Product;
 
 use Illuminate\Support\Collection;
 
-use App\BaseModel;
-
-use DateTime;
-
-class Product extends BaseModel
+class Product extends \App\BaseModel
 {
     protected $appends = ['productionType'];
 
@@ -24,7 +20,7 @@ class Product extends BaseModel
         'price_unit' => 'required',
         'price' => 'required',
         'is_hidden' => '',
-        'deadline' => '',
+        'deadline' => 'integer',
         'payment_info' => ''
     ];
 
@@ -211,7 +207,16 @@ class Product extends BaseModel
      */
     public function deliveryLinksRelationship()
     {
-        return $this->hasMany('App\Product\ProductNodeDeliveryLink')->where('date', '>=', date('Y-m-d'))->orderBy('date');
+        // Adjust for product booking deadline
+        if ($this->deadline) {
+            $currenctDate = new \DateTime(date('Y-m-d'));
+            $deadlineModifyString = '+' . $this->deadline . ' days';
+            $firstBookableDate = $currenctDate->modify($deadlineModifyString)->format('Y-m-d');
+        } else {
+            $firstBookableDate = date('Y-m-d');
+        }
+
+        return $this->hasMany('App\Product\ProductNodeDeliveryLink')->where('date', '>=', $firstBookableDate)->orderBy('date');
     }
 
     /**
@@ -342,7 +347,7 @@ class Product extends BaseModel
      * @param  [type] $date [description]
      * @return [type]       [description]
      */
-    public function getProductionQuantity(DateTime $date = null, $cartQuantity = null)
+    public function getProductionQuantity(\DateTime $date = null, $cartQuantity = null)
     {
         $quantity = 0;
 

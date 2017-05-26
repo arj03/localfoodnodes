@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', {{ trans('admin/product.title') }})
+@section('title', trans('admin/product.title'))
 
 @section('content')
     @include('admin.page-header')
