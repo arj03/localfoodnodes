@@ -19,6 +19,23 @@ class ProducerNodeLink extends \App\BaseModel
     ];
 
     /**
+     * Lifecycle events.
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($producerNodeLink) {
+            $producer = $producerNodeLink->getProducer();
+            $node = $producerNodeLink->getNode();
+            $products = $producer->products();
+
+            $products->each(function($product) use ($node) {
+                $product->deliveryLinks($node->id)->each->delete();
+            });
+        });
+    }
+
+    /**
      * Define producer relationship.
      *
      * @return Relation

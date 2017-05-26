@@ -423,7 +423,8 @@ class ProducerController extends Controller
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $data = $request->all();
 
-        ProducerNodeLink::where('producer_id', $producer->id)->where('node_id', $data['nodeId'])->delete();
+        $producerNodeLink = ProducerNodeLink::where('producer_id', $producer->id)->where('node_id', $data['nodeId'])->first();
+        $producerNodeLink->delete();
 
         $selectedNodes = [];
         $links = ProducerNodeLink::where('producer_id', $producer->id)->get();
