@@ -237,6 +237,19 @@ class Producer extends BaseModel implements EventOwnerInterface
         return $this->hasMany('App\Producer\ProducerNodeLink')->get();
     }
 
+    public function getNodeLinksWhereProductIsSold($productId)
+    {
+        $nodeLinks = $this->nodeLinks()->filter(function($nodeLink) use ($productId) {
+            if ($this->product($productId)) {
+                return $this->product($productId)->deliveryLinks()->filter(function($deliveryLink) use ($productId) {
+                    return $deliveryLink->getProduct()->id === $productId;
+                });
+            }
+        });
+
+        return $nodeLinks;
+    }
+
     /**
      * Get products.
      */

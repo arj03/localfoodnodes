@@ -80,7 +80,22 @@
             </div>
 
             <div class="col-12 col-lg-4">
-                @include('public.producer.product-order-form');
+                <div class="card">
+                    <div class="card-header">{{ trans('public/product.order') }}</div>
+                    <div class="card-block">
+                        {{ trans('public/product.nav_to_node') }}.
+                        <ul class="mt-3">
+                            @foreach ($producer->nodeLinks() as $nodeLink)
+                                <li>
+                                    <a href="{{ $nodeLink->getNode()->permalink()->url }}}">
+                                        {{ $nodeLink->getNode()->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+
 
                 @if ($producer->images()->count() > 0)
                     <div class="card image-card">
