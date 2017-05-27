@@ -70,4 +70,5 @@ return [
     // Other
     'required_fields_missing' => 'Obligatoriska fält är tomma.',
     'required' => 'Obligatorisk',
+    'session_expired' => 'Din session har gått ut och du måste logga in igen.',
 ];

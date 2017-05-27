@@ -69,4 +69,5 @@ return [
     // Other
     'required_fields_missing' => 'Required fields are empty.',
     'required' => 'Required',
+    'session_expired' => 'Your session has expired, please login again.',
 ];
