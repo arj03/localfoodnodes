@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof TokenMismatchException) {
             $request->session()->flash('message', [trans('admin/messages.session_expired')]);
 
-            return redirect('/login')->withErrors($errors);
+            return redirect('/login');
         }
 
         return parent::render($request, $exception);
