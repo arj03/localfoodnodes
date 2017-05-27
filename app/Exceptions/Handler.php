@@ -57,10 +57,9 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof TokenMismatchException) {
-            error_log('Error: TokenMismatchException');
-            $errors = new MessageBag();
-            $errors->add('csrf_error', 'Session has expired, please try again.');
-            return redirect('/login')->back()->withErrors($errors);
+            $request->session()->flash('message', [trans('admin/messages.session_expired')]);
+
+            return redirect('/login')->withErrors($errors);
         }
 
         return parent::render($request, $exception);
