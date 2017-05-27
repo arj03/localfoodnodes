@@ -118,7 +118,6 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/{productId}/update', 'Admin\ProductController@update');
         Route::get('/{productId}/delete', 'Admin\ProductController@delete');
         Route::get('/{productId}/production/{productionId}/delete', 'Admin\ProductProductionController@deleteProduction');
-        Route::post('/{productId}/set-package-unit', 'Admin\ProductController@setPackageUnit');
 
         // Variants
         Route::get('/{productId}/variants', 'Admin\ProductVariantController@index');
@@ -128,6 +127,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/{productId}/variant/{variantId}/update', 'Admin\ProductVariantController@update');
         Route::get('/{productId}/variant/{variantId}/delete', 'Admin\ProductVariantController@delete');
         Route::get('/{productId}/variant/{variantId}/set-main-variant', 'Admin\ProductVariantController@setMainVariant');
+        Route::post('/{productId}/variants/settings', 'Admin\ProductVariantController@settings');
 
         // Production
         Route::get('/{productId}/production', 'Admin\ProductProductionController@index');

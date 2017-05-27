@@ -343,17 +343,4 @@ class ProductController extends Controller
             }
         }
     }
-
-    /**
-     */
-    public function setPackageUnit(Request $request, $producerId, $productId)
-    {
-        $user = Auth::user();
-        $producer = $user->producerAdminLink($producerId)->getProducer();;
-        $product = $producer->product($productId);
-        $product->package_unit = $request->input('package_unit');
-        $product->save();
-
-        return redirect()->back();
-    }
 }

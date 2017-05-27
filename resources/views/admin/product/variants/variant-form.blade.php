@@ -28,6 +28,15 @@
                     </label>
                     <input type="number" min="0" name="price" class="form-control" id="price" placeholder="{{ trans('admin/product.price') }}" value="{{ $variant->price }}">
                 </div>
+                @if ($product->variants_individual_quantity)
+                    <div class="form-group">
+                        <label class="form-control-label" for="quantity">
+                            {{ trans('admin/product.quantity') }}
+                            @include('admin.field-error', ['field' => 'quantity'])
+                        </label>
+                        <input type="number" min="0" name="quantity" class="form-control" id="price" placeholder="{{ trans('admin/product.quantity') }}" value="{{ $variant->quantity }}">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

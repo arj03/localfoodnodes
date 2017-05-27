@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('payment_info')->nullable();
             $table->boolean('is_hidden')->nullable();
             $table->integer('deadline')->nullable();
+            $table->boolean('variants_individual_quantity')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

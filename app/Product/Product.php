@@ -14,14 +14,15 @@ class Product extends \App\BaseModel
      * @var array
      */
     protected $validationRules = [
-        'producer_id' => 'required|integer',
-        'name' => 'required',
-        'info' => 'required',
-        'price_unit' => 'required',
-        'price' => 'required',
-        'is_hidden' => '',
         'deadline' => 'integer',
-        'payment_info' => ''
+        'info' => 'required',
+        'is_hidden' => '',
+        'name' => 'required',
+        'payment_info' => '',
+        'price' => 'required',
+        'price_unit' => 'required',
+        'producer_id' => 'required|integer',
+        'variants_individual_quantity' => 'boolean',
     ];
 
     /**
@@ -30,14 +31,15 @@ class Product extends \App\BaseModel
      * @var array
      */
     protected $fillable = [
-        'producer_id',
-        'name',
-        'info',
-        'price_unit',
-        'price',
-        'is_hidden',
         'deadline',
-        'payment_info'
+        'info',
+        'is_hidden',
+        'name',
+        'payment_info',
+        'price',
+        'price_unit',
+        'producer_id',
+        'variants_individual_quantity',
     ];
 
     /**

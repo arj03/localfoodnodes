@@ -263,4 +263,22 @@ class ProductVariantController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     */
+    public function settings(Request $request, $producerId, $productId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();;
+        $product = $producer->product($productId);
+
+        // Sett product values
+        $product->package_unit = $request->input('package_unit');
+        $product->variants_individual_quantity = $request->input('variants_individual_quantity');
+        $product->save();
+
+
+
+        return redirect()->back();
+    }
 }

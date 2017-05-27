@@ -17,6 +17,7 @@ class ProductVariant extends BaseModel
         'price' => '',
         'package_amount' => 'required',
         'main_variant' => 'boolean',
+        'quantity' => 'integer',
     ];
 
     /**
@@ -30,6 +31,7 @@ class ProductVariant extends BaseModel
         'price',
         'package_amount',
         'main_variant',
+        'quantity',
     ];
 
     /**
@@ -49,10 +51,18 @@ class ProductVariant extends BaseModel
      */
     public function getProductionQuantity()
     {
-        $smallestCommonDenominator = $this->getProduct()->getProductionQuantity() / $this->package_amount;
-        $quantity = $smallestCommonDenominator * $this->getProduct()->mainVariant()->package_amount;
+        $product = $this->getProduct();
 
-        return floor($quantity);
+        // error_log(var_export($product->variants_individual_quantity, true));
+
+        if ($product->variants_individual_quantity) {
+            return $quantity;
+        } else {
+            $smallestCommonDenominator = $product->getProductionQuantity() / $this->package_amount;
+            $quantity = $smallestCommonDenominator * $product->mainVariant()->package_amount;
+
+            return floor($quantity);
+        }
     }
 
     /**

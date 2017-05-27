@@ -18,7 +18,7 @@
                                 <tr>
                                     <th>{{ trans('admin/product.main_variant') }}</th>
                                     <th>{{ trans('admin/product.name') }}</th>
-                                    <th class="text-right">Production</th>
+                                    <th class="text-right">{{ trans('admin/product.production') }}</th>
                                     <th class="text-right">{{ trans('admin/product.amount_per_package') }}</th>
                                     <th class="text-right">{{ trans('admin/product.price') }}</th>
                                 </tr>
@@ -34,7 +34,13 @@
                                         <td>
                                             <a href="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/edit">{{ $variant->name }}</a>
                                         </td>
-                                        <td class="text-right">{{ $variant->getProductionQuantity() }}</td>
+                                        <td class="text-right">
+                                            @if ($product->variants_individual_quantity)
+                                                {{ $variant->quantity }}
+                                            @else
+                                                {{ $variant->getProductionQuantity() }}
+                                            @endif
+                                        </td>
                                         <td class="text-right">{{ $variant->package_amount }} {{ $product->package_unit }}</td>
                                         <td class="text-right">{{ $variant->price }}</td>
                                         <td>
@@ -64,9 +70,9 @@
         </div>
         <div class="col-12 col-xl-4">
             <div class="card">
-                <div class="card-header">{{ trans('admin/product.product_content') }}</div>
+                <div class="card-header">{{ trans('admin/product.variant_settings') }}</div>
                 <div class="card-block">
-                    <form action="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/set-package-unit" method="post">
+                    <form action="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variants/settings" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label class="form-control-label" for="package_unit">
@@ -80,8 +86,32 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <fieldset class="form-group">
+                            <legend>Quantity</legend>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="variants_individual_quantity" value="0" {{ $product->variants_individual_quantity === 0 ? 'checked' : '' }}>
+                                    Shared
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="variants_individual_quantity" value="1" {{ $product->variants_individual_quantity === 1 ? 'checked' : '' }}>
+                                    Individual
+                                </label>
+                            </div>
+                          </fieldset>
+
                         <button type="submit" class="btn btn-success">{{ trans('admin/product.save') }}</button>
                     </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">{{ trans('admin/product.variant_settings') }}</div>
+                <div class="card-block">
+                    Info om shared quanttiy
                 </div>
             </div>
         </div>
