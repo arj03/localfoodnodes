@@ -24,11 +24,11 @@
                 <div class="metrics row">
                     <div class="metric col">
                         <div class="value">{{ $users }} <i class="fa fa-user"></i></div>
-                        <div class="label">Supporting members</div>
+                        <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
                     </div>
                     <div class="metric col">
                         <div class="value">{{ $averageMembership }} SEK</div>
-                        <div class="label">Average supporting fee</div>
+                        <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
                     </div>
                 </div>
             </div>
