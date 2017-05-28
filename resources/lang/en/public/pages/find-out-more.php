@@ -30,7 +30,7 @@ return [
 
     'paragraph_4_1' => 'Now logged in, you can easily find the nearest nodes to where you are by clicking the Local Food Nodes icon in the top left corner. Browse the map or search and join the ones you like. Then start to make your orders (you don’t have to join a node in order to order food at it, but it will make using the site easier)',
 
-    'header_5' => '3. Pick up food',
+    'header_5' => '3. Pick up your food',
 
     'paragraph_5_1' => 'The food that you have ordered will be available at a predetermined time and place that is indicated on your orders. These orders will be sent to you via email and will also be available for you to view by using the links in the user menu. You pick up your food directly from the respective producer and you also make all payments straight to the producers. This ensures that producers retain 100% of all revenues from the products that they produce.',
 
