@@ -344,6 +344,10 @@ class User extends BaseUser
      */
     public function isMember()
     {
+        if (env('APP_DISABLE_MEMBERSHIP', false) === true) {
+            return true;
+        }
+
         $lastMembershipPayment = $this->getLatestMembershipPayment();
 
         if ($lastMembershipPayment) {
