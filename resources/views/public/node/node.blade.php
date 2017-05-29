@@ -12,7 +12,6 @@
                 </div>
                 <div class="deliveries">
                     <h1>{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
-                    <div>{{ trans('public/node.pick_up_order') }}</div>
                 </div>
             </div>
         </div>

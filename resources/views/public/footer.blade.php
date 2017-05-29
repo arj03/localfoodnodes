@@ -33,6 +33,7 @@
             <span>+46(0) 735 325945</span>
             <span>Backavägen 8 26868 Röstånga</span>
             <span><a href="https://www.facebook.com/localfoodnodes">Facebook</a></span>
+            <span><a href="https://github.com/localfoodnodes">Github</a></span>
         </div>
     </div>
 </div>
