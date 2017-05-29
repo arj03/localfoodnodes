@@ -115,12 +115,12 @@
     <div class="container-fluid frontpage-section membership">
         <div class="row">
             <div class="col-12">
-                <h2 class="bold">{{ trans('public/pages/index.co_fund_heading') }}</h2>
-                <h3 class="mb-5">{{ trans('public/pages/find-out-more.co_fund_subheading') }}</h3>
+                <h2 class="bold">{{ trans('public/index.co_fund_heading') }}</h2>
+                <h3 class="mb-5">{{ trans('public/index.co_fund_subheading') }}</h3>
                 <div class="membership-content container">
-                    {{ trans('public/pages/index.co_fund_paragraph') }}
+                    {{ trans('public/index.co_fund_paragraph') }}
                 </div>
-                <a href="/membership" class="btn-outline">{{ trans('public/pages/index.co_fund_read_more') }}</a>
+                <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
             </div>
         </div>
     </div>
