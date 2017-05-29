@@ -28,7 +28,7 @@
                                         @foreach($dates as $date)
                                             <div class="form-group">
                                                 <label for="{{ $date->format('W') }}">{{ trans('admin/product.week') }} {{ $date->format('W') }}</label>
-                                                <input type="number" class="form-control" name="quantity[{{ $date->format('Y') }}][{{ $date->format('W') }}]" id="{{ $date->format('W') }}" placeholder="{{ trans('admin/product.week') }} {{ $date->format('W') }}" value="{{ $product->productionAdjustmentQuantity($date->format('Y'), $date->format('W')) }}">
+                                                <input type="number" class="form-control" name="quantity[{{ $date->format('Y') }}][{{ $date->format('W') }}]" id="{{ $date->format('W') }}" placeholder="{{ $product->getProductionQuantity() }}" value="{{ $product->productionAdjustmentQuantity($date->format('Y'), $date->format('W')) }}">
                                                 <div class="text-muted">
                                                     {{ date('Y-m-d', strtotime('last monday', $date->getTimestamp())) }} -
                                                     {{ date('Y-m-d', strtotime('next sunday', $date->getTimestamp())) }}
