@@ -4,7 +4,7 @@ return [
     'co_create' => 'Tillsammans gör vi maten lokal',
     'create_node' => 'Skapa en utlämningsplats',
     'find_out_more' => 'Läs mer',
-    'food_matters' => 'MATEN ÄR VIKTIG',
+    'food_matters' => 'MAT HAR BETYDELSE',
     'food_producer' => 'Är du matproducent?',
     'list' => 'Tillgängliggör dina produkter',
     'locals' => 'Locals',
