@@ -23,7 +23,7 @@
             <div class="col-12 col-lg-8">
                 <div class="metrics row">
                     <div class="metric col">
-                        <div class="value">{{ $users }} <i class="fa fa-user"></i></div>
+                        <div class="value">{{ $members }} <i class="fa fa-user"></i></div>
                         <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
                     </div>
                     <div class="metric col">

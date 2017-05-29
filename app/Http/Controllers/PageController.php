@@ -34,13 +34,17 @@ class PageController extends Controller
 
     public function membership()
     {
-        $users = User::count();
+        $users = User::with(['membershipPaymentsRelationship'])->get();
+        $members = $users->filter(function($user) {
+            return $user->isMember(true);
+        })->count();
+
         $allPayments = UserMembershipPayment::get();
         $totalMembershipPayments = $allPayments->pluck('amount')->sum() / 100;
-        $averageMembershipPayments = $totalMembershipPayments / $users;
+        $averageMembershipPayments = $totalMembershipPayments / $members;
 
         return view('public.pages.membership', [
-            'users' => $users,
+            'members' => $members,
             'averageMembership' => round($averageMembershipPayments)
         ]);
     }

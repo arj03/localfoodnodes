@@ -318,11 +318,19 @@ class User extends BaseUser
     }
 
     /**
-     * Get membership fees.
+     * Define relationship with membership payments.
+     */
+    public function membershipPaymentsRelationship()
+    {
+        return $this->hasMany('App\User\UserMembershipPayment');
+    }
+
+    /**
+     * Get membership payments.
      */
     public function membershipPayments()
     {
-        return $this->hasMany('App\User\UserMembershipPayment')->orderBy('created_at')->get();
+        return $this->membershipPaymentsRelationship;
     }
 
     /**
@@ -332,7 +340,7 @@ class User extends BaseUser
      */
     public function getLatestMembershipPayment()
     {
-        return $this->membershipPayments()->last();
+        return $this->membershipPaymentsRelationship->sortBy('created_at')->last();
     }
 
     /**
@@ -342,9 +350,9 @@ class User extends BaseUser
      *
      * @return boolean
      */
-    public function isMember()
+    public function isMember($forceCheck = false)
     {
-        if (env('APP_DISABLE_MEMBERSHIP', false) === true) {
+        if (!$forceCheck && env('APP_DISABLE_MEMBERSHIP', false) === true) {
             return true;
         }
 
