@@ -115,12 +115,12 @@
     <div class="container-fluid frontpage-section membership">
         <div class="row">
             <div class="col-12">
-                <h2 class="bold">Co-own the future of food!</h2>
-                <h3 class="mb-5">Pay as much or as little as you like</h3>
+                <h2 class="bold">{{ trans('public/pages/index.co_fund_heading') }}</h2>
+                <h3 class="mb-5">{{ trans('public/pages/find-out-more.co_fund_subheading') }}</h3>
                 <div class="membership-content container">
-                    Becoming a member makes you a co-funding part of the future of food. As supporting members, we all of us together, give ourselves the economic powers to choose the direction for the future of food.
+                    {{ trans('public/pages/index.co_fund_paragraph') }}
                 </div>
-                <a href="/membership" class="btn-outline">Read more about membership</a>
+                <a href="/membership" class="btn-outline">{{ trans('public/pages/index.co_fund_read_more') }}</a>
             </div>
         </div>
     </div>
@@ -136,7 +136,7 @@
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_4') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_5') }}</p>
-                <p>{{ trans('public/pages/find-out-more.paragraph_1_6') }}</p>
+                <p><i>{{ trans('public/pages/find-out-more.paragraph_1_6') }}</i></p>
             </div>
         </div>
 

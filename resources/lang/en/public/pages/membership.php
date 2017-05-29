@@ -2,26 +2,27 @@
 
 return [
     'title' => 'Membership',
+    'header' => 'Co-fund the future of food!',
+    'sub_header' => 'Become a member, become a part of the future of food',
     'body' => '
-        <h2>Co-own the future of food!</h2>
-        <p class="text-muted">Become a member, become a part of the future of food</p>
-        <p>As supporting members, we all of us together, give ourselves the economic powers to choose the direction for the future of food.</p>
+        <p>When you become a supporting member you are co-funding the future of food. Together, all of us as supporting members can choose the direction of local food development in the future.</p>
 
-        <p>By becoming a supporting member you are co-owning and co-funding the financial means we together can use to strengthen local food. Means we together decide how to use, and what developing efforts regarding local farming, local distribution, access to local food we will support, in order to increase the quota of locally produced food we eat.</p>
+        <p>The supporting membership fees are used to increase the amount of food produced and consumed locally. These funds will help support local farming, local distribution, incresed local food access and strenghtened local economies. It is used to increse the percentage of food we eat that is produced by farmers we know personally.</p>
 
-        <p>Local Food Nodes is an open tool to crowdfund the local way of producing and distributing food.
-        And we do it together by the annual decide-the-size-yourself membership fee.</p>
+        <p>Local Food Nodes is an open source tool that will help crowdfund the needed infrastructure, models and intiatives in order to relocalize the food system. We do this together in with the membership fees that we all self-determine the size of. </p>',
 
-        <h3>This is what your money do.</h3>
-        <p>Local Food Node sets an annual budget every year to be able to run the platform and carry its costs.
-        All income above this is reinvested in development in the interest of local food.</p>
+    'block_2_header' => 'This is what our fees enables',
+    'block_2_content' => '<p>Local Food Node sets an annual budget needed to run the platform, do further development and all associated costs. All income that exceeds that budget will be reinvested through a local food development fund. More information about the management of that fund will be available soon.</p>',
 
-        <p>As a member you are a part of creating the means to make this happen. You can also be a deciding part how the money will be spent.
-        It is we as members that together point out the direction and decide what project our money shall support. It can be supporting new local food nodes, supporting start-up farming, creating of tool pools and else.</p>
+    'block_3_header' => 'Full transparency',
+    'block_3_content' => '<p>Direct relationships between consumers and producers use transparency to create trust and enable co-creation of the food systems. In the same vain we see the necessity for the platform, development tools and our contributed economic means to be totally transparent.</p>
 
-        <h3>Full transparency.</h3>
-        <p>In the same way we see that it is crucial for a future food system to be transparent and totally owned by the producers and end-consumes together, we also see the necessity of together owning the needed digital tools, the developing tools, the financial means and economic tools to make things happen, as we together see fit.</p>
+    <p>This is why Local Food Nodes is open source and all economic transactions, how much we recieve in support, what the costs are and how and why money is spent will be accessible for anyone to view. We are also creating metrics around our goals of increasing local food relationships, local circulation of money and shortening the distance of food which we are going to publish on the site.</p>
 
-        <p>For this reason all economic data within LOCAL FOOD NODES will be accessible in real time; what the costs are, where, how and why money is spent, and how they are making an impact, and we also going to be able to have a say of how the economic means will be used.
-        (graphics to show economics is yet to come)</p>',
+    <p>We are also creating a governing structure for the platform and organisation where developers, node admins, producers and consumers will all have a say on how development should proceed and funds be used. More information about this will be available soon.</p>',
+
+
+    //numbers
+    'avg_fee' => 'Average supporting fee',
+    'supporting' => 'Supporting members',
 ];
