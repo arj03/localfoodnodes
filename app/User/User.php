@@ -340,6 +340,14 @@ class User extends BaseUser
      */
     public function getLatestMembershipPayment()
     {
+        if (env('APP_DISABLE_MEMBERSHIP', false) === true) {
+            return new UserMembershipPayment([
+                'amount' => 0,
+                'created_at' => date('Y-m-d'),
+                'updated_at' => date('Y-m-d'),
+            ]);
+        }
+
         return $this->membershipPaymentsRelationship->sortBy('created_at')->last();
     }
 
