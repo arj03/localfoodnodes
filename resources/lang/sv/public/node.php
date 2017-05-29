@@ -22,7 +22,7 @@ return [
     'order' => 'Order',
     'pick_up_order' => 'Utlämningsplats',
     'pickup' => 'Utlämning',
-    'product' => 'Product'
+    'product' => 'Product',
     'products' => 'Produkter',
     'producers' => 'Producenter',
     'select_variant' => 'Välj variant',

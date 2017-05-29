@@ -22,7 +22,7 @@ return [
     'order' => 'Order',
     'pick_up_order' => 'Pick-up spot',
     'pickup' => 'Pick up',
-    'product' => 'Product'
+    'product' => 'Product',
     'products' => 'Products',
     'producers' => 'Producers',
     'select_variant' => 'Select variant',
