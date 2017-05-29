@@ -76,7 +76,7 @@ class IndexController extends Controller
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
         $producer = Producer::where('id', $product->producer_id)->first();
 
-        return view('public.product', [
+        return view('public.product.product', [
             'node' => $node,
             'product' => $product,
             'producer' => $producer
@@ -100,7 +100,7 @@ class IndexController extends Controller
         $producer = Producer::find($producerId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
 
-        return view('public.product', [
+        return view('public.product.product', [
             'product' => $product,
             'producer' => $producer
         ]);

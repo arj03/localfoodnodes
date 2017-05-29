@@ -21,8 +21,7 @@ class CartItem extends \App\BaseModel
         'product' => 'required',
         'variant_id' => '',
         'variant' => '',
-        'quantity' => 'required',
-        'ref' => 'required',
+        'message' => '',
     ];
 
     /**
@@ -40,8 +39,7 @@ class CartItem extends \App\BaseModel
         'product',
         'variant_id',
         'variant',
-        'quantity',
-        'ref' => 'required',
+        'message',
     ];
 
     /**
@@ -64,6 +62,16 @@ class CartItem extends \App\BaseModel
     public function cartDateItemLinks()
     {
         return $this->hasMany('App\Cart\CartDateItemLink')->get();
+    }
+
+    /**
+     * Get product.
+     *
+     * @return Collection
+     */
+    public function getProduct()
+    {
+        return $this->hasMany('App\Product\Product', 'id', 'product_id')->first();
     }
 
     /**

@@ -168,7 +168,7 @@ class CartController extends Controller
         }
 
         if (!$cartItem) {
-            $cartItem = $this->createCartItem($user, $producer, $product, $node, $variant);
+            $cartItem = $this->createCartItem($request, $user, $producer, $product, $node, $variant);
         }
 
         $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);
@@ -269,7 +269,7 @@ class CartController extends Controller
      * @param Producer $producer
      * @return CartItem
      */
-    private function createCartItem($user, $producer, $product, $node, $variant = null) {
+    private function createCartItem($request, $user, $producer, $product, $node, $variant = null) {
         return CartItem::create([
             'user_id' => $user->id,
             'node_id' => $node->id,
@@ -280,6 +280,7 @@ class CartController extends Controller
             'product' => $product->getInfoForOrder(),
             'variant_id' => $variant ? $variant->id : null,
             'variant' => $variant ? $variant->getInfoForOrder() : null,
+            'message' => $request->input('message'),
         ]);
     }
 

@@ -24,6 +24,7 @@ class CreateCartItemsTable extends Migration
             $table->text('product')->required();
             $table->integer('variant_id')->nullable();
             $table->text('variant')->nullable();
+            $table->text('message')->nullable();
         });
     }
 

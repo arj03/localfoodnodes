@@ -25,6 +25,7 @@ class CreateOrderItemsTable extends Migration
             $table->text('product')->required();
             $table->integer('variant_id')->nullable(); // For loading current data
             $table->text('variant')->nullable();
+            $table->text('message')->nullable();
             $table->softDeletes();
         });
     }

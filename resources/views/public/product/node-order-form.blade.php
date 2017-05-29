@@ -71,6 +71,11 @@
                 @endif
             </div>
 
+            <div class="form-group">
+                <label for="exampleTextarea">Message to producer</label>
+                <textarea class="form-control" name="message" rows="3" placeholder="Add extra information to your order"></textarea>
+            </div>
+
             @if (!Auth::check())
                 <button type="submit" class="btn btn-success pull-left" disabled>Login to buy product</button>
             @else

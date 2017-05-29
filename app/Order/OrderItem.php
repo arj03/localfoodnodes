@@ -30,6 +30,7 @@ class OrderItem extends \App\BaseModel
         'variant' => '',
         'quantity' => 'required',
         'ref' => 'required',
+        'message' => '',
     ];
 
     /**
@@ -50,6 +51,7 @@ class OrderItem extends \App\BaseModel
         'product',
         'quantity',
         'ref',
+        'message',
     ];
 
     /**

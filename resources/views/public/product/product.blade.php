@@ -59,9 +59,9 @@
 
             <div class="col-12 col-lg-4">
                 @if (isset($node))
-                    @include('public.node.product-order-form')
+                    @include('public.product.node-order-form')
                 @else
-                    @include('public.producer.product-order-form')
+                    @include('public.product.producer-order-form')
                 @endif
             </div>
         </div> <!-- end right column-->

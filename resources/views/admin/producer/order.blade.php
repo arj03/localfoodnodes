@@ -48,6 +48,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p>{{ $orderItem->message }}</p>
                 </div>
             </div>
         </div>

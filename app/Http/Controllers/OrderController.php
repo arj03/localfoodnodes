@@ -110,6 +110,7 @@ class OrderController extends Controller
                 'product' => $cartItem->product,
                 'variant_id' => $cartItem->variant['id'],
                 'variant' => $cartItem->variant,
+                'message' => $cartItem->message,
             ]);
 
             // Add to email data collection

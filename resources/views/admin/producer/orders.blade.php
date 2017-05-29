@@ -27,6 +27,9 @@
                                     @foreach ($orderItems as $orderItem)
                                         <tr>
                                             <td>
+                                                <a href="/account/producer/{{ $producer->id }}/order/{{ $orderItem->orderDateItemLink()->id }}">{{ $orderItem->orderDateItemLink()->ref }}</a>
+                                            </td>
+                                            <td>
                                                 {{ $orderItem->product['name'] }}
                                                 @if ($orderItem->variant)
                                                     - {{ $orderItem->variant['name'] }}

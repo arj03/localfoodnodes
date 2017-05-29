@@ -31,7 +31,7 @@
                             @endif
                         </div>
                         <div class="dropdown">
-                            <div class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="dropdown-toggle filter-dropdown-toggle" data-toggle="dropdown">
                                 @if ($tags->contains('active', true))
                                     {{ trans('public/node.filters') }}: {{ $tags->where('active', true)->keys()->implode(',') }}
                                 @else
