@@ -1,25 +1,26 @@
 <?php
 
 return [
-    'title' => 'Membership',
-    'header' => 'Co-fund the future of food!',
-    'sub_header' => 'Become a member, become a part of the future of food',
+    'title' => 'Medlemskap',
+    'header' => 'Medfinansiera framtidens mat!',
+    'sub_header' => 'Bli medlem och medskapa nya matsystem',
     'body' => '
-        <p>When you become a supporting member you are co-funding the future of food. Together, all of us as supporting members can choose the direction of local food development in the future.</p>
+        <p>När du blir en stödmedlem så medfinansierar du framtida lokal mat. Tillsammans så kan alla vi som stöttar projektet välja riktningen vi vill röra oss i kring utveckligen av vår lokala matförsörjning.</p>
 
-        <p>The supporting membership fees are used to increase the amount of food produced and consumed locally. These funds will help support local farming, local distribution, incresed local food access and strenghtened local economies. It is used to increse the percentage of food we eat that is produced by farmers we know personally.</p>
+        <p>Stödmedlemskapsavgifterna används för att öka mängden mat som produceras och konsumeras lokalt. Inkomsterna från avgifterna stödjer lokalt jordbruk, lokal distribution och en starkare lokal ekonomi. Först genom att möjliggöra utvecklingen av plattformen men också med en fond för lokal utveckling används pengarna för att öka andelen mat som är odlad av producenter vi har en personlig relation till.</p>
 
-        <p>Local Food Nodes is an open source tool that will help crowdfund the needed infrastructure, models and intiatives in order to relocalize the food system. We do this together in our membership fees that we all self-determine the size of. </p>',
+        <p>Local Food Nodes är ett verktyg, med öppen källkod, som möjliggör gräsrotsfinansiering för digital infrastruktur, modeller och initiativ som behövs för att göra vår livsmedelsförsörjning lokal igen. Vi gör det genom våra stödmedlemsavgifter som vi alla individuellt sätter storleken på.</p>',
 
-    'block_2_header' => 'This is what our money enables',
-    'block_2_content' => '<p>Local Food Node sets an annual budget every year to be able to run the platform, do further development and all associated costs. All income that exceeds that budget will be reinvested through a local food development fund. </p>',
+    'block_2_header' => 'Vad våra medlemsavgifter möjliggör',
+    'block_2_content' => '<p>Local Food Nodes sätter en årlig budget för vad som krävs för att driva plattformen med kostnaderna som är kopplade till det. Alla inkomster efter det kommer att återinvesteras i lokala projekt genom en lokalinvesteringsfond. Mer information om hur denna fonden kommer drivas kommer snart.</p>',
 
-    'block_3_header' => 'Full transparency',
-    'block_3_content' => '<p>Direct relationships between consumers and producers use transparency to create trust and enable co-creation of the food systems. In the same vain we see the necessity for the platform, development tools and our contributed economic means to be totally transparent.</p>
+    'block_3_header' => 'Total transparens',
+    'block_3_content' => '<p>Genom de direkta och transparanta relationerna mellan producent och konsument skapas tillit och möjliggörs ett medskapande av ny livsmedelsförsörjning. På samma sätt ser vi behovet av att helt transparenta i plattformen, alla verktyg vi använder och hur de ekonomiska medlen används.</p>
 
-    <p>This is why Local Food Nodes is open source and all economic transactions, how much we recieve in support, what the costs are and how and why money is spent will be accessible for anyone to view. We are also creating metrics around our goals of increasing local food relationships, local circulation of money and shortening the distance of food which we are going to publish on the site.</p>
+    <p>Därför är Local Food Nodes en plattform med helt öppen källkod och där alla ekonomiska transaktioner är helt transparenta utåt. Vi kommer visa exakt hur mycket vi får in i avgifter och sponsorskap samt exakt vilka utgifter alla medel går till. Vi skapar också mätvärden baserat på ativiteten på plattformen för att kunna följa hur väl vi når våra mål med organsiationen och plattformen. Det kommer vara mätvärden som hur många nya relationsbyggande möten som genomförts med plattformen, mängden pengar som cirkulerar lokalt och hur långa avstånd den lokala maten faktiskt har färdats från prodcent till slutkund. Dessa siffror kommer att publiceras på siten både för hela plattformen och indinviduellt per utlämningsplats.</p>
 
-    <p>We are also creating a governing structure for the platform and organisation where developers, node admins, producers and consumers will all have a say on how development should proceed and funds be used.',
+    <p>Vi håller också på att skapa en styrande struktur för den ekonomiska föreningen och plattformen som där vi som utvecklare, nodadministratörer, producenter och kunder tillsammans kommer att arbeta fram vad vi ska jobba med att utveckla samt hur pengarna ska spenderas. Mer om detta kommer snart.</p>',
+
 
 
     //numbers
