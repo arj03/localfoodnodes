@@ -26,6 +26,6 @@ return [
         //co-funding part
     'co_fund_heading' => 'Co-own the future of food!',
     'co_fund_subheading' => 'You choose the membership fee',
-    'co_fund_paragraph' => 'By becoming a member you are co-funding the future of food. Together, all of us as supporting members gives us the financial means to choose the direction of local food development for the future.',
+    'co_fund_paragraph' => 'By becoming a member you are co-funding the future of food. Together, all of us as supporting members gives ourselves the financial means to choose the direction of local food development.',
     'co_fund_read_more' => 'Read more about memberships',
 ];
