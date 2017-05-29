@@ -20,7 +20,7 @@ return [
     'when' => 'När: ',
     'go_local' => 'Hitta din lokala utlämningsplats',
     'find_node_near_you' => 'Hitta din lokala utlämningsplats',
-    'visit_node' => 'Besök noden',
+    'visit_node' => 'Besök utlämningsplatsen',
 
     //co-funding part
     'co_fund_heading' => 'Bli en del av framtidens matförsörjning!',
