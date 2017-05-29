@@ -12,8 +12,9 @@ use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User\User;
-use App\Product\ProductProduction;
-use App\Product\ProductProductionAdjustment;
+use App\Product\Production\ProductProduction;
+use App\Product\Production\WeekAdjustment;
+use App\Product\Production\DeliveryAdjustment;
 
 class ProductProductionController extends Controller
 {
@@ -123,13 +124,13 @@ class ProductProductionController extends Controller
     }
 
     /**
-     * Adjustment view action.
+     * Week adjustment view action.
      *
      * @param Request $request
      * @param int $producerId
      * @param int $productId
      */
-    public function adjustment(Request $request, $producerId, $productId)
+    public function weekAdjustment(Request $request, $producerId, $productId)
     {
         $user = Auth::user();
         $producer = $user->producerAdminLink($producerId)->getProducer();
@@ -145,7 +146,7 @@ class ProductProductionController extends Controller
             $dates[$date->format('Y-m-01')][] = $date;
         }
 
-        return view('admin.product.production.adjustment', [
+        return view('admin.product.production.adjustment-week', [
             'producer' => $producer,
             'product' => $product,
             'dates' => $dates,
@@ -159,25 +160,25 @@ class ProductProductionController extends Controller
     }
 
     /**
-     * Update production adjustments.
+     * Update production week adjustments.
      *
      * @param Request $request
      * @param int $producerId
      * @param int $productId
      */
-    public function updateAdjustment(Request $request, $producerId, $productId)
+    public function updateWeekAdjustment(Request $request, $producerId, $productId)
     {
         $user = Auth::user();
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
-        // Delete all first
-        ProductProductionAdjustment::where('product_id', $product->id)->delete();
+        // Delete all adjustments, new ones are about to be created.
+        $this->deleteAllAdjustments($product->id);
 
         foreach ($request->input('quantity') as $year => $weeks) {
             foreach ($weeks as $week => $quantity) {
                 if ($quantity) {
-                    ProductProductionAdjustment::create([
+                    WeekAdjustment::create([
                         'product_id' => $product->id,
                         'year' => $year,
                         'week' => $week,
@@ -189,6 +190,86 @@ class ProductProductionController extends Controller
 
         $request->session()->flash('message', [trans('admin/messages.production_updated')]);
         return redirect()->back();
+    }
+
+    /**
+     * Delivery adjustment view action.
+     *
+     * @param Request $request
+     * @param int $producerId
+     * @param int $productId
+     */
+    public function deliveryAdjustment(Request $request, $producerId, $productId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $product = $producer->product($productId);
+
+        $startDate = new \DateTime(date('Y-m-d'));
+        $interval = new \DateInterval('P1W');
+        $recurrences = 52;
+        $datePeriod = new \DatePeriod($startDate, $interval, $recurrences);
+
+        $dates = [];
+        foreach ($datePeriod as $date) {
+            $dates[$date->format('Y-m-01')][] = $date;
+        }
+
+        return view('admin.product.production.adjustment-delivery', [
+            'producer' => $producer,
+            'product' => $product,
+            'dates' => $dates,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.products') => 'producer/' . $producer->id . '/products',
+                $product->name => 'producer/' . $producer->id . '/product/' . $product->id . '/edit',
+                trans('admin/user-nav.adjust_production') => ''
+            ]
+        ]);
+    }
+
+    /**
+     * Update production delivery adjustments.
+     *
+     * @param Request $request
+     * @param int $producerId
+     * @param int $productId
+     */
+    public function updateDeliveryAdjustment(Request $request, $producerId, $productId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $product = $producer->product($productId);
+
+        // Delete all adjustments, new ones are about to be created.
+        $this->deleteAllAdjustments($product->id);
+
+        foreach ($request->input('quantity') as $nodeId => $dates) {
+            foreach ($dates as $date => $quantity) {
+                if ($quantity) {
+                    DeliveryAdjustment::create([
+                        'product_id' => $product->id,
+                        'node_id' => $nodeId,
+                        'date' => $date,
+                        'quantity' => $quantity
+                    ]);
+                }
+            }
+        }
+
+        $request->session()->flash('message', [trans('admin/messages.production_updated')]);
+        return redirect()->back();
+    }
+
+    /**
+     * Delete all adjustments.
+     *
+     * @param int $productId
+     */
+    private function deleteAllAdjustments($productId)
+    {
+        WeekAdjustment::where('product_id', $productId)->delete();
+        DeliveryAdjustment::where('product_id', $productId)->delete();
     }
 
     /**

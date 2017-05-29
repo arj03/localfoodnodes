@@ -78,7 +78,7 @@ class Product extends \App\BaseModel
      */
     public function productionsRelationship()
     {
-        return $this->hasMany('App\Product\ProductProduction');
+        return $this->hasMany('App\Product\Production\ProductProduction');
     }
 
     /**
@@ -92,9 +92,9 @@ class Product extends \App\BaseModel
     /**
      * Define product relationship with production adjustments.
      */
-    public function productionAdjustments()
+    public function productionWeekAdjustments()
     {
-        return $this->hasMany('App\Product\ProductProductionAdjustment')->get();
+        return $this->hasMany('App\Product\Production\WeekAdjustment')->get();
     }
 
     /**
@@ -102,11 +102,11 @@ class Product extends \App\BaseModel
      *
      * @param int $year
      * @param int $week
-     * @return ProductProductionAdjustment
+     * @return WeekAdjustment
      */
-    public function productionAdjustment($year, $week)
+    public function productionWeekAdjustment($year, $week)
     {
-        return $this->productionAdjustments()->where('year', $year)->where('week', $week)->first();
+        return $this->productionWeekAdjustments()->where('year', $year)->where('week', $week)->first();
     }
 
     /**
@@ -116,11 +116,50 @@ class Product extends \App\BaseModel
      * @param int $week
      * @return int|null
      */
-    public function productionAdjustmentQuantity($year, $week)
+    public function productionWeekAdjustmentQuantity($year, $week)
     {
-        $productionAdjustment = $this->productionAdjustment($year, $week);
-        if ($productionAdjustment) {
-            return $productionAdjustment->quantity;
+        $productionWeekAdjustment = $this->productionWeekAdjustment($year, $week);
+
+        if ($productionWeekAdjustment) {
+            return $productionWeekAdjustment->quantity;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Define product relationship with production adjustments.
+     */
+    public function productionDeliveryAdjustments()
+    {
+        return $this->hasMany('App\Product\Production\DeliveryAdjustment')->get();
+    }
+
+    /**
+     * Get production adjustment.
+     *
+     * @param int $year
+     * @param int $week
+     * @return WeekAdjustment
+     */
+    public function productionDeliveryAdjustment(\DateTime $date)
+    {
+        return $this->productionDeliveryAdjustments()->where('date', $date->format('Y-m-d'))->first();
+    }
+
+    /**
+     * Get product adjustment quantity.
+     *
+     * @param int $year
+     * @param int $week
+     * @return int|null
+     */
+    public function productionDeliveryAdjustmentQuantity(\DateTime $date)
+    {
+        $productionDeliveryAdjustment = $this->productionDeliveryAdjustment($date);
+
+        if ($productionDeliveryAdjustment) {
+            return $productionDeliveryAdjustment->quantity;
         } else {
             return null;
         }
@@ -357,9 +396,9 @@ class Product extends \App\BaseModel
             $quantity = $this->productions()->first()->quantity;
 
             if ($date) {
-                $productionAdjustment = $this->productionAdjustment($date->format('Y'), $date->format('W'));
-                if ($productionAdjustment) {
-                    $quantity += $productionAdjustment->quantity;
+                $productionWeekAdjustment = $this->productionWeekAdjustment($date->format('Y'), $date->format('W'));
+                if ($productionWeekAdjustment) {
+                    $quantity += $productionWeekAdjustment->quantity;
                 }
             }
         } else if ($this->productionType === 'occasional') {

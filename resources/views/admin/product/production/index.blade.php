@@ -30,6 +30,7 @@
                                             <option value="weekly" {{ Request::old('production_type') === 'weekly' ? 'selected' : '' }}>
                                                 {{ trans('admin/product.recurring_products_weekly') }}
                                             </option>
+                                            recurring_products_per_delivery
                                             <option value="occasional" {{ Request::old('production_type') === 'occasional' ? 'selected' : '' }}>
                                                 {{ trans('admin/product.occasional_products') }}
                                             </option>
@@ -88,7 +89,8 @@
                                 </div>
                                 <div class="card-block">
                                     <p>{{ trans('admin/product.weekly_adjustment') }}</p>
-                                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment">{{ trans('admin/product.adjust_production_quantity_per_week') }}</a>
+                                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment/week">{{ trans('admin/product.adjust_production_quantity_per_week') }}</a>
+                                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment/delivery">Delivery</a>
                                 </div>
                             </div>
                         </div>

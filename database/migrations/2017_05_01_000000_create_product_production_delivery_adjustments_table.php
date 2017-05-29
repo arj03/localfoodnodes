@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductProductionAdjustmentsTable extends Migration
+class CreateProductProductionDeliveryAdjustmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateProductProductionAdjustmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_production_adjustments', function (Blueprint $table) {
+        Schema::create('product_production_delivery_adjustments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->required();
-            $table->integer('year')->required();
-            $table->integer('week')->required();
+            $table->integer('node_id')->required();
+            $table->date('date')->required();
             $table->integer('quantity')->required();
         });
     }
@@ -29,6 +29,6 @@ class CreateProductProductionAdjustmentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_production_adjustments');
+        Schema::drop('product_production_delivery_adjustments');
     }
 }

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Product;
+namespace App\Product\Production;
 
-class ProductProductionAdjustment extends \App\BaseModel
+class WeekAdjustment extends \App\BaseModel
 {
     public $timestamps = false;
+
+    protected $table = 'product_production_week_adjustments';
 
     /**
      * Validation rules.

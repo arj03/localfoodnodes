@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Product;
+namespace App\Product\Production;
 
-use App\BaseModel;
-
-class ProductProduction extends BaseModel
+class DeliveryAdjustment extends \App\BaseModel
 {
+    public $timestamps = false;
+
+    protected $table = 'product_production_delivery_adjustments';
+
     /**
      * Validation rules.
      *
@@ -13,9 +15,8 @@ class ProductProduction extends BaseModel
      */
     protected $validationRules = [
         'product_id' => 'required',
-        'date' => 'date',
+        'date' => 'required',
         'quantity' => 'required',
-        'type' => 'required',
     ];
 
     /**
@@ -27,17 +28,5 @@ class ProductProduction extends BaseModel
         'product_id',
         'date',
         'quantity',
-        'type'
     ];
-
-    /**
-     * Return date object.
-     *
-     * @param string $value
-     * @return Date
-     */
-    public function getDateAttribute($value)
-    {
-        return new \DateTime($value);
-    }
 }

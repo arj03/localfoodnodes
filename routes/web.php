@@ -132,8 +132,10 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         // Production
         Route::get('/{productId}/production', 'Admin\ProductProductionController@index');
         Route::post('/{productId}/production/update', 'Admin\ProductProductionController@update');
-        Route::get('/{productId}/production/adjustment', 'Admin\ProductProductionController@adjustment');
-        Route::post('/{productId}/production/adjustment/update', 'Admin\ProductProductionController@updateAdjustment');
+        Route::get('/{productId}/production/adjustment/week', 'Admin\ProductProductionController@weekAdjustment');
+        Route::get('/{productId}/production/adjustment/delivery', 'Admin\ProductProductionController@deliveryAdjustment');
+        Route::post('/{productId}/production/adjustment/week/update', 'Admin\ProductProductionController@updateWeekAdjustment');
+        Route::post('/{productId}/production/adjustment/delivery/update', 'Admin\ProductProductionController@updateDeliveryAdjustment');
 
         // Deliveries
         Route::get('/{productId}/deliveries', 'Admin\ProductController@editDeliveries');
