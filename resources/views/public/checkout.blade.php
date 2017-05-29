@@ -24,7 +24,7 @@
                                 @foreach ($cartDate->cartDateItemLinks() as $cartDateItemLink)
                                     <div class="row cart-item">
                                         <div class="col-sm-2 hidden-xs-down">
-                                            @if ($cartDateItemLink->getItem()->getProduct()->images()->count() > 0)
+                                            @if ($cartDateItemLink->getItem()->getProduct() && $cartDateItemLink->getItem()->getProduct()->images()->count() > 0)
                                                 <img src="{{ $cartDateItemLink->getItem()->getProduct()->images()->first()->url('medium') }}">
                                             @else
                                                 <img src="/images/product-image-placeholder.jpg">
