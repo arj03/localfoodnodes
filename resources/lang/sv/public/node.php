@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'add_to_cart' => 'Lägg till i varukorg',
     'avg_dist' => 'Snittsavstånd<br><span class="small">producent - nod</span>',
     'calendar' => 'Nodkalender',
     'clear_date' => '(rensa datum)',
@@ -13,12 +14,17 @@ return [
     'images' => 'Bilder',
     'info' => 'Info',
     'join' => 'Gå med i nod',
+    'how_many' => 'How many till varje utlämning?',
     'km' => 'km',
     'leave' => 'Gå ur nod',
     'locals' => 'Locals',
     'no_products' => 'Det finns inga produkter tillgängliga.',
+    'order' => 'Order',
     'pick_up_order' => 'Utlämningsplats',
     'pickup' => 'Utlämning',
+    'product' => 'Product'
     'products' => 'Produkter',
     'producers' => 'Producenter',
+    'select_variant' => 'Välj variant',
+    'select_pickup' => 'Select pick-up dates',
 ];

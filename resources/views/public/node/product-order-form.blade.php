@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header">Order</div>
+    <div class="card-header">{{ trans('public/node.order') }}</div>
     <div class="card-block">
         <form action="/checkout/item/add" method="post">
             {{ csrf_field() }}
@@ -8,7 +8,7 @@
 
             <div class="form-group">
                 @if ($product->variants()->count() > 0)
-                    <label class="form-control-label">Select variant</label>
+                    <label class="form-control-label">{{ trans('public/node.select_variant') }}</label>
                     @foreach ($product->variants() as $variant)
                         <div class="form-check">
                             <label class="form-check-label w-100">
@@ -26,7 +26,7 @@
                         </div>
                     @endforeach
                 @else
-                    <label class="form-control-label">Product</label>
+                    <label class="form-control-label">{{ trans('public/node.product') }}</label>
                     <div class="form-check">
                         <label class="form-check-label w-100">
                             <input class="form-check-input" type="radio" name="product_id" value="{{ $product->id }}" checked>
@@ -42,12 +42,12 @@
             </div>
 
             <div class="form-group">
-                <label class="form-control-label" for="quantity">How many at each pick-up?</label>
+                <label class="form-control-label" for="quantity">{{ trans('public/node.how_many') }}</label>
                 <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="Order Quantity" />
             </div>
 
             <div class="form-group">
-                <label class="form-control-label">Select pickup dates</label>
+                <label class="form-control-label">{{ trans('public/node.select_pickup') }}</label>
                 @if ($product->getDeliveryLinksByMonths($node->id)->count() > 0)
                     <div class="row calendar product-calendar">
                         @foreach ($product->getDeliveryLinksByMonths($node->id) as $month => $deliveryLinks)
@@ -72,9 +72,9 @@
             </div>
 
             @if (!Auth::check())
-                <button type="submit" class="btn btn-success pull-left" disabled>Login to buy product</button>
+                <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login') }}</button>
             @else
-                <button type="submit" class="btn btn-success pull-left">Add to cart</button>
+                <button type="submit" class="btn btn-success pull-left">{{ trans('public/node.add_to_cart') }}</button>
             @endif
         </form>
     </div>
