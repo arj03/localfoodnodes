@@ -20,7 +20,9 @@ När du blir en stödmedlem så medfinansierar du utvecklingen av framtidens lok
     'block_2_content' => '<p>Varje år sätter vi en årsbudget som skall täcka kostnaderna för att bära, driva och vidareutveckla själva plattformen. Alla intäkter som överstiger den årsbudgeten kommer att återinvesteras i satsningar för att främja lokal mat. Detta genom en lokal matutvecklingsfond. Mer information om förvaltningen av denna fond kommer snart att finnas tillgänglig.</p>',
 
     'block_3_header' => 'Full transparens',
-    'block_3_content' => '<p>Genom de direkta och transparanta relationerna mellan producent och konsument skapas tillit och möjliggörs ett medskapande av ny livsmedelsförsörjning. På samma sätt ser vi behovet av att helt transparenta i plattformen, alla verktyg vi använder och hur de ekonomiska medlen används.</p>
+    'block_3_content' => '<p>Transparens och öppenhet är nyckelfaktorer som krävs för att bygga förtroende och möjliggöra samverkan och skapa direktrelationer mellan producenter och konsumenter. 
+På samma sätt ser vi det nödvändigt att en gemensam digital plattform, utvecklingsverktygen vi använder oss av och behöver, samt de ekonomiska medlen också måste vara helt öppna och transparenta.
+</p>
 
     <p>Därför är Local Food Nodes en plattform med helt öppen källkod och där alla ekonomiska transaktioner är helt transparenta utåt. Vi kommer visa exakt hur mycket vi får in i avgifter och sponsorskap samt exakt vilka utgifter alla medel går till. Vi skapar också mätvärden baserat på ativiteten på plattformen för att kunna följa hur väl vi når våra mål med organsiationen och plattformen. Det kommer vara mätvärden som hur många nya relationsbyggande möten som genomförts med plattformen, mängden pengar som cirkulerar lokalt och hur långa avstånd den lokala maten faktiskt har färdats från prodcent till slutkund. Dessa siffror kommer att publiceras på siten både för hela plattformen och indinviduellt per utlämningsplats.</p>
 
