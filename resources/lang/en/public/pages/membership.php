@@ -5,7 +5,7 @@ return [
     'header' => 'Co-fund the future of food!',
     'sub_header' => 'Become a member, become a part of the future of food',
     'body' => '
-        <p>When you become a supporting member you are co-funding the future of food. Together, all of us as supporting members can choose the direction of local food development in the future.</p>
+        <p>When you become a supporting member you are co-funding the future of food. Together, all of us as supporting members, can choose the direction of local food development in the future.</p>
 
         <p>The supporting membership fees are used to increase the amount of food produced and consumed locally. These funds will help support local farming, local distribution, incresed local food access and strenghtened local economies. It is used to increse the percentage of food we eat that is produced by farmers we know personally.</p>
 
