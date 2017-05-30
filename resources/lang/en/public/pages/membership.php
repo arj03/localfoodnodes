@@ -11,11 +11,11 @@ return [
 
         <p>Local Food Nodes is an open source tool that will help crowdfund the needed infrastructure, models and intiatives in order to relocalize the food system. We do this together in with the membership fees that we all self-determine the size of. </p>',
 
-    'block_2_header' => 'This is what our fees enables',
+    'block_2_header' => 'This is what your fees enables',
     'block_2_content' => '<p>Local Food Node sets an annual budget needed to run the platform, do further development and all associated costs. All income that exceeds that budget will be reinvested through a local food development fund. More information about the management of that fund will be available soon.</p>',
 
     'block_3_header' => 'Full transparency',
-    'block_3_content' => '<p>Direct relationships between consumers and producers use transparency to create trust and enable co-creation of the food systems. In the same vain we see the necessity for the platform, development tools and our contributed economic means to be totally transparent.</p>
+    'block_3_content' => '<p>Direct relationships between consumers and producers requires transparency to create trust and enable co-creation of the food systems. In the same vain we see the necessity for the platform, development tools and our contributed economic means to be totally transparent.</p>
 
     <p>This is why Local Food Nodes is open source and all economic transactions, how much we recieve in support, what the costs are and how and why money is spent will be accessible for anyone to view. We are also creating metrics around our goals of increasing local food relationships, local circulation of money and shortening the distance of food which we are going to publish on the site.</p>
 
