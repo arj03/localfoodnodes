@@ -9,7 +9,7 @@ return [
 
         <p>The supporting membership fees are used to increase the amount of food produced and consumed locally. These funds will help support local farming, local distribution, incresed local food access and strenghtened local economies. It is used to increse the percentage of food we eat that is produced by farmers we know personally.</p>
 
-        <p>Local Food Nodes is an open source tool that will help crowdfund the needed infrastructure, models and intiatives in order to relocalize the food system. We do this together in with the membership fees that we all self-determine the size of. </p>',
+        <p>Local Food Nodes is an open source tool that will help crowdfund the needed infrastructure, models and intiatives in order to relocalize the food system. We do this together with the membership fees that we all self-determine the size of. </p>',
 
     'block_2_header' => 'This is what your fees enables',
     'block_2_content' => '<p>Local Food Node sets an annual budget needed to run the platform, do further development and all associated costs. All income that exceeds that budget will be reinvested through a local food development fund. More information about the management of that fund will be available soon.</p>',
