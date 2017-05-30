@@ -325,7 +325,7 @@ class ProductController extends Controller
      */
     private function saveNodeDeliveries(Request $request, $product)
     {
-        $product->deliveryLinks()->each->delete(); // We re-add everything below
+        $product->deliveryLinks(null, null, true)->each->delete(); // We re-add everything below
 
         if ($request->has('delivery_dates')) {
             $deliveryDates = $request->input('delivery_dates');

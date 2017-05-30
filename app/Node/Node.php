@@ -268,9 +268,17 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Define node relationship with product delivery dates.
      */
-    public function productsRelationship()
+    public function productNodeDeliveryLinksRelationship()
     {
         return $this->hasMany('App\Product\ProductNodeDeliveryLink');
+    }
+
+    /**
+     * Get product node delivery links
+     * @return Collection
+     */
+    public function productNodeDeliveryLinks() {
+        return $this->productNodeDeliveryLinksRelationship;
     }
 
     /**
@@ -278,7 +286,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function products()
     {
-        $products = $this->productsRelationship->map(function($productNodeDeliveryLink) {
+        $products = $this->productNodeDeliveryLinksRelationship->map(function($productNodeDeliveryLink) {
             return $productNodeDeliveryLink->getProduct();
         });
 

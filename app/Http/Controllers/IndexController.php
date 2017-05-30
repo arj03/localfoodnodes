@@ -52,7 +52,7 @@ class IndexController extends Controller
      */
     public function node(Request $request, $id)
     {
-        $node = Node::where('id', $id)->with('producerLinksRelationship', 'productsRelationship')->first();
+        $node = Node::where('id', $id)->with('producerLinksRelationship', 'productNodeDeliveryLinksRelationship')->first();
         $producers = ProducerNodeLink::where('node_id', $id)->get()->map->getProducer();
         $products = $node->products();
 

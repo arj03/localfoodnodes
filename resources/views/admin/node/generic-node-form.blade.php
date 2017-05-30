@@ -79,6 +79,7 @@
                                 <option value="saturday" {{ $node->delivery_weekday === 'saturday' ? ' selected' : '' }}>{{ trans('admin/node.saturday') }}</option>
                                 <option value="sunday" {{ $node->delivery_weekday === 'sunday' ? ' selected' : '' }}>{{ trans('admin/node.sunday') }}</option>
                             </select>
+                            <div class="form-text text-muted"><i class="fa fa-warning"></i> If you change weekday all products on the node will disappear since their selected delivery date doesn't match any longer.</div>
                         </div>
                     </div>
 
