@@ -7,6 +7,7 @@ return [
     'clear_date' => '(clear date)',
     'contact' => 'Contact node admin on ',
     'event' => 'Event',
+    'events' => 'Events',
     'filters' => 'Filters',
     'find_communication' => 'Find our communication group',
     'find_producer_communication' => 'Find our producer communication group',

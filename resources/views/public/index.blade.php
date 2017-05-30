@@ -80,35 +80,11 @@
     @endif
 
     <div class="container frontpage-section upcoming-events">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="thin">{{ trans('public/index.upcoming') }}</h2>
-                <div class="events slick-slider">
-                    @foreach ($events as $event)
-                        <a href="{{ $event->permalink()->url }}" class="event">
-                            <div class="date">
-                                <div class="day">{{ $event->start_datetime->format('d') }}</div>
-                                <div class="month">{{ $event->start_datetime->format('F') }}</div>
-                            </div>
-                            <div @if ($event->images()->count() > 0)
-                                    style="background-image: url({{ $event->images()->first()->url() }});"
-                                @endif
-                            class="info">
-                                <div class="block">
-                                    <h2 class="bold">{{ $event->name }}</h2>
-                                    <div>
-                                        <b>{{ trans('public/index.where') }}</b>{{ $event->address }} {{ $event->city }}
-                                    </div>
-                                    <div>
-                                        <b>{{ trans('public/index.when') }}</b>
-                                        {{ $event->start_datetime->format('Y-m-d H:i') }} - {{ $event->end_datetime->format('Y-m-d H:i') }}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
+        <h2 class="thin">{{ trans('public/index.upcoming') }}</h2>
+        <div class="events slick-slider">
+            @foreach ($events as $event)
+                @include('public.components.event')
+            @endforeach
         </div>
     </div>
 

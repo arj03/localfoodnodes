@@ -288,9 +288,15 @@ class Producer extends BaseModel implements EventOwnerInterface
     /**
      * Get events.
      */
-    public function events()
+    public function events(\DateTime $date = null)
     {
-        return $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'producer')->get();
+        $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'producer')->get();
+
+        if ($date) {
+            $events = $events->where('start_datetime', '<=', $date)->where('end_datetime', '>=', $date);
+        }
+
+        return $events;
     }
 
     /**

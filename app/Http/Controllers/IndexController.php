@@ -61,8 +61,18 @@ class IndexController extends Controller
         $calendarMonth = $productFilter->getMonthDate();
         $calendar = new NodeCalendar($node);
 
+        $date = null;
+        if ($request->has('date')) {
+            try {
+                $date = new \DateTime($request->get('date'));
+            } catch (\Exception $e) {}
+        }
+
+        $events = $node->getAllEvents($date);
+
         return view('public.node.node', [
             'node' => $node,
+            'events' => $events,
             'products' => $filteredProducts,
             'calendar'=> $calendar->get($request),
             'calendarMonth' => $calendarMonth,
