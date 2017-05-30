@@ -29,6 +29,6 @@ När du blir en stödmedlem så medfinansierar du utvecklingen av framtidens lok
 
 
     //numbers
-    'avg_fee' => 'Average supporting fee',
-    'supporting' => 'Supporting members',
+    'avg_fee' => 'Medlemsavgift i genomsnitt',
+    'supporting' => 'Antal stöttande medlemmar',
 ];
