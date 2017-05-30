@@ -4,7 +4,7 @@ return [
     'title' => 'Find Out More',
 
     'header_1' => 'Local Food Nodes',
-    'subheader_1' => '- Från längtan att göra maten lokala igen',
+    'subheader_1' => '- Från en längtan att göra maten lokal igen',
 
     'paragraph_1_1' => 'Anledningen till att vi skapar Local Food Nodes är för att vi vill skapa nya kopplingar direkt mellan matproducenter med matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.',
 
