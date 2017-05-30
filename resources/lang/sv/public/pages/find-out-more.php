@@ -4,7 +4,7 @@ return [
     'title' => 'Find Out More',
 
     'header_1' => 'Local Food Nodes',
-    'subheader_1' => 'Utifrån en vilja att skapa ett hälsosammare matsystem',
+    'subheader_1' => '- Utifrån behovet att göra maten lokal igen',
 
     'paragraph_1_1' => 'Anledningen till att vi skapar Local Food Nodes är för att vi vill skapa nya kopplingar direkt mellan matproducenter med matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.',
 
@@ -24,11 +24,11 @@ return [
 
     'paragraph_3_1' => 'Du kan enkelt skapa ett konto helt gratis, eller logga in med ditt Facebookkonto.',
 
-    'paragraph_3_2' => 'Kolla runt på siten, hitta noder nära dig och lägg god, lokal mat i din digitala shoppingvagn, men innan du kan skicka iväg dina ordrar behöver du först bli stödmedlem på plattformen. Du blir det genom att betala en årlig användaravgift och storleken på avgiften bestämmer du själv. Det är upp till dig att avgöra vad du känner att du har råd med och vad du tycker att denna tjänst är värd för dig och för vårt samhälle. Vad än summan blir, medfinansierar och medskapar du en hälsosammare framtid. Snyggt jobbat! ',
+    'paragraph_3_2' => 'Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn, men innan du kan skicka iväg dina ordrar behöver du först bli stödmedlem på plattformen. Du blir det genom att betala en årlig användaravgift och storleken på avgiften bestämmer du själv. Det är upp till dig att avgöra vad du känner att du har råd med och vad du tycker att denna tjänst är värd för dig och för vårt samhälle. Vad än summan blir, medfinansierar och medskapar du en hälsosammare framtid. Snyggt jobbat! ',
 
-    'header_4' => '2. Hitta dina noder och förboka din lokala mat',
+    'header_4' => '2. Hitta utlämningsplatser och förboka din lokala mat',
 
-    'paragraph_4_1' => 'Nu när du är inloggad, kan du enkelt hitta de noder som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (man behöver inte gå med i en nod för att beställa mat på den men det gör användandet av siten lättare).',
+    'paragraph_4_1' => 'Nu när du är inloggad, kan du enkelt hitta de utlämningsplatser som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (man behöver inte gå med i en nod för att beställa mat på den men det gör användandet av siten lättare).',
 
     'header_5' => '3. Hämta mat',
 
