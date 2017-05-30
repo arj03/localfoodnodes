@@ -17,7 +17,7 @@ När du blir en stödmedlem så medfinansierar du utvecklingen av framtidens lok
 </p>',
 
     'block_2_header' => 'Vad medlemsavgiften möjliggör',
-    'block_2_content' => '<p>Varje år sätter vi en uppskattad årsbudget som skall täcka kostnaderna för att bära, driva och vidareutveckla själva plattformen. Alla intäkter som överstiger den årsbudgeten kommer att återinvesteras i satsningar för att främja lokal mat. Detta genom en lokal matutvecklingsfond. Mer information om förvaltningen av denna fond kommer snart att finnas tillgänglig.</p>',
+    'block_2_content' => '<p>Varje år sätter vi en årsbudget som skall täcka kostnaderna för att bära, driva och vidareutveckla själva plattformen. Alla intäkter som överstiger den årsbudgeten kommer att återinvesteras i satsningar för att främja lokal mat. Detta genom en lokal matutvecklingsfond. Mer information om förvaltningen av denna fond kommer snart att finnas tillgänglig.</p>',
 
     'block_3_header' => 'Full transparens',
     'block_3_content' => '<p>Genom de direkta och transparanta relationerna mellan producent och konsument skapas tillit och möjliggörs ett medskapande av ny livsmedelsförsörjning. På samma sätt ser vi behovet av att helt transparenta i plattformen, alla verktyg vi använder och hur de ekonomiska medlen används.</p>
