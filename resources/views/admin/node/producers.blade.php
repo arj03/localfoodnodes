@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th>{{ trans('admin/node.name') }}</th>
+                            <th>{{ trans('admin/node.email') }}</th>
                             <th>{{ trans('admin/node.address') }}</th>
                             <th>{{ trans('admin/node.zip') }}</th>
                             <th>{{ trans('admin/node.city') }}</th>
@@ -22,6 +23,7 @@
                         @foreach ($node->producerLinks() as $producerLink)
                             <tr>
                                 <td>{{ $producerLink->getProducer()->name }}</td>
+                                <td><a href="mailto:{{ $producerLink->getProducer()->email }}">{{ $producerLink->getProducer()->email }}</a></td>
                                 <td>{{ $producerLink->getProducer()->address }}</td>
                                 <td>{{ $producerLink->getProducer()->zip }}</td>
                                 <td>{{ $producerLink->getProducer()->city }}</td>
