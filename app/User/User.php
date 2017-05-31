@@ -338,9 +338,9 @@ class User extends BaseUser
      *
      * @return UserMembershipPayment
      */
-    public function getLatestMembershipPayment()
+    public function getLatestMembershipPayment($forceCheck = false)
     {
-        if (env('APP_DISABLE_MEMBERSHIP', false) === true) {
+        if ($forceCheck === false && env('APP_DISABLE_MEMBERSHIP', false) === true) {
             return new UserMembershipPayment([
                 'amount' => 0,
                 'created_at' => date('Y-m-d'),
@@ -360,11 +360,11 @@ class User extends BaseUser
      */
     public function isMember($forceCheck = false)
     {
-        if (!$forceCheck && env('APP_DISABLE_MEMBERSHIP', false) === true) {
+        if ($forceCheck === false && env('APP_DISABLE_MEMBERSHIP', false) === true) {
             return true;
         }
 
-        $lastMembershipPayment = $this->getLatestMembershipPayment();
+        $lastMembershipPayment = $this->getLatestMembershipPayment($forceCheck);
 
         if ($lastMembershipPayment) {
             return $lastMembershipPayment->expiresInDays() >= 0 ? true : false;
