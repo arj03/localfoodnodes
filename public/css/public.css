@@ -1074,7 +1074,7 @@ body.public-node-node .product-card .card-footer {
   position: relative;
   background-size: cover;
   padding: 15px;
-  height: 70vh;
+  height: 50vh;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -1082,7 +1082,8 @@ body.public-node-node .product-card .card-footer {
   flex-direction: column;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 50% 0;
+  padding: 50px 0;
+  margin: 15px;
 }
 
 .public-index .create-pushes .row .users h2,
@@ -1103,7 +1104,6 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .create-pushes .row .users {
-  margin-left: 15px;
   background-image: url("/images/shutterstock_436974091_crate.jpg");
 }
 
@@ -1112,7 +1112,6 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .create-pushes .row .producers {
-  margin-right: 15px;
   background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
 }
 
@@ -1176,12 +1175,23 @@ body.public-node-node .product-card .card-footer {
   color: #333;
 }
 
-.public-index .find-out-more .users {
+.public-index .find-out-more .row {
   margin-left: 15px;
+  margin-right: 15px;
 }
 
-.public-index .find-out-more .producers {
-  margin-right: 15px;
+.public-index .find-out-more .row .card h3 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .public-index .btn-outline {
@@ -1206,11 +1216,12 @@ body.public-node-node .product-card .card-footer {
   .public-index .frontpage-section .right {
     width: 100vw;
   }
-  .public-index .create-pushes .row .users {
-    margin-left: 0;
-  }
+  .public-index .create-pushes .row .users,
+  .public-index .create-pushes .row .nodes,
   .public-index .create-pushes .row .producers {
+    margin-left: 0;
     margin-right: 0;
+    padding: 20px 0;
   }
 }
 

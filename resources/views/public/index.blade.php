@@ -95,15 +95,13 @@
     </div>
 
     <div class="container-fluid frontpage-section membership">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="bold">{{ trans('public/index.co_fund_heading') }}</h2>
-                <h3 class="mb-5">{{ trans('public/index.co_fund_subheading') }}</h3>
-                <div class="membership-content container">
-                    {{ trans('public/index.co_fund_paragraph') }}
-                </div>
-                <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
+        <div class="col-12">
+            <h2 class="bold">{{ trans('public/index.co_fund_heading') }}</h2>
+            <h3 class="mb-5">{{ trans('public/index.co_fund_subheading') }}</h3>
+            <div class="membership-content container">
+                {{ trans('public/index.co_fund_paragraph') }}
             </div>
+            <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
         </div>
     </div>
 
@@ -127,8 +125,8 @@
 
     <div class="container-fluid frontpage-section find-out-more">
         <div class="row">
-            <div class="col col-12 col-lg-4 card-deck">
-                <div class="card users">
+            <div class="col col-12 col-xl-4 card-deck">
+                <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_436974091_crate.jpg">
                     <div class="card-block">
                         <h3>{{ trans('public/pages/find-out-more.header_3') }}</h3>
@@ -137,8 +135,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-12 col-lg-4 card-deck">
-                <div class="card nodes">
+            <div class="col col-12 col-xl-4 card-deck">
+                <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_326785574_gettogether.jpg">
                     <div class="card-block">
                         <h3>{{ trans('public/pages/find-out-more.header_4') }}</h3>
@@ -146,8 +144,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-12 col-lg-4 card-deck">
-                <div class="card producers">
+            <div class="col col-12 col-xl-4 card-deck">
+                <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_271622087_producer_carrots.jpg">
                     <div class="card-block">
                         <h3>{{ trans('public/pages/find-out-more.header_5') }}</h3>

@@ -131,11 +131,12 @@
         position: relative
         background-size: cover
         padding: 15px
-        height: 70vh
+        height: 50vh
         display: flex
         flex-direction: column
         justify-content: space-between
-        padding: 50% 0
+        padding: 50px 0
+        margin: 15px
         h2
           font-size: 2rem
           min-height: 100px
@@ -147,12 +148,10 @@
           width: calc(100% - 30px)
 
       .users
-        margin-left: 15px
         background-image: url('/images/shutterstock_436974091_crate.jpg')
       .nodes
         background-image: url('/images/shutterstock_326785574_gettogether.jpg')
       .producers
-        margin-right: 15px
         background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
 
 
@@ -198,10 +197,23 @@
       padding-top: 50px
       padding-bottom: 50px
       color: #333
-    .users
+    .row
       margin-left: 15px
-    .producers
       margin-right: 15px
+      .card
+        h3
+          overflow-wrap: break-word
+          word-wrap: break-word
+          -ms-word-break: break-all
+          /* This is the dangerous one in WebKit, as it breaks things wherever */
+          word-break: break-all
+          /* Instead use this non-standard one: */
+          word-break: break-word
+          /* Adds a hyphen where the word breaks, if supported (No Blink) */
+          -ms-hyphens: auto
+          -moz-hyphens: auto
+          -webkit-hyphens: auto
+          hyphens: auto
 
   .btn-outline
     border: 1px solid #fff
@@ -226,10 +238,12 @@
 
     .create-pushes
       .row
-        .users
-          margin-left: 0
+        .users,
+        .nodes,
         .producers
+          margin-left: 0
           margin-right: 0
+          padding: 20px 0
 
 // Hide things on front page when logged in
 body.public-index
