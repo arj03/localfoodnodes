@@ -14,13 +14,13 @@
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}">
                                 <div class="d-flex justify-content-between">
-                                    <div>
-                                        <div>{{ $product->name}} - {{ $variant->name }}</div>
+                                    <div>{{ $product->name}} - {{ $variant->name }}</div>
+                                    <div style="white-space: nowrap">
+                                        {{ $variant->price }} {{ $producer->currency }}
                                         @if ($product->package_unit)
-                                            <div>{{ $variant->package_amount}} {{ $product->package_unit }}</div>
+                                            / {{ $variant->package_amount}} {{ $product->package_unit }}
                                         @endif
                                     </div>
-                                    <div style="white-space: nowrap">{{ $variant->price }} {{ $producer->currency }}</div>
                                 </div>
                             </label>
                         </div>
