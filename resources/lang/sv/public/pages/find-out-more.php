@@ -16,7 +16,7 @@ return [
 
     'paragraph_1_5' => 'Välkommen till Local Food Nodes, en plattform där vi skapar lokala matsystem, tillsammans.',
 
-    'paragraph_1_6' => '<i>Läs mer om vår vision för framtiden, vår ekonomiska filosofi, bakgrunden till projektet och vart vi är på väg här. (Kommer snart)<i> ',
+    'paragraph_1_6' => 'Läs mer om vår vision för framtiden, vår ekonomiska filosofi, bakgrunden till projektet och vart vi är på väg här. (Kommer snart) ',
 
     'header_2' => 'Så funkar det',
 

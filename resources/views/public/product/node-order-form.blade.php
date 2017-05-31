@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label class="form-control-label" for="quantity">{{ trans('public/node.how_many') }}</label>
-                <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="Order Quantity" />
+                <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
             </div>
 
             <div class="form-group">
