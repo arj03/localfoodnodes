@@ -23,6 +23,7 @@ return [
     'order' => 'Order',
     'pick_up_order' => 'Pick-up spot',
     'pickup' => 'Pick up',
+    'placeholder_qty' => 'Number of products',
     'product' => 'Product',
     'products' => 'Products',
     'producers' => 'Producers',
