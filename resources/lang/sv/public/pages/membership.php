@@ -16,7 +16,7 @@ Storleken på medlemsavgiften är valfri och du bestämmer själv hur mycket ell
 När du blir en stödmedlem så medfinansierar du utvecklingen av framtidens lokala matförsörjning. 
 </p>',
 
-    'block_2_header' => 'Vad medlemsavgiften möjliggör',
+    'block_2_header' => 'Såhär används medlemsavgiften',
     'block_2_content' => '<p>Varje år sätter vi en årsbudget som skall täcka kostnaderna för att bära, driva och vidareutveckla själva plattformen. Alla intäkter som överstiger den årsbudgeten kommer att återinvesteras i satsningar för att främja lokal mat. Detta genom en lokal matutvecklingsfond. Mer information om förvaltningen av denna fond kommer snart att finnas tillgänglig.</p>',
 
     'block_3_header' => 'Full transparens',
@@ -31,6 +31,6 @@ På samma sätt ser vi det nödvändigt att en gemensam digital plattform, utvec
 
 
     //numbers
-    'avg_fee' => 'Medlemsavgift i genomsnitt',
+    'avg_fee' => 'Genomsnittlig medlemsavgift',
     'supporting' => 'Antal stöttande medlemmar',
 ];
