@@ -41,10 +41,21 @@
 
 <script>
     $(function () {
-        setTimeout(function() {
-            $($('.master-alerts .alert').get().reverse()).each(function(index) {
-                $(this).delay(300 * index).fadeOut();
-            });
-        }, 10000);
+        function showNotification() {
+            setTimeout(function() {
+                $($('.master-alerts .alert').get().reverse()).each(function(index) {
+                    $(this).delay(300 * index).fadeOut();
+                });
+            }, 10000);
+        }
+
+        showNotification();
+
+        $(document).on('notification', function(event, text) {
+            var alert = '<div class="alert alert-success" role="alert" data-dismiss="alert">' + text + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>';
+
+            $('.master-alerts').append(alert);
+            showNotification();
+        });
     });
 </script>

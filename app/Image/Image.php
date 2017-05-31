@@ -18,7 +18,7 @@ class Image extends BaseModel
     protected $validationRules = [
         'entity_id' => 'required',
         'entity_type' => 'required',
-        'image' => 'mimes:jpeg,bmp,png,gif|max:10000',
+        'image' => 'mimes:jpeg,png,gif|max:10000',
         'sort' => ''
     ];
 

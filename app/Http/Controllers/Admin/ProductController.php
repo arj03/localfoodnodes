@@ -158,7 +158,7 @@ class ProductController extends Controller
     public function update(Request $request, $producerId, $productId)
     {
         $user = Auth::user();
-        $producer = $user->producerAdminLink($producerId)->getProducer();;
+        $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
         $errors = $this->validateProduct($request, $producer);
@@ -236,14 +236,25 @@ class ProductController extends Controller
      */
     public function uploadImage(Request $request, $product)
     {
+        $errors = new Collection();
+
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $file) {
-                Image::create([
+                $image = new Image();
+                $imageData = [
                     'entity_id' => $product->id,
                     'entity_type' => 'product',
                     'file' => $file,
                     'sort' => 999
-                ]);
+                ];
+
+                $errors = $image->validate($imageData);
+                if ($errors->isEmpty()) {
+                    $image->fill($imageData);
+                    $image->save();
+                }
+
+                $request->session()->flash('message', $errors);
             }
         }
 
@@ -254,6 +265,8 @@ class ProductController extends Controller
                 $image->save();
             }
         }
+
+        return $errors;
     }
 
     /**
