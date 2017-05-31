@@ -70,4 +70,9 @@ return [
     'required_fields_missing' => 'Required fields are empty.',
     'required' => 'Required',
     'session_expired' => 'Your session has expired, please login again.',
+
+    // Auth
+    'invalid_login_request' => 'Invalid login request.',
+    'invalid_access_token' => 'Invalid access token.',
+    'invalid_user_data' => 'Invalid user data.',
 ];

@@ -66,9 +66,13 @@ return [
     // Password reset
     'password_reset_email_sent' => 'En återställningslänk har skickats till din epost-adress.',
 
-
     // Other
     'required_fields_missing' => 'Obligatoriska fält är tomma.',
     'required' => 'Obligatorisk',
     'session_expired' => 'Din session har gått ut och du måste logga in igen.',
+
+    // Auth
+    'invalid_login_request' => 'Ogiltigt inloggningsanrop.',
+    'invalid_access_token' => 'Ogiltig åtkomst.',
+    'invalid_user_data' => 'Ogiltig användardata',
 ];
