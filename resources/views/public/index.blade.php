@@ -62,18 +62,24 @@
     @else
         <div class="container-fluid frontpage-section create-pushes">
             <h2 class="thin">{{ trans('public/index.co_create') }}</h2>
-            <div class="row no-gutters">
-                <div class="col-12 col-lg users">
-                    <h2 class="bold">{{ trans('public/index.sign_up') }}</h2>
-                    <a class="btn-outline" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="users">
+                        <h2 class="bold">{{ trans('public/index.sign_up') }}</h2>
+                        <a class="btn-outline" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
+                    </div>
                 </div>
-                <div class="col-12 col-lg nodes">
-                    <h2 class="bold">{{ trans('public/index.no_node') }}</h2>
-                    <a class="btn-outline" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                <div class="col-12 col-lg-4">
+                    <div class="nodes">
+                        <h2 class="bold">{{ trans('public/index.no_node') }}</h2>
+                        <a class="btn-outline" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                    </div>
                 </div>
-                <div class="col-12 col-lg producers">
-                    <h2 class="bold">{{ trans('public/index.food_producer') }}</h2>
-                    <a class="btn-outline" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                <div class="col-12 col-lg-4">
+                    <div class="producers">
+                        <h2 class="bold">{{ trans('public/index.food_producer') }}</h2>
+                        <a class="btn-outline" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,24 +123,43 @@
         </div>
 
         <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.header_2') }}</h2>
+    </div>
 
-        <div class="row no-gutters">
-            <div class="col-12 col-lg users">
-                <h2 class="bold">{{ trans('public/pages/find-out-more.header_3') }}</h2>
-                <p>{{ trans('public/pages/find-out-more.paragraph_3_1') }}</p>
-                <p>{{ trans('public/pages/find-out-more.paragraph_3_2') }}</p>
+    <div class="container-fluid frontpage-section find-out-more">
+        <div class="row">
+            <div class="col col-12 col-lg-4 card-deck">
+                <div class="card users">
+                    <img class="card-img-top" src="/images/shutterstock_436974091_crate.jpg">
+                    <div class="card-block">
+                        <h3>{{ trans('public/pages/find-out-more.header_3') }}</h3>
+                        <p>{{ trans('public/pages/find-out-more.paragraph_3_1') }}</p>
+                        <p>{{ trans('public/pages/find-out-more.paragraph_3_2') }}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-lg nodes">
-                <h2 class="bold">{{ trans('public/pages/find-out-more.header_4') }}</h2>
-                <p>{{ trans('public/pages/find-out-more.paragraph_4_1') }}</p>
+            <div class="col col-12 col-lg-4 card-deck">
+                <div class="card nodes">
+                    <img class="card-img-top" src="/images/shutterstock_326785574_gettogether.jpg">
+                    <div class="card-block">
+                        <h3>{{ trans('public/pages/find-out-more.header_4') }}</h3>
+                        <p>{{ trans('public/pages/find-out-more.paragraph_4_1') }}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-lg producers">
-                <h2 class="bold">{{ trans('public/pages/find-out-more.header_5') }}</h2>
-                <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
-                <p>{{ trans('public/pages/find-out-more.paragraph_5_2') }}</p>
+            <div class="col col-12 col-lg-4 card-deck">
+                <div class="card producers">
+                    <img class="card-img-top" src="/images/shutterstock_271622087_producer_carrots.jpg">
+                    <div class="card-block">
+                        <h3>{{ trans('public/pages/find-out-more.header_5') }}</h3>
+                        <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
+                        <p>{{ trans('public/pages/find-out-more.paragraph_5_2') }}</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
+    <div class="container frontpage-section">
         <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.quip') }}</h2>
     </div>
 

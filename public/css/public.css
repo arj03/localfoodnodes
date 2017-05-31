@@ -444,7 +444,7 @@ body.page .page .card h2 {
 }
 
 body.page .page .card .body-text {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -901,7 +901,7 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .frontpage-section p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -1068,8 +1068,10 @@ body.public-node-node .product-card .card-footer {
   color: #fff;
 }
 
-.public-index .create-pushes .row > div {
-  margin-left: 15px;
+.public-index .create-pushes .row .users,
+.public-index .create-pushes .row .nodes,
+.public-index .create-pushes .row .producers {
+  position: relative;
   background-size: cover;
   padding: 15px;
   height: 70vh;
@@ -1078,28 +1080,30 @@ body.public-node-node .product-card .card-footer {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  -webkit-box-pack: center;
-  justify-content: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 50% 0;
 }
 
-.public-index .create-pushes .row > div:last-child {
-  margin-right: 15px;
+.public-index .create-pushes .row .users h2,
+.public-index .create-pushes .row .nodes h2,
+.public-index .create-pushes .row .producers h2 {
+  font-size: 2rem;
+  min-height: 100px;
 }
 
-.public-index .create-pushes .row > div h2 {
-  font-size: 3rem;
-}
-
-.public-index .create-pushes .row > div a {
+.public-index .create-pushes .row .users a,
+.public-index .create-pushes .row .nodes a,
+.public-index .create-pushes .row .producers a {
   text-align: center;
-  margin: 50px auto 20px;
-  width: 50%;
   font-size: 16px;
   line-height: 1.3em;
   font-weight: bold;
+  width: calc(100% - 30px);
 }
 
 .public-index .create-pushes .row .users {
+  margin-left: 15px;
   background-image: url("/images/shutterstock_436974091_crate.jpg");
 }
 
@@ -1108,6 +1112,7 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .create-pushes .row .producers {
+  margin-right: 15px;
   background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
 }
 
@@ -1121,10 +1126,10 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .membership {
-  background: url("/images/cows.jpg") center center;
+  background: url("/images/cows-bw.jpg") center center;
   background-size: cover;
-  color: #fff;
-  height: 80vh;
+  color: #dec286;
+  min-height: 80vh;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -1136,11 +1141,10 @@ body.public-node-node .product-card .card-footer {
 
 .public-index .membership .membership-content {
   font-family: 'montserrat';
-  color: #fff;
   text-transform: none;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 32px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .public-index .membership .membership-content.big {
@@ -1153,9 +1157,10 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .membership a {
-  color: #fff;
   width: 300px;
   margin-top: 50px;
+  color: #dec286;
+  border-color: #dec286;
 }
 
 .public-index .find-out-more .logo {
@@ -1171,45 +1176,12 @@ body.public-node-node .product-card .card-footer {
   color: #333;
 }
 
-.public-index .find-out-more .row {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-  color: #fff;
-}
-
-.public-index .find-out-more .row > div {
+.public-index .find-out-more .users {
   margin-left: 15px;
-  background-size: cover;
-  padding: 15px;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
 }
 
-.public-index .find-out-more .row > div:last-child {
+.public-index .find-out-more .producers {
   margin-right: 15px;
-}
-
-.public-index .find-out-more .row > div h2 {
-  font-size: 3rem;
-}
-
-.public-index .find-out-more .row .users {
-  background-image: url("/images/shutterstock_436974091_crate.jpg");
-}
-
-.public-index .find-out-more .row .nodes {
-  background-image: url("/images/shutterstock_326785574_gettogether.jpg");
-}
-
-.public-index .find-out-more .row .producers {
-  background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
 }
 
 .public-index .btn-outline {
@@ -1234,8 +1206,11 @@ body.public-node-node .product-card .card-footer {
   .public-index .frontpage-section .right {
     width: 100vw;
   }
-  .public-index .create-node .row {
-    height: auto;
+  .public-index .create-pushes .row .users {
+    margin-left: 0;
+  }
+  .public-index .create-pushes .row .producers {
+    margin-right: 0;
   }
 }
 
@@ -1743,6 +1718,7 @@ body.public-index .events .event .date {
 
 body.public-index .events .event .info {
   background-color: #bbab89;
+  color: #fff;
 }
 
 body.public-node-node .events .event .date {

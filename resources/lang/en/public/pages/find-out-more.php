@@ -20,17 +20,17 @@ return [
 
     'header_2' => 'How it works',
 
-    'header_3' => '1. Create an account and become a supporting member',
+    'header_3' => 'Create an account and become a supporting member',
 
     'paragraph_3_1' => 'You can easily create an account for free, or simply log in using facebook.',
 
     'paragraph_3_2' => 'Feel free to browse the site, visit nodes close to you and put delicious food in your online cart, but in order to place the order you need to first become a supporting member on the platform. You do this by paying a yearly usage fee. The amount of the fee you pay is entirely up to you. It is up to you to decide what you feel that you can afford and what you think this service is worth to you and our society. Whatever the amount, you are co-funding and co-creating a healthier future of food. Good on you for that!',
 
-    'header_4' => '2. Join nodes you are interested in and pre-order your local food',
+    'header_4' => 'Join nodes you are interested in and pre-order your local food',
 
     'paragraph_4_1' => 'Now logged in, you can easily find the nearest nodes to where you are by clicking the Local Food Nodes icon in the top left corner. Browse the map or search and join the ones you like. Then start to make your orders (you don’t have to join a node in order to order food at it, but it will make using the site easier)',
 
-    'header_5' => '3. Pick up your food',
+    'header_5' => 'Pick up your food',
 
     'paragraph_5_1' => 'The food that you have ordered will be available at a predetermined time and place that is indicated on your orders. These orders will be sent to you via email and will also be available for you to view by using the links in the user menu. You pick up your food directly from the respective producer and you also make all payments straight to the producers. This ensures that producers retain 100% of all revenues from the products that they produce.',
 
