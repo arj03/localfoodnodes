@@ -19,6 +19,9 @@
                     </label>
                     <div class="input-group">
                         <input type="number" min="0" name="package_amount" class="form-control" id="package_amount" placeholder="{{ trans('admin/product.amount_per_package') }}" value="{{ $variant->package_amount }}">
+                        @if ($product->package_unit)
+                            <span class="input-group-addon">{{ $product->package_unit }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
