@@ -168,8 +168,9 @@ class UserController extends Controller
 
             // Default location Röstånga
             $user->setLocation('56.002490 13.293257');
-
             $user->save();
+
+            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' signed up as a user');
 
             $this->sendActivationLink($user);
 
@@ -177,7 +178,6 @@ class UserController extends Controller
 
             $request->session()->flash('message', [trans('admin/messages.user_account_created')]);
 
-            $request->session()->flash('message', ['Your account has been created and an activation link has been sent to your email.']);
             return redirect('/account/user');
         }
 
@@ -410,6 +410,9 @@ class UserController extends Controller
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());
             $request->session()->flash('message', [trans('admin/messages.user_membership_error')]);
+
+            \App\Helpers\SlackHelper::message('error', $errors);
+
             return redirect('/account/user/membership')->withErrors($errors);
         }
 
