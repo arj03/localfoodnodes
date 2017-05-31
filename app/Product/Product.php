@@ -236,12 +236,12 @@ class Product extends \App\BaseModel
             if ($this->deadline) {
                 $currenctDate = new \DateTime(date('Y-m-d'));
                 $deadlineModifyString = '+' . $this->deadline . ' days';
-                $firstBookableDate = $currenctDate->modify($deadlineModifyString)->format('Y-m-d');
+                $firstBookableDate = $currenctDate->modify($deadlineModifyString);
             } else {
-                $firstBookableDate = date('Y-m-d');
+                $firstBookableDate = new \DateTime(date('Y-m-d'));
             }
 
-            $deliveryLinks->where('date', '>=', $firstBookableDate);
+            $deliveryLinks = $deliveryLinks->where('date', '>=', $firstBookableDate);
         }
 
         return $deliveryLinks->sortBy('date');
@@ -269,7 +269,7 @@ class Product extends \App\BaseModel
     public function getDeliveryLinksByMonths($nodeId)
     {
         return $this->deliveryLinks($nodeId)->groupBy(function($deliveryLink) {
-            return $deliveryLink->date->format('m');
+            return (int) date('Ym01', $deliveryLink->date->getTimestamp());
         });
     }
 

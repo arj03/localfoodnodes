@@ -50,11 +50,14 @@
                 <label class="form-control-label">{{ trans('public/node.select_pickup') }}</label>
                 @if ($product->getDeliveryLinksByMonths($node->id)->count() > 0)
                     <div class="row calendar product-calendar">
-                        @foreach ($product->getDeliveryLinksByMonths($node->id) as $month => $deliveryLinks)
+                        @foreach ($product->getDeliveryLinksByMonths($node->id) as $monthDate => $deliveryLinks)
                             <div class="col col-6">
                                 <div class="month">
                                     <div class="month-header">
-                                        <b>{{ date('F Y', mktime(null, null, null, $month)) }}</b>
+                                        <b>
+                                            {{ substr(ucfirst(trans('months.' . date('F', strtotime($monthDate)))), 0, 3) }}
+                                            {{ date('Y', strtotime($monthDate)) }}
+                                        </b>
                                         @if ($product->productionType !== 'csa')
                                             <i class="fa fa-check-square select-all-dates-action"></i>
                                         @endif
