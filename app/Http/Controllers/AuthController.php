@@ -84,18 +84,29 @@ class AuthController extends Controller
      */
     public function facebookLoginCallback(Request $request)
     {
+        $error = null;
+
         if (!$request->input('code')) {
-            return redirect()->back()->withErrors(['Invalid login request.']);
+            $error = 'invalid_login_request';
         }
 
         $accessToken = $this->facebookGetAccessToken($request->input('code'));
         if (!$accessToken) {
-            return redirect()->back()->withErrors(['Invalid access token.']);
+            $error = 'invalid_access_token';
         }
 
         $userData = $this->facebookGetUser($accessToken);
         if (!$userData) {
-            return redirect()->back()->withErrors(['Invalid user data.']);
+            $error = 'invalid_user_data';
+        }
+
+        if (!isset($userData->name) || !isset($userData->email)) {
+            $error = 'invalid_user_data';
+        }
+
+        if ($error) {
+            $request->session()->flash('message', [trans('admin/messages.' . $error)]);
+            return redirect('/login');
         }
 
         $user = $this->facebookCreateOrLoginUser($userData);

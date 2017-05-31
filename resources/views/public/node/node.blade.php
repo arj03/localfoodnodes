@@ -21,72 +21,116 @@
     <div class="container top-container">
         <div class="row">
             <div class="col-12 col-lg-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div>
-                            {{ trans('public/node.products') }}
-                            @if (Request::has('date'))
-                                - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
-                            @endif
-                        </div>
-                        <div class="dropdown">
-                            <div class="dropdown-toggle filter-dropdown-toggle" data-toggle="dropdown">
-                                @if ($tags->contains('active', true))
-                                    {{ trans('public/node.filters') }}: {{ $tags->where('active', true)->keys()->implode(',') }}
-                                @else
-                                    {{ trans('public/node.filters') }}
+
+                <!-- Products -->
+                @if ($products->count() > 0 || $tags->contains('active', true))
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between toggle">
+                            <div>
+                                {{ trans('public/node.products') }}
+                                @if (Request::has('date'))
+                                    - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
                                 @endif
                             </div>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                @foreach ($tags as $label => $tag)
-                                    @if ($tag['active'])
-                                        <a href="{{ $tag['url'] }}" class="dropdown-item" style="background-color: #eee;">{{ $label }}</a>
-                                    @else
-                                        <a href="{{ $tag['url'] }}" class="dropdown-item">{{ $label }}</a>
-                                    @endif
-                                @endforeach
+                            <div>
+                                {{ trans('public/node.filters') }}
+                                <i class="fa fa-chevron-down toggle"></i>
+                            </div>
+                        </div>
+
+                        <div class="card-block product-filter">
+                            @foreach ($tags as $label => $tag)
+                                @if ($tag['active'])
+                                    <a href="{{ $tag['url'] }}" class="badge active">{{ $label }}</a>
+                                @else
+                                    <a href="{{ $tag['url'] }}" class="badge">{{ $label }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+
+                        <script>
+                            jQuery(document).ready(function() {
+                                // Hide card block on load if class is chevron-down
+                                $('.card-header.toggle .fa-chevron-down').closest('.card').find('.product-filter').hide();
+
+                                $('.card-header.toggle').on('click', function() {
+                                    var cardBlock = $(this).closest('.card').find('.product-filter');
+                                    var toggleIcon = $(this).find('.fa.toggle');
+
+                                    if (cardBlock.is(':visible')) {
+                                        toggleIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+                                        cardBlock.hide();
+                                    } else {
+                                        toggleIcon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                                        cardBlock.show();
+                                    }
+                                });
+                            });
+                        </script>
+
+                        <div class="card-block">
+                            @if ($products->count() > 0)
+                                <div class="row">
+                                    @foreach ($products->sortBy('name') as $product)
+                                        @if ($product->isVisible($node->id) === true)
+                                            <div class="col-6 col-lg-4 card-deck">
+                                                <a class="card product-card" href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">
+                                                    @if ($product->images()->count() > 0)
+                                                        <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">
+                                                    @else
+                                                        <img class="card-image-top" src="/images/product-image-placeholder.jpg">
+                                                    @endif
+
+                                                    <div class="card-block">
+                                                        <div class="producer-info">
+                                                            <div class="name">{{ $product->producer()->name }}</div>
+                                                        </div>
+                                                        <div class="title">{{ $product->name }}</div>
+                                                        <div class="price">
+                                                            @if ($product->variants()->count() > 0)
+                                                            {{ trans('public/node.from') }} {{ $product->smallestVariant()->price }} {{ $product->producer()->currency }}
+                                                            @else
+                                                                {{ $product->price }} {{ $product->producer()->currency }}
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <i class="fa fa-map-marker"></i> {{ $product->producer()->getDistance($node) }} {{ trans('public/node.km') }}
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @else
+                                {{ trans('public/node.no_products') }}
+                            @endif
+                        </div>
+                    </div>
+                @endif <!-- Product end -->
+
+                <!-- Events -->
+                @if ($events->count() > 0)
+                    <div class="events row no-gutters">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div>
+                                        {{ trans('public/node.events') }}
+                                        @if (Request::has('date'))
+                                            - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    @foreach ($events as $event)
+                                        @include('public.components.event')
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-block">
-                        @if ($products->count() > 0)
-                            <div class="row">
-                                @foreach ($products->sortBy('name') as $product)
-                                    @if ($product->isVisible($node->id) === true)
-                                        <div class="col-6 col-lg-4">
-                                            <a class="card product-card" href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">
-                                                @if ($product->images()->count() > 0)
-                                                    <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">
-                                                @else
-                                                    <img class="card-image-top" src="/images/product-image-placeholder.jpg">
-                                                @endif
-
-                                                <div class="card-block">
-                                                    <div class="producer-info">
-                                                        <div class="name">{{ $product->producer()->name }}</div>
-                                                    </div>
-                                                    <div class="title">{{ $product->name }}</div>
-                                                    <div class="price">
-                                                        @if ($product->variants()->count() > 0)
-                                                        {{ trans('public/node.from') }} {{ $product->smallestVariant()->price }} {{ $product->producer()->currency }}
-                                                        @else
-                                                            {{ $product->price }} {{ $product->producer()->currency }}
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <i class="fa fa-map-marker"></i> {{ $product->producer()->getDistance($node) }} {{ trans('public/node.km') }}
-                                                </div>
-                                            </a>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        @else
-                            {{ trans('public/node.no_products') }}
-                        @endif
-                    </div>
-                </div> <!-- Product end -->
+                @endif
 
                 <div class="card">
                     <div class="card-header">{{ $node->name }}</div>
@@ -182,12 +226,13 @@
                         <div class="card-block">
                             <div class="calendar-explanation">
                                 <p><i class="fa fa-square text-success"></i> {{ trans('public/node.pickup') }}</p>
-                                <p><i class="fa fa-square text-warning"></i> {{ trans('public/node.event') }}</p>
+                                <p><i class="fa fa-square text-event"></i> {{ trans('public/node.event') }}</p>
                             </div>
                         </div>
                     </div> <!-- Calendar end -->
                 @endif
 
+                <!-- Node images -->
                 @if ($node->images()->count() > 0)
                     <div class="card image-card">
                         <div class="card-header">{{ trans('public/node.images') }}</div>
@@ -201,8 +246,9 @@
                     </div>
                 @endif
 
+                <!-- Producer -->
                 @if ($node->producerLinks()->count() > 0)
-                    <div class="card image-card">
+                    <div class="card">
                         <div class="card-header">{{ trans('public/node.producers') }}</div>
                         <div class="card-block">
                             <div class="producers">

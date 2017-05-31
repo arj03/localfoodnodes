@@ -52,7 +52,7 @@ class IndexController extends Controller
      */
     public function node(Request $request, $id)
     {
-        $node = Node::where('id', $id)->with('producerLinksRelationship', 'productsRelationship')->first();
+        $node = Node::where('id', $id)->with('producerLinksRelationship', 'productNodeDeliveryLinksRelationship')->first();
         $producers = ProducerNodeLink::where('node_id', $id)->get()->map->getProducer();
         $products = $node->products();
 
@@ -61,8 +61,18 @@ class IndexController extends Controller
         $calendarMonth = $productFilter->getMonthDate();
         $calendar = new NodeCalendar($node);
 
+        $date = null;
+        if ($request->has('date')) {
+            try {
+                $date = new \DateTime($request->get('date'));
+            } catch (\Exception $e) {}
+        }
+
+        $events = $node->getAllEvents($date);
+
         return view('public.node.node', [
             'node' => $node,
+            'events' => $events,
             'products' => $filteredProducts,
             'calendar'=> $calendar->get($request),
             'calendarMonth' => $calendarMonth,

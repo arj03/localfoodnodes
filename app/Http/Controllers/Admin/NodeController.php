@@ -149,6 +149,8 @@ class NodeController extends Controller
         $data = $request->all();
         $node = Node::find($id);
 
+        $oldWeekday = $node->delivery_weekday;
+
         $errors = $node->validate($data);
         if ($errors->isEmpty()) {
 
@@ -160,6 +162,10 @@ class NodeController extends Controller
             $node->save();
 
             $this->uploadImage($request, $node);
+
+            if ($oldWeekday !== $node->delivery_weekday) {
+                $node->productNodeDeliveryLinks()->each->delete();
+            }
 
             $request->session()->flash('message', [trans('admin/messages.node_updated')]);
         }

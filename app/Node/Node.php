@@ -190,9 +190,15 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Get events.
      */
-    public function events()
+    public function events(\DateTime $date = null)
     {
-        return $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'node')->get();
+        $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'node')->get();
+
+        if ($date) {
+            $events = $events->where('start_datetime', '<=', $date)->where('end_datetime', '>=', $date);
+        }
+
+        return $events;
     }
 
     /**
@@ -204,6 +210,40 @@ class Node extends BaseModel implements EventOwnerInterface
     public function event($eventId)
     {
         return $this->events()->where('id', $eventId)->first();
+    }
+
+    /**
+     * [getAllEvents description]
+     * @param  [type] $date [description]
+     * @return [type]       [description]
+     */
+    public function getAllEvents(\DateTime $date = null)
+    {
+        $allEvents = $this->events($date);
+        $allEvents = $allEvents->merge($this->getProducerEvents($date));
+
+        return $allEvents->sortBy('start_datetime');
+    }
+
+    /**
+     * [getProducerEvents description]
+     * @param  [type] $date [description]
+     * @return [type]       [description]
+     */
+    private function getProducerEvents(\DateTime $date = null)
+    {
+        $producerEvents = new Collection();
+
+        if ($this->producerLinks()->count() > 0) {
+            $this->producerLinks()->each(function($producerLink) use (&$producerEvents, $date) {
+                if ($producerLink->getProducer()->events($date)->count() > 0) {
+                    $events = $producerLink->getProducer()->events($date);
+                    $producerEvents = $producerEvents->merge($events);
+                }
+            });
+        }
+
+        return $producerEvents;
     }
 
     /**
@@ -228,9 +268,17 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Define node relationship with product delivery dates.
      */
-    public function productsRelationship()
+    public function productNodeDeliveryLinksRelationship()
     {
         return $this->hasMany('App\Product\ProductNodeDeliveryLink');
+    }
+
+    /**
+     * Get product node delivery links
+     * @return Collection
+     */
+    public function productNodeDeliveryLinks() {
+        return $this->productNodeDeliveryLinksRelationship;
     }
 
     /**
@@ -238,7 +286,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function products()
     {
-        $products = $this->productsRelationship->map(function($productNodeDeliveryLink) {
+        $products = $this->productNodeDeliveryLinksRelationship->map(function($productNodeDeliveryLink) {
             return $productNodeDeliveryLink->getProduct();
         });
 

@@ -207,16 +207,7 @@ class Product extends \App\BaseModel
      */
     public function deliveryLinksRelationship()
     {
-        // Adjust for product booking deadline
-        if ($this->deadline) {
-            $currenctDate = new \DateTime(date('Y-m-d'));
-            $deadlineModifyString = '+' . $this->deadline . ' days';
-            $firstBookableDate = $currenctDate->modify($deadlineModifyString)->format('Y-m-d');
-        } else {
-            $firstBookableDate = date('Y-m-d');
-        }
-
-        return $this->hasMany('App\Product\ProductNodeDeliveryLink')->where('date', '>=', $firstBookableDate)->orderBy('date');
+        return $this->hasMany('App\Product\ProductNodeDeliveryLink');
     }
 
     /**
@@ -226,7 +217,7 @@ class Product extends \App\BaseModel
      * @param array $dates
      * @return Collection
      */
-    public function deliveryLinks($nodeId = null, Collection $dates = null)
+    public function deliveryLinks($nodeId = null, Collection $dates = null, $ignoreDeadline = false)
     {
         $deliveryLinks = $this->deliveryLinksRelationship;
 
@@ -240,7 +231,20 @@ class Product extends \App\BaseModel
             });
         }
 
-        return $deliveryLinks;
+        // Adjust for product booking deadline
+        if ($ignoreDeadline !== true) {
+            if ($this->deadline) {
+                $currenctDate = new \DateTime(date('Y-m-d'));
+                $deadlineModifyString = '+' . $this->deadline . ' days';
+                $firstBookableDate = $currenctDate->modify($deadlineModifyString)->format('Y-m-d');
+            } else {
+                $firstBookableDate = date('Y-m-d');
+            }
+
+            $deliveryLinks->where('date', '>=', $firstBookableDate);
+        }
+
+        return $deliveryLinks->sortBy('date');
     }
 
     /**

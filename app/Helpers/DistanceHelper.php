@@ -21,6 +21,6 @@ class DistanceHelper
             * sin(deg2rad($toLocation['lat']))
         );
 
-        return round($distance, 1);
+        return round($distance, 0);
     }
 }
