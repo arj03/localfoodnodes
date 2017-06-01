@@ -53,11 +53,16 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/pickups', 'Admin\UserController@pickups');
         Route::get('/orders', 'Admin\UserController@orders');
         Route::get('/order/{orderRef}', 'Admin\UserController@order');
-        Route::post('/membership/callback', 'Admin\UserController@membershipCallback');
         Route::get('/node/{nodeId}', 'Admin\UserController@toggleNode');
         Route::get('/events', 'Admin\UserController@events');
         Route::get('/event/{eventId}', 'Admin\UserController@toggleEvent');
         Route::get('/membership', 'Admin\UserController@membership');
+
+        // Membership
+        Route::post('/membership/stripe/callback', 'Admin\UserController@membershipCallback');
+        Route::get('/membership/swish', 'Admin\SwishController@swish');
+        Route::post('/membership/swish/callback', 'Admin\SwishController@swishCallback');
+
     });
 
     // Node

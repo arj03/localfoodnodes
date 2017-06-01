@@ -2,7 +2,7 @@
     <div class="alert alert-danger payment-errors" style="display: none;"></div>
 </div>
 
-<form action="/account/user/membership/callback" method="POST" class="form" id="payment-form">
+<form action="/account/user/membership/stripe/callback" method="POST" class="form" id="payment-form">
     {{ csrf_field() }}
     <div class="card">
         <div class="card-header">{{ trans('admin/user.membership') }}</div>
