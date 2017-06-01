@@ -9,6 +9,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests;
 
@@ -29,7 +30,13 @@ class ResetPasswordController extends Controller
      */
     public function sendLink(Request $request)
     {
-        $this->validate($request, ['email' => 'required|email']);
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|email'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $response = $this->broker()->sendResetLink($request->only('email'));
 
@@ -59,12 +66,23 @@ class ResetPasswordController extends Controller
      */
     public function reset(Request $request)
     {
-        $rules = ['token' => 'required', 'password' => 'required|confirmed|min:8'];
-        $this->validate($request, $rules);
+        $validator = \Validator::make($request->all(), [
+            'token' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed|min:8'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         // Add email to request
-        $email = DB::table('password_resets')->select('email')->where('token', $request->input('token'))->value('email');
-        $request->merge(['email' => $email]);
+        $dbResetRow = DB::table('password_resets')->select('email', 'token')->where('email', $request->input('email'))->first();
+
+        if (!Hash::check($request->input('token'), $dbResetRow->token)) {
+            $request->session()->flash('error', [trans('admin/messages.reset_link_expired')]);
+            return redirect()->back();
+        }
 
         $response = $this->broker()->reset(
             $this->credentials($request), function ($user, $password) {
@@ -124,6 +142,7 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetFailedResponse(Request $request, $response)
     {
+        $request->session()->flash('message', [trans('admin/messages.user_password_not_changed')]);
         return redirect()->back()->withInput($request->only('email'))->withErrors(['email' => trans($response)]);
     }
 

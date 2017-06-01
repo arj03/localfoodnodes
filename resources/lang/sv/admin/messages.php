@@ -75,4 +75,5 @@ return [
     'invalid_login_request' => 'Ogiltigt inloggningsanrop.',
     'invalid_access_token' => 'Ogiltig åtkomst.',
     'invalid_user_data' => 'Ogiltig användardata',
+    'reset_link_expired' => 'Återställningslänken är ogiltig.',
 ];

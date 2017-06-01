@@ -75,4 +75,5 @@ return [
     'invalid_login_request' => 'Invalid login request.',
     'invalid_access_token' => 'Invalid access token.',
     'invalid_user_data' => 'Invalid user data.',
+    'reset_link_expired' => 'Reset password link has expired.',
 ];
