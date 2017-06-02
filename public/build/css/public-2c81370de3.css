@@ -882,6 +882,11 @@ body.public-node-node .product-card .card-footer {
   color: #999;
 }
 
+body.public-producer-producer .product-card .card-footer .badge,
+body.public-node-node .product-card .card-footer .badge {
+  background-color: #a9322a;
+}
+
 .public-index .frontpage-section {
   position: relative;
   height: 100%;

@@ -44,10 +44,10 @@
                 {{ trans('admin/product.select_tags') }}
             </label>
             <div class="tags">
-                @foreach ($tags as $tag)
+                @foreach ($tags as $key => $tag)
                     <div class="tag">
-                        <input id="label-{{ $tag }}" type="checkbox" name="tags[]" value="{{ $tag }}" {{ $product->tag($tag) ? 'checked' : '' }}>
-                        <label for="label-{{ $tag }}">{{ ucfirst($tag) }}</label>
+                        <input id="label-{{ $key }}" type="checkbox" name="tags[]" value="{{ $key }}" {{ $product->tag($key) ? 'checked' : '' }}>
+                        <label for="label-{{ $key }}">{{ ucfirst($tag) }}</label>
                     </div>
                 @endforeach
             </div>
