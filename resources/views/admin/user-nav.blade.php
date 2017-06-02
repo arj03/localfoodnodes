@@ -1,4 +1,4 @@
-@if (Auth::user())
+@if (Auth::user() && Auth::user()->active)
     <div class="user-nav hidden-md-down">
         <div class="scrollfix">
             <div class="logo">

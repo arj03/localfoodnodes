@@ -27,7 +27,7 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
     </head>
-    <body class="public {{ $viewName }} {{ Auth::check() ? 'logged-in' : '' }}">
+    <body class="public {{ $viewName }} {{ Auth::check() && Auth::user()->active ? 'logged-in' : '' }}">
         <div class="page">
             @include('admin.user-nav')
             @include('public.nav')

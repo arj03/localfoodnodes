@@ -1,4 +1,4 @@
-@if (!Auth::check())
+@if (!Auth::check() || (Auth::user() && Auth::user()->active !== true))
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-light navbar-toggleable-md">

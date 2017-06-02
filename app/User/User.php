@@ -24,7 +24,7 @@ class User extends BaseUser
     protected $validationRules = [
         'name' => 'required|max:255',
         'email' => 'required|email|max:255|unique:users',
-        'password' => 'required|min:6',
+        'password' => 'required|min:8',
         'address' => '',
         'zip' => '',
         'city' => '',
@@ -158,6 +158,16 @@ class User extends BaseUser
         $rules['email'] = '';
 
         return parent::validate($data, $rules);
+    }
+
+    /**
+     * Get active boolean.
+     *
+     * @return bool
+     */
+    public function getActiveAttribute()
+    {
+        return (bool) $this->attributes['active'];
     }
 
     /**

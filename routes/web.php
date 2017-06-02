@@ -36,6 +36,8 @@ Route::group(['prefix' => '/checkout', 'middleware' => 'auth.route'], function (
 // Account create
 Route::get('/account/user/create/{type?}', 'Admin\UserController@create');
 Route::post('/account/user/insert', 'Admin\UserController@insert');
+Route::get('/account/user/migrate', 'Admin\UserController@migrateEditAccount');
+Route::post('/account/user/migrate-update', 'Admin\UserController@migrateUpdateAccount');
 
 // Admin routes
 Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function () {

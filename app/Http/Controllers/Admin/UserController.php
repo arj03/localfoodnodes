@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -77,7 +78,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->active === 1) {
+        if ($user->active) {
             return redirect('/account/user');
         }
 
@@ -295,6 +296,13 @@ class UserController extends Controller
         $errors = $user->validateUpdatePassword($data);
         if ($errors->isEmpty()) {
             $user->password = bcrypt($data['password']);
+
+            // Fix for migrated users. Update position if user have an address.
+            if ($user->address && ($user->city || $user->zip)) {
+                $latLng = $googleMapsHelper->getLatLngForDb($user->getAddressFields());
+                $user->setLocation($latLng);
+            }
+
             $user->save();
 
             $request->session()->flash('message', [trans('admin/messages.user_password_changed')]);
@@ -490,5 +498,195 @@ class UserController extends Controller
         Mail::send('email.activate-user', ['user' => $user, 'token' => $token], function ($message) use ($user) {
             $message->to($user->email, $user->name)->subject('Activate account');
         });
+    }
+
+    public function migrateEditAccount(Request $request)
+    {
+        return view('admin.user.migrate-edit', [
+            'breadcrumbs' => [
+                trans('admin/user-nav.migrate_account') => ''
+            ]
+        ]);
+    }
+
+    public function migrateUpdateAccount(Request $request)
+    {
+        $oldUsers = collect([
+            '4114achansson@telia.com',
+            'ada.wraneus@telia.com',
+            'agatkabielska@gmail.com',
+            'Albin.Sunesson@gmail.com',
+            'albin@ponnert.se',
+            'albrechtdennis@gmail.com',
+            'Alexandra.ronnangsgard@hotmail.com',
+            'Alexandra1korhonen@gmail.com',
+            'amelie_andersson@hotmail.com',
+            'andrea_flycht@hotmail.com',
+            'anette@boang.se',
+            'anna.haraldson@gmail.com',
+            'anna.strangby@gmail.com',
+            'anna@hulander.com',
+            'Annette.linander@centerpartiet.se',
+            'annika_jons@hotmail.com',
+            'annsarner@hotmail.com',
+            'asa.waldenstrom@hotmail.com',
+            'aylamm@gmail.com',
+            'braiten@hotmail.com',
+            'calle72cl@gmail.com',
+            'carlsson.kristina@gmail.com',
+            'carolina@pojmarklamm.se',
+            'christel.soderholm@gmail.com',
+            'christina.johnsson@gmail.com',
+            'cynthiareynolds@mac.com',
+            'danieldoppsko@hotmail.com',
+            'david@roxendal.com',
+            'elvir.olsson@gmail.com',
+            'Elvira.edenlund@hotmail.com',
+            'Erik.starck@gmail.com',
+            'evalottaoberg64@gmail.com',
+            'evasmeds@gmail.com',
+            'ewa@ortagarden.nu',
+            'filip.roos@gmail.com',
+            'flanders303@gmail.com',
+            'folkeg@gmail.com',
+            'frank@remmarlov.se',
+            'frebro@gmail.com',
+            'fredrik_a_nilsson@hotmail.com',
+            'fridahansson__@hotmail.com',
+            'frulaurin@gmail.com',
+            'Frustrand@gmail.com',
+            'grahnjohan@hotmail.com',
+            'hakan@ekdahls.com',
+            'Hanna-Mia.hellberg@eslov.se',
+            'hanna.norrby@gmail.com',
+            'hellalinda@hotmail.com',
+            'info@kokstradgarden.nu',
+            'info@lovbergsostar.se',
+            'info@tranaslund.se',
+            'Info@vilhelminagladkyckling.se',
+            'ingerochbosse@gmail.com',
+            'ingrid@billingehill.se',
+            'jenny.bergh@gmail.com',
+            'jennyjosefin@gmail.com',
+            'jens@narjord.se',
+            'jesper.brantefors@gmail.com',
+            'Jocke.bson@gmail.com',
+            'johan.navelso@gmail.com',
+            'johan.nyman@hotmail.com',
+            'Johan@enbom.se',
+            'johanna@bosarpsgard.se',
+            'johnguslen@hotmail.com',
+            'johroger@gmail.com',
+            'jonas.widriksson@outlook.com',
+            'jonaseco@hotmail.com',
+            'jonny.wikstrom@siljansnasresursen.se',
+            'k_wigrup@hotmail.com',
+            'karinjohansson91@live.se',
+            'karinwelinkjellman@gmail.com',
+            'kasebergaodlingen@gmail.com',
+            'katariinalundqvist@hotmail.com',
+            'kate.haeggstrom@farmartjanst.se',
+            'katti1503@gmail.com',
+            'kick@viltogardsprodukter.se',
+            'kingemansson254@gmail.com',
+            'Klarakarnerud@yahoo.se',
+            'kristina_surf@yahoo.com',
+            'kristoffer.ristinmaa@gmail.com',
+            'lammagarden@hotmail.se',
+            'le.mller@telia.com',
+            'lena.liljemark@ljustorp.se',
+            'lena.norrstrom@gmail.com',
+            'lenadera@gmail.com',
+            'lenakarinlundin@gmail.com',
+            'lennart.olsson15@bredband.net',
+            'lethorning@gmail.com',
+            'Lindawicks.th@gmail.com',
+            'lindenkisse1@gmail.com',
+            'lisatidmanfuchs@gmail.com',
+            'liselott.lantz@telia.com',
+            'Liselotthagg@gmail.com',
+            'Liza.lang82@gmail.com',
+            'lotta@poppelskogen.se',
+            'louiselagergren@gmail.com',
+            'lyckerodlantgard@gmail.com',
+            'm_sjosten@hotmail.com',
+            'malena.ekholm@gmail.com',
+            'malinengdahl@spray.se',
+            'margareta.zaunders@telia.com',
+            'maria.persson.martinsson@telia.com',
+            'maria@rikkenstorp.se',
+            'Marie-vestin@live.se',
+            'marika@paxbrygghus.se',
+            'marta.herrlin@gmail.com',
+            'mimmi.lowejko@gmail.com',
+            'moa.nyman@spray.se',
+            'mona@frugran.se',
+            'mullaert@me.com',
+            'Nc@fornkorn.se',
+            'nils@hasselconsulting.se',
+            'ninnabjorne@gmail.com',
+            'nordahlbirgitta@hotmail.com',
+            'norrfrid@hotmail.com',
+            'norrlidenlamm@gmail.com',
+            'ola.ohlson@gmail.com',
+            'olssonslovisa@gmail.com',
+            'olsvenne@Gotland.at',
+            'oscar.hjerpe@gmail.com',
+            'oskar@ponnert.en',
+            'patrik.ivarssons@gmail.com',
+            'patrik.mansson@gmail.com',
+            'petra@petrasundberg.se',
+            'philemonarthur@hotmail.com',
+            'polcirkelngardsprodukter@gmail.com',
+            'post@karinlilja.se',
+            'Rasmus@sumsar.se',
+            'roger@langbergetsgard.se',
+            'sarafrostberg@hotmail.com',
+            'sarasockerbit@gmail.com',
+            'sarner2@gmail.com',
+            'simone@undertallarna.se',
+            'sissela.ekdahl@hotmail.com',
+            'stefan.persson@rhefab.se',
+            'stina@gamlasalteriet.se',
+            'susannascollie@hotmail.com',
+            'tearjerker@bredband.net',
+            'Tina@sverige.nu',
+            'tony.heine@hotmail.com',
+            'Tove.bergman@hotmail.se',
+            'ullae.strandberg@gmail.com',
+            'vadensjo1@hotmail.com',
+            'victorwassman@gmail.com',
+            'zaunders@gmail.com',
+        ]);
+
+        // Not and old user, redirect to create account page
+        if (!$oldUsers->contains($request->input('email'))) {
+            $request->session()->flash('message', [trans('admin/messages.user_migrate_not_valid')]);
+            return redirect('/account/user/create');
+        }
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        if ($user->password !== null) {
+            $request->session()->flash('message', [trans('admin/messages.user_migrate_already_exists')]);
+            return redirect('/login');
+        }
+
+        $validator = \Validator::make($request->all(), [
+            'password' => 'required|min:8'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+
+            $this->sendActivationLink($user);
+
+            Auth::login($user);
+            $request->session()->flash('message', [trans('admin/messages.user_migrate_done')]);
+            return redirect('/account/user');
+        }
     }
 }
