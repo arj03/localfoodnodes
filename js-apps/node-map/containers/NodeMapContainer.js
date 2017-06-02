@@ -168,7 +168,7 @@ class NodeMapContainer extends Component {
                     <h3>{node.name}</h3>
                     <div className="meta">
                         <div><i className="fa fa-home" />{node.address} {node.zip} {node.city}</div>
-                        <div><i className="fa fa-clock-o" />{node.delivery_weekday} {node.delivery_time}</div>
+                        <div><i className="fa fa-clock-o" />{trans[node.delivery_weekday]} {node.delivery_time}</div>
                     </div>
                 </a>
                 <div className='body-text'>
