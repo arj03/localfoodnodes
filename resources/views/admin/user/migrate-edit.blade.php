@@ -9,7 +9,7 @@
                 <form action="/account/user/migrate-update" method="post">
                     {{ csrf_field() }}
                     <div class="card">
-                        <div class="card-header">{{ trans('admin/user.create_account') }}</div>
+                        <div class="card-header">{{ trans('admin/user.recreate_account') }}</div>
                         <div class="card-block">
                             <div class="form-group">
                                 <label for="email">
@@ -27,7 +27,7 @@
                             </div>
                             <p>{{ trans('admin/user.term_link_pre') }} <a href="#" data-toggle="modal" data-target="#terms-modal">{{ trans('admin/user.terms_of_use') }}</a>.</p>
 
-                            <button type="submit" class="btn btn-success">{{ trans('admin/user.create_account') }}</button>
+                            <button type="submit" class="btn btn-success">{{ trans('admin/user.recreate_account') }}</button>
                         </div>
                     </div>
                 </form>

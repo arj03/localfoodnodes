@@ -504,7 +504,7 @@ class UserController extends Controller
     {
         return view('admin.user.migrate-edit', [
             'breadcrumbs' => [
-                trans('admin/user-nav.migrate_account') => ''
+                trans('admin/user.recreate_account') => ''
             ]
         ]);
     }

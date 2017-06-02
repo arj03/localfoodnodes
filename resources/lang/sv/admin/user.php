@@ -43,6 +43,7 @@ return [
     'product' => 'Produkt',
     'producer' => 'Producent',
     'quantity' => 'Kvantitet',
+    'recreate_account' => 'Återskapa konto',
     'resend' => 'Skicka aktiveringslänk igen',
     'reset_password' => 'Återställ lösenord',
     'save_user' => 'Spara användare',

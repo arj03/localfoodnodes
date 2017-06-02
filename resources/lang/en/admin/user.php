@@ -43,6 +43,7 @@ return [
     'product' => 'Product',
     'producer' => 'Producer',
     'quantity' => 'Quantity',
+    'recreate_account' => 'Recreate account',
     'resend' => 'Resend activation link',
     'reset_password' => 'Reset password',
     'save_user' => 'Save user',
