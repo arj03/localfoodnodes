@@ -3,7 +3,7 @@
 return [
     'activate_account' => 'Activate account',
     'account_activation' => 'Account activation',
-    'account_activation_info' => 'You should have received an email with an activation link to enable your account. If you haven\'t received the email...',
+    'account_activation_info' => 'An email with an activation link to enable your account will be sent to you. This can take up to a few minutes.',
     'address' => 'Address',
     'amount' => 'Amount',
     'become_a_member' => 'Become a member',

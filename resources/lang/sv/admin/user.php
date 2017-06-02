@@ -3,7 +3,7 @@
 return [
     'activate_account' => 'Aktivera konto',
     'account_activation' => 'Aktivera konto',
-    'account_activation_info' => 'Vi har skickat en aktiveringslänk till din epostadress.',
+    'account_activation_info' => 'En aktiveringslänk är skickad till din epostadress. Detta kan ta några minuter',
     'address' => 'Adress',
     'amount' => 'Summa',
     'become_a_member' => 'Bli medlem',
