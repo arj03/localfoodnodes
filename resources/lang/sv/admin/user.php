@@ -11,6 +11,7 @@ return [
     'card_expiration' => 'Utgångsdatum (MM/YY)',
     'card_number' => 'Kortnummer',
     'change_password' => 'Ändra lösenord',
+    'choose_password' => 'Välj ditt lösenord',
     'city' => 'Stad',
     'confirm_password' => 'Bekräfta lösenord',
     'create_account' => 'Skapa konto',

@@ -511,7 +511,7 @@ class UserController extends Controller
 
     public function migrateUpdateAccount(Request $request)
     {
-        $oldUsers = collect([
+        $oldUsers = collect(array_map('strtolower', [
             '4114achansson@telia.com',
             'ada.wraneus@telia.com',
             'agatkabielska@gmail.com',
@@ -657,10 +657,10 @@ class UserController extends Controller
             'vadensjo1@hotmail.com',
             'victorwassman@gmail.com',
             'zaunders@gmail.com',
-        ]);
+        ]));
 
         // Not and old user, redirect to create account page
-        if (!$oldUsers->contains($request->input('email'))) {
+        if (!$oldUsers->contains(strtolower($request->input('email')))) {
             $request->session()->flash('message', [trans('admin/messages.user_migrate_not_valid')]);
             return redirect('/account/user/create');
         }

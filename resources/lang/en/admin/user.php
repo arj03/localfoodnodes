@@ -11,6 +11,7 @@ return [
     'card_expiration' => 'Expiration (MM/YY)',
     'card_number' => 'Card number',
     'change_password' => 'Change password',
+    'choose_password' => 'Choose your password',
     'city' => 'City',
     'confirm_password' => 'Confirm password',
     'create_account' => 'Create account',

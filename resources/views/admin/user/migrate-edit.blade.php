@@ -20,10 +20,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">
-                                    {{ trans('admin/user.password') }}
+                                    {{ trans('admin/user.choose_password') }}
                                     @include('admin.field-error', ['field' => 'password'])
                                 </label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('admin/user.password') }}">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('admin/user.choose_password') }}">
                             </div>
                             <p>{{ trans('admin/user.term_link_pre') }} <a href="#" data-toggle="modal" data-target="#terms-modal">{{ trans('admin/user.terms_of_use') }}</a>.</p>
 
