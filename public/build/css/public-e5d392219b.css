@@ -759,6 +759,7 @@ body.page .page .card .body-text {
 .map .map-preview .body-text .btn {
   width: 100%;
   text-align: center;
+  line-height: 20px;
 }
 
 .map .map-preview .body-text .btn .fa {
@@ -1454,7 +1455,7 @@ body.public-checkout .cart-item:last-child {
 }
 
 .node-calendar .month .days .day.delivery {
-  background: #51b26e;
+  background: #8fb773;
   color: #fff;
 }
 
