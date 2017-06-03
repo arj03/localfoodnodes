@@ -164,7 +164,7 @@ class UserController extends Controller
         $errors = $user->validate($data);
         if ($errors->isEmpty()) {
             $userData = $user->sanitize($data);
-            $userData['password'] = bcrypt($userData['password']);
+            $userData['password'] = \Hash::make($userData['password']);
             $user->fill($userData);
 
             // Default location Röstånga
@@ -288,14 +288,14 @@ class UserController extends Controller
     /**
      * Update password action.
      */
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request, GoogleMapsHelper $googleMapsHelper)
     {
         $user = Auth::user();
         $data = $request->all();
 
         $errors = $user->validateUpdatePassword($data);
         if ($errors->isEmpty()) {
-            $user->password = bcrypt($data['password']);
+            $user->password = \Hash::make($data['password']);
 
             // Fix for migrated users. Update position if user have an address.
             if ($user->address && ($user->city || $user->zip)) {

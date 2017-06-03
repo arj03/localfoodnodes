@@ -116,7 +116,7 @@ class ResetPasswordController extends Controller
     protected function resetPassword($user, $password)
     {
         $user->forceFill([
-            'password' => bcrypt($password),
+            'password' => \Hash::make($password),
             'remember_token' => Str::random(60),
         ])->save();
     }
