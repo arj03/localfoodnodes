@@ -776,6 +776,11 @@ body.public-product-product .info {
   margin-top: -150px;
 }
 
+body.public-product-product .order-block .price {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
 body.public-node-node .node-content .node-admin {
   margin-bottom: 20px;
 }

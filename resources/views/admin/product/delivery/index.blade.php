@@ -3,7 +3,7 @@
 @section('title', 'Product deliveries')
 
 @section('content')
-    @include('admin.page-header', ['title' => $producer->name . ' - ' . $product->name . ' - Deliveries'])
+    @include('admin.page-header')
 
     @include('admin.product.shared.quick-links')
 

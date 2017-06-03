@@ -3,7 +3,7 @@
 @section('title', 'Create product')
 
 @section('content')
-    @include('admin.page-header', ['title' => $producer->name . ' - Create product'])
+    @include('admin.page-header')
 
     <form action="/account/producer/{{ $producer->id }}/product/insert" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">{{ trans('public/node.order') }}</div>
-    <div class="card-block">
+    <div class="card-block order-block">
         <form action="/checkout/item/add" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="node_id" value="{{ $node->id }}" />
@@ -13,14 +13,12 @@
                         <div class="form-check">
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}">
-                                <div class="d-flex justify-content-between">
-                                    <div>{{ $product->name}} - {{ $variant->name }}</div>
-                                    <div style="white-space: nowrap">
-                                        {{ $variant->price }} {{ $producer->currency }}
-                                        @if ($product->package_unit)
-                                            / {{ $variant->package_amount }} {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }}
-                                        @endif
-                                    </div>
+                                {{ $product->name}} - {{ $variant->name }}
+                                <div class="price">
+                                    {{ $variant->price }} {{ $producer->currency }}
+                                    @if ($product->package_unit)
+                                        / {{ $variant->package_amount }} {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }}
+                                    @endif
                                 </div>
                             </label>
                         </div>
@@ -30,11 +28,9 @@
                     <div class="form-check">
                         <label class="form-check-label w-100">
                             <input class="form-check-input" type="radio" name="product_id" value="{{ $product->id }}" checked>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <div>{{ $product->name}}</div>
-                                </div>
-                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
+                            <div>
+                                {{ $product->name}}
+                                <div class="price">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
                             </div>
                         </label>
                     </div>

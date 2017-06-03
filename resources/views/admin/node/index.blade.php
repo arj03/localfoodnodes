@@ -3,7 +3,7 @@
 @section('title', 'Node')
 
 @section('content')
-    @include('admin.page-header', ['title' => $node->name])
+    @include('admin.page-header')
 
     <div class="row">
         <div class="col-12 col-lg-6 card-deck">
