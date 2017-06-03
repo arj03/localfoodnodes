@@ -28,7 +28,9 @@ return [
     'enter_content_one_product' => 'Fyll i innehållet i en produkt',
     'enter_price_one_product' => 'Fyll i priset för en produkt',
     'enter_total_csa_subscribers' => 'Fyll i totala antalet CSA-prenumeranter för denna produkt och säsong',
+    'hg' => 'hg',
     'hide_from_store' => 'Dölj produkten i butiken',
+    'kg' => 'kg',
     'main_variant' => 'Huvudvariant',
     'name' => 'Namn',
     'name_first_variant' => 'Namnge din första produktvariant',
@@ -42,6 +44,7 @@ return [
     'other_options' => 'Andra inställningar (valfritt)',
     'price' => 'Pris',
     'price_per' => 'Pris anges per...',
+    'product' => 'Produkt',
     'product_name' => 'Produktnamn',
     'product_name_placeholder' => 'Exampel: Ägg, morötter...',
     'product_content' => 'Produktinnehåll',
@@ -93,8 +96,6 @@ return [
     'hdiw_item_4_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
 
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
-
-    //
 
     'delivery_adjustment' => 'Återkommande produkter med leveranssaldo är produkter som produceras kontinuerligt under en period där saldon administreras per utläming. Eftersom kvaniteten kan variera under denna period så kan du i vyn justera produktionskvantitet per nod och utlämning ändra hur många produkter som du tillgängliggör vid de olika utlämningarna under säsongen.',
 
