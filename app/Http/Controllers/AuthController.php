@@ -59,7 +59,7 @@ class AuthController extends Controller
         }
 
         $request->session()->flash('message', [trans('admin/messages.invalid_login')]);
-        return redirect('/login')->withInput()->withErrors($error);
+        return redirect('/login')->withInput();
     }
 
     /**
