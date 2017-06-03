@@ -34,7 +34,7 @@
                                 <div>
                                     <div>{{ $product->name}}</div>
                                 </div>
-                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }} / {{ trans('units.' . $product->price_unit) }}</div>
+                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
                             </div>
                         </label>
                     </div>
