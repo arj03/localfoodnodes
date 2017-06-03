@@ -3,10 +3,7 @@
         <div class="scrollfix">
             <div class="logo">
                 <img src="/images/nav-logo.png">
-                <a href="/">
-                    Local Food Nodes
-                    <span class="beta">beta</span>
-                </a>
+                <a href="/">Local Food Nodes</a>
             </div>
 
             @include('public.cart')
