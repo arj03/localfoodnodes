@@ -77,9 +77,10 @@ return [
     'invalid_access_token' => 'Invalid access token.',
     'invalid_user_data' => 'Invalid user data.',
     'reset_link_expired' => 'Reset password link has expired.',
+    'invalid_login' => 'Incorrect credentials',
 
     // Migration
     'user_migrate_not_valid' => 'Email address was is not available for migration, please create a new account.',
     'user_migrate_already_exists' => 'Email address has already been migrated.',
-    'user_migrate_done' => '',
+    'user_migrate_done' => 'Migration done',
 ];

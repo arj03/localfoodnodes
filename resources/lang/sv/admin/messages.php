@@ -76,4 +76,10 @@ return [
     'invalid_access_token' => 'Ogiltig åtkomst.',
     'invalid_user_data' => 'Ogiltig användardata',
     'reset_link_expired' => 'Återställningslänken är ogiltig.',
+    'invalid_login' => 'Felaktiga inloggningsuppgifter.',
+
+    // Migration
+    'user_migrate_not_valid' => 'Din epost kan inte migreras, vänligen skapa ett nytt konto.',
+    'user_migrate_already_exists' => 'Ditt konto är redan migrerat.',
+    'user_migrate_done' => 'Migrering färdig.',
 ];
