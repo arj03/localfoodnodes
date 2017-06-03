@@ -12,7 +12,7 @@
         <input type="hidden" name="producer_id" value="{{ $producer->id }}">
 
         <div class="row">
-            <div class="col-12 col-xl-8">
+            <div class="col-12 col-xl-8 card-deck">
                 @if ($nodes->count() > 0)
                     @include('admin.product.delivery.calendar', ['nodes' => $nodes])
                 @else
@@ -27,6 +27,10 @@
                         </div>
                     </div>
                 @endif
+            </div>
+
+            <div class="col-12 col-xl-4">
+                @include('admin.product.product.how-does-it-work')
             </div>
         </div>
 

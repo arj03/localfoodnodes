@@ -1,6 +1,6 @@
 <div class="col-12 col-xl-4">
     <div class="card">
-        <div class="card-header">How does it work</div>
+        <div class="card-header">{{ trans('admin/node.how_does_it_work') }}</div>
         <div class="card-block">
             {{ trans('admin/node.hdiw_intro') }}
             <ul class="info-list">

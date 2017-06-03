@@ -55,6 +55,7 @@ return [
     'sunday' => 'Sunday',
 
     // How does it work
+    'how_does_it_work' => 'How does it work',
     'hdiw_intro' => 'This is how you create a node.',
     'hdiw_item_1' => 'Read through and make sure you understand the terms of use.',
     'hdiw_item_2' => 'Create your node using the form to the left.',

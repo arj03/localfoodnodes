@@ -10,7 +10,7 @@
     <form action="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/update" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
-            <div class="col-12 col-xl-8">
+            <div class="col-12 col-xl-8 card-deck">
                 <div class="card">
                     <div class="card-header toggle">
                         {{ trans('admin/product.production') }}
@@ -201,6 +201,10 @@
 
                     </div> <!-- End of occasional panel -->
                 </div> <!-- End of production panel -->
+            </div>
+
+            <div class="col-12 col-xl-4">
+                @include('admin.product.product.how-does-it-work')
             </div>
         </div>
 
