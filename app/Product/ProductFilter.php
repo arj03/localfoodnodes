@@ -127,18 +127,18 @@ class ProductFilter
     {
         $tags = new Collection();
 
-        foreach (self::tags() as $tag) {
+        foreach (self::tags() as $key => $tag) {
             // In loop to it's resetted for every tag
             $selectedTags = $this->getSelectedTags($request);
 
-            if ($selectedTags->contains($tag)) {
+            if ($selectedTags->contains($key)) {
                 $active = true;
-                $selectedTags = $selectedTags->reject(function ($t) use ($tag) {
-                    return $t === $tag;
+                $selectedTags = $selectedTags->reject(function ($selectedTag) use ($key) {
+                    return $selectedTag === $key;
                 });
             } else {
                 $active = false;
-                $selectedTags->push($tag);
+                $selectedTags->push($key);
             }
 
             $url = $this->buildQuery('tag', $selectedTags->implode(','));
