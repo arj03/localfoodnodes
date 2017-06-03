@@ -21,7 +21,10 @@
             menubar: false,
             plugins: 'code',
             toolbar: 'formatselect bold italic alignleft aligncenter alignright alignjustify code',
-            block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6'
+            block_formats: 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6',
+            inline_styles: false,
+            valid_classes: '',
+            valid_elements : 'h1,h2,h3,h4,h5,h6,p,a[href|target=_blank],strong/b,div,span,br',
         });</script>
 
         <!-- Flatpickr -->
