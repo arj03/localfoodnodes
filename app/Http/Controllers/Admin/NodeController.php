@@ -112,7 +112,7 @@ class NodeController extends Controller
             $node->setLocation($latLng);
             $node->save();
 
-            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' created the node ' . $node->name);
+            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' created the node ' . $node->name . '.');
 
             NodeAdminLink::create(['node_id' => $node->id, 'user_id' => $user->id, 'active' => 1]);
 

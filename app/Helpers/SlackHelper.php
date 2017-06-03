@@ -11,14 +11,16 @@ class SlackHelper
      * @param string $message
      */
     public static function message($channel, $message) {
-        switch($channel) {
-            case 'notification':
-                self::notification($message);
-                break;
-            case 'error':
-                self::error($message);
-                break;
+        if (env('SLACK', false)) {
+            switch($channel) {
+                case 'notification':
+                    self::notification($message);
+                    break;
+                case 'error':
+                    self::error($message);
+                    break;
 
+            }
         }
     }
 
@@ -28,7 +30,7 @@ class SlackHelper
      * @param string $message
      */
     private static function notification($message) {
-        self::send('https://hooks.slack.com/services/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', $message);
+        self::send(env('SLACK_NOTIFICATION_URL'), $message);
     }
 
     /**
@@ -37,7 +39,7 @@ class SlackHelper
      * @param string $message
      */
     private static function error($message) {
-        self::send('https://hooks.slack.com/services/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', $message);
+        self::send(env('SLACK_ERROR_URL'), $message);
     }
 
     /**

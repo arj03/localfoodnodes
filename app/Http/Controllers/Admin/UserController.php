@@ -171,7 +171,7 @@ class UserController extends Controller
             $user->setLocation('56.002490 13.293257');
             $user->save();
 
-            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' signed up as a user');
+            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' signed up as a user.');
 
             $this->sendActivationLink($user);
 
@@ -414,6 +414,8 @@ class UserController extends Controller
                     'user_id' => $user->id,
                     'amount' => $amount
                 ]);
+
+                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
             }
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());

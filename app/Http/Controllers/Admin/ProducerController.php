@@ -126,7 +126,7 @@ class ProducerController extends Controller
 
             $producer->save();
 
-            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' created the producer ' . $producer->name);
+            \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' created the producer ' . $producer->name . '.');
 
             ProducerAdminLink::create(['producer_id' => $producer->id, 'user_id' => $user->id, 'active' => 1]);
 
