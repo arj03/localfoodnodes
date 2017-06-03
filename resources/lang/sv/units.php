@@ -5,7 +5,7 @@ return [
     'bottle' => 'Flaska|Flaskor',
     'jar' => 'Burk|Burkar',
     'pieces' => 'Styck',
-    'product' => 'Produkt',
+    'product' => 'Produkt|Produkter',
 
     // SI units
     'kg' => 'kg',

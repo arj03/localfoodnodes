@@ -34,7 +34,7 @@ class UnitsHelper
     public static function getPriceUnits()
     {
         return collect([
-            'product' => trans('units.product'),
+            'product' => trans_choice('units.product', 1),
             'kg' => trans('units.kg'),
             'hg' => trans('units.hg'),
         ]);

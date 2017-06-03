@@ -18,7 +18,7 @@
                                     <div style="white-space: nowrap">
                                         {{ $variant->price }} {{ $producer->currency }}
                                         @if ($product->package_unit)
-                                            / {{ $variant->package_amount}} {{ $product->package_unit }}
+                                            / {{ $variant->package_amount }} {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }}
                                         @endif
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                 <div>
                                     <div>{{ $product->name}}</div>
                                 </div>
-                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }}</div>
+                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }} / {{ trans('units.' . $product->price_unit) }}</div>
                             </div>
                         </label>
                     </div>
@@ -43,7 +43,12 @@
 
             <div class="form-group">
                 <label class="form-control-label" for="quantity">{{ trans('public/node.how_many') }}</label>
-                <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
+                <div class="input-group">
+                    <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
+                    @if ($product->package_unit)
+                        <span class="input-group-addon">{{ $product->price_unit }}</span>
+                    @endif
+                </div>
             </div>
 
             <div class="form-group">
