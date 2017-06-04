@@ -26,7 +26,12 @@
                         {{ trans('admin/product.enter_price_one_product') }}
                         @include('admin.field-error', ['field' => 'price'])
                     </label>
-                    <input type="number" min="0" name="price" class="form-control" id="price" placeholder="Price" value="{{ $product->price or '' }}">
+                    <input type="number" min="0" name="price" class="form-control" id="price" placeholder="Price" value="{{ $product->price or '' }}" {{ $product->variants()->count() > 0 ? 'disabled' : '' }}>
+                    @if ($product->variants()->count() > 0)
+                        <div class="form-text text-muted">
+                            Price is set on your variants.
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group">
