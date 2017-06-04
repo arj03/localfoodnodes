@@ -6,7 +6,7 @@ return [
     'header_1' => 'Local Food Nodes',
     'subheader_1' => '- Från en längtan att göra maten lokal igen',
 
-    'paragraph_1_1' => 'Anledningen till att vi skapar Local Food Nodes är för att vi vill skapa nya kopplingar direkt mellan matproducenter med matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.',
+    'paragraph_1_1' => 'Anledningen till att vi skapar Local Food Nodes är att vi vill skapa nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.',
 
     'paragraph_1_2' => 'Resultatet är ett öppet digitalt verktyg där producenten presenterar sina varor, konsumenten bokar det man vill ha och betalar direkt till producenten. Utlämning och upphämtning av varorna sker sedan på en förutbestämd tid och plats, en nod (namnet kommer från konceptet “noder i ett nätverk”), där alla konsumenter och producenter samlas. På det viset kan du som konsument hämta upp varor från flera producenter på samma gång och som producent kan du lämna ut till flera kunder samtidigt.',
 
