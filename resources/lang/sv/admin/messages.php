@@ -61,7 +61,7 @@ return [
     'user_password_changed' => 'Ditt lösenord har ändrats',
     'user_membership_amount_not_numeric' => 'Avgiften är inte numeriskt. Måste vara en siffra',
     'user_membership_success' => 'Din medlemsavgift är nu betald.',
-    'user_membership_errors' => 'Betalning av medlemsavgift kunde inte slutföras (:errors).',
+    'user_membership_errors' => 'Betalning av medlemsavgift kunde inte slutföras. :errors',
 
     // Password reset
     'password_reset_email_sent' => 'En återställningslänk har skickats till din epost-adress.',

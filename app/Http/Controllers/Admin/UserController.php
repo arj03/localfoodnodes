@@ -419,11 +419,14 @@ class UserController extends Controller
             }
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());
-            $request->session()->flash('message', [trans('admin/messages.user_membership_error')]);
 
-            \App\Helpers\SlackHelper::message('error', $errors);
+            $request->session()->flash('message', [
+                trans('admin/messages.user_membership_error', [
+                    'errors' => implode($errors->all(), '')
+                ])
+            ]);
 
-            return redirect('/account/user/membership')->withErrors($errors);
+            return redirect('/account/user/membership');
         }
 
         $request->session()->flash('message', [trans('admin/messages.user_membership_success')]);

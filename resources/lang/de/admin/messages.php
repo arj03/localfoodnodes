@@ -61,7 +61,7 @@ return [
     'user_password_changed' => 'Your password has been changed',
     'user_membership_amount_not_numeric' => 'Membership fee is not numeric. Must be an integer.',
     'user_membership_success' => 'Din medlemsavgift är nu betald.',
-    'user_membership_error' => 'Membership payment could not be completed (:errors)',
+    'user_membership_error' => 'Membership payment could not be completed. :errors',
 
     // Password reset
     'password_reset_email_sent' => 'We have e-mailed your password reset link.',
