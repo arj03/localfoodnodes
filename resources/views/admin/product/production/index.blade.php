@@ -17,6 +17,16 @@
                         <i class="fa fa-chevron-up toggle"></i>
                     </div>
                     <div class="card-block">
+                        <b>{{ trans('admin/product.recurring_products_weekly') }}</b>
+                        <p>{{ trans('admin/product.recurring_products_info') }}</p>
+
+                        <b>{{ trans('admin/product.occasional_products') }}</b>
+                        <p>{{ trans('admin/product.occasional_products_info') }} </p>
+
+                        <b>{{ trans('admin/product.csa_products') }}</b>
+                        <p>{{ trans('admin/product.csa_products_info') }}</p>
+                    </div>
+                    <div class="card-block">
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
@@ -50,17 +60,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <ul class="text-muted list">
-                                    <li>{{ trans('admin/product.recurring_products_info') }}</li>
-                                    <li>{{ trans('admin/product.occasional_products_info') }} </li>
-                                    <li>{{ trans('admin/product.csa_products_info') }}</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="card-block">
-
                         <!-- CSA -->
                         <div class="card type-card" id="type-card-csa">
                             <div class="card-header">{{ trans('admin/product.csa_products') }}</div>
@@ -194,13 +196,16 @@
                                                 </tbody>
                                             </table>
                                         @endif
-                                    </div> <!-- Table col end -->
-                                </div>
-                            </div> <!-- Card block end -->
-                        </div> <!-- Card end -->
+                                    </div>
+                                </div> <!-- Saved production end -->
+                            </div>
+                        </div>
+                    </div> <!-- Card block end-->
+                </div>
+            </div>
 
-                    </div> <!-- End of occasional panel -->
-                </div> <!-- End of production panel -->
+            <div class="col-12 col-xl-4">
+                @include('admin.product.product.how-does-it-work')
             </div>
         </div>
 
@@ -217,9 +222,7 @@
                 $('.product-type-alert').remove();
                 $('.type-card').hide();
 
-                if (!type) { // Show alert with info if type is empty ...
-                    $('#product-type').closest('.card-block').append('<p class="product-type-alert">Select a product type in the dropdown above.</p>')
-                } else { // ... else show selected type card.
+                if (type) {
                     $('#type-card-' + type).show();
                 }
             };

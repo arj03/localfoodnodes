@@ -10,7 +10,10 @@
                     <div class="col col-3">
                         <div class="month">
                             <div class="month-header">
-                                <b>{{ date('F - Y', strtotime($firstDateOfMonth)) }}</b>
+                                <b>
+                                    {{ substr(ucfirst(trans('months.' . date('F', strtotime($firstDateOfMonth)))), 0, 3) }}
+                                    {{ date('Y', strtotime($firstDateOfMonth)) }}
+                                </b>
                                 <i class="fa fa-check-square select-all-dates-action"></i>
                             </div>
                             <div class="days">

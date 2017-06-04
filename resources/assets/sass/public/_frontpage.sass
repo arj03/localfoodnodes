@@ -20,7 +20,7 @@
       &.thin
         font-weight: 200
     p
-      font-size: 20px
+      font-size: 18px
       line-height: 1.5em
 
   // Header
@@ -90,6 +90,7 @@
             font-size: 12px
             margin: 0
             color: #807762
+
     .map-holder
       height: 70vh
 
@@ -124,25 +125,27 @@
       display: flex
       align-items: stretch
       color: #fff
-      > div
-        margin-left: 15px
+      .users,
+      .nodes,
+      .producers
+        position: relative
         background-size: cover
         padding: 15px
-        height: 70vh
+        height: 50vh
         display: flex
         flex-direction: column
-        justify-content: center
-        &:last-child
-          margin-right: 15px
+        justify-content: space-between
+        padding: 50px 0
+        margin: 15px
         h2
-          font-size: 3rem
+          font-size: 2rem
+          min-height: 100px
         a
           text-align: center
-          margin: 50px auto 20px
-          width: 50%
           font-size: 16px
           line-height: 1.3em
           font-weight: bold
+          width: calc(100% - 30px)
 
       .users
         background-image: url('/images/shutterstock_436974091_crate.jpg')
@@ -159,69 +162,58 @@
       margin-bottom: 50px
 
   .membership
-    background: url('/images/cows.jpg') center center
+    background: url('/images/cows-bw.jpg') center center
     background-size: cover
-    color: #fff
-    height: 80vh
+    color: #dec286
+    min-height: 80vh
     display: flex
     justify-content: center
     align-items: center
     text-align: center
     .membership-content
       font-family: 'montserrat'
-      color: #fff
       text-transform: none
-      font-size: 24px
+      font-size: 18px
       line-height: 32px
-      margin-top: 100px
+      margin-top: 50px
       &.big
         font-size: 40px
         line-height: 40px
       &.uppercase
         text-transform: uppercase
     a
-      color: #fff
       width: 300px
       margin-top: 50px
-
-
+      color: #dec286
+      border-color: #dec286
 
   .find-out-more
     .logo
-        padding-top: 50px
-        width: 10vw
-        display: block
-        margin: 0 auto
+      padding-top: 50px
+      width: 10vw
+      display: block
+      margin: 0 auto
     > h2
       padding-top: 50px
       padding-bottom: 50px
       color: #333
     .row
-      display: flex
-      align-items: stretch
-      color: #fff
-      > div
-        margin-left: 15px
-        background-size: cover
-        padding: 15px
-        display: flex
-        flex-direction: column
-        justify-content: flex-start
-        &:last-child
-          margin-right: 15px
-        h2
-          font-size: 3rem
-        .body-text
-
-
-      .users
-        background-image: url('/images/shutterstock_436974091_crate.jpg')
-      .nodes
-        background-image: url('/images/shutterstock_326785574_gettogether.jpg')
-      .producers
-        background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
-
-
+      margin-left: 15px
+      margin-right: 15px
+      .card
+        h3
+          overflow-wrap: break-word
+          word-wrap: break-word
+          -ms-word-break: break-all
+          /* This is the dangerous one in WebKit, as it breaks things wherever */
+          word-break: break-all
+          /* Instead use this non-standard one: */
+          word-break: break-word
+          /* Adds a hyphen where the word breaks, if supported (No Blink) */
+          -ms-hyphens: auto
+          -moz-hyphens: auto
+          -webkit-hyphens: auto
+          hyphens: auto
 
   .btn-outline
     border: 1px solid #fff
@@ -244,9 +236,14 @@
       .right
         width: 100vw
 
-    .create-node
+    .create-pushes
       .row
-        height: auto
+        .users,
+        .nodes,
+        .producers
+          margin-left: 0
+          margin-right: 0
+          padding: 20px 0
 
 // Hide things on front page when logged in
 body.public-index

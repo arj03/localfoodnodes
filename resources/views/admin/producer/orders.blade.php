@@ -48,7 +48,12 @@
                     </div>
                 @endforeach
             @else
-                {{ trans('admin/producer.no_orders') }}
+                <div class="card">
+                    <div class="card-header">{{ trans('admin/producer.orders') }}</div>
+                    <div class="card-block">
+                        {{ trans('admin/producer.no_orders') }}
+                    </div>
+                </div>
             @endif
         </div>
     </div>

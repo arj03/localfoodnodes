@@ -33,7 +33,7 @@
                             <div class="row">
                                 @foreach ($producer->products() as $product)
                                     @if ($product->isVisible() === true)
-                                        <div class="col-6 col-lg-4">
+                                        <div class="col-6 col-lg-4 card-deck">
                                             <a class="card product-card" href="{{ $producer->permalink()->url }}{{ $product->permalink()->url }}">
                                                 @if ($product->images()->count() > 0)
                                                     <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">

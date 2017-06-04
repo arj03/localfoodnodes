@@ -8,5 +8,4 @@ return [
     'friday' => 'Fredag|Fredagar',
     'saturday' => 'Lördag|Lördagar',
     'sunday' => 'Söndag|Söndagar',
-
 ];

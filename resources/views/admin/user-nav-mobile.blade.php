@@ -1,4 +1,4 @@
-@if (Auth::user())
+@if (Auth::user() && Auth::user()->active)
     <div class="container-fluid hidden-lg-up">
         <div class="row">
             <nav class="navbar navbar-light user-nav-responsive">

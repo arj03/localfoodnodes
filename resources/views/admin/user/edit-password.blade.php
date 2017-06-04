@@ -13,7 +13,7 @@
                     <div class="card-header">{{ trans('admin/user.change_password') }}</div>
                     <div class="card-block">
                         <div class="form-group">
-                            <label class="form-control-label" for="password">{{ trans('admin/user.your_new_password') }}</label>
+                            <label class="form-control-label" for="password">{{ trans('admin/user.new_password') }}</label>
                             <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('admin/user.password') }}">
                         </div>
                     </div>

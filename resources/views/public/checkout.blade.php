@@ -95,7 +95,7 @@
                             @if ($user->isMember())
                                 <a href="/checkout/order/create" class="btn btn-success w-100">{{ trans('public/checkout.send_order') }}</a>
                             @else
-                                <a href="/account/user/membership" class="btn btn-success w-100">{{ trans('public/checkout.become_member') }}</a>
+                                <a href="/membership" class="btn btn-success w-100">{{ trans('public/checkout.become_member') }}</a>
                             @endif
                         </div>
                     </div>

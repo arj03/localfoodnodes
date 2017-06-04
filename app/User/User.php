@@ -24,7 +24,7 @@ class User extends BaseUser
     protected $validationRules = [
         'name' => 'required|max:255',
         'email' => 'required|email|max:255|unique:users',
-        'password' => 'required|min:6',
+        'password' => 'required|min:8',
         'address' => '',
         'zip' => '',
         'city' => '',
@@ -158,6 +158,16 @@ class User extends BaseUser
         $rules['email'] = '';
 
         return parent::validate($data, $rules);
+    }
+
+    /**
+     * Get active boolean.
+     *
+     * @return bool
+     */
+    public function getActiveAttribute()
+    {
+        return (bool) $this->attributes['active'];
     }
 
     /**
@@ -338,9 +348,9 @@ class User extends BaseUser
      *
      * @return UserMembershipPayment
      */
-    public function getLatestMembershipPayment()
+    public function getLatestMembershipPayment($forceCheck = false)
     {
-        if (env('APP_DISABLE_MEMBERSHIP', false) === true) {
+        if ($forceCheck === false && env('APP_DISABLE_MEMBERSHIP', false) === true) {
             return new UserMembershipPayment([
                 'amount' => 0,
                 'created_at' => date('Y-m-d'),
@@ -360,11 +370,11 @@ class User extends BaseUser
      */
     public function isMember($forceCheck = false)
     {
-        if (!$forceCheck && env('APP_DISABLE_MEMBERSHIP', false) === true) {
+        if ($forceCheck === false && env('APP_DISABLE_MEMBERSHIP', false) === true) {
             return true;
         }
 
-        $lastMembershipPayment = $this->getLatestMembershipPayment();
+        $lastMembershipPayment = $this->getLatestMembershipPayment($forceCheck);
 
         if ($lastMembershipPayment) {
             return $lastMembershipPayment->expiresInDays() >= 0 ? true : false;

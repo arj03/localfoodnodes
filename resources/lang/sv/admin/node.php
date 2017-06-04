@@ -11,6 +11,7 @@ return [
     'cancel' => 'Avbryt',
     'cancel_invite' => 'Ta bort inbjudan',
     'city' => 'Stad',
+    'change_weekday_warning' => 'Om du ändrar veckodag kommer alla kopplade produkter försvinna eftersom de valda leveransdagarna inte längre matchar.',
     'create_event' => 'Skapa evenemang',
     'date' => 'Datum',
     'delete_node' => 'Ta bort nod',
@@ -36,6 +37,7 @@ return [
     'no_users' => 'Inga användare har anslutet till din nod.',
     'producers' => 'Producenter',
     'save_node' => 'Spara nod',
+    'select_weekday' => 'Välj veckodag',
     'show_address_on_map' => 'Visa adress på karta',
     'time' => 'Tid',
     'time_placeholder' => 'Leveranstid',
@@ -53,6 +55,7 @@ return [
     'sunday' => 'Söndag',
 
     // How does it work
+    'how_does_it_work' => 'Så här fungerar det',
     'hdiw_intro' => 'Så här skapar du en lokal utlämningsplats.',
     'hdiw_item_1' => 'Läs igenom, förstå och godkänn villkoren för att skapa och administrera en lokal utlämningsplats.',
     'hdiw_item_2' => 'Namnge och skapa din utlämningsplats i formuläret till vänster.',

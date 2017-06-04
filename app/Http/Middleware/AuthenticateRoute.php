@@ -23,7 +23,7 @@ class AuthenticateRoute
             return response(view('public.login', ['viewName' => 'public-login']));
         } else {
             $user = Auth::user();
-            if ($user->active === 0 && !($request->is('account/user/activate') || $request->is('account/user/activate/*'))) {
+            if (!$user->active && !($request->is('account/user/activate') || $request->is('account/user/activate/*'))) {
                 return redirect('/account/user/activate');
             } else {
                 return $next($request);

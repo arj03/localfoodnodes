@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">{{ trans('public/node.order') }}</div>
-    <div class="card-block">
+    <div class="card-block order-block">
         <form action="/checkout/item/add" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="node_id" value="{{ $node->id }}" />
@@ -13,14 +13,13 @@
                         <div class="form-check">
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <div>{{ $product->name}} - {{ $variant->name }}</div>
-                                        @if ($product->package_unit)
-                                            <div>{{ $variant->package_amount}} {{ $product->package_unit }}</div>
-                                        @endif
-                                    </div>
-                                    <div style="white-space: nowrap">{{ $variant->price }} {{ $producer->currency }}</div>
+                                {{ $product->name}} - {{ $variant->name }}
+                                ({{ $variant->package_amount }} {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }})
+                                <div class="price">
+                                    {{ $variant->price }} {{ $producer->currency }}
+                                    @if ($product->package_unit)
+                                        / {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }}
+                                    @endif
                                 </div>
                             </label>
                         </div>
@@ -30,11 +29,9 @@
                     <div class="form-check">
                         <label class="form-check-label w-100">
                             <input class="form-check-input" type="radio" name="product_id" value="{{ $product->id }}" checked>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <div>{{ $product->name}}</div>
-                                </div>
-                                <div style="white-space: nowrap">{{ $product->price }} {{ $producer->currency }}</div>
+                            <div>
+                                {{ $product->name}}
+                                <div class="price">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
                             </div>
                         </label>
                     </div>
@@ -43,18 +40,26 @@
 
             <div class="form-group">
                 <label class="form-control-label" for="quantity">{{ trans('public/node.how_many') }}</label>
-                <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
+                <div class="input-group">
+                    <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
+                    @if ($product->package_unit)
+                        <span class="input-group-addon">{{ $product->price_unit }}</span>
+                    @endif
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="form-control-label">{{ trans('public/node.select_pickup') }}</label>
                 @if ($product->getDeliveryLinksByMonths($node->id)->count() > 0)
                     <div class="row calendar product-calendar">
-                        @foreach ($product->getDeliveryLinksByMonths($node->id) as $month => $deliveryLinks)
+                        @foreach ($product->getDeliveryLinksByMonths($node->id) as $monthDate => $deliveryLinks)
                             <div class="col col-6">
                                 <div class="month">
                                     <div class="month-header">
-                                        <b>{{ date('F Y', mktime(null, null, null, $month)) }}</b>
+                                        <b>
+                                            {{ substr(ucfirst(trans('months.' . date('F', strtotime($monthDate)))), 0, 3) }}
+                                            {{ date('Y', strtotime($monthDate)) }}
+                                        </b>
                                         @if ($product->productionType !== 'csa')
                                             <i class="fa fa-check-square select-all-dates-action"></i>
                                         @endif

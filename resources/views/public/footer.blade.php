@@ -26,12 +26,14 @@
             </div>
         </div>
     </div>
+
     <div class="row no-gutters contact">
         <div class="col-12">
             <img class="logo hidden-lg-down" src="/images/nav-logo.png" />
             <span><a href="mailto:info@localfoodnodes.org">info@localfoodnodes.org</a></span>
             <span>+46(0) 735 325945</span>
             <span>Backavägen 8 26868 Röstånga</span>
+            <span>Org.nr: 769633-6598</span>
             <span><a href="https://www.facebook.com/localfoodnodes">Facebook</a></span>
             <span><a href="https://github.com/localfoodnodes">Github</a></span>
         </div>

@@ -7,17 +7,20 @@
         <div class="row mt-5 mb-5">
             <div class="col-12 col-md-6 offset-md-3">
                 <div class="card">
-                    <div class="card-header">Reset Password</div>
+                    <div class="card-header">{{ trans('admin/user.reset_password') }}</div>
                     <div class="card-block">
                         <form method="post" action="/password/email">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="form-control-label">E-Mail Address</label>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <div class="form-group">
+                                <label for="email" class="form-control-label">
+                                    {{ trans('admin/user.email') }}
+                                    @include('admin.field-error', ['field' => 'email'])
+                                </label>
+                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}">
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-mail"></i> Send Password Reset Link</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-mail"></i> {{ trans('admin/user.send_password_reset_link') }}</button>
                             </div>
                         </form>
                     </div>

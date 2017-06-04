@@ -7,15 +7,6 @@
                 {{ trans('admin/producer.product') }}
             </a>
         </li>
-        @if ($product->variants()->count() > 0)
-            <li class="{{ Request::is('*/variants') ? 'active' : '' }}">
-                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">
-                    <i class="fa fa-check-circle completed"></i>
-                    <!-- <i class="fa fa-cubes"></i> -->
-                    {{ trans('admin/producer.variants') }}
-                </a>
-            </li>
-        @endif
         <li class="{{ Request::is('*/production') ? 'active' : '' }}">
             <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">
                 @if ($product->productions()->count() > 0)
@@ -36,5 +27,14 @@
                 {{ trans('admin/producer.delivery_dates') }}
             </a>
         </li>
+        @if ($product->variants()->count() > 0)
+            <li class="{{ Request::is('*/variants') ? 'active' : '' }}">
+                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">
+                    <i class="fa fa-check-circle completed"></i>
+                    <!-- <i class="fa fa-cubes"></i> -->
+                    {{ trans('admin/producer.variants') }}
+                </a>
+            </li>
+        @endif
     </ul>
 </div>

@@ -10,6 +10,7 @@ return [
     'block_producer' => 'Block producer',
     'cancel' => 'Cancel',
     'cancel_invite' => 'Cancel invite',
+    'change_weekday_warning' => 'If you change weekday all products on the node will disappear since their selected delivery date doesn\'t match any longer.',
     'city' => 'City',
     'create_event' => 'Create event',
     'date' => 'Date',
@@ -36,6 +37,7 @@ return [
     'no_users' => 'No users have joined your node.',
     'producers' => 'Producers',
     'save_node' => 'Save node',
+    'select_weekday' => 'Select weekday',
     'show_address_on_map' => 'Show address on map',
     'time' => 'Time',
     'time_placeholder' => 'Ready for delivery',
@@ -53,6 +55,7 @@ return [
     'sunday' => 'Sunday',
 
     // How does it work
+    'how_does_it_work' => 'How does it work',
     'hdiw_intro' => 'This is how you create a node.',
     'hdiw_item_1' => 'Read through and make sure you understand the terms of use.',
     'hdiw_item_2' => 'Create your node using the form to the left.',

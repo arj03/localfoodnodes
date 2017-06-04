@@ -40,19 +40,19 @@ class ProductFilter
      *
      * @return array
      */
-    public static function tags() {
+    public static function tags($translate = false) {
         return collect([
-            trans('public/tags.artisan_food'),
-            trans('public/tags.beverage'),
-            trans('public/tags.dairy_cheese'),
-            trans('public/tags.eggs'),
-            trans('public/tags.fish'),
-            trans('public/tags.fruit_berries'),
-            trans('public/tags.jam_marmelade'),
-            trans('public/tags.meat'),
-            trans('public/tags.mushroom'),
-            trans('public/tags.poultry'),
-            trans('public/tags.vegetable'),
+            'artisan_food' => trans('public/tags.artisan_food'),
+            'beverage' => trans('public/tags.beverage'),
+            'dairy_cheese' => trans('public/tags.dairy_cheese'),
+            'eggs' => trans('public/tags.eggs'),
+            'fish' => trans('public/tags.fish'),
+            'fruit_berries' => trans('public/tags.fruit_berries'),
+            'jam_marmelade' => trans('public/tags.jam_marmelade'),
+            'meat' => trans('public/tags.meat'),
+            'mushroom' => trans('public/tags.mushroom'),
+            'poultry' => trans('public/tags.poultry'),
+            'vegetable' => trans('public/tags.vegetable'),
         ])->sort();
     }
 
@@ -127,18 +127,18 @@ class ProductFilter
     {
         $tags = new Collection();
 
-        foreach (self::tags() as $tag) {
+        foreach (self::tags() as $key => $tag) {
             // In loop to it's resetted for every tag
             $selectedTags = $this->getSelectedTags($request);
 
-            if ($selectedTags->contains($tag)) {
+            if ($selectedTags->contains($key)) {
                 $active = true;
-                $selectedTags = $selectedTags->reject(function ($t) use ($tag) {
-                    return $t === $tag;
+                $selectedTags = $selectedTags->reject(function ($selectedTag) use ($key) {
+                    return $selectedTag === $key;
                 });
             } else {
                 $active = false;
-                $selectedTags->push($tag);
+                $selectedTags->push($key);
             }
 
             $url = $this->buildQuery('tag', $selectedTags->implode(','));

@@ -50,7 +50,7 @@ export function searchGeo(dispatch, searchString) {
     dispatch(requestSearchGeo());
 
     return request
-    .get('http://nominatim.openstreetmap.org/search')
+    .get('https://nominatim.openstreetmap.org/search')
     .query({
         q: searchString,
         format: 'json',

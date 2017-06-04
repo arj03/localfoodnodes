@@ -58,8 +58,8 @@ class AuthController extends Controller
             }
         }
 
-        $error = new MessageBag(['login' => 'Invalid username or password']);
-        return redirect('/login')->withInput()->withErrors($error);
+        $request->session()->flash('message', [trans('admin/messages.invalid_login')]);
+        return redirect('/login')->withInput();
     }
 
     /**

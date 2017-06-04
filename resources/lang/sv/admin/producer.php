@@ -77,6 +77,7 @@ return [
     'your_products' => 'Dina produkter',
 
     // How does it work
+    'how_does_it_work' => 'Så här fungerar det',
     'hdiw_intro' => 'Såhär sätter du upp ditt producentkonto',
     'hdiw_item_1' => 'Läs igenom, förstå och godkänn villkoren för att sätta upp ditt producentkonto',
     'hdiw_item_2' => 'Namnge och presentera din gård/verksamhet och skapa ditt producentkonto i formuläret till vänster.',

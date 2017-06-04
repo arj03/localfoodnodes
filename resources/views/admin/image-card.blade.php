@@ -24,6 +24,37 @@
             @endforeach
 
             @if ($images->count() < $limit)
+                <script>
+                    $(function() {
+                        $('#image').on('change', function(event) {
+                            var validMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+                            var errors = false;
+                            for (var i = 0; i < this.files.length; i++) {
+                                var file = this.files[i];
+
+                                if (file.size > 1000000) {
+                                    errors = true;
+                                    $(document).trigger('notification', file.name + {!! json_encode(trans('admin/image-card.image_size_to_big')) !!});
+                                }
+
+                                if (validMimeTypes.indexOf(file.type) === -1) {
+                                    errors = true;
+                                    $(document).trigger('notification', file.name + {!! json_encode(trans('admin/image-card.image_not_valid_type')) !!});
+                                }
+                            }
+
+                            if (errors === true) {
+                                $('#image').val('');
+                                $('#upload-image-counter').html('');
+                            } else {
+                                var infoText = {!! json_encode(trans('admin/image-card.images_select_for_upload')) !!};
+                                var nbrOfImages = this.files.length;
+                                $('#upload-image-counter').html(nbrOfImages + infoText);
+                            }
+                        })
+                    });
+                </script>
                 <div class="col-3">
                     <div class="upload">
                         <b>{{ trans('admin/image-card.select_images_to_upload') }}</b>
@@ -35,15 +66,6 @@
         </div>
     </div>
 </div>
-
-<!-- Select file info -->
-<script>
-    document.getElementById('image').onchange = function () {
-        var infoText = {!! json_encode(trans('admin/image-card.images-select-for-upload')) !!};
-        var nbrOfImages = document.getElementById('image').files.length;
-        document.getElementById('upload-image-counter').innerHTML = nbrOfImages + infoText;
-    };
-</script>
 
 <!-- Sort order -->
 <script>

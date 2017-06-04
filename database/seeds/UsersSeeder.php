@@ -11,13 +11,6 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'David Ajnered',
-            'email' => 'davidajnered@gmail.com',
-            'password' => bcrypt('password'),
-            'address' => 'Hantverksgatan 5',
-            'zip' => '26868',
-            'city' => 'Röstånga',
-        ]);
+
     }
 }

@@ -25,17 +25,11 @@
                 <!-- Products -->
                 @if ($products->count() > 0 || $tags->contains('active', true))
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between toggle">
-                            <div>
-                                {{ trans('public/node.products') }}
-                                @if (Request::has('date'))
-                                    - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
-                                @endif
-                            </div>
-                            <div>
-                                {{ trans('public/node.filters') }}
-                                <i class="fa fa-chevron-down toggle"></i>
-                            </div>
+                        <div class="card-header">
+                            {{ trans('public/node.products') }}
+                            @if (Request::has('date'))
+                                - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
+                            @endif
                         </div>
 
                         <div class="card-block product-filter">
@@ -47,26 +41,6 @@
                                 @endif
                             @endforeach
                         </div>
-
-                        <script>
-                            jQuery(document).ready(function() {
-                                // Hide card block on load if class is chevron-down
-                                $('.card-header.toggle .fa-chevron-down').closest('.card').find('.product-filter').hide();
-
-                                $('.card-header.toggle').on('click', function() {
-                                    var cardBlock = $(this).closest('.card').find('.product-filter');
-                                    var toggleIcon = $(this).find('.fa.toggle');
-
-                                    if (cardBlock.is(':visible')) {
-                                        toggleIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-                                        cardBlock.hide();
-                                    } else {
-                                        toggleIcon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-                                        cardBlock.show();
-                                    }
-                                });
-                            });
-                        </script>
 
                         <div class="card-block">
                             @if ($products->count() > 0)
@@ -96,6 +70,11 @@
                                                     </div>
                                                     <div class="card-footer">
                                                         <i class="fa fa-map-marker"></i> {{ $product->producer()->getDistance($node) }} {{ trans('public/node.km') }}
+                                                        <div class="tags">
+                                                            @foreach ($product->tags() as $tag)
+                                                                <div class="badge badge-default">{{ trans('public/tags.' . $tag->tag) }}</div>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </a>
                                             </div>

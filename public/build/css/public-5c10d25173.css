@@ -444,7 +444,7 @@ body.page .page .card h2 {
 }
 
 body.page .page .card .body-text {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -552,7 +552,6 @@ body.page .page .card .body-text {
   color: #333;
 }
 
-/* Main menu (not frontpage) */
 .navbar {
   background: #fff;
   border: 0;
@@ -566,7 +565,6 @@ body.page .page .card .body-text {
 }
 
 .navbar .navbar-brand {
-  position: relative;
   color: #333;
   font-weight: bold;
   font-size: 20px;
@@ -580,16 +578,6 @@ body.page .page .card .body-text {
 .navbar .navbar-brand img {
   height: 35px;
   width: auto;
-}
-
-.navbar .navbar-brand .beta {
-  position: absolute;
-  top: 20px;
-  right: 0px;
-  font-family: montserrat;
-  font-weight: bold;
-  font-size: 14px;
-  color: #8e3a35;
 }
 
 .navbar .navbar-toggler {
@@ -759,6 +747,7 @@ body.page .page .card .body-text {
 .map .map-preview .body-text .btn {
   width: 100%;
   text-align: center;
+  line-height: 20px;
 }
 
 .map .map-preview .body-text .btn .fa {
@@ -773,6 +762,11 @@ body.public-product-product .header .image {
 
 body.public-product-product .info {
   margin-top: -150px;
+}
+
+body.public-product-product .order-block .price {
+  white-space: nowrap;
+  font-weight: bold;
 }
 
 body.public-node-node .node-content .node-admin {
@@ -882,6 +876,11 @@ body.public-node-node .product-card .card-footer {
   color: #999;
 }
 
+body.public-producer-producer .product-card .card-footer .badge,
+body.public-node-node .product-card .card-footer .badge {
+  background-color: #a9322a;
+}
+
 .public-index .frontpage-section {
   position: relative;
   height: 100%;
@@ -901,7 +900,7 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .frontpage-section p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -1068,35 +1067,39 @@ body.public-node-node .product-card .card-footer {
   color: #fff;
 }
 
-.public-index .create-pushes .row > div {
-  margin-left: 15px;
+.public-index .create-pushes .row .users,
+.public-index .create-pushes .row .nodes,
+.public-index .create-pushes .row .producers {
+  position: relative;
   background-size: cover;
   padding: 15px;
-  height: 70vh;
+  height: 50vh;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  -webkit-box-pack: center;
-  justify-content: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 50px 0;
+  margin: 15px;
 }
 
-.public-index .create-pushes .row > div:last-child {
-  margin-right: 15px;
+.public-index .create-pushes .row .users h2,
+.public-index .create-pushes .row .nodes h2,
+.public-index .create-pushes .row .producers h2 {
+  font-size: 2rem;
+  min-height: 100px;
 }
 
-.public-index .create-pushes .row > div h2 {
-  font-size: 3rem;
-}
-
-.public-index .create-pushes .row > div a {
+.public-index .create-pushes .row .users a,
+.public-index .create-pushes .row .nodes a,
+.public-index .create-pushes .row .producers a {
   text-align: center;
-  margin: 50px auto 20px;
-  width: 50%;
   font-size: 16px;
   line-height: 1.3em;
   font-weight: bold;
+  width: calc(100% - 30px);
 }
 
 .public-index .create-pushes .row .users {
@@ -1121,10 +1124,10 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .membership {
-  background: url("/images/cows.jpg") center center;
+  background: url("/images/cows-bw.jpg") center center;
   background-size: cover;
-  color: #fff;
-  height: 80vh;
+  color: #dec286;
+  min-height: 80vh;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -1136,11 +1139,10 @@ body.public-node-node .product-card .card-footer {
 
 .public-index .membership .membership-content {
   font-family: 'montserrat';
-  color: #fff;
   text-transform: none;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 32px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .public-index .membership .membership-content.big {
@@ -1153,9 +1155,10 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .membership a {
-  color: #fff;
   width: 300px;
   margin-top: 50px;
+  color: #dec286;
+  border-color: #dec286;
 }
 
 .public-index .find-out-more .logo {
@@ -1172,44 +1175,22 @@ body.public-node-node .product-card .card-footer {
 }
 
 .public-index .find-out-more .row {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-  color: #fff;
-}
-
-.public-index .find-out-more .row > div {
   margin-left: 15px;
-  background-size: cover;
-  padding: 15px;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-}
-
-.public-index .find-out-more .row > div:last-child {
   margin-right: 15px;
 }
 
-.public-index .find-out-more .row > div h2 {
-  font-size: 3rem;
-}
-
-.public-index .find-out-more .row .users {
-  background-image: url("/images/shutterstock_436974091_crate.jpg");
-}
-
-.public-index .find-out-more .row .nodes {
-  background-image: url("/images/shutterstock_326785574_gettogether.jpg");
-}
-
-.public-index .find-out-more .row .producers {
-  background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
+.public-index .find-out-more .row .card h3 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .public-index .btn-outline {
@@ -1234,8 +1215,12 @@ body.public-node-node .product-card .card-footer {
   .public-index .frontpage-section .right {
     width: 100vw;
   }
-  .public-index .create-node .row {
-    height: auto;
+  .public-index .create-pushes .row .users,
+  .public-index .create-pushes .row .nodes,
+  .public-index .create-pushes .row .producers {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 0;
   }
 }
 
@@ -1463,7 +1448,7 @@ body.public-checkout .cart-item:last-child {
 }
 
 .node-calendar .month .days .day.delivery {
-  background: #51b26e;
+  background: #8fb773;
   color: #fff;
 }
 
@@ -1516,16 +1501,6 @@ body.public-checkout .cart-item:last-child {
 .user-nav .logo img {
   height: 30px;
   width: auto;
-}
-
-.user-nav .logo .beta {
-  position: absolute;
-  top: 32px;
-  right: 34px;
-  font-family: montserrat;
-  font-weight: bold;
-  font-size: 14px;
-  color: #fff;
 }
 
 .user-nav .block {
@@ -1743,6 +1718,7 @@ body.public-index .events .event .date {
 
 body.public-index .events .event .info {
   background-color: #bbab89;
+  color: #fff;
 }
 
 body.public-node-node .events .event .date {

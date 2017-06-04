@@ -10,8 +10,6 @@
                     @endif
                 @endforeach
             </div>
-        @elseif (isset($title))
-            <b>{{ $title }}</b>
         @endif
     </div>
 </div>

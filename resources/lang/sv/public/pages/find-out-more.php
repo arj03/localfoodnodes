@@ -20,17 +20,17 @@ return [
 
     'header_2' => 'Så funkar det',
 
-    'header_3' => '1. Skapa konto och bli stödmedlem',
+    'header_3' => 'Skapa konto och bli stödmedlem',
 
     'paragraph_3_1' => 'Du kan enkelt skapa ett konto helt gratis, eller logga in med ditt Facebookkonto.',
 
     'paragraph_3_2' => 'Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn, men innan du kan skicka iväg dina ordrar behöver du först bli stödmedlem på plattformen. Du blir det genom att betala en årlig användaravgift och storleken på avgiften bestämmer du själv. Det är upp till dig att avgöra vad du känner att du har råd med och vad du tycker att denna tjänst är värd för dig och för vårt samhälle. Vad än summan blir, medfinansierar och medskapar du en hälsosammare framtid. Snyggt jobbat! ',
 
-    'header_4' => '2. Hitta utlämningsplatser och förboka din lokala mat',
+    'header_4' => 'Hitta utlämningsplatser och förboka din lokala mat',
 
     'paragraph_4_1' => 'Nu när du är inloggad, kan du enkelt hitta de utlämningsplatser som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (man behöver inte gå med i en nod för att beställa mat på den men det gör användandet av siten lättare).',
 
-    'header_5' => '3. Hämta mat',
+    'header_5' => 'Hämta mat',
 
     'paragraph_5_1' => 'Maten som du har bokat kommer att finnas tillgänglig för upphämtning vid den förutbestämda tiden och platsen som står utskriven på din beställning. Beställningarna kommer att skickas till dig via epost men finns även tillgängliga för dig att se när som helst genom att använda länkarna i användarmenyn på siten. Du plockar upp maten på utlämningsplatserna (noderna) direkt från respektive producent och du gör även alla betalningar direkt till producenterna. Detta säkerställer att producenterna behåller 100% av alla intäkter från produkterna de producerar.',
 

@@ -1,4 +1,4 @@
-@if (!Auth::check())
+@if (!Auth::check() || (Auth::user() && Auth::user()->active !== true))
     <div class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-light navbar-toggleable-md">
@@ -8,8 +8,7 @@
 
                 <a class="navbar-brand" href="/">
                     <img src="/images/nav-logo-dark.png">
-                    {{ trans('public/nav.local_food_nodes') }}
-                    <span class="beta">beta</span>
+                    {{ trans('public/nav.local_food_nodes') }} - BETA
                 </a>
 
                 <div class="collapse navbar-collapse" id="main-navbar">

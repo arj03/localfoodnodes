@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="/login/facebook" class="btn btn-success"><i class="fa fa-facebook-square"></i> {{ trans('public/login.facebook') }}</a>
+                        <a href="/login/facebook" class="btn btn-success"><i class="fa fa-facebook-square"></i> {{ trans('public/nav.facebook') }}</a>
                     </div>
                 </div>
             </div>

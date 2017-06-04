@@ -1,11 +1,11 @@
 <?php
 
 return [
+    // Variants
     'bag' => 'Bag|Bags',
     'bottle' => 'Bottle|Bottles',
     'jar' => 'Jar|Jar',
     'pieces' => 'Piece|Pieces',
-    'product' => 'Product|Products',
 
     // SI units
     'kg' => 'kg',
@@ -15,4 +15,8 @@ return [
     'dl' => 'dl',
     'cl' => 'cl',
     'ml' => 'ml',
+
+    // Product price unit
+    'product' => 'pcs',
+    'package' => 'pcs',
 ];

@@ -18,8 +18,8 @@
                                 <tr>
                                     <th>{{ trans('admin/product.main_variant') }}</th>
                                     <th>{{ trans('admin/product.name') }}</th>
-                                    <th class="text-right">Production</th>
                                     <th class="text-right">{{ trans('admin/product.amount_per_package') }}</th>
+                                    <th class="text-right">{{ trans('admin/product.production') }}</th>
                                     <th class="text-right">{{ trans('admin/product.price') }}</th>
                                 </tr>
                             </thead>
@@ -34,8 +34,8 @@
                                         <td>
                                             <a href="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/edit">{{ $variant->name }}</a>
                                         </td>
+                                        <td class="text-right">{{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }}</td>
                                         <td class="text-right">{{ $variant->getProductionQuantity() }}</td>
-                                        <td class="text-right">{{ $variant->package_amount }} {{ $product->package_unit }}</td>
                                         <td class="text-right">{{ $variant->price }}</td>
                                         <td>
                                             <div class="dropdown dropdown-action-component">

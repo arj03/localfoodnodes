@@ -77,6 +77,7 @@ return [
     'your_products' => 'Your products',
 
     // How does it work
+    'how_does_it_work' => 'How does it work',
     'hdiw_intro' => 'This is how you create a producer account.',
     'hdiw_item_1' => 'Read and understand the terms of use.',
     'hdiw_item_2' => 'Create your account using the form to the left.',
