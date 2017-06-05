@@ -47,6 +47,7 @@ return [
     'price' => 'Price',
     'price_per' => 'Price is set per...',
     'product' => 'Product',
+    'products' => 'Products',
     'product_name' => 'Product name',
     'product_name_placeholder' => 'Example: Eggs, carrots...',
     'product_content' => 'Product content',

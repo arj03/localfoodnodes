@@ -45,6 +45,7 @@ return [
     'price' => 'Pris',
     'price_per' => 'Pris anges per...',
     'product' => 'Produkt',
+    'products' => 'Produkter',
     'product_name' => 'Produktnamn',
     'product_name_placeholder' => 'Exampel: Ägg, morötter...',
     'product_content' => 'Produktinnehåll',
