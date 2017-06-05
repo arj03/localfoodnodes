@@ -23,15 +23,18 @@
                         @foreach ($dates as $firstDateOfMonth => $dates)
                             <div class="col-12 col-xl-6 card-deck">
                                 <div class="card">
-                                    <div class="card-header">{{ date('F Y', strtotime($firstDateOfMonth)) }}</div>
+                                    <div class="card-header">{{ date('Y F', strtotime($firstDateOfMonth)) }}</div>
                                     <div class="card-block">
                                         @foreach($dates as $date)
                                             <div class="form-group">
-                                                <label for="{{ $date->format('W') }}">{{ trans('admin/product.week') }} {{ $date->format('W') }}</label>
-                                                <input type="number" class="form-control" name="quantity[{{ $date->format('Y') }}][{{ $date->format('W') }}]" id="{{ $date->format('W') }}" placeholder="{{ $product->getProductionQuantity() }}" value="{{ $product->productionAdjustmentQuantity($date->format('Y'), $date->format('W')) }}">
-                                                <div class="text-muted">
-                                                    {{ date('Y-m-d', strtotime('last monday', $date->getTimestamp())) }} -
-                                                    {{ date('Y-m-d', strtotime('next sunday', $date->getTimestamp())) }}
+                                                <div class="input-group">
+                                                    <div style="width:25%">
+                                                        <label>{{ date('d', strtotime('next monday', $date->getTimestamp())) }} -
+                                                        {{ date('d', strtotime('next sunday', $date->getTimestamp())) }}</label>
+                                                    </div>
+
+                                                        <input type="number" class="form-control" name="quantity[{{ $date->format('Y') }}][{{ $date->format('W') }}]" id="{{ $date->format('W') }}" placeholder="{{ $product->getProductionQuantity() }}" value="{{ $product->productionAdjustmentQuantity($date->format('Y'), $date->format('W')) }}"><span class="input-group-addon">Products this week</span>
+
                                                 </div>
                                             </div>
                                         @endforeach
