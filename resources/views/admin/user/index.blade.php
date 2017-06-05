@@ -117,7 +117,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user->orderDates()->first()->orderDateItemLinks() as $orderDateItemLink)
+                                    @foreach ($user->orderDates()->first()->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
                                             <td>{{ $orderDateItemLink->getDate()->date('Y-m-d') }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->getName() }}</td>

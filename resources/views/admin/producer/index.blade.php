@@ -67,7 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($producer->orderDates()->first()->orderDateItemLinks() as $orderDateItemLink)
+                                @foreach($producer->orderDates()->first()->orderDateItemLinks(null, $producer->id) as $orderDateItemLink)
                                     <tr>
                                         <td>
                                             <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>

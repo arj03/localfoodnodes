@@ -24,7 +24,7 @@
                                         <th class="text-right">{{ trans('admin/user.price') }}</th>
                                     </tr>
                                 </thead>
-                                @foreach ($orderDate->orderDateItemLinks() as $orderDateItemLink)
+                                @foreach ($orderDate->orderDateItemLinks($user->id) as $orderDateItemLink)
                                     <tr>
                                         <td>
                                             <a href="/account/user/order/{{ $orderDateItemLink->id }}">

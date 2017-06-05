@@ -165,8 +165,8 @@ Route::group(['prefix' => '/admin'], function () {
     Route::group(['prefix' => '/email'], function () {
         Route::get('/user/activation/{userId}', 'Admin\EmailController@userActivation');
         Route::get('/user/reset-password/{userId}', 'Admin\EmailController@resetPassword');
-        Route::get('/order/producer/{orderId}', 'Admin\EmailController@orderProducer');
-        Route::get('/order/customer/{orderId}', 'Admin\EmailController@orderCustomer');
+        Route::get('/order/producer', 'Admin\EmailController@orderProducer');
+        Route::get('/order/customer', 'Admin\EmailController@orderCustomer');
     });
 });
 

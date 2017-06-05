@@ -55,14 +55,14 @@ class OrderDate extends \App\BaseModel
      *
      * @return Collection
      */
-    public function orderDateItemLinks($producerId = null)
+    public function orderDateItemLinks($userId = null, $producerId = null)
     {
-        if ($producerId) {
-            return $this->hasMany('App\Order\OrderDateItemLink')->get()->filter(function($orderItemDateLink) use ($producerId) {
-                return $orderItemDateLink->getItem()->producer_id == $producerId;
-            });
+        if ($userId) {
+            return $this->hasMany('App\Order\OrderDateItemLink')->where('user_id', $userId)->get();
+        } else if ($producerId) {
+            return $this->hasMany('App\Order\OrderDateItemLink')->where('producer_id', $producerId)->get();
         } else {
-            return $this->hasMany('App\Order\OrderDateItemLink')->get();
+            return collect([]);
         }
     }
 }

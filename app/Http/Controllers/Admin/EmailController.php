@@ -51,7 +51,7 @@ class EmailController extends Controller
         return view('email.reset-password', $data);
     }
 
-    public function orderProducer(Request $request, $orderId)
+    public function orderProducer(Request $request)
     {
         $user = Auth::user();
         $orderItems = $user->orderItems();
@@ -70,10 +70,12 @@ class EmailController extends Controller
         return view('email.producer-order', $data);
     }
 
-    public function orderCustomer(Request $request, $orderId)
+    public function orderCustomer(Request $request)
     {
         $user = Auth::user();
         $orderDates = $user->orderDates();
+
+        error_log(var_export($orderDates,true));
 
         $data = [
             'title' => 'Order confirmation',
