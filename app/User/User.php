@@ -261,12 +261,10 @@ class User extends BaseUser
     public function orderDates($dates = [])
     {
         $orderDates = $this->orderDateItemLinks()->map(function($orderDateItemLink) {
-            error_log(var_export($orderDateItemLink->getItem()->product['name'], true));
             return $orderDateItemLink->getDate();
         })->unique();
 
         if (!empty($dates)) {
-            error_log('dates');
             $orderDates->whereIn('date', $dates);
         }
 

@@ -75,8 +75,6 @@ class EmailController extends Controller
         $user = Auth::user();
         $orderDates = $user->orderDates();
 
-        error_log(var_export($orderDates,true));
-
         $data = [
             'title' => 'Order confirmation',
             'orderDates' => $orderDates

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'add_node' => 'Lägg till nod',
+    'add_node' => 'Lägg till utlämningsplats',
     'address' => 'Adress',
     'administrators' => 'Administratörer',
     'agree' => 'OK',
@@ -32,10 +32,13 @@ return [
     'node_info' => 'Nod-information',
     'no_nodes_selected' => 'Du har inte valt några noder.',
     'node_terms' => 'Nod - Villkor',
+    'node_added' => 'Utlämningsplats har lagts till.',
+    'node_removed' => 'Utlämningsplats har tagits bort.',
     'no_events' => 'Inga evenemang.',
     'no_producers' => 'Inga producenter har anslutet till din nod.',
     'no_users' => 'Inga användare har anslutet till din nod.',
     'producers' => 'Producenter',
+    'remove_node' => 'Ta bort utlämningsplats',
     'save_node' => 'Spara nod',
     'select_weekday' => 'Välj veckodag',
     'show_address_on_map' => 'Visa adress på karta',
