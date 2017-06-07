@@ -84,7 +84,7 @@ return [
     'week' => 'Vecka',
 
     // How does it work
-    'how_does_it_work' => 'Så här fungerar det',
+    'how_does_it_work' => 'Så här gör du',
     'hdiw_intro' => 'Produkter skapas stegvis och parametrar väljs efterhand som passar just denna produkt bäst.',
     'hdiw_item_1' => 'Ange namn och beskrivning samt välj taggar för din produkt. Ladda upp bilder som beskriver produkten. Ange betalningsinformation samt hur långt innan leverans du senast måste ha  beställningar av produkten.',
     'hdiw_item_2' => 'Välj typ av produkt samt mängd av produkten du vill sälja.',

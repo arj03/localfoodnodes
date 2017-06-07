@@ -27,7 +27,7 @@ return [
     'information_placeholder' => 'Information om din nod',
     'invite_admin' => 'Bjud in admin',
     'leave_node' => 'Lämna nod',
-    'name' => 'Namn',
+    'name' => 'Namnge din utlämningsplats',
     'nearby_nodes' => 'Närliggande utlämningsplatser',
     'node_info' => 'Nod-information',
     'no_nodes_selected' => 'Du har inte valt några noder.',
@@ -58,7 +58,7 @@ return [
     'sunday' => 'Söndag',
 
     // How does it work
-    'how_does_it_work' => 'Så här fungerar det',
+    'how_does_it_work' => 'Så här gör du',
     'hdiw_intro' => 'Så här skapar du en lokal utlämningsplats.',
     'hdiw_item_1' => 'Läs igenom, förstå och godkänn villkoren för att skapa och administrera en lokal utlämningsplats.',
     'hdiw_item_2' => 'Namnge och skapa din utlämningsplats i formuläret till vänster.',
