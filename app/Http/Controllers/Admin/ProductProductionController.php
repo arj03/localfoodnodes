@@ -98,11 +98,11 @@ class ProductProductionController extends Controller
     }
 
     /**
-     * [update description]
-     * @param  Request $request    [description]
-     * @param  [type]  $producerId [description]
-     * @param  [type]  $productId  [description]
-     * @return [type]              [description]
+     * Update production.
+     *
+     * @param Request $request
+     * @param int $producerId
+     * @param int $productId
      */
     public function update(Request $request, $producerId, $productId)
     {
@@ -110,12 +110,19 @@ class ProductProductionController extends Controller
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
+        $previousProductionCount = $product->productions()->count();
+
         $errors = $this->validateProduction($request);
         if ($errors->isEmpty()) {
             $this->saveProduction($request, $producer, $product, $errors);
 
             $request->session()->flash('message', [trans('admin/messages.production_updated')]);
-            return redirect('/account/producer/' . $producer->id . '/product/' . $product->id . '/production');
+            if ($previousProductionCount === 0) {
+                // Redirect to next page if no previous productions
+                return redirect('/account/producer/' . $producer->id . '/product/' . $product->id . '/deliveries');
+            } else {
+                return redirect('/account/producer/' . $producer->id . '/product/' . $product->id . '/production');
+            }
         }
 
         $request->session()->flash('message', [trans('admin/messages.required_fields_missing')]);

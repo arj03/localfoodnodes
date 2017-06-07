@@ -96,6 +96,6 @@
                 });
             });
         </script>
-
+        <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js" async></script>
     </body>
 </html>
