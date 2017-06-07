@@ -58,7 +58,7 @@ return [
     'sunday' => 'Söndag',
 
     // How does it work
-    'how_does_it_work' => 'Så här fungerar det',
+    'how_does_it_work' => 'Så här gör du',
     'hdiw_intro' => 'Så här skapar du en lokal utlämningsplats.',
     'hdiw_item_1' => 'Läs igenom, förstå och godkänn villkoren för att skapa och administrera en lokal utlämningsplats.',
     'hdiw_item_2' => 'Namnge och skapa din utlämningsplats i formuläret till vänster.',
