@@ -159,6 +159,7 @@
                         <p>{!! trans('public/welcome-message.welcome_paragraph8') !!}</p>
                         <p>{!! trans('public/welcome-message.welcome_paragraph9') !!}</p>
                         <p>{!! trans('public/welcome-message.welcome_paragraph10') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph11') !!}</p>
                     </div>
                 </div>
             </div>
