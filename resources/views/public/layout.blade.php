@@ -40,6 +40,8 @@
             </div>
         </div>
 
+        @yield('modal')
+
         @include('public.footer')
 
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
@@ -63,6 +65,5 @@
             ga('send', 'pageview');
         </script>
         <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js" async></script>
-        @yield('modal')
     </body>
 </html>

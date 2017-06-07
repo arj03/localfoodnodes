@@ -17,10 +17,10 @@
                                     <tr>
                                         <th>{{ trans('admin/producer.order') }}</th>
                                         <th>{{ trans('admin/producer.product') }}</th>
-                                        <th>{{ trans('admin/producer.quantity') }}</th>
-                                        <th>{{ trans('admin/producer.node') }}</th>
                                         <th>{{ trans('admin/producer.customer') }}</th>
-                                        <th>{{ trans('admin/producer.price') }}</th>
+                                        <th class="text-right">{{ trans('admin/producer.quantity') }}</th>
+                                        <th>{{ trans('admin/producer.node') }}</th>
+                                        <th>{{ trans('admin/producer.total_price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,9 +34,9 @@
                                                     {{ $orderDateItemLink->getItem()->getName() }}
                                                 </a>
                                             </td>
-                                            <td>{{ $orderDateItemLink->quantity }}</td>
-                                            <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->user['name'] }}</td>
+                                            <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
+                                            <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{{ $orderDateItemLink->getPrice() }} {{ $orderDateItemLink->getItem()->producer['currency'] }}</td>
                                         </tr>
                                     @endforeach

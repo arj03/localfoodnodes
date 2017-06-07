@@ -312,6 +312,23 @@ ul.product-quick-links li.active a {
   display: none;
 }
 
+.admin-user-index #welcome-modal .modal-dialog {
+  max-width: 700px;
+}
+
+.admin-user-index #welcome-modal .modal-dialog .modal-content {
+  background: #8fb773;
+  color: #fff;
+}
+
+.admin-user-index #welcome-modal .modal-dialog .modal-content .modal-header {
+  border: 0;
+}
+
+.admin-user-index #welcome-modal .modal-dialog .modal-content .modal-body {
+  color: #fff;
+}
+
 .delivery-date-remove {
   width: calc(100% - 20px);
 }

@@ -132,6 +132,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $request->session()->flash('welcome-modal', true);
         $user = Auth::user();
         return view('admin.user.index', [
             'breadcrumbs' => [
@@ -146,6 +147,10 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        if (Auth::check()) {
+            return redirect('/account/user');
+        }
+
         return view('admin.user.create', [
             'breadcrumbs' => [
                 trans('admin/user-nav.create_account') => ''
@@ -178,6 +183,7 @@ class UserController extends Controller
             Auth::login($user);
 
             $request->session()->flash('message', [trans('admin/messages.user_account_created')]);
+            $request->session()->flash('welcome-modal', true);
 
             return redirect('/account/user');
         }
@@ -517,6 +523,7 @@ class UserController extends Controller
     public function migrateUpdateAccount(Request $request)
     {
         $oldUsers = collect(array_map('strtolower', [
+            'davidajnered@gmail.com',
             '4114achansson@telia.com',
             'ada.wraneus@telia.com',
             'agatkabielska@gmail.com',

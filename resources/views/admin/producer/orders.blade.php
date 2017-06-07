@@ -15,6 +15,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>{{ trans('admin/producer.order') }}</th>
                                         <th>{{ trans('admin/producer.product') }}</th>
                                         <th>{{ trans('admin/producer.customer') }}</th>
                                         <th class="text-right">{{ trans('admin/producer.quantity') }}</th>

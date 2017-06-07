@@ -5,10 +5,10 @@
             <div class="card-block">
                 <div class="form-group">
                     <label class="form-control-label" for="name">
-                        {{ trans('admin/node.name') }}
+                        {{ trans('admin/node.name_node') }}
                         @include('admin.field-error', ['field' => 'name'])
                     </label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="{{ trans('admin/node.name') }}" value="{{ $node->name or '' }}">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="{{ trans('admin/node.name_node') }}" value="{{ $node->name or '' }}">
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="email">

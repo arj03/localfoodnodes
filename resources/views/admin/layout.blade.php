@@ -77,6 +77,8 @@
             </div>
         </div>
 
+        @yield('modal')
+
         <script>
             jQuery(document).ready(function() {
                 // Hide card block on load if class is chevron-down
