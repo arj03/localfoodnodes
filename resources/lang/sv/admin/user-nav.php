@@ -2,7 +2,7 @@
 
 return [
     'cart_and_checkout' => 'Kundvagn & Kassa',
-    'create_node' => 'Skapa nod',
+    'create_node' => 'Skapa utlämningsplats',
     'create_product' => 'Skapa produkt',
     'deliveries' => 'Utlämningar',
     'delivery-nodes' => 'Leveransnoder',
