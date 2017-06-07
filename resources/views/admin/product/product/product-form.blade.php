@@ -2,7 +2,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">
-                {{ trans('admin/product.basic_information') }}
+                {{ trans('admin/product.product') }}
             </div>
             <div class="card-block">
                 <div class="form-group">
@@ -21,15 +21,16 @@
                     <textarea class="form-control wysiwyg" id="info" name="info" rows="5" placeholder="{{ trans('admin/product.product_description_placeholder') }}">{{ $product->info or '' }}</textarea>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group {{ $product->variants()->count() > 0 ? 'disabled' : '' }}">
                     <label class="form-control-label" for="price">
                         {{ trans('admin/product.enter_price_one_product') }}
                         @include('admin.field-error', ['field' => 'price'])
                     </label>
                     <input type="number" min="0" name="price" class="form-control" id="price" placeholder="Price" value="{{ $product->price or '' }}" {{ $product->variants()->count() > 0 ? 'disabled' : '' }}>
+
                     @if ($product->variants()->count() > 0)
-                        <div class="form-text text-muted">
-                            Price is set on your variants.
+                        <div class="form-text">
+                            {{ trans('admin/product.price_on_variants') }}
                         </div>
                     @endif
                 </div>

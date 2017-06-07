@@ -107,14 +107,20 @@
   color: #333;
 }
 
-.form-group label,
-.form-group .form-control-feedback {
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group.disabled {
+  opacity: 0.5;
+}
+
+.form-group label {
   font-family: 'montserrat';
   font-weight: 400;
 }
 
-.form-group label.form-check-label,
-.form-group .form-control-feedback.form-check-label {
+.form-group label.form-check-label {
   font-family: inherit;
 }
 
@@ -122,6 +128,10 @@
   font-family: 'montserrat';
   font-weight: 400;
   font-size: inherit;
+}
+
+.form-group input:disabled {
+  background: #eee;
 }
 
 .table.fixed {

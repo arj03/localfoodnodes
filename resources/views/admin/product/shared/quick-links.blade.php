@@ -12,7 +12,7 @@
                 @if ($product->productions()->count() > 0)
                     <i class="fa fa-check-circle completed"></i>
                 @else
-                    <i class="fa fa-industry"></i>
+                    <i class="fa fa-sun-o"></i>
                 @endif
                 {{ trans('admin/producer.production') }}
             </a>
