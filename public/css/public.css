@@ -1240,6 +1240,16 @@ body.public-checkout .cart-item:last-child {
   padding-bottom: 0;
 }
 
+body.public-checkout .cart-item .cart-item-inner {
+  display: -webkit-box;
+  display: flex;
+}
+
+body.public-checkout .cart-item form {
+  width: 100px;
+  float: right;
+}
+
 body.public-checkout .summary {
   background: #c1534c;
   color: #fff;

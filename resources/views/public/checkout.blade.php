@@ -22,46 +22,7 @@
                             <div class="card-header">{{ trans('public/checkout.delivery') }} {{ $cartDate->date('Y-m-d') }}</div>
                             <div class="card-block">
                                 @foreach ($cartDate->cartDateItemLinks() as $cartDateItemLink)
-                                    <div class="row cart-item">
-                                        <div class="col-sm-2 hidden-xs-down">
-                                            @if ($cartDateItemLink->getItem()->getProduct() && $cartDateItemLink->getItem()->getProduct()->images()->count() > 0)
-                                                <img src="{{ $cartDateItemLink->getItem()->getProduct()->images()->first()->url('medium') }}">
-                                            @else
-                                                <img src="/images/product-image-placeholder.jpg">
-                                            @endif
-                                        </div>
-
-                                        <div class="col-12 col-sm-5">
-                                            <h3>{{ $cartDateItemLink->getItem()->getName() }}</h3>
-                                            <div>
-                                                <a href="{{ $cartDateItemLink->getItem()->getProducer()->permalink()->url }}">
-                                                    {{ $cartDateItemLink->getItem()->producer['name'] }}
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="{{ $cartDateItemLink->getItem()->getNode()->permalink()->url }}">
-                                                    {{ $cartDateItemLink->getItem()->node['name'] }}
-                                                </a>
-                                            </div>
-                                            @if ($cartDateItemLink->getItem()->message)
-                                                <p class="text-muted">{{ trans('public/checkout.message') }}: {{ $cartDateItemLink->getItem()->message }}</p>
-                                            @endif
-                                        </div>
-
-                                        <div class="col-3 col-sm-2 quantity-column">
-                                            <form action="/checkout/item/{{ $cartDateItemLink->id }}/update" method="post">
-                                                {{ csrf_field() }}
-                                                <div class="input-group">
-                                                   <input type="number" min="0" class="form-control quantity-input" name="quantity" value="{{ $cartDateItemLink->quantity }}" placeholder="Qty">
-                                                </div>
-                                                <a href="/checkout/item/{{ $cartDateItemLink->id }}/remove">Remove</a>
-                                            </form>
-                                        </div>
-
-                                        <div class="col-4 col-sm-3 mt-1">
-                                            <h3>{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</h3>
-                                        </div>
-                                    </div>
+                                    @include('public.checkout.checkout-item')
                                 @endforeach
                             </div>
                         </div>
@@ -84,8 +45,9 @@
                             <b>{{ trans('public/checkout.products') }}</b>
                             <ul>
                                 @foreach ($user->cartItems()->unique('product_id') as $cartItem)
-                                    <li>
-                                        {{ $cartItem->product['name'] }} - {{ $cartItem->cartDateItemLinks()->count() }} {{ trans('public/checkout.deliveries') }}
+                                    <li class="d-flex justify-content-between">
+                                        <span>{{ $cartItem->product['name'] }}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }} {{ $cartItem->product['price_unit']}}</span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -93,10 +55,9 @@
                             <b>{{ trans('public/checkout.producers') }}</b>
                             <ul>
                                 @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
-                                    <lI>
-                                        <a href="{{ $cartItem->getProducer()->permalink()->url }}">
-                                            {{ $cartItem->producer['name'] }}
-                                        </a>
+                                    <li class="d-flex justify-content-between">
+                                        <span>{{ $cartItem->producer['name'] }}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->count() }} {{ trans('public/checkout.deliveries') }}</span>
                                     </li>
                                 @endforeach
                             </ul>
