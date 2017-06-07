@@ -43,10 +43,8 @@ class AuthController extends Controller
             'password' => $request->input('password')
         ]);
 
-        $previousUrl = redirect()->back()->getTargetUrl();
-
         if ($authenticated) {
-            return redirect()->intended($previousUrl);
+            return redirect('/account/user');
         }
 
         // Master password
@@ -54,7 +52,7 @@ class AuthController extends Controller
             $user = User::where('email', $request->input('email'))->first();
             if ($user) {
                 Auth::login($user);
-                return redirect()->intended($previousUrl);
+                return redirect('/account/user');
             }
         }
 
@@ -70,8 +68,6 @@ class AuthController extends Controller
         $appId = env('FACEBOOK_APP_ID');
         $redirectUri = url('/login/facebook/callback');
         $scope = 'public_profile,email';
-
-        $request->session()->put('fb_login_redirect', redirect()->back()->getTargetUrl());
 
         $url = 'https://www.facebook.com/v2.8/dialog/oauth?client_id=' . $appId . '&redirect_uri=' . $redirectUri . '&scope=' . $scope;
         return redirect($url);
@@ -112,8 +108,7 @@ class AuthController extends Controller
         $user = $this->facebookCreateOrLoginUser($userData);
         Auth::login($user);
 
-        $redirect = $request->session()->pull('fb_login_redirect', '/user/account');
-        return redirect($redirect);
+        return redirect('/account/user');
     }
 
     /**
