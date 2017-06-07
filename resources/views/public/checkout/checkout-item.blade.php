@@ -48,13 +48,17 @@
                 <div class="col-8">
                     <h3>{{ $cartDateItemLink->getItem()->getName() }}</h3>
                     <div>
-                        <a href="{{ $cartDateItemLink->getItem()->getProducer()->permalink()->url }}">
+                        @if ($cartDateItemLink->getItem()->getProducer())
+                            <a href="{{ $cartDateItemLink->getItem()->getProducer()->permalink()->url }}">{{ $cartDateItemLink->getItem()->producer['name'] }}</a>
+                        @else
                             {{ $cartDateItemLink->getItem()->producer['name'] }}
-                        </a>
+                        @endif
                         -
-                        <a href="{{ $cartDateItemLink->getItem()->getNode()->permalink()->url }}">
+                        @if ($cartDateItemLink->getItem()->getNode())
+                            <a href="{{ $cartDateItemLink->getItem()->getNode()->permalink()->url }}">{{ $cartDateItemLink->getItem()->node['name'] }}</a>
+                        @else
                             {{ $cartDateItemLink->getItem()->node['name'] }}
-                        </a>
+                        @endif
                     </div>
                     @if ($cartDateItemLink->getItem()->message)
                         <p class="text-muted">{{ trans('public/checkout.message') }}: {{ $cartDateItemLink->getItem()->message }}</p>
