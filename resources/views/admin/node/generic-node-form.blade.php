@@ -1,7 +1,7 @@
 <div class="row clearfix">
     <div class="col-12 col-xl-8">
         <div class="card">
-            <div class="card-header">Information</div>
+            <div class="card-header">{{ trans('admin/node.information') }}</div>
             <div class="card-block">
                 <div class="form-group">
                     <label class="form-control-label" for="name">

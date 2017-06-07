@@ -27,7 +27,7 @@ return [
     'information_placeholder' => 'Information about your node',
     'invite_admin' => 'Invite admin',
     'leave_node' => 'Leave node',
-    'name' => 'Name',
+    'name' => 'Name you node',
     'nearby_nodes' => 'Nearby nodes',
     'node_info' => 'Node information',
     'no_nodes_selected' => 'You have not selected any nodes.',

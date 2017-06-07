@@ -27,7 +27,7 @@ return [
     'information_placeholder' => 'Information om din nod',
     'invite_admin' => 'Bjud in admin',
     'leave_node' => 'Lämna nod',
-    'name' => 'Namn',
+    'name' => 'Namnge din nod',
     'nearby_nodes' => 'Närliggande noder',
     'node_info' => 'Nod-information',
     'no_nodes_selected' => 'Du har inte valt några noder.',
