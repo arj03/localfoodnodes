@@ -64,7 +64,7 @@ class NodeMapContainer extends Component {
 
         tileLayer.addTo(map);
 
-        map.on('zoomlevelschange dragend', function(event) {
+        map.on('zoomend dragend', function(event) {
             let bounds = map.getBounds();
             that.createMarkersOnEvent(bounds);
         });
@@ -179,7 +179,11 @@ class NodeMapContainer extends Component {
     }
 
     getMapLoader() {
-        return <i className='fa fa-circle-o-notch map-loader' />;
+        return (
+            <div className='map-loader'>
+                <img src="/images/loader.svg" />
+            </div>
+        );
     }
 
     search(event) {
