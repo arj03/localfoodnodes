@@ -25,7 +25,7 @@ return [
     //co-funding part
     'co_fund_heading' => 'Bli delaktig i framtidens matförsörjning!',
     'co_fund_subheading' => 'Välj själv hur mycket du vill vara med och betala',
-    'co_fund_paragraph' => 'Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad. Med våra gemensamma insatser kan vi tillsammans staka ut riktingen får framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.',
+    'co_fund_paragraph' => 'Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad. Med våra gemensamma insatser kan vi tillsammans staka ut riktingen för framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.',
     'co_fund_read_more' => 'Läs mer om medlemskap',
 
     'monday' => 'Måndagar',
