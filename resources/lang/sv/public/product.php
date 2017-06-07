@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'added_to_cart' => 'Produkten har lagts till i varukorgen.',
     'add_to_cart' => 'Lägg i varukorg',
     'how_many' => 'Hur många?',
     'in_stock' => 'tillgängliga',

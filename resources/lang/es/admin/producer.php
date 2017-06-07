@@ -29,6 +29,7 @@ return [
     'delivery_date' => 'Delivery date',
     'delivery_dates' => 'Delivery dates',
     'edit_information' => 'Edit information',
+    'edit_producer' => 'Edit producer',
     'edit_product' => 'Edit product',
     'edit_production' => 'Edit production',
     'edit_variants' => 'Edit variants',

@@ -77,9 +77,10 @@ class CartController extends Controller
         $producer = Producer::where('id', $product->producer_id)->first();
         $node = Node::find($request->input('node_id'));
 
-        $errors = $this->addToCart($request, $user, $producer, $product, $variant, $node);
+        $this->addToCart($request, $user, $producer, $product, $variant, $node);
 
         if ($errors->isEmpty()) {
+            $request->session()->flash('message', [trans('public/product.added_to_cart')]);
             return redirect($node->permalink()->url);
         } else {
             return redirect()->back()->withInput()->withErrors($errors);
@@ -176,8 +177,6 @@ class CartController extends Controller
         }
 
         $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);
-
-        return new Collection();
     }
 
     /**

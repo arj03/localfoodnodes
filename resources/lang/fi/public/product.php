@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'added_to_cart' => 'Product has been added to cart.',
     'add_to_cart' => 'Add to cart',
     'how_many' => 'How many?',
     'in_stock' => 'in stock',

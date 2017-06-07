@@ -67,7 +67,7 @@ class Producer extends BaseModel implements EventOwnerInterface
             $producer->products()->each->delete();
             $producer->events()->each->delete();
             $producer->blacklists()->each->delete();
-            $producer->cartItems()->each->delete();
+            $producer->cartDateItemLinks()->each->delete();
             $producer->orderItems()->each->delete();
             $producer->permalink()->delete();
         });
@@ -133,6 +133,22 @@ class Producer extends BaseModel implements EventOwnerInterface
     }
 
     /**
+     * Get cart items.
+     *
+     * @return Collection
+     */
+    public function cartDateItemLinks()
+    {
+        $cartItems = $this->hasMany('App\Cart\CartItem', 'producer_id', 'id')->get();
+
+        $cartDateItemLinks = $cartItems->map(function($cartItem) {
+            return $cartItem->cartDateItemLinks();
+        })->flatten();
+
+        return $cartDateItemLinks;
+    }
+
+    /**
      * Get order date item links.
      *
      * @return Collection
@@ -163,16 +179,6 @@ class Producer extends BaseModel implements EventOwnerInterface
         })->unique('id');
 
         return $orderDates;
-    }
-
-    /**
-     * Get cart items.
-     *
-     * @return Collection
-     */
-    public function cartItems()
-    {
-        return $this->hasMany('App\Cart\CartItem', 'producer_id', 'id')->get();
     }
 
     /**

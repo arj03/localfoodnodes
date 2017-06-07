@@ -40,7 +40,7 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <a href="/account/producer/{{ $producer->id }}/edit">Edit producer</a>
+                    <a href="/account/producer/{{ $producer->id }}/edit">{{ trans('admin/producer.edit_producer') }}</a>
                 </div>
             </div>
         </div>

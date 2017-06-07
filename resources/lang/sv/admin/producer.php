@@ -29,6 +29,7 @@ return [
     'delivery_dates' => 'Utlämningsdatum',
     'delivery_date' => 'Utlämningsdatum',
     'edit_information' => 'Redigera information',
+    'edit_producer' => 'Redigera producent',
     'edit_product' => 'Redigera produkt',
     'edit_production' => 'Redigera produktion',
     'edit_variants' => 'Redigera varianter',
