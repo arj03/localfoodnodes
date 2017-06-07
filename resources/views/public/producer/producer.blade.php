@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header">Products</div>
+                    <div class="card-header">{{ trans('public/producer.products') }}</div>
                     <div class="card-block">
                         @if ($producer->products()->count() > 0)
                             <div class="row">

@@ -11,7 +11,7 @@
                 @foreach ($user->orderItemsGroupedByProducer() as $producerId => $orderItems)
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <span>{{ $orderItems->first()->getProducer()['name'] }}</span>
+                            <span>{{ $orderItems->first()->getProducer()['name'] }}</span> - <span>{{ $orderItems->first()->getProducer()['email'] }}</span>
                         </div>
                         <div class="card-block">
                             <table class="table table-hover">
