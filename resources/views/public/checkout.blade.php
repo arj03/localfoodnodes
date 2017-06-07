@@ -31,7 +31,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col-12 col-sm-5">
                                             <h3>{{ $cartDateItemLink->getItem()->getName() }}</h3>
                                             <div>
                                                 <a href="{{ $cartDateItemLink->getItem()->getProducer()->permalink()->url }}">
@@ -58,8 +58,8 @@
                                             </form>
                                         </div>
 
-                                        <div class="col-4 col-sm-2 mt-1">
-                                            <b>{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</b>
+                                        <div class="col-4 col-sm-3 mt-1">
+                                            <h3>{{ $cartDateItemLink->getPrice() }} {{ $cartDateItemLink->getItem()->producer['currency'] }}</h3>
                                         </div>
                                     </div>
                                 @endforeach
