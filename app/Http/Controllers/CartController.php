@@ -130,7 +130,7 @@ class CartController extends Controller
 
         $cartDateItemLink = $user->cartDateItemLink($cartDateItemLinkId);
 
-        if ($cartDateItemLink->getItem()->product['production_type'] === 'csa') {
+        if ($cartDateItemLink->getItem() && $cartDateItemLink->getItem()->product['production_type'] === 'csa') {
             // CSA is all or nothing
             $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) {
                 $cartItem->cartDateItemLinks()->each(function($cartDateItemLink) {
