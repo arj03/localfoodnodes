@@ -8,7 +8,10 @@
 
             <div class="form-group">
                 @if ($product->variants()->count() > 0)
-                    <label class="form-control-label">{{ trans('public/node.select_variant') }}</label>
+                    <label class="form-control-label">
+                        {{ trans('public/node.select_variant') }}
+                        @include('admin.field-error', ['field' => 'variant_id'])
+                    </label>
                     @foreach ($product->variants() as $variant)
                         <div class="form-check">
                             <label class="form-check-label w-100">
@@ -25,7 +28,10 @@
                         </div>
                     @endforeach
                 @else
-                    <label class="form-control-label">{{ trans('public/node.product') }}</label>
+                    <label class="form-control-label">
+                        {{ trans('public/node.product') }}
+                        @include('admin.field-error', ['field' => 'product_id'])
+                    </label>
                     <div class="form-check">
                         <label class="form-check-label w-100">
                             <input class="form-check-input" type="radio" name="product_id" value="{{ $product->id }}" checked>
@@ -39,7 +45,10 @@
             </div>
 
             <div class="form-group">
-                <label class="form-control-label" for="quantity">{{ trans('public/node.how_many') }}</label>
+                <label class="form-control-label" for="quantity">
+                    {{ trans('public/node.how_many') }}
+                    @include('admin.field-error', ['field' => 'quantity'])
+                </label>
                 <div class="input-group">
                     <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
                     @if ($product->package_unit)
@@ -49,7 +58,10 @@
             </div>
 
             <div class="form-group">
-                <label class="form-control-label">{{ trans('public/node.select_pickup') }}</label>
+                <label class="form-control-label">
+                    {{ trans('public/node.select_pickup') }}
+                    @include('admin.field-error', ['field' => 'delivery_dates'])
+                </label>
                 @if ($product->getDeliveryLinksByMonths($node->id)->count() > 0)
                     <div class="row calendar product-calendar">
                         @foreach ($product->getDeliveryLinksByMonths($node->id) as $monthDate => $deliveryLinks)
