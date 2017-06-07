@@ -52,6 +52,10 @@
         showNotification();
 
         $(document).on('notification', function(event, text) {
+            if (!text && event.detail) {
+                text = event.detail;
+            }
+
             var alert = '<div class="alert alert-success" role="alert" data-dismiss="alert">' + text + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>';
 
             $('.master-alerts').append(alert);

@@ -56,18 +56,19 @@ class CartController extends Controller
         $product = Product::find($request->input('product_id'));
 
         if ($product->variants()->count() > 0 && !$request->has('variant_id')) {
-            $errors->add('no_variant', 'You have not selected a product.');
+            $errors->add('variant_id', trans('public/product.no_variant'));
         }
 
         if (!$request->has('delivery_dates')) {
-            $errors->add('no_dates', 'You have not selected any delivery dates.');
+            $errors->add('delivery_dates', trans('public/product.no_delivery_dates'));
         }
 
         if (!$request->has('quantity')) {
-            $errors->add('no_quantity', 'Product quantity cannot be empty.');
+            $errors->add('quantity', trans('public/product.no_quantity'));
         }
 
         if (!$errors->isEmpty()) {
+            $request->session()->flash('message', [trans('public/product.required_fields_missing')]);
             return redirect()->back()->withInput()->withErrors($errors);
         }
 
@@ -169,6 +170,9 @@ class CartController extends Controller
 
         if (!$cartItem) {
             $cartItem = $this->createCartItem($request, $user, $producer, $product, $node, $variant);
+        } else if ($request->input('message')) {
+            $cartItem->message = $request->input('message');
+            $cartItem->save();
         }
 
         $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);

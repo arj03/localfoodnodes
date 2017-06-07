@@ -11,4 +11,11 @@ return [
     'producer' => 'Producent',
     'select' => 'Välj variant',
     'select_deliveries' => 'Välj upphämtningsdatum',
+
+    // Errors
+    'no_product' => 'Du har inte valt en produkt.',
+    'no_variant' => 'Du har inte valt en variant.',
+    'no_delivery_dates' => 'Du ar inte valt något utlämningsdatum.',
+    'no_quantity' => 'Du har inte valt någon kvantitet.',
+    'required_fields_missing' => 'Obigatoriska fält saknas.',
 ];

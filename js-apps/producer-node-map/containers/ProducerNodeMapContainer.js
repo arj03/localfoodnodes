@@ -20,6 +20,10 @@ class ProducerNodeMapContainer extends Component {
         if (prevProps.nodes !== this.props.nodes) {
             this.createMap();
         }
+
+        if (prevProps.selectedNodes !== this.props.selectedNodes) {
+            this.loadMap();
+        }
     }
 
     createMap() {
@@ -61,6 +65,7 @@ class ProducerNodeMapContainer extends Component {
             popupAnchor: [-16, -20]
         });
 
+        markers.clearLayers()
         _(this.props.nodes).each((node) => {
             let popup = document.createElement('div');
             ReactDOM.render(that.getNodePreview(node), popup);
@@ -76,22 +81,33 @@ class ProducerNodeMapContainer extends Component {
     addNode(node) {
         const { dispatch } = this.props;
         actions.addNode(dispatch, node);
-        infowindow.close();
+        map.closePopup();
     }
 
     removeNode(node) {
         const { dispatch } = this.props;
         actions.removeNode(dispatch, node);
+        map.closePopup();
     }
 
     getNodePreview(node) {
+        const { selectedNodes } = this.props;
+
+        let onClickFunction = this.addNode.bind(this, node);
+        let label = trans.add_node;
+
+        if (_(selectedNodes).find({id: node.id})) {
+            onClickFunction = this.removeNode.bind(this, node);
+            label = trans.remove_node;
+        }
+
         return (
             <div className='map-preview'>
                 <div className='header'>
                     <h3>{node.name}</h3>
                 </div>
                 <div className='body-text'>
-                    <div className='btn btn-success' data-node-id={node.id} onClick={this.addNode.bind(this, node)}>{trans.add_node}</div>
+                    <div className='btn btn-success' data-node-id={node.id} onClick={onClickFunction}>{label}</div>
                 </div>
             </div>
         );
@@ -112,7 +128,7 @@ class ProducerNodeMapContainer extends Component {
                                     <i className='fa fa-gear'></i>
                                 </button>
                                 <ul className='dropdown-menu dropdown-menu-right'>
-                                    <li><a className='dropdown-item' onClick={this.removeNode.bind(this, node)}>{trans.leave_node}</a></li>
+                                    <li><a className='dropdown-item' onClick={this.removeNode.bind(this, node)}>{trans.remove_node}</a></li>
                                 </ul>
                             </div>
                         </td>

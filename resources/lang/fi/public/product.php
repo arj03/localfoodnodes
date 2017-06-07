@@ -11,4 +11,11 @@ return [
     'producer' => 'Producer',
     'select' => 'Select variant',
     'select_deliveries' => 'Select delivery dates',
+
+    // Errors
+    'no_product' => 'You have not selected a product.',
+    'no_variant' => 'You have not selected a product.',
+    'no_delivery_dates' => 'You have not selected any delivery dates.',
+    'no_quantity' => 'Product quantity cannot be empty.',
+    'required_fields_missing' => 'Required fields are missing.',
 ];

@@ -6,6 +6,7 @@ import constants from '../constants';
 
 const request = superagentPromise(superagent, promise);
 const rootElement = 'producer-node-map-component-root';
+const trans = JSON.parse(document.getElementById(rootElement).dataset.trans);
 
 export function fetchNodes(dispatch) {
     dispatch(requestNodes());
@@ -57,6 +58,9 @@ export function addNode(dispatch, node) {
 }
 
 export function nodeAdded(data) {
+    var event = new CustomEvent('notification', { 'detail': trans['node_added'] });
+    document.dispatchEvent(event);
+
     return {
         type: constants.NODE_ADDED,
         data: data,
@@ -82,6 +86,9 @@ export function removeNode(dispatch, node) {
 }
 
 export function nodeRemoved(data) {
+    var event = new CustomEvent('notification', { 'detail': trans['node_removed'] });
+    document.dispatchEvent(event);
+
     return {
         type: constants.NODE_REMOVED,
         data: data,
