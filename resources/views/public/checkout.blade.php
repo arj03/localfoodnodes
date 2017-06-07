@@ -33,8 +33,19 @@
 
                                         <div class="col-12 col-sm-6">
                                             <h3>{{ $cartDateItemLink->getItem()->getName() }}</h3>
-                                            <p>{{ $cartDateItemLink->getItem()->producer['name'] }} - {{ $cartDateItemLink->getItem()->node['name'] }}</p>
-                                            <p class="text-muted">{{ $cartDateItemLink->getItem()->message }}</p>
+                                            <div>
+                                                <a href="{{ $cartDateItemLink->getItem()->getProducer()->permalink()->url }}">
+                                                    {{ $cartDateItemLink->getItem()->producer['name'] }}
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="{{ $cartDateItemLink->getItem()->getNode()->permalink()->url }}">
+                                                    {{ $cartDateItemLink->getItem()->node['name'] }}
+                                                </a>
+                                            </div>
+                                            @if ($cartDateItemLink->getItem()->message)
+                                                <p class="text-muted">{{ trans('public/checkout.message') }}: {{ $cartDateItemLink->getItem()->message }}</p>
+                                            @endif
                                         </div>
 
                                         <div class="col-3 col-sm-2 quantity-column">
@@ -67,35 +78,32 @@
 
             <div class="col-12 col-xl-4">
                 @if ($user->cartDates()->count() > 0)
-                    <div class="card">
+                    <div class="card summary">
                         <div class="card-header">{{ trans('public/checkout.summary') }}</div>
                         <div class="card-block">
-                            <table class="table">
-                                <thead>
-                                    <tr><th>Products</th></tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($user->cartItems()->unique('product_id') as $cartItem)
-                                        <tr><td>{{ $cartItem->product['name'] }}</td></tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <table class="table">
-                                <thead>
-                                    <tr><th>Producers</th></tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
-                                        <tr><td>{{ $cartItem->producer['name'] }}</td></tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer">
+                            <b>{{ trans('public/checkout.products') }}</b>
+                            <ul>
+                                @foreach ($user->cartItems()->unique('product_id') as $cartItem)
+                                    <li>
+                                        {{ $cartItem->product['name'] }} - {{ $cartItem->cartDateItemLinks()->count() }} {{ trans('public/checkout.deliveries') }}
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <b>{{ trans('public/checkout.producers') }}</b>
+                            <ul>
+                                @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
+                                    <lI>
+                                        <a href="{{ $cartItem->getProducer()->permalink()->url }}">
+                                            {{ $cartItem->producer['name'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
                             @if ($user->isMember())
-                                <a href="/checkout/order/create" class="btn btn-success w-100">{{ trans('public/checkout.send_order') }}</a>
+                                <a href="/checkout/order/create" class="btn w-100">{{ trans('public/checkout.send_order') }}</a>
                             @else
-                                <a href="/membership" class="btn btn-success w-100">{{ trans('public/checkout.become_member') }}</a>
+                                <a href="/membership" class="btn w-100">{{ trans('public/checkout.become_member') }}</a>
                             @endif
                         </div>
                     </div>

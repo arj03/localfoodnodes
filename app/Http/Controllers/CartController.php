@@ -169,6 +169,9 @@ class CartController extends Controller
 
         if (!$cartItem) {
             $cartItem = $this->createCartItem($request, $user, $producer, $product, $node, $variant);
+        } else if ($request->input('message')) {
+            $cartItem->message = $request->input('message');
+            $cartItem->save();
         }
 
         $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);

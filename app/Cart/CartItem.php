@@ -67,11 +67,31 @@ class CartItem extends \App\BaseModel
     /**
      * Get product.
      *
-     * @return Collection
+     * @return Product
      */
     public function getProduct()
     {
         return $this->hasMany('App\Product\Product', 'id', 'product_id')->first();
+    }
+
+    /**
+     * Get producer.
+     *
+     * @return Producer
+     */
+    public function getProducer()
+    {
+        return $this->hasMany('App\Producer\Producer', 'id', 'producer_id')->first();
+    }
+
+    /**
+     * Get node.
+     *
+     * @return Node
+     */
+    public function getNode()
+    {
+        return $this->hasMany('App\Node\Node', 'id', 'node_id')->first();
     }
 
     /**
