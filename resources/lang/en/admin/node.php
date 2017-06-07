@@ -28,7 +28,7 @@ return [
     'invite_admin' => 'Invite admin',
     'leave_node' => 'Leave node',
     'name' => 'Name',
-    'name_node' => 'Name you node',
+    'name_node' => 'Name your node',
     'nearby_nodes' => 'Nearby nodes',
     'node_info' => 'Node information',
     'no_nodes_selected' => 'You have not selected any nodes.',
