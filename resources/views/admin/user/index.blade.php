@@ -145,20 +145,20 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">{{ trans('public/pages/welcome-message.header') }}</h4>
+                        <h4 class="modal-title">{{ trans('public/welcome-message.welcome_header') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body body-text">
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph1') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph2') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph3') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph4') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph5') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph6') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph7') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph8') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph9') }}</p>
-                        <p>{{ trans('public/pages/welcome-message.welcome_paragraph10') }}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph1') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph2') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph3') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph4') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph5') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph6') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph7') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph8') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph9') !!}</p>
+                        <p>{!! trans('public/welcome-message.welcome_paragraph10') !!}</p>
                     </div>
                 </div>
             </div>
