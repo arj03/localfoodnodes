@@ -83,8 +83,10 @@
         color: #333
 
 .form-group
-  label,
-  .form-control-feedback
+  margin-bottom: 2rem
+  &.disabled
+    opacity: 0.5
+  label
     font-family: 'montserrat'
     font-weight: 400
     &.form-check-label
@@ -93,6 +95,9 @@
     font-family: 'montserrat'
     font-weight: 400
     font-size: inherit
+  input
+    &:disabled
+      background: #eee
 
 .table
   &.fixed

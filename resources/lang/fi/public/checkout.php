@@ -18,6 +18,7 @@ return [
     'products' => 'Products',
     'quantity' => 'Quantity',
     'recieve_instruction' => 'You and the producer will receive an order confirmation email. You can always view your future <a href="account/user/orders"> orders and find payment information</a>',
+    'remove' => 'Remove',
     'summary' => 'Summary',
     'title' => 'Checkout',
 ];

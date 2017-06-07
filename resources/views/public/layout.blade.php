@@ -62,6 +62,7 @@
             ga('create', 'UA-90169652-1', 'auto');
             ga('send', 'pageview');
         </script>
+        <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js" async></script>
         @yield('modal')
     </body>
 </html>

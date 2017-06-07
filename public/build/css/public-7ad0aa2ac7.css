@@ -107,14 +107,20 @@
   color: #333;
 }
 
-.form-group label,
-.form-group .form-control-feedback {
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group.disabled {
+  opacity: 0.5;
+}
+
+.form-group label {
   font-family: 'montserrat';
   font-weight: 400;
 }
 
-.form-group label.form-check-label,
-.form-group .form-control-feedback.form-check-label {
+.form-group label.form-check-label {
   font-family: inherit;
 }
 
@@ -122,6 +128,10 @@
   font-family: 'montserrat';
   font-weight: 400;
   font-size: inherit;
+}
+
+.form-group input:disabled {
+  background: #eee;
 }
 
 .table.fixed {
@@ -1238,6 +1248,16 @@ body.public-checkout .cart-item:last-child {
   margin-bottom: 0;
   border-bottom: 0;
   padding-bottom: 0;
+}
+
+body.public-checkout .cart-item .cart-item-inner {
+  display: -webkit-box;
+  display: flex;
+}
+
+body.public-checkout .cart-item form {
+  width: 100px;
+  float: right;
 }
 
 body.public-checkout .summary {

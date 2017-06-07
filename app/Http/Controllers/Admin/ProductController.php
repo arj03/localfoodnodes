@@ -118,7 +118,7 @@ class ProductController extends Controller
 
             $request->session()->flash('message', [trans('admin/messages.product_created')]);
 
-            return redirect('/account/producer/' . $producer->id . '/product/' . $product->id . '/edit');
+            return redirect('/account/producer/' . $producer->id . '/product/' . $product->id . '/production');
         }
 
         return redirect()->back()->withInput()->withErrors($errors);

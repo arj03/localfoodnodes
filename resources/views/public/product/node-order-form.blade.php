@@ -17,7 +17,7 @@
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}">
                                 {{ $product->name}} - {{ $variant->name }}
-                                ({{ $variant->package_amount }} {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }})
+                                ({{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }})
                                 <div class="price">
                                     {{ $variant->price }} {{ $producer->currency }}
                                     @if ($product->package_unit)
