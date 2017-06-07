@@ -672,40 +672,20 @@ body.page .page .card .body-text {
 }
 
 .map .map-holder .map-loader {
-  display: block;
-  text-align: center;
-  font-size: 50px;
-  -webkit-animation-name: rotate;
-  animation-name: rotate;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  color: #333;
+  position: relative;
+  z-index: 9999;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 100%;
 }
 
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+.map .map-holder .map-loader img {
+  height: 100px;
+  width: 100px;
 }
 
 .map .map-preview {
