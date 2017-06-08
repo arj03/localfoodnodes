@@ -107,7 +107,7 @@
   color: #333;
 }
 
-.form-group.disabled {
+.form-group .disabled {
   opacity: 0.5;
 }
 

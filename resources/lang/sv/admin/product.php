@@ -43,7 +43,7 @@ return [
     'other_options' => 'Andra inställningar (valfritt)',
     'price' => 'Pris',
     'price_per' => 'Pris anges per...',
-    'price_on_variants' => 'Priset sätts på dina varianter.',
+    'price_on_variants' => 'Din produkt har varianter och det priset på varianterna som gäller i butiken.',
     'product' => 'Produkt',
     'products' => 'Produkter',
     'product_name' => 'Produktnamn',

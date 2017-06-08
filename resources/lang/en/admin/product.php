@@ -45,7 +45,7 @@ return [
     'other_options' => 'Other options (optional)',
     'price' => 'Price',
     'price_per' => 'Price is set per...',
-    'price_on_variants' => 'Price is set on your variants.',
+    'price_on_variants' => 'Your product has variants and it\'s the variant prices that will show in the store.',
     'product' => 'Product',
     'products' => 'Products',
     'product_name' => 'Product name',

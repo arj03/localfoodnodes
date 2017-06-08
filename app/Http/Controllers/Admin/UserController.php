@@ -132,7 +132,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->flash('welcome-modal', true);
         $user = Auth::user();
         return view('admin.user.index', [
             'breadcrumbs' => [
