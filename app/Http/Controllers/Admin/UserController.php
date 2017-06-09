@@ -439,6 +439,14 @@ class UserController extends Controller
     }
 
     /**
+     * Create free membership action.
+     */
+    public function createFreeMembership()
+    {
+
+    }
+
+    /**
      * Add or remove node from user.
      */
     public function toggleNode(Request $request, $nodeId)

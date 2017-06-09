@@ -59,8 +59,19 @@
         $form.submit(function(event) {
             $form.find('.submit').prop('disabled', true);
 
-            // Request a token from Stripe
-            Stripe.card.createToken($form, stripeResponseHandler);
+            if ($form.find('#amount').val() < 3) {
+                console.log('Not worth it');
+                $.ajax({
+                  type: 'post',
+                  url: '/account/user/membership',
+                  data: data,
+                  success: success,
+                  dataType: dataType
+                });
+            } else {
+                // Request a token from Stripe
+                Stripe.card.createToken($form, stripeResponseHandler);
+            }
 
             return false;
         });
