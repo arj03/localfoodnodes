@@ -53,6 +53,7 @@ class ProductFilter
             'mushroom' => trans('public/tags.mushroom'),
             'poultry' => trans('public/tags.poultry'),
             'vegetable' => trans('public/tags.vegetable'),
+            'honey' => trans('public/tags.honey'),
         ])->sort();
     }
 

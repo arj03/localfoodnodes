@@ -12,4 +12,5 @@ return [
     'mushroom' => 'Svamp',
     'poultry' => 'Fågel',
     'vegetable' => 'Grönsaker',
+    'honey' => 'Honung',
 ];

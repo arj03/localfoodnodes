@@ -12,4 +12,5 @@ return [
     'mushroom' => 'Mushroom',
     'poultry' => 'Poultry',
     'vegetable' => 'Vegetable',
+    'honey' => 'Honey',
 ];
