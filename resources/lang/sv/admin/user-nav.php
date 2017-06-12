@@ -8,6 +8,7 @@ return [
     'delivery-nodes' => 'Leveransnoder',
     'events' => 'Evenemang',
     'faq' => 'FAQ',
+    'find_nodes' => 'Hitta utlämningsplatser',
     'guide' => 'Guide',
     'logout' => 'Logga ut',
     'nodes_you_follow' => 'Noder du följer',

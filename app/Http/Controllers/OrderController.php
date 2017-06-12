@@ -50,6 +50,8 @@ class OrderController extends Controller
 
             $user->cartDateItemLinks()->each->delete();
 
+            \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
+
             return redirect('/account/user/orders');
         }
 

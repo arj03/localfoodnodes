@@ -8,6 +8,7 @@ return [
     'delivery-nodes' => 'Delivery nodes',
     'events' => 'Events',
     'faq' => 'FAQ',
+    'find_nodes' => 'Find nodes',
     'guide' => 'Guide',
     'logout' => 'Logout',
     'nodes_you_follow' => 'Nodes you follow',

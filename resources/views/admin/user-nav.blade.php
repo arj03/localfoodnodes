@@ -16,6 +16,7 @@
                     <li>
                         <a class="{{ Request::is('account/user') ? 'active' : '' }}" href="/account/user">{{ $user->name }}</a>
                         <ul>
+                            <li><a class="{{ Request::is('/') ? 'active' : '' }}" href="/">- {{ trans('admin/user-nav.find_nodes') }}</a></li>
                             <li><a class="{{ Request::is('account/user/order*') ? 'active' : '' }}" href="/account/user/orders">- {{ trans('admin/user-nav.orders') }}</a></li>
                             <li><a class="{{ Request::is('account/user/pickups*') ? 'active' : '' }}" href="/account/user/pickups">- {{ trans('admin/user-nav.pickups') }}</a></li>
                             <li><a class="{{ Request::is('account/user/event*') ? 'active' : '' }}" href="/account/user/events">- {{ trans('admin/user-nav.events') }}</a></li>

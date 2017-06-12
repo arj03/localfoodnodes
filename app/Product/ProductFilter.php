@@ -43,17 +43,22 @@ class ProductFilter
     public static function tags($translate = false) {
         return collect([
             'artisan_food' => trans('public/tags.artisan_food'),
+            'beer' => trans('public/tags.beer'),
             'beverage' => trans('public/tags.beverage'),
             'dairy_cheese' => trans('public/tags.dairy_cheese'),
             'eggs' => trans('public/tags.eggs'),
             'fish' => trans('public/tags.fish'),
             'fruit_berries' => trans('public/tags.fruit_berries'),
+            'grain_flour' => trans('public/tags.grain_flour'),
+            'honey' => trans('public/tags.honey'),
             'jam_marmelade' => trans('public/tags.jam_marmelade'),
             'meat' => trans('public/tags.meat'),
             'mushroom' => trans('public/tags.mushroom'),
+            'pickled' => trans('public/tags.pickled'),
+            'potatoes' => trans('public/tags.potatoes'),
             'poultry' => trans('public/tags.poultry'),
+            'seeds' => trans('public/tags.seeds'),
             'vegetable' => trans('public/tags.vegetable'),
-            'honey' => trans('public/tags.honey'),
         ])->sort();
     }
 
