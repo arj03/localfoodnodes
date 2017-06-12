@@ -48,7 +48,7 @@ return [
     'admin_removed' => 'Du är inte längre admin för :name',
     'invite_no_user' => 'Användaren finns inte',
     'invite_cancelled' => 'Inbjudan har tagits bort',
-    'invide_accepted' => 'Du är nu admin för :name',
+    'invite_accepted' => 'Du är nu admin för :name',
     'user_invited' => 'Användaren är redan inbjuden',
     'user_is_admin' => 'Användaren är redan admin',
 

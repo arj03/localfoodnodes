@@ -87,7 +87,7 @@
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/order*') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/orders">- {{ trans('admin/user-nav.orders') }}</a>
                                     </li>
                                     <li>
-                                        <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/#nodes') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/#nodes">- {{ trans('admin/user-nav.delivery-nodes') }}</a>
+                                        <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/#nodes') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/#nodes">- {{ trans('admin/user-nav.delivery_nodes') }}</a>
                                     </li>
                                     <li>
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/events') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/events">- {{ trans('admin/user-nav.events') }}</a>

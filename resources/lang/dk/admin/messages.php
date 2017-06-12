@@ -48,7 +48,7 @@ return [
     'admin_removed' => 'You are no longer an admin for :name',
     'invite_no_user' => 'Invited user does not exist.',
     'invite_cancelled' => 'Admin invite has been cancelled',
-    'invide_accepted' => 'Your are now an admin of :name',
+    'invite_accepted' => 'Your are now an admin of :name',
     'user_invited' => 'User is already invited',
     'user_is_admin' => 'User is already an admin',
 

@@ -441,7 +441,7 @@ class User extends BaseUser
      */
     public function nodeAdminLink($nodeId)
     {
-        return $this->nodeAdminLinks()->where('node_id', $nodeId)->first();
+        return $this->nodeAdminLinksRelationship->where('active', 0)->where('node_id', $nodeId)->first();
     }
 
     /**

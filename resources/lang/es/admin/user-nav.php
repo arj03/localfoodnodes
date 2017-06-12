@@ -5,7 +5,7 @@ return [
     'create_node' => 'Create node',
     'create_product' => 'Create product',
     'deliveries' => 'Deliveries',
-    'delivery-nodes' => 'Delivery nodes',
+    'delivery_nodes' => 'Delivery nodes',
     'events' => 'Events',
     'faq' => 'FAQ',
     'find_nodes' => 'Find nodes',

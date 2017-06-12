@@ -44,9 +44,11 @@ class NodeController extends Controller
             }
 
             $nodeAdminLink = $user->nodeAdminLink($nodeId);
+            error_log(var_export($nodeAdminLink, true));
             $errorMessage = trans('admin/messages.request_no_node');
 
             if (!$nodeAdminLink) {
+                error_log('111');
                 $request->session()->flash('error', [$errorMessage]);
                 return redirect('/account/user');
             }
@@ -54,6 +56,7 @@ class NodeController extends Controller
             $node = $nodeAdminLink->getNode();
 
             if (!$node) {
+                error_log('222');
                 $request->session()->flash('error', [$errorMessage]);
                 return redirect('/account/user');
             }
@@ -376,7 +379,7 @@ class NodeController extends Controller
         $nodeAdminInvite->update(['active' => 1]);
 
         $request->session()->flash('message', [
-            trans('admin/messages.admin_accepted', ['node' => $node->name])
+            trans('admin/messages.invite_accepted', ['name' => $node->name])
         ]);
         return redirect()->back();
     }
