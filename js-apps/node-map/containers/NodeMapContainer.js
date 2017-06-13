@@ -13,6 +13,7 @@ const trans = JSON.parse(rootElement.dataset.trans);
 
 let map = null;
 let addedNodes = [];
+let addedReko = [];
 let visibleLatLng = [];
 
 class NodeMapContainer extends Component {
@@ -107,14 +108,23 @@ class NodeMapContainer extends Component {
 
         _(this.props.nodes).each((node, index) => {
             if (addedNodes.indexOf(node.id) === -1) {
+                let marker = L.marker([node.location.lat, node.location.lng], {icon: markerIcon});
                 let popup = document.createElement('div');
                 ReactDOM.render(that.getNodePreview(node), popup);
-
-                let marker = L.marker([node.location.lat, node.location.lng], {icon: markerIcon});
                 marker.bindPopup(popup);
                 markers.addLayer(marker);
-
                 addedNodes.push(node.id);
+            }
+        });
+
+        _(this.props.reko).each((reko, index) => {
+            if (addedReko.indexOf(reko.id) === -1) {
+                let marker = L.marker([reko.location.lat, reko.location.lng], {icon: markerIcon});
+                let popup = document.createElement('div');
+                ReactDOM.render(that.getRekoPreview(reko), popup);
+                marker.bindPopup(popup);
+                markers.addLayer(marker);
+                addedReko.push(reko.id);
             }
         });
 
@@ -166,14 +176,27 @@ class NodeMapContainer extends Component {
             <div className='map-preview'>
                 <a href={node.permalink.url} className='header'>
                     <h3>{node.name}</h3>
-                    <div className="meta">
-                        <div><i className="fa fa-home" />{node.address} {node.zip} {node.city}</div>
-                        <div><i className="fa fa-clock-o" />{trans[node.delivery_weekday]} {node.delivery_time}</div>
+                    <div className='meta'>
+                        <div><i className='fa fa-home' />{node.address} {node.zip} {node.city}</div>
+                        <div><i className='fa fa-clock-o' />{trans[node.delivery_weekday]} {node.delivery_time}</div>
                     </div>
                 </a>
                 <div className='body-text'>
-                    <a href={node.permalink.url} className="btn btn-success">{trans.visit_node} <i className="fa fa-caret-right" style={{float: 'right'}}/></a>
+                    <a href={node.permalink.url} className='btn btn-success'>{trans.visit_node} <i className='fa fa-caret-right' style={{float: 'right'}}/></a>
                 </div>
+            </div>
+        );
+    }
+
+    getRekoPreview(reko) {
+        return (
+            <div className='map-preview'>
+            <a href={reko.link} target='_blank' className='header'>
+                <h3>{reko.name}</h3>
+            </a>
+            <div className='body-text'>
+                <a href={reko.link} target='_blank' className='btn btn-success'>{trans.visit_node} <i className='fa fa-caret-right' style={{float: 'right'}}/></a>
+            </div>
             </div>
         );
     }

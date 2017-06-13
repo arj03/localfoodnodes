@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Helpers\MapHelper;
-
-use DateTime;
+use App\Node\Reko;
 
 class MapController extends Controller
 {
@@ -25,9 +24,11 @@ class MapController extends Controller
     {
         $mapHelper = new MapHelper();
         $nodes = $this->getNodes($request, $mapHelper);
+        $reko = $this->getReko();
 
         return response()->json([
-            'nodes' => $nodes
+            'nodes' => $nodes,
+            'reko' => $reko,
         ]);
     }
 
@@ -52,5 +53,10 @@ class MapController extends Controller
         });
 
         return $nodes;
+    }
+
+    private function getReko()
+    {
+        return Reko::all();
     }
 }

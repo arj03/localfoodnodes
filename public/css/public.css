@@ -673,7 +673,7 @@ body.page .page .card .body-text {
 
 .map .map-holder .map-loader {
   position: relative;
-  z-index: 9999;
+  z-index: 401;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;

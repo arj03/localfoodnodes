@@ -13,6 +13,7 @@ function nodeMap(state, action) {
             return Object.assign({}, state, {
                 fetching: false,
                 nodes: action.data.nodes,
+                reko: action.data.reko,
                 searchResults: null
             });
             break;
