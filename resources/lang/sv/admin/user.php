@@ -71,4 +71,5 @@ return [
     'membership_unpaid_title' => 'Bli medlem för att kunna handla',
     'membership_unpaid' => 'För att kunna boka din lokala mat, måste du först bli stödmedlem genom att betala en årsavgift.  Du som användare bestämmer själv hur stor eller liten din årliga avgift kommer att vara.',
     'membership_unpaid_link' => 'Läs mer och bli medlem',
+    'payment_info' => 'Vi använder oss av <a href="https://stripe.com">Stripe</a> för kortbetalningar och vi sparar inte dina kortuppgifter.',
 ];

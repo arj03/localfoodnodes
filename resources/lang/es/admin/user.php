@@ -71,4 +71,5 @@ return [
     'membership_unpaid_title' => 'Become a supporting member to be able to send your food orders',
     'membership_unpaid' => 'To be able to make your orders on Local Food Nodes, you need to become a supporting member and pay an annual fee. You decide for yourself how big or small your annual fee will be.',
     'membership_unpaid_link' => 'Read more and become a member',
+    'payment_info' => 'We\'re using <a href="https://stripe.com">Stripe</a> for credit card payments and we don\'t save your card number.',
 ];

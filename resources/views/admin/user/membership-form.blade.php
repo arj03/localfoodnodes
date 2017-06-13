@@ -8,13 +8,17 @@
         <div class="card-header">{{ trans('admin/user.membership') }}</div>
         <div class="card-block">
             <div class="form-group">
-                <label class="form-control-label" for="amount">{{ trans('admin/user.amount') }}</label>
-                <input type="number" name="amount" id="amount" class="form-control" data-stripe="amount" placeholder="{{ trans('admin/user.amount') }}">
+                <label class="form-control-label" for="amount">{{ trans('admin/user.amount') }} (SEK)</label>
+                <div class="input-group">
+                    <input type="number" name="amount" id="amount" class="form-control" data-stripe="amount" placeholder="{{ trans('admin/user.amount') }}">
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="form-control-label" for="number">{{ trans('admin/user.card_number') }}</label>
-                <input type="number" id="number" class="form-control" size="20" data-stripe="number" placeholder="{{ trans('admin/user.card_number') }}">
+                <div class="input-group">
+                    <input type="text" id="number" class="form-control" size="20" data-stripe="number" placeholder="{{ trans('admin/user.card_number') }}">
+                </div>
             </div>
 
             <div class="form-group">
@@ -38,6 +42,7 @@
                 <label class="form-control-label">{{ trans('admin/user.your_zip_code') }}</label>
                 <input type="number" class="form-control" size="6" data-stripe="address_zip" placeholder="{{ trans('admin/user.your_zip_code') }}" value="{{ $user->zip or '' }}">
             </div>
+            <span>{!! trans('admin/user.payment_info') !!}</span>
         </div>
         <div class="card-block">
             <input type="submit" class="submit btn btn-success" value="{{ trans('admin/user.submit_payment') }}">
