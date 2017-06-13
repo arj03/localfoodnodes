@@ -14,6 +14,7 @@ class CreateRekoTable extends Migration
     public function up()
     {
         Schema::create('reko', function (Blueprint $table) {
+            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('name')->required();
             $table->string('link')->required();
