@@ -12,7 +12,7 @@
                 <div class="card-block d-flex justify-content-between">
                     <ul>
                         <li><b>{{ $orderItem->user['name'] }}</b></li>
-                        <li><a href="mailto:{{ $orderItem->producer['email'] }}">{{ $orderItem->user['email'] }}</a></li>
+                        <li><a href="mailto:{{ $orderItem->user['email'] }}">{{ $orderItem->user['email'] }}</a></li>
                         <li>{{ $orderItem->user['address'] }}</li>
                         <li>{{ $orderItem->user['zip'] }} {{ $orderItem->user['city'] }}</li>
                     </ul>
