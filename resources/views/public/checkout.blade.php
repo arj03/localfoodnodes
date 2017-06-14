@@ -19,7 +19,7 @@
                 @if ($user->cartDates()->count() > 0)
                     @foreach ($user->cartDates() as $cartDate)
                         <div class="card">
-                            <div class="card-header">{{ trans('public/checkout.delivery') }} {{ $cartDate->date('Y-m-d') }}</div>
+                            <div class="card-header">{{ trans_choice('public/checkout.delivery', 1) }} {{ $cartDate->date('Y-m-d') }}</div>
                             <div class="card-block">
                                 @foreach ($cartDate->cartDateItemLinks() as $cartDateItemLink)
                                     @include('public.checkout.checkout-item')
@@ -42,22 +42,28 @@
                     <div class="card summary">
                         <div class="card-header">{{ trans('public/checkout.summary') }}</div>
                         <div class="card-block">
-                            <b>{{ trans('public/checkout.products') }}</b>
+                            <b class="d-flex justify-content-between">
+                                <span>{{ trans('public/checkout.products') }}</span>
+                                <span>{{ trans('public/checkout.quantity') }}</span>
+                            </b>
                             <ul>
                                 @foreach ($user->cartItems()->unique('product_id') as $cartItem)
                                     <li class="d-flex justify-content-between">
                                         <span>{{ $cartItem->product['name'] }}</span>
-                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }} {{ $cartItem->product['price_unit']}}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }}</span>
                                     </li>
                                 @endforeach
                             </ul>
 
-                            <b>{{ trans('public/checkout.producers') }}</b>
+                            <b class="d-flex justify-content-between">
+                                <span>{{ trans('public/checkout.producers') }}</span>
+                                <span>{{ trans_choice('public/checkout.delivery', 2) }}</span>
+                            </b>
                             <ul>
                                 @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
                                     <li class="d-flex justify-content-between">
                                         <span>{{ $cartItem->producer['name'] }}</span>
-                                        <span>{{ $cartItem->cartDateItemLinks()->count() }} {{ trans('public/checkout.deliveries') }}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->count() }} {{ trans_choice('public/checkout.delivery', $cartItem->cartDateItemLinks()->count()) }}</span>
                                     </li>
                                 @endforeach
                             </ul>
