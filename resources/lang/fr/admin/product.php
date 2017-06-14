@@ -9,7 +9,9 @@ return [
     'booking_deadline' => 'Booking deadline:',
     'create_variant' => 'Create variant',
     'csa_products' => 'CSA products',
-    'csa_products_info' => 'CSA is for subscription for the whole season.',
+    'csa_products_info' => '
+        CSA is products that must be booked for the whole season in advance. CSA works just like the weekly balance, with the difference that you as a customer book an entire season in advance at once.
+    ',
     'date' => 'Date',
     'days' => 'days before delivery',
     'delete' => 'Delete',
@@ -40,7 +42,14 @@ return [
     'no_variants' => 'No variants',
     'occasional_products' => 'Occasional product',
     'occasional_products_fresh_meat' => 'Occasional product - Fresh meat',
-    'occasional_products_info' => 'Occasional is for refined products like honey and jam, fresh meat with specific slaughter dates and slow growing vegetables.',
+    'occasional_products_info' => '
+        For products produced in "batches" with a fixed balance, such as honey, pickling, slaughter, etc.
+        <ul class="list mt-3">
+            <li>Product balance is set from a fixed date and then counts down until it ends.</li>
+            <li>You can create multiple production dates. The aproduct balance for the new date is added to the previous date\'s balance.</li>
+            <li>The balance has expired when the product is sold out, regardless of which delivery dates or delivery nodes the product is available on.</li>
+        </ul>
+    ',
     'occasional_specify_date_quantity' => 'Specify the date and quantity from which the product is available for delivery.',
     'other_options' => 'Other options (optional)',
     'price' => 'Price',
@@ -59,11 +68,19 @@ return [
     'production' => 'Production',
     'production_date' => 'Production date',
     'production_for_week' => 'Production for week',
+    'production_type_header' => 'What type of product is this?',
     'quantity' => 'Quantity',
     'quantity_available' => 'Quantity available from the date above',
     'recurring_products_weekly' => 'Recurring product with stock set weekly',
     'recurring_products_per_delivery' => 'Recurring product with stock set per delivery',
-    'recurring_products_info' => 'Recurring products is suitable for eggs and fast growing vegetables.',
+    'recurring_products_info' => '
+        For products harvested regularly and having a recurring weekly balance. Tex eggs, fast-growing vegetables, etc.
+        <ul class="list mt-3">
+            <li>Weekly balance renew itself every week.</li>
+            <li>The weekly balance is shared with several delivery nodes. This means that you can deliver to multiple delivery nodes the same week, and the balance counts down regardless of the what node it is booked to.</li>
+            <li>You can adjust weekly balance individually for each week if you produce more or less certain weeks. Just make sure it\'s done well in advance.</li>
+        </ul>
+    ',
     'save' => 'Save',
     'save_product' => 'Save product',
     'save_product_continue' => 'Save product and continue to delivery dates',
@@ -87,24 +104,19 @@ return [
 
     // How does it work
     'how_does_it_work' => 'How does it work',
-    'hdiw_intro' => 'Produkter skapas stegvis och parametrar väljs efterhand som passar just denna produkt bäst.',
-    'hdiw_item_1' => 'Ange namn och beskrivning samt välj taggar för din produkt. Ladda upp bild/er som beskriver produkten. Ange betalningsinformation samt hur långt innan leverans du senast måste ha  beställningar av produkten.',
-    'hdiw_item_2' => 'Välj typ av produkt samt mängd av produkten du vill sälja.',
-    'hdiw_item_3' => 'Redigera datum och utlämningsplatser för din produkt.',
+    'hdiw_intro' => 'Products are created step by step and parameters are selected gradually that best suit the product.',
+    'hdiw_item_1' => 'Enter name and description and choose tags for your product. Upload image/s describing the product. Enter payment information and how long before delivery you must have orders for the product.',
+    'hdiw_item_2' => 'Choose the type of product and quantity of the product you want to sell.',
+    'hdiw_item_3' => 'Enter delivery dates and delivery nodes for your product.',
 
     'hdiw_item_4' => 'Skapa minst en varianter av produkten. T.ex. Hel låda ägg eller Hel lammlåda.',
     'hdiw_item_4_1' => 'Ange enhet för INNEHÅLLET i din produktvariant (tex stycken eller kg).',
     'hdiw_item_4_2' => 'Ange antal innehåll i EN produkt. T.ex. 6 st (ägg) eller 18 (kg kött).',
     'hdiw_item_4_3' => 'Ange pris för produkten (tex 40 kr eller 139 kr).',
     'hdiw_item_4_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
-
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 
-    //
-
-
     'delivery_adjustment' => 'Recurring product with stock set per delivery are produced continously and where the stock is set per delivery. Since the quantity of products can change from during the season you can adjust how many products you want to make available for each delivery over the season.',
-
 
     'weekly_adjustment' => 'Recurring product with stock set weekly are products that are produced continously for a period of time and where the stock is administered per week. Since the quantity of products available can change from week to week during this period you can adjust the products that are available each week.',
 

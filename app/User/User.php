@@ -441,7 +441,7 @@ class User extends BaseUser
      */
     public function nodeAdminLink($nodeId)
     {
-        return $this->nodeAdminLinksRelationship->where('active', 0)->where('node_id', $nodeId)->first();
+        return $this->nodeAdminLinks()->where('node_id', $nodeId)->first();
     }
 
     /**
@@ -452,6 +452,16 @@ class User extends BaseUser
     public function nodeAdminInvites()
     {
         return $this->nodeAdminLinksRelationship->where('active', 0);
+    }
+
+    /**
+     * Node admin invites.
+     *
+     * @return Collection
+     */
+    public function nodeAdminInvite($nodeId)
+    {
+        return $this->nodeAdminInvites()->where('node_id', $nodeId)->first();
     }
 
     /**

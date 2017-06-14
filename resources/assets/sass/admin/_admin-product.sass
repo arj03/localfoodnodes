@@ -10,19 +10,52 @@ ul.product-quick-links
   overflow: hidden
   li
     padding: 10px
-    a
+
+    a,
+    span
       display: flex
       flex-direction: column
       align-items: center
       font-family: 'montserrat'
       text-transform: uppercase
       color: #999
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited
+        text-decoration: none
+      i
+        font-size: 16px
+        height: 40px
+        width: 40px
+        line-height: 40px
+        text-align: center
+        margin-bottom: 10px
+        background: #fff
+        border-radius: 40px
+        // &.completed
+        //   color: #8fb773
+
+    a
       &:hover
         text-decoration: none
-        color: #333
+        color: #555
       i
         font-size: 20px
         margin-bottom: 10px
+
     &.active
-      a
-        color: #333
+      a,
+      span
+        color: #555
+        i
+          position: relative
+          top: -5px
+          margin-bottom: 0
+          font-size: 24px
+          height: 50px
+          width: 50px
+          line-height: 50px
+          background: #efcb6b
+          color: #fff
+          box-shadow: #ccc 0 1px 8px -2px

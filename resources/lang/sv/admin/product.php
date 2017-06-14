@@ -9,7 +9,9 @@ return [
     'booking_deadline' => 'Beställning sker senast:',
     'create_variant' => 'Skapa variant',
     'csa_products' => 'CSA produkter',
-    'csa_products_info' => 'CSA är prenumerationer för hela säsongen.',
+    'csa_products_info' => '
+        För produkter som måste bokas för hel säsong i förväg. CSA fungerar precis som veckosaldo, med den skillnaden att man som kund bokar en hel säsong på en gång.
+    ',
     'date' => 'Datum',
     'days' => 'dagar innan leveransdag',
     'delete' => 'Ta bort',
@@ -38,7 +40,14 @@ return [
     'no_variants' => 'Inga varianter',
     'occasional_products' => 'Sällanprodukt',
     'occasional_products_fresh_meat' => 'Sällanprodukt - Färskt kött',
-    'occasional_products_info' => 'Sällanprodukter är rafinerade produkter som t.ex. honung och sylt, färskt kött med specifika slaktdatum och långsamväxande grönsaker.',
+    'occasional_products_info' => '
+        För produkter som produceras satsvis med ett fast saldo, tex honung, syltning, slakt mm.
+        <ul class="list mt-3">
+            <li>Produktsaldo sätts från ett fast datum och räknar sedan ner till det tar slut.</li>
+            <li>Du kan skapa flera produktionsdatum, och då adderas nya datumets produktsaldo till tidigare datums saldo.</li>
+            <li>Saldot är slut förts när produkten är slutsåld, oberoende av vilka utlämningstillfällen eller utlämningsplatser produkten är tillgängliggjord på.</li>
+        </ul>
+    ',
     'occasional_specify_date_quantity' => 'Ange de datum och kvantitet från då produkten kommer kunna levereras.',
     'other_options' => 'Andra inställningar (valfritt)',
     'price' => 'Pris',
@@ -57,11 +66,19 @@ return [
     'production' => 'Produktion',
     'production_date' => 'Produktionsdatum',
     'production_for_week' => 'Produktion för vecka',
+    'production_type_header' => 'Vad är detta för typ av produkt?',
     'quantity' => 'Kvantitet',
     'quantity_available' => 'Kvantitet tillgänglig från datumet ovan',
     'recurring_products_weekly' => 'Återkommande produkt med veckosaldo',
     'recurring_products_per_delivery' => 'Återkommande produkt med leveranssaldo',
-    'recurring_products_info' => 'Återkommande produkter passar t.ex. ägg och snabbt växande grönsaker.',
+    'recurring_products_info' => '
+    För produkter som skördas regelbundet och har ett återkommande veckosaldo. Tex ägg, snabbväxande grönsaker osv.
+        <ul class="list mt-3">
+            <li>Veckosaldot förnyas automatiskt varje vecka.</li>
+            <li>Veckosaldot delas med flera utlämningsplatser. Detta betyder att du kan leverera mot flera utlämningsplatser och att saldot räknar ner oberoende av vilken utlämningsplats det är bokat till.</li>
+            <li>Du kan justera veckosaldo individuellt för varje vecka om du producerar mer eller mindre vissa veckor. Se bara till att göra det i god tid innan.</li>
+        </ul>
+    ',
     'save' => 'Spara',
     'save_product' => 'Spara produkt',
     'save_product_continue' => 'Spara produkt och fortsätt till leveransdatum',

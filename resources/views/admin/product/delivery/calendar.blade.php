@@ -1,8 +1,12 @@
-@foreach($nodes as $node)
+@foreach($nodes as $index => $node)
     <div class="card">
         <div class="card-header toggle">
             {{ $node->name }} - {{ trans('admin/product.select_delivery_dates') }}
-            <i class="fa fa-chevron-down toggle"></i>
+            @if ($index === 0)
+                <i class="fa fa-chevron-up toggle"></i>
+            @else
+                <i class="fa fa-chevron-down toggle"></i>
+            @endif
         </div>
         <div class="card-block">
             <div class="row calendar product-calendar">

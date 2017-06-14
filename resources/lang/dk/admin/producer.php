@@ -60,7 +60,7 @@ return [
     'producer_information' => 'Producer information',
     'producer_terms' => 'Producer - Terms of use',
     'product' => 'Product',
-    'production' => 'Produktion',
+    'production' => 'Production',
     'price' => 'Price',
     'package' => 'Package',
     'quantity' => 'Quantity',

@@ -22,7 +22,7 @@
                                         <th class="text-right">{{ trans('admin/user.quantity') }}</th>
                                         <th>{{ trans('admin/user.node') }}</th>
                                         <th>{{ trans('admin/user.date') }}</th>
-                                        <th class="text-right">{{ trans('admin/user.price') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.total') }}</th>
                                     </tr>
                                 </thead>
                                 @foreach ($orderItems as $orderItem)

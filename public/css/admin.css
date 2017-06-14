@@ -281,7 +281,8 @@ ul.product-quick-links li {
   padding: 10px;
 }
 
-ul.product-quick-links li a {
+ul.product-quick-links li a,
+ul.product-quick-links li span {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -294,9 +295,29 @@ ul.product-quick-links li a {
   color: #999;
 }
 
+ul.product-quick-links li a:hover, ul.product-quick-links li a:active, ul.product-quick-links li a:focus, ul.product-quick-links li a:visited,
+ul.product-quick-links li span:hover,
+ul.product-quick-links li span:active,
+ul.product-quick-links li span:focus,
+ul.product-quick-links li span:visited {
+  text-decoration: none;
+}
+
+ul.product-quick-links li a i,
+ul.product-quick-links li span i {
+  font-size: 16px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 40px;
+}
+
 ul.product-quick-links li a:hover {
   text-decoration: none;
-  color: #333;
+  color: #555;
 }
 
 ul.product-quick-links li a i {
@@ -304,8 +325,23 @@ ul.product-quick-links li a i {
   margin-bottom: 10px;
 }
 
-ul.product-quick-links li.active a {
-  color: #333;
+ul.product-quick-links li.active a,
+ul.product-quick-links li.active span {
+  color: #555;
+}
+
+ul.product-quick-links li.active a i,
+ul.product-quick-links li.active span i {
+  position: relative;
+  top: -5px;
+  margin-bottom: 0;
+  font-size: 24px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  background: #efcb6b;
+  color: #fff;
+  box-shadow: #ccc 0 1px 8px -2px;
 }
 
 .admin-user-index .payment-errors {

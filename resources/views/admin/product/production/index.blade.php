@@ -12,19 +12,29 @@
         <div class="row">
             <div class="col-12 col-xl-8">
                 <div class="card">
+                    <div class="card-header">{{ trans('admin/product.production_type_header') }}</div>
+                    <div class="card-block">
+                        <ul class="list">
+                            <li>
+                                <b class="d-block">{{ trans('admin/product.recurring_products_weekly') }}</b>
+                                {!! trans('admin/product.recurring_products_info') !!}
+                            </li>
+                            <li class="mt-3">
+                                <b class="d-block">{{ trans('admin/product.occasional_products') }}</b>
+                                {!! trans('admin/product.occasional_products_info') !!}
+                            </li>
+                            <li class="mt-3">
+                                <b class="d-block">{{ trans('admin/product.csa_products') }}</b>
+                                {!! trans('admin/product.csa_products_info') !!}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
                     <div class="card-header toggle">
                         {{ trans('admin/product.production') }}
                         <i class="fa fa-chevron-up toggle"></i>
-                    </div>
-                    <div class="card-block">
-                        <b>{{ trans('admin/product.recurring_products_weekly') }}</b>
-                        <p>{{ trans('admin/product.recurring_products_info') }}</p>
-
-                        <b>{{ trans('admin/product.occasional_products') }}</b>
-                        <p>{{ trans('admin/product.occasional_products_info') }} </p>
-
-                        <b>{{ trans('admin/product.csa_products') }}</b>
-                        <p>{{ trans('admin/product.csa_products_info') }}</p>
                     </div>
                     <div class="card-block">
                         <div class="row">
@@ -143,7 +153,7 @@
                                         </div>
 
                                         <div class="form-group add-date-action hidden">
-                                            <button type="submit" class="form-control btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> {{ trans('admin/product.add_date') }}</button>
+                                            <a href="#">{{ trans('admin/product.add_date') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +161,7 @@
                                 <script>
                                     jQuery(document).ready(function($) {
                                         $('.add-date-action').show();
-                                        $('.add-date-action button').on('click', function(event) {
+                                        $('.add-date-action a').on('click', function(event) {
                                             event.preventDefault();
 
                                             var clone = $('.form-part-template').clone(true);

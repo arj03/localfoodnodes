@@ -20,7 +20,8 @@
                             </ul>
 
                             <div class="mt-3 mb-3">
-                                Betalning: {{ $orderItem->getProducer()['payment_info'] }}
+                                {{ $orderItem->getProducer()['payment_info'] }}
+                                {{ $orderItem->product['payment_info'] }}
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">

@@ -44,14 +44,15 @@ class NodeController extends Controller
             }
 
             $nodeAdminLink = $user->nodeAdminLink($nodeId);
+            $nodeAdminInvite = $user->nodeAdminInvite($nodeId);
             $errorMessage = trans('admin/messages.request_no_node');
 
-            if (!$nodeAdminLink) {
+            if (!$nodeAdminLink && !$nodeAdminInvite) {
                 $request->session()->flash('error', [$errorMessage]);
                 return redirect('/account/user');
             }
 
-            $node = $nodeAdminLink->getNode();
+            $node = $nodeAdminLink ? $nodeAdminLink->getNode() : $nodeAdminInvite->getNode();
 
             if (!$node) {
                 $request->session()->flash('error', [$errorMessage]);
@@ -318,7 +319,7 @@ class NodeController extends Controller
         // User doesn't exist
         if (!$invitedUser) {
             $request->session()->flash('error', [trans('admin/messages.invite_no_user')]);
-            return redirect()->back(); // ->withErrors(['user_not_existing' => 'Invited user does not exist.']);
+            return redirect()->back();
         }
 
         $adminLink = $invitedUser->nodeAdminLink($nodeId);
@@ -340,6 +341,7 @@ class NodeController extends Controller
             'active' => 0
         ]);
 
+        $request->session()->flash('message', [trans('admin/messages.invite_sent')]);
         return redirect()->back();
     }
 
@@ -353,7 +355,7 @@ class NodeController extends Controller
     public function cancelInvite(Request $request, $nodeId, $userId)
     {
         $user = Auth::user();
-        $node = $user->nodeAdminLink($nodeId)->getNode();
+        $node = $user->nodeAdminInvite($nodeId)->getNode();
         $node->adminInvites()->where('user_id', $userId)->first()->delete();
 
         $request->session()->flash('message', [trans('admin/messages.invite_cancelled')]);
@@ -370,7 +372,7 @@ class NodeController extends Controller
     public function acceptInvite(Request $request, $nodeId)
     {
         $user = Auth::user();
-        $node = $user->nodeAdminLink($nodeId)->getNode();
+        $node = $user->nodeAdminInvite($nodeId)->getNode();
         $nodeAdminInvite = $node->adminInvites()->where('user_id', $user->id)->first();
 
         $nodeAdminInvite->update(['active' => 1]);

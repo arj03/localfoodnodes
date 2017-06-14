@@ -323,8 +323,9 @@ class ProducerController extends Controller
                 'user_id' => $invitedUser->id,
                 'active' => 0
             ]);
+            $request->session()->flash('message', [trans('admin/messages.invite_sent')]);
         } else {
-            $errors = ['user_not_existing' => trans('admin/messages.invite_no_user')];
+            $request->session()->flash('message', [trans('admin/messages.invite_no_user')]);
         }
 
         return redirect()->back()->withErrors($errors);

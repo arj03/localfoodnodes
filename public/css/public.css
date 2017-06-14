@@ -227,6 +227,14 @@ ul.list {
   padding-left: 15px;
 }
 
+ul li b.header {
+  display: block;
+}
+
+ul li ul.list {
+  list-style: circle;
+}
+
 img {
   width: 100%;
 }
