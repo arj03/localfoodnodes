@@ -405,6 +405,19 @@ class UserController extends Controller
                 throw new Exception(trans('admin/messages.user_membership_amount_not_numeric'));
             }
 
+            // If user pays less than 3SEK (stripe limit)
+            if ($amount < 3) {
+                UserMembershipPayment::create([
+                    'user_id' => $user->id,
+                    'amount' => $amount * 100
+                ]);
+
+                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
+
+                $request->session()->flash('membership_modal_no_charge', true);
+                return redirect('/account/user/membership');
+            }
+
             $amount = ((int) $amount) * 100;
 
             $charge = Charge::create(array(
@@ -419,8 +432,6 @@ class UserController extends Controller
                     'user_id' => $user->id,
                     'amount' => $amount
                 ]);
-
-                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
             }
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());
@@ -434,7 +445,11 @@ class UserController extends Controller
             return redirect('/account/user/membership');
         }
 
+        $request->session()->flash('membership_modal_thanks', true);
         $request->session()->flash('message', [trans('admin/messages.user_membership_success')]);
+
+        \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
+
         return redirect('/account/user');
     }
 

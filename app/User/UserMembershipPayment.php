@@ -48,4 +48,13 @@ class UserMembershipPayment extends BaseModel
 
         return $this->getDateOneYearForward()->diff($current)->days;
     }
+
+    public function getAmountAttribute($value, $raw = false)
+    {
+        if ($raw) {
+            return $value;
+        } else {
+            return (int) $value / 100;
+        }
+    }
 }

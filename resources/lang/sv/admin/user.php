@@ -23,6 +23,7 @@ return [
     'email' => 'Email',
     'events' => 'Evenemang',
     'event_name' => 'Evenemangsnamn',
+    'fee' => 'Avgift',
     'item_total' => 'Produkt total',
     'month' => 'Månad',
     'name' => 'Namn',
@@ -63,13 +64,18 @@ return [
 
     // Membership
     'membership' => 'Bli medlem',
-    // Paid
     'membership_paid_title' => 'Du är medlem!',
     'membership_paid' => 'Du har betalat medlemskap fram till :date. Utgår om :days dagar.',
     'membership_paid_link' => 'Läs mer om medlemskap',
-    // Unpaid
     'membership_unpaid_title' => 'Bli medlem för att kunna handla',
     'membership_unpaid' => 'För att kunna boka din lokala mat, måste du först bli stödmedlem genom att betala en årsavgift.  Du som användare bestämmer själv hur stor eller liten din årliga avgift kommer att vara.',
     'membership_unpaid_link' => 'Läs mer och bli medlem',
     'payment_info' => 'Vi använder oss av <a href="https://stripe.com">Stripe</a> för kortbetalningar och vi sparar inte dina kortuppgifter.',
+    'membership_modal_title' => 'Thanks för att du är medlem',
+    'membership_modal_no_charge' => '
+        Tack för att du har valt att bli medlem. Ditt medlemskap är giltigt i 12 månader och under den tiden kan du handla lokal mat direkt från lokala producenter så mycket du önskar. Eftersom du valde att betala mindre än 3 SEK kommer vi inte att dra några pengar från ditt konto då det kostar oss med att genomföra transaktionen.
+    ',
+    'membership_modal_thanks' => '
+        Stort tack för att du har valt att bli medlem och ett ännu större tack för ditt bidrag. Ditt medlemskap är giltigt i 12 månader och under den tiden kan du handla lokal mat direkt från lokala producenter så mycket du önskar. Medlemsavgiften kommer användas till utvecklingsarbete för att främja handel, produktion och distribution av lokalproducerad mat.
+    ',
 ];

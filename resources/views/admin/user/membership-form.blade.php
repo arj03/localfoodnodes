@@ -58,10 +58,8 @@
         var $form = $('#payment-form');
         $form.submit(function(event) {
             $form.find('.submit').prop('disabled', true);
-
             // Request a token from Stripe
             Stripe.card.createToken($form, stripeResponseHandler);
-
             return false;
         });
     });
@@ -79,3 +77,41 @@
         }
     };
 </script>
+
+@section('modal')
+    @if (Session::has('membership_modal_no_charge'))
+        <div class="modal fade" id="membership_modal_no-charge" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ trans('admin/user.membership_modal_title') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body body-text">
+                        {{ trans('admin/user.membership_modal_no_charge') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#welcome-modal').modal('show');
+        </script>
+    @elseif (Session::has('membership_modal_thanks'))
+        <div class="modal fade" id="membership-modal-thanks" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ trans('admin/user.membership_modal_title') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body body-text">
+                        {{ trans('admin/user.membership_modal_thanks') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#welcome-modal').modal('show');
+        </script>
+    @endif
+@endsection
