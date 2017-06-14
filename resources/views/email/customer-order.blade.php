@@ -15,6 +15,7 @@
                         <h2 style="margin: 0px;">{{ $orderDateItemLink->getItem()->getName() }}</h2>
                         {{ $orderDateItemLink->getItem()->node['name'] }}<br>
                         {{ trans('public/email.quantity') }}: {{ $orderDateItemLink->quantity }}<br>
+                        <p style="color: #999;">{{ $orderDateItemLink->getItem()->producer['payment_info'] }} {{ $orderDateItemLink->getItem()->product['payment_info'] }}</p>
                         <a href="{{ app('url')->to('/account/user/order/' . $orderDateItemLink->id) }}">{{ trans('public/email.view_order') }} #{{ $orderDateItemLink->ref }}</a><br>
                     </div>
                     <div style="width: 30%; float: left;">
