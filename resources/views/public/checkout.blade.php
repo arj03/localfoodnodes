@@ -47,7 +47,7 @@
                                 @foreach ($user->cartItems()->unique('product_id') as $cartItem)
                                     <li class="d-flex justify-content-between">
                                         <span>{{ $cartItem->product['name'] }}</span>
-                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }} {{ $cartItem->product['price_unit']}}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }}</span>
                                     </li>
                                 @endforeach
                             </ul>

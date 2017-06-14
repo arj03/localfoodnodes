@@ -140,7 +140,7 @@
 @endsection
 
 @section('modal')
-    @if (Session::has('welcome-modal'))
+    @if (Session::has('welcome_modal'))
         <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -23,6 +23,7 @@ return [
     'email' => 'Email',
     'events' => 'Evenemang',
     'event_name' => 'Evenemangsnamn',
+    'fee' => 'Avgift',
     'item_total' => 'Produkt total',
     'month' => 'Månad',
     'name' => 'Namn',

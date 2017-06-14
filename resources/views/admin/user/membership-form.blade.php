@@ -58,26 +58,8 @@
         var $form = $('#payment-form');
         $form.submit(function(event) {
             $form.find('.submit').prop('disabled', true);
-
-            if ($form.find('#amount').val() < 3) {
-                console.log('Not worth it');
-                $.ajax({
-                    type: 'post',
-                    url: '/account/user/membership',
-                    data: $form.serialize(),
-                    success: function() {
-                        console.log('SUCCESS');
-                    },
-                    error: function() {
-                        console.error('ERROR')
-                    }
-
-                });
-            } else {
-                // Request a token from Stripe
-                Stripe.card.createToken($form, stripeResponseHandler);
-            }
-
+            // Request a token from Stripe
+            Stripe.card.createToken($form, stripeResponseHandler);
             return false;
         });
     });
@@ -95,3 +77,24 @@
         }
     };
 </script>
+
+@section('modal')
+    @if (Session::has('no_charge_modal'))
+        <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">No charge</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body body-text">
+                        Under tre kronor
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#welcome-modal').modal('show');
+        </script>
+    @endif
+@endsection

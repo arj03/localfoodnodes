@@ -182,7 +182,7 @@ class UserController extends Controller
             Auth::login($user);
 
             $request->session()->flash('message', [trans('admin/messages.user_account_created')]);
-            $request->session()->flash('welcome-modal', true);
+            $request->session()->flash('welcome_modal', true);
 
             return redirect('/account/user');
         }
@@ -403,6 +403,19 @@ class UserController extends Controller
 
             if (!is_numeric($amount)) {
                 throw new Exception(trans('admin/messages.user_membership_amount_not_numeric'));
+            }
+
+            // If user pays less than 3SEK (stripe limit)
+            if ($amount < 3) {
+                UserMembershipPayment::create([
+                    'user_id' => $user->id,
+                    'amount' => $amount * 100
+                ]);
+
+                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
+
+                $request->session()->flash('no_charge_modal', true);
+                return redirect('/account/user/membership');
             }
 
             $amount = ((int) $amount) * 100;

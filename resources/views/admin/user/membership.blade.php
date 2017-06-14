@@ -12,11 +12,22 @@
             <div class="card">
                 <div class="card-header">History</div>
                 <div class="card-block">
-                    <ul>
-                        @foreach ($user->membershipPayments() as $payment)
-                        <li>{{ $payment->created_at }} {{ $payment->amount }} SEK</li>
-                        @endforeach
-                    </ul>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>{{ trans('admin/user.date') }}</th>
+                                <th>{{ trans('admin/user.fee') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($user->membershipPayments() as $payment)
+                                <tr>
+                                    <td>{{ $payment->created_at }}</td>
+                                    <td>{{ $payment->amount }} SEK</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

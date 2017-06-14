@@ -36,7 +36,6 @@
                         {{ csrf_field() }}
                         <div class="input-group">
                            <input type="number" min="0" class="form-control quantity-input" name="quantity" value="{{ $cartDateItemLink->quantity }}" placeholder="Qty">
-                           <span class="input-group-addon">{{ trans('units.' . $cartDateItemLink->getItem()->product['price_unit']) }}</span>
                         </div>
                     </form>
                 </div>
@@ -71,7 +70,6 @@
                         {{ csrf_field() }}
                         <div class="input-group">
                            <input type="number" min="0" class="form-control quantity-input" name="quantity" value="{{ $cartDateItemLink->quantity }}" placeholder="Qty">
-                           <span class="input-group-addon">{{ trans('units.' . $cartDateItemLink->getItem()->product['price_unit']) }}</span>
                         </div>
                     </form>
                 </div>
