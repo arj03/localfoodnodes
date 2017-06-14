@@ -161,7 +161,7 @@
         <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.quip') }}</h2>
     </div>
 
-    <link rel="stylesheet" href="/css/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
     <script src="{{ elixir('/js-apps/node-map.js') }}"></script>

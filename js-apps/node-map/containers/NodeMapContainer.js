@@ -99,16 +99,12 @@ class NodeMapContainer extends Component {
             spiderLegPolylineOptions: { opacity: 0 }
         });
 
-        let markerIcon = L.icon({
-            iconUrl: '/css/leaflet/images/marker-icon.png',
-            iconSize: [32, 32],
-            iconAnchor: [32, 32],
-            popupAnchor: [-16, -20]
-        });
+        let nodeIcon = L.icon({iconSize: [36, 36], iconAnchor: [36, 36], popupAnchor: [-16, -20], iconUrl: '/css/leaflet/images/marker-icon.png'});
+        let rekoIcon = L.icon({iconSize: [32, 32], iconAnchor: [32, 32], popupAnchor: [-16, -20], iconUrl: '/css/leaflet/images/reko-icon.png'});
 
         _(this.props.nodes).each((node, index) => {
             if (addedNodes.indexOf(node.id) === -1) {
-                let marker = L.marker([node.location.lat, node.location.lng], {icon: markerIcon});
+                let marker = L.marker([node.location.lat, node.location.lng], {icon: nodeIcon});
                 let popup = document.createElement('div');
                 ReactDOM.render(that.getNodePreview(node), popup);
                 marker.bindPopup(popup);
@@ -119,7 +115,7 @@ class NodeMapContainer extends Component {
 
         _(this.props.reko).each((reko, index) => {
             if (addedReko.indexOf(reko.id) === -1) {
-                let marker = L.marker([reko.location.lat, reko.location.lng], {icon: markerIcon});
+                let marker = L.marker([reko.location.lat, reko.location.lng], {icon: rekoIcon});
                 let popup = document.createElement('div');
                 ReactDOM.render(that.getRekoPreview(reko), popup);
                 marker.bindPopup(popup);
@@ -182,6 +178,7 @@ class NodeMapContainer extends Component {
                     </div>
                 </a>
                 <div className='body-text'>
+                    <p>Välkommen till utlämningsplatsen {node.name}</p>
                     <a href={node.permalink.url} className='btn btn-success'>{trans.visit_node} <i className='fa fa-caret-right' style={{float: 'right'}}/></a>
                 </div>
             </div>
@@ -195,7 +192,8 @@ class NodeMapContainer extends Component {
                 <h3>{reko.name}</h3>
             </a>
             <div className='body-text'>
-                <a href={reko.link} target='_blank' className='btn btn-success'>{trans.visit_node} <i className='fa fa-caret-right' style={{float: 'right'}}/></a>
+                <p>Utlämningsplatsen finns i dagsläget endast som <a href={reko.link} target='_blank'>facebookgrupp</a>.</p>
+                <p>Är du admin för facebookgruppen kan du <a href='/account/user/create/node' target='_blank'>skapa din utlämningsplats här</a>.</p>
             </div>
             </div>
         );

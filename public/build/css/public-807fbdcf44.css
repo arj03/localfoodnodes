@@ -651,6 +651,10 @@ body.page .page .card .body-text {
   width: auto !important;
 }
 
+.leaflet-popup-pane .leaflet-popup .leaflet-popup-content-wrapper .leaflet-popup-content p {
+  margin: 0 0 1rem;
+}
+
 .leaflet-marker-pane .leaflet-div-icon {
   background: transparent;
   border: 0;

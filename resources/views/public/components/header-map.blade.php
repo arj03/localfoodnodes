@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/leaflet/leaflet.css" />
+<link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
 <script id="map-js-api" src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 <script>
     var lat = {{ $lat or 'null' }};
