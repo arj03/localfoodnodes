@@ -414,7 +414,7 @@ class UserController extends Controller
 
                 \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
 
-                $request->session()->flash('no_charge_modal', true);
+                $request->session()->flash('membership_modal_no_charge', true);
                 return redirect('/account/user/membership');
             }
 
@@ -432,8 +432,6 @@ class UserController extends Controller
                     'user_id' => $user->id,
                     'amount' => $amount
                 ]);
-
-                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
             }
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());
@@ -447,16 +445,12 @@ class UserController extends Controller
             return redirect('/account/user/membership');
         }
 
+        $request->session()->flash('membership_modal_thanks', true);
         $request->session()->flash('message', [trans('admin/messages.user_membership_success')]);
+
+        \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
+
         return redirect('/account/user');
-    }
-
-    /**
-     * Create free membership action.
-     */
-    public function createFreeMembership()
-    {
-
     }
 
     /**

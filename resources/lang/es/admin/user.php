@@ -64,13 +64,18 @@ return [
 
     // Membership
     'membership' => 'Membership',
-    // Paid
     'membership_paid_title' => 'You\'re already a member!',
     'membership_paid' => 'You have paid membership until :date. Expires in :days days.',
     'membership_paid_link' => 'Read more membership',
-    // Unpaid
     'membership_unpaid_title' => 'Become a supporting member to be able to send your food orders',
     'membership_unpaid' => 'To be able to make your orders on Local Food Nodes, you need to become a supporting member and pay an annual fee. You decide for yourself how big or small your annual fee will be.',
     'membership_unpaid_link' => 'Read more and become a member',
     'payment_info' => 'We\'re using <a href="https://stripe.com">Stripe</a> for credit card payments and we don\'t save your card number.',
+    'membership_modal_title' => 'Thanks for becoming a member',
+    'membership_modal_no_charge' => '
+        Thank you for becoming a member. Your membership will last för 12 months, and during this time you can order local food streight from local producers as much as you wish. Since you choosed to pay less than 3 SEK we wont charge you at all, since it costs us more to do so than not to.
+    ',
+    'membership_modal_thanks' => '
+        Big thanks for becoming a member and even bigger thanks for your contribution. Your membership will last för 12 months, and during this time you can order local food streight from local producers as much as you wish. Your membership fee will be used to continously improve the way of local food.
+    ',
 ];
