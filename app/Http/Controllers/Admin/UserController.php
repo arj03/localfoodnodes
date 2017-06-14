@@ -182,7 +182,7 @@ class UserController extends Controller
             Auth::login($user);
 
             $request->session()->flash('message', [trans('admin/messages.user_account_created')]);
-            $request->session()->flash('welcome-modal', true);
+            $request->session()->flash('welcome_modal', true);
 
             return redirect('/account/user');
         }
@@ -696,7 +696,10 @@ class UserController extends Controller
             $this->sendActivationLink($user);
 
             Auth::login($user);
+
             $request->session()->flash('message', [trans('admin/messages.user_migrate_done')]);
+            $request->session()->flash('welcome_modal', true);
+
             return redirect('/account/user');
         }
     }
