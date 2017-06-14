@@ -4,6 +4,7 @@ return [
     'artisan_food' => 'Mathantverk',
     'beer' => 'Öl',
     'beverage' => 'Dryck',
+    'csa' => 'CSA',
     'dairy_cheese' => 'Mejeri & ost',
     'eggs' => 'Ägg',
     'fish' => 'Fisk och skaldjur',

@@ -4,6 +4,7 @@ return [
     'artisan_food' => 'Artisan food',
     'beer' => 'Beer',
     'beverage' => 'Beverage',
+    'csa' => 'CSA',
     'dairy_cheese' => 'Diary & cheese',
     'eggs' => 'Eggs',
     'fish' => 'Fish and seafood',
