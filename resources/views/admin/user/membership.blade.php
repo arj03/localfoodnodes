@@ -12,25 +12,28 @@
             <div class="card">
                 <div class="card-header">History</div>
                 <div class="card-block">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ trans('admin/user.date') }}</th>
-                                <th>{{ trans('admin/user.fee') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($user->membershipPayments() as $payment)
+                    @if ($user->membershipPayments()->count() > 0)
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>{{ $payment->created_at }}</td>
-                                    <td>{{ $payment->amount }} SEK</td>
+                                    <th>{{ trans('admin/user.date') }}</th>
+                                    <th>{{ trans('admin/user.fee') }}</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->membershipPayments() as $payment)
+                                    <tr>
+                                        <td>{{ $payment->created_at }}</td>
+                                        <td>{{ $payment->amount }} SEK</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        {{ trans('admin/user.membership_no_history') }}
+                    @endif
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

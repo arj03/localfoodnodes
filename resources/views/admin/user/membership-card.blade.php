@@ -9,7 +9,10 @@
                     'days' => $user->getLatestMembershipPayment()->expiresInDays()
                 ]) }}</p>
 
-                <p><a class="btn btn-success" href="/account/user/membership">{{ trans('admin/user.membership_paid_link') }}</a></p>
+                <p><a class="btn btn-success" href="/membership">{{ trans('admin/user.membership_paid_link') }}</a></p>
+            </div>
+            <div class="card-footer">
+                <a href="/account/user/membership">{{ trans('admin/user.renew_membership') }}</a>
             </div>
         </div>
     @else
@@ -19,6 +22,9 @@
             <div class="card-block">
                 <p>{{ trans('admin/user.membership_unpaid') }}</p>
                 <p><a class="btn btn-success" href="/membership">{{ trans('admin/user.membership_unpaid_link') }}</a></p>
+            </div>
+            <div class="card-footer">
+                <a href="/account/user/membership">{{ trans('admin/user.become_a_member') }}</a>
             </div>
         </div>
     @endif

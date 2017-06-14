@@ -41,7 +41,7 @@ class PageController extends Controller
 
         $allPayments = UserMembershipPayment::get();
         $totalMembershipPayments = $allPayments->pluck('amount')->sum() / 100;
-        $averageMembershipPayments = $totalMembershipPayments / $members;
+        $averageMembershipPayments = $members === 0 ? 0 : $totalMembershipPayments / $members;
 
         return view('public.pages.membership', [
             'members' => $members,

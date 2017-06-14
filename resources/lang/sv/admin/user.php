@@ -67,7 +67,7 @@ return [
     'membership_paid_title' => 'Du är medlem!',
     'membership_paid' => 'Du har betalat medlemskap fram till :date. Utgår om :days dagar.',
     'membership_paid_link' => 'Läs mer om medlemskap',
-    'membership_unpaid_title' => 'Bli medlem för att kunna handla',
+    'membership_unpaid_title' => 'Bli medlem',
     'membership_unpaid' => 'För att kunna boka din lokala mat, måste du först bli stödmedlem genom att betala en årsavgift.  Du som användare bestämmer själv hur stor eller liten din årliga avgift kommer att vara.',
     'membership_unpaid_link' => 'Läs mer och bli medlem',
     'payment_info' => 'Vi använder oss av <a href="https://stripe.com">Stripe</a> för kortbetalningar och vi sparar inte dina kortuppgifter.',
@@ -78,4 +78,6 @@ return [
     'membership_modal_thanks' => '
         <p>Stort tack för att du har valt att bli medlem och ett ännu större tack för ditt bidrag. Ditt medlemskap är giltigt i 12 månader och under den tiden kan du handla lokal mat direkt från lokala producenter så mycket du önskar.</p><p>Medlemsavgiften kommer användas till utvecklingsarbete för att främja handel, produktion och distribution av lokalproducerad mat.</p>
     ',
+    'membership_no_history' => 'Du har inte betalat några medlemsavgifter.',
+    'renew_membership' => 'Förnya ditt medlemskap och se historik',
 ];
