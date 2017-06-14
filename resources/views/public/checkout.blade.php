@@ -63,7 +63,7 @@
                                 @foreach ($user->cartItems()->unique('producer_id') as $cartItem)
                                     <li class="d-flex justify-content-between">
                                         <span>{{ $cartItem->producer['name'] }}</span>
-                                        <span>{{ $cartItem->cartDateItemLinks()->count() }} {{ trans_choice('public/checkout.delivery', $cartItem->cartDateItemLinks()->count()) }}</span>
+                                        <span>{{ $cartItem->cartDateItemLinks()->count() }}</span>
                                     </li>
                                 @endforeach
                             </ul>
