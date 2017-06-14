@@ -432,6 +432,11 @@ class UserController extends Controller
                     'user_id' => $user->id,
                     'amount' => $amount
                 ]);
+
+                $request->session()->flash('membership_modal_thanks', true);
+                $request->session()->flash('message', [trans('admin/messages.user_membership_success')]);
+
+                \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
             }
         } catch(Exception $e) {
             $errors->add('payment', $e->getMessage());
@@ -441,16 +446,9 @@ class UserController extends Controller
                     'errors' => implode($errors->all(), '')
                 ])
             ]);
-
-            return redirect('/account/user/membership');
         }
 
-        $request->session()->flash('membership_modal_thanks', true);
-        $request->session()->flash('message', [trans('admin/messages.user_membership_success')]);
-
-        \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' payed ' . $request->input('amount') . 'SEK to become a member.');
-
-        return redirect('/account/user');
+        return redirect('/account/user/membership');
     }
 
     /**
