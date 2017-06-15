@@ -70,7 +70,7 @@ return [
     'social_media' => 'Sociala medier',
     'status' => 'Status',
     'swish_number' => 'Swishnummer',
-    'total_delivery' => 'Totalt / Leverans',
+    'total_delivery' => 'Summa / Leverans',
     'total_price' => 'Summa',
     'variant' => 'Variant',
     'variants' => 'Varianter',

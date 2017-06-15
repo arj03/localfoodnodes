@@ -23,7 +23,7 @@
                 </div>
                 <div style="width: 30%; float: left;">
                     <div style="float: right; text-align: right;">
-                        <b>{{ $orderItem->orderDateItemLink()->getPrice() }} {{ $orderItem->producer['currency'] }}</b>
+                        <b>{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</b>
                     </div>
                 </div>
             </div>

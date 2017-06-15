@@ -33,7 +33,7 @@
                             for (var i = 0; i < this.files.length; i++) {
                                 var file = this.files[i];
 
-                                if (file.size > 1000000) {
+                                if (file.size > 10000000) {
                                     errors = true;
                                     $(document).trigger('notification', file.name + {!! json_encode(trans('admin/image-card.image_size_to_big')) !!});
                                 }

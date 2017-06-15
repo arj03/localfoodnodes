@@ -101,13 +101,30 @@ class CartItem extends \App\BaseModel
      */
     public function getName()
     {
-        $name = $this->product['name'];
+        $name = $this->getProductName();
 
         if ($this->variant) {
-            $name .= ' - ' . $this->variant['name'];
+            $name .= ' - ' . $this->getVariantName();
         }
 
         return $name;
+    }
+
+    public function getProductName()
+    {
+        return $this->product['name'];
+    }
+
+    public function getVariantName()
+    {
+        $variantName = '';
+
+        if ($this->variant) {
+            $unit = trans_choice('units.' . $this->product['package_unit'], $this->variant['package_amount']);
+            $variantName = $this->variant['name'] . ' (' . $this->variant['package_amount'] .  $unit . ')';
+        }
+
+        return $variantName;
     }
 
     /**

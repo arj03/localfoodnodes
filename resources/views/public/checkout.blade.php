@@ -20,6 +20,14 @@
                     @foreach ($user->cartDates() as $cartDate)
                         <div class="card">
                             <div class="card-header">{{ trans_choice('public/checkout.delivery', 1) }} {{ $cartDate->date('Y-m-d') }}</div>
+                            <div class="card-block cart-items-block hidden-md-down">
+                                <div class="cart-items-block-header row">
+                                    <div class="col-2 hidden-sm-down"></div>
+                                    <div class="col-8 col-md-6">{{ trans('public/checkout.product') }}</div>
+                                    <div class="col-2 text-right">{{ trans('public/checkout.quantity') }}</div>
+                                    <div class="col-2 text-right">{{ trans('public/checkout.total') }}</div>
+                                </div>
+                            </div>
                             <div class="card-block">
                                 @foreach ($cartDate->cartDateItemLinks() as $cartDateItemLink)
                                     @include('public.checkout.checkout-item')
@@ -92,9 +100,14 @@
 
     <script>
         $(function() {
-            $('.quantity-input').on('change', function() {
-                $(this).closest('form').submit();
-            })
+            $('.quantity-input').on('keyup', _.debounce(function() {
+                var $form = $(this).closest('form');
+                var value = $(this).val();
+
+                if ($.isNumeric(value) && parseInt(value) > 0) {
+                    $form.submit();
+                }
+            }, 500));
         });
     </script>
 @endsection

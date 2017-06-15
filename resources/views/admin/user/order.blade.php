@@ -63,8 +63,8 @@
                                     @endif
                                 </td>
                                 <td>{{ $orderDateItemLink->quantity }}</td>
-                                <td>{{ $orderItem->getPrice() }} {{ $orderItem->producer['currency'] }}</td>
-                                <td>{{ $orderDateItemLink->getPrice() }} {{ $orderItem->producer['currency'] }}</td>
+                                <td>{{ $orderItem->getPriceWithUnit() }}</td>
+                                <td>{{ $orderDateItemLink->getPriceWithUnit() }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -21,4 +21,5 @@ return [
     'send_order' => 'Send order',
     'summary' => 'Summary',
     'title' => 'Checkout',
+    'total' => 'Total',
 ];

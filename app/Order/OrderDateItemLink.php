@@ -75,16 +75,45 @@ class OrderDateItemLink extends \App\BaseModel
     }
 
     /**
-    * Get order item price.
+    * Get item price.
     *
     * @return int
     */
     public function getPrice()
     {
-        if ($this->getItem()->variant) {
-            return $this->getItem()->variant['price'] * $this->quantity;
+        $price = $this->getItem()->variant ?  $this->getItem()->variant['price'] : $this->getItem()->product['price'];
+
+        if ($this->getItem()->product['price_unit'] === 'product') {
+            // Sold by product
+            return $price * $this->quantity;
         } else {
-            return $this->getItem()->product['price'] * $this->quantity;
+            // Sold by weight
+            return $price * $this->quantity * $this->getItem()->variant['package_amount'];
         }
+    }
+
+    /**
+     * Get unit.
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->getItem()->producer['currency'];
+    }
+
+    /**
+     * Get price unit.
+     *
+     * @return string
+     */
+    public function getPriceWithUnit()
+    {
+        $prefix = '';
+        if ($this->getItem()->product['price_unit'] !== 'product') {
+            $prefix = '<span class="approx">&asymp;</span>';
+        }
+
+        return $prefix . ' ' . $this->getPrice() . ' ' . $this->getUnit();
     }
 }

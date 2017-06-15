@@ -94,7 +94,7 @@ class OrderItem extends \App\BaseModel
     }
 
     /**
-    * Get cart item price.
+    * Get item price.
     *
     * @return int
     */
@@ -105,6 +105,30 @@ class OrderItem extends \App\BaseModel
         } else {
             return $this->product['price'];
         }
+    }
+
+    /**
+     * Get item unit.
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        if ($this->product['price_unit'] === 'product') {
+            return $this->producer['currency'];
+        } else {
+            return $this->producer['currency'] . ' / ' . $this->product['price_unit'];
+        }
+    }
+
+    /**
+     * Get price and unit.
+     *
+     * @return string
+     */
+    public function getPriceWithUnit()
+    {
+        return $this->getPrice() . ' ' . $this->getUnit();
     }
 
     /**

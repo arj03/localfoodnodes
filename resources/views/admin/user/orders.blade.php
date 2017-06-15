@@ -37,7 +37,7 @@
                                         <td class="text-right">{{ $orderItem->orderDateItemLink()->quantity }}</td>
                                         <td>{{ $orderItem->node['name'] }}</td>
                                         <td>{{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}</td>
-                                        <td class="text-right">{{ $orderItem->orderDateItemLink()->getPrice() }} {{ $orderItem->producer['currency'] }}</td>
+                                        <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>
                                     </tr>
                                 @endforeach
                             </table>

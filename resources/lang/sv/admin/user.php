@@ -55,7 +55,7 @@ return [
     'submit_payment' => 'Skicka betalning',
     'term_link_pre' => 'Genom att skapa ett konto godtar du följande',
     'terms_of_use' => 'villkor',
-    'total' => 'Totalt',
+    'total' => 'Summa',
     'view_all_orders' => 'Alla beställningar',
     'year' => 'År',
     'new_password' => 'Nytt lösenord',

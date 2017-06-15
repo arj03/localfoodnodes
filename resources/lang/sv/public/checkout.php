@@ -21,4 +21,5 @@ return [
     'send_order' => 'Skicka bokning',
     'summary' => 'Summering',
     'title' => 'Varukorg',
+    'total' => 'Summa',
 ];

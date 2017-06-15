@@ -1,4 +1,11 @@
 body.public-checkout
+  .cart-items-block
+    background: #c1534c
+    color: #fff
+    padding-top: 10px
+    padding-bottom: 10px
+    font-weight: bold
+
   .cart-item
     margin-bottom: 15px
     border-bottom: 1px solid #eee
@@ -10,9 +17,31 @@ body.public-checkout
     .cart-item-inner
       display: flex
 
+    .product-variant-name
+      margin-bottom: 5px
+      .product-name
+        margin-bottom: 0
+      .variant-name
+        text-transform: uppercase
+        font-family: 'montserrat'
+
     form
-      width: 100px
-      float: right
+      input
+        text-align: right
+
+    .price-unit
+      text-transform: uppercase
+      white-space: nowrap
+      .approx
+        font-size: 16px
+        font-weight: bold
+        position: relative
+        top: -2px
+        margin-right: 2px
+      .price
+        margin-bottom: 0
+      .unit
+        font-family: 'montserrat'
 
   .summary
     background: #c1534c

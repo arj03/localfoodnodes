@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
         <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src="/js/underscore.min.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
         <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
         <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>

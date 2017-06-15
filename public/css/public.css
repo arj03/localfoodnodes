@@ -1226,6 +1226,14 @@ body.public-index.logged-in .frontpage-header {
   display: none;
 }
 
+body.public-checkout .cart-items-block {
+  background: #c1534c;
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
 body.public-checkout .cart-item {
   margin-bottom: 15px;
   border-bottom: 1px solid #eee;
@@ -1243,9 +1251,42 @@ body.public-checkout .cart-item .cart-item-inner {
   display: flex;
 }
 
-body.public-checkout .cart-item form {
-  width: 100px;
-  float: right;
+body.public-checkout .cart-item .product-variant-name {
+  margin-bottom: 5px;
+}
+
+body.public-checkout .cart-item .product-variant-name .product-name {
+  margin-bottom: 0;
+}
+
+body.public-checkout .cart-item .product-variant-name .variant-name {
+  text-transform: uppercase;
+  font-family: 'montserrat';
+}
+
+body.public-checkout .cart-item form input {
+  text-align: right;
+}
+
+body.public-checkout .cart-item .price-unit {
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.public-checkout .cart-item .price-unit .approx {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  top: -2px;
+  margin-right: 2px;
+}
+
+body.public-checkout .cart-item .price-unit .price {
+  margin-bottom: 0;
+}
+
+body.public-checkout .cart-item .price-unit .unit {
+  font-family: 'montserrat';
 }
 
 body.public-checkout .summary {
