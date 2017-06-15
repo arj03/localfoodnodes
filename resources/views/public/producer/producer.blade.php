@@ -87,7 +87,7 @@
                         <ul class="mt-3">
                             @foreach ($producer->nodeLinks() as $nodeLink)
                                 <li>
-                                    <a href="{{ $nodeLink->getNode()->permalink()->url }}}">
+                                    <a href="{{ $nodeLink->getNode()->permalink()->url }}">
                                         {{ $nodeLink->getNode()->name }}
                                     </a>
                                 </li>

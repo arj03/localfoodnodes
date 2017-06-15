@@ -332,6 +332,13 @@ class Product extends \App\BaseModel
         }
     }
 
+    public function getPriceUnit()
+    {
+        if ($this->price_unit !== 'product') {
+            return $this->package_amount . ' ' . trans_choice('units.' . $this->price_unit, $this->package_amount);
+        }
+    }
+
     /**
      * Get production type based on the productions defined for this product.
      *

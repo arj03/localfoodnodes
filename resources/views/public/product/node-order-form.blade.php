@@ -36,7 +36,10 @@
                         <label class="form-check-label w-100">
                             <input class="form-check-input" type="radio" name="product_id" value="{{ $product->id }}" checked>
                             <div>
-                                {{ $product->name}}
+                                {{ $product->name }}
+                                @if ($product->price_unit !== 'product')
+                                    ({{ $product->getPriceUnit() }})
+                                @endif
                                 <div class="price">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
                             </div>
                         </label>
