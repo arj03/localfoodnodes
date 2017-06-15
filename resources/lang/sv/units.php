@@ -5,7 +5,7 @@ return [
     'bag' => 'Påse|Påsar',
     'bottle' => 'Flaska|Flaskor',
     'jar' => 'Burk|Burkar',
-    'pieces' => 'Styck',
+    'pieces' => 'Stycken',
 
     // SI units
     'kg' => 'kg',
