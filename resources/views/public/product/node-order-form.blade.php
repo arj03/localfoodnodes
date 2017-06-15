@@ -51,9 +51,6 @@
                 </label>
                 <div class="input-group">
                     <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
-                    @if ($product->package_unit)
-                        <span class="input-group-addon">{{ $product->price_unit }}</span>
-                    @endif
                 </div>
             </div>
 
