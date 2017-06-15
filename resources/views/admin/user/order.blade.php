@@ -64,7 +64,7 @@
                                 </td>
                                 <td>{{ $orderDateItemLink->quantity }}</td>
                                 <td>{{ $orderItem->getPriceWithUnit() }}</td>
-                                <td>{{ $orderDateItemLink->getPriceWithUnit() }}</td>
+                                <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
                             </tr>
                         </tbody>
                     </table>
