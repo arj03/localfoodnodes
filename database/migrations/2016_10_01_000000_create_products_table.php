@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('info')->nullable();
             $table->string('package_unit')->nullable();
+            $table->string('package_amount')->nullable();
             $table->string('price_unit')->required();
             $table->integer('price')->required();
             $table->text('payment_info')->nullable();

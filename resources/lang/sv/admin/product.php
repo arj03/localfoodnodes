@@ -29,6 +29,7 @@ return [
     'enter_content_one_product' => 'Fyll i innehållet i en produkt',
     'enter_price_one_product' => 'Fyll i priset för en produkt',
     'enter_total_csa_subscribers' => 'Fyll i totala antalet CSA-prenumeranter för denna produkt och säsong',
+    'estimate_package_amount' => 'Uppskatta innehåll',
     'hg' => 'hg',
     'hide_from_store' => 'Dölj produkten i butiken',
     'kg' => 'kg',
@@ -50,6 +51,9 @@ return [
     ',
     'occasional_specify_date_quantity' => 'Ange de datum och kvantitet från då produkten kommer kunna levereras.',
     'other_options' => 'Andra inställningar (valfritt)',
+    'package_amount_info' => '
+        Du har angivit att priset anges i kg eller hg. Uppskatta vikten av en produkts innehåll så slutsumman blir rätt mot kund vid utcheckningen i butiken.
+    ',
     'price' => 'Pris',
     'price_per' => 'Pris anges per...',
     'price_on_variants' => 'Din produkt har varianter och det priset på varianterna som gäller i butiken.',

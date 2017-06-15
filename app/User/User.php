@@ -198,7 +198,7 @@ class User extends BaseUser
         $cartItems = $this->hasMany('App\Cart\CartItem', 'user_id', 'id');
 
         if ($productId) {
-            $cartItems->where('product_id', $productId);
+            $cartItems = $cartItems->where('product_id', $productId);
         }
 
         return $cartItems->get();
@@ -215,7 +215,7 @@ class User extends BaseUser
         $cartItems = $this->cartItems($productId)->where('node_id', $nodeId);
 
         if ($variantId) {
-            $cartItems->where('variant_id', $variantId);
+            $cartItems = $cartItems->where('variant_id', $variantId);
         }
 
         return $cartItems->first();

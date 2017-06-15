@@ -29,6 +29,7 @@ return [
     'enter_content_one_product' => 'Enter the content of one product',
     'enter_price_one_product' => 'Enter the price for one product',
     'enter_total_csa_subscribers' => 'Enter total number of CSA subscribers for this product and season',
+    'estimate_package_amount' => 'Estimate content',
     'hg' => 'hg',
     'hide_from_store' => 'Hide product from store',
     'kg' => 'kg',
@@ -52,6 +53,9 @@ return [
     ',
     'occasional_specify_date_quantity' => 'Specify the date and quantity from which the product is available for delivery.',
     'other_options' => 'Other options (optional)',
+    'package_amount_info' => '
+        You have specified a price in kg or hg. Estimate the weight of the product content so that the total price for the customer is correct in checkout.
+    ',
     'price' => 'Price',
     'price_per' => 'Price is set per...',
     'price_on_variants' => 'Your product has variants and it\'s the variant prices that will show in the store.',

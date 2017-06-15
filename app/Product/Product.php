@@ -19,6 +19,7 @@ class Product extends \App\BaseModel
         'info' => 'required',
         'price_unit' => 'required',
         'price' => 'required',
+        'package_amount' => '',
         'is_hidden' => '',
         'deadline' => 'integer',
         'payment_info' => ''
@@ -35,6 +36,7 @@ class Product extends \App\BaseModel
         'info',
         'price_unit',
         'price',
+        'package_amount',
         'is_hidden',
         'deadline',
         'payment_info'
@@ -436,6 +438,7 @@ class Product extends \App\BaseModel
             'price_unit' => $this->price_unit,
             'price' => $this->price,
             'package_unit' => $this->package_unit,
+            'package_amount' => $this->package_amount,
             'is_hidden' => $this->hidden,
             'deadline' => $this->deadline,
             'payment_info' => $this->payment_info,

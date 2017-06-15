@@ -78,7 +78,7 @@
                 variantQuantity($(this).val());
             });
 
-            variantQuantity($('#variant').val());
+            variantQuantity($('.variant').val());
         });
     </script>
 

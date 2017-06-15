@@ -111,7 +111,11 @@ class CartDateItemLink extends \App\BaseModel
             return $price * $this->quantity;
         } else {
             // Sold by weight
-            return $price * $this->quantity * $this->getItem()->variant['package_amount'];
+            if ($this->getItem()->variant) {
+                return $price * $this->quantity * $this->getItem()->variant['package_amount'];
+            } else {
+                return $price * $this->quantity * $this->getItem()->product['package_amount'];
+            }
         }
     }
 

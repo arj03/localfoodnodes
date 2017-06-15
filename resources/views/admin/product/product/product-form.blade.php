@@ -36,7 +36,7 @@
                     @endif
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="price-unit">
                     <label class="form-control-label" for="price">
                         {{ trans('admin/product.price_per') }}
                         @include('admin.field-error', ['field' => 'price_unit'])
@@ -47,6 +47,35 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group" id="package-amount">
+                    <label class="form-control-label" for="package_amount">
+                        {{ trans('admin/product.estimate_package_amount') }}
+                        @include('admin.field-error', ['field' => 'package_amount'])
+                    </label>
+                    <input type="number" min="1" name="package_amount" class="form-control" id="price" placeholder="{{ trans('admin/product.estimate_package_amount') }}" value="{{ $product->package_amount or '' }}">
+                    <div class="form-text text-muted">
+                        {{ trans('admin/product.package_amount_info') }}
+                    </div>
+                </div>
+
+                <script>
+                    jQuery(document).ready(function() {
+                        var packageAmount = function(val) {
+                            if (val !== 'product') {
+                                $('#package-amount').show();
+                            } else {
+                                $('#package-amount').hide();
+                            }
+                        };
+
+                        $('#price-unit select').on('change', function(event) {
+                            packageAmount($(this).val());
+                        });
+
+                        packageAmount($('#price-unit select').val());
+                    });
+                </script>
 
                 <div class="form-group">
                     <label class="form-control-label">
