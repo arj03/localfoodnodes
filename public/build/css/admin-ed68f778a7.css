@@ -36,7 +36,7 @@ body.admin .page .page-header {
 }
 
 body.admin .page .card .card-header {
-  background: #d6c69b;
+  background: #ccba89;
   color: #fff;
   font-family: 'montserrat';
   font-size: 16px;
@@ -408,6 +408,15 @@ ul.product-quick-links li.active span i {
 .delivery-date-add .link {
   text-align: right;
   display: none;
+}
+
+.order-header {
+  font-family: 'raleway';
+  font-weight: bold;
+  background: #d6c69b;
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /*# sourceMappingURL=admin.css.map */

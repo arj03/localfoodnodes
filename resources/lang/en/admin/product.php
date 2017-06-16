@@ -113,11 +113,13 @@ return [
     'hdiw_item_2' => 'Choose the type of product and quantity of the product you want to sell.',
     'hdiw_item_3' => 'Enter delivery dates and delivery nodes for your product.',
 
-    'hdiw_item_4' => 'Skapa minst en varianter av produkten. T.ex. Hel låda ägg eller Hel lammlåda.',
-    'hdiw_item_4_1' => 'Ange enhet för INNEHÅLLET i din produktvariant (tex stycken eller kg).',
-    'hdiw_item_4_2' => 'Ange antal innehåll i EN produkt. T.ex. 6 st (ägg) eller 18 (kg kött).',
-    'hdiw_item_4_3' => 'Ange pris för produkten (tex 40 kr eller 139 kr).',
-    'hdiw_item_4_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
+    'hdiw_intro_variants' => '
+        Variants is an optional feature to be used on products that comes in different sizes and packages. For example a big box of eggs and a small box of eggs. A kind of cheese in different sizes, or a box meat in different cuts or box sizes.
+    ',
+    'hdiw_item_4_1' => 'Enter unit for the content in your variants.',
+    'hdiw_item_4_2' => 'Create one or more variants of your product, for example a big box of eggs or a small box of meat.',
+    'hdiw_item_4_3' => 'Enter the content of ONE variant, for example 6 (pcs eggs) or 18 (kg meat).',
+    'hdiw_item_4_4' => 'Enter a price for the variant.',
 
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 

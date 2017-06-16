@@ -111,11 +111,13 @@ return [
     'hdiw_item_2' => 'Välj typ av produkt samt mängd av produkten du vill sälja.',
     'hdiw_item_3' => 'Redigera datum och utlämningsplatser för din produkt.',
 
-    'hdiw_item_4' => 'Skapa minst en varianter av produkten. T.ex. Hel låda ägg eller Hel lammlåda.',
-    'hdiw_item_4_1' => 'Ange enhet för INNEHÅLLET i din produktvariant (tex stycken eller kg).',
-    'hdiw_item_4_2' => 'Ange antal innehåll i EN produkt. T.ex. 6 st (ägg) eller 18 (kg kött).',
-    'hdiw_item_4_3' => 'Ange pris för produkten (tex 40 kr eller 139 kr).',
-    'hdiw_item_4_4' => 'Ange vad priset anger (tex per styck av produkten eller per kg).',
+    'hdiw_intro_variants' => '
+        Varianter är till för att kunna skapa olika förpackningstorlekar av samma produkt, t.ex. en hel låda ägg och en halv låda ägg, en sorts ost i olika viktstorlekar eller lammlådor i olika styckningar eller storlekar.
+    ',
+    'hdiw_item_4_1' => 'Ange enhet för produktinnehållet i dina varianter.',
+    'hdiw_item_4_2' => 'Skapa en eller flera varianter av produkten, t.ex. hel låda ägg eller hel lammlåda.',
+    'hdiw_item_4_3' => 'Ange antal innehåll i EN variant. T.ex. 6 st (ägg) eller 18 (kg kött).',
+    'hdiw_item_4_4' => 'Ange ett pris för produktvarianten.',
 
     'hdiw_outro' => 'Se även instruktionsfilmer som stegvis går igenom produktskapande här.',
 

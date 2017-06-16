@@ -11,6 +11,7 @@
                 @foreach ($producer->orderItemsGroupedByUser() as $userId => $orderItems)
                     <div class="card">
                         <div class="card-header">{{ $orderItems->first()->getUser()['name'] }}</div>
+                        <div class="card-block order-header">{{ $orderItems->first()->getUser()['email'] }}</div>
                         <div class="card-block">
                             <table class="table">
                                 <thead>

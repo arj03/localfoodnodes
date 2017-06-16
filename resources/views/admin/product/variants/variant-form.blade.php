@@ -34,4 +34,8 @@
             </div>
         </div>
     </div>
+
+    <div class="col-12 col-xl-4">
+        @include('admin.product.variants.how-does-it-work')
+    </div>
 </div>

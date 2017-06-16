@@ -84,6 +84,8 @@
                     </form>
                 </div>
             </div>
+
+            @include('admin.product.variants.how-does-it-work')
         </div>
     </div>
 @endsection
