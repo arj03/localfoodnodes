@@ -10,7 +10,7 @@
             @if ($producer->orderDates()->count() > 0)
                 @foreach ($producer->orderDates() as $orderDate)
                     <div class="card">
-                        <div class="card-header">{{ $orderDate->date('Y-m-d') }}</div>
+                        <div class="card-header">{{ trans('admin/producer.delivery') }} {{ $orderDate->date('Y-m-d') }}</div>
                         <div class="card-block">
                             <table class="table table-hover">
                                 <thead>
