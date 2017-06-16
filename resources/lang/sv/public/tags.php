@@ -7,7 +7,7 @@ return [
     'csa' => 'CSA',
     'dairy_cheese' => 'Mejeri & ost',
     'eggs' => 'Ägg',
-    'fish' => 'Fisk och skaldjur',
+    'fish' => 'Fisk & skaldjur',
     'fruit_berries' => 'Frukt & bär',
     'icecream' => 'Glass',
     'grain_flour' => 'Gryn & mjöl',
