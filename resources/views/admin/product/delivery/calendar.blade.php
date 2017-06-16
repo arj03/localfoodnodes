@@ -10,7 +10,7 @@
         </div>
         <div class="card-block">
             <div class="row calendar product-calendar">
-                @foreach ($node->getDeliveryDatesByMonths() as $firstDateOfMonth => $deliveryDates)
+                @foreach ($node->getDeliveryDatesByMonths($product) as $firstDateOfMonth => $deliveryDates)
                     <div class="col col-3">
                         <div class="month">
                             <div class="month-header">

@@ -274,7 +274,8 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
-     * Get product node delivery links
+     * Get product node delivery links.
+     *
      * @return Collection
      */
     public function productNodeDeliveryLinks() {
@@ -283,6 +284,8 @@ class Node extends BaseModel implements EventOwnerInterface
 
     /**
      * Get products.
+     *
+     * @return Collection
      */
     public function products()
     {
@@ -315,11 +318,16 @@ class Node extends BaseModel implements EventOwnerInterface
      *
      * @return Collection
      */
-    public function getDeliveryDates()
+    public function getDeliveryDates($product = null)
     {
         $deliveryDates = new Collection();
 
-        $nextDelivery = $this->getNextDelivery();
+        $firstProductionDate = null;
+        if ($product && $product->production_type === 'occasional') {
+            $firstProductionDate = $product->productions()->first()->date;
+        }
+
+        $nextDelivery = $this->getNextDelivery($firstProductionDate);
 
         for ($week = 0; $week < 52; $week++) {
             $date = date('Y-m-d', strtotime('+' . $week . ' week', $nextDelivery->getTimestamp()));
@@ -334,9 +342,9 @@ class Node extends BaseModel implements EventOwnerInterface
      *
      * @return Collection
      */
-    public function getDeliveryDatesByMonths()
+    public function getDeliveryDatesByMonths($product = null)
     {
-        return collect($this->getDeliveryDates()->groupBy(function($date) {
+        return collect($this->getDeliveryDates($product)->groupBy(function($date) {
             return (int) date('Ym01', strtotime($date));
         }));
     }
@@ -346,9 +354,14 @@ class Node extends BaseModel implements EventOwnerInterface
      *
      * @return Date
      */
-    private function getNextDelivery()
+    private function getNextDelivery(\DateTime $productFirstProductionDate = null)
     {
-        $nextDeliveryTimestamp = strtotime('next ' . $this->delivery_weekday, time());
+        $firstDate = time();
+        if ($productFirstProductionDate) {
+            $firstDate = $productFirstProductionDate->getTimestamp();
+        }
+
+        $nextDeliveryTimestamp = strtotime('next ' . $this->delivery_weekday, $firstDate);
         return new DateTime(date('Y-m-d H:i', $nextDeliveryTimestamp));
     }
 

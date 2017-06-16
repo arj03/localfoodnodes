@@ -88,7 +88,7 @@ class Product extends \App\BaseModel
      */
     public function productions()
     {
-        return $this->productionsRelationship;
+        return $this->productionsRelationship->sortBy('date');
     }
 
     /**
