@@ -12,10 +12,10 @@
                         {{ trans('public/node.select_variant') }}
                         @include('admin.field-error', ['field' => 'variant_id'])
                     </label>
-                    @foreach ($product->variants() as $variant)
+                    @foreach ($product->variants() as $index => $variant)
                         <div class="form-check">
                             <label class="form-check-label w-100">
-                                <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}">
+                                <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}" {{ $index === 0 ? 'checked' : '' }}>
                                 {{ $product->name}} - {{ $variant->name }}
                                 ({{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }})
                                 <div class="price">
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="days">
                                         @foreach ($deliveryLinks as $deliveryLink)
-                                            @include('public.node.delivery-date')
+                                            @include('public.product.delivery-date')
                                         @endforeach
                                     </div>
                                 </div>
@@ -89,8 +89,8 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleTextarea">Message to producer</label>
-                <textarea class="form-control" name="message" rows="3" placeholder="Add extra information to your order"></textarea>
+                <label for="exampleTextarea">{{ trans('public/product.message_producer') }}</label>
+                <textarea class="form-control" name="message" rows="3" placeholder="{{ trans('public/product.message_producer_placeholder') }}"></textarea>
             </div>
 
             @if (!Auth::check())

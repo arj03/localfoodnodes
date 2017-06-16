@@ -5,7 +5,7 @@
             <div class="date">{{ $deliveryLink->date('j') }}</div>
             @foreach($product->variants() as $variant)
                 <div class="variant-quantity variant-quantity-{{ $variant->id }}" style="display: none;">
-                    {{ $deliveryLink->getAvailableQuantity($variant) }} in stock
+                    {{ $deliveryLink->getAvailableQuantity($variant) }} {{ trans('public/product.in_stock') }}
                 </div>
             @endforeach
         </label>
@@ -20,7 +20,7 @@
         <input type="checkbox" id="{{ $deliveryLink->date('Y-m-d') }}" name="delivery_dates[]" value="{{ $deliveryLink->date('Y-m-d') }}" />
         <label for="{{ $deliveryLink->date('Y-m-d') }}">
             <div class="date">{{ $deliveryLink->date('j') }}</div>
-            <div>{{ $deliveryLink->getAvailableQuantity() }} in stock</div>
+            <div>{{ $deliveryLink->getAvailableQuantity() }} {{ trans('public/product.in_stock') }}</div>
         </label>
 
         <!-- if csa disable checkbox, only avaiable if buying all -->

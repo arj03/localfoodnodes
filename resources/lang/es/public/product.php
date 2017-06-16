@@ -7,6 +7,8 @@ return [
     'in_stock' => 'in stock',
     'login_to_order' => 'Login to order product',
     'nav_to_node' => 'In order to book this product you can navigate to its page on one of the following nodes where it is delivered to',
+    'message_producer' => 'Message to producer',
+    'message_producer_placeholder' => 'Add extra information to your order',
     'order' => 'Order',
     'product_info' => 'Product information',
     'producer' => 'Producer',

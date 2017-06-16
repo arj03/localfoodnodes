@@ -6,6 +6,8 @@ return [
     'how_many' => 'How many?',
     'in_stock' => 'in stock',
     'login_to_order' => 'Login to order product',
+    'message_producer' => 'Message to producer',
+    'message_producer_placeholder' => 'Add extra information to your order',
     'nav_to_node' => 'In order to book this product you can navigate to its page on one of the following nodes where it is delivered to',
     'order' => 'Order',
     'product_info' => 'Product information',
