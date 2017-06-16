@@ -192,7 +192,7 @@ class NodeMapContainer extends Component {
                 <h3>{reko.name}</h3>
             </a>
             <div className='body-text'>
-                <p><a href={reko.link}>{trans.link_to_fb} {reko.name}</a></p>
+                <p><a href={reko.link} target='_blank'>{trans.link_to_fb} {reko.name}</a></p>
                 <p>{trans.grey_map_marker_info}</p>
             </div>
             </div>
