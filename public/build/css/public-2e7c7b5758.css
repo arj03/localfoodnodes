@@ -1590,11 +1590,18 @@ body.public-checkout .summary .btn {
   margin: 1px auto;
 }
 
-.user-nav .block ul li a {
+.user-nav .block ul {
+  margin-bottom: 0;
+}
+
+.user-nav .block ul li .header {
   text-transform: uppercase;
+}
+
+.user-nav .block ul li a {
   display: block;
   padding: 5px 15px;
-  width: 100%;
+  width: 100;
 }
 
 .user-nav .block ul li a.active {

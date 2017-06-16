@@ -192,8 +192,8 @@ class NodeMapContainer extends Component {
                 <h3>{reko.name}</h3>
             </a>
             <div className='body-text'>
-                <p>Utlämningsplatsen finns i dagsläget endast som <a href={reko.link} target='_blank'>facebookgrupp</a>.</p>
-                <p>Är du admin för facebookgruppen kan du <a href='/account/user/create/node' target='_blank'>skapa din utlämningsplats här</a>.</p>
+                <p><a href={reko.link}>{trans.link_to_fb} {reko.name}</a></p>
+                <p>{trans.grey_map_marker_info}</p>
             </div>
             </div>
         );

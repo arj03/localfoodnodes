@@ -7,6 +7,8 @@ return [
     'find_out_more' => 'Find out more',
     'food_matters' => 'FOOD MATTERS',
     'food_producer' => 'Are you a local food producer?',
+    'grey_map_marker_info' => 'Gray markers like this one are delivery locations where orders are made throught Facebook.',
+    'link_to_fb' => 'Facebook group for',
     'list' => 'List your products',
     'locals' => 'Locals',
     'local_nodes' => 'Local nodes',

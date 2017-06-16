@@ -7,6 +7,8 @@ return [
     'find_out_more' => 'Find out more',
     'food_matters' => 'FOOD MATTERS',
     'food_producer' => 'Are you a local food producer?',
+    'grey_map_marker_info' => 'Gray markers like this one are delivery locations where orders are made through Facebook.',
+    'link_to_fb' => 'Facebook group for',
     'list' => 'List your products',
     'locals' => 'Locals',
     'local_nodes' => 'Local nodes',
@@ -23,7 +25,7 @@ return [
     'find_node_near_you' => 'Find a node near you',
     'visit_node' => 'Visit node',
 
-        //co-funding part
+    //co-funding part
     'co_fund_heading' => 'Co-own the future of food!',
     'co_fund_subheading' => 'You choose the membership fee',
     'co_fund_paragraph' => 'By becoming a member you are co-funding the future of food. Together, all of us as supporting members gives ourselves the financial means to choose the direction of local food development.',

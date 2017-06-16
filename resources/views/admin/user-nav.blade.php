@@ -9,14 +9,21 @@
             @include('public.cart')
 
             <div class="block">
+                <ul>
+                    <li>
+                        <a class="find-nodes {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fa fa-compass"></i> {{ trans('admin/user-nav.find_nodes') }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="block">
                 <div class="block-header">
                     {{ trans('admin/user-nav.your_user') }}
                 </div>
                 <ul class="user">
                     <li>
-                        <a class="{{ Request::is('account/user') ? 'active' : '' }}" href="/account/user">{{ $user->name }}</a>
+                        <a class="header {{ Request::is('account/user') ? 'active' : '' }}" href="/account/user">{{ $user->name }}</a>
                         <ul>
-                            <li><a class="{{ Request::is('/') ? 'active' : '' }}" href="/">- {{ trans('admin/user-nav.find_nodes') }}</a></li>
                             <li><a class="{{ Request::is('account/user/order*') ? 'active' : '' }}" href="/account/user/orders">- {{ trans('admin/user-nav.orders') }}</a></li>
                             <li><a class="{{ Request::is('account/user/pickups*') ? 'active' : '' }}" href="/account/user/pickups">- {{ trans('admin/user-nav.pickups') }}</a></li>
                             <li><a class="{{ Request::is('account/user/event*') ? 'active' : '' }}" href="/account/user/events">- {{ trans('admin/user-nav.events') }}</a></li>
@@ -25,7 +32,7 @@
 
                     @if ($user->nodeLinks()->count() > 0)
                         <li>
-                            <div>{{ trans('admin/user-nav.nodes_you_follow') }}</div>
+                            <div class="header">{{ trans('admin/user-nav.nodes_you_follow') }}</div>
                             <ul>
                                 @foreach ($user->nodeLinks() as $nodeLink)
                                     <li>
@@ -46,7 +53,7 @@
                     @if ($user->nodeAdminLinks()->count() > 0)
                         @foreach ($user->nodeAdminLinks() as $nodeAdminLink)
                             <li>
-                                <a class="{{ Request::is('account/node/' . $nodeAdminLink->getNode()->id) ? 'active' : '' }}" href="/account/node/{{ $nodeAdminLink->getNode()->id }}">{{ $nodeAdminLink->getNode()->name }}</a>
+                                <a class="header {{ Request::is('account/node/' . $nodeAdminLink->getNode()->id) ? 'active' : '' }}" href="/account/node/{{ $nodeAdminLink->getNode()->id }}">{{ $nodeAdminLink->getNode()->name }}</a>
                                 <ul>
                                     <li>
                                         <a class="{{ Request::is('account/node/' . $nodeAdminLink->getNode()->id . '/producers') ? 'active' : '' }}" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/producers">- {{ trans('admin/user-nav.producers') }}</a>
@@ -75,7 +82,7 @@
                     @if ($user->producerAdminLinks()->count() > 0)
                         @foreach ($user->producerAdminLinks() as $producerAdminLink)
                             <li>
-                                <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id) ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}">{{ $producerAdminLink->getProducer()->name }}</a>
+                                <a class="header {{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id) ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}">{{ $producerAdminLink->getProducer()->name }}</a>
                                 <ul>
                                     <li>
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/product*') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/products">- {{ trans('admin/user-nav.products') }}</a>
