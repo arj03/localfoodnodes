@@ -89,9 +89,15 @@ class OrderDateItemLink extends \App\BaseModel
         } else {
             // Sold by weight
             if ($this->getItem()->variant) {
-                return $price * $this->quantity * $this->getItem()->variant['package_amount'];
+                $variant = $this->getItem()->variant;
+                $packageAmount = isset($variant['package_amount']) ? $variant['package_amount'] : 1;
+
+                return $price * $this->quantity * $packageAmount;
             } else {
-                return $price * $this->quantity * $this->getItem()->product['package_amount'];
+                $product = $this->getItem()->product;
+                $packageAmount = isset($product['package_amount']) ? $product['package_amount'] : 1;
+
+                return $price * $this->quantity * $packageAmount;
             }
         }
     }

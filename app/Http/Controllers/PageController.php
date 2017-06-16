@@ -40,8 +40,12 @@ class PageController extends Controller
         })->count();
 
         $allPayments = UserMembershipPayment::get();
-        $totalMembershipPayments = $allPayments->pluck('amount')->sum() / 100;
-        $averageMembershipPayments = $members === 0 ? 0 : $totalMembershipPayments / $members;
+        $totalMembershipPayments = $allPayments->map(function($payment) {
+            return ($payment->amount > 2) ? $payment->amount : null;
+        })->filter()->sum();
+
+        $totalPayingMembers = $allPayments->unique('user_id')->count();
+        $averageMembershipPayments = $members === 0 ? 0 : $totalMembershipPayments / $totalPayingMembers;
 
         return view('public.pages.membership', [
             'members' => $members,
