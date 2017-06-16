@@ -752,6 +752,24 @@ body.page .page .card .body-text {
   font-size: 20px;
 }
 
+.map .map-preview .body-text .reko-fb-info {
+  display: -webkit-box;
+  display: flex;
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 0 !important;
+  padding-top: 30px;
+}
+
+.map .map-preview .body-text .reko-fb-info img {
+  position: relative;
+  left: -3px;
+  top: 2px;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
 body.public-product-product .header .image {
   height: 500px;
   background-size: cover;

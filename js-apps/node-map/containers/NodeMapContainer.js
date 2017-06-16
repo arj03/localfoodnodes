@@ -193,7 +193,10 @@ class NodeMapContainer extends Component {
             </a>
             <div className='body-text'>
                 <p><a href={reko.link} target='_blank'>{trans.link_to_fb} {reko.name}</a></p>
-                <p>{trans.grey_map_marker_info}</p>
+                <p className='reko-fb-info'>
+                    <img src='/css/leaflet/images/reko-icon.png' />
+                    <span>{trans.grey_map_marker_info}</span>
+                </p>
             </div>
             </div>
         );

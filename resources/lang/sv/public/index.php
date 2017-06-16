@@ -6,7 +6,7 @@ return [
     'find_out_more' => 'Läs mer',
     'food_matters' => 'MAT HAR BETYDELSE',
     'food_producer' => 'Är du matproducent?',
-    'grey_map_marker_info' => 'Gråa ikoner som denna är utlämningsplatser där beställningar görs genom Facebook',
+    'grey_map_marker_info' => 'Utlämningsplatser där beställningar görs genom Facebook.',
     'link_to_fb' => 'Facebookgruppen för',
     'list' => 'Tillgängliggör dina produkter',
     'locals' => 'Locals',
