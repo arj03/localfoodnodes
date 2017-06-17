@@ -165,6 +165,8 @@ class AuthController extends Controller
                 'email' => $userData->email,
                 'active' => 1
             ]);
+
+            \App\Helpers\SlackHelper::message('notification', $userData->name . ' (' . $userData->email . ')' . ' signed up as a user through Facebook.');
         }
 
         $user->restore(); // If trashed
