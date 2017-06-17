@@ -18,6 +18,11 @@
                 <b>{{ trans('admin/product.delivery_dates') }}</b>
                 <p>{{ trans('admin/product.hdiw_item_3') }}</p>
             </li>
+            <li>
+                <span class="info-count"><i class="fa fa-cubes"></i></span>
+                <b>{{ trans('admin/product.variants') }}</b>
+                <p>{{ trans('admin/product.hdiw_intro_variants') }}</p>
+            </li>
         </ul>
     </div>
 </div>
