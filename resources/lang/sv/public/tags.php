@@ -18,6 +18,7 @@ return [
     'pickled' => 'Inläggningar',
     'potatoes' => 'Potatis',
     'poultry' => 'Fågel',
+    'sample' => 'Prova på',
     'seeds' => 'Fröer',
     'vegetable' => 'Grönsaker',
     'honey' => 'Honung',

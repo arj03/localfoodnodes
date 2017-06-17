@@ -60,6 +60,7 @@ class ProductFilter
             'pickled' => trans('public/tags.pickled'),
             'potatoes' => trans('public/tags.potatoes'),
             'poultry' => trans('public/tags.poultry'),
+            'sample' => trans('public/tags.sample'),
             'seeds' => trans('public/tags.seeds'),
             'vegetable' => trans('public/tags.vegetable'),
         ])->sort();

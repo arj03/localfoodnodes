@@ -18,6 +18,7 @@ return [
     'pickled' => 'Pickled',
     'potatoes' => 'Potatoes',
     'poultry' => 'Poultry',
+    'sample' => 'Sample',
     'seeds' => 'Seeds',
     'vegetable' => 'Vegetable',
     'honey' => 'Honey',
