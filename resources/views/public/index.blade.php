@@ -101,6 +101,18 @@
             <div class="membership-content container">
                 {{ trans('public/index.co_fund_paragraph') }}
             </div>
+
+            <div class="metrics row">
+                <div class="metric col">
+                    <div class="value">{{ $members }}<i class="fa fa-user value-unit"></i></div>
+                    <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
+                </div>
+                <div class="metric col">
+                    <div class="value">{{ $averageMembership }}<span class="value-unit">SEK</span></div>
+                    <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
+                </div>
+            </div>
+
             <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
         </div>
     </div>

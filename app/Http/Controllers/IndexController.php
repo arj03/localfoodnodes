@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Node\Node;
 use App\Node\NodeCalendar;
 use App\User\User;
+use App\User\UserMembershipPayment;
 use App\Producer\Producer;
 use App\Producer\ProducerNodeLink;
 use App\Product\Product;
@@ -40,10 +41,26 @@ class IndexController extends Controller
 
         $events = Event::where('start_datetime', '>', date('Y-m-d', time()))->limit(5)->orderBy('start_datetime')->get();
 
+        $users = User::with(['membershipPaymentsRelationship'])->get();
+        $members = $users->filter(function($user) {
+            return $user->isMember(true);
+        })->count();
+
+        $allPayments = UserMembershipPayment::get();
+        $totalMembershipPayments = $allPayments->map(function($payment) {
+            return ($payment->amount > 2) ? $payment->amount : null;
+        })->filter()->sum();
+
+        $totalPayingMembers = $allPayments->unique('user_id')->count();
+        $averageMembershipPayments = $members === 0 ? 0 : $totalMembershipPayments / $totalPayingMembers;
+
         return view('public.index', [
             'metrics' => $metrics,
             'nodes' => $nodes,
-            'events' => $events
+            'events' => $events,
+
+            'members' => $members,
+            'averageMembership' => round($averageMembershipPayments)
         ]);
     }
 

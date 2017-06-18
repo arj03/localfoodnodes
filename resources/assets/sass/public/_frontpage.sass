@@ -162,6 +162,9 @@
       margin-bottom: 50px
 
   .membership
+    > .col-12
+      padding-top: 30px
+      padding-bottom: 30px
     background: url('/images/cows-bw.jpg') center center
     background-size: cover
     color: #dec286
@@ -186,6 +189,39 @@
       margin-top: 50px
       color: #dec286
       border-color: #dec286
+
+    .metrics
+      display: flex
+      justify-content: center
+      margin-top: 20px
+      .metric
+        margin: 2vw
+        display: flex
+        flex-direction: column
+        align-items: center
+        .value
+          background: #dec286
+          color: #fff
+          font-size: 40px
+          width: 180px
+          line-height: 180px
+          border-radius: 100px
+          text-align: center
+          font-weight: bold
+          font-family: 'montserrat'
+          .value-unit
+            font-size: 30px
+            padding-left: 10px
+            &.fa
+              position: relative
+              top: -3px
+        .label
+          margin-top: 15px
+          font-size: 1.75rem
+          font-family: 'montserrat'
+          text-transform: uppercase
+          color: #dec286
+          text-align: center
 
   .find-out-more
     .logo
