@@ -22,7 +22,6 @@ class CreateOrderDateItemLinksTable extends Migration
             $table->integer('quantity')->required();
             $table->string('ref')->required();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

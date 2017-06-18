@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('active')->default(0);
             $table->string('language')->nullable();
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

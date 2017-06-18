@@ -26,7 +26,6 @@ class CreateOrderItemsTable extends Migration
             $table->integer('variant_id')->nullable(); // For loading current data
             $table->text('variant')->nullable();
             $table->text('message')->nullable();
-            $table->softDeletes();
         });
     }
 

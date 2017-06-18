@@ -35,6 +35,22 @@ class OrderDateItemLink extends \App\BaseModel
     ];
 
     /**
+     * Lifecycle events.
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($orderDateItemLink) {
+            $orderDateItemLink->getItem()->delete();
+
+            // If OrderDate count is 1, this is the last OrderItemDateLink connected and is safe to remove.
+            if ($orderDateItemLink->getDate()->orderDateItemLinks()->count() <= 1) {
+                $orderDateItemLink->getDate()->delete();
+            }
+        });
+    }
+
+    /**
      * Define relationship with order items.
      *
      * @return Collection

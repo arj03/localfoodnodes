@@ -50,7 +50,7 @@ class CartDateItemLink extends \App\BaseModel
                 $cartDateItemLink->getItem()->delete();
             }
 
-            // If CartDate count is 1, this is the last CartItemDateLink connected and is save to remove.
+            // If CartDate count is 1, this is the last CartItemDateLink connected and is safe to remove.
             if ($cartDateItemLink->getDate()->cartDateItemLinks()->count() <= 1) {
                 $cartDateItemLink->getDate()->delete();
             }

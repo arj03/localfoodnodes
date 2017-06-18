@@ -33,6 +33,7 @@ return [
     'create_production' => 'Create production',
     'create_variant' => 'Create variant',
     'dashboard' => 'Dashboard',
+    'delete' => 'Delete',
     'deliveries' => 'Deliveries',
     'delivery_dates' => 'Delivery dates',
     'edit' => 'Edit',

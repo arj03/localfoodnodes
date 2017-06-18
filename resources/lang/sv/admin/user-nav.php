@@ -33,6 +33,7 @@ return [
     'create_production' => 'Skapa produktion',
     'create_variant' => 'Skapa variant',
     'dashboard' => 'Dashboard',
+    'delete' => 'Ta bort',
     'deliveries' => 'Utlämningar',
     'delivery_dates' => 'Utlämningsdatum',
     'edit' => 'Redigera',

@@ -234,6 +234,21 @@ class UserController extends Controller
     }
 
     /**
+     * Confirm user delete action.
+     */
+    public function confirmDelete(Request $request)
+    {
+        $user = Auth::user();
+
+        return view('admin.user.confirm-delete', [
+            'breadcrumbs' => [
+                $user->name => 'user',
+                trans('admin/user-nav.delete') => ''
+            ]
+        ]);
+    }
+
+    /**
      * User delete action.
      */
     public function delete(Request $request)

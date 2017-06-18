@@ -17,7 +17,6 @@ class CreateOrderDatesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->required();
             $table->date('date')->required();
-            $table->softDeletes();
         });
     }
 

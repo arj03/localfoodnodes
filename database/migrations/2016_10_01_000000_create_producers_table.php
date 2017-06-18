@@ -31,7 +31,6 @@ class CreateProducersTable extends Migration
             $table->string('link_facebook')->nullable();
             $table->string('link_instagram')->nullable();
             $table->string('link_twitter')->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -2,8 +2,6 @@
 
 namespace App\Order;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 use App\Order\Order;
 use App\Order\OrderItem;
 use App\Order\OrderItemDate;
@@ -12,8 +10,6 @@ use \DateTime;
 
 class OrderStatus extends \App\BaseModel
 {
-    use SoftDeletes;
-
     /**
      * Validation rules.
      *

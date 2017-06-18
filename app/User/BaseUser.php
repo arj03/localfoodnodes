@@ -4,13 +4,11 @@ namespace App\User;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\BaseModel;
 
 class BaseUser extends Authenticatable
 {
     use Notifiable;
-    use SoftDeletes;
 
     /**
      * Proxy to BaseModel validate.

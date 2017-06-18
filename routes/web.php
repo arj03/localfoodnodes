@@ -49,6 +49,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/', 'Admin\UserController@index');
         Route::get('/edit', 'Admin\UserController@edit');
         Route::post('/update', 'Admin\UserController@update');
+        Route::get('/delete/confirm', 'Admin\UserController@confirmDelete');
         Route::get('/delete', 'Admin\UserController@delete');
         Route::get('/password/edit', 'Admin\UserController@editPassword');
         Route::post('/password/update', 'Admin\UserController@updatePassword');

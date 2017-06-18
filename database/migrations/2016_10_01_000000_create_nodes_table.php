@@ -26,7 +26,6 @@ class CreateNodesTable extends Migration
             $table->string('link_facebook_producers')->nullable();
             $table->string('delivery_time')->nullable();
             $table->string('delivery_weekday')->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

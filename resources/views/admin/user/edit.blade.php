@@ -67,7 +67,7 @@
 
         @component('admin.form-control-bar')
             <button type="submit" form="user-edit-form" class="btn btn-success">{{ trans('admin/user.save_user') }}</button>
-            <a href="/account/user/delete" class="btn btn-danger">{{ trans('admin/user.delete_user') }}</a>
+            <a href="/account/user/delete/confirm" class="btn btn-danger">{{ trans('admin/user.delete_user') }}</a>
         @endcomponent
     </form>
 @endsection

@@ -19,7 +19,6 @@ class CreateOrderStatusesTable extends Migration
             $table->string('entity_type')->required();
             $table->string('status')->required();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

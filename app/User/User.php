@@ -66,11 +66,11 @@ class User extends BaseUser
         parent::boot();
 
         static::deleting(function($user) {
-            if ($user->cartDateItemLinks->count()) {
-                $user->cartDateItemLinks->each->delete();
+            if ($user->cartDateItemLinks()->count()) {
+                $user->cartDateItemLinks()->each->delete();
             }
 
-            $user->orders()->each->delete();
+            $user->orderDateItemLinks()->each->delete();
             $user->membershipPayments()->each->delete();
             $user->nodeLinks()->each->delete();
             $user->nodeAdminLinks()->each->delete();
