@@ -186,6 +186,10 @@ input[type=submit],
   background: #8fb773;
 }
 
+a.badge {
+  color: #fff !important;
+}
+
 html {
   height: 100%;
   font-size: 14px !important;

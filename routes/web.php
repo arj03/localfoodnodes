@@ -107,9 +107,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/{producerId}/map/node/remove', 'Admin\ProducerController@mapRemoveNode');
 
         // Producer order
-        Route::get('/{producerId}/order/status/{status}/{orderId}', 'Admin\OrderController@changeOrderStatus');
-        Route::get('/{producerId}/order/status/{status}/{orderId}/{orderItemId}', 'Admin\OrderController@changeOrderStatus');
-        Route::get('/{producerId}/order/status/{status}/{orderId}/{orderItemId}/{orderItemDateId}', 'Admin\OrderController@changeOrderStatus');
+        Route::get('/{producerId}/order/{orderItemId}/status/{status}', 'Admin\OrderController@changeOrderStatus');
     });
 
     // Product

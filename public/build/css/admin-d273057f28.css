@@ -45,10 +45,6 @@ body.admin .page .card .card-header {
   border-radius: 0;
 }
 
-body.admin .page .card .card-header .dropdown-action-component .dropdown-toggle {
-  color: #fff;
-}
-
 @media (min-width: 992px) {
   body.admin .page {
     -webkit-box-orient: horizontal;

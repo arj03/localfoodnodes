@@ -20,8 +20,7 @@ class OrderStatus extends \App\BaseModel
      * @var array
      */
     protected $validationRules = [
-        'entity_id' => 'required',
-        'entity_type' => 'required',
+        'order_item_id' => 'required',
         'status' => 'required',
     ];
 
@@ -31,9 +30,10 @@ class OrderStatus extends \App\BaseModel
      * @var array
      */
     protected $fillable = [
-        'entity_id',
-        'entity_type',
-        'status'
+        'order_item_id',
+        'status',
+        'active', // Not db field
+        'key', // Not db field
     ];
 
     /**
@@ -47,20 +47,39 @@ class OrderStatus extends \App\BaseModel
         return new DateTime($value);
     }
 
-    public function getEntity()
+    /**
+     * Get status key.
+     *
+     * @return string
+     */
+    public function getKeyAttribute()
     {
-        if ($this->entity_type === 'order') {
-            return Order::find($this->entity_id);
-        } else if ($this->entity_type === 'order_item') {
-            return OrderItem::find($this->entity_id);
-        } else if ($this->entity_type === 'order_item_date') {
-            return OrderItemDate::find($this->entity_id);
+        return $this->status;
+    }
+
+    /**
+     * Get html class.
+     *
+     * @return string
+     */
+    public function getHtmlClass()
+    {
+        if (!$this->active) {
+            return 'badge badge-default';
+        } else if ($this->status === 'cancelled') {
+            return 'badge badge-danger';
+        } else {
+            return 'badge badge-success';
         }
     }
 
-    public function getStatusString()
+    /**
+     * Get order status translated string.
+     *
+     * @return string
+     */
+    public function __toString()
     {
-        $readableType = ucfirst(str_replace('_', ' ', $this->entity_type));
-        return $readableType . ' ' . $this->status . ' ' . $this->created_at->format('Y-m-d');
+        return trans('admin/order-statuses.' . $this->status);
     }
 }

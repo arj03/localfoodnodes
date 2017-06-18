@@ -42,6 +42,7 @@
                                             <td>{{ $orderItem->node['name'] }}</td>
                                             <td>{{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}</td>
                                             <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>
+                                            <td><span class="{{ $orderItem->getCurrentStatus()->getHtmlClass() }}">{{ $orderItem->getCurrentStatus() }}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

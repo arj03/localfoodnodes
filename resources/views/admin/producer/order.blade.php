@@ -50,6 +50,15 @@
                     </table>
                     <p>{{ $orderItem->message }}</p>
                 </div>
+                <div class="card-footer">
+                    @foreach ($orderItem->allAvailableOrderStatuses() as $orderStatus)
+                        @if ($orderStatus->active)
+                            <span class="badge badge-success">{{ $orderStatus->status }}</span>
+                        @else
+                            <a href="/account/producer/{{ $producer->id }}/order/{{ $orderItem->id }}/status/{{ $orderStatus->key }}" class="badge badge-default">{{ $orderStatus->status }}</a>
+                        @endif
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
