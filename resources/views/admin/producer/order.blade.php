@@ -53,9 +53,9 @@
                 <div class="card-footer">
                     @foreach ($orderItem->allAvailableOrderStatuses() as $orderStatus)
                         @if ($orderStatus->active)
-                            <span class="badge badge-success">{{ $orderStatus->status }}</span>
+                            <span class="{{ $orderStatus->getHtmlClass() }}">{{ $orderStatus }}</span>
                         @else
-                            <a href="/account/producer/{{ $producer->id }}/order/{{ $orderItem->id }}/status/{{ $orderStatus->key }}" class="badge badge-default">{{ $orderStatus->status }}</a>
+                            <a href="/account/producer/{{ $producer->id }}/order/{{ $orderItem->id }}/status/{{ $orderStatus->key }}" class="{{ $orderStatus->getHtmlClass() }}">{{ $orderStatus }}</a>
                         @endif
                     @endforeach
                 </div>
