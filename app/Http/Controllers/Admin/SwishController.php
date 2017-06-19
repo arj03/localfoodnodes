@@ -6,86 +6,53 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
-use HelmutSchneider\Swish\Client;
-use HelmutSchneider\Swish\Util;
 
 class SwishController extends Controller
 {
     public function swish(Request $request)
     {
-        // Swish CA root cert
-        $rootCert = storage_path('certificates/swish/swish-root.crt'); // forwarded to guzzle's "verify" option
 
-        // .pem-bundle containing your client cert and it's corresponding private key. forwarded to guzzle's "cert" option
-        $clientCert = [storage_path('certificates/swish/client-cert.pem'), 'swish'];
 
-        $client = Client::make($rootCert, $clientCert);
+        // openssl s_client -port 443 -host mss.swicpc.bankgirot.se -cert /home/davidajnered/Sites/local-food-nodes/storage/certificates/swish/clientcertTest.pem -key /home/davidajnered/Sites/local-food-nodes/storage/certificates/swish/keyTest.key -CAfile /home/davidajnered/Sites/local-food-nodes/storage/certificates/swish/cacertTest.pem
 
-        $response = $client->createPaymentRequest([
-            'callbackUrl' => 'https://localhost/swish',
-            'payeePaymentReference' => '12345',
-            'payerAlias' => '4671234768',
+
+        error_log(var_export('init swish', true));
+
+        $data = [
+            'payeePaymentReference' => '0123456789',
+            'callbackUrl' => 'https://staging.localfoodnodes.org/membership/swish/callback',
+            'payerAlias' => '46703633180',
             'payeeAlias' => '1231181189',
-            'amount' => '100',
+            'amount' => '1',
             'currency' => 'SEK',
-        ]);
+            'message' => 'Local Food Nodes Membership'
+        ];
 
-        $data = Util::decodeResponse($response);
-        error_log(var_export($data, true));
-        var_dump($data);
+        $url = 'https://mss.swicpc.bankgirot.se/swish-cpcapi/api/v1/paymentrequests/';
+        $cacert = storage_path('certificates/swish/cacertTest.pem');
+        $clientcert = storage_path('certificates/swish/clientcertTest.pem');
+        $key = storage_path('certificates/swish/keyTest.key');
+        $challenge = 'swish';
 
+        $header = Array();
+        $header[] = "Content-Type: application/json";
 
-        //
-        //
-        // error_log(var_export('init swish', true));
-        //
-        // $data = [
-        //     'payeePaymentReference' => '0123456789',
-        //     'callbackUrl' => 'https://staging.localfoodnodes.org/membership/swish/callback',
-        //     'payerAlias' => '46703633180',
-        //     'payeeAlias' => '1231181189',
-        //     'amount' => '1',
-        //     'currency' => 'SEK',
-        //     'message' => 'Local Food Nodes Membership'
-        // ];
-        //
-        // $url = 'https://mss.swicpc.bankgirot.se/swish-cpcapi/api/v1/paymentrequests/';
-        // $clientcert = storage_path('certificates/test_swish_root_ca_v1_test.pem');
-        // $keyfile = storage_path('certificates/swish_merchant_test_certificate_1231181189.p12');
-        // $challenge = "swish";
-        // // print "<bR><BR>$challenge<br><br>";
-        // // print "<bR><BR>$keyfile<br><br>";
-        //
-        // $header = Array();
-        // $header[] = "Content-Type: application/json";
-        //
-        // $ch = curl_init();
-        //
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_HEADER, 1);
-        // curl_setopt($ch, CURLOPT_VERBOSE, 1);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        // curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-        // // curl_setopt($ch, CURLOPT_SSLCERT, $clientcert);
-        // curl_setopt($ch, CURLOPT_SSLCERTPASSWD, $challenge);
-        // curl_setopt($ch, CURLOPT_SSLKEYTYPE, 'P12');
-        // curl_setopt($ch, CURLOPT_SSLKEY, $keyfile);
-        // curl_setopt($ch, CURLOPT_SSLKEYPASSWD, 'swish');
-        //
-        // // curl_setopt($ch, CURLOPT_SSLCERT, 'file.crt.pem');
-        // // curl_setopt($ch, CURLOPT_SSLKEY, 'file.key.pem');
-        // // curl_setopt($ch, CURLOPT_SSLCERTPASSWD, 'pass');
-        // // curl_setopt($ch, CURLOPT_SSLKEYPASSWD, 'pass');
-        //
-        // $ret = curl_exec($ch);
-        //
-        // error_log(var_export($ret, true));
-        //
-        // echo 'swish';
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);;
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSLCERT, $clientcert);
+        curl_setopt($ch, CURLOPT_SSLKEY, $key);
+        curl_setopt($ch, CURLOPT_SSLKEYPASSWD, $challenge);
+        curl_setopt($ch, CURLOPT_CAINFO, $cacert);
+
+        $ret = curl_exec($ch);
+
+        error_log(var_export($ret, true));
+
+        echo 'swish';
     }
 
     public function swishCallback(Request $request)
