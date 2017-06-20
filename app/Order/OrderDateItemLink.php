@@ -44,7 +44,7 @@ class OrderDateItemLink extends \App\BaseModel
             $orderDateItemLink->getItem()->delete();
 
             // If OrderDate count is 1, this is the last OrderItemDateLink connected and is safe to remove.
-            if ($orderDateItemLink->getDate()->orderDateItemLinks()->count() <= 1) {
+            if ($orderDateItemLink->getDate()->orderDateItemLinks($orderDateItemLink->user_id)->count() <= 1) {
                 $orderDateItemLink->getDate()->delete();
             }
         });
