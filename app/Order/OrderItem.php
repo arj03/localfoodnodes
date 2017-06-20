@@ -7,6 +7,7 @@ use \App\Producer\Producer;
 use \App\Product\Product;
 use \App\Variant\Variant;
 use \App\Node\Node;
+use \App\Order\OrderStatus;
 
 class OrderItem extends \App\BaseModel
 {
@@ -65,6 +66,19 @@ class OrderItem extends \App\BaseModel
         'producer' => 'array',
         'product' => 'array',
         'variant' => 'array',
+    ];
+
+    /**
+     * Order statuses.
+     *
+     * @return array
+     */
+    private $orderStatuses = [
+        'received',
+        'confirmed',
+        'payed',
+        'delivered',
+        'cancelled',
     ];
 
     /**
@@ -194,5 +208,71 @@ class OrderItem extends \App\BaseModel
         $node = $node ? $node->toArray() : $this->node;
 
         return $producer;
+    }
+
+    /**
+     * Valid statuses.
+     *
+     * @return Collection
+     */
+    public function allAvailableOrderStatuses()
+    {
+        $statuses = collect($this->orderStatuses);
+
+        $history = $this->getOrderStatusHistory();
+
+        return $statuses->map(function($status) use ($history) {
+            $hasHistory = $history->where('status', $status)->first();
+
+            $active = false;
+            if ($hasHistory) {
+                $active = true;
+            }
+
+            return new OrderStatus([
+                'status' => $status,
+                'active' => $active
+            ]);
+        });
+    }
+
+    /**
+     * Get order status history.
+     *
+     * @return Collection
+     */
+    private function getOrderStatusHistory()
+    {
+        return $orderStatusHistory = OrderStatus::where('order_item_id', $this->id)->get();
+    }
+
+    /**
+     * Define order status relationship.
+     *
+     * @return Collection
+     */
+    public function statusRelationship()
+    {
+        return $this->hasMany('App\Order\OrderStatus', 'order_item_id', 'id')->orderBy('created_at');
+    }
+
+    /**
+     * Get current status.
+     *
+     * @return OrderStatus
+     */
+    public function getCurrentStatus()
+    {
+        $currentStatus = $this->statusRelationship->first();
+
+        if (!$currentStatus) {
+            $currentStatus = new OrderStatus([
+                'status' => 'no_status',
+            ]);
+        } else {
+            $currentStatus->active = true;
+        }
+
+        return $currentStatus;
     }
 }

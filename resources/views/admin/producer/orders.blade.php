@@ -21,7 +21,7 @@
                                         <th>{{ trans('admin/producer.customer') }}</th>
                                         <th class="text-right">{{ trans('admin/producer.quantity') }}</th>
                                         <th>{{ trans('admin/producer.node') }}</th>
-                                        <th>{{ trans('admin/producer.date') }}</th>
+                                        <th>{{ trans('admin/producer.delivery') }}</th>
                                         <th class="text-right">{{ trans('admin/producer.total_price') }}</th>
                                     </tr>
                                 </thead>
@@ -42,6 +42,7 @@
                                             <td>{{ $orderItem->node['name'] }}</td>
                                             <td>{{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}</td>
                                             <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>
+                                            <td><span class="{{ $orderItem->getCurrentStatus()->getHtmlClass() }}">{{ $orderItem->getCurrentStatus() }}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -14,6 +14,7 @@ use App\Producer\Producer;
 use App\Order\Order;
 use App\Order\OrderItem;
 use App\Order\OrderItemDate;
+use App\Order\OrderStatus;
 
 class OrderController extends Controller
 {
@@ -109,46 +110,23 @@ class OrderController extends Controller
     /**
      * Change order item status.
      */
-    public function changeOrderStatus(Request $request, $producerId, $status, $orderId, $orderItemId = null, $orderItemDateId = null)
+    public function changeOrderStatus(Request $request, $producerId, $orderItemId, $status)
     {
         $user = Auth::user();
         $producer = $user->producerAdminLink($producerId)->getProducer();
 
         // Load all
-        $order = Order::where([
-            'id' => $orderId,
+        $orderItem = OrderItem::where([
+            'id' => $orderItemId,
             'producer_id' => $producer->id
         ])->first();
 
-        $orderItem = null;
-        if ($order && $orderItemId) {
-            $orderItem = $order->orderItem($orderItemId);
+        if ($orderItem) {
+            OrderStatus::create([
+                'order_item_id' => $orderItem->id,
+                'status' => $status
+            ]);
         }
-
-        $orderItemDate = null;
-        if ($orderItem && $orderItemDateId) {
-            $orderItemDate = $orderItem->orderItemDate($orderItemDateId);
-        }
-
-        // Set status, smallest
-        if ($orderItemDate) {
-            $orderItemDate->setStatus($status);
-        } else if ($orderItem) {
-            $orderItem->setStatus($status);
-            $orderItem->orderItemDates()->each(function($orderItemDate) use ($status) {
-                $orderItemDate->setStatus($status);
-            });
-        } else if ($order) {
-            $order->setStatus($status);
-            $order->orderItems()->each(function($orderItem) use ($status) {
-                $orderItem->setStatus($status);
-                $orderItem->orderItemDates()->each(function($orderItemDate) use ($status) {
-                    $orderItemDate->setStatus($status);
-                });
-            });
-        }
-
-
 
         return redirect()->back();
     }

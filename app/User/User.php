@@ -279,7 +279,7 @@ class User extends BaseUser
      */
     public function orderItems($productId = null)
     {
-        $orderItems = $this->hasMany('App\Order\OrderItem');
+        $orderItems = $this->hasMany('App\Order\OrderItem')->with('orderDateItemLink');
 
         if ($productId) {
             $orderItems->where('product_id', $productId);

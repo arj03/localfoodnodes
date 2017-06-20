@@ -1157,11 +1157,6 @@ body.public-node-node .product-card .card-footer .badge {
   text-align: center;
 }
 
-.public-index .membership > .col-12 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
 .public-index .membership .membership-content {
   font-family: 'montserrat';
   text-transform: none;
@@ -1184,56 +1179,6 @@ body.public-node-node .product-card .card-footer .badge {
   margin-top: 50px;
   color: #dec286;
   border-color: #dec286;
-}
-
-.public-index .membership .metrics {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.public-index .membership .metrics .metric {
-  margin: 2vw;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  -webkit-box-align: center;
-  align-items: center;
-}
-
-.public-index .membership .metrics .metric .value {
-  background: #dec286;
-  color: #fff;
-  font-size: 40px;
-  width: 180px;
-  line-height: 180px;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'montserrat';
-}
-
-.public-index .membership .metrics .metric .value .value-unit {
-  font-size: 30px;
-  padding-left: 10px;
-}
-
-.public-index .membership .metrics .metric .value .value-unit.fa {
-  position: relative;
-  top: -3px;
-}
-
-.public-index .membership .metrics .metric .label {
-  margin-top: 15px;
-  font-size: 1.75rem;
-  font-family: 'montserrat';
-  text-transform: uppercase;
-  color: #dec286;
-  text-align: center;
 }
 
 .public-index .find-out-more .logo {

@@ -51,12 +51,6 @@ class UserController extends Controller
                 return $next($request);
             }
 
-            $order = $user->order($orderId);
-            if (!$order) {
-                $request->session()->flash('error', [trans('admin/messages.request_no_order')]);
-                return redirect('/account/user');
-            }
-
             $orderItemId = $request->route('orderItemId');
             $orderItem = $order->item($orderItemId);
             if (!$orderItem) {
@@ -383,6 +377,20 @@ class UserController extends Controller
                 trans('admin/user-nav.order') . ' #' . $orderDateItemLink->ref => ''
             ]
         ]);
+    }
+
+    /**
+     * Delete order item action.
+     */
+    public function deleteOrderItem(Request $request, $orderDateItemLinkId)
+    {
+        $user = Auth::user();
+
+        $orderDateItemLink = $user->orderDateItemLink($orderDateItemLinkId);
+        $orderDateItemLink->delete();
+        $request->session()->flash('message', [trans('admin/messages.order_deleted')]);
+
+        return redirect('/account/user/orders');
     }
 
     /**

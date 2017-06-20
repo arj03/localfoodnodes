@@ -8,6 +8,8 @@ class OrderDate extends \App\BaseModel
 {
     public $timestamps = false;
 
+    protected $with = ['orderDateItemLinksRelationship'];
+
     /**
      * Validation rules.
      *
@@ -50,6 +52,11 @@ class OrderDate extends \App\BaseModel
         return $this->date->format($format);
     }
 
+    public function orderDateItemLinksRelationship()
+    {
+        return $this->hasMany('App\Order\OrderDateItemLink');
+    }
+
     /**
      * Get all links related to this date.
      *
@@ -58,9 +65,9 @@ class OrderDate extends \App\BaseModel
     public function orderDateItemLinks($userId = null, $producerId = null)
     {
         if ($userId) {
-            return $this->hasMany('App\Order\OrderDateItemLink')->where('user_id', $userId)->get();
+            return $this->orderDateItemLinksRelationship->where('user_id', $userId);
         } else if ($producerId) {
-            return $this->hasMany('App\Order\OrderDateItemLink')->where('producer_id', $producerId)->get();
+            return $this->orderDateItemLinksRelationship->where('producer_id', $producerId);
         } else {
             return collect([]);
         }

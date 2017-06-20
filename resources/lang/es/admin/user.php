@@ -19,6 +19,7 @@ return [
     'confirm_password' => 'Confirm password',
     'create_account' => 'Create account',
     'date' => 'Date',
+    'delete_order' => 'Delete order',
     'delivery' => 'Delivery',
     'deliveries' => 'Deliveries',
     'delete_user' => 'Delete user',

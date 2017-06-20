@@ -20,8 +20,9 @@
                                         <th>{{ trans('admin/user.product') }}</th>
                                         <th class="text-right">{{ trans('admin/user.quantity') }}</th>
                                         <th>{{ trans('admin/user.node') }}</th>
-                                        <th>{{ trans('admin/user.date') }}</th>
+                                        <th>{{ trans('admin/user.pickup') }}</th>
                                         <th class="text-right">{{ trans('admin/user.total') }}</th>
+                                        <th class="text-right"></th>
                                     </tr>
                                 </thead>
                                 @foreach ($orderItems as $orderItem)
@@ -37,6 +38,7 @@
                                         <td>{{ $orderItem->node['name'] }}</td>
                                         <td>{{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}</td>
                                         <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>
+                                        <td class="text-right"><span class="{{ $orderItem->getCurrentStatus()->getHtmlClass() }}">{{ $orderItem->getCurrentStatus()}}</span></td>
                                     </tr>
                                 @endforeach
                             </table>

@@ -70,6 +70,7 @@ return [
     'required_fields_missing' => 'Obligatoriska fält är tomma.',
     'required' => 'Obligatorisk',
     'session_expired' => 'Din session har gått ut och du måste logga in igen.',
+    'order_deleted' => 'Din beställning har tagits bort.',
 
     // Auth
     'invalid_login_request' => 'Ogiltigt inloggningsanrop.',

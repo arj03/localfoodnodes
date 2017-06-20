@@ -15,8 +15,7 @@ class CreateOrderStatusesTable extends Migration
     {
         Schema::create('order_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entity_id')->required();
-            $table->string('entity_type')->required();
+            $table->integer('order_item_id')->required();
             $table->string('status')->required();
             $table->timestamps();
         });

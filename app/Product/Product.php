@@ -431,6 +431,13 @@ class Product extends \App\BaseModel
         }
     }
 
+    public function getDeadlineDate()
+    {
+        $dateTime = new \DateTime();
+
+        return $dateTime->modify('+' . $this->deadline . ' days');
+    }
+
     /**
      * Get info to be stored with order.
      *

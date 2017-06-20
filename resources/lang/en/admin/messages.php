@@ -71,6 +71,7 @@ return [
     'required_fields_missing' => 'Required fields are empty.',
     'required' => 'Required.',
     'session_expired' => 'Your session has expired, please login again.',
+    'order_deleted' => 'Order has been deleted.',
 
     // Auth
     'invalid_login_request' => 'Invalid login request.',

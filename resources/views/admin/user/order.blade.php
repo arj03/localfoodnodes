@@ -70,7 +70,20 @@
                     </table>
                     <p>{{ $orderItem->message }}</p>
                 </div>
+                <div class="card-footer">
+                    @foreach ($orderItem->allAvailableOrderStatuses() as $orderStatus)
+                        <span class="{{ $orderStatus->getHtmlClass() }}">{{ $orderStatus }}</span>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
+
+    @component('admin.form-control-bar')
+        @if ($orderDateItemLink->isDeletable())
+            <a href="/account/user/order/{{ $orderDateItemLink->id }}/delete" class="btn btn-danger">{{ trans('admin/user.delete_order') }}</a>
+        @else
+            <button class="btn btn-danger" disabled="disabled">{{ trans('admin/user.delete_order') }}</button>
+        @endif
+    @endcomponent
 @endsection

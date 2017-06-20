@@ -19,6 +19,7 @@ return [
     'confirm_password' => 'Bekräfta lösenord',
     'create_account' => 'Skapa konto',
     'date' => 'Datum',
+    'delete_order' => 'Ta bort beställning',
     'delivery' => 'Utlämning',
     'deliveries' => 'Utlämningar',
     'delete_user' => 'Ta bort användare',

@@ -3,5 +3,8 @@
 return [
     'cancelled' => 'Cancelled',
     'confirmed' => 'Confirmed',
-    'delivered' => 'Delivered'
+    'delivered' => 'Delivered',
+    'no_status' => 'No status',
+    'payed' => 'Payed',
+    'received' => 'Received',
 ];

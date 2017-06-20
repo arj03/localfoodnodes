@@ -4,7 +4,7 @@ namespace App\Order;
 
 class OrderDateItemLink extends \App\BaseModel
 {
-    protected $with = ['orderItemRelationship', 'orderDateRelationship'];
+    // protected $with = ['orderItemRelationship', 'orderDateRelationship'];
 
     /**
      * Validation rules.
@@ -141,5 +141,15 @@ class OrderDateItemLink extends \App\BaseModel
         }
 
         return $prefix . ' ' . $this->getPrice() . ' ' . $this->getUnit();
+    }
+
+    public function isDeletable()
+    {
+        $product = $this->getItem()->getProduct();
+        $productDeadline = $product->getDeadlineDate();
+        $orderDeliveryDate = $this->getDate()->date;
+        $interval = $productDeadline->diff($orderDeliveryDate);
+
+        return (int) $interval->format('%r%a') < 0 ? false : true;
     }
 }

@@ -55,7 +55,8 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/password/update', 'Admin\UserController@updatePassword');
         Route::get('/pickups', 'Admin\UserController@pickups');
         Route::get('/orders', 'Admin\UserController@orders');
-        Route::get('/order/{orderRef}', 'Admin\UserController@order');
+        Route::get('/order/{orderItemId}', 'Admin\UserController@order');
+        Route::get('/order/{orderItemId}/delete', 'Admin\UserController@deleteOrderItem');
         Route::post('/membership/callback', 'Admin\UserController@membershipCallback');
         Route::get('/node/{nodeId}', 'Admin\UserController@toggleNode');
         Route::get('/events', 'Admin\UserController@events');
@@ -108,9 +109,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/{producerId}/map/node/remove', 'Admin\ProducerController@mapRemoveNode');
 
         // Producer order
-        Route::get('/{producerId}/order/status/{status}/{orderId}', 'Admin\OrderController@changeOrderStatus');
-        Route::get('/{producerId}/order/status/{status}/{orderId}/{orderItemId}', 'Admin\OrderController@changeOrderStatus');
-        Route::get('/{producerId}/order/status/{status}/{orderId}/{orderItemId}/{orderItemDateId}', 'Admin\OrderController@changeOrderStatus');
+        Route::get('/{producerId}/order/{orderItemId}/status/{status}', 'Admin\OrderController@changeOrderStatus');
     });
 
     // Product
