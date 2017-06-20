@@ -20,7 +20,7 @@ class SwishController extends Controller
 
         $data = [
             'payeePaymentReference' => '0123456789',
-            'callbackUrl' => 'https://staging.localfoodnodes.org/membership/swish/callback',
+            'callbackUrl' => 'http://localhost:8000/account/user/membership/swish/callback',
             'payerAlias' => '46703633180',
             'payeeAlias' => '1231181189',
             'amount' => '1',
@@ -48,6 +48,11 @@ class SwishController extends Controller
         curl_setopt($ch, CURLOPT_SSLKEYPASSWD, $challenge);
         curl_setopt($ch, CURLOPT_CAINFO, $cacert);
 
+        $dataString = http_build_query($data);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
         $ret = curl_exec($ch);
 
         error_log(var_export($ret, true));
@@ -57,6 +62,7 @@ class SwishController extends Controller
 
     public function swishCallback(Request $request)
     {
+        error_log('SWISH CALLBACK!');
         error_log(var_export($request->all(), true));
     }
 }
