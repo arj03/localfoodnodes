@@ -25,6 +25,9 @@
             inline_styles: false,
             valid_classes: '',
             valid_elements : 'h1,h2,h3,h4,h5,h6,p,a[href|target=_blank],strong/b,div,span,br',
+            paste_word_valid_elements: 'h1,h2,h3,h4,h5,h6,p,a[href|target=_blank],strong/b,div,span,br',
+            paste_data_images: false,
+            paste_as_text: true,
         });</script>
 
         <!-- Flatpickr -->
