@@ -15,12 +15,11 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="/js/underscore.min.js"></script>
+        <script src="/js/underscore-min.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
         <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
         <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>

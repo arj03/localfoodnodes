@@ -11,10 +11,17 @@ class PermalinkController extends IndexController
      */
     public function route(Request $request, $type, $slug, $subType = null, $subSlug = null)
     {
+        $routeData = [
+            'type' => $type,
+            'slug' => $slug,
+            'subType' => $subType,
+            'subSlug'=> $subSlug,
+        ];
+
         $permalink = \App\Permalink::where(['entity_type' => $type, 'slug' => $slug])->first();
 
         if (!$permalink) {
-            return view('public/404');
+            return $this->errorPage404($request, 'Permalink is missing', $routeData);
         }
 
         $subPermalink = \App\Permalink::where(['entity_type' => $subType, 'slug' => $subSlug])->first();
@@ -31,7 +38,7 @@ class PermalinkController extends IndexController
             return call_user_func_array([$this, $action], $params);
         }
 
-        return view('public/404');
+        return $this->errorPage404($request, 'Controller method doesn\'t exist', $routeData);
     }
 
     /**
@@ -51,5 +58,22 @@ class PermalinkController extends IndexController
         }
 
         return $baseAction . $subAction;
+    }
+
+    /**
+     * 404 handler.
+     *
+     * @param string $message
+     * @param array $data
+     * @return
+     */
+    private function errorPage404($request, $message, $data)
+    {
+        $error = $message . ' for ' . $request->fullUrl() . "\n";
+        $error .= '```' . json_encode($data) . '```';
+
+        \App\Helpers\SlackHelper::message('error', $error);
+
+        return view('public/404');
     }
 }
