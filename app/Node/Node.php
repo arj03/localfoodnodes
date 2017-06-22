@@ -419,6 +419,28 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
+     * Format facebook link.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getLinkFacebookAttribute($value)
+    {
+        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+    }
+
+    /**
+     * Format facebook link.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getLinkFacebookProducersAttribute($value)
+    {
+        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+    }
+
+    /**
      * Get info to be stored with order.
      *
      * @return array

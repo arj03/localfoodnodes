@@ -145,9 +145,9 @@
                             {{ $node->delivery_weekday }} {{ $node->delivery_time }}
                         </p>
                         <p>
-                            <a href="{{ $node->link_facebook }}">{{ trans('public/node.find_communication') }}</a>
+                            <a href="{{ $node->link_facebook }}" target="_blank">{{ trans('public/node.find_communication') }}</a>
                             @if ($node->link_facebook_producers)
-                                <br><a href="{{ $node->link_facebook_producers }}">{{ trans('public/node.find_producer_communication') }}</a>
+                                <br><a href="{{ $node->link_facebook_producers }}" target="_blank">{{ trans('public/node.find_producer_communication') }}</a>
                             @endif
                         </p>
 

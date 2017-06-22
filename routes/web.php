@@ -174,5 +174,8 @@ Route::group(['prefix' => '/admin'], function () {
 Route::get('/find-out-more', 'PageController@findOutMore');
 Route::get('/membership', 'PageController@membership');
 
+// Landing page catcher
+Route::get('/launch/{wildcard?}', 'IndexController@index');
+
 // Page - There routes must be in the bottom of this file because else they'll match every request
 Route::get('/{type}/{slug}/{subType?}/{subSlug?}', 'PermalinkController@route');
