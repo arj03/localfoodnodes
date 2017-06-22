@@ -5,12 +5,15 @@
 @section('content')
     <div class="header">
         <div class="top">
-            <div class="d-flex justify-content-between">
-                <div>
-                    <h1>{{ $event->name }}</h1>
+            <div class="row">
+                <div class="col-12 col-xl-7">
+                    <h1>
+                        {{ $event->name }}
+                        <div class="hidden-xl-up">{{ $event->start_datetime->format('Y-m-d H:i') }}</div>
+                    </h1>
                     {{ $event->address }} {{ $event->zip }} {{ $event->city }}
                 </div>
-                <div>
+                <div class="col-12 col-xl-5 hidden-lg-down text-right">
                     <h1>{{ $event->start_datetime->format('Y-m-d H:i') }}</h1>
                 </div>
             </div>

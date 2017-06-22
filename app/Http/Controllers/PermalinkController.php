@@ -70,7 +70,7 @@ class PermalinkController extends IndexController
     private function errorPage404($request, $message, $data)
     {
         $error = $message . ' for ' . $request->fullUrl() . "\n";
-        $error .= '```' . json_encode($data) . '```';
+        $error .= 'Referer: ' . url()->previous() . "\n";
 
         \App\Helpers\SlackHelper::message('error', $error);
 

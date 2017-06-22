@@ -22,6 +22,9 @@ class Locale
             \App::setLocale($user->language);
         } else if (\Session::get('locale')) {
             \App::setLocale(\Session::get('locale'));
+        } else if ($request->has('lang') && array_key_exists($request->get('lang'), config('app.locales'))) {
+            \Session::put('locale', $request->get('lang'));
+            \App::setLocale($request->get('lang'));
         }
 
         return $next($request);
