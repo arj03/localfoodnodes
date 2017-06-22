@@ -193,7 +193,7 @@ class User extends BaseUser
      * @param int $productId Filter on product id.
      * @return Collection
      */
-    public function cartItems($productId = null)
+    public function cartItems($productId = null, $wheres = [])
     {
         $cartItems = $this->hasMany('App\Cart\CartItem', 'user_id', 'id');
 

@@ -94,7 +94,7 @@
             </div>
 
             @if (!Auth::check())
-                <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login') }}</button>
+                <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login_needed') }}</button>
             @else
                 <button type="submit" class="btn btn-success pull-left">{{ trans('public/node.add_to_cart') }}</button>
             @endif

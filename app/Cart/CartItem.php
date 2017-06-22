@@ -110,11 +110,21 @@ class CartItem extends \App\BaseModel
         return $name;
     }
 
+    /**
+     * Get product name.
+     *
+     * @return string
+     */
     public function getProductName()
     {
         return $this->product['name'];
     }
 
+    /**
+     * Get variant name.
+     *
+     * @return string
+     */
     public function getVariantName()
     {
         $variantName = '';
@@ -138,6 +148,40 @@ class CartItem extends \App\BaseModel
             return $this->variant['price'];
         } else {
             return $this->product['price'];
+        }
+    }
+
+    /**
+     * Get item unit.
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->producer['currency'];
+    }
+
+    /**
+     * Get price and unit.
+     *
+     * @return string
+     */
+    public function getPriceWithUnit()
+    {
+        $prefix = '';
+        if ($this->product['price_unit'] !== 'product') {
+            $prefix = '<span class="approx">&asymp;</span>';
+        }
+
+        return $prefix . $this->getPrice() . ' ' . $this->getUnit();
+    }
+
+    public function getQuantity()
+    {
+        if ($this->product['production_type'] === 'csa') {
+            return $this->cartDateItemLinks()->first()->quantity;
+        } else {
+            return $this->cartDateItemLinks()->sum->quantity;
         }
     }
 }

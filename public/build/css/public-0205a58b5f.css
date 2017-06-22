@@ -186,6 +186,10 @@ input[type=submit],
   background: #8fb773;
 }
 
+a.badge {
+  color: #fff;
+}
+
 html {
   height: 100%;
   font-size: 14px !important;
@@ -770,6 +774,97 @@ body.page .page .card .body-text {
   margin-right: 5px;
 }
 
+.node-map {
+  position: relative;
+  text-align: center;
+  min-height: 70vh;
+}
+
+.node-map h2 {
+  padding-top: 50px;
+  font-size: 4em;
+  font-weight: 200;
+  color: #333;
+}
+
+.node-map .map-search {
+  margin: 50px;
+}
+
+.node-map .map-search .input-group {
+  background: #c3b07b;
+}
+
+.node-map .map-search .input-group .input-group-addon {
+  background: transparent;
+  border: 0;
+  font-size: 2rem;
+  padding: 20px;
+  color: #fff;
+  width: 15%;
+}
+
+.node-map .map-search .input-group input {
+  font-family: 'montserrat';
+  padding: 20px;
+  border: 0;
+  border-radius: 0;
+  background: #d6c69b;
+  color: #fff;
+}
+
+.node-map .map-search .input-group input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.node-map .map-search .input-group input:-moz-placeholder {
+  color: #fff;
+}
+
+.node-map .map-search .input-group input::-moz-placeholder {
+  color: #fff;
+}
+
+.node-map .map-search .input-group input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.node-map .map-search .search-results {
+  background: #e4d8bc;
+  border-top: 1px solid #d0c4a8;
+  text-align: left;
+  font-family: 'montserrat';
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  left: 0;
+  box-shadow: #ccc 0 1px 8px -2px;
+}
+
+.node-map .map-search .search-results li {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+.node-map .map-search .search-results li.selected {
+  background: #f2e6ca;
+}
+
+.node-map .map-search .search-results li b {
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.node-map .map-search .search-results li p {
+  font-size: 12px;
+  margin: 0;
+  color: #807762;
+}
+
+.node-map .map-holder {
+  height: 70vh;
+}
+
 body.public-product-product .header .image {
   height: 500px;
   background-size: cover;
@@ -938,97 +1033,6 @@ body.public-node-node .product-card .card-footer .badge {
   color: #fff;
   width: 300px;
   margin-top: 50px;
-}
-
-.public-index .node-map {
-  position: relative;
-  text-align: center;
-  min-height: 70vh;
-}
-
-.public-index .node-map h2 {
-  padding-top: 50px;
-  font-size: 4em;
-  font-weight: 200;
-  color: #333;
-}
-
-.public-index .node-map .map-search {
-  margin: 50px;
-}
-
-.public-index .node-map .map-search .input-group {
-  background: #c3b07b;
-}
-
-.public-index .node-map .map-search .input-group .input-group-addon {
-  background: transparent;
-  border: 0;
-  font-size: 2rem;
-  padding: 20px;
-  color: #fff;
-  width: 15%;
-}
-
-.public-index .node-map .map-search .input-group input {
-  font-family: 'montserrat';
-  padding: 20px;
-  border: 0;
-  border-radius: 0;
-  background: #d6c69b;
-  color: #fff;
-}
-
-.public-index .node-map .map-search .input-group input::-webkit-input-placeholder {
-  color: #fff;
-}
-
-.public-index .node-map .map-search .input-group input:-moz-placeholder {
-  color: #fff;
-}
-
-.public-index .node-map .map-search .input-group input::-moz-placeholder {
-  color: #fff;
-}
-
-.public-index .node-map .map-search .input-group input:-ms-input-placeholder {
-  color: #fff;
-}
-
-.public-index .node-map .map-search .search-results {
-  background: #e4d8bc;
-  border-top: 1px solid #d0c4a8;
-  text-align: left;
-  font-family: 'montserrat';
-  position: absolute;
-  z-index: 9999;
-  width: 100%;
-  left: 0;
-  box-shadow: #ccc 0 1px 8px -2px;
-}
-
-.public-index .node-map .map-search .search-results li {
-  padding: 2px 10px;
-  cursor: pointer;
-}
-
-.public-index .node-map .map-search .search-results li.selected {
-  background: #f2e6ca;
-}
-
-.public-index .node-map .map-search .search-results li b {
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.public-index .node-map .map-search .search-results li p {
-  font-size: 12px;
-  margin: 0;
-  color: #807762;
-}
-
-.public-index .node-map .map-holder {
-  height: 70vh;
 }
 
 .public-index .local-food-impact {
@@ -1467,6 +1471,10 @@ body.public-checkout .summary .btn {
 .product-calendar .month .days .day input:checked + label .date {
   background-color: #8fb773;
   color: #fff;
+}
+
+.product-calendar .month .days .day input:disabled + label {
+  cursor: not-allowed;
 }
 
 .product-calendar .month .days .day .variant-quantity {

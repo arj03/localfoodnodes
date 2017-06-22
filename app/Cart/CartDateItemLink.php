@@ -106,7 +106,9 @@ class CartDateItemLink extends \App\BaseModel
     {
         $price = $this->getItem()->variant ?  $this->getItem()->variant['price'] : $this->getItem()->product['price'];
 
-        if ($this->getItem()->product['price_unit'] === 'product') {
+        if ($this->getItem()->product['production_type'] === 'csa') {
+            return $price / $this->getItem()->getProduct()->deliveryLinks()->count();
+        } else if ($this->getItem()->product['price_unit'] === 'product') {
             // Sold by product
             return $price * $this->quantity;
         } else {

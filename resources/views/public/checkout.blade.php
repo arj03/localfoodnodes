@@ -22,8 +22,7 @@
                             <div class="card-header">{{ trans_choice('public/checkout.delivery', 1) }} {{ $cartDate->date('Y-m-d') }}</div>
                             <div class="card-block cart-items-block hidden-md-down">
                                 <div class="cart-items-block-header row">
-                                    <div class="col-2 hidden-sm-down"></div>
-                                    <div class="col-8 col-md-6">{{ trans('public/checkout.product') }}</div>
+                                    <div class="col-8">{{ trans('public/checkout.product') }}</div>
                                     <div class="col-2 text-right">{{ trans('public/checkout.quantity') }}</div>
                                     <div class="col-2 text-right">{{ trans('public/checkout.total') }}</div>
                                 </div>
@@ -58,7 +57,7 @@
                                 @foreach ($user->cartItems()->unique('product_id') as $cartItem)
                                     <li class="d-flex justify-content-between">
                                         <span>{{ $cartItem->product['name'] }}</span>
-                                        <span>{{ $cartItem->cartDateItemLinks()->sum->quantity }}</span>
+                                        <span>{{ $cartItem->getQuantity() }}</span>
                                     </li>
                                 @endforeach
                             </ul>
