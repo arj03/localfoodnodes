@@ -25,11 +25,11 @@
                                     <div class="day">
                                         <input
                                         type="checkbox"
-                                        id="{{ $deliveryDate }}"
+                                        id="{{ $node->id }}-{{ $deliveryDate }}"
                                         name="delivery_dates[{{ $node->id }}][]"
                                         value="{{ $deliveryDate }}"
                                         {{ $product->deliveryLink($node->id, $deliveryDate) ? 'checked' : '' }}>
-                                        <label for="{{ $deliveryDate }}">
+                                        <label for="{{ $node->id }}-{{ $deliveryDate }}">
                                             <div class="date">{{ date('d', strtotime($deliveryDate)) }}</div>
                                         </label>
                                     </div>
