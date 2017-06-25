@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Facebook meta -->
+        <meta property="fb:app_id" content="923888444420982" />
         <meta property="og:url" content="{{ $fbUrl or 'https://localfoodnodes.org' }}">
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{{ $fbTitle or 'Local Food Nodes' }}">
