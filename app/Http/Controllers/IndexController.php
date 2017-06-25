@@ -58,7 +58,6 @@ class IndexController extends Controller
             'metrics' => $metrics,
             'nodes' => $nodes,
             'events' => $events,
-
             'members' => $members,
             'averageMembership' => round($averageMembershipPayments)
         ]);
@@ -87,6 +86,13 @@ class IndexController extends Controller
 
         $events = $node->getAllEvents($date);
 
+        $fbMeta = [
+            'fbUrl' => app('url')->to($node->permalink()->url),
+            'fbTitle' => $node->name,
+            'fbDescription' => $node->info,
+            'fbImage' => $node->images()->count() > 0 ? $node->images()->first()->url('small') : null
+        ];
+
         return view('public.node.node', [
             'node' => $node,
             'events' => $events,
@@ -94,53 +100,96 @@ class IndexController extends Controller
             'calendar'=> $calendar->get($request),
             'calendarMonth' => $calendarMonth,
             'tags' => $productFilter->getTagFilter($request),
-        ]);
+        ] + $fbMeta);
     }
 
+    /**
+     * Node product action.
+     */
     public function nodeProduct(Request $request, $nodeId, $productId)
     {
         $node = Node::find($nodeId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
         $producer = Producer::where('id', $product->producer_id)->first();
 
+        $fbMeta = [
+            'fbUrl' => app('url')->to($product->permalink()->url),
+            'fbTitle' => $product->name,
+            'fbDescription' => $product->info,
+            'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
+        ];
+
         return view('public.product.product', [
             'node' => $node,
             'product' => $product,
             'producer' => $producer
-        ]);
+        ] + $fbMeta);
     }
 
     /**
-     * Show producer content
+     * Producer action.
      */
     public function producer(Request $request, $id)
     {
         $producer = Producer::find($id);
 
+        $fbMeta = [
+            'fbUrl' => app('url')->to($producer->permalink()->url),
+            'fbTitle' => $producer->name,
+            'fbDescription' => $producer->info,
+            'fbImage' => $producer->images()->count() > 0 ? $producer->images()->first()->url('small') : null
+        ];
+
         return view('public.producer.producer', [
             'producer' => $producer,
-        ]);
+        ] + $fbMeta);
     }
 
+    /**
+     * Producer product action.
+     */
     public function producerProduct(Request $request, $producerId, $productId)
     {
         $producer = Producer::find($producerId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
 
+        $fbMeta = [
+            'fbUrl' => app('url')->to($product->permalink()->url),
+            'fbTitle' => $product->name,
+            'fbDescription' => $product->info,
+            'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
+        ];
+
         return view('public.product.product', [
             'product' => $product,
             'producer' => $producer
-        ]);
+        ] + $fbMeta);
     }
 
+    /**
+     * Event action.
+     */
     public function event(Request $request, $eventId)
     {
         $event = Event::find($eventId);
+
+        $fbMeta = [
+            'fbUrl' => app('url')->to($event->permalink()->url),
+            'fbTitle' => $event->name,
+            'fbDescription' => $event->info,
+            'fbImage' => $event->images()->count() > 0 ? $event->images()->first()->url('small') : null
+        ];
+
         return view('public.event', [
             'event' => $event
-        ]);
+        ] + $fbMeta);
     }
 
+    /**
+     * Get frontpage metrics.
+     *
+     * @return array
+     */
     private function getFrontpageMetrics()
     {
         return [
