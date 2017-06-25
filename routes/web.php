@@ -176,6 +176,7 @@ Route::get('/membership', 'PageController@membership');
 
 // Landing page catcher
 Route::get('/launch/{wildcard?}', 'IndexController@index');
+Route::get('/landing-page/{wildcard?}', 'IndexController@index');
 
 // Page - There routes must be in the bottom of this file because else they'll match every request
 Route::get('/{type}/{slug}/{subType?}/{subSlug?}', 'PermalinkController@route');

@@ -200,8 +200,6 @@ class CartController extends Controller
             $existingCartDateItemLinks->put($date, $cartDateItemLink);
         });
 
-        error_log(var_export($cartDates, true));
-
         $cartQuantity = 0;
         foreach ($cartDates as $cartDate) {
             $existingCartDateItemLink = $existingCartDateItemLinks->get($cartDate->date('Y-m-d'));

@@ -435,7 +435,11 @@ class Product extends \App\BaseModel
     {
         $dateTime = new \DateTime();
 
-        return $dateTime->modify('+' . $this->deadline . ' days');
+        if (!$this->deadline) {
+            return $dateTime;
+        } else {
+            return $dateTime->modify('+' . $this->deadline . ' days');
+        }
     }
 
     /**
