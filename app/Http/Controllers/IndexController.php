@@ -88,8 +88,8 @@ class IndexController extends Controller
 
         $fbMeta = [
             'fbUrl' => app('url')->to($node->permalink()->url),
-            'fbTitle' => $node->name,
-            'fbDescription' => strip_tags($node->info),
+            'fbTitle' => trim($node->name),
+            'fbDescription' => trim(strip_tags($node->info)),
             'fbImage' => $node->images()->count() > 0 ? $node->images()->first()->url('small') : null
         ];
 
@@ -115,8 +115,8 @@ class IndexController extends Controller
         $fbUrl = $node->permalink()->url . $product->permalink()->url;
         $fbMeta = [
             'fbUrl' => app('url')->to($fbUrl),
-            'fbTitle' => $product->name,
-            'fbDescription' => strip_tags($product->info),
+            'fbTitle' => trim($product->name),
+            'fbDescription' => trim(strip_tags($product->info)),
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
@@ -136,8 +136,8 @@ class IndexController extends Controller
 
         $fbMeta = [
             'fbUrl' => app('url')->to($producer->permalink()->url),
-            'fbTitle' => $producer->name,
-            'fbDescription' => strip_tags($producer->info),
+            'fbTitle' => trim($producer->name),
+            'fbDescription' => trim(strip_tags($producer->info)),
             'fbImage' => $producer->images()->count() > 0 ? $producer->images()->first()->url('small') : null
         ];
 
@@ -157,8 +157,8 @@ class IndexController extends Controller
         $fbUrl = $node->permalink()->url . $product->permalink()->url;
         $fbMeta = [
             'fbUrl' => app('url')->to($fbUrl),
-            'fbTitle' => $product->name,
-            'fbDescription' => strip_tags($product->info),
+            'fbTitle' => trim($product->name),
+            'fbDescription' => trim(strip_tags($product->info)),
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
@@ -177,8 +177,8 @@ class IndexController extends Controller
 
         $fbMeta = [
             'fbUrl' => app('url')->to($event->permalink()->url),
-            'fbTitle' => $event->name,
-            'fbDescription' => strip_tags($event->info),
+            'fbTitle' => trim($event->name),
+            'fbDescription' => trim(strip_tags($event->info)),
             'fbImage' => $event->images()->count() > 0 ? $event->images()->first()->url('small') : null
         ];
 
