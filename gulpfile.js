@@ -25,3 +25,5 @@ elixir(mix => {
         './public/js-apps/producer-node-map.js',
     ]);
 });
+
+elixir.config.sourcemaps = false;
