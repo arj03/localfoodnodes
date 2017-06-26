@@ -112,8 +112,9 @@ class IndexController extends Controller
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
         $producer = Producer::where('id', $product->producer_id)->first();
 
+        $fbUrl = $node->permalink()->url . $product->permalink()->url;
         $fbMeta = [
-            'fbUrl' => app('url')->to($product->permalink()->url),
+            'fbUrl' => app('url')->to($fbUrl),
             'fbTitle' => $product->name,
             'fbDescription' => $product->info,
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
@@ -153,8 +154,9 @@ class IndexController extends Controller
         $producer = Producer::find($producerId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
 
+        $fbUrl = $node->permalink()->url . $product->permalink()->url;
         $fbMeta = [
-            'fbUrl' => app('url')->to($product->permalink()->url),
+            'fbUrl' => app('url')->to($fbUrl),
             'fbTitle' => $product->name,
             'fbDescription' => $product->info,
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
