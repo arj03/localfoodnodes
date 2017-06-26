@@ -9,7 +9,7 @@
         <meta property="og:url" content="{{ $fbUrl or app('url')->to('/') }}">
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{{ $fbTitle or 'Local Food Nodes' }}">
-        <meta property="og:description" content="{{ $fbDescription or 'We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' }}" />
+        <meta property="og:description" content="{!! $fbDescription or 'We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
         <meta property="og:image" content="{{ $fbImage or URL::asset('images/facebook-share.jpg') }}">
 
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">

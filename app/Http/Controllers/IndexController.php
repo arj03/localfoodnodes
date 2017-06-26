@@ -89,7 +89,7 @@ class IndexController extends Controller
         $fbMeta = [
             'fbUrl' => app('url')->to($node->permalink()->url),
             'fbTitle' => $node->name,
-            'fbDescription' => $node->info,
+            'fbDescription' => strip_tags($node->info),
             'fbImage' => $node->images()->count() > 0 ? $node->images()->first()->url('small') : null
         ];
 
@@ -116,7 +116,7 @@ class IndexController extends Controller
         $fbMeta = [
             'fbUrl' => app('url')->to($fbUrl),
             'fbTitle' => $product->name,
-            'fbDescription' => $product->info,
+            'fbDescription' => strip_tags($product->info),
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
@@ -137,7 +137,7 @@ class IndexController extends Controller
         $fbMeta = [
             'fbUrl' => app('url')->to($producer->permalink()->url),
             'fbTitle' => $producer->name,
-            'fbDescription' => $producer->info,
+            'fbDescription' => strip_tags($producer->info),
             'fbImage' => $producer->images()->count() > 0 ? $producer->images()->first()->url('small') : null
         ];
 
@@ -158,7 +158,7 @@ class IndexController extends Controller
         $fbMeta = [
             'fbUrl' => app('url')->to($fbUrl),
             'fbTitle' => $product->name,
-            'fbDescription' => $product->info,
+            'fbDescription' => strip_tags($product->info),
             'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
@@ -178,7 +178,7 @@ class IndexController extends Controller
         $fbMeta = [
             'fbUrl' => app('url')->to($event->permalink()->url),
             'fbTitle' => $event->name,
-            'fbDescription' => $event->info,
+            'fbDescription' => strip_tags($event->info),
             'fbImage' => $event->images()->count() > 0 ? $event->images()->first()->url('small') : null
         ];
 
