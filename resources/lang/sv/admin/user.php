@@ -29,6 +29,7 @@ return [
     'event_name' => 'Evenemangsnamn',
     'fee' => 'Avgift',
     'item_total' => 'Produkt total',
+    'language' => 'Språk',
     'month' => 'Månad',
     'name' => 'Namn',
     'next_pickup' => 'Nästa utlämning',

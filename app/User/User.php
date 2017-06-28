@@ -130,6 +130,15 @@ class User extends BaseUser
         return parent::newQuery($excludeDeleted)->addSelect('*', DB::raw($raw));
     }
 
+    public function getLanguageName()
+    {
+        if ($this->language) {
+            return trans('lang.' . $this->language);
+        } else {
+            return 'English';
+        }
+    }
+
     /**
      * Custom validation rules for update.
      *
@@ -265,10 +274,14 @@ class User extends BaseUser
         })->unique();
 
         if (!empty($dates)) {
-            $orderDates->whereIn('date', $dates);
+            $orderDates = $orderDates->whereIn('date', $dates);
         }
 
-        return $orderDates;
+        $sortedOrderDates = $orderDates->sortByDesc(function($orderDate, $key) {
+            return $orderDate->date('Y-m-d');
+        });
+
+        return $sortedOrderDates;
     }
 
     /**

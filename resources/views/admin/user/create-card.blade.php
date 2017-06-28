@@ -24,6 +24,14 @@
                 </label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('admin/user.password') }}">
             </div>
+            <div class="form-group">
+                <label for="language">{{ trans('admin/user.site_lang') }}</label>
+                <select name="language" id="language" class="form-control">
+                    @foreach (config('app.locales') as $langCode => $language)
+                        <option value="{{ $langCode }}" {{ $langCode === $user->language ? 'selected' : '' }}>{{ $language }}</option>
+                    @endforeach
+                </select>
+             </div>
             <p>{{ trans('admin/user.term_link_pre') }} <a href="#" data-toggle="modal" data-target="#terms-modal">{{ trans('admin/user.terms_of_use') }}</a>.</p>
 
             <button type="submit" class="btn btn-success">{{ trans('admin/user.create_account') }}</button>

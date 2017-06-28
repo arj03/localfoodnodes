@@ -29,6 +29,7 @@ return [
     'event_name' => 'Event name',
     'fee' => 'Fee',
     'item_total' => 'Item total',
+    'language' => 'Language',
     'month' => 'Month',
     'name' => 'Name',
     'next_pickup' => 'Next pickup',

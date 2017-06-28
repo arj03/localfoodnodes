@@ -60,6 +60,7 @@
                     <div>{{ $user->address }}</div>
                     <div>{{ $user->zip }}</div>
                     <div>{{ $user->city }}</div>
+                    <div>{{ trans('admin/user.language') }}: <a href="/account/user/edit">{{ $user->getLanguageName() }}</a></div>
                 </div>
 
                 <div class="card-footer d-flex justify-content-between">
@@ -101,7 +102,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">{{ trans('admin/user.next_pickup') }}</div>
+                <div class="card-header">
+                    {{ trans('admin/user.next_pickup') }}
+                    @if ($user->orderDates()->count() > 0)
+                        {{ $user->orderDates()->first()->date('Y-m-d') }}
+                    @endif
+                </div>
                 <div class="card-block">
                     @if ($user->orderDates()->count() > 0)
                         <div class="table-responsive">
@@ -124,7 +130,7 @@
                                             <td>{{ $orderDateItemLink->quantity }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
-                                            <td>{{ $orderDateItemLink->getPrice() }} {{ $orderDateItemLink->getItem()->producer['currency'] }}</td>
+                                            <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

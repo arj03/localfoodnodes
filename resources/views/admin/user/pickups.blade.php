@@ -11,7 +11,7 @@
                 @foreach ($user->orderDates() as $orderDate)
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <span>{{ trans('admin/user.delivery') }} {{ $orderDate->date('Y-m-d') }}</span>
+                            <span>{{ trans('admin/user.pickup') }} {{ $orderDate->date('Y-m-d') }}</span>
                         </div>
                         <div class="card-block">
                             <table class="table table-hover">
