@@ -53,7 +53,7 @@
                         {{ trans('admin/product.estimate_package_amount') }}
                         @include('admin.field-error', ['field' => 'package_amount'])
                     </label>
-                    <input type="number" min="1" name="package_amount" class="form-control" id="price" placeholder="{{ trans('admin/product.estimate_package_amount') }}" value="{{ $product->package_amount or '' }}">
+                    <input type="text" name="package_amount" class="form-control" id="price" placeholder="{{ trans('admin/product.estimate_package_amount') }}" value="{{ $product->package_amount or '' }}">
                     <div class="form-text text-muted">
                         {{ trans('admin/product.package_amount_info') }}
                     </div>

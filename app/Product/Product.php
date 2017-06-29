@@ -56,6 +56,10 @@ class Product extends \App\BaseModel
             $product->permalink()->delete();
         });
 
+        static::saving(function($product) {
+            $product->package_amount = (float) str_replace(',', '.', $product->package_amount);
+        });
+
         static::created(function($product) {
             \App\Permalink::create(['entity_type' => 'product', 'entity_id' => $product->id, 'slug' => $product->name]);
         });
