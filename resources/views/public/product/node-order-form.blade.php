@@ -17,12 +17,9 @@
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}" {{ $index === 0 ? 'checked' : '' }}>
                                 {{ $product->name}} - {{ $variant->name }}
-                                ({{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }})
+                                ({{ $variant->getPackageAmountUnit() }})
                                 <div class="price">
-                                    {{ $variant->price }} {{ $producer->currency }}
-                                    @if ($product->package_unit)
-                                        / {{ trans_choice('units.' . $product->price_unit, $variant->package_amount) }}
-                                    @endif
+                                    {{ $variant->getPriceWithUnit() }}
                                 </div>
                             </label>
                         </div>
@@ -38,9 +35,9 @@
                             <div>
                                 {{ $product->name }}
                                 @if ($product->price_unit !== 'product')
-                                    ({{ $product->getPriceUnit() }})
+                                    ({{ $product->getPackageAmountUnit() }})
                                 @endif
-                                <div class="price">{{ $product->price }} {{ $producer->currency }} / {{ trans_choice('units.' . $product->price_unit, 1) }}</div>
+                                <div class="price">{{ $product->getPriceWithUnit() }}</div>
                             </div>
                         </label>
                     </div>

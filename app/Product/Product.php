@@ -336,11 +336,36 @@ class Product extends \App\BaseModel
         }
     }
 
-    public function getPriceUnit()
+    public function getPackageAmountUnit()
     {
         if ($this->price_unit !== 'product' && $this->package_amount) {
             return $this->package_amount . ' ' . trans_choice('units.' . $this->price_unit, $this->package_amount);
         }
+    }
+
+    /**
+     * Get product unit.
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        if ($this->price_unit === 'product') {
+            return $this->producer()->currency;
+        } else {
+            return $this->producer()->currency . ' / ' . $this->price_unit;
+        }
+    }
+
+
+    /**
+     * Get price with unit.
+     *
+     * @return string
+     */
+    public function getPriceWithUnit()
+    {
+        return $this->price . ' ' . $this->getUnit();
     }
 
     /**

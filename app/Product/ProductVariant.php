@@ -55,6 +55,37 @@ class ProductVariant extends BaseModel
         return floor($quantity);
     }
 
+    public function getPackageAmountUnit()
+    {
+        return $this->package_amount . ' ' . trans_choice('units.' . $this->getProduct()->package_unit, $this->package_amount);
+    }
+
+    /**
+     * Get product variant unit.
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        $product = $this->getProduct();
+        if ($product->price_unit === 'product') {
+            return $product->producer()->currency;
+        } else {
+            return $product->producer()->currency . ' / ' . $product->package_unit;
+        }
+    }
+
+
+    /**
+     * Get price with unit.
+     *
+     * @return string
+     */
+    public function getPriceWithUnit()
+    {
+        return $this->price . ' ' . $this->getUnit();
+    }
+
     /**
      * Get info to be stored with order.
      *

@@ -59,12 +59,17 @@
                                                         <div class="producer-info">
                                                             <div class="name">{{ $product->producer()->name }}</div>
                                                         </div>
-                                                        <div class="title">{{ $product->name }}</div>
+                                                        <div class="title">
+                                                            {{ $product->name }}
+                                                            <!-- @if ($product->price_unit !== 'product' && $product->package_amount)
+                                                                ({{ $product->getPackageAmountUnit() }})
+                                                            @endif -->
+                                                        </div>
                                                         <div class="price">
                                                             @if ($product->variants()->count() > 0)
-                                                            {{ trans('public/node.from') }} {{ $product->smallestVariant()->price }} {{ $product->producer()->currency }}
+                                                                {{ trans('public/node.from') }} {{ $product->smallestVariant()->getPriceWithUnit() }}
                                                             @else
-                                                                {{ $product->price }} {{ $product->producer()->currency }}
+                                                                {{ $product->getPriceWithUnit() }}
                                                             @endif
                                                         </div>
                                                     </div>

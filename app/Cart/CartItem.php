@@ -176,6 +176,11 @@ class CartItem extends \App\BaseModel
         return $prefix . $this->getPrice() . ' ' . $this->getUnit();
     }
 
+    /**
+     * Get quantity.
+     *
+     * @return int
+     */
     public function getQuantity()
     {
         if ($this->product['production_type'] === 'csa') {

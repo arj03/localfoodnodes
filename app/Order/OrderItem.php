@@ -104,6 +104,10 @@ class OrderItem extends \App\BaseModel
             $name .= ' - ' . $this->variant['name'];
         }
 
+        if ($this->variant) {
+            $name .= ' (' . $this->variant['package_amount'] . ' ' . trans_choice('units.' . $this->product['package_unit'], $this->variant['package_amount']) .')';
+        }
+
         return $name;
     }
 
@@ -131,7 +135,11 @@ class OrderItem extends \App\BaseModel
         if ($this->product['price_unit'] === 'product') {
             return $this->producer['currency'];
         } else {
-            return $this->producer['currency'] . ' / ' . $this->product['price_unit'];
+            if ($this->variant) {
+                return $this->producer['currency'] . ' / ' . $this->product['package_unit'];
+            } else {
+                return $this->producer['currency'] . ' / ' . $this->product['price_unit'];
+            }
         }
     }
 
