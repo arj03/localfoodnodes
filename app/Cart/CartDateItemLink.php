@@ -111,7 +111,7 @@ class CartDateItemLink extends \App\BaseModel
         } else if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             // Sold by weight
             if ($this->getItem()->variant) {
-                return $price * $this->quantity;
+                return $price * $this->quantity * $this->getItem()->variant['package_amount'];
             } else {
                 return $price * $this->quantity * $this->getItem()->product['package_amount'];
             }
