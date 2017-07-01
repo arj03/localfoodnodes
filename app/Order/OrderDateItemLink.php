@@ -136,13 +136,18 @@ class OrderDateItemLink extends \App\BaseModel
     public function getPriceWithUnit()
     {
         $prefix = '';
-        if ($this->getItem()->product['price_unit'] !== 'product') {
+        if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             $prefix = '<span class="approx">&asymp;</span>';
         }
 
         return $prefix . ' ' . $this->getPrice() . ' ' . $this->getUnit();
     }
 
+    /**
+     * Check if order is deletable.
+     *
+     * @return boolean
+     */
     public function isDeletable()
     {
         $product = $this->getItem()->getProduct();

@@ -108,16 +108,16 @@ class CartDateItemLink extends \App\BaseModel
 
         if ($this->getItem()->product['production_type'] === 'csa') {
             return $price / $this->getItem()->getProduct()->deliveryLinks()->count();
-        } else if ($this->getItem()->product['price_unit'] === 'product') {
-            // Sold by product
-            return $price * $this->quantity;
-        } else {
+        } else if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             // Sold by weight
             if ($this->getItem()->variant) {
                 return $price * $this->quantity * $this->getItem()->variant['package_amount'];
             } else {
                 return $price * $this->quantity * $this->getItem()->product['package_amount'];
             }
+        } else {
+            // Sold by product
+            return $price * $this->quantity;
         }
     }
 
@@ -139,7 +139,7 @@ class CartDateItemLink extends \App\BaseModel
     public function getPriceWithUnit()
     {
         $prefix = '';
-        if ($this->getItem()->product['price_unit'] !== 'product') {
+        if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             $prefix = '<span class="approx">&asymp;</span>';
         }
 
@@ -154,7 +154,7 @@ class CartDateItemLink extends \App\BaseModel
     public function getPriceWithUnitHtml()
     {
         $prefix = '';
-        if ($this->getItem()->product['price_unit'] !== 'product') {
+        if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             $prefix = '<span class="approx">&asymp;</span>';
         }
 

@@ -41,6 +41,17 @@ class UnitsHelper
     }
 
     /**
+     * Check if unit is a standard unit.
+     *
+     * @param string $unit
+     * @return boolean
+     */
+    public static function isStandardUnit($unit)
+    {
+        return in_array($unit, ['kg', 'hg', 'g', 'l', 'dl', 'cl', 'ml']);
+    }
+
+    /**
      * Get currencies.
      *
      * @return Collection

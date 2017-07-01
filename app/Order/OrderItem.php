@@ -132,14 +132,10 @@ class OrderItem extends \App\BaseModel
      */
     public function getUnit()
     {
-        if ($this->product['price_unit'] === 'product') {
-            return $this->producer['currency'];
+        if (\UnitsHelper::isStandardUnit($this->product['price_unit'])) {
+            return $this->producer['currency'] . ' / ' . $this->product['price_unit'];
         } else {
-            if ($this->variant) {
-                return $this->producer['currency'] . ' / ' . $this->product['package_unit'];
-            } else {
-                return $this->producer['currency'] . ' / ' . $this->product['price_unit'];
-            }
+            return $this->producer['currency'];
         }
     }
 

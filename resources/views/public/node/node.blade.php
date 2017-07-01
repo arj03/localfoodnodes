@@ -61,9 +61,6 @@
                                                         </div>
                                                         <div class="title">
                                                             {{ $product->name }}
-                                                            <!-- @if ($product->price_unit !== 'product' && $product->package_amount)
-                                                                ({{ $product->getPackageAmountUnit() }})
-                                                            @endif -->
                                                         </div>
                                                         <div class="price">
                                                             @if ($product->variants()->count() > 0)

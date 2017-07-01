@@ -169,7 +169,7 @@ class CartItem extends \App\BaseModel
     public function getPriceWithUnit()
     {
         $prefix = '';
-        if ($this->product['price_unit'] !== 'product') {
+        if (\UnitsHelper::isStandardUnit($this->product['price_unit'])) {
             $prefix = '<span class="approx">&asymp;</span>';
         }
 

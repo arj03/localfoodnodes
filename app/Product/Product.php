@@ -350,10 +350,10 @@ class Product extends \App\BaseModel
      */
     public function getUnit()
     {
-        if ($this->price_unit === 'product') {
-            return $this->producer()->currency;
+        if (\UnitsHelper::isStandardUnit($this->price_unit)) {
+            return $this->producer()->currency . '/' . $this->price_unit;
         } else {
-            return $this->producer()->currency . ' / ' . $this->price_unit;
+            return $this->producer()->currency;
         }
     }
 

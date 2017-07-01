@@ -33,6 +33,17 @@ class ProductVariant extends BaseModel
     ];
 
     /**
+     * Lifecycle events.
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::saving(function($variant) {
+            $variant->package_amount = (float) str_replace(',', '.', $variant->package_amount);
+        });
+    }
+
+    /**
      * Get product.
      *
      * @return App\Product\Product
@@ -55,6 +66,11 @@ class ProductVariant extends BaseModel
         return floor($quantity);
     }
 
+    /**
+     * Get package amount.
+     *
+     * @return string
+     */
     public function getPackageAmountUnit()
     {
         return $this->package_amount . ' ' . trans_choice('units.' . $this->getProduct()->package_unit, $this->package_amount);
@@ -68,10 +84,11 @@ class ProductVariant extends BaseModel
     public function getUnit()
     {
         $product = $this->getProduct();
-        if ($product->price_unit === 'product') {
-            return $product->producer()->currency;
+
+        if (\UnitsHelper::isStandardUnit($product->package_unit)) {
+            return $product->producer()->currency . '/' . $product->price_unit;
         } else {
-            return $product->producer()->currency . ' / ' . $product->package_unit;
+            return $product->producer()->currency;
         }
     }
 

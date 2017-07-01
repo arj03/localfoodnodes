@@ -187,7 +187,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
         $productQuantity = $this->getProduct()->getProductionQuantity($this->date, $cartQuantity) * $this->getProduct()->mainVariant()->package_amount;
 
         $quantity = $productQuantity - $orderQuantity;
-        $quantity = $quantity / (int) $variant->package_amount;
+        $quantity = $quantity / (float) $variant->package_amount;
 
         return $quantity > 0 ? floor($quantity) : 0;
     }
