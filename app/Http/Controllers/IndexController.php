@@ -154,7 +154,7 @@ class IndexController extends Controller
         $producer = Producer::find($producerId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
 
-        $fbUrl = $node->permalink()->url . $product->permalink()->url;
+        $fbUrl = $producer->permalink()->url . $product->permalink()->url;
         $fbMeta = [
             'fbUrl' => app('url')->to($fbUrl),
             'fbTitle' => trim($product->name),
