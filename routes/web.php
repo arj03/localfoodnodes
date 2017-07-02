@@ -178,6 +178,9 @@ Route::get('/membership', 'PageController@membership');
 Route::get('/landing-page/{segments}', function() {
     return redirect('/');
 })->where('segments', '(.*)');
+Route::get('/launch/{segments}', function() {
+    return redirect('/');
+})->where('segments', '(.*)');
 
 
 Route::get('/landing-page/{wildcard?}', 'IndexController@index');
