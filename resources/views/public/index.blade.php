@@ -4,12 +4,10 @@
 
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="bold">{{ trans('public/index.food_matters') }}</h2>
-                <h3>{{ trans('public/index.recreating') }}</h3>
-                <a href="#find-out-more" class="btn-outline">{{ trans('public/index.find_out_more') }}</a>
-            </div>
+        <div class="col-12">
+            <h2 class="bold">{{ trans('public/index.food_matters') }}</h2>
+            <h3>{{ trans('public/index.recreating') }}</h3>
+            <a href="#find-out-more" class="btn-outline">{{ trans('public/index.find_out_more') }}</a>
         </div>
     </div>
 

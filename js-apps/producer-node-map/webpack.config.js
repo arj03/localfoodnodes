@@ -5,7 +5,7 @@ var webpack = require('webpack')
 
 module.exports = {
   devtool: 'inline-eval-cheap-source-map',
-  entry: './index',
+  entry: ['babel-polyfill', './index'],
   output: {
       path: __dirname,
       publicPath: '../../public/',
