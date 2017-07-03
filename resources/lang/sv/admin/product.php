@@ -19,7 +19,7 @@ return [
     'delete_variant' => 'Ta bort variant',
     'delivery_dates' => 'Leveransdatum',
     'delivery_dates_select_info' => 'För att din produkt ska bli synlig på noden måste du välja dina leveransdatum.',
-    'delivery_dates_no_nodes' => 'Du har inte valt några <a href=":url">leveransnoder</a>. Leveransdatumen baseras på noderna utlämningsdagar så du behöver välja minst en nod som du kommer leverera till.',
+    'delivery_dates_no_nodes' => 'Du har inte valt några <a href=":url">utlämningsplatser</a>. Leveransdatumen baseras på noderna utlämningsdagar så du behöver välja minst en utlämningsplats som du kommer leverera till.',
     'delivery_dates_recurring_products_info' => '<b>:product_name</b> är en återkommande produkt som produceras kontinuerligt under en period, och kvaniteten kan variera under denna period. I denna vy har du möjlighet att ändra hur många förpackningar av produkten som du har tillgänglig vid ett visst leveransdatum.',
     'edit_delivery_dates' => 'Redigera leveransdatum',
     'edit_product' => 'Redigera produkt',

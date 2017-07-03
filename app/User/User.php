@@ -285,6 +285,22 @@ class User extends BaseUser
     }
 
     /**
+     * Get next order date.
+     *
+     * @return OrderDate
+     */
+    public function getNextOrderDate()
+    {
+        $orderDates = $this->orderDates();
+
+        $orderDates = $orderDates->filter(function($orderDate) {
+            return $orderDate->date >= new \DateTime(date('Y-m-d'));
+        });
+
+        return $orderDates->last();
+    }
+
+    /**
      * Get order items.
      *
      * @param int $productId

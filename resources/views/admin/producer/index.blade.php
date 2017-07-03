@@ -62,7 +62,6 @@
                             <thead>
                                 <tr>
                                     <th>{{ trans('admin/producer.order') }}</th>
-                                    <th>{{ trans('admin/producer.delivery') }}</th>
                                     <th>{{ trans('admin/producer.product') }}</th>
                                     <th>{{ trans('admin/producer.quantity') }}</th>
                                     <th>{{ trans('admin/producer.node') }}</th>
@@ -76,7 +75,6 @@
                                         <td>
                                             <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>
                                         </td>
-                                        <td>{{ $producer->getNextOrderDate()->date('Y-m-d') }}</td>
                                         <td>
                                             <a href="/account/producer/{{ $producer->id }}/product/{{ $orderDateItemLink->getItem()->product['id'] }}/edit">
                                                 {{ $orderDateItemLink->getItem()->getName() }}

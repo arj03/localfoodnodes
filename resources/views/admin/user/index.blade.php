@@ -104,17 +104,16 @@
             <div class="card">
                 <div class="card-header">
                     {{ trans('admin/user.next_pickup') }}
-                    @if ($user->orderDates()->count() > 0)
-                        {{ $user->orderDates()->first()->date('Y-m-d') }}
+                    @if ($user->getNextOrderDate() && $user->getNextOrderDate()->count() > 0)
+                        {{ $user->getNextOrderDate()->date('Y-m-d') }}
                     @endif
                 </div>
                 <div class="card-block">
-                    @if ($user->orderDates()->count() > 0)
+                    @if ($user->getNextOrderDate() && $user->getNextOrderDate()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ trans('admin/user.pickup') }}</th>
                                         <th>{{ trans('admin/user.product') }}</th>
                                         <th>{{ trans('admin/user.quantity') }}</th>
                                         <th>{{ trans('admin/user.producer') }}</th>
@@ -123,9 +122,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user->orderDates()->first()->orderDateItemLinks($user->id) as $orderDateItemLink)
+                                    @foreach ($user->getNextOrderDate()->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
-                                            <td>{{ $orderDateItemLink->getDate()->date('Y-m-d') }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
                                             <td>{{ $orderDateItemLink->quantity }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
