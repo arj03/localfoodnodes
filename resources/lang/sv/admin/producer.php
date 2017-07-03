@@ -44,7 +44,7 @@ return [
     'manage_order' => 'Hantera beställningar',
     'most_recent_orders' => 'Senaste beställningar',
     'name' => 'Namn',
-    'next_delivery' => 'Nästa leverans',
+    'next_delivery' => 'Nästa utlämning',
     'node' => 'Nod',
     'no_events' => 'Inga evenemang',
     'no_orders' => 'Inga beställningar',
