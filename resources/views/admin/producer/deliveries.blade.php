@@ -21,6 +21,7 @@
                                         <th class="text-right">{{ trans('admin/producer.quantity') }}</th>
                                         <th>{{ trans('admin/producer.node') }}</th>
                                         <th>{{ trans('admin/producer.total_price') }}</th>
+                                        <th class="text-right">{{ trans('admin/producer.status') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +39,7 @@
                                             <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                            <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

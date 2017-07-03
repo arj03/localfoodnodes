@@ -5,7 +5,7 @@ return [
     'create_node' => 'Skapa utlämningsplats',
     'create_product' => 'Skapa produkt',
     'deliveries' => 'Utlämningar',
-    'delivery_nodes' => 'Leveransnoder',
+    'delivery_nodes' => 'Utlämningsplatser',
     'events' => 'Evenemang',
     'faq' => 'FAQ',
     'find_nodes' => 'Hitta utlämningsplatser',
