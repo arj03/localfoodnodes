@@ -14,24 +14,24 @@
     <?php $jsonTrans = json_encode(trans('public/index')); ?>
     <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ $jsonTrans }}"></div>
 
-    <div class="container-fluid frontpage-section local-food-impact hidden-md-down">
+    <div class="container-fluid frontpage-section local-food-impact">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="row metrics">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-sm-4">
                             <div class="metric">
                                 <b>{{ $metrics['userCount'] }}</b>
                                 <div>{{ trans('public/index.locals') }}</div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-sm-4">
                             <div class="metric">
                                 <b>{{ $metrics['nodeCount'] }}</b>
                                 <div>{{ trans('public/index.local_nodes') }}</div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-sm-4">
                             <div class="metric">
                                 <b>{{ $metrics['producerCount'] }}</b>
                                 <div>{{ trans('public/index.local_producers') }}</div>
