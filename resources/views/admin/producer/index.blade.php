@@ -52,9 +52,12 @@
             <div class="card">
                 <div class="card-header">
                     {{ trans('admin/producer.next_delivery') }}
+                    @if ($producer->getNextOrderDate() && $producer->getNextOrderDate()->count() > 0)
+                        {{ $producer->getNextOrderDate()->date('Y-m-d') }}
+                    @endif
                 </div>
                 <div class="card-block">
-                    @if ($producer->orderDates()->count() > 0)
+                    @if ($producer->getNextOrderDate() && $producer->getNextOrderDate()->count() > 0)
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -64,15 +67,16 @@
                                     <th>{{ trans('admin/producer.quantity') }}</th>
                                     <th>{{ trans('admin/producer.node') }}</th>
                                     <th>{{ trans('admin/producer.customer') }}</th>
+                                    <th class="text-right">{{ trans('admin/producer.status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($producer->orderDates()->first()->orderDateItemLinks(null, $producer->id) as $orderDateItemLink)
+                                @foreach ($producer->getNextOrderDate()->orderDateItemLinks(null, $producer->id) as $orderDateItemLink)
                                     <tr>
                                         <td>
                                             <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>
                                         </td>
-                                        <td>{{ $producer->orderDates()->first()->date('Y-m-d') }}</td>
+                                        <td>{{ $producer->getNextOrderDate()->date('Y-m-d') }}</td>
                                         <td>
                                             <a href="/account/producer/{{ $producer->id }}/product/{{ $orderDateItemLink->getItem()->product['id'] }}/edit">
                                                 {{ $orderDateItemLink->getItem()->getName() }}
@@ -81,6 +85,7 @@
                                         <td>{{ $orderDateItemLink->quantity }}</td>
                                         <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                         <td>{{ $orderDateItemLink->getItem()->user['name'] }}</td>
+                                        <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
                                     </tr>
                                 @endforeach
                             </tbody>

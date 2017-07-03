@@ -178,7 +178,27 @@ class Producer extends BaseModel implements EventOwnerInterface
             return $orderDateItemLink->getDate();
         })->unique('id');
 
-        return $orderDates;
+        $sortedOrderDates = $orderDates->sortByDesc(function($orderDate, $key) {
+            return $orderDate->date('Y-m-d');
+        });
+
+        return $sortedOrderDates;
+    }
+
+    /**
+     * Get next order date.
+     *
+     * @return OrderDate
+     */
+    public function getNextOrderDate()
+    {
+        $orderDates = $this->orderDates();
+
+        $orderDates = $orderDates->filter(function($orderDate) {
+            return $orderDate->date >= new \DateTime(date('Y-m-d'));
+        });
+
+        return $orderDates->last();
     }
 
     /**
