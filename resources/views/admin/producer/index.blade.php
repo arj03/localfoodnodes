@@ -10,14 +10,6 @@
             <div class="card">
                 <div class="card-header">
                     {{ $producer->name }}
-                    <div class="dropdown dropdown-action-component">
-                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-gear"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="/account/producer/{{ $producer->id }}/edit">{{ trans('admin/producer.edit_information') }}</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="card-block">
                     <ul>
