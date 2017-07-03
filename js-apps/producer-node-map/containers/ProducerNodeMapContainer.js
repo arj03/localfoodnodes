@@ -128,7 +128,7 @@ class ProducerNodeMapContainer extends Component {
                                     <i className='fa fa-gear'></i>
                                 </button>
                                 <ul className='dropdown-menu dropdown-menu-right'>
-                                    <li><a className='dropdown-item' onClick={this.removeNode.bind(this, node)}>{trans.remove_node}</a></li>
+                                    <li><span className='dropdown-item' onClick={this.removeNode.bind(this, node)}>{trans.remove_node}</span></li>
                                 </ul>
                             </div>
                         </td>
