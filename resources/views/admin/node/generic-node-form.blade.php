@@ -56,17 +56,22 @@
             </div>
         </div>
 
-        @include('admin.image-card', [
-            'images' => $node->images(),
-            'deleteUrl' => '/account/image/{imageId}/delete',
-            'limit' => 4,
-        ])
-
         <div class="card">
             <div class="card-header">{{ trans('admin/node.deliveries') }}</div>
             <div class="card-block">
                 <div class="row">
                     <div class="col-6">
+                        <div class="form-group">
+                            <label for="delivery_interval">Delivery interval</label>
+                            <select name="delivery_interval" id="delivery_interval" class="form-control">
+                                <option value="">Select an interval</option>
+                                <option value="1" {{ $node->delivery_interval === '1' ? ' selected' : '' }}>Every week</option>
+                                <option value="2" {{ $node->delivery_interval === '2' ? ' selected' : '' }}>Every second week</option>
+                                <option value="3" {{ $node->delivery_interval === '3' ? ' selected' : '' }}>Every third week</option>
+                                <option value="4" {{ $node->delivery_interval === '4' ? ' selected' : '' }}>Every month</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="delivery_weekday">{{ trans('admin/node.weekday') }} @include('admin.field-error', ['field' => 'delivery_weekday'])</label>
                             <select name="delivery_weekday" id="delivery_weekday" class="form-control">
@@ -100,6 +105,12 @@
                 </div>
             </div>
         </div>
+
+        @include('admin.image-card', [
+            'images' => $node->images(),
+            'deleteUrl' => '/account/image/{imageId}/delete',
+            'limit' => 4,
+        ])
 
         <div class="card">
             <div class="card-header">Facebook</div>
