@@ -55,7 +55,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $orderDateItemLink->getDate()->date('Y-m-d') }}</td>
+                                <td>
+                                    @if ($orderDateItemLink->getDate())
+                                        {{ $orderDateItemLink->getDate()->date('Y-m-d') }}
+                                    @endif
+                                </td>
                                 <td>
                                     {{ $orderItem->getName() }}
                                 </td>

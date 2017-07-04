@@ -130,6 +130,11 @@ class User extends BaseUser
         return parent::newQuery($excludeDeleted)->addSelect('*', DB::raw($raw));
     }
 
+    /**
+     * Get language name.
+     *
+     * @return string
+     */
     public function getLanguageName()
     {
         if ($this->language) {

@@ -24,7 +24,7 @@
                             @endforeach
                         </table>
                     @else
-                        {{ trans('admin/user.no-events') }}
+                        {{ trans('admin/user.no_events') }}
                     @endif
                 </div>
             </div>
