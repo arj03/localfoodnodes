@@ -330,11 +330,28 @@ class Node extends BaseModel implements EventOwnerInterface
         }
 
         $nextDelivery = $this->getNextDelivery($firstProductionDate);
+        $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
+        $endDelivery->modify('+1 year');
 
-        for ($week = 0; $week < 52; $week++) {
-            $date = date('Y-m-d', strtotime('+' . $week . ' week', $nextDelivery->getTimestamp()));
-            $deliveryDates->push($date);
+        if ($this->delivery_interval === 4) {
+            $interval = \DateInterval::createFromDateString('1 month');
+        } else {
+            $interval = \DateInterval::createFromDateString($this->delivery_interval . ' week');
         }
+
+        $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
+
+        \Log::debug(var_export($period, true));
+
+        // foreach ($period as $date) {
+        //     \Log::debug($date->format('Y-m-d'));
+        //     $deliveryDates->push($date);
+        // }
+
+        // for ($week = 0; $week < 52; $week++) {
+        //     $date = date('Y-m-d', strtotime('+' . $week . ' week', $nextDelivery->getTimestamp()));
+        //     $deliveryDates->push($date);
+        // }
 
         return $deliveryDates->sort();
     }
