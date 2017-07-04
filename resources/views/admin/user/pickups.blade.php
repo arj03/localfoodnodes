@@ -22,6 +22,7 @@
                                         <th>{{ trans('admin/user.producer') }}</th>
                                         <th>{{ trans('admin/user.node') }}</th>
                                         <th class="text-right">{{ trans('admin/user.price') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.status') }}</th>
                                     </tr>
                                 </thead>
                                 @foreach ($orderDate->orderDateItemLinks($user->id) as $orderDateItemLink)
@@ -35,7 +36,7 @@
                                         <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
                                         <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                         <td class="text-right">{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
-
+                                        <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus()}}</span></td>
                                     </tr>
                                 @endforeach
                             </table>
