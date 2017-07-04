@@ -270,8 +270,8 @@ class User extends BaseUser
     public function orderDates($dates = [])
     {
         $orderDates = $this->orderDateItemLinks()->map(function($orderDateItemLink) {
-            return $orderDateItemLink->getDate();
-        })->unique();
+            return $orderDateItemLink->getDate() ?: null;
+        })->filter()->unique();
 
         if (!empty($dates)) {
             $orderDates = $orderDates->whereIn('date', $dates);
@@ -297,7 +297,7 @@ class User extends BaseUser
             return $orderDate->date >= new \DateTime(date('Y-m-d'));
         });
 
-        return $orderDates->last();
+        return $orderDates->count() > 0 ? $orderDates->last() : null;
     }
 
     /**

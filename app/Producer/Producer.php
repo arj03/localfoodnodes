@@ -176,7 +176,7 @@ class Producer extends BaseModel implements EventOwnerInterface
     {
         $orderDates = $this->orderDateItemLinks()->map(function($orderDateItemLink) {
             return $orderDateItemLink->getDate() ?: null;
-        })->unique('id')->filter();
+        })->filter()->unique('id');
 
 
         $sortedOrderDates = $orderDates->sortByDesc(function($orderDate, $key) {
