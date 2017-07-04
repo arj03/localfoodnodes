@@ -36,7 +36,11 @@
                                          </td>
                                         <td class="text-right">{{ $orderItem->orderDateItemLink()->quantity }}</td>
                                         <td>{{ $orderItem->node['name'] }}</td>
-                                        <td>{{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}</td>
+                                        <td>
+                                            @if ($orderItem->orderDateItemLink()->getDate())
+                                                {{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}
+                                            @endif
+                                        </td>
                                         <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>
                                         <td class="text-right"><span class="{{ $orderItem->getCurrentStatus()->getHtmlClass() }}">{{ $orderItem->getCurrentStatus()}}</span></td>
                                     </tr>
