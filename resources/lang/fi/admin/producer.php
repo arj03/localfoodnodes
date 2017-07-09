@@ -57,6 +57,7 @@ return [
     'order_status' => 'Order status',
     'payment_info' => 'Payment info',
     'payment_info_email' => 'Payment info included in customer order email',
+    'picklist' => 'Pick list',
     'producer_information' => 'Producer information',
     'producer_terms' => 'Producer - Terms of use',
     'product' => 'Product',

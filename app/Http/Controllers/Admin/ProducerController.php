@@ -290,6 +290,30 @@ class ProducerController extends Controller
     }
 
     /**
+     * Pick list action.
+     */
+    public function picklist($producerId, $orderDateId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $orderDate = $producer->orderDate($orderDateId);
+        $orderItemsGroupedByUserId = $orderDate->orderDateItemLinks(null, $producer->id)->groupBy('user_id');
+        $node = $orderDate->orderDateItemLinks(null, $producer->id)->first()->getItem()->node;
+
+        return view('admin.producer.delivery-picklist', [
+            'producer' => $producer,
+            'node' => $node,
+            'orderDate' => $orderDate,
+            'orderItemsGroupedByUserId' => $orderItemsGroupedByUserId,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.deliveries') => 'producer/' . $producer->id . '/deliveries',
+                $node['name'] . ' ' . $orderDate->date('Y-m-d') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Invite user to become producer admin.
      *
      * @param Request $request

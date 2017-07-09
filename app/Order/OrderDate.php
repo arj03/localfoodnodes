@@ -52,6 +52,11 @@ class OrderDate extends \App\BaseModel
         return $this->date->format($format);
     }
 
+    /**
+     * Define relationship with orderDateItemLinks.
+     *
+     * @return [type] [description]
+     */
     public function orderDateItemLinksRelationship()
     {
         return $this->hasMany('App\Order\OrderDateItemLink');
@@ -69,6 +74,7 @@ class OrderDate extends \App\BaseModel
         } else if ($producerId) {
             return $this->orderDateItemLinksRelationship->where('producer_id', $producerId);
         } else {
+            \Log::error('Error in function orderDateItemLinks: both userId and producerId cannot be null');
             return collect([]);
         }
     }

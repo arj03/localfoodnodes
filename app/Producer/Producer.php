@@ -170,6 +170,7 @@ class Producer extends BaseModel implements EventOwnerInterface
 
     /**
      * Get order dates.
+     *
      * @return Collection
      */
     public function orderDates()
@@ -184,6 +185,18 @@ class Producer extends BaseModel implements EventOwnerInterface
         });
 
         return $sortedOrderDates;
+    }
+
+    /**
+     * Get order date.
+     *
+     * @return OrderDate
+     */
+    public function orderDate($orderDateId)
+    {
+        $orderDateItemLink = $this->orderDateItemLinks()->where('order_date_id', $orderDateId)->first();
+
+        return $orderDateItemLink->getDate();
     }
 
     /**

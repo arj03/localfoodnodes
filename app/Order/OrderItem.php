@@ -104,7 +104,7 @@ class OrderItem extends \App\BaseModel
             $name .= ' - ' . $this->variant['name'];
         }
 
-        if ($this->variant) {
+        if ($this->variant && $this->product['package_unit']) {
             $name .= ' (' . $this->variant['package_amount'] . ' ' . trans_choice('units.' . $this->product['package_unit'], $this->variant['package_amount']) .')';
         }
 
