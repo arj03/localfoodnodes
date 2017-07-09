@@ -49,7 +49,7 @@ return [
     'price_per_delivery' => 'Pris per leverans',
     'product' => 'Produkt',
     'producer' => 'Producent',
-    'quantity' => 'Kvantitet',
+    'quantity' => 'Antal',
     'recreate_account' => 'Återskapa konto',
     'resend' => 'Skicka aktiveringslänk igen',
     'reset_password' => 'Återställ lösenord',

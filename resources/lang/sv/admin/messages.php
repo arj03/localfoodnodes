@@ -31,7 +31,7 @@ return [
     'product_deleted' => 'Din produkt har tagits bort',
     'product_error_create_variant' => 'Kunde inte skapa produktvariant',
     'product_no_production' => 'Du har inte skapat någon produktion',
-    'product_date_quantity_required' => 'Datum och kvantitet är obligatoriska fält för sällanprodukter',
+    'product_date_quantity_required' => 'Datum och antal är obligatoriska fält för sällanprodukter',
     'product_delivery_updated' => 'Dina leveransdatum har uppdaterats',
 
     // Variant
