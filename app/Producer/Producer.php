@@ -220,19 +220,15 @@ class Producer extends BaseModel implements EventOwnerInterface
      *
      * @return Collection
      */
-    public function orderItems()
+    public function orderItems($userId = null)
     {
-        return $this->hasMany('App\Order\OrderItem', 'producer_id', 'id')->get();
-    }
+        $orderItems = $this->hasMany('App\Order\OrderItem', 'producer_id', 'id');
 
-    /**
-     * Get order items grouped by user.
-     *
-     * @return Collection
-     */
-    public function orderItemsGroupedByUser()
-    {
-        return $this->hasMany('App\Order\OrderItem')->get()->groupBy('user_id');
+        if ($userId) {
+            $orderItems = $orderItems->where('user_id', $userId);
+        }
+
+        return $orderItems->get();
     }
 
     /**

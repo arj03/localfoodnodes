@@ -86,6 +86,25 @@ class OrderController extends Controller
     }
 
     /**
+     * Orders action.
+     */
+    public function userOrders($producerId, $userId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $orderItems = $producer->orderItems($userId);
+
+        return view('admin.producer.user-orders', [
+            'producer' => $producer,
+            'orderItems' => $orderItems,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.orders') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Order action.
      */
     public function order(Request $request, $producerId, $orderDateItemLinkId)

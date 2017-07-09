@@ -32,12 +32,12 @@
                                             <td>
                                                 <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>
                                             </td>
+                                            <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
                                             <td>
-                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $orderDateItemLink->getItem()->product['id'] }}/edit">
-                                                    {{ $orderDateItemLink->getItem()->getName() }}
+                                                <a href="/account/producer/{{ $producer->id }}/orders/user/{{ $orderDateItemLink->getItem()->user['id'] }}">
+                                                    {{ $orderDateItemLink->getItem()->user['name'] }}
                                                 </a>
                                             </td>
-                                            <td>{{ $orderDateItemLink->getItem()->user['name'] }}</td>
                                             <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
                                             <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>

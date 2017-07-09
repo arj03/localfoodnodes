@@ -91,9 +91,6 @@
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/deliveries') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/deliveries">- {{ trans('admin/user-nav.deliveries') }}</a>
                                     </li>
                                     <li>
-                                        <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/order*') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/orders">- {{ trans('admin/user-nav.orders') }}</a>
-                                    </li>
-                                    <li>
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/#nodes') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/#nodes">- {{ trans('admin/user-nav.delivery_nodes') }}</a>
                                     </li>
                                     <li>
