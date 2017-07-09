@@ -130,8 +130,12 @@ class CartItem extends \App\BaseModel
         $variantName = '';
 
         if ($this->variant) {
-            $unit = trans_choice('units.' . $this->product['package_unit'], $this->variant['package_amount']);
-            $variantName = $this->variant['name'] . ' (' . $this->variant['package_amount'] .  $unit . ')';
+            $variantName = $this->variant['name'];
+
+            if ($this->product['package_unit']) {
+                $unit = trans_choice('units.' . $this->product['package_unit'], $this->variant['package_amount']);
+                $variantName .= ' (' . $this->variant['package_amount'] .  $unit . ')';
+            }
         }
 
         return $variantName;

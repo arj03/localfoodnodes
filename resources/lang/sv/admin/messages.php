@@ -55,6 +55,7 @@ return [
     // User
     'user_account_email_sent' => 'Ett aktiveringsmail har skickats till din epost-adress.',
     'user_account_activated' => 'Ditt konto har aktiverats.',
+    'user_account_activation_failed' => 'Ditt konto kunde inte aktiveras. Kontakta supporten för hjälp.',
     'user_account_created' => 'Ditt konto har skapats.',
     'user_account_updated' => 'Din information har uppdaterats',
     'user_account_deleted' => 'Ditt konto har tagits bort',

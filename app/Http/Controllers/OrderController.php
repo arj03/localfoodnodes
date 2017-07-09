@@ -118,7 +118,7 @@ class OrderController extends Controller
             // Add to email data collection
             $orderItems->push($orderItem);
 
-            $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->first();
+            $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->where('user_id', $user->id)->first();
             if (!$orderDate) {
                 $orderDate = OrderDate::create([
                     'user_id' => $user->id,

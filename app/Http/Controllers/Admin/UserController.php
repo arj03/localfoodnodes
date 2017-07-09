@@ -108,14 +108,24 @@ class UserController extends Controller
     public function activateToken(Request $request, $token)
     {
         $userId = DB::table('user_activations')->select('user_id')->where('token', $token)->value('user_id');
+
+        if (!$userId) {
+            \App\Helpers\SlackHelper::message('error', 'User id ' . $userId . ' does not exist and cannot be activated. Token user: ' . $token);
+        }
+
         $user = User::find($userId);
 
         if ($user) {
             $user->fill(['active' => 1]);
             $user->save();
-        }
 
-        DB::table('user_activations')->where('token', $token)->delete();
+            DB::table('user_activations')->where('token', $token)->delete();
+        } else {
+            \App\Helpers\SlackHelper::message('error', 'User with id ' . $userId . ' could not be found. Activation failed.');
+
+            $request->session()->flash('message', [trans('admin/messages.user_account_activation_failed')]);
+            return redirect('/login');
+        }
 
         $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
         return redirect('/login');

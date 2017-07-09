@@ -55,6 +55,7 @@ return [
     // User
     'user_account_email_sent' => 'An account activation link has been sent to your email.',
     'user_account_activated' => 'Your account has been activated.',
+    'user_account_activation_failed' => 'Your account could not be activated. Please contact support for help.',
     'user_account_created' => 'Your account has been created.',
     'user_account_updated' => 'Your info has been changed',
     'user_account_deleted' => 'Your account has been deleted',
