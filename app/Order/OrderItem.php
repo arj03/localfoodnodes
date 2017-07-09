@@ -74,7 +74,6 @@ class OrderItem extends \App\BaseModel
      * @return array
      */
     private $orderStatuses = [
-        'received',
         'confirmed',
         'payed',
         'delivered',
