@@ -7,6 +7,9 @@ return [
     'amount_per_package' => 'Amount per package',
     'back_to_producer' => 'Back to producer',
     'booking_deadline' => 'Booking deadline:',
+    'cancel' => 'Cancel',
+    'confirm_delete' => 'Confirm delete',
+    'confirm_delete_info' => 'You are about to delete a product. Are you sure you cant to continue?',
     'create_variant' => 'Create variant',
     'csa_products' => 'CSA products',
     'csa_products_info' => '

@@ -177,6 +177,23 @@ class NodeController extends Controller
     }
 
     /**
+     * Confirm delete action.
+     */
+    public function deleteConfirm(Request $request, $nodeId)
+    {
+        $user = Auth::user();
+        $node = $user->nodeAdminLink($nodeId)->getNode();
+
+        return view('admin.node.confirm-delete', [
+            'node' => $node,
+            'breadcrumbs' => [
+                $node->name => 'node/' . $node->id,
+                trans('admin/user-nav.delete') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Node delete action.
      */
     public function delete(Request $request, $nodeId)

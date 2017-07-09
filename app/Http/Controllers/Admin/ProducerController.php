@@ -181,6 +181,23 @@ class ProducerController extends Controller
     }
 
     /**
+     * Confirm delete action.
+     */
+    public function deleteConfirm(Request $request, $producerId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+
+        return view('admin.producer.confirm-delete', [
+            'producer' => $producer,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.delete') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Producer delete action.
      */
     public function delete(Request $request, $producerId)

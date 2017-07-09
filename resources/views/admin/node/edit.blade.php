@@ -13,7 +13,7 @@
             @if ($node->adminLinks()->count() > 1)
                 <a href="/account/node/{{ $node->id }}/leave" class="btn btn-warning">{{ trans('admin/node.leave_node') }}</a>
             @else
-                <a href="/account/node/{{ $node->id }}/delete" class="btn btn-danger">{{ trans('admin/node.delete_node') }}</a>
+                <a href="/account/node/{{ $node->id }}/delete/confirm" class="btn btn-danger">{{ trans('admin/node.delete_node') }}</a>
             @endif
         @endcomponent
     </form>

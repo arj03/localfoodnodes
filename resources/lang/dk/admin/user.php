@@ -22,6 +22,7 @@ return [
     'delete_order' => 'Delete order',
     'delivery' => 'Delivery',
     'deliveries' => 'Deliveries',
+    'delete' => 'Delete',
     'delete_user' => 'Delete user',
     'edit_information' => 'Edit information',
     'email' => 'Email',

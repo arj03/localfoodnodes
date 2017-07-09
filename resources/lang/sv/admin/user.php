@@ -22,6 +22,7 @@ return [
     'delete_order' => 'Ta bort beställning',
     'delivery' => 'Utlämning',
     'deliveries' => 'Utlämningar',
+    'delete' => 'Ta bort',
     'delete_user' => 'Ta bort användare',
     'edit_information' => 'Redigera information',
     'email' => 'Email',

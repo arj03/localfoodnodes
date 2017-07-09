@@ -7,6 +7,9 @@ return [
     'amount_per_package' => 'Kvantitet per förpackning',
     'back_to_producer' => 'Tillbaka till producent',
     'booking_deadline' => 'Beställning sker senast:',
+    'cancel' => 'Avbryt',
+    'confirm_delete' => 'Bekräfta ta bort',
+    'confirm_delete_info' => 'Du är på väg att ta bort en produkt. Är du säker på att du vill fortsätta?',
     'create_variant' => 'Skapa variant',
     'csa_products' => 'CSA produkter',
     'csa_products_info' => '

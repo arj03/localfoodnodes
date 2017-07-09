@@ -16,7 +16,7 @@
 
         @component('admin.form-control-bar')
             <button type="submit" name="update" class="btn btn-success">{{ trans('admin/product.save_product') }}</button>
-            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/delete" class="btn btn-danger">{{ trans('admin/product.delete_product') }}</a>
+            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/delete/confirm" class="btn btn-danger">{{ trans('admin/product.delete_product') }}</a>
         @endcomponent
     </form>
 @endsection

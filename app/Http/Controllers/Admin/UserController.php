@@ -238,9 +238,9 @@ class UserController extends Controller
     }
 
     /**
-     * Confirm user delete action.
+     * Confirm delete action.
      */
-    public function confirmDelete(Request $request)
+    public function deleteConfirm(Request $request)
     {
         $user = Auth::user();
 
