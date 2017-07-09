@@ -426,7 +426,9 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getLinkFacebookAttribute($value)
     {
-        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        if ($value && $value !== 'http://') {
+            return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        }
     }
 
     /**
@@ -437,7 +439,9 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getLinkFacebookProducersAttribute($value)
     {
-        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        if ($value && $value !== 'http://') {
+            return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        }
     }
 
     /**
