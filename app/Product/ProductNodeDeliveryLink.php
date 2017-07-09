@@ -131,6 +131,8 @@ class ProductNodeDeliveryLink extends \App\BaseModel
     {
         $orderDateItemLinks = $this->getOrderDateItemLinks();
 
+        // \Log::debug(var_export($orderDateItemLinks->count(), true));
+
         $orderQuantity = 0;
         if (!$orderDateItemLinks->isEmpty()) {
             $orderDateItemLinks->each(function($orderDateItemLink) use (&$orderQuantity) {
@@ -145,7 +147,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
             });
         }
 
-        $productQuantity = $this->getProduct()->getProductionQuantity($this->date, $cartQuantity) - $orderQuantity;
+        $productQuantity = $this->getProduct()->getProductionQuantity($this->date, $cartQuantity);
 
         $quantity = $productQuantity - $orderQuantity;
 

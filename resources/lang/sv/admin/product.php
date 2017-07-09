@@ -99,7 +99,7 @@ return [
     'specify_number_products' => 'Ange antalet produkter tillgänliga per vecka',
     'title' => 'Produkt produktion',
     'update_deliveries' => 'Uppdatera leveransdatum',
-    'update_production' => 'Updatera produktion',
+    'update_production' => 'Uppdatera produktion',
     'variants' => 'Varianter',
     'variant_disabled' => 'Du kan inte redigera varianter för stunden. Behöver du ändra en variant, ta bort den och skapa den igen.',
     'variant_save_first' => 'Du kan skapa fler varianter efter att du har sparat produkten.',
