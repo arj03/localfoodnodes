@@ -17,7 +17,7 @@
                             <label class="form-check-label w-100">
                                 <input class="form-check-input variant" type="radio" name="variant_id" value="{{ $variant->id}}" {{ $index === 0 ? 'checked' : '' }}>
                                 {{ $product->name}} - {{ $variant->name }}
-                                ({{ $variant->getPackageAmountUnit() }})
+                                {{ $variant->getPackageAmountUnit() }}
                                 <div class="price">
                                     {{ $variant->getPriceWithUnit() }}
                                 </div>
@@ -35,7 +35,7 @@
                             <div>
                                 {{ $product->name }}
                                 @if ($product->price_unit !== 'product')
-                                    ({{ $product->getPackageAmountUnit() }})
+                                    {{ $product->getPackageAmountUnit() }}
                                 @endif
                                 <div class="price">{{ $product->getPriceWithUnit() }}</div>
                             </div>

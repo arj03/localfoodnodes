@@ -185,7 +185,7 @@ class Product extends \App\BaseModel
      */
     public function smallestVariant()
     {
-        return $this->productVariants()->first();
+        return $this->productVariants()->sortBy('package_amount')->first();
     }
 
     /**
@@ -339,7 +339,7 @@ class Product extends \App\BaseModel
     public function getPackageAmountUnit()
     {
         if ($this->price_unit !== 'product' && $this->package_amount) {
-            return $this->package_amount . ' ' . trans_choice('units.' . $this->price_unit, $this->package_amount);
+            return '(' . $this->package_amount . ' ' . trans_choice('units.' . $this->price_unit, $this->package_amount) . ')';
         }
     }
 
