@@ -22,7 +22,7 @@
                                 <tr>
                                     <td>{{ $orderDateItemLink->getItem()->product['name'] }}</td>
                                     <td>{{ $orderDateItemLink->quantity }}</td>
-                                    <td>{{ $orderDateItemLink->getPriceWithUnit() }}</td>
+                                    <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
                                 </tr>
                             @endforeach
                         </table>
