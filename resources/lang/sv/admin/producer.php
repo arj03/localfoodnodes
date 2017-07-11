@@ -7,7 +7,7 @@ return [
     'all_events' => 'Alla evenemang',
     'all_orders' => 'Alla beställningar',
     'all_products' => 'Alla produkter',
-    'all_upcoming_deliveries' => 'Alla kommande leveranser',
+    'all_upcoming_deliveries' => 'Alla kommande utlämningar',
     'bank_name' => 'Bankens namn',
     'bank_account_number' => 'Bankgiro/Bankonto',
     'cancel' => 'Avbryt',
