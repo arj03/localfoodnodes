@@ -131,8 +131,6 @@ class ProductNodeDeliveryLink extends \App\BaseModel
     {
         $orderDateItemLinks = $this->getOrderDateItemLinks();
 
-        // \Log::debug(var_export($orderDateItemLinks->count(), true));
-
         $orderQuantity = 0;
         if (!$orderDateItemLinks->isEmpty()) {
             $orderDateItemLinks->each(function($orderDateItemLink) use (&$orderQuantity) {

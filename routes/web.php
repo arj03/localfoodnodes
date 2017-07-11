@@ -100,6 +100,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/{producerId}/deliveries', 'Admin\ProducerController@deliveries');
         Route::get('/{producerId}/delivery/{orderDateId}/picklist', 'Admin\ProducerController@picklist');
         Route::get('/{producerId}/orders/user/{userId}', 'Admin\OrderController@userOrders');
+        Route::get('/{producerId}/orders/product/{productId}', 'Admin\OrderController@productOrders');
         Route::get('/{producerId}/order/{orderId}', 'Admin\OrderController@order');
         Route::post('/{producerId}/invite/send', 'Admin\ProducerController@sendAdminInvite');
         Route::get('/{producerId}/invite/accept', 'Admin\ProducerController@acceptInvite');

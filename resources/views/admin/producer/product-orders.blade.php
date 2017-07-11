@@ -30,17 +30,19 @@
                                     <td>
                                         <a href="/account/producer/{{ $producer->id }}/order/{{ $orderItem->orderDateItemLink()->id }}">{{ $orderItem->orderDateItemLink()->ref }}</a>
                                     </td>
+                                    <td>{{ $orderItem->getName() }}</td>
                                     <td>
-                                        <a href="/account/producer/{{ $producer->id }}/orders/product/{{ $orderItem->product['id'] }}">
-                                            {{ $orderItem->getName() }}
+                                        <a href="/account/producer/{{ $producer->id }}/orders/user/{{ $orderItem->user['id'] }}">
+                                            {{ $orderItem->user['name'] }}
                                         </a>
                                     </td>
-                                    <td>{{ $orderItem->user['name'] }}</td>
                                     <td class="text-right">{{ $orderItem->orderDateItemLink()->quantity }}</td>
                                     <td>{{ $orderItem->node['name'] }}</td>
                                     <td>
                                         @if ($orderItem->orderDateItemLink()->getDate())
                                             {{ $orderItem->orderDateItemLink()->getDate()->date('Y-m-d') }}
+                                        @else
+                                            -
                                         @endif
                                     </td>
                                     <td class="text-right">{!! $orderItem->orderDateItemLink()->getPriceWithUnit() !!}</td>

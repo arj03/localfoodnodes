@@ -37,10 +37,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    {{ $orderItem->product['name'] }}
-                                    @if ($orderItem->variant)
-                                        - {{ $orderItem->variant['name'] }}
-                                    @endif
+                                    {{ $orderItem->getName() }}
                                 </td>
                                 <td>{{ $orderDateItemLink->quantity }}</td>
                                 <td>{{ $orderItem->getPriceWithUnit() }}</td>

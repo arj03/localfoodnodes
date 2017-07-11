@@ -84,6 +84,9 @@
                         <p>{{ trans('admin/producer.no_upcoming_deliveries') }}</p>
                     @endif
                 </div>
+                <div class="card-footer">
+                    <a href="/account/producer/{{ $producer->id }}/deliveries">{{ trans('admin/producer.all_upcoming_deliveries') }}</a>
+                </div>
             </div>
         </div> <!-- Deliveries end -->
 
