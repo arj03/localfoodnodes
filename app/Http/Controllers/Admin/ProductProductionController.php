@@ -183,7 +183,7 @@ class ProductProductionController extends Controller
 
         foreach ($request->input('quantity') as $year => $weeks) {
             foreach ($weeks as $week => $quantity) {
-                if ($quantity) {
+                if (is_numeric($quantity) && (int) $quantity >= 0) {
                     ProductProductionAdjustment::create([
                         'product_id' => $product->id,
                         'year' => $year,

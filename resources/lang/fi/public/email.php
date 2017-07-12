@@ -16,6 +16,7 @@ return [
         You recently requested to reset your password for your account on localfoodnodes.org. Click on the button below to continue to the reset password page.
     ',
     'reset_password_mistake' => 'If you did not request a password reset, please ignore this email.',
-    'view_order' => 'View order',
+    'view_orders' => 'View order',
+    'view_deliveries' => 'View deliveries',
     'welcome' => 'Welcome',
 ];

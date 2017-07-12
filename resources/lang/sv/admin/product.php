@@ -22,7 +22,7 @@ return [
     'delete_variant' => 'Ta bort variant',
     'delivery_dates' => 'Leveransdatum',
     'delivery_dates_select_info' => 'För att din produkt ska bli synlig på noden måste du välja dina leveransdatum.',
-    'delivery_dates_no_nodes' => 'Du har inte valt några <a href=":url">utlämningsplatser</a>. Leveransdatumen baseras på noderna utlämningsdagar så du behöver välja minst en utlämningsplats som du kommer leverera till.',
+    'delivery_dates_no_nodes' => 'Du har inte valt några utlämningsplatser. Leveransdatumen baseras på noderna utlämningsdagar så du behöver välja minst en utlämningsplats som du kommer leverera till. Ladda om sidan när du har valt en eller flera platser så kommer du se kalendern med utlämningsdatum.',
     'delivery_dates_recurring_products_info' => '<b>:product_name</b> är en återkommande produkt som produceras kontinuerligt under en period, och kvaniteten kan variera under denna period. I denna vy har du möjlighet att ändra hur många förpackningar av produkten som du har tillgänglig vid ett visst leveransdatum.',
     'edit_delivery_dates' => 'Redigera leveransdatum',
     'edit_product' => 'Redigera produkt',
@@ -86,6 +86,7 @@ return [
             <li>Du kan justera veckosaldo individuellt för varje vecka om du producerar mer eller mindre vissa veckor. Se bara till att göra det i god tid innan.</li>
         </ul>
     ',
+    'reload_page' => 'Ladda om sidan',
     'save' => 'Spara',
     'save_product' => 'Spara produkt',
     'save_product_continue' => 'Spara produkt och fortsätt till leveransdatum',

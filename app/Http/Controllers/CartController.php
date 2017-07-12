@@ -39,6 +39,19 @@ class CartController extends Controller
             return redirect('/login');
         }
 
+        $cartDates = $user->cartDates();
+        $today = new \DateTime(date('Y-m-d'));
+
+        $cartDates->each(function($cartDate) use ($today) {
+            if ($cartDate->date < $today) {
+                $cartDateItemLinks = $cartDate->cartDateItemLinks();
+                $cartDateItemLinks->each(function($cartDateItemLink) {
+                    $cartDateItemLink->delete();
+                });
+                $cartDate->delete();
+            }
+        });
+
         return view('public/checkout', [
             'user' => $user
         ]);

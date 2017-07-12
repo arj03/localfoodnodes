@@ -32,20 +32,37 @@ class OrderController extends Controller
     /**
      * Create order action.
      */
-    public function createOrder()
+    public function createOrder(Request $request)
     {
         $user = Auth::user();
-
         $errors = $this->validateOrder($user);
+
         if ($errors->isEmpty()) {
-            $orders = $this->saveOrder($user);
+            $orderDateItemLinks = $this->saveOrder($user);
 
-            \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($orders['orderDates']));
+            $customerOrderDates = $orderDateItemLinks->map(function($orderDateItemLink) {
+                return $orderDateItemLink->getDate();
+            })->unique(function($orderDate) {
+                return $orderDate->date('Y-m-d');
+            })->filter();
 
-            // Send producer emails
-            $orders['orderItems']->groupBy('producer_id')->each(function($orderItems) {
-                $producerEmail = $orderItems[0]->producer['email'];
-                \Mail::to($producerEmail)->send(new \App\Mail\ProducerOrder($orderItems));
+            \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($customerOrderDates));
+
+            $producerOrderDateItemLinksByProducerId = $orderDateItemLinks->groupBy(function($orderDateItemLink) {
+                return $orderDateItemLink->getItem()->producer_id;
+            });
+
+            $producerOrderDatesByProducerId = $producerOrderDateItemLinksByProducerId->map(function($orderDateItemLinks) {
+                return $orderDateItemLinks->map(function($orderDateItemLink) {
+                    return $orderDateItemLink->getDate();
+                })->unique(function($orderDate) {
+                    return $orderDate->date('Y-m-d');
+                })->filter();
+            });
+
+            $producerOrderDatesByProducerId->each(function($orderDates, $producerId) {
+                $producer = Producer::find($producerId);
+                \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $orderDates));
             });
 
             $user->cartDateItemLinks()->each->delete();
@@ -53,6 +70,11 @@ class OrderController extends Controller
             \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
 
             return redirect('/account/user/orders');
+        }
+
+        if ($errors) {
+            $request->session()->flash('error', $errors->all());
+
         }
 
         return redirect()->back()->withErrors($errors);
@@ -94,10 +116,9 @@ class OrderController extends Controller
      */
     private function saveOrder($user)
     {
-        $orderDates = new Collection();
-        $orderItems = new Collection();
+        $orderDateItemLinks = new Collection();
 
-        $user->cartDateItemLinks()->each(function($cartDateItemLink) use ($user, &$orderDates, &$orderItems) {
+        $user->cartDateItemLinks()->each(function($cartDateItemLink) use ($user, &$orderDateItemLinks) {
             $cartItem = $cartDateItemLink->getItem();
             $cartDate = $cartDateItemLink->getDate();
 
@@ -115,9 +136,6 @@ class OrderController extends Controller
                 'message' => $cartItem->message,
             ]);
 
-            // Add to email data collection
-            $orderItems->push($orderItem);
-
             $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->where('user_id', $user->id)->first();
             if (!$orderDate) {
                 $orderDate = OrderDate::create([
@@ -125,9 +143,6 @@ class OrderController extends Controller
                     'date' => $cartDate->date('Y-m-d'),
                 ]);
             }
-
-            // Add to email data collection
-            $orderDates->push($orderDate);
 
             $orderDateItemLink = OrderDateItemLink::create([
                 'user_id' => $user->id,
@@ -137,11 +152,10 @@ class OrderController extends Controller
                 'quantity' => $cartDateItemLink->quantity,
                 'ref' => $cartDateItemLink->ref,
             ]);
+
+            $orderDateItemLinks->push($orderDateItemLink);
         });
 
-        return [
-            'orderDates' => $orderDates,
-            'orderItems' => $orderItems,
-        ];
+        return $orderDateItemLinks;
     }
 }
