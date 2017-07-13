@@ -547,15 +547,19 @@ class UserController extends Controller
      */
     private function sendActivationLink($user)
     {
-        // Clear
-        DB::table('user_activations')->where('user_id', $user->id)->delete();
+        $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
 
-        // Create new token
-        $token = hash_hmac('sha256', str_random(40), config('app.key'));
-        DB::table('user_activations')->insert(['user_id' => $user->id, 'token' => $token]);
+        if (!$token) {
+            // Clear.
+            DB::table('user_activations')->where('user_id', $user->id)->delete();
+            // Create new token and insert to database.
+            DB::table('user_activations')->insert(['user_id' => $user->id, 'token' => hash_hmac('sha256', str_random(64), config('app.key'))]);
+            // Get token from database to ensure that we send the correct one in the email.
+            $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
+        }
 
         Mail::send('email.activate-user', ['user' => $user, 'token' => $token], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject('Activate account');
+            $message->to($user->email, $user->name)->subject(trans('public/email.activate_your_account'));
         });
     }
 
