@@ -39,12 +39,15 @@ class OrderController extends Controller
 
         if ($errors->isEmpty()) {
             $orderDateItemLinks = $this->saveOrder($user);
+            $orderRefs = $orderDateItemLinks->map->ref;
 
             $customerOrderDates = $orderDateItemLinks->map(function($orderDateItemLink) {
                 return $orderDateItemLink->getDate();
             })->unique(function($orderDate) {
                 return $orderDate->date('Y-m-d');
             })->filter();
+
+            $customerOrderDates->each->setOrderFilter($orderRefs);
 
             \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($customerOrderDates));
 
@@ -60,8 +63,11 @@ class OrderController extends Controller
                 })->filter();
             });
 
-            $producerOrderDatesByProducerId->each(function($orderDates, $producerId) {
+            $producerOrderDatesByProducerId->each(function($orderDates, $producerId) use ($orderRefs) {
                 $producer = Producer::find($producerId);
+
+                $orderDates->each->setOrderFilter($orderRefs);
+
                 \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $orderDates));
             });
 
@@ -69,7 +75,7 @@ class OrderController extends Controller
 
             \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
 
-            return redirect('/account/user/orders');
+            return redirect('/account/user/pickups');
         }
 
         if ($errors) {

@@ -54,7 +54,9 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/password/edit', 'Admin\UserController@editPassword');
         Route::post('/password/update', 'Admin\UserController@updatePassword');
         Route::get('/pickups', 'Admin\UserController@pickups');
-        Route::get('/orders', 'Admin\UserController@orders');
+        Route::get('/orders/producer/{producerId}', 'Admin\UserController@producerOrders');
+
+        // Route::get('/orders', 'Admin\UserController@orders');
         Route::get('/order/{orderItemId}', 'Admin\UserController@order');
         Route::get('/order/{orderItemId}/delete', 'Admin\UserController@deleteOrderItem');
         Route::post('/membership/callback', 'Admin\UserController@membershipCallback');

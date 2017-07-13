@@ -33,7 +33,11 @@
                                             </a>
                                         </td>
                                         <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
-                                        <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
+                                        <td>
+                                            <a href="/account/user/orders/producer/{{ $orderDateItemLink->producer_id }}">
+                                                {{ $orderDateItemLink->getItem()->producer['name'] }}
+                                            </a>
+                                        </td>
                                         <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                         <td class="text-right">{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
                                         <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus()}}</span></td>

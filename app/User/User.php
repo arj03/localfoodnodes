@@ -306,33 +306,6 @@ class User extends BaseUser
     }
 
     /**
-     * Get order items.
-     *
-     * @param int $productId
-     * @return Collection
-     */
-    public function orderItems($productId = null)
-    {
-        $orderItems = $this->hasMany('App\Order\OrderItem');
-
-        if ($productId) {
-            $orderItems->where('product_id', $productId);
-        }
-
-        return $orderItems->get();
-    }
-
-    /**
-     * Get order items grouped by producer.
-     *
-     * @return Collection
-     */
-    public function orderItemsGroupedByProducer()
-    {
-        return $this->hasMany('App\Order\OrderItem')->get()->groupBy('producer_id');
-    }
-
-    /**
      * Define relationship with order date item links.
      *
      * @return Collection
@@ -347,9 +320,15 @@ class User extends BaseUser
      *
      * @return Collection
      */
-    public function orderDateItemLinks()
+    public function orderDateItemLinks($producerId = null)
     {
-        return $this->orderDateItemLinksRelationship;
+        $orderDateItemLinks = $this->orderDateItemLinksRelationship;
+
+        if ($producerId) {
+            $orderDateItemLinks = $orderDateItemLinks->where('producer_id', $producerId);
+        }
+
+        return $orderDateItemLinks;
     }
 
     /**

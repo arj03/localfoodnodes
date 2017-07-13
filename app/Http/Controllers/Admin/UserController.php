@@ -355,15 +355,18 @@ class UserController extends Controller
     /**
      * Orders action.
      */
-    public function orders()
+    public function producerOrders(Request $request, $producerId)
     {
         $user = Auth::user();
+        $producer = Producer::find($producerId);
+        $orderDateItemLinks = $user->orderDateItemLinks($producerId);
 
-        return view('admin.user.orders', [
-            'user' => $user,
+        return view('admin.user.producer-orders', [
+            'orderDateItemLinks' => $orderDateItemLinks,
             'breadcrumbs' => [
                 $user->name => 'user',
-                trans('admin/user-nav.orders') => ''
+                trans('admin/user-nav.pickups') => 'user/pickups',
+                $producer->name => ''
             ]
         ]);
     }

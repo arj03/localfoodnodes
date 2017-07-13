@@ -112,7 +112,7 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $producer = $user->producerAdminLink($producerId)->getProducer();
-        $orderItems = $producer->orderItems(null, $producerId)->filter(function($orderItem) use ($productId) {
+        $orderItems = $producer->orderItems()->filter(function($orderItem) use ($productId) { // null, $producerId
             return $orderItem->product['id'] == $productId;
         })->sortByDesc(function($orderItem) {
             $orderDate = $orderItem->orderDateItemLink()->getDate();
