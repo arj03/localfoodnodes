@@ -7,10 +7,8 @@
         <div class="top">
             <div class="row">
                 <div class="col-12 col-xl-7">
-                    <h1>
-                        {{ $event->name }}
-                        <div class="hidden-xl-up">{{ $event->start_datetime->format('Y-m-d H:i') }}</div>
-                    </h1>
+                    <h1>{{ $event->name }}</h1>
+                    <div class="hidden-xl-up">{{ $event->start_datetime->format('Y-m-d H:i') }}</div>
                     {{ $event->address }} {{ $event->zip }} {{ $event->city }}
                 </div>
                 <div class="col-12 col-xl-5 hidden-lg-down text-right">
