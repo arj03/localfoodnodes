@@ -16,7 +16,7 @@ return [
     'product' => 'Produkt',
     'products' => 'Produkter',
     'quantity' => 'Antal',
-    'recieve_instruction' => 'Du och producenten kommer få vars en e-postbekräftelse. Du kan titta dina kommande <a href="account/user/orders"> bokningar</a> för översikt och betalningsinstruktioner.',
+    'recieve_instruction' => 'Du och producenten kommer få vars en e-postbekräftelse. Du kan titta dina kommande <a href="/account/user/pickups">utlämningar</a> för översikt och betalningsinstruktioner.',
     'remove' => 'Ta bort',
     'send_order' => 'Skicka bokning',
     'summary' => 'Summering',

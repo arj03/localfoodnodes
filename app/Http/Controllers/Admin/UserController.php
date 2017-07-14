@@ -403,7 +403,7 @@ class UserController extends Controller
         $orderDateItemLink->delete();
         $request->session()->flash('message', [trans('admin/messages.order_deleted')]);
 
-        return redirect('/account/user/orders');
+        return redirect('/account/user/pickups');
     }
 
     /**
