@@ -94,6 +94,7 @@ class CartController extends Controller
 
         if ($errors->isEmpty()) {
             $request->session()->flash('message', [trans('public/product.added_to_cart')]);
+            $request->session()->flash('added_to_cart_modal', true);
             return redirect($node->permalink()->url);
         } else {
             return redirect()->back()->withInput()->withErrors($errors);

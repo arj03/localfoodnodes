@@ -945,6 +945,39 @@ body.public-node-node .node-metrics .metric .label {
   line-height: 16px;
 }
 
+body.public-node-node #added-to-cart-modal .modal-dialog {
+  max-width: 700px;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-header {
+  border: 0;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body {
+  color: #fff;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body .choice {
+  -webkit-box-align: center;
+  align-items: center;
+  background: #d6c69b;
+  display: -webkit-box;
+  display: flex;
+  color: #fff;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 1.5rem;
+  height: 200px;
+  text-transform: uppercase;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body .choice:hover {
+  text-decoration: none;
+  background: #ccba89;
+}
+
 body.public-producer-producer .product-card,
 body.public-node-node .product-card {
   text-decoration: none;

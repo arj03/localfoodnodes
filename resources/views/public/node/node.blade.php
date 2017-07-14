@@ -298,3 +298,31 @@
         updateNavigation($('.calendar').find('.month:visible'));
     </script>
 @endsection
+
+@section('modal')
+    @if (Session::has('added_to_cart_modal'))
+        <div class="modal fade" id="added-to-cart-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Product added to cart</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body body-text">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="#" class="choice continue-shopping" data-dismiss="modal">Continue shopping</a>
+                            </div>
+                            <div class="col-6">
+                                <a href="/checkout" class="choice go-to-checkout">Go to checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#added-to-cart-modal').modal('show');
+        </script>
+    @endif
+@endsection
