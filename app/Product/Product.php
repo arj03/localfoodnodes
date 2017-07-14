@@ -137,7 +137,7 @@ class Product extends \App\BaseModel
      */
     public function productVariants()
     {
-        return $this->hasMany('App\Product\ProductVariant')->get();
+        return $this->hasMany('App\Product\ProductVariant')->orderBy('price')->get();
     }
 
     /**
@@ -147,7 +147,7 @@ class Product extends \App\BaseModel
      */
     public function variants($includeMainVariant = true)
     {
-        return $this->productVariants()->sortBy('package_amount');
+        return $this->productVariants();
     }
 
     /**
@@ -185,7 +185,7 @@ class Product extends \App\BaseModel
      */
     public function smallestVariant()
     {
-        return $this->productVariants()->sortBy('package_amount')->first();
+        return $this->productVariants()->sortBy('price')->first();
     }
 
     /**
@@ -448,7 +448,7 @@ class Product extends \App\BaseModel
             $errors->push('Product has no quantity.');
         }
 
-        if ($this->deliveryLinks($nodeId)->count() <= 0) {
+        if ($this->deliveryLinks($nodeId, null, true)->count() <= 0) { // node, dates, ignore deadline
             $isVisible = false;
             $errors->push('Product has no delivery dates.');
         }
@@ -460,6 +460,11 @@ class Product extends \App\BaseModel
         }
     }
 
+    /**
+     * Get the date that for the product deadline. After this dates products no longer bookable.
+     *
+     * @return DateTime
+     */
     public function getDeadlineDate()
     {
         $dateTime = new \DateTime();

@@ -243,7 +243,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
      * @param int $quantity
      * @return string
      */
-    public function getCheckboxAttributes($requestData, $variant) {
+    public function getCheckboxAttributes($requestData, $variant = null) {
         $attributes = [];
 
         $disabled = ($this->getAvailableQuantity($variant) <= 0) ? true : false;

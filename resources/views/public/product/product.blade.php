@@ -87,7 +87,7 @@
             $('.select-all-dates-action').click(function() {
                 var month = $(this).closest('.month');
                 var checkAll = month.find('input:checked').length < month.find('input').length;
-                month.find('input').prop('checked', checkAll);
+                month.find('input:enabled').prop('checked', checkAll);
             });
         });
     </script>

@@ -16,6 +16,7 @@ return [
     'producer' => 'Producent',
     'select' => 'Välj variant',
     'select_deliveries' => 'Välj upphämtningsdatum',
+    'sold_out' => 'Slutsåld',
 
     // Errors
     'no_product' => 'Du har inte valt en produkt.',
@@ -23,4 +24,5 @@ return [
     'no_delivery_dates' => 'Du ar inte valt något utlämningsdatum.',
     'no_quantity' => 'Du har inte valt antal.',
     'required_fields_missing' => 'Obigatoriska fält saknas.',
+    'quantity_changed' => 'Antalet för datum :date överskred tillgängligheten och har blivit ändrat.',
 ];

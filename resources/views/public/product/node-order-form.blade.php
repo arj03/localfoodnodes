@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">{{ trans('public/node.order') }}</div>
-    <div class="card-block order-block">
-        <form action="/checkout/item/add" method="post">
+    <form action="/checkout/item/add" method="post" class="order-form">
+        <div class="card-block">
             {{ csrf_field() }}
             <input type="hidden" name="node_id" value="{{ $node->id }}" />
             <input type="hidden" name="product_id" value="{{ $product->id }}" />
@@ -43,7 +43,9 @@
                     </div>
                 @endif
             </div>
+        </div>
 
+        <div class="card-block">
             <div class="form-group">
                 <label class="form-control-label" for="quantity">
                     {{ trans('public/node.how_many') }}
@@ -53,7 +55,9 @@
                     <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
                 </div>
             </div>
+        </div>
 
+        <div class="card-block">
             <div class="form-group">
                 <label class="form-control-label">
                     {{ trans('public/node.select_pickup') }}
@@ -82,19 +86,25 @@
                             </div>
                         @endforeach
                     </div>
+                @else
+                    <p>Det finns inga tillgängliga bokningsdatum</p>
                 @endif
             </div>
+        </div>
 
+        <div class="card-block">
             <div class="form-group">
                 <label for="exampleTextarea">{{ trans('public/product.message_producer') }}</label>
                 <textarea class="form-control" name="message" rows="3" placeholder="{{ trans('public/product.message_producer_placeholder') }}"></textarea>
             </div>
+        </div>
 
+        <div class="card-block">
             @if (!Auth::check())
                 <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login_needed') }}</button>
             @else
                 <button type="submit" class="btn btn-success pull-left">{{ trans('public/node.add_to_cart') }}</button>
             @endif
-        </form>
-    </div>
+        </div>
+    </form>
 </div>

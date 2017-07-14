@@ -875,7 +875,16 @@ body.public-product-product .info {
   margin-top: -150px;
 }
 
-body.public-product-product .order-block .price {
+body.public-product-product .order-form .card-block {
+  overflow: hidden;
+  border-bottom: 1px dashed #eee;
+}
+
+body.public-product-product .order-form .card-block:last-child {
+  border-bottom: 0;
+}
+
+body.public-product-product .order-form .card-block .price {
   white-space: nowrap;
   font-weight: bold;
 }

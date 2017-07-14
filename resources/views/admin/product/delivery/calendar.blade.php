@@ -1,4 +1,4 @@
-@foreach($nodes as $index => $node)
+@foreach ($nodes as $index => $node)
     <div class="card">
         <div class="card-header toggle">
             {{ $node->name }} - {{ trans('admin/product.select_delivery_dates') }}

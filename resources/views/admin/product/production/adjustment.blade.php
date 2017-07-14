@@ -25,7 +25,7 @@
                                 <div class="card">
                                     <div class="card-header">{{ trans('months.' . date('F', strtotime($firstDateOfMonth))) }} {{ date('Y', strtotime($firstDateOfMonth)) }}</div>
                                     <div class="card-block">
-                                        @foreach($dates as $date)
+                                        @foreach ($dates as $date)
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon col-4">{{ date('d', strtotime('monday this week', $date->getTimestamp())) }} - {{ date('d', strtotime('sunday this week', $date->getTimestamp())) }} {{ substr(trans('months.' . date('F', $date->getTimestamp())), 0, 3) }}</span>

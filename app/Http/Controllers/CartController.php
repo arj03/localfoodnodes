@@ -228,7 +228,9 @@ class CartController extends Controller
             $availableQuantity = $deliveryLink->getAvailableQuantity($variant, $cartQuantity);
 
             if ($availableQuantity < $quantity) {
-                $errors->push('The requested quantity for date ' . $cartDate->date('Y-m-d') . ' exceeded availability and has been changed.');
+                $errors->push(trans('public/product.quantity_changed', [
+                    'date' => $cartDate->date('Y-m-d')
+                ]));
                 $quantity = $availableQuantity;
                 $cartQuantity += $quantity;
             }
@@ -264,7 +266,9 @@ class CartController extends Controller
         $availableQuantity = $deliveryLink->getAvailableQuantity($variant);
 
         if ($availableQuantity < $quantity) {
-            $errors->push('The requested quantity for date ' . $cartDateItemLink->getDate()->date('Y-m-d') . ' exceeded availability and has been changed.');
+            $errors->push(trans('public/product.quantity_changed', [
+                'date' => $cartDate->date('Y-m-d')
+            ]));
             $quantity = $availableQuantity;
         }
 

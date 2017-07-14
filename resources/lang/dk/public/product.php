@@ -14,6 +14,7 @@ return [
     'producer' => 'Producer',
     'select' => 'Select variant',
     'select_deliveries' => 'Select delivery dates',
+    'sold_out' => 'Sold out',
 
     // Errors
     'no_product' => 'You have not selected a product.',
@@ -21,4 +22,5 @@ return [
     'no_delivery_dates' => 'You have not selected any delivery dates.',
     'no_quantity' => 'Product quantity cannot be empty.',
     'required_fields_missing' => 'Required fields are missing.',
+    'quantity_changed' => 'The requested quantity for date :date exceeded availability and has been changed.',
 ];

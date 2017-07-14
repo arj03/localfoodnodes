@@ -42,7 +42,7 @@
                         @include('admin.field-error', ['field' => 'price_unit'])
                     </label>
                     <select class="form-control" name="price_unit">
-                        @foreach(UnitsHelper::getPriceUnits() as $key => $label)
+                        @foreach (UnitsHelper::getPriceUnits() as $key => $label)
                             <option value="{{ $key }}" {{ $product->price_unit === $key ? 'selected' : '' }}>{{ $label }}</option>
                         @endforeach
                     </select>
