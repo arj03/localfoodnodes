@@ -75,22 +75,24 @@
                 <div class="card-header">{{ trans('admin/user.nodes_you_follow') }}</div>
                 <div class="card-block">
                     @if ($user->nodeLinks()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <td>{{ trans('admin/user.node_name') }}</td>
-                                    <td class="text-right"></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($user->nodeLinks() as $nodeLink)
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
                                     <tr>
-                                        <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
-                                        <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
+                                        <td>{{ trans('admin/user.node_name') }}</td>
+                                        <td class="text-right"></td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user->nodeLinks() as $nodeLink)
+                                        <tr>
+                                            <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
+                                            <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         {{ trans('admin/user.no_nodes') }}
                     @endif

@@ -25,26 +25,28 @@
                     </ul>
                 </div>
                 <div class="card-block">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ trans('admin/user.product') }}</th>
-                                <th>{{ trans('admin/user.quantity') }}</th>
-                                <th>{{ trans('admin/user.price') }}</th>
-                                <th>{{ trans('admin/user.item_total') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    {{ $orderItem->getName() }}
-                                </td>
-                                <td>{{ $orderDateItemLink->quantity }}</td>
-                                <td>{{ $orderItem->getPriceWithUnit() }}</td>
-                                <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('admin/user.product') }}</th>
+                                    <th>{{ trans('admin/user.quantity') }}</th>
+                                    <th>{{ trans('admin/user.price') }}</th>
+                                    <th>{{ trans('admin/user.item_total') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {{ $orderItem->getName() }}
+                                    </td>
+                                    <td>{{ $orderDateItemLink->quantity }}</td>
+                                    <td>{{ $orderItem->getPriceWithUnit() }}</td>
+                                    <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p>{{ $orderItem->message }}</p>
                 </div>
                 <div class="card-footer">

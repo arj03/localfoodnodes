@@ -12,20 +12,22 @@
                 <div class="card">
                     <div class="card-header">{{ $orderDateItemLinks->first()->getItem()->user['name'] }}</div>
                     <div class="card-block">
-                        <table class="table">
-                            <tr>
-                                <th>Produkt</th>
-                                <th>Antal</th>
-                                <th>Summa</th>
-                            </tr>
-                            @foreach ($orderDateItemLinks as $orderDateItemLink)
+                        <div class="table-responsive">
+                            <table class="table">
                                 <tr>
-                                    <td>{{ $orderDateItemLink->getItem()->product['name'] }}</td>
-                                    <td>{{ $orderDateItemLink->quantity }}</td>
-                                    <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                    <th>Produkt</th>
+                                    <th>Antal</th>
+                                    <th>Summa</th>
                                 </tr>
-                            @endforeach
-                        </table>
+                                @foreach ($orderDateItemLinks as $orderDateItemLink)
+                                    <tr>
+                                        <td>{{ $orderDateItemLink->getItem()->product['name'] }}</td>
+                                        <td>{{ $orderDateItemLink->quantity }}</td>
+                                        <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
 
                         <b>
                             Total:

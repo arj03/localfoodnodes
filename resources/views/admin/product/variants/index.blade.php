@@ -13,46 +13,48 @@
                 <div class="card-header">{{ trans('admin/product.variants') }}</div>
                 <div class="card-block">
                     @if ($product->variants()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/product.main_variant') }}</th>
-                                    <th>{{ trans('admin/product.name') }}</th>
-                                    <th class="text-right">{{ trans('admin/product.amount_per_package') }}</th>
-                                    <th class="text-right">{{ trans('admin/product.production') }}</th>
-                                    <th class="text-right">{{ trans('admin/product.price') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($product->variants() as $variant)
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            @if ($variant->main_variant)
-                                                <i class="fa fa-check"></i>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/edit">{{ $variant->name }}</a>
-                                        </td>
-                                        <td class="text-right">{{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }}</td>
-                                        <td class="text-right">{{ $variant->getProductionQuantity() }}</td>
-                                        <td class="text-right">{{ $variant->price }}</td>
-                                        <td>
-                                            <div class="dropdown dropdown-action-component">
-                                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fa fa-gear"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/set-main-variant">
-                                                        {{ trans('admin/product.set_main_variant') }}
-                                                    </a>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                        <th>{{ trans('admin/product.main_variant') }}</th>
+                                        <th>{{ trans('admin/product.name') }}</th>
+                                        <th class="text-right">{{ trans('admin/product.amount_per_package') }}</th>
+                                        <th class="text-right">{{ trans('admin/product.production') }}</th>
+                                        <th class="text-right">{{ trans('admin/product.price') }}</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($product->variants() as $variant)
+                                        <tr>
+                                            <td>
+                                                @if ($variant->main_variant)
+                                                    <i class="fa fa-check"></i>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/edit">{{ $variant->name }}</a>
+                                            </td>
+                                            <td class="text-right">{{ $variant->package_amount }} {{ trans_choice('units.' . $product->package_unit, $variant->package_amount) }}</td>
+                                            <td class="text-right">{{ $variant->getProductionQuantity() }}</td>
+                                            <td class="text-right">{{ $variant->price }}</td>
+                                            <td>
+                                                <div class="dropdown dropdown-action-component">
+                                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-gear"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/set-main-variant">
+                                                            {{ trans('admin/product.set_main_variant') }}
+                                                        </a>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         {{ trans('admin/product.no_variants') }}
                     @endif

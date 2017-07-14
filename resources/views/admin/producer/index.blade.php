@@ -50,36 +50,38 @@
                 </div>
                 <div class="card-block">
                     @if ($producer->getNextOrderDate() && $producer->getNextOrderDate()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/producer.order') }}</th>
-                                    <th>{{ trans('admin/producer.product') }}</th>
-                                    <th>{{ trans('admin/producer.quantity') }}</th>
-                                    <th>{{ trans('admin/producer.node') }}</th>
-                                    <th>{{ trans('admin/producer.customer') }}</th>
-                                    <th class="text-right">{{ trans('admin/producer.status') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($producer->getNextOrderDate()->orderDateItemLinks(null, $producer->id) as $orderDateItemLink)
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>
-                                        </td>
-                                        <td>
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $orderDateItemLink->getItem()->product['id'] }}/edit">
-                                                {{ $orderDateItemLink->getItem()->getName() }}
-                                            </a>
-                                        </td>
-                                        <td>{{ $orderDateItemLink->quantity }}</td>
-                                        <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
-                                        <td>{{ $orderDateItemLink->getItem()->user['name'] }}</td>
-                                        <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
+                                        <th>{{ trans('admin/producer.order') }}</th>
+                                        <th>{{ trans('admin/producer.product') }}</th>
+                                        <th>{{ trans('admin/producer.quantity') }}</th>
+                                        <th>{{ trans('admin/producer.node') }}</th>
+                                        <th>{{ trans('admin/producer.customer') }}</th>
+                                        <th class="text-right">{{ trans('admin/producer.status') }}</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($producer->getNextOrderDate()->orderDateItemLinks(null, $producer->id) as $orderDateItemLink)
+                                        <tr>
+                                            <td>
+                                                <a href="/account/producer/{{ $producer->id }}/order/{{ $orderDateItemLink->id }}">{{ strtoupper($orderDateItemLink->ref) }}</a>
+                                            </td>
+                                            <td>
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $orderDateItemLink->getItem()->product['id'] }}/edit">
+                                                    {{ $orderDateItemLink->getItem()->getName() }}
+                                                </a>
+                                            </td>
+                                            <td>{{ $orderDateItemLink->quantity }}</td>
+                                            <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
+                                            <td>{{ $orderDateItemLink->getItem()->user['name'] }}</td>
+                                            <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         <p>{{ trans('admin/producer.no_upcoming_deliveries') }}</p>
                     @endif
@@ -96,52 +98,54 @@
                 <div class="card-header">{{ trans('admin/producer.your_products') }}</div>
                 <div class="card-block">
                     @if ($producer->products()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/producer.product') }}</th>
-                                    <th>{{ trans('admin/producer.production') }}</th>
-                                    <th>{{ trans('admin/producer.deliveries') }}</th>
-                                    <th>{{ trans('admin/producer.variants') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($producer->products() as $product)
-                                <tr>
-                                    <td>
-                                        <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/edit">{{ $product->name }}</a>
-                                        @if ($product->isVisible() !== true)
-                                            <i class="fa fa-warning" title="{{ $product->isVisible() }}"></i>
-                                        @endif
-                                    </td>
-                                    <!-- Production -->
-                                    <td>
-                                        @if ($product->productions()->count() > 0)
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">{{ trans('admin/producer.edit_production') }}</a>
-                                        @else
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">{{ trans('admin/producer.create_production') }}</a>
-                                        @endif
-                                    </td>
-                                    <!-- Deliveries -->
-                                    <td>
-                                        @if ($product->deliveryLinks()->count() > 0)
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/producer.edit_delivery_dates') }}</a>
-                                        @else
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/producer.select_delivery_dates') }}</a>
-                                        @endif
-                                    </td>
-                                    <!-- Variants -->
-                                    <td>
-                                        @if ($product->variants()->count() > 0)
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">{{ $product->variantsAsString() }}</a>
-                                        @else
-                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">{{ trans('admin/producer.create_variants') }}</a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('admin/producer.product') }}</th>
+                                        <th>{{ trans('admin/producer.production') }}</th>
+                                        <th>{{ trans('admin/producer.deliveries') }}</th>
+                                        <th>{{ trans('admin/producer.variants') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($producer->products() as $product)
+                                    <tr>
+                                        <td>
+                                            <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/edit">{{ $product->name }}</a>
+                                            @if ($product->isVisible() !== true)
+                                                <i class="fa fa-warning" title="{{ $product->isVisible() }}"></i>
+                                            @endif
+                                        </td>
+                                        <!-- Production -->
+                                        <td>
+                                            @if ($product->productions()->count() > 0)
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">{{ trans('admin/producer.edit_production') }}</a>
+                                            @else
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production">{{ trans('admin/producer.create_production') }}</a>
+                                            @endif
+                                        </td>
+                                        <!-- Deliveries -->
+                                        <td>
+                                            @if ($product->deliveryLinks()->count() > 0)
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/producer.edit_delivery_dates') }}</a>
+                                            @else
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/producer.select_delivery_dates') }}</a>
+                                            @endif
+                                        </td>
+                                        <!-- Variants -->
+                                        <td>
+                                            @if ($product->variants()->count() > 0)
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">{{ $product->variantsAsString() }}</a>
+                                            @else
+                                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variants">{{ trans('admin/producer.create_variants') }}</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <a href="/account/producer/{{ $producer->id }}/products">{{ trans('admin/producer.all_products') }}</a>
                     @else
                         <p>{{ trans('admin/producer.no_products') }}</p>
@@ -164,39 +168,42 @@
                 <div class="card">
                     <div class="card-header">{{ trans('admin/producer.administrators') }}</div>
                     <div class="card-block">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/producer.name') }}</th>
-                                    <th>{{ trans('admin/producer.email') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($producer->adminLinks() as $adminLink)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $adminLink->getUser()->name }}</td>
-                                        <td>{{ $adminLink->getUser()->email }}</td>
+                                        <th>{{ trans('admin/producer.name') }}</th>
+                                        <th>{{ trans('admin/producer.email') }}</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach ($producer->adminLinks() as $adminLink)
+                                        <tr>
+                                            <td>{{ $adminLink->getUser()->name }}</td>
+                                            <td>{{ $adminLink->getUser()->email }}</td>
+                                        </tr>
+                                    @endforeach
 
-                                @foreach ($producer->adminInvites() as $adminInvite)
-                                    <tr>
-                                        <td class="text-muted">{{ $adminInvite->getUser()->name }}</td>
-                                        <td>
-                                            <div class="dropdown dropdown-action-component">
-                                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fa fa-gear"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="/account/producer/{{ $producer->id }}/invite/{{ $adminInvite->user_id }}/cancel">
-                                                        {{ trans('admin/producer.cancel_invite') }}
-                                                    </a>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                        </table>
+                                    @foreach ($producer->adminInvites() as $adminInvite)
+                                        <tr>
+                                            <td class="text-muted">{{ $adminInvite->getUser()->name }}</td>
+                                            <td>
+                                                <div class="dropdown dropdown-action-component">
+                                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-gear"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="/account/producer/{{ $producer->id }}/invite/{{ $adminInvite->user_id }}/cancel">
+                                                            {{ trans('admin/producer.cancel_invite') }}
+                                                        </a>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <form action="/account/producer/{{ $producer->id }}/invite/send" method="post">
@@ -219,20 +226,22 @@
                 <div class="card-header">{{ trans('admin/producer.events') }}</div>
                 <div class="card-block">
                     @if ($producer->events()->count() > 0)
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/producer.event_name') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($producer->events() as $event)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td><a href="/account/event/{{ $event->id }}/edit">{{ $event->name }}</a></td>
+                                        <th>{{ trans('admin/producer.event_name') }}</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($producer->events() as $event)
+                                        <tr>
+                                            <td><a href="/account/event/{{ $event->id }}/edit">{{ $event->name }}</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <a href="/account/producer/{{ $producer->id }}/events">{{ trans('admin/producer.all_events') }}</a>
                     @else
                         <p>{{ trans('admin/producer.no_events') }}</p>

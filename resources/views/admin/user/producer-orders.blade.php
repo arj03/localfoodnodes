@@ -12,34 +12,36 @@
                     <div class="card-header">{{ $orderDateItemLinks->first()->getItem()->producer['name'] }}</div>
                     <div class="card-block order-header">{{ $orderDateItemLinks->first()->getItem()->producer['email'] }}</div>
                     <div class="card-block">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{ trans('admin/user.product') }}</th>
-                                    <th class="text-right">{{ trans('admin/user.quantity') }}</th>
-                                    <th>{{ trans('admin/user.node') }}</th>
-                                    <th>{{ trans('admin/user.pickup') }}</th>
-                                    <th class="text-right">{{ trans('admin/user.total') }}</th>
-                                    <th class="text-right">{{ trans('admin/user.status') }}</th>
-                                </tr>
-                            </thead>
-                            @foreach ($orderDateItemLinks as $orderDateItemLink)
-                                <tr>
-                                    <td><a href="/account/user/order/{{ $orderDateItemLink->id }}">{{ $orderDateItemLink->ref }}</a></td>
-                                    <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
-                                    <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
-                                    <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
-                                    <td>
-                                        @if ($orderDateItemLink->getDate())
-                                            {{ $orderDateItemLink->getDate()->date('Y-m-d') }}
-                                        @endif
-                                    </td>
-                                    <td class="text-right">{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
-                                    <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
-                                </tr>
-                            @endforeach
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{{ trans('admin/user.product') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.quantity') }}</th>
+                                        <th>{{ trans('admin/user.node') }}</th>
+                                        <th>{{ trans('admin/user.pickup') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.total') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.status') }}</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($orderDateItemLinks as $orderDateItemLink)
+                                    <tr>
+                                        <td><a href="/account/user/order/{{ $orderDateItemLink->id }}">{{ $orderDateItemLink->ref }}</a></td>
+                                        <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
+                                        <td class="text-right">{{ $orderDateItemLink->quantity }}</td>
+                                        <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
+                                        <td>
+                                            @if ($orderDateItemLink->getDate())
+                                                {{ $orderDateItemLink->getDate()->date('Y-m-d') }}
+                                            @endif
+                                        </td>
+                                        <td class="text-right">{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                        <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus() }}</span></td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
                 </div>
             @else

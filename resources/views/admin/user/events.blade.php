@@ -11,18 +11,20 @@
                 <div class="card-header">{{ trans('admin/user.events') }}</div>
                 <div class="card-block">
                     @if ($user->eventLinks()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>{{ trans('admin/user.event-name') }}</th>
-                                </tr>
-                            </thead>
-                            @foreach ($user->eventLinks() as $eventLink)
-                                <tr>
-                                    <td>{{ $eventLink->getEvent()->name }}</td>
-                                </tr>
-                            @endforeach
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('admin/user.event-name') }}</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($user->eventLinks() as $eventLink)
+                                    <tr>
+                                        <td>{{ $eventLink->getEvent()->name }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
                     @else
                         {{ trans('admin/user.no_events') }}
                     @endif
