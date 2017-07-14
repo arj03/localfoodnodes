@@ -341,7 +341,11 @@ class Producer extends BaseModel implements EventOwnerInterface
         $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'producer')->get();
 
         if ($date) {
-            $events = $events->where('start_datetime', '<=', $date)->where('end_datetime', '>=', $date);
+            $startDatetime = new \DateTime($date->format('Y-m-d'));
+            $startDatetime->modify('+86399 seconds'); // Until the last second of the date is a valid start date
+            $endDatetime = $date; // Valid end date is any time during the date
+
+            $events = $events->where('start_datetime', '<=', $startDatetime)->where('end_datetime', '>=', $endDatetime);
         }
 
         return $events;
