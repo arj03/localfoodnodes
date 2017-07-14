@@ -12,11 +12,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="image" style="background-image: url(/images/product-header.jpg)"></div>
     </div>
 
-    <div class="container info">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-12 col-lg-8">
                 <div class="card">
@@ -38,6 +36,11 @@
                                 <div class="body-text">
                                     <p>{!! $product->info !!}</p>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="fb-share-button" data-href="{{ $_SERVER['REQUEST_URI'] }}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">{{ trans('public/product.share') }}</a></div>
                             </div>
                         </div>
                     </div>

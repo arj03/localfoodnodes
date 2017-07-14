@@ -865,16 +865,6 @@ body.page .page .card .body-text {
   height: 70vh;
 }
 
-body.public-product-product .header .image {
-  height: 500px;
-  background-size: cover;
-  background-position: center center;
-}
-
-body.public-product-product .info {
-  margin-top: -150px;
-}
-
 body.public-product-product .order-form .card-block {
   overflow: hidden;
   border-bottom: 1px dashed #eee;

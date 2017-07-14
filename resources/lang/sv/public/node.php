@@ -30,4 +30,5 @@ return [
     'producers' => 'Producenter',
     'select_variant' => 'Välj variant',
     'select_pickup' => 'Välj utlämningsdatum',
+    'share' => 'Dela',
 ];

@@ -16,6 +16,7 @@ return [
     'producer' => 'Producer',
     'select' => 'Select variant',
     'select_deliveries' => 'Select delivery dates',
+    'share' => 'Share',
     'sold_out' => 'Sold out',
 
     // Errors

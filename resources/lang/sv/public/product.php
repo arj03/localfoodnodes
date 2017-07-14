@@ -18,6 +18,7 @@ return [
     'producer' => 'Producent',
     'select' => 'Välj variant',
     'select_deliveries' => 'Välj upphämtningsdatum',
+    'share' => 'Dela',
     'sold_out' => 'Slutsåld',
 
     // Errors
