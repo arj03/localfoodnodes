@@ -62,11 +62,15 @@
                 <label class="form-control-label">
                     {{ trans('public/node.select_pickup') }}
                     @include('admin.field-error', ['field' => 'delivery_dates'])
+                    @if ($product->deadline > 0)
+                        <div class="text-muted">{{ trans('public/product.book_days_before', ['deadline' => $product->deadline]) }}</div>
+                    @endif
                 </label>
+
                 @if ($product->getDeliveryLinksByMonths($node->id)->count() > 0)
                     <div class="row calendar product-calendar">
                         @foreach ($product->getDeliveryLinksByMonths($node->id) as $monthDate => $deliveryLinks)
-                            <div class="col col-6">
+                            <div class="col-6 col-md-4 col-lg-12 col-xl-6 mt-3">
                                 <div class="month">
                                     <div class="month-header">
                                         <b>
@@ -87,7 +91,7 @@
                         @endforeach
                     </div>
                 @else
-                    <p>Det finns inga tillgängliga bokningsdatum</p>
+                    <p>{{ trans('public/product.no_bookable_dates') }}</p>
                 @endif
             </div>
         </div>

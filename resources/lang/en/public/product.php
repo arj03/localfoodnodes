@@ -3,10 +3,12 @@
 return [
     'added_to_cart' => 'Product has been added to cart.',
     'add_to_cart' => 'Add to cart',
+    'book_days_before' => 'Order :deadline days before pickup',
     'how_many' => 'How many?',
     'in_stock' => 'in stock',
     'login_to_order' => 'Login to order product',
     'nav_to_node' => 'In order to book this product you can navigate to its page on one of the following nodes where it is delivered to',
+    'no_bookable_dates' => 'There are no bookable dates',
     'message_producer' => 'Message to producer',
     'message_producer_placeholder' => 'Add extra information to your order',
     'order' => 'Order',

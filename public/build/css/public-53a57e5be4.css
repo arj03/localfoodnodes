@@ -884,6 +884,11 @@ body.public-product-product .order-form .card-block:last-child {
   border-bottom: 0;
 }
 
+body.public-product-product .order-form .card-block label .text-muted {
+  font-family: 'raleway';
+  font-weight: normal;
+}
+
 body.public-product-product .order-form .card-block .price {
   white-space: nowrap;
   font-weight: bold;
