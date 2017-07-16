@@ -46,6 +46,8 @@
                     </div>
                 </div>
             @endforeach
+
+            <button class="btn btn-success" onClick="window.print(); return false">{{ trans('admin/producer.print') }}</button>
         </div>
     </div>
 @endsection
