@@ -39,38 +39,9 @@ class OrderController extends Controller
 
         if ($errors->isEmpty()) {
             $orderDateItemLinks = $this->saveOrder($user);
-            $orderRefs = $orderDateItemLinks->map->ref;
 
-            $customerOrderDates = $orderDateItemLinks->map(function($orderDateItemLink) {
-                return $orderDateItemLink->getDate();
-            })->unique(function($orderDate) {
-                return $orderDate->date('Y-m-d');
-            })->filter();
-
-            $customerOrderDates->each->setOrderFilter($orderRefs);
-
-            \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($customerOrderDates));
-
-            $producerOrderDateItemLinksByProducerId = $orderDateItemLinks->groupBy(function($orderDateItemLink) {
-                return $orderDateItemLink->getItem()->producer_id;
-            });
-
-            $producerOrderDatesByProducerId = $producerOrderDateItemLinksByProducerId->map(function($orderDateItemLinks) {
-                return $orderDateItemLinks->map(function($orderDateItemLink) {
-                    return $orderDateItemLink->getDate();
-                })->unique(function($orderDate) {
-                    return $orderDate->date('Y-m-d');
-                })->filter();
-            });
-
-            $producerOrderDatesByProducerId->each(function($orderDates, $producerId) use ($orderRefs) {
-                $producer = Producer::find($producerId);
-
-                $orderDates->each->setOrderFilter($orderRefs);
-
-                \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $orderDates));
-            });
-
+            $this->sendCustomerOrderEmail($orderDateItemLinks, $user);
+            $this->sendProducerOrderEmails($orderDateItemLinks);
             $user->cartDateItemLinks()->each->delete();
 
             \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
@@ -84,6 +55,70 @@ class OrderController extends Controller
         }
 
         return redirect()->back()->withErrors($errors);
+    }
+
+    /**
+     * Send customer order email.
+     *
+     * @param Collection $orderDateItemLinks
+     * @param User $user
+     */
+    private function sendCustomerOrderEmail($orderDateItemLinks, $user)
+    {
+        $orderRefs = $orderDateItemLinks->map->ref;
+
+        $orderDates = $orderDateItemLinks->map(function($orderDateItemLink) {
+            return $orderDateItemLink->getDate();
+        })->unique(function($orderDate) {
+            return $orderDate->date('Y-m-d');
+        })->filter();
+
+        // Set filter on order date to avoid loading order items from previous bookings
+        $orderDates->each->setOrderFilter($orderRefs);
+
+        \Mail::to($user->email)->send(new \App\Mail\CustomerOrder($orderDates));
+    }
+
+    /**
+     * Send producer order emails.
+     *
+     * @param Collection $orderDateItemLinks
+     */
+    private function sendProducerOrderEmails($orderDateItemLinks)
+    {
+        // Create array with the order refs grouped by producer id
+        $orderRefsByProducerId = [];
+        $orderDateItemLinks->each(function($orderDateItemLink) use (&$orderRefsByProducerId) {
+            $producerId = $orderDateItemLink->getItem()->producer_id;
+            if (!isset($orderRefsByProducerId[$producerId])) {
+                $orderRefsByProducerId[$producerId] = [];
+            }
+
+            $orderRefsByProducerId[$producerId][] = $orderDateItemLink->ref;
+        });
+
+        // Group OrderDateItemLinks by producerId
+        $orderDateItemLinksByProducerId = $orderDateItemLinks->groupBy(function($orderDateItemLink) {
+            return $orderDateItemLink->getItem()->producer_id;
+        });
+
+        // Get order dates by producer id
+        $orderDatesByProducerId = $orderDateItemLinksByProducerId->map(function($orderDateItemLinks) {
+            return $orderDateItemLinks->map(function($orderDateItemLink) {
+                return $orderDateItemLink->getDate();
+            })->unique(function($orderDate) {
+                return $orderDate->date('Y-m-d');
+            })->filter();
+        });
+
+        // Loop each producer and send emails
+        $orderDatesByProducerId->each(function($orderDates, $producerId) use ($orderRefsByProducerId) {
+            $producer = Producer::find($producerId);
+            $orderRefs = $orderRefsByProducerId[$producerId];
+            $orderDates->each->setOrderFilter($orderRefs);
+
+            \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $orderDates));
+        });
     }
 
     /**
