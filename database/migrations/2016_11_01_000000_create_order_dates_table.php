@@ -15,7 +15,6 @@ class CreateOrderDatesTable extends Migration
     {
         Schema::create('order_dates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->required();
             $table->date('date')->required();
         });
     }

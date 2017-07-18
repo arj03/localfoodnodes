@@ -16,7 +16,6 @@ class OrderDate extends \App\BaseModel
      * @var array
      */
     protected $validationRules = [
-        'user_id' => 'required',
         'date' => 'required',
     ];
 
@@ -26,7 +25,6 @@ class OrderDate extends \App\BaseModel
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'date',
     ];
 

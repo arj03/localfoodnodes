@@ -177,10 +177,9 @@ class OrderController extends Controller
                 'message' => $cartItem->message,
             ]);
 
-            $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->where('user_id', $user->id)->first();
+            $orderDate = OrderDate::where('date', $cartDate->date('Y-m-d'))->first();
             if (!$orderDate) {
                 $orderDate = OrderDate::create([
-                    'user_id' => $user->id,
                     'date' => $cartDate->date('Y-m-d'),
                 ]);
             }
