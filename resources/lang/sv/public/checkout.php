@@ -5,6 +5,7 @@ return [
     'become_member' => 'Bli medlem',
     'cart' => 'Varukorg',
     'cart_empty' => 'Din varukorg är tom',
+    'cart_item_update_failed' => 'Produkten kunde inte uppdateras.',
     'delivery' => 'Utlämning|Utlämningar',
     'how_it_works' => 'Så fungerar det',
     'message' => 'Meddelande',

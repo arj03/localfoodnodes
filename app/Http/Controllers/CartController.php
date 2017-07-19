@@ -116,6 +116,12 @@ class CartController extends Controller
 
         $user = Auth::user();
         $cartDateItemLink = $user->cartDateItemLink($cartDateItemLinkId);
+
+        if (!$cartDateItemLink) {
+            $request->session()->flash('message', [trans('public/checkout.cart_item_update_failed')]);
+            return redirect()->back();
+        }
+
         $cartItem = $cartDateItemLink->getItem();
 
         $product = Product::find($cartItem->product['id']);

@@ -116,21 +116,33 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>{{ trans('admin/user.order') }}</th>
                                         <th>{{ trans('admin/user.product') }}</th>
                                         <th>{{ trans('admin/user.quantity') }}</th>
                                         <th>{{ trans('admin/user.producer') }}</th>
                                         <th>{{ trans('admin/user.node') }}</th>
                                         <th>{{ trans('admin/user.total') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.status') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($user->getNextOrderDate()->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
-                                            <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
+                                            <td>{{ $orderDateItemLink->ref }}</td>
+                                            <td>
+                                                <a href="/account/user/order/{{ $orderDateItemLink->id }}">
+                                                    {{ $orderDateItemLink->getItem()->getName() }}
+                                                </a>
+                                            </td>
                                             <td>{{ $orderDateItemLink->quantity }}</td>
-                                            <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
+                                            <td>
+                                                <a href="/account/user/orders/producer/{{ $orderDateItemLink->producer_id }}">
+                                                    {{ $orderDateItemLink->getItem()->producer['name'] }}
+                                                </a>
+                                            </td>
                                             <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                            <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus()}}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

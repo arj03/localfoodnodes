@@ -5,6 +5,7 @@ return [
     'become_member' => 'Become member',
     'cart' => 'Cart',
     'cart_empty' => 'Your cart is empty',
+    'cart_item_update_failed' => 'Product could not be updated.',
     'delivery' => 'Delivery|Deliveries',
     'how_it_works' => 'How it works',
     'message' => 'Message',

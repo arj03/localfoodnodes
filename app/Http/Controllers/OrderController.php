@@ -46,15 +46,17 @@ class OrderController extends Controller
 
             \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
 
-            return redirect('/account/user/pickups');
+            // return redirect('/account/user/pickups');
+
+            return response()->json([], 200);
         }
 
         if ($errors) {
             $request->session()->flash('error', $errors->all());
-
+            return response()->json(['error' => true], 400);
         }
 
-        return redirect()->back()->withErrors($errors);
+        // return redirect()->back()->withErrors($errors);
     }
 
     /**

@@ -18,6 +18,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
+                                            <th>{{ trans('admin/user.order') }}</th>
                                             <th>{{ trans('admin/user.product') }}</th>
                                             <th class="text-right">{{ trans('admin/user.quantity') }}</th>
                                             <th>{{ trans('admin/user.producer') }}</th>
@@ -28,6 +29,7 @@
                                     </thead>
                                     @foreach ($orderDate->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
+                                            <td>{{ $orderDateItemLink->ref }}</td>
                                             <td>
                                                 <a href="/account/user/order/{{ $orderDateItemLink->id }}">
                                                     {{ $orderDateItemLink->getItem()->getName() }}
