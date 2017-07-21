@@ -358,6 +358,10 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active, a.btn:focus {
   background-color: #8fb773;
 }
 
+.success-message .card-header {
+  background: #8fb773 !important;
+}
+
 @media (min-width: 992px) {
   body.public.logged-in .page {
     -webkit-box-orient: horizontal;

@@ -39,13 +39,14 @@ Route::post('/account/user/insert', 'Admin\UserController@insert');
 Route::get('/account/user/migrate', 'Admin\UserController@migrateEditAccount');
 Route::post('/account/user/migrate-update', 'Admin\UserController@migrateUpdateAccount');
 
+Route::get('/account/user/activate/token/{token}', 'Admin\UserController@activateToken'); // Activate account even if user is not logged in
+
 // Admin routes
 Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function () {
     // User
     Route::group(['prefix' => '/user'], function () {
         Route::get('/activate', 'Admin\UserController@activate');
         Route::get('/activate/resend', 'Admin\UserController@activateResend');
-        Route::get('/activate/token/{token}', 'Admin\UserController@activateToken');
         Route::get('/', 'Admin\UserController@index');
         Route::get('/edit', 'Admin\UserController@edit');
         Route::post('/update', 'Admin\UserController@update');

@@ -3,7 +3,7 @@
 return [
     'activate_account' => 'Activate account',
     'account_activation' => 'Account activation',
-    'account_activation_info' => 'You should have received an email with an activation link to enable your account. If you haven\'t received the email...',
+    'account_activation_info' => 'We have sent you and email with an activation link. Once you have confirm your email you can start using Local Food Nodes.',
     'address' => 'Address',
     'amount' => 'Amount',
     'become_a_member' => 'Become a member',

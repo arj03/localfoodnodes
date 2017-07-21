@@ -3,6 +3,32 @@
 @section('title', trans('public/login.title'))
 
 @section('content')
+    @if (Request::has('error'))
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <div class="card error-message">
+                        <div class="card-header">{{ trans('public/login.error_' . Request::input('error')) }}</div>
+                        <div class="card-block">{{ trans('public/login.error_' . Request::input('error') . '_content') }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if (Request::has('message'))
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <div class="card success-message">
+                        <div class="card-header">{{ trans('public/login.message_' . Request::input('message')) }}</div>
+                        <div class="card-block">{{ trans('public/login.message_' . Request::input('message') . '_content') }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">

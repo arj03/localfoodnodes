@@ -121,14 +121,15 @@ class UserController extends Controller
 
             DB::table('user_activations')->where('token', $token)->delete();
         } else {
+            \Log::debug('error 1');
             \App\Helpers\SlackHelper::message('error', 'User with id ' . $userId . ' could not be found. Activation failed.');
 
-            $request->session()->flash('message', [trans('admin/messages.user_account_activation_failed')]);
-            return redirect('/login');
+            $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
+            return redirect('/login?error=activation_failed');
         }
 
         $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
-        return redirect('/login');
+        return redirect('/login?message=activation_complete');
     }
 
     /**
@@ -547,6 +548,7 @@ class UserController extends Controller
      */
     private function sendActivationLink($user)
     {
+        \Log::debug(var_export($user, true));
         $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
 
         if (!$token) {

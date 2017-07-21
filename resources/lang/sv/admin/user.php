@@ -3,7 +3,7 @@
 return [
     'activate_account' => 'Aktivera konto',
     'account_activation' => 'Aktivera konto',
-    'account_activation_info' => 'En aktiveringslänk är skickad till din epostadress. Detta kan ta några minuter',
+    'account_activation_info' => 'En aktiveringslänk är skickad till din epostadress. När du klickar på länken bekräftar du din epostadress och därefter kan du börja handla på Local Food Nodes.',
     'address' => 'Adress',
     'amount' => 'Summa',
     'become_a_member' => 'Bli medlem',
