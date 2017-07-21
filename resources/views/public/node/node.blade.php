@@ -302,7 +302,7 @@
 
 @section('modal')
     @if (Session::has('added_to_cart_modal'))
-        <div class="modal fade" id="added-to-cart-modal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="added-to-cart-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body body-text">
