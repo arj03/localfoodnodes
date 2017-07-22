@@ -3,7 +3,7 @@
 return [
     'activate_your_account' => 'Activate your account',
     'activate_text' => '
-        Your account on localfoodnodes.org has been created and you need to activate it by confirming your email address. Click on the button below to confirm your email address.
+        Your account on Local Food Nodes has been created and you need to activate it by confirming your email address. Click on the button below to confirm your email address.
     ',
     'delivery' => 'Delivery',
     'hi' => 'Hi',

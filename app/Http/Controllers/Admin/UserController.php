@@ -96,7 +96,7 @@ class UserController extends Controller
         $this->sendActivationLink($user);
 
         $request->session()->flash('message', [trans('admin/messages.user_account_email_sent')]);
-        return redirect('/');
+        return redirect('/account/user/activate');
     }
 
     /**
@@ -107,29 +107,50 @@ class UserController extends Controller
      */
     public function activateToken(Request $request, $token)
     {
+        $success = false;
+
+        // Get user id from activation table
         $userId = DB::table('user_activations')->select('user_id')->where('token', $token)->value('user_id');
 
         if (!$userId) {
             \App\Helpers\SlackHelper::message('error', 'User id ' . $userId . ' does not exist and cannot be activated. Token user: ' . $token);
         }
 
+        // Load user
         $user = User::find($userId);
 
         if ($user) {
+            // Activate user
             $user->fill(['active' => 1]);
             $user->save();
+            $success = true;
 
+            // Delete user token from database
             DB::table('user_activations')->where('token', $token)->delete();
-        } else {
-            \Log::debug('error 1');
-            \App\Helpers\SlackHelper::message('error', 'User with id ' . $userId . ' could not be found. Activation failed.');
-
-            $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
-            return redirect('/login?error=activation_failed');
         }
 
-        $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
-        return redirect('/login?message=activation_complete');
+        // Redirects
+        if (Auth::check()) {
+            if ($success) {
+                // If user is logged in and activation was successful
+                $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
+                return redirect('/account/user');
+            } else {
+                // IF user is logged in and activation failed
+                $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
+                return redirect('/account/user/activate?error=activation_failed');
+            }
+        } else {
+            if ($success) {
+                // If user is not logged in and activation was successful
+                $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
+                return redirect('/login?message=activation_complete');
+            } else {
+                // If user is not logged in and activation failed
+                $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
+                return redirect('/login?error=activation_failed');
+            }
+        }
     }
 
     /**

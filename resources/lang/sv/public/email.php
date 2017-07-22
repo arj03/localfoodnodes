@@ -3,7 +3,7 @@
 return [
     'activate_your_account' => 'Aktivera ditt konto',
     'activate_text' => '
-        Ditt konto på localfoodnodes.org har skapats och för att aktivera kontot du behöver nu bekräfta din epostadress. Klicka på knappen nedan för att bekräfta din epostadress.
+        Ditt konto på Local Food Nodes har skapats och för att aktivera kontot du behöver nu bekräfta din epostadress. Klicka på knappen nedan för att bekräfta din epostadress.
     ',
     'delivery' => 'Utlämning',
     'hi' => 'Hej',

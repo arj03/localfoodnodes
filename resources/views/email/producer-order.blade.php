@@ -35,6 +35,6 @@
     @endforeach
 
     <div style="text-align: center; margin-bottom: 20px;">
-        <a style="background: #8fb773; color: #fff; padding: 10px; border-radius: 4px;" href="{{ app('url')->to('/account/producer/' . $producer->id . '/deliveries') }}">{{ trans('public/email.view_deliveries') }}</a>
+        <a style="background: #8fb773; color: #fff; padding: 10px; border-radius: 4px; text-transform: uppercase;" href="{{ app('url')->to('/account/producer/' . $producer->id . '/deliveries') }}">{{ trans('public/email.view_deliveries') }}</a>
     </div>
 @endsection

@@ -53,7 +53,7 @@ return [
     'user_is_admin' => 'Användaren är redan admin',
 
     // User
-    'user_account_email_sent' => 'Ett aktiveringsmail har skickats till din epost-adress.',
+    'user_account_email_sent' => 'Ett aktiveringsmail har skickats till din epostadress.',
     'user_account_activated' => 'Ditt konto har aktiverats.',
     'user_account_activation_failed' => 'Ditt konto kunde inte aktiveras. Kontakta supporten för hjälp.',
     'user_account_created' => 'Ditt konto har skapats.',
@@ -65,7 +65,7 @@ return [
     'user_membership_errors' => 'Betalning av medlemsavgift kunde inte slutföras. :errors',
 
     // Password reset
-    'password_reset_email_sent' => 'En återställningslänk har skickats till din epost-adress.',
+    'password_reset_email_sent' => 'En återställningslänk har skickats till din epostadress.',
 
     // Other
     'required_fields_missing' => 'Obligatoriska fält är tomma.',
