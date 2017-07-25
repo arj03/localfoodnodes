@@ -86,6 +86,50 @@ class OrderController extends Controller
     }
 
     /**
+     * User orders action.
+     */
+    public function userOrders($producerId, $userId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $orderItems = $producer->orderItems($userId);
+
+        return view('admin.producer.user-orders', [
+            'producer' => $producer,
+            'orderItems' => $orderItems,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.orders') => ''
+            ]
+        ]);
+    }
+
+
+    /**
+     * Product orders action.
+     */
+    public function productOrders($producerId, $productId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $orderItems = $producer->orderItems()->filter(function($orderItem) use ($productId) { // null, $producerId
+            return $orderItem->product['id'] == $productId;
+        })->sortByDesc(function($orderItem) {
+            $orderDate = $orderItem->orderDateItemLink()->getDate();
+            return $orderDate ? $orderDate->date('Y-m-d') : 0;
+        });
+
+        return view('admin.producer.product-orders', [
+            'producer' => $producer,
+            'orderItems' => $orderItems,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.orders') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Order action.
      */
     public function order(Request $request, $producerId, $orderDateItemLinkId)

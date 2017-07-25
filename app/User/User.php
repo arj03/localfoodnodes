@@ -130,6 +130,11 @@ class User extends BaseUser
         return parent::newQuery($excludeDeleted)->addSelect('*', DB::raw($raw));
     }
 
+    /**
+     * Get language name.
+     *
+     * @return string
+     */
     public function getLanguageName()
     {
         if ($this->language) {
@@ -270,8 +275,8 @@ class User extends BaseUser
     public function orderDates($dates = [])
     {
         $orderDates = $this->orderDateItemLinks()->map(function($orderDateItemLink) {
-            return $orderDateItemLink->getDate();
-        })->unique();
+            return $orderDateItemLink->getDate() ?: null;
+        })->filter()->unique();
 
         if (!empty($dates)) {
             $orderDates = $orderDates->whereIn('date', $dates);
@@ -285,30 +290,19 @@ class User extends BaseUser
     }
 
     /**
-     * Get order items.
+     * Get next order date.
      *
-     * @param int $productId
-     * @return Collection
+     * @return OrderDate
      */
-    public function orderItems($productId = null)
+    public function getNextOrderDate()
     {
-        $orderItems = $this->hasMany('App\Order\OrderItem');
+        $orderDates = $this->orderDates();
 
-        if ($productId) {
-            $orderItems->where('product_id', $productId);
-        }
+        $orderDates = $orderDates->filter(function($orderDate) {
+            return $orderDate->date >= new \DateTime(date('Y-m-d'));
+        });
 
-        return $orderItems->get();
-    }
-
-    /**
-     * Get order items grouped by producer.
-     *
-     * @return Collection
-     */
-    public function orderItemsGroupedByProducer()
-    {
-        return $this->hasMany('App\Order\OrderItem')->get()->groupBy('producer_id');
+        return $orderDates->count() > 0 ? $orderDates->last() : null;
     }
 
     /**
@@ -326,9 +320,15 @@ class User extends BaseUser
      *
      * @return Collection
      */
-    public function orderDateItemLinks()
+    public function orderDateItemLinks($producerId = null)
     {
-        return $this->orderDateItemLinksRelationship;
+        $orderDateItemLinks = $this->orderDateItemLinksRelationship;
+
+        if ($producerId) {
+            $orderDateItemLinks = $orderDateItemLinks->where('producer_id', $producerId);
+        }
+
+        return $orderDateItemLinks;
     }
 
     /**

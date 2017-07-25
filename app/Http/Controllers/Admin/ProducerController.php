@@ -181,6 +181,23 @@ class ProducerController extends Controller
     }
 
     /**
+     * Confirm delete action.
+     */
+    public function deleteConfirm(Request $request, $producerId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+
+        return view('admin.producer.confirm-delete', [
+            'producer' => $producer,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.delete') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Producer delete action.
      */
     public function delete(Request $request, $producerId)
@@ -285,6 +302,30 @@ class ProducerController extends Controller
             'breadcrumbs' => [
                 $producer->name => 'producer/' . $producer->id,
                 trans('admin/user-nav.deliveries') => ''
+            ]
+        ]);
+    }
+
+    /**
+     * Pick list action.
+     */
+    public function picklist($producerId, $orderDateId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $orderDate = $producer->orderDate($orderDateId);
+        $orderItemsGroupedByUserId = $orderDate->orderDateItemLinks(null, $producer->id)->groupBy('user_id');
+        $node = $orderDate->orderDateItemLinks(null, $producer->id)->first()->getItem()->node;
+
+        return view('admin.producer.delivery-picklist', [
+            'producer' => $producer,
+            'node' => $node,
+            'orderDate' => $orderDate,
+            'orderItemsGroupedByUserId' => $orderItemsGroupedByUserId,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.deliveries') => 'producer/' . $producer->id . '/deliveries',
+                $node['name'] . ' ' . $orderDate->date('Y-m-d') => ''
             ]
         ]);
     }

@@ -43,28 +43,34 @@
                     </div>
                 </div>
                 <div class="card-block">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>{{ trans('admin/user.delivery') }}</th>
-                                <th>{{ trans('admin/user.product') }}</th>
-                                <th>{{ trans('admin/user.quantity') }}</th>
-                                <th>{{ trans('admin/user.price') }}</th>
-                                <th>{{ trans('admin/user.total') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $orderDateItemLink->getDate()->date('Y-m-d') }}</td>
-                                <td>
-                                    {{ $orderItem->getName() }}
-                                </td>
-                                <td>{{ $orderDateItemLink->quantity }}</td>
-                                <td>{{ $orderItem->getPriceWithUnit() }}</td>
-                                <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('admin/user.delivery') }}</th>
+                                    <th>{{ trans('admin/user.product') }}</th>
+                                    <th>{{ trans('admin/user.quantity') }}</th>
+                                    <th>{{ trans('admin/user.price') }}</th>
+                                    <th>{{ trans('admin/user.total') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @if ($orderDateItemLink->getDate())
+                                            {{ $orderDateItemLink->getDate()->date('Y-m-d') }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ $orderItem->getName() }}
+                                    </td>
+                                    <td>{{ $orderDateItemLink->quantity }}</td>
+                                    <td>{{ $orderItem->getPriceWithUnit() }}</td>
+                                    <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p>{{ $orderItem->message }}</p>
                 </div>
                 <div class="card-footer">

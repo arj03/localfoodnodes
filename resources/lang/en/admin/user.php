@@ -3,7 +3,7 @@
 return [
     'activate_account' => 'Activate account',
     'account_activation' => 'Account activation',
-    'account_activation_info' => 'An email with an activation link to enable your account will be sent to you. This can take up to a few minutes.',
+    'account_activation_info' => 'We have sent you and email with an activation link. Once you have confirm your email you can start using Local Food Nodes.',
     'address' => 'Address',
     'amount' => 'Amount',
     'become_a_member' => 'Become a member',
@@ -22,6 +22,7 @@ return [
     'delete_order' => 'Delete order',
     'delivery' => 'Delivery',
     'deliveries' => 'Deliveries',
+    'delete' => 'Delete',
     'delete_user' => 'Delete user',
     'edit_information' => 'Edit information',
     'email' => 'Email',

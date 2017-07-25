@@ -2,6 +2,8 @@
 
 namespace App\Order;
 
+use Illuminate\Database\Eloquent\Collection;
+
 class OrderDateItemLink extends \App\BaseModel
 {
     // protected $with = ['orderItemRelationship', 'orderDateRelationship'];
@@ -42,11 +44,6 @@ class OrderDateItemLink extends \App\BaseModel
 
         static::deleting(function($orderDateItemLink) {
             $orderDateItemLink->getItem()->delete();
-
-            // If OrderDate count is 1, this is the last OrderItemDateLink connected and is safe to remove.
-            if ($orderDateItemLink->getDate()->orderDateItemLinks($orderDateItemLink->user_id)->count() <= 1) {
-                $orderDateItemLink->getDate()->delete();
-            }
         });
     }
 
@@ -67,6 +64,10 @@ class OrderDateItemLink extends \App\BaseModel
      */
     public function getItem()
     {
+        if ($this->item) {
+            return $this->item;
+        }
+
         return $this->orderItemRelationship->first();
     }
 
@@ -87,6 +88,10 @@ class OrderDateItemLink extends \App\BaseModel
      */
     public function getDate()
     {
+        if ($this->date) {
+            return $this->date;
+        }
+
         return $this->orderDateRelationship->first();
     }
 
@@ -150,6 +155,11 @@ class OrderDateItemLink extends \App\BaseModel
      */
     public function isDeletable()
     {
+        // If date is missing, fix for bad data
+        if (!$this->getDate()) {
+            return true;
+        }
+
         $product = $this->getItem()->getProduct();
         $productDeadline = $product->getDeadlineDate();
         $orderDeliveryDate = $this->getDate()->date;

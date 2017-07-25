@@ -57,7 +57,7 @@
                         <li class="dropdown hidden-md-down">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ config('app.locales')[App::getLocale()] }}</a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                @foreach(config('app.locales') as $key => $value)
+                                @foreach (config('app.locales') as $key => $value)
                                     <a class="dropdown-item" href="/settings/locale/{{ $key }}">{{ $value }}</a>
                                 @endforeach
                             </div>

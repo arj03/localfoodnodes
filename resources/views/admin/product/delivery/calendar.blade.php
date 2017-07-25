@@ -1,4 +1,4 @@
-@foreach($nodes as $index => $node)
+@foreach ($nodes as $index => $node)
     <div class="card">
         <div class="card-header toggle">
             {{ $node->name }} - {{ trans('admin/product.select_delivery_dates') }}
@@ -11,7 +11,7 @@
         <div class="card-block">
             <div class="row calendar product-calendar">
                 @foreach ($node->getDeliveryDatesByMonths($product) as $firstDateOfMonth => $deliveryDates)
-                    <div class="col col-3">
+                    <div class="col-6 col-sm-3 mt-3">
                         <div class="month">
                             <div class="month-header">
                                 <b>

@@ -85,26 +85,35 @@ export function receiveSearchGeo(data) {
 
 export function fetchUserLocation(dispatch) {
     // If user position is passed through root element
-    let userLocation = JSON.parse(rootElement.dataset.userLocation);
-    if (userLocation) {
-        return dispatch(receiveUserLocation({
-            latitude: userLocation.lat,
-            longitude: userLocation.lng
-        }));
-    } else {
-        // Try to find position through IP address
-        getUserIp()
-        .then((ip) => {
-            return request
-            .get('https://freegeoip.net/json/?q=' + ip)
-            .end((error, response) => {
-                if (error) console.error(error);
-            })
-            .then((response) => response.body)
-        })
-        .then((data) => dispatch(receiveUserLocation(data)))
-        .catch((err) => console.error('error', err));
+    if (rootElement.dataset.userLocation) {
+        let userLocation = JSON.parse(rootElement.dataset.userLocation);
+        if (userLocation) {
+            return dispatch(receiveUserLocation({
+                latitude: userLocation.lat,
+                longitude: userLocation.lng
+            }));
+        } else {
+            userLocationFallback(dispatch);
+        }
     }
+    else {
+        userLocationFallback(dispatch);
+    }
+}
+
+function userLocationFallback(dispatch) {
+    // Try to find position through IP address
+    getUserIp()
+    .then((ip) => {
+        return request
+        .get('https://freegeoip.net/json/?q=' + ip)
+        .end((error, response) => {
+            if (error) console.error(error);
+        })
+        .then((response) => response.body)
+    })
+    .then((data) => dispatch(receiveUserLocation(data)))
+    .catch((err) => console.error('error', err));
 }
 
 function getUserIp() {

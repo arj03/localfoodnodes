@@ -96,7 +96,7 @@ class UserController extends Controller
         $this->sendActivationLink($user);
 
         $request->session()->flash('message', [trans('admin/messages.user_account_email_sent')]);
-        return redirect('/');
+        return redirect('/account/user/activate');
     }
 
     /**
@@ -107,18 +107,50 @@ class UserController extends Controller
      */
     public function activateToken(Request $request, $token)
     {
+        $success = false;
+
+        // Get user id from activation table
         $userId = DB::table('user_activations')->select('user_id')->where('token', $token)->value('user_id');
+
+        if (!$userId) {
+            \App\Helpers\SlackHelper::message('error', 'User id ' . $userId . ' does not exist and cannot be activated. Token user: ' . $token);
+        }
+
+        // Load user
         $user = User::find($userId);
 
         if ($user) {
+            // Activate user
             $user->fill(['active' => 1]);
             $user->save();
+            $success = true;
+
+            // Delete user token from database
+            DB::table('user_activations')->where('token', $token)->delete();
         }
 
-        DB::table('user_activations')->where('token', $token)->delete();
-
-        $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
-        return redirect('/login');
+        // Redirects
+        if (Auth::check()) {
+            if ($success) {
+                // If user is logged in and activation was successful
+                $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
+                return redirect('/account/user');
+            } else {
+                // IF user is logged in and activation failed
+                $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
+                return redirect('/account/user/activate?error=activation_failed');
+            }
+        } else {
+            if ($success) {
+                // If user is not logged in and activation was successful
+                $request->session()->flash('message', [trans('admin/messages.user_account_activated')]);
+                return redirect('/login?message=activation_complete');
+            } else {
+                // If user is not logged in and activation failed
+                $request->session()->flash('error', [trans('admin/messages.user_account_activation_failed')]);
+                return redirect('/login?error=activation_failed');
+            }
+        }
     }
 
     /**
@@ -228,9 +260,9 @@ class UserController extends Controller
     }
 
     /**
-     * Confirm user delete action.
+     * Confirm delete action.
      */
-    public function confirmDelete(Request $request)
+    public function deleteConfirm(Request $request)
     {
         $user = Auth::user();
 
@@ -345,15 +377,18 @@ class UserController extends Controller
     /**
      * Orders action.
      */
-    public function orders()
+    public function producerOrders(Request $request, $producerId)
     {
         $user = Auth::user();
+        $producer = Producer::find($producerId);
+        $orderDateItemLinks = $user->orderDateItemLinks($producerId);
 
-        return view('admin.user.orders', [
-            'user' => $user,
+        return view('admin.user.producer-orders', [
+            'orderDateItemLinks' => $orderDateItemLinks,
             'breadcrumbs' => [
                 $user->name => 'user',
-                trans('admin/user-nav.orders') => ''
+                trans('admin/user-nav.pickups') => 'user/pickups',
+                $producer->name => ''
             ]
         ]);
     }
@@ -390,7 +425,7 @@ class UserController extends Controller
         $orderDateItemLink->delete();
         $request->session()->flash('message', [trans('admin/messages.order_deleted')]);
 
-        return redirect('/account/user/orders');
+        return redirect('/account/user/pickups');
     }
 
     /**
@@ -534,15 +569,20 @@ class UserController extends Controller
      */
     private function sendActivationLink($user)
     {
-        // Clear
-        DB::table('user_activations')->where('user_id', $user->id)->delete();
+        \Log::debug(var_export($user, true));
+        $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
 
-        // Create new token
-        $token = hash_hmac('sha256', str_random(40), config('app.key'));
-        DB::table('user_activations')->insert(['user_id' => $user->id, 'token' => $token]);
+        if (!$token) {
+            // Clear.
+            DB::table('user_activations')->where('user_id', $user->id)->delete();
+            // Create new token and insert to database.
+            DB::table('user_activations')->insert(['user_id' => $user->id, 'token' => hash_hmac('sha256', str_random(64), config('app.key'))]);
+            // Get token from database to ensure that we send the correct one in the email.
+            $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
+        }
 
         Mail::send('email.activate-user', ['user' => $user, 'token' => $token], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject('Activate account');
+            $message->to($user->email, $user->name)->subject(trans('public/email.activate_your_account'));
         });
     }
 

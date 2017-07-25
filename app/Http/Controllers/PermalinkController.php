@@ -72,8 +72,6 @@ class PermalinkController extends IndexController
         $error = $message . ' for ' . $request->fullUrl() . "\n";
         $error .= 'Referer: ' . url()->previous() . "\n";
 
-        \App\Helpers\SlackHelper::message('error', $error);
-
         return view('public/404');
     }
 }

@@ -24,7 +24,6 @@
                     <li>
                         <a class="block-section-header {{ Request::is('account/user') ? 'active' : '' }}" href="/account/user">{{ $user->name }}</a>
                         <ul>
-                            <li><a class="{{ Request::is('account/user/order*') ? 'active' : '' }}" href="/account/user/orders">- {{ trans('admin/user-nav.orders') }}</a></li>
                             <li><a class="{{ Request::is('account/user/pickups*') ? 'active' : '' }}" href="/account/user/pickups">- {{ trans('admin/user-nav.pickups') }}</a></li>
                             <li><a class="{{ Request::is('account/user/event*') ? 'active' : '' }}" href="/account/user/events">- {{ trans('admin/user-nav.events') }}</a></li>
                         </ul>
@@ -89,9 +88,6 @@
                                     </li>
                                     <li>
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/deliveries') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/deliveries">- {{ trans('admin/user-nav.deliveries') }}</a>
-                                    </li>
-                                    <li>
-                                        <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/order*') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/orders">- {{ trans('admin/user-nav.orders') }}</a>
                                     </li>
                                     <li>
                                         <a class="{{ Request::is('account/producer/' . $producerAdminLink->getProducer()->id . '/#nodes') ? 'active' : '' }}" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/#nodes">- {{ trans('admin/user-nav.delivery_nodes') }}</a>

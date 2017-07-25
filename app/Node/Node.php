@@ -215,9 +215,10 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
-     * [getAllEvents description]
-     * @param  [type] $date [description]
-     * @return [type]       [description]
+     * Get node and producer events.
+     *
+     * @param DateTIme $date
+     * @return Collection
      */
     public function getAllEvents(\DateTime $date = null)
     {
@@ -228,9 +229,10 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
-     * [getProducerEvents description]
-     * @param  [type] $date [description]
-     * @return [type]       [description]
+     * Get producer events.
+     *
+     * @param DateTime $date
+     * @return Collection
      */
     private function getProducerEvents(\DateTime $date = null)
     {
@@ -445,7 +447,9 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getLinkFacebookAttribute($value)
     {
-        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        if ($value && $value !== 'http://') {
+            return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        }
     }
 
     /**
@@ -456,7 +460,9 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getLinkFacebookProducersAttribute($value)
     {
-        return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        if ($value && $value !== 'http://') {
+            return strpos($value, 'http') === 0 ? $value : 'http://' . $value;
+        }
     }
 
     /**

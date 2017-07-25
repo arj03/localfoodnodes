@@ -19,13 +19,13 @@
                     <div class="card">
                         <div class="card-header">{{ trans('admin/product.delivery_dates') }}</div>
                         <div class="card-block">
-                            <p>{!! trans('admin/product.delivery_dates_no_nodes', ['url' => '/account/producer/' . $producer->id . '#nodes' ]) !!}</p>
-                            <p
-                                <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/edit">{{ trans('admin/product.edit_product') }}</a><br>
-                                <a href="/account/producer/{{ $producer->id }}">{{ trans('admin/product.back_to_producer') }}</a>
-                            </p>
+                            <p>{{ trans('admin/product.delivery_dates_no_nodes') }}</p>
+                            <a class="btn btn-success" href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/product.reload_page') }}</a>
                         </div>
                     </div>
+
+                    <!-- Nodes -->
+                    @include('admin.producer.nodes')
                 @endif
             </div>
 

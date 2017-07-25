@@ -174,6 +174,27 @@ class ProductController extends Controller
     }
 
     /**
+     * Confirm delete action.
+     */
+    public function deleteConfirm(Request $request, $producerId, $productId)
+    {
+        $user = Auth::user();
+        $producer = $user->producerAdminLink($producerId)->getProducer();
+        $product = $producer->product($productId);
+
+        return view('admin.product.confirm-delete', [
+            'producer' => $producer,
+            'product' => $product,
+            'breadcrumbs' => [
+                $producer->name => 'producer/' . $producer->id,
+                trans('admin/user-nav.products') => 'producer/' . $producer->id . '/products',
+                $product->name => 'producer/' . $producer->id . '/product/' . $product->id . '/edit',
+                trans('admin/user-nav.delete') => ''
+            ]
+        ]);
+    }
+
+    /**
      * Product delete action.
      *
      * @param Request $request

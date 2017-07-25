@@ -7,6 +7,9 @@ return [
     'amount_per_package' => 'Amount per package',
     'back_to_producer' => 'Back to producer',
     'booking_deadline' => 'Booking deadline:',
+    'cancel' => 'Cancel',
+    'confirm_delete' => 'Confirm delete',
+    'confirm_delete_info' => 'You are about to delete a product. Are you sure you cant to continue?',
     'create_variant' => 'Create variant',
     'csa_products' => 'CSA products',
     'csa_products_info' => '
@@ -19,7 +22,7 @@ return [
     'delete_variant' => 'Delete variant',
     'delivery_dates' => 'Delivery dates',
     'delivery_dates_select_info' => 'To make your product visible on the node page you have to select the dates you will be delivering to the node.',
-    'delivery_dates_no_nodes' => 'It looks like you haven\'t <a href=":url">selected nodes to delivery</a> to. Delivery dates are defined by the nodes so you have to select one (or more) first.',
+    'delivery_dates_no_nodes' => 'It looks like you haven\'t selected nodes to delivery to. Delivery dates are defined by the nodes so you have to select at least one to continue. Then you\'ve selected your nodes reload the page to view the delivery calendar.',
     'delivery_dates_recurring_products_info' => '<b>:product_name</b> is a recurring product that is produced continuously for a period of time, and production quantities may change during this time. In this view you have the ability to change the produced quantity for a specific delivery.',
     'edit_delivery_dates' => 'Edit delivery dates',
     'edit_product' => 'Edit product',
@@ -85,6 +88,7 @@ return [
             <li>You can adjust weekly balance individually for each week if you produce more or less certain weeks. Just make sure it\'s done well in advance.</li>
         </ul>
     ',
+    'reload_page' => 'Reload page',
     'save' => 'Save',
     'save_product' => 'Save product',
     'save_product_continue' => 'Save product and continue to delivery dates',

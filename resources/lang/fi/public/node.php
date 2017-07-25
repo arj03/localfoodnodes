@@ -29,4 +29,5 @@ return [
     'producers' => 'Producers',
     'select_variant' => 'Select variant',
     'select_pickup' => 'Select pick-up dates',
+    'share' => 'Share',
 ];

@@ -170,15 +170,49 @@ class Producer extends BaseModel implements EventOwnerInterface
 
     /**
      * Get order dates.
+     *
      * @return Collection
      */
     public function orderDates()
     {
         $orderDates = $this->orderDateItemLinks()->map(function($orderDateItemLink) {
-            return $orderDateItemLink->getDate();
-        })->unique('id');
+            return $orderDateItemLink->getDate() ?: null;
+        })->filter()->unique('id');
 
-        return $orderDates;
+
+        $sortedOrderDates = $orderDates->sortByDesc(function($orderDate, $key) {
+            return $orderDate->date('Y-m-d');
+        });
+
+        return $sortedOrderDates;
+    }
+
+    /**
+     * Get order date.
+     *
+     * @return OrderDate
+     */
+    public function orderDate($orderDateId)
+    {
+        $orderDateItemLink = $this->orderDateItemLinks()->where('order_date_id', $orderDateId)->first();
+
+        return $orderDateItemLink->getDate();
+    }
+
+    /**
+     * Get next order date.
+     *
+     * @return OrderDate
+     */
+    public function getNextOrderDate()
+    {
+        $orderDates = $this->orderDates();
+
+        $orderDates = $orderDates->filter(function($orderDate) {
+            return $orderDate->date >= new \DateTime(date('Y-m-d'));
+        });
+
+        return $orderDates->last();
     }
 
     /**
@@ -186,19 +220,15 @@ class Producer extends BaseModel implements EventOwnerInterface
      *
      * @return Collection
      */
-    public function orderItems()
+    public function orderItems($userId = null)
     {
-        return $this->hasMany('App\Order\OrderItem', 'producer_id', 'id')->get();
-    }
+        $orderItems = $this->hasMany('App\Order\OrderItem', 'producer_id', 'id');
 
-    /**
-     * Get order items grouped by user.
-     *
-     * @return Collection
-     */
-    public function orderItemsGroupedByUser()
-    {
-        return $this->hasMany('App\Order\OrderItem')->get()->groupBy('user_id');
+        if ($userId) {
+            $orderItems = $orderItems->where('user_id', $userId);
+        }
+
+        return $orderItems->get();
     }
 
     /**
@@ -311,7 +341,11 @@ class Producer extends BaseModel implements EventOwnerInterface
         $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'producer')->get();
 
         if ($date) {
-            $events = $events->where('start_datetime', '<=', $date)->where('end_datetime', '>=', $date);
+            $startDatetime = new \DateTime($date->format('Y-m-d'));
+            $startDatetime->modify('+86399 seconds'); // Until the last second of the date is a valid start date
+            $endDatetime = $date; // Valid end date is any time during the date
+
+            $events = $events->where('start_datetime', '<=', $startDatetime)->where('end_datetime', '>=', $endDatetime);
         }
 
         return $events;

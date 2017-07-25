@@ -8,9 +8,10 @@
             <div class="d-flex justify-content-between">
                 <div>
                     <h1>{{ $node->name }}</h1>
+                    <div class="hidden-xl-up">{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</div>
                     <div class="address">{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
                 </div>
-                <div class="deliveries">
+                <div class="col-12 col-xl-5 hidden-lg-down text-right">
                     <h1>{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
                 </div>
             </div>
@@ -117,6 +118,11 @@
                     <div class="card-header">{{ $node->name }}</div>
                     <div class="card-block">
                         {!! $node->info !!}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="fb-share-button" data-href="{{ $_SERVER['REQUEST_URI'] }}" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">{{ trans('public/node.share') }}</a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -292,4 +298,28 @@
 
         updateNavigation($('.calendar').find('.month:visible'));
     </script>
+@endsection
+
+@section('modal')
+    @if (Session::has('added_to_cart_modal'))
+        <div class="modal fade" id="added-to-cart-modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body body-text">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="#" class="choice continue-shopping" data-dismiss="modal">{{ trans('public/checkout.continue_shopping') }}</a>
+                            </div>
+                            <div class="col-6">
+                                <a href="/checkout" class="choice go-to-checkout">{{ trans('public/checkout.go_to_checkout') }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#added-to-cart-modal').modal('show');
+        </script>
+    @endif
 @endsection

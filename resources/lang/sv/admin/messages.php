@@ -31,7 +31,7 @@ return [
     'product_deleted' => 'Din produkt har tagits bort',
     'product_error_create_variant' => 'Kunde inte skapa produktvariant',
     'product_no_production' => 'Du har inte skapat någon produktion',
-    'product_date_quantity_required' => 'Datum och kvantitet är obligatoriska fält för sällanprodukter',
+    'product_date_quantity_required' => 'Datum och antal är obligatoriska fält för sällanprodukter',
     'product_delivery_updated' => 'Dina leveransdatum har uppdaterats',
 
     // Variant
@@ -53,8 +53,9 @@ return [
     'user_is_admin' => 'Användaren är redan admin',
 
     // User
-    'user_account_email_sent' => 'Ett aktiveringsmail har skickats till din epost-adress.',
+    'user_account_email_sent' => 'Ett aktiveringsmail har skickats till din epostadress.',
     'user_account_activated' => 'Ditt konto har aktiverats.',
+    'user_account_activation_failed' => 'Ditt konto kunde inte aktiveras. Kontakta supporten för hjälp.',
     'user_account_created' => 'Ditt konto har skapats.',
     'user_account_updated' => 'Din information har uppdaterats',
     'user_account_deleted' => 'Ditt konto har tagits bort',
@@ -64,7 +65,7 @@ return [
     'user_membership_errors' => 'Betalning av medlemsavgift kunde inte slutföras. :errors',
 
     // Password reset
-    'password_reset_email_sent' => 'En återställningslänk har skickats till din epost-adress.',
+    'password_reset_email_sent' => 'En återställningslänk har skickats till din epostadress.',
 
     // Other
     'required_fields_missing' => 'Obligatoriska fält är tomma.',

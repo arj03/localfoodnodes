@@ -54,11 +54,13 @@ class EmailController extends Controller
     public function orderProducer(Request $request)
     {
         $user = Auth::user();
-        $orderItems = $user->orderItems();
+        $producer = $user->producerAdminLinks()->first()->getProducer();
+        $orderDates = $producer->orderDates();
 
         $data = [
             'title' => 'Order',
-            'orderItems' => $orderItems
+            'producer' => $producer,
+            'orderDates' => $orderDates
         ];
 
         // Mail::send('email.order-producer', $data, function ($message) {

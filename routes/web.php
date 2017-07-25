@@ -39,22 +39,25 @@ Route::post('/account/user/insert', 'Admin\UserController@insert');
 Route::get('/account/user/migrate', 'Admin\UserController@migrateEditAccount');
 Route::post('/account/user/migrate-update', 'Admin\UserController@migrateUpdateAccount');
 
+Route::get('/account/user/activate/token/{token}', 'Admin\UserController@activateToken'); // Activate account even if user is not logged in
+
 // Admin routes
 Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function () {
     // User
     Route::group(['prefix' => '/user'], function () {
         Route::get('/activate', 'Admin\UserController@activate');
         Route::get('/activate/resend', 'Admin\UserController@activateResend');
-        Route::get('/activate/token/{token}', 'Admin\UserController@activateToken');
         Route::get('/', 'Admin\UserController@index');
         Route::get('/edit', 'Admin\UserController@edit');
         Route::post('/update', 'Admin\UserController@update');
-        Route::get('/delete/confirm', 'Admin\UserController@confirmDelete');
         Route::get('/delete', 'Admin\UserController@delete');
+        Route::get('/delete/confirm', 'Admin\UserController@deleteConfirm');
         Route::get('/password/edit', 'Admin\UserController@editPassword');
         Route::post('/password/update', 'Admin\UserController@updatePassword');
         Route::get('/pickups', 'Admin\UserController@pickups');
-        Route::get('/orders', 'Admin\UserController@orders');
+        Route::get('/orders/producer/{producerId}', 'Admin\UserController@producerOrders');
+
+        // Route::get('/orders', 'Admin\UserController@orders');
         Route::get('/order/{orderItemId}', 'Admin\UserController@order');
         Route::get('/order/{orderItemId}/delete', 'Admin\UserController@deleteOrderItem');
         Route::post('/membership/callback', 'Admin\UserController@membershipCallback');
@@ -72,6 +75,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/{nodeId}/edit', 'Admin\NodeController@edit');
         Route::post('/{nodeId}/update', 'Admin\NodeController@update');
         Route::get('/{nodeId}/delete', 'Admin\NodeController@delete');
+        Route::get('/{nodeId}/delete/confirm', 'Admin\NodeController@deleteConfirm');
         Route::get('/{nodeId}/leave', 'Admin\NodeController@leave');
         Route::get('/{nodeId}/users', 'Admin\NodeController@users');
         Route::get('/{nodeId}/producers', 'Admin\NodeController@producers');
@@ -93,10 +97,13 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/{producerId}/edit', 'Admin\ProducerController@edit');
         Route::post('/{producerId}/update', 'Admin\ProducerController@update');
         Route::get('/{producerId}/delete', 'Admin\ProducerController@delete');
+        Route::get('/{producerId}/delete/confirm', 'Admin\ProducerController@deleteConfirm');
         Route::get('/{producerId}/leave', 'Admin\ProducerController@leave');
         Route::get('/{producerId}/products', 'Admin\ProducerController@products');
         Route::get('/{producerId}/deliveries', 'Admin\ProducerController@deliveries');
-        Route::get('/{producerId}/orders', 'Admin\OrderController@orders');
+        Route::get('/{producerId}/delivery/{orderDateId}/picklist', 'Admin\ProducerController@picklist');
+        Route::get('/{producerId}/orders/user/{userId}', 'Admin\OrderController@userOrders');
+        Route::get('/{producerId}/orders/product/{productId}', 'Admin\OrderController@productOrders');
         Route::get('/{producerId}/order/{orderId}', 'Admin\OrderController@order');
         Route::post('/{producerId}/invite/send', 'Admin\ProducerController@sendAdminInvite');
         Route::get('/{producerId}/invite/accept', 'Admin\ProducerController@acceptInvite');
@@ -119,6 +126,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/{productId}/edit', 'Admin\ProductController@edit');
         Route::post('/{productId}/update', 'Admin\ProductController@update');
         Route::get('/{productId}/delete', 'Admin\ProductController@delete');
+        Route::get('/{productId}/delete/confirm', 'Admin\ProductController@deleteConfirm');
         Route::get('/{productId}/production/{productionId}/delete', 'Admin\ProductProductionController@deleteProduction');
         Route::post('/{productId}/set-package-unit', 'Admin\ProductController@setPackageUnit');
 
@@ -150,6 +158,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::get('/event/{eventId}/edit', 'Admin\EventController@edit');
         Route::post('/event/{eventId}/update', 'Admin\EventController@update');
         Route::get('/event/{eventId}/delete', 'Admin\EventController@delete');
+        Route::get('/event/{eventId}/deleteConfirm', 'Admin\EventController@deleteConfirm');
         Route::get('/event/{eventId}/guests', 'Admin\EventController@guests');
     });
 

@@ -110,6 +110,7 @@ class IndexController extends Controller
     {
         $node = Node::find($nodeId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
+
         $producer = Producer::where('id', $product->producer_id)->first();
 
         $fbUrl = $node->permalink()->url . $product->permalink()->url;

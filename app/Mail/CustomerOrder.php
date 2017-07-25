@@ -31,7 +31,7 @@ class CustomerOrder extends Mailable
     public function build()
     {
         return $this->from(['address' => 'info@localfoodnodes.org', 'name' => 'Local Food Nodes'])
-        ->subject('Order confirmation')
+        ->subject(trans('public/email.order_confirmation'))
         ->view('email.customer-order');
     }
 }

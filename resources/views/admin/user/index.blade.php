@@ -75,22 +75,24 @@
                 <div class="card-header">{{ trans('admin/user.nodes_you_follow') }}</div>
                 <div class="card-block">
                     @if ($user->nodeLinks()->count() > 0)
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <td>{{ trans('admin/user.node_name') }}</td>
-                                    <td class="text-right"></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($user->nodeLinks() as $nodeLink)
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
                                     <tr>
-                                        <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
-                                        <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
+                                        <td>{{ trans('admin/user.node_name') }}</td>
+                                        <td class="text-right"></td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user->nodeLinks() as $nodeLink)
+                                        <tr>
+                                            <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
+                                            <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         {{ trans('admin/user.no_nodes') }}
                     @endif
@@ -104,33 +106,43 @@
             <div class="card">
                 <div class="card-header">
                     {{ trans('admin/user.next_pickup') }}
-                    @if ($user->orderDates()->count() > 0)
-                        {{ $user->orderDates()->first()->date('Y-m-d') }}
+                    @if ($user->getNextOrderDate() && $user->getNextOrderDate()->count() > 0)
+                        {{ $user->getNextOrderDate()->date('Y-m-d') }}
                     @endif
                 </div>
                 <div class="card-block">
-                    @if ($user->orderDates()->count() > 0)
+                    @if ($user->getNextOrderDate() && $user->getNextOrderDate()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ trans('admin/user.pickup') }}</th>
+                                        <th>{{ trans('admin/user.order') }}</th>
                                         <th>{{ trans('admin/user.product') }}</th>
                                         <th>{{ trans('admin/user.quantity') }}</th>
                                         <th>{{ trans('admin/user.producer') }}</th>
                                         <th>{{ trans('admin/user.node') }}</th>
                                         <th>{{ trans('admin/user.total') }}</th>
+                                        <th class="text-right">{{ trans('admin/user.status') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user->orderDates()->first()->orderDateItemLinks($user->id) as $orderDateItemLink)
+                                    @foreach ($user->getNextOrderDate()->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
-                                            <td>{{ $orderDateItemLink->getDate()->date('Y-m-d') }}</td>
-                                            <td>{{ $orderDateItemLink->getItem()->getName() }}</td>
+                                            <td>{{ $orderDateItemLink->ref }}</td>
+                                            <td>
+                                                <a href="/account/user/order/{{ $orderDateItemLink->id }}">
+                                                    {{ $orderDateItemLink->getItem()->getName() }}
+                                                </a>
+                                            </td>
                                             <td>{{ $orderDateItemLink->quantity }}</td>
-                                            <td>{{ $orderDateItemLink->getItem()->producer['name'] }}</td>
+                                            <td>
+                                                <a href="/account/user/orders/producer/{{ $orderDateItemLink->producer_id }}">
+                                                    {{ $orderDateItemLink->getItem()->producer['name'] }}
+                                                </a>
+                                            </td>
                                             <td>{{ $orderDateItemLink->getItem()->node['name'] }}</td>
                                             <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
+                                            <td class="text-right"><span class="{{ $orderDateItemLink->getItem()->getCurrentStatus()->getHtmlClass() }}">{{ $orderDateItemLink->getItem()->getCurrentStatus()}}</span></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

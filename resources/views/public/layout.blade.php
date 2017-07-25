@@ -29,6 +29,15 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
     </head>
     <body class="public {{ $viewName }} {{ Auth::check() && Auth::user()->active ? 'logged-in' : '' }}">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.9&appId=923888444420982";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
         <div class="page">
             @include('admin.user-nav')
             @include('public.nav')
@@ -65,6 +74,6 @@
             ga('create', 'UA-90169652-1', 'auto');
             ga('send', 'pageview');
         </script>
-        <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js" async></script>
+        <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js"></script>
     </body>
 </html>

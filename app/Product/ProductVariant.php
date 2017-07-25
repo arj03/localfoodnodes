@@ -73,7 +73,9 @@ class ProductVariant extends BaseModel
      */
     public function getPackageAmountUnit()
     {
-        return $this->package_amount . ' ' . trans_choice('units.' . $this->getProduct()->package_unit, $this->package_amount);
+        if ($this->getProduct()->package_unt) {
+            return '(' . $this->package_amount . ' ' . trans_choice('units.' . $this->getProduct()->package_unit, $this->package_amount) . ')';
+        }
     }
 
     /**
@@ -85,7 +87,7 @@ class ProductVariant extends BaseModel
     {
         $product = $this->getProduct();
 
-        if (\UnitsHelper::isStandardUnit($product->package_unit)) {
+        if (\UnitsHelper::isStandardUnit($product->price_unit)) {
             return $product->producer()->currency . '/' . $product->price_unit;
         } else {
             return $product->producer()->currency;

@@ -2,7 +2,7 @@
 
 namespace App\Order;
 
-use \DateTime;
+use Illuminate\Database\Eloquent\Collection;
 
 class OrderDate extends \App\BaseModel
 {
@@ -16,7 +16,6 @@ class OrderDate extends \App\BaseModel
      * @var array
      */
     protected $validationRules = [
-        'user_id' => 'required',
         'date' => 'required',
     ];
 
@@ -26,9 +25,10 @@ class OrderDate extends \App\BaseModel
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'date',
     ];
+
+    private $orderFilter;
 
     /**
      * Return date object.
@@ -38,7 +38,7 @@ class OrderDate extends \App\BaseModel
      */
     public function getDateAttribute($value)
     {
-        return new DateTime($value);
+        return new \DateTime($value);
     }
 
     /**
@@ -52,9 +52,24 @@ class OrderDate extends \App\BaseModel
         return $this->date->format($format);
     }
 
+    /**
+     * Define relationship with orderDateItemLinks.
+     *
+     * @return [type] [description]
+     */
     public function orderDateItemLinksRelationship()
     {
         return $this->hasMany('App\Order\OrderDateItemLink');
+    }
+
+    /**
+     * Limit OrderDateItemLinks to specifics orders refs. Useful for order emails where not all order for a date can be loaded.
+     *
+     * @param Collection $orderRefs
+     */
+    function setOrderFilter($orderRefs)
+    {
+        $this->orderFilter = $orderRefs;
     }
 
     /**
@@ -64,12 +79,21 @@ class OrderDate extends \App\BaseModel
      */
     public function orderDateItemLinks($userId = null, $producerId = null)
     {
+        $orderDateItemLinks = new Collection();
+
         if ($userId) {
-            return $this->orderDateItemLinksRelationship->where('user_id', $userId);
+            $orderDateItemLinks = $this->orderDateItemLinksRelationship->where('user_id', $userId);
         } else if ($producerId) {
-            return $this->orderDateItemLinksRelationship->where('producer_id', $producerId);
+            $orderDateItemLinks = $this->orderDateItemLinksRelationship->where('producer_id', $producerId);
         } else {
-            return collect([]);
+            \Log::error('Error in function orderDateItemLinks: both userId and producerId cannot be null');
         }
+
+        // Limit query to filter
+        if ($this->orderFilter) {
+            $orderDateItemLinks = $orderDateItemLinks->whereIn('ref', $this->orderFilter);
+        }
+
+        return $orderDateItemLinks;
     }
 }

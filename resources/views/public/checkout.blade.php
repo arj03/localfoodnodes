@@ -75,7 +75,22 @@
                                 @endforeach
                             </ul>
                             @if ($user->isMember())
-                                <a href="/checkout/order/create" class="btn w-100">{{ trans('public/checkout.send_order') }}</a>
+                                <button id="send-order-action" class="btn w-100">{{ trans('public/checkout.send_order') }}</button>
+                                <script>
+                                    $('#send-order-action').on('click', function() {
+                                        $(this).attr('disabled', true);
+                                        $.ajax({
+                                            type: 'get',
+                                            url: '/checkout/order/create',
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                window.location = '/checkout';
+                                            },
+                                            success: function(data, textStatus, jqXHR) {
+                                                window.location = '/account/user/pickups';
+                                            }
+                                        });
+                                    });
+                                </script>
                             @else
                                 <a href="/membership" class="btn w-100">{{ trans('public/checkout.become_member') }}</a>
                             @endif

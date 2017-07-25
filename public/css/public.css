@@ -358,6 +358,10 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active, a.btn:focus {
   background-color: #8fb773;
 }
 
+.success-message .card-header {
+  background: #8fb773 !important;
+}
+
 @media (min-width: 992px) {
   body.public.logged-in .page {
     -webkit-box-orient: horizontal;
@@ -865,17 +869,21 @@ body.page .page .card .body-text {
   height: 70vh;
 }
 
-body.public-product-product .header .image {
-  height: 500px;
-  background-size: cover;
-  background-position: center center;
+body.public-product-product .order-form .card-block {
+  overflow: hidden;
+  border-bottom: 1px dashed #eee;
 }
 
-body.public-product-product .info {
-  margin-top: -150px;
+body.public-product-product .order-form .card-block:last-child {
+  border-bottom: 0;
 }
 
-body.public-product-product .order-block .price {
+body.public-product-product .order-form .card-block label .text-muted {
+  font-family: 'raleway';
+  font-weight: normal;
+}
+
+body.public-product-product .order-form .card-block .price {
   white-space: nowrap;
   font-weight: bold;
 }
@@ -939,6 +947,41 @@ body.public-node-node .node-metrics .metric .value {
 
 body.public-node-node .node-metrics .metric .label {
   line-height: 16px;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog {
+  max-width: 700px;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-header {
+  border: 0;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body {
+  color: #fff;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body .choice {
+  -webkit-box-align: center;
+  align-items: center;
+  background: #d6c69b;
+  display: -webkit-box;
+  display: flex;
+  color: #fff;
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 1.5rem;
+  height: 200px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-body .choice:hover {
+  text-decoration: none;
+  background: #ccba89;
 }
 
 body.public-producer-producer .product-card,

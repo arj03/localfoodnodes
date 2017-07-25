@@ -259,7 +259,7 @@ class ProductVariantController extends Controller
             $variant->save();
         }
 
-        $request->session()->flash('message', [trans('admin/messages.main_variant_updated')]);
+        $request->session()->flash('message', [trans('admin/messages.variant_updated')]);
 
         return redirect()->back();
     }
