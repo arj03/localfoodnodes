@@ -476,6 +476,28 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
+     * Get delivery interval as string
+     *
+     * @return string
+     */
+    public function getDeliveryIntervalAsString()
+    {
+        $interval = '';
+
+        if ($this->delivery_interval === 1) {
+            $interval = trans('admin/node.every_week');
+        } elseif ($this->delivery_interval === 2) {
+            $interval = trans('admin/node.every_second_week');
+        } elseif ($this->delivery_interval === 3) {
+            $interval = trans('admin/node.every_third_week');
+        } elseif($this->delivery_interval === 4) {
+            $interval = trans('admin/node.every_fourth_week');
+        }
+
+        return strtolower($interval);
+    }
+
+    /**
      * Get info to be stored with order.
      *
      * @return array

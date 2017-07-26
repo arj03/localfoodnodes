@@ -27,7 +27,7 @@ return [
     'events' => 'Evenemang',
     'every_week' => 'Varje vecka',
     'every_second_week' => 'Varannan vecka',
-    'every_third_week' => 'Varje tredje vecka',
+    'every_third_week' => 'Var tredje vecka',
     'every_fourth_week' => 'Var fjärde vecka',
     'facebook_page' => 'Facebook-sida',
     'facebook_page_producers' => 'Facebook-sida för producenter',

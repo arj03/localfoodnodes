@@ -8,11 +8,15 @@
             <div class="d-flex justify-content-between">
                 <div>
                     <h1>{{ $node->name }}</h1>
-                    <div class="hidden-xl-up">{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</div>
-                    <div class="address">{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
+                    <div class="hidden-xl-up">
+                        {{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}
+                        {{ $node->getDeliveryIntervalAsString() }}
+                    </div>
+                    <div>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
                 </div>
                 <div class="col-12 col-xl-5 hidden-lg-down text-right">
                     <h1>{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
+                    <div>{{ $node->getDeliveryIntervalAsString() }}</div>
                 </div>
             </div>
         </div>
