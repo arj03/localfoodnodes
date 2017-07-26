@@ -153,6 +153,8 @@ class NodeController extends Controller
         $node = Node::find($id);
 
         $oldWeekday = $node->delivery_weekday;
+        $oldInterval = $node->delivery_interval;
+        $oldStartdate = $node->delivery_startdate;
 
         $errors = $node->validate($data);
         if ($errors->isEmpty()) {
@@ -166,7 +168,9 @@ class NodeController extends Controller
 
             $this->uploadImage($request, $node);
 
-            if ($oldWeekday !== $node->delivery_weekday) {
+            // Delete all product node delivery links if weekday, interval or start date change,
+            // otherwise product dates and node dates won't match.
+            if ($oldWeekday !== $node->delivery_weekday || $oldInterval !== $node->delivery_interval || $oldStartdate !== $node->delivery_startdate) {
                 $node->productNodeDeliveryLinks()->each->delete();
             }
 
