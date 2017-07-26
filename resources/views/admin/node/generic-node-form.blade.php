@@ -59,48 +59,52 @@
         <div class="card">
             <div class="card-header">{{ trans('admin/node.deliveries') }}</div>
             <div class="card-block">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="delivery_interval">Delivery interval</label>
-                            <select name="delivery_interval" id="delivery_interval" class="form-control">
-                                <option value="">Select an interval</option>
-                                <option value="1" {{ $node->delivery_interval === '1' ? ' selected' : '' }}>Every week</option>
-                                <option value="2" {{ $node->delivery_interval === '2' ? ' selected' : '' }}>Every second week</option>
-                                <option value="3" {{ $node->delivery_interval === '3' ? ' selected' : '' }}>Every third week</option>
-                                <option value="4" {{ $node->delivery_interval === '4' ? ' selected' : '' }}>Every month</option>
-                            </select>
-                        </div>
+                <div class="form-group">
+                    <label for="delivery_weekday">{{ trans('admin/node.weekday') }} @include('admin.field-error', ['field' => 'delivery_weekday'])</label>
+                    <select name="delivery_weekday" id="delivery_weekday" class="form-control">
+                        <option value="">{{ trans('admin/node.select_weekday') }}</option>
+                        <option value="monday" {{ $node->delivery_weekday === 'monday' ? ' selected' : '' }}>{{ trans('admin/node.monday') }}</option>
+                        <option value="tuesday" {{ $node->delivery_weekday === 'tuesday' ? ' selected' : '' }}>{{ trans('admin/node.tuesday') }}</option>
+                        <option value="wednesday" {{ $node->delivery_weekday === 'wednesday' ? ' selected' : '' }}>{{ trans('admin/node.wednesday') }}</option>
+                        <option value="thursday" {{ $node->delivery_weekday === 'thursday' ? ' selected' : '' }}>{{ trans('admin/node.thursday') }}</option>
+                        <option value="friday" {{ $node->delivery_weekday === 'friday' ? ' selected' : '' }}>{{ trans('admin/node.friday') }}</option>
+                        <option value="saturday" {{ $node->delivery_weekday === 'saturday' ? ' selected' : '' }}>{{ trans('admin/node.saturday') }}</option>
+                        <option value="sunday" {{ $node->delivery_weekday === 'sunday' ? ' selected' : '' }}>{{ trans('admin/node.sunday') }}</option>
+                    </select>
+                </div>
 
-                        <div class="form-group">
-                            <label for="delivery_weekday">{{ trans('admin/node.weekday') }} @include('admin.field-error', ['field' => 'delivery_weekday'])</label>
-                            <select name="delivery_weekday" id="delivery_weekday" class="form-control">
-                                <option value="">{{ trans('admin/node.select_weekday') }}</option>
-                                <option value="monday" {{ $node->delivery_weekday === 'monday' ? ' selected' : '' }}>{{ trans('admin/node.monday') }}</option>
-                                <option value="tuesday" {{ $node->delivery_weekday === 'tuesday' ? ' selected' : '' }}>{{ trans('admin/node.tuesday') }}</option>
-                                <option value="wednesday" {{ $node->delivery_weekday === 'wednesday' ? ' selected' : '' }}>{{ trans('admin/node.wednesday') }}</option>
-                                <option value="thursday" {{ $node->delivery_weekday === 'thursday' ? ' selected' : '' }}>{{ trans('admin/node.thursday') }}</option>
-                                <option value="friday" {{ $node->delivery_weekday === 'friday' ? ' selected' : '' }}>{{ trans('admin/node.friday') }}</option>
-                                <option value="saturday" {{ $node->delivery_weekday === 'saturday' ? ' selected' : '' }}>{{ trans('admin/node.saturday') }}</option>
-                                <option value="sunday" {{ $node->delivery_weekday === 'sunday' ? ' selected' : '' }}>{{ trans('admin/node.sunday') }}</option>
-                            </select>
+                <div class="form-group">
+                    <label for="delivery_interval">{{ trans('admin/node.delivery_interval') }}</label>
+                    <select name="delivery_interval" id="delivery_interval" class="form-control">
+                        <option value="">{{ trans('admin/node.select_interval') }}</option>
+                        <option value="1" {{ $node->delivery_interval === 1 ? ' selected' : '' }}>{{ trans('admin/node.every_week') }}</option>
+                        <option value="2" {{ $node->delivery_interval === 2 ? ' selected' : '' }}>{{ trans('admin/node.every_second_week') }}</option>
+                        <option value="3" {{ $node->delivery_interval === 3 ? ' selected' : '' }}>{{ trans('admin/node.every_third_week') }}</option>
+                        <option value="4" {{ $node->delivery_interval === 4 ? ' selected' : '' }}>{{ trans('admin/node.every_fourth_week') }}</option>
+                    </select>
+                </div>
 
-                            @if ($node->id)
-                                <div class="alert alert-warning mt-3">
-                                    <i class="fa fa-warning"></i> {{ trans('admin/node.change_weekday_warning') }}
-                                </div>
-                            @endif
-                        </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="delivery_startdate">
+                        {{ trans('admin/node.delivery_startdate') }}
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" name="delivery_startdate" class="form-control picker date" id="delivery_startdate" placeholder="{{ trans('admin/node.delivery_startdate') }}" value="{{ $node->delivery_startdate ? $node->delivery_startdate->format('Y-m-d') : '' }}">
                     </div>
+                </div>
 
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="delivery_time">{{ trans('admin/node.time') }} @include('admin.field-error', ['field' => 'delivery_time'])</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                <input type="text" name="delivery_time" class="form-control picker time" id="delivery_time" placeholder="{{ trans('admin/node.time_placeholder') }}" value="{{ $node->delivery_time or '' }}">
-                            </div>
-                        </div>
+                @if ($node->id)
+                    <div class="alert alert-warning mt-3">
+                        <i class="fa fa-warning"></i> {{ trans('admin/node.change_weekday_warning') }}
+                    </div>
+                @endif
+
+                <div class="form-group">
+                    <label for="delivery_time">{{ trans('admin/node.time') }} @include('admin.field-error', ['field' => 'delivery_time'])</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                        <input type="text" name="delivery_time" class="form-control picker time" id="delivery_time" placeholder="{{ trans('admin/node.time_placeholder') }}" value="{{ $node->delivery_time or '' }}">
                     </div>
                 </div>
             </div>

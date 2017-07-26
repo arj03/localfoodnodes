@@ -569,7 +569,6 @@ class UserController extends Controller
      */
     private function sendActivationLink($user)
     {
-        \Log::debug(var_export($user, true));
         $token = DB::table('user_activations')->select('token')->where('user_id', '=', $user->id)->value('token');
 
         if (!$token) {

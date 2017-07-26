@@ -24,9 +24,10 @@ class CreateNodesTable extends Migration
             $table->string('city')->nullable();
             $table->string('link_facebook')->nullable();
             $table->string('link_facebook_producers')->nullable();
-            $table->string('delivery_interval')->nullable();
-            $table->string('delivery_time')->nullable();
+            $table->integer('delivery_interval')->nullable();
             $table->string('delivery_weekday')->nullable();
+            $table->date('delivery_startdate')->nullable();
+            $table->string('delivery_time')->nullable();
             $table->timestamps();
         });
     }
