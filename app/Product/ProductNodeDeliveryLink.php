@@ -211,8 +211,8 @@ class ProductNodeDeliveryLink extends \App\BaseModel
 
         if ($this->getProduct()->productionType === 'weekly') {
             // Orders on weekly products only decrease the quantity for the specific date.
-            $weekStart = date('Y-m-d', strtotime('last monday', $this->date->getTimestamp()));
-            $weekEnd = date('Y-m-d', strtotime('next sunday', $this->date->getTimestamp()));
+            $weekStart = date('Y-m-d', strtotime('monday this week', $this->date->getTimestamp()));
+            $weekEnd = date('Y-m-d', strtotime('sunday this week', $this->date->getTimestamp()));
 
             $orderDateItemLinkIds = $orderQuery
             ->where('order_dates.date', '>=', $weekStart)
