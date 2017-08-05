@@ -111,6 +111,10 @@ class NodeController extends Controller
 
             $latLng = $googleMapsHelper->getLatLngForDb($node->getAddressFields());
             $node->setLocation($latLng);
+
+            $deliveryInterval = $this->calculcateDeliveryInterval($request);
+            $node->delivery_interval = $deliveryInterval;
+
             $node->save();
 
             \App\Helpers\SlackHelper::message('notification', $user->name . ' (' . $user->email . ')' . ' created the node ' . $node->name . '.');
@@ -164,6 +168,9 @@ class NodeController extends Controller
             $latLng = $googleMapsHelper->getLatLngForDb($node->getAddressFields());
             $node->setLocation($latLng);
 
+            $deliveryInterval = $this->calculcateDeliveryInterval($request);
+            $node->delivery_interval = $deliveryInterval;
+
             $node->save();
 
             $this->uploadImage($request, $node);
@@ -215,6 +222,55 @@ class NodeController extends Controller
 
         $request->session()->flash('message', [trans('admin/messages.node_deleted')]);
         return redirect('/account/user');
+    }
+
+    /**
+     * [calculcateDeliveryInterval description]
+     * @param  [type] $date [description]
+     * @return [type]       [description]
+     */
+    private function calculcateDeliveryInterval($request)
+    {
+        if ($request->input('delivery_interval') > 4) {
+            // 5 = every month
+            $weekInMonth = $this->getWeekNumber($request->input('delivery_startdate'));
+
+            \Log::debug('weekInMonth: ' . $weekInMonth)
+
+            return 'first monday next month';
+        } else {
+            // Weekly interval
+            return '+' . $request->input('delivery_interval')  ' weeks';
+        }
+    }
+
+    /**
+     * Returns the amount of weeks into the month a date is
+     * @param $date a YYYY-MM-DD formatted date
+     * @param $rollover The day on which the week rolls over
+     */
+    private function getWeekInMonth($date, $rollover)
+    {
+        $cut = substr($date, 0, 8);
+        $daylen = 86400;
+
+        $timestamp = strtotime($date);
+        $first = strtotime($cut . "00");
+        $elapsed = ($timestamp - $first) / $daylen;
+
+        $weeks = 1;
+
+        for ($i = 1; $i <= $elapsed; $i++)
+        {
+            $dayfind = $cut . (strlen($i) < 2 ? '0' . $i : $i);
+            $daytimestamp = strtotime($dayfind);
+
+            $day = strtolower(date("l", $daytimestamp));
+
+            if($day == strtolower($rollover))  $weeks ++;
+        }
+
+        return $weeks;
     }
 
     /**

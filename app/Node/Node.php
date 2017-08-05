@@ -337,7 +337,11 @@ class Node extends BaseModel implements EventOwnerInterface
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
-        $interval = \DateInterval::createFromDateString($this->delivery_interval . ' week');
+        if ($this->delivery_interval === 5) {
+            $interval = \DateInterval::createFromDateString('+1 month');
+        } else {
+            $interval = \DateInterval::createFromDateString($this->delivery_interval . ' week');
+        }
 
         $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
 
