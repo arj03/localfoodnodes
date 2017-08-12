@@ -12,7 +12,7 @@ return [
         <p>
         För att kunna skicka bokningar behöver du bli stödmedlem genom att betala en årlig medlemsavgift.
 
-        Avgiften är individuell och du bestämmer helt själv hur mycket du vill bidra med i avgift. Du avgör själv vad som passar för din ekonomiska situation och hur mycket du tycker att detta verktyg är värt för dig och vårt samhälle. Vad du än väljer för summa är du med och skapar och medfinansierar en hälsosammare och mer lokal matförsörning! Du kan läsa mer om stödmedlemskap här (kommer snart) eller skapa ett konto för att gå vidare.
+        Avgiften är individuell och du bestämmer helt själv hur mycket du vill bidra med i avgift. Du avgör vad som passar för din ekonomiska situation och hur mycket du tycker att detta verktyg är värt för dig och vårt samhälle. Vad du än väljer för summa är du med och skapar och medfinansierar en hälsosammare och mer lokal matförsörning! Du kan läsa mer om stödmedlemskap här (kommer snart) eller skapa ett konto för att gå vidare.
         </p>
     ',
     'node' => '
@@ -23,7 +23,7 @@ return [
     'producer' => '
         <h1 class="mb-3">Tillgänliggör dina produkter</h1>
         <p>
-        Hej där ärade matproducent och välkommen till Local Food Nodes! Det här är ett gratisverktyg för producenter att tillsammans och med era lokala konsumenter skapa framtidens matförsörjning. Här kan du tillgängliggöra, administrera och sälja produkter direkt till slutkunder, helt utan mellanhänder. För att kunna göra detta måste du först skapa ett konto, eller bara logga in med ditt Facebookkonto om du föredrar det.
+        Hej där ärade matproducent och välkommen till Local Food Nodes! Det här är ett gratisverktyg skapat för producenter som hjälper er att tillsammans och med era lokala konsumenter skapa framtidens matförsörjning. Här kan du tillgängliggöra, administrera och sälja produkter direkt till slutkunder, helt utan mellanhänder. För att kunna göra detta måste du först skapa ett konto, eller bara logga in med ditt Facebookkonto om du föredrar det.
         </p>
 ',
 ];
