@@ -191,8 +191,12 @@ Route::get('/launch/{segments}', function() {
     return redirect('/');
 })->where('segments', '(.*)');
 
-
 Route::get('/landing-page/{wildcard?}', 'IndexController@index');
+
+// Certificate
+Route::get('/.well-known/acme-challenge/{id}', function($id) {
+    return Redirect::to('/.well-known/acme-challenge/' . $id);
+});
 
 // Page - There routes must be in the bottom of this file because else they'll match every request
 Route::get('/{type}/{slug}/{subType?}/{subSlug?}', 'PermalinkController@route');
