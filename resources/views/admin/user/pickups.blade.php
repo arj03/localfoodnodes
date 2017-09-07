@@ -29,9 +29,13 @@
                                     </thead>
                                     @foreach ($orderDate->orderDateItemLinks($user->id) as $orderDateItemLink)
                                         <tr>
-                                            <td>{{ $orderDateItemLink->ref }}</td>
                                             <td>
                                                 <a href="/account/user/order/{{ $orderDateItemLink->id }}">
+                                                    {{ $orderDateItemLink->ref }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/account/user/orders/product/{{ $orderDateItemLink->getItem()->product_id }}">
                                                     {{ $orderDateItemLink->getItem()->getName() }}
                                                 </a>
                                             </td>

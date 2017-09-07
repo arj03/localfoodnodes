@@ -408,8 +408,30 @@ class UserController extends Controller
             'orderItem' => $orderDateItemLink->getItem(),
             'breadcrumbs' => [
                 $user->name => 'user',
-                trans('admin/user-nav.orders') => 'user/orders',
+                trans('admin/user-nav.orders') => 'user/pickups',
                 trans('admin/user-nav.order') . ' #' . $orderDateItemLink->ref => ''
+            ]
+        ]);
+    }
+
+    /**
+     * Product orders action.
+     */
+    public function productOrders($productId)
+    {
+        $user = Auth::user();
+
+        $orderDateItemLinks = $user->orderDateItemLinks()->filter(function($orderDateItemLink) use ($productId) { // null, $producerId
+            return $orderDateItemLink->getItem()->product_id == $productId;
+        });
+
+        return view('admin.user.product-orders', [
+            'user' => $user,
+            'orderDateItemLinks' => $orderDateItemLinks,
+            'breadcrumbs' => [
+                $user->name => 'user',
+                trans('admin/user-nav.orders') => 'user/pickups',
+                $orderDateItemLinks->first()->getItem()->getName() => ''
             ]
         ]);
     }
