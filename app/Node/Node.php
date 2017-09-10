@@ -367,22 +367,16 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery(\DateTime $productFirstProductionDate = null)
     {
-        // $firstDate = $this->delivery_startdate->getTimestamp(); // time()
         $firstDate = date('Y-m-d', strtotime('next ' . $this->delivery_weekday, $this->delivery_startdate->getTimestamp()));
         $firstDate = new \DateTime($firstDate);
 
         if ($productFirstProductionDate) {
             while ($productFirstProductionDate > $firstDate) {
                 $firstDate->modify('+' . $this->delivery_interval . ' weeks');
-                // $firstDate = strtotime('+' . $this->delivery_interval . ' weeks', $firstDate);
-                // $firstDate = $productFirstProductionDate->getTimestamp();
             }
         }
 
         return $firstDate;
-
-        // $nextDeliveryTimestamp = strtotime('next ' . $this->delivery_weekday, $firstDate);
-        // return new DateTime(date('Y-m-d H:i', $nextDeliveryTimestamp));
     }
 
     /**
@@ -472,7 +466,18 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryStartdateAttribute($value)
     {
-        return $value ? new DateTime($value) : null;
+        return $value ? new DateTime($value) : new DateTime(date('Y-m-d'));
+    }
+
+    /**
+     * Return interval.
+     *
+     * @param string $value
+     * @return Date
+     */
+    public function getDeliveryIntervalAttribute($value)
+    {
+        return $value ?: 1; // Fallback to +1 week interval
     }
 
     /**

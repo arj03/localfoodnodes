@@ -1448,19 +1448,13 @@ body.public-checkout .cart-item .price-unit .unit {
   font-family: 'montserrat';
 }
 
-body.public-checkout .summary {
+body.public-checkout .summary .card-block.red {
   background: #c1534c;
   color: #fff;
 }
 
 body.public-checkout .summary a {
   color: #fff;
-}
-
-body.public-checkout .summary .btn {
-  background: #fff;
-  color: #333;
-  border: 0;
 }
 
 /* Generic */

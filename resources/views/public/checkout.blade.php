@@ -48,7 +48,7 @@
                 @if ($user->cartDates()->count() > 0)
                     <div class="card summary">
                         <div class="card-header">{{ trans('public/checkout.summary') }}</div>
-                        <div class="card-block">
+                        <div class="card-block red">
                             <b class="d-flex justify-content-between">
                                 <span>{{ trans('public/checkout.products') }}</span>
                                 <span>{{ trans('public/checkout.quantity') }}</span>
@@ -74,8 +74,11 @@
                                     </li>
                                 @endforeach
                             </ul>
+                        </div>
+                        <div class="card-block">
                             @if ($user->isMember())
-                                <button id="send-order-action" class="btn w-100">{{ trans('public/checkout.send_order') }}</button>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <button id="send-order-action" class="btn btn-success w-100">{{ trans('public/checkout.send_order') }}</button>
                                 <script>
                                     $('#send-order-action').on('click', function() {
                                         $(this).attr('disabled', true);
@@ -92,6 +95,7 @@
                                     });
                                 </script>
                             @else
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 <a href="/membership" class="btn w-100">{{ trans('public/checkout.become_member') }}</a>
                             @endif
                         </div>
