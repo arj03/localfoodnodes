@@ -369,6 +369,21 @@ class Product extends \App\BaseModel
     }
 
     /**
+     * Get price and unit html.
+     *
+     * @return string
+     */
+    public function getPriceWithUnitHtml()
+    {
+        $prefix = '';
+        if (\UnitsHelper::isStandardUnit($this->price_unit)) {
+            $prefix = '<span class="approx">&asymp;</span>';
+        }
+
+        return '<h3 class="price">' . $prefix . $this->price . '</h3><div class="unit">' . $this->getUnit() . '</div>';
+    }
+
+    /**
      * Get production type based on the productions defined for this product.
      *
      * @return string

@@ -28,6 +28,7 @@ Route::group(['prefix' => '/password'], function () {
 Route::group(['prefix' => '/checkout', 'middleware' => 'auth.route'], function () {
     Route::get('/', 'CartController@index');
     Route::post('/item/add', 'CartController@addItem');
+    Route::post('/items/add', 'CartController@addItems');
     Route::post('/item/{CartDateItemLinkId}/update', 'CartController@updateItem');
     Route::get('/item/{CartDateItemLinkId}/remove', 'CartController@removeItem');
     Route::get('/order/create', 'OrderController@createOrder');

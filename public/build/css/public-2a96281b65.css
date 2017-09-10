@@ -362,6 +362,27 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active, a.btn:focus {
   background: #8fb773 !important;
 }
 
+.quantity-component .input-group-addon {
+  background: #fff;
+  border: 0;
+}
+
+.quantity-component input {
+  border-radius: 3px !important;
+  max-width: 100px;
+}
+
+.quantity-component input::-webkit-inner-spin-button, .quantity-component input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.quantity-component .fa {
+  cursor: pointer;
+}
+
 @media (min-width: 992px) {
   body.public.logged-in .page {
     -webkit-box-orient: horizontal;
@@ -1033,6 +1054,24 @@ body.public-node-node .product-card .card-footer {
 body.public-producer-producer .product-card .card-footer .badge,
 body.public-node-node .product-card .card-footer .badge {
   background-color: #a9322a;
+}
+
+.product-list .product-item {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.product-list .product-item:last-child {
+  border-bottom: 0;
+}
+
+.product-list .product-item h3 a {
+  color: #333;
+}
+
+.product-list .product-item h3 a:hover {
+  text-decoration: none;
 }
 
 .public-index .frontpage-section {
@@ -1718,7 +1757,7 @@ body.public-checkout .summary .btn {
   margin-bottom: 0;
 }
 
-.user-nav .block ul li .header {
+.user-nav .block ul li .block-section-header {
   text-transform: uppercase;
 }
 

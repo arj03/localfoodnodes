@@ -12,6 +12,10 @@
         <meta property="og:description" content="{!! $fbDescription or 'We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
         <meta property="og:image" content="{{ $fbImage or URL::asset('images/facebook-share.jpg') }}">
 
+        <!-- Scripts -->
+        <script src="/js/jquery-3.1.1.min.js"></script>
+
+        <!-- CSS -->
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
@@ -19,12 +23,6 @@
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
-        <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="/js/underscore-min.js"></script>
-        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-        <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
-        <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>
-
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
     </head>
@@ -54,6 +52,12 @@
 
         @include('public.footer')
 
+        <!-- Scripts -->
+        <script src="/js/underscore-min.js"></script>
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+        <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
+        <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>
+        <script src="https://unpkg.com/vue"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script>
             $(function() {

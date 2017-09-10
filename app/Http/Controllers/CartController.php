@@ -65,23 +65,24 @@ class CartController extends Controller
     public function addItem(Request $request)
     {
         $errors = new MessageBag();
+        $messages = new MessageBag();
 
         $product = Product::find($request->input('product_id'));
 
         if ($product->variants()->count() > 0 && !$request->has('variant_id')) {
-            $errors->add('variant_id', trans('public/product.no_variant'));
+            $errors->add('no_variant', trans('public/product.no_variant'));
         }
 
         if (!$request->has('delivery_dates')) {
-            $errors->add('delivery_dates', trans('public/product.no_delivery_dates'));
+            $errors->add('no_delivery_dates', trans('public/product.no_delivery_dates'));
         }
 
         if (!$request->has('quantity')) {
-            $errors->add('quantity', trans('public/product.no_quantity'));
+            $errors->add('no_quantity', trans('public/product.no_quantity'));
         }
 
         if (!$errors->isEmpty()) {
-            $request->session()->flash('message', [trans('public/product.required_fields_missing')]);
+            $request->session()->flash('error', [trans('public/product.required_fields_missing')]);
             return redirect()->back()->withInput()->withErrors($errors);
         }
 
@@ -90,15 +91,80 @@ class CartController extends Controller
         $producer = Producer::where('id', $product->producer_id)->first();
         $node = Node::find($request->input('node_id'));
 
-        $this->addToCart($request, $user, $producer, $product, $variant, $node);
+        $messages = $this->addToCart($request, $user, $producer, $product, $variant, $node);
+        $messages->add('added_to_cart', trans('public/product.added_to_cart'));
 
-        if ($errors->isEmpty()) {
-            $request->session()->flash('message', [trans('public/product.added_to_cart')]);
-            $request->session()->flash('added_to_cart_modal', true);
-            return redirect($node->permalink()->url);
-        } else {
-            return redirect()->back()->withInput()->withErrors($errors);
+        $request->session()->flash('message', $messages->all());
+        $request->session()->flash('added_to_cart_modal', true);
+
+        return redirect($node->permalink()->url);
+    }
+
+    /**
+     * Add Items to cart action.
+     *
+     * @param Request $request [description]
+     */
+    public function addItems(Request $request) {
+        $messages = new MessageBag();
+
+        $user = Auth::user();
+        $node = Node::find($request->input('node_id'));
+
+        $productsData = collect($request->input('product'));
+        foreach ($productsData as $data) {
+            $requestData = new Collection();
+
+            // Quantity
+            if (isset($data['quantity']) && $data['quantity'] > 0) {
+                $requestData->put('quantity', $data['quantity']);
+            } else {
+                continue; // Ignore this product if quantity is zero
+            }
+
+            $errors = new MessageBag();
+            $product = Product::find($data['product_id']);
+
+            // Variant
+            $variant = null;
+            if ($product->variants()->count() > 0 && isset($data['variant_id'])) {
+                $variant = $product->variants()->where('id', $data['variant_id'])->first();
+            } else {
+                $errors->add('no_variant', trans('public/product.no_variant'));
+            }
+
+            // Delivery date
+            if ($request->has('delivery_date')) {
+                $deliveryDates = [$request->input('delivery_date')];
+
+                if ($product->productionType === 'csa') {
+                    $deliveryDates = array_values($product->deliveryLinks()->map(function($deliveryLink) {
+                        return $deliveryLink->date('Y-m-d');
+                    })->toArray());
+                }
+
+                $requestData->put('delivery_dates', $deliveryDates);
+            } else {
+                $errors->add('no_delivery_dates', trans('public/product.no_delivery_dates'));
+            }
+
+            // Abort on errors
+            if (!$errors->isEmpty()) {
+                continue;
+            }
+
+            $producer = Producer::where('id', $product->producer_id)->first();
+
+            $newRequest = new Request($requestData->toArray());
+            $messages->merge($this->addToCart($newRequest, $user, $producer, $product, $variant, $node));
         }
+
+        $messages->add('added_to_cart', trans('public/product.added_to_cart'));
+
+        $request->session()->flash('message', $messages->all());
+        $request->session()->flash('added_to_cart_modal', true);
+
+        return redirect($node->permalink()->url);
     }
 
     /**
@@ -130,14 +196,17 @@ class CartController extends Controller
 
         if ($cartDateItemLink->getItem()->product['production_type'] === 'csa') {
             // CSA is all or nothing
-            $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) use ($request, $product, $variant, $node) {
-                $cartItem->cartDateItemLinks()->each(function($cartDateItemLink) use ($request, $product, $variant, $node) {
-                    $this->validateAndUpdateCartDateItemLink($request, $cartDateItemLink, $product, $variant, $node);
+            $errors = $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) use ($request, $product, $variant, $node) {
+                return $cartItem->cartDateItemLinks()->map(function($cartDateItemLink) use ($request, $product, $variant, $node) {
+                    return $this->validateAndUpdateCartDateItemLink($request, $cartDateItemLink, $product, $variant, $node);
                 });
-            });
+            })->flatten()->first();
         } else {
-            $this->validateAndUpdateCartDateItemLink($request, $cartDateItemLink, $product, $variant, $node);
+            $errors = $this->validateAndUpdateCartDateItemLink($request, $cartDateItemLink, $product, $variant, $node);
         }
+
+        // Todo: Add errors to request
+        $request->session()->flash('error', $errors->all());
 
         return redirect('/checkout');
     }
@@ -196,7 +265,7 @@ class CartController extends Controller
             $cartItem->save();
         }
 
-        $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);
+        return $this->validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node);
     }
 
     /**
@@ -212,7 +281,7 @@ class CartController extends Controller
      */
     private function validateAndCreateCartDateItemLink($request, $user, $cartDates, $cartItem, $product, $variant, $node)
     {
-        $errors = new Collection();
+        $errors = new MessageBag();
 
         $existingCartDateItemLinks = new Collection();
         $cartItem->cartDateItemLinks()->each(function($cartDateItemLink) use (&$existingCartDateItemLinks) {
@@ -232,18 +301,19 @@ class CartController extends Controller
             }
 
             $deliveryLink = $product->deliveryLink($node->id, $cartDate->date('Y-m-d'));
-            $availableQuantity = $deliveryLink->getAvailableQuantity($variant, $cartQuantity);
+            $availableQuantity = $deliveryLink ? $deliveryLink->getAvailableQuantity($variant, $cartQuantity) : 0;
 
             if ($availableQuantity < $quantity) {
-                $errors->push(trans('public/product.quantity_changed', [
-                    'date' => $cartDate->date('Y-m-d')
-                ]));
+                if ($product->productionType === 'csa') {
+                    $errors->add('quantity_changed_no_date', trans('public/product.quantity_changed_no_date'));
+                } else {
+                    $errors->add('quantity_changed', trans('public/product.quantity_changed', [
+                        'date' => $cartDateItemLink->getDate()->date('Y-m-d')
+                    ]));
+                }
+
                 $quantity = $availableQuantity;
                 $cartQuantity += $quantity;
-            }
-
-            if (!$errors->isEmpty()) {
-                $request->session()->flash('error', $errors->toArray());
             }
 
             if ($existingCartDateItemLink) {
@@ -253,6 +323,8 @@ class CartController extends Controller
                 $this->createCartDateItemLink($user, $cartDate, $cartItem, $quantity);
             }
         }
+
+        return $errors;
     }
 
     /**
@@ -266,25 +338,28 @@ class CartController extends Controller
      */
     private function validateAndUpdateCartDateItemLink($request, $cartDateItemLink, $product, $variant, $node)
     {
-        $errors = new Collection();
+        $errors = new MessageBag();
 
         $quantity = $request->input('quantity');
         $deliveryLink = $product->deliveryLink($node->id, $cartDateItemLink->getDate()->date('Y-m-d'));
         $availableQuantity = $deliveryLink->getAvailableQuantity($variant);
 
         if ($availableQuantity < $quantity) {
-            $errors->push(trans('public/product.quantity_changed', [
-                'date' => $cartDate->date('Y-m-d')
-            ]));
-            $quantity = $availableQuantity;
-        }
+            if ($product->productionType === 'csa') {
+                $errors->add('quantity_changed_no_date', trans('public/product.quantity_changed_no_date'));
+            } else {
+                $errors->add('quantity_changed', trans('public/product.quantity_changed', [
+                    'date' => $cartDateItemLink->getDate()->date('Y-m-d')
+                ]));
+            }
 
-        if (!$errors->isEmpty()) {
-            $request->session()->flash('error', $errors->toArray());
+            $quantity = $availableQuantity;
         }
 
         $cartDateItemLink->quantity = $quantity;
         $cartDateItemLink->save();
+
+        return $errors;
     }
 
     /**

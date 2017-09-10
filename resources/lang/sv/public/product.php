@@ -28,4 +28,5 @@ return [
     'no_quantity' => 'Du har inte valt antal.',
     'required_fields_missing' => 'Obigatoriska fält saknas.',
     'quantity_changed' => 'Antalet för datum :date överskred tillgängligheten och har blivit ändrat.',
+    'quantity_changed_no_date' => 'Antalet överskred tillgängligheten och har blivit ändrat.',
 ];

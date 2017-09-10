@@ -4,6 +4,7 @@ namespace App\Product;
 
 use Illuminate\Support\Collection;
 use App\Product\ProductNodeDeliveryLink;
+use Illuminate\Support\Facades\DB;
 
 class ProductFilter
 {
@@ -75,8 +76,16 @@ class ProductFilter
     {
         if ($this->request->has('date')) {
             $date = $this->request->get('date');
-            $prodId = ProductNodeDeliveryLink::where('date', $date)->get()->map->product_id;
-            $this->products = $this->products->whereIn('id', $prodId);
+
+            $productIds = DB::table('product_node_delivery_links')
+            ->join('products', 'products.id', '=', 'product_node_delivery_links.product_id')
+            ->select('products.id')
+            // ->where('product_node_delivery_links.node_id', '=', ?)
+            ->where('product_node_delivery_links.date', '=', $date)
+            ->whereRaw('DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()')
+            ->get()->pluck('id');
+
+            $this->products = $this->products->whereIn('id', $productIds);
         }
 
         return $this;

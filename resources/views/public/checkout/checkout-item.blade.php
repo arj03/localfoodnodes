@@ -49,7 +49,7 @@
             </div>
 
             <!-- Mobile only -->
-            <div class="col-4 col-sm-3 hidden-md-up text-right mt-3">
+            <div class="col-4 col-sm-3 col-xs-6 hidden-md-up text-right mt-3">
                 <form action="/checkout/item/{{ $cartDateItemLink->id }}/update" method="post">
                     {{ csrf_field() }}
                     <div class="input-group">
