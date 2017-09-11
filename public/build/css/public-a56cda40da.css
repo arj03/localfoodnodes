@@ -1453,7 +1453,7 @@ body.public-checkout .summary .card-block.red {
   color: #fff;
 }
 
-body.public-checkout .summary a {
+body.public-checkout .summary .card-block.red a {
   color: #fff;
 }
 

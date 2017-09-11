@@ -77,7 +77,11 @@
                         </div>
                         <div class="card-block">
                             @if ($user->isMember())
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                {{ trans('public/checkout.after_placing_order') }}
+                                <ul class="info-list">
+                                    <li><span class="info-count">1</span><p>{!! trans('public/checkout.recieve_instruction') !!}</p></li>
+                                    <li><span class="info-count">2</span><p>{{ trans('public/checkout.pick_it_up') }}</p></li>
+                                </ul>
                                 <button id="send-order-action" class="btn btn-success w-100">{{ trans('public/checkout.send_order') }}</button>
                                 <script>
                                     $('#send-order-action').on('click', function() {
@@ -95,23 +99,15 @@
                                     });
                                 </script>
                             @else
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a href="/membership" class="btn w-100">{{ trans('public/checkout.become_member') }}</a>
+                                <b>{{ trans('public/checkout.become_member') }}</b>
+                                <ul class="info-list">
+                                    <li>{!! trans('public/checkout.become_member_info') !!}</li>
+                                </ul>
+                                <a href="/membership" class="btn btn-success w-100">{{ trans('public/checkout.become_member') }}</a>
                             @endif
                         </div>
                     </div>
                 @endif
-
-                <div class="card">
-                    <div class="card-header">{{ trans('public/checkout.how_it_works') }}</div>
-                    <div class="card-block">
-                        {{ trans('public/checkout.after_placing_order') }}
-                        <ul class="info-list">
-                            <li><span class="info-count">1</span><p>{!! trans('public/checkout.recieve_instruction') !!}</p></li>
-                            <li><span class="info-count">2</span><p>{{ trans('public/checkout.pick_it_up') }}</p></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

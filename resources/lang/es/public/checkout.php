@@ -3,6 +3,10 @@
 return [
     'after_placing_order' => 'What\'s going to happen after I place my order?',
     'become_member' => 'Become member',
+    'become_member_info' => '
+        <p>You need to become a member to send your order. By becoming a member, you co-finance efforts to make the food more local again. Together we create economic conditions for supporting new forms of local organization and a more local food market.</p>
+        <p>Together with our joint efforts, we mark out the direction for future food supply and create common resources for impact.</p>
+    ',
     'cart' => 'Cart',
     'cart_empty' => 'Your cart is empty',
     'cart_item_update_failed' => 'Product could not be updated.',

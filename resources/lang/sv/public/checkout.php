@@ -3,6 +3,10 @@
 return [
     'after_placing_order' => 'Vad kommer hända när jag skickat min bokning?',
     'become_member' => 'Bli medlem',
+    'become_member_info' => '
+        <p>Du behöver bli medlem för att kunna skicka din bokning. Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad.</p>
+        <p>Med våra gemensamma insatser kan vi tillsammans staka ut riktingen för framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.</p>
+    ',
     'cart' => 'Varukorg',
     'cart_empty' => 'Din varukorg är tom',
     'cart_item_update_failed' => 'Produkten kunde inte uppdateras.',
