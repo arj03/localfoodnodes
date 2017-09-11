@@ -53,13 +53,7 @@
                             <div class="col-9">
                                 <select name="product_id" class="form-control">
                                     <option value="{{ $product->id }}">
-                                        {{ $product->name }}
-
-                                        @if ($variant->getPackageAmountUnit())
-                                            - {{ $variant->getPackageAmountUnit() }}
-                                        @endif
-
-                                        - {{ $product->getPriceWithUnit() }}
+                                        {{ $product->name }} - {{ $product->getPriceWithUnit() }}
                                     </option>
                                 </select>
                             </div>
