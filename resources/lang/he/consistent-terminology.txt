@@ -1,0 +1,21 @@
+consistent-terminology
+shahar, 2017-7-23
+----------------------
+
+basket / shopping cart	סלסלה
+node	נקודת-איסוף
+producer	יצרן
+variant	צורת-אריזה
+membership fee	דמי חברות
+deliveries	משלוחים
+local food nodes	נקודות-איסוף-מקומיות
+artisan_food
+
+
+open questions:
+	invite
+	productions	
+	guest in
+	Delivery nodes
+	time_placeholder' => 'Ready for delivery',
+
