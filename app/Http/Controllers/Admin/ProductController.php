@@ -162,6 +162,7 @@ class ProductController extends Controller
         $product = $producer->product($productId);
 
         $errors = $this->validateProduct($request, $producer);
+
         if ($errors->isEmpty()) {
             $product = $this->saveProduct($request, $producer, $product);
             $this->createTags($request, $product);
@@ -224,8 +225,13 @@ class ProductController extends Controller
         $data['producer_id'] = $producer->id;
 
         $product = new Product();
+        $rules = $product->validationRules;
 
-        return $product->validate($product->sanitize($data));
+        if (\UnitsHelper::isStandardUnit($data['price_unit'])) {
+            $rules['package_amount'] = 'required';
+        }
+
+        return $product->validate($product->sanitize($data), $rules);
     }
 
     /**

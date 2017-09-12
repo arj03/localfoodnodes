@@ -13,7 +13,7 @@ class Product extends \App\BaseModel
      *
      * @var array
      */
-    protected $validationRules = [
+    public $validationRules = [
         'producer_id' => 'required|integer',
         'name' => 'required',
         'info' => 'required',
