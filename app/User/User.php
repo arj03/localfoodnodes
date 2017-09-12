@@ -154,7 +154,6 @@ class User extends BaseUser
     {
         $rules = $this->validationRules;
         $rules['email'] .= ',email,' . $this->id;
-        \Log::debug(var_export($rules, true));
         $rules['password'] = '';
 
         return parent::validate($data, $rules);
