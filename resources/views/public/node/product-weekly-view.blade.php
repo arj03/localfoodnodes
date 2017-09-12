@@ -12,8 +12,10 @@
                 @if ($product->isVisible($node->id) === true)
                     <div class="row product-item">
                         <div class="col-3 hidden-xs-down">
-                            @if ($product->images()->count())
-                                <img src="{{ $product->images()->first()->url('small') }}">
+                            @if ($product->images()->count() > 0)
+                                <img class="card-image-top" src="{{ $product->images()->first()->url('medium') }}">
+                            @else
+                                <img class="card-image-top" src="/images/product-image-placeholder.jpg">
                             @endif
                         </div>
 

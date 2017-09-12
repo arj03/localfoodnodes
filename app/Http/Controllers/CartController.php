@@ -129,8 +129,6 @@ class CartController extends Controller
             $variant = null;
             if ($product->variants()->count() > 0 && isset($data['variant_id'])) {
                 $variant = $product->variants()->where('id', $data['variant_id'])->first();
-            } else {
-                $errors->add('no_variant', trans('public/product.no_variant'));
             }
 
             // Delivery date
@@ -156,7 +154,7 @@ class CartController extends Controller
             $producer = Producer::where('id', $product->producer_id)->first();
 
             $newRequest = new Request($requestData->toArray());
-            $messages->merge($this->addToCart($newRequest, $user, $producer, $product, $variant, $node));
+            $messages = $messages->merge($this->addToCart($newRequest, $user, $producer, $product, $variant, $node));
         }
 
         $messages->add('added_to_cart', trans('public/product.added_to_cart'));
@@ -164,7 +162,7 @@ class CartController extends Controller
         $request->session()->flash('message', $messages->all());
         $request->session()->flash('added_to_cart_modal', true);
 
-        return redirect($node->permalink()->url);
+        return redirect(\URL::previous());
     }
 
     /**

@@ -77,14 +77,18 @@ class ProductFilter
         if ($this->request->has('date')) {
             $date = $this->request->get('date');
 
-            $productIds = DB::table('product_node_delivery_links')
+            $query = DB::table('product_node_delivery_links')
             ->join('products', 'products.id', '=', 'product_node_delivery_links.product_id')
-            ->select('products.id')
-            // ->where('product_node_delivery_links.node_id', '=', ?)
-            ->where('product_node_delivery_links.date', '=', $date)
-            ->whereRaw('DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()')
-            ->get()->pluck('id');
+            ->select('products.id');
 
+            if ($this->request->has('node_id')) {
+                $query->where('product_node_delivery_links.node_id', '=', $this->request->has('node_id'));
+            }
+
+            $query->where('product_node_delivery_links.date', '=', $date)
+            ->whereRaw('DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()');
+
+            $productIds = $query->get()->pluck('id');
             $this->products = $this->products->whereIn('id', $productIds);
         }
 
