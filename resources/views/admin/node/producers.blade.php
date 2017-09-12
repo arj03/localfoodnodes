@@ -6,7 +6,10 @@
     @include('admin.page-header')
 
     <div class="card">
-        <div class="card-header">{{ trans('admin/node.producers') }}</div>
+        <div class="card-header">
+            {{ trans('admin/node.producers') }}
+            <a href="mailto:{{ $producerEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
+        </div>
         <div class="card-block">
             @if ($node->producerLinks()->count() > 0)
                 <div class="table-responsive">

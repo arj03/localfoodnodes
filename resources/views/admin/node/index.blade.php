@@ -61,7 +61,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">{{ trans('admin/node.users') }}</div>
+                <div class="card-header">
+                    {{ trans('admin/node.users') }}
+                    <a href="mailto:{{ $userEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
+                </div>
                 <div class="card-block">
                     @if ($node->userLinks()->count() > 0)
                         <div class="table-responsive">
@@ -98,7 +101,10 @@
 
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Producers</div>
+                <div class="card-header">
+                    Producers
+                    <a href="mailto:{{ $producerEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
+                </div>
                 <div class="card-block">
                     @if ($node->producerLinks()->count() > 0)
                         <div class="table-responsive">

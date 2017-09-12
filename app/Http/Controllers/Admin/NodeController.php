@@ -71,8 +71,18 @@ class NodeController extends Controller
         $user = Auth::user();
         $node = $user->nodeAdminLink($nodeId)->getNode();
 
+        $userEmails = $node->userLinks()->map(function($userLink) {
+            return $userLink->getUser()->email;
+        });
+
+        $producerEmails = $node->producerLinks()->map(function($producerLink) {
+            return $producerLink->getProducer()->email;
+        });
+
         return view('admin.node.index', [
             'node' => $node,
+            'userEmails' => $userEmails,
+            'producerEmails' => $producerEmails,
             'breadcrumbs' => [
                 $node->name => '',
                 trans('admin/user-nav.dashboard') => ''
@@ -237,9 +247,13 @@ class NodeController extends Controller
     {
         $user = Auth::user();
         $node = $user->nodeAdminLink($nodeId)->getNode();
+        $userEmails = $node->userLinks()->map(function($userLink) {
+            return $userLink->getUser()->email;
+        });
 
         return view('admin.node.users', [
             'node' => $node,
+            'userEmails' => $userEmails,
             'breadcrumbs' => [
                 $node->name => 'node/' . $node->id,
                 trans('admin/user-nav.users') => ''
@@ -254,9 +268,13 @@ class NodeController extends Controller
     {
         $user = Auth::user();
         $node = $user->nodeAdminLink($nodeId)->getNode();
+        $producerEmails = $node->producerLinks()->map(function($producerLink) {
+            return $producerLink->getProducer()->email;
+        });
 
         return view('admin.node.producers', [
             'node' => $node,
+            'producerEmails' => $producerEmails,
             'breadcrumbs' => [
                 $node->name => 'node/' . $node->id,
                 trans('admin/user-nav.producers') => ''
