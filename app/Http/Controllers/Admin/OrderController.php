@@ -61,7 +61,7 @@ class OrderController extends Controller
 
             if (!$orderDateItemLink) {
                 $request->session()->flash('error', [$errorMessage]);
-                return redirect('/account/producer/' . $producer->id . '/orders');
+                return redirect('/account/producer/' . $producer->id . '/deliveries');
             }
 
             return $next($request);
@@ -145,7 +145,7 @@ class OrderController extends Controller
             'orderItem' => $orderDateItemLink->getItem(),
             'breadcrumbs' => [
                 $producer->name => 'producer/' . $producer->id,
-                trans('admin/user-nav.orders') => 'producer/' . $producer->id . '/orders',
+                trans('admin/user-nav.orders') => 'producer/' . $producer->id . '/deliveries',
                 trans('admin/user-nav.order') . ' #' . $orderDateItemLink->ref => ''
             ]
         ]);

@@ -57,6 +57,7 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
         Route::post('/password/update', 'Admin\UserController@updatePassword');
         Route::get('/pickups', 'Admin\UserController@pickups');
         Route::get('/orders/producer/{producerId}', 'Admin\UserController@producerOrders');
+        Route::get('/orders/product/{productId}', 'Admin\UserController@productOrders');
 
         // Route::get('/orders', 'Admin\UserController@orders');
         Route::get('/order/{orderItemId}', 'Admin\UserController@order');
@@ -192,8 +193,12 @@ Route::get('/launch/{segments}', function() {
     return redirect('/');
 })->where('segments', '(.*)');
 
-
 Route::get('/landing-page/{wildcard?}', 'IndexController@index');
+
+// Certificate
+Route::get('/.well-known/acme-challenge/{id}', function($id) {
+    return Redirect::to('/.well-known/acme-challenge/' . $id);
+});
 
 // Page - There routes must be in the bottom of this file because else they'll match every request
 Route::get('/{type}/{slug}/{subType?}/{subSlug?}', 'PermalinkController@route');

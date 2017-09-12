@@ -6,7 +6,10 @@
     @include('admin.page-header')
 
     <div class="card">
-        <div class="card-header">{{ trans('admin/node.users') }}</div>
+        <div class="card-header">
+            {{ trans('admin/node.users') }}
+            <a href="mailto:{{ $userEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
+        </div>
         <div class="card-block">
             @if ($node->userLinks()->count() > 0)
                 <div class="table-responsive">
