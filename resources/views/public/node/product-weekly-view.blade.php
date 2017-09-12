@@ -18,70 +18,72 @@
                         </div>
 
                         <div class="col-12 col-sm-9">
-                            <div class="row">
-                                @if ($product->variants()->count() > 0)
+
+                            @if ($product->variants()->count() > 0)
+                                <div class="row">
                                     <div class="col-12 mb-3">
                                         <h3><a href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">{{ $product->name }}</a></h3>
                                         {{ $product->producer()->name }}
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-9">
-                                            <div class="form-group">
-                                                <select name="product[{{ $product->id}}][variant_id]" class="form-control">
-                                                    @foreach ($product->variants() as $index => $variant)
-                                                        <option value="{{ $variant->id}}">
-                                                            {{ $product->name }} - {{ $variant->name }}
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 mb-3">
+                                        <div class="form-group">
+                                            <select name="product[{{ $product->id}}][variant_id]" class="form-control">
+                                                @foreach ($product->variants() as $index => $variant)
+                                                    <option value="{{ $variant->id}}">
+                                                        {{ $product->name }} - {{ $variant->name }}
 
-                                                            @if ($variant->getPackageAmountUnit())
-                                                                - {{ $variant->getPackageAmountUnit() }}
-                                                            @endif
+                                                        @if ($variant->getPackageAmountUnit())
+                                                            - {{ $variant->getPackageAmountUnit() }}
+                                                        @endif
 
-                                                            - {{ $variant->getPriceWithUnit() }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-sm-3">
-                                            <div class="form-group">
-                                                <div class="input-group quantity-component">
-                                                    <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
-                                                    <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
-                                                    <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="col-12 mb-3">
-                                        <h3><a href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">{{ $product->name }}</a></h3>
-                                        {{ $product->producer()->name }}
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-9 mb-3">
-                                                <select name="product_id" class="form-control">
-                                                    <option value="{{ $product->id }}">
-                                                        {{ $product->name }} - {{ $product->getPriceWithUnit() }}
+                                                        - {{ $variant->getPriceWithUnit() }}
                                                     </option>
-                                                </select>
-                                            </div>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                            <div class="col-3">
-                                                <div class="form-group">
-                                                    <div class="input-group quantity-component">
-                                                        <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
-                                                        <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
-                                                        <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
-                                                    </div>
-                                                </div>
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <div class="input-group quantity-component">
+                                                <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
+                                                <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
+                                                <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-                            </div> <!-- End row. -->
+                                </div>
+                            @else
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <h3><a href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">{{ $product->name }}</a></h3>
+                                        {{ $product->producer()->name }}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-7 mb-3">
+                                        <select name="product_id" class="form-control">
+                                            <option value="{{ $product->id }}">
+                                                {{ $product->name }} - {{ $product->getPriceWithUnit() }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <div class="input-group quantity-component">
+                                                <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
+                                                <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
+                                                <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div> <!-- End col. -->
                     </div>
                 @endif <!-- End visible. -->

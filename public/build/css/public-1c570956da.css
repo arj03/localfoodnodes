@@ -370,6 +370,7 @@ a.btn:link, a.btn:visited, a.btn:hover, a.btn:active, a.btn:focus {
 .quantity-component input {
   border-radius: 3px !important;
   max-width: 100px;
+  min-width: 50px;
 }
 
 .quantity-component input::-webkit-inner-spin-button, .quantity-component input::-webkit-outer-spin-button {
