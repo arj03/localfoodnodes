@@ -102,7 +102,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    Producers
+                    {{ trans('admin/node.producers') }}
                     <a href="mailto:{{ $producerEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
                 </div>
                 <div class="card-block">
