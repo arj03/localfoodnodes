@@ -466,7 +466,11 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryStartdateAttribute($value)
     {
-        return $value ? new DateTime($value) : new DateTime(date('Y-m-d'));
+        if (strtotime($value) <= 0) {
+            $value = date('Y-m-d');
+        }
+
+        return $value ? new DateTime($value) : new DateTime(date('Y-m-d', time()));
     }
 
     /**
