@@ -336,6 +336,11 @@ class Product extends \App\BaseModel
         }
     }
 
+    /**
+     * Get package amount unit.
+     *
+     * @return string
+     */
     public function getPackageAmountUnit()
     {
         if ($this->price_unit !== 'product' && $this->package_amount) {
@@ -356,7 +361,6 @@ class Product extends \App\BaseModel
             return $this->producer()->currency;
         }
     }
-
 
     /**
      * Get price with unit.
@@ -448,7 +452,7 @@ class Product extends \App\BaseModel
             $errors->push('Product has no quantity.');
         }
 
-        if ($this->deliveryLinks($nodeId, null, true)->count() <= 0) { // node, dates, ignore deadline
+        if ($this->deliveryLinks($nodeId, null, true)->count() <= 0) { // method params are (node, dates, ignore deadline)
             $isVisible = false;
             $errors->push('Product has no delivery dates.');
         }
@@ -474,6 +478,27 @@ class Product extends \App\BaseModel
         } else {
             return $dateTime->modify('+' . $this->deadline . ' days');
         }
+    }
+
+    /**
+     * Is product in stock.
+     *
+     * @param int $nodeId
+     * @return boolean
+     */
+    public function isInStock($nodeId)
+    {
+        $deliveryLinks = $this->deliveryLinks($nodeId);
+
+        if ($deliveryLinks->count() === 0) {
+            return false;
+        }
+
+        $hasQuantity = (bool) $deliveryLinks->map(function($deliveryLink) {
+            return (int) $deliveryLink->getAvailableQuantity();
+        })->sum();
+
+        return $hasQuantity;
     }
 
     /**
