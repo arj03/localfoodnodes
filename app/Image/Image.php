@@ -74,7 +74,7 @@ class Image extends BaseModel
 
         foreach ($this->sizes as $size => $width) {
             $filename = $filenames->get($size);
-            $image = InterventionImage::make($file);
+            $image = InterventionImage::make($file)->orientate();
 
             if ($image->height() > $image->width()) {
                 // Portrait
