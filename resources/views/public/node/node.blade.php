@@ -63,8 +63,11 @@
                                                         <div class="title">
                                                             {{ $product->name }}
                                                         </div>
+
                                                         <div class="price">
-                                                            @if ($product->variants()->count() > 0)
+                                                            @if ($product->getDeliveryLinksByMonths($node->id)->count() === 0)
+                                                                <span class="text-danger">{{ trans('public/product.sold_out') }}</span>
+                                                            @elseif ($product->variants()->count() > 0)
                                                                 {{ trans('public/node.from') }} {{ $product->smallestVariant()->getPriceWithUnit() }}
                                                             @else
                                                                 {{ $product->getPriceWithUnit() }}
