@@ -160,11 +160,14 @@ class AuthController extends Controller
         $user = User::where('email', $userData->email)->first();
 
         if (!$user) {
-            $user = User::create([
+            $user = new User();
+            $user->fill([
                 'name' => $userData->name,
                 'email' => $userData->email,
-                'active' => 1
+                'active' => 1,
             ]);
+            $user->setLocation('56.002490 13.293257');
+            $user->save();
 
             \App\Helpers\SlackHelper::message('notification', $userData->name . ' (' . $userData->email . ')' . ' signed up as a user through Facebook.');
         }
