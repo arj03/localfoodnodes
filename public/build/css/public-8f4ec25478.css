@@ -986,6 +986,7 @@ body.public-node-node #added-to-cart-modal .modal-dialog .modal-content .modal-b
 
 body.public-producer-producer .product-card,
 body.public-node-node .product-card {
+  display: blocK;
   text-decoration: none;
   color: #333;
   padding: 10px;
@@ -1000,11 +1001,6 @@ body.public-producer-producer .product-card .image-placeholder,
 body.public-node-node .product-card .image-placeholder {
   background: #fafafa;
   font-size: 4rem;
-}
-
-body.public-producer-producer .product-card .card-image-top,
-body.public-node-node .product-card .card-image-top {
-  height: 100%;
 }
 
 body.public-producer-producer .product-card .card-block,
