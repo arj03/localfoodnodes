@@ -162,14 +162,16 @@ class NodeController extends Controller
         $data = $request->all();
         $node = Node::find($id);
 
+        $weekOfMonth = $this->weekOfMonth($data['delivery_startdate']);
+        \Log::debug(var_export($weekOfMonth, true));
+
         $oldWeekday = $node->delivery_weekday;
         $oldInterval = $node->delivery_interval;
         $oldStartdate = $node->delivery_startdate;
 
         $errors = $node->validate($data);
         if ($errors->isEmpty()) {
-
-            $node->fill($data);
+            $node->fill($node->sanitize($data));
 
             $latLng = $googleMapsHelper->getLatLngForDb($node->getAddressFields());
             $node->setLocation($latLng);

@@ -25,10 +25,6 @@ return [
     'edit_node' => 'Edit node',
     'email' => 'Email',
     'events' => 'Events',
-    'every_week' => 'Every week',
-    'every_second_week' => 'Every second week',
-    'every_third_week' => 'Every third week',
-    'every_fourth_week' => 'Every fourth week',
     'facebook_page' => 'Facebook page',
     'facebook_page_producers' => 'Facebook page for producers',
     'guests' => 'Guests',
@@ -76,4 +72,10 @@ return [
     'hdiw_item_3' => 'Invite producer to your node.',
     'hdiw_item_4' => 'Market your node to consumers through sociala media, a press release or maybe a nice local premiere event.',
     'hdiw_outro' => 'Read more in the FAQ about nodes.',
+
+    'week_1' => 'Every week',
+    'week_2' => 'Every second week',
+    'week_3' => 'Every third week',
+    'week_4' => 'Every fourth week',
+    'month_1' => 'Once a month',
 ];

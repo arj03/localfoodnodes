@@ -25,10 +25,6 @@ return [
     'edit_node' => 'Redigera nod',
     'email' => 'Email',
     'events' => 'Evenemang',
-    'every_week' => 'Varje vecka',
-    'every_second_week' => 'Varannan vecka',
-    'every_third_week' => 'Var tredje vecka',
-    'every_fourth_week' => 'Var fjärde vecka',
     'facebook_page' => 'Facebook-sida',
     'facebook_page_producers' => 'Facebook-sida för producenter',
     'guests' => 'Gäster',
@@ -76,4 +72,10 @@ return [
     'hdiw_item_3' => 'Bjud in producenter till din utlämningsplats.',
     'hdiw_item_4' => 'Marknadsför utlämningsplatsen mot konsumenter genom sociala medier, ett pressmeddelande och kanske arrangera ett trevligt lokalt premiärevent.',
     'hdiw_outro' => 'Läs mer i FAQ för utlämningsplatser.',
+
+    'week_1' => 'Varje vecka',
+    'week_2' => 'Varannan vecka',
+    'week_3' => 'Var tredje vecka',
+    'week_4' => 'Var fjärde vecka',
+    'month_1' => 'En gång i månaden',
 ];

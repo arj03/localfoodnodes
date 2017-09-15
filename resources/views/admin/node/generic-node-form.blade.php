@@ -74,13 +74,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="delivery_interval">{{ trans('admin/node.delivery_interval') }} @include('admin.field-error', ['field' => 'delivery_interval'])</label>
+                    <label for="delivery_interval">
+                        {{ trans('admin/node.delivery_interval') }}
+                        @include('admin.field-error', ['field' => 'delivery_interval'])
+                    </label>
                     <select name="delivery_interval" id="delivery_interval" class="form-control">
                         <option value="">{{ trans('admin/node.select_interval') }}</option>
-                        <option value="1" {{ $node->delivery_interval === 1 ? ' selected' : '' }}>{{ trans('admin/node.every_week') }}</option>
-                        <option value="2" {{ $node->delivery_interval === 2 ? ' selected' : '' }}>{{ trans('admin/node.every_second_week') }}</option>
-                        <option value="3" {{ $node->delivery_interval === 3 ? ' selected' : '' }}>{{ trans('admin/node.every_third_week') }}</option>
-                        <option value="4" {{ $node->delivery_interval === 4 ? ' selected' : '' }}>{{ trans('admin/node.every_fourth_week') }}</option>
+                        @foreach ($node->intervals as $key => $interval)
+                            <option value="{{ $interval }}" {{ $node->delivery_interval === $interval ? ' selected' : '' }}>{{ trans('admin/node.' . $key) }}</option>
+                        @endforeach
                     </select>
                 </div>
 

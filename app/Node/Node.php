@@ -27,7 +27,7 @@ class Node extends BaseModel implements EventOwnerInterface
         'zip' => 'required',
         'city' => 'required',
         'email' => 'required',
-        'delivery_interval' => 'required',
+        'delivery_interval' => 'required|string',
         'delivery_weekday' => 'required',
         'delivery_startdate' => 'required',
         'delivery_time' => 'required',
@@ -52,6 +52,18 @@ class Node extends BaseModel implements EventOwnerInterface
         'delivery_time',
         'link_facebook',
         'link_facebook_producers',
+    ];
+
+    /**
+     * Node delivery intervals
+     * @var array
+     */
+    public $intervals = [
+        'week_1' => '+1 weeks',
+        'week_2' => '+2 weeks',
+        'week_3' => '+3 weeks',
+        'week_4' => '+4 weeks',
+        'month_1' => '+1 months',
     ];
 
     /**
@@ -337,7 +349,8 @@ class Node extends BaseModel implements EventOwnerInterface
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
-        $interval = \DateInterval::createFromDateString($this->delivery_interval . ' week');
+        \Log::debug(var_export($this->delivery_interval, true));
+        $interval = \DateInterval::createFromDateString($this->delivery_interval);
 
         $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
 
@@ -367,16 +380,26 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery(\DateTime $productFirstProductionDate = null)
     {
-        $firstDate = date('Y-m-d', strtotime('next ' . $this->delivery_weekday, $this->delivery_startdate->getTimestamp()));
-        $firstDate = new \DateTime($firstDate);
+        $firstDate = $this->getFirstDeliveryDate();
 
         if ($productFirstProductionDate) {
             while ($productFirstProductionDate > $firstDate) {
-                $firstDate->modify('+' . $this->delivery_interval . ' weeks');
+                $firstDate->modify($this->delivery_interval);
             }
         }
 
         return $firstDate;
+    }
+
+    /**
+     * Get first delivery depending
+     * @return [type] [description]
+     */
+    private function getFirstDeliveryDate()
+    {
+        $firstDate = date('Y-m-d', strtotime('next ' . $this->delivery_weekday, $this->delivery_startdate->getTimestamp()));
+
+        return new \DateTime($firstDate);
     }
 
     /**
@@ -481,7 +504,26 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryIntervalAttribute($value)
     {
-        return $value ?: 1; // Fallback to +1 week interval
+        return $value ?: '+ 1 weeks'; // Fallback to +1 weeks interval
+    }
+
+    /**
+     * [weekOfMonth description]
+     * @param  [type] $date [description]
+     * @return [type]       [description]
+     */
+    private function weekOfMonth($date) {
+        $firstDate = $this->getFirstDeliveryDate();
+
+        //Get the first day of the month.
+        $firstOfMonth = strtotime(date("Y-m-01", $firstDate));
+
+        //Apply above formula.
+        return intval(date('W', $firstDate)) - intval(date('W', $firstOfMonth)) + 1;
+
+
+        return (new \DateTime())->setISODate((int)$date->format('o') + 1, (int)$date->format('W'), (int)$date->format('N'));
+
     }
 
     /**
@@ -491,19 +533,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryIntervalAsString()
     {
-        $interval = '';
-
-        if ($this->delivery_interval === 1) {
-            $interval = trans('admin/node.every_week');
-        } elseif ($this->delivery_interval === 2) {
-            $interval = trans('admin/node.every_second_week');
-        } elseif ($this->delivery_interval === 3) {
-            $interval = trans('admin/node.every_third_week');
-        } elseif($this->delivery_interval === 4) {
-            $interval = trans('admin/node.every_fourth_week');
-        }
-
-        return strtolower($interval);
+        return strtolower(trans('admin/node.' . $this->delivery_interval));
     }
 
     /**
@@ -522,6 +552,8 @@ class Node extends BaseModel implements EventOwnerInterface
             'email' => $this->email,
             'delivery_time' => $this->delivery_time,
             'delivery_weekday' => $this->delivery_weekday,
+            'delivery_startdate' => $this->delivery_startdate,
+            'delivery_interval' => $this->delivery_interval,
         ];
     }
 }
