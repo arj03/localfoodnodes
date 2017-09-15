@@ -1002,6 +1002,11 @@ body.public-node-node .product-card .image-placeholder {
   font-size: 4rem;
 }
 
+body.public-producer-producer .product-card .card-image-top,
+body.public-node-node .product-card .card-image-top {
+  height: 100%;
+}
+
 body.public-producer-producer .product-card .card-block,
 body.public-node-node .product-card .card-block {
   padding: 10px 0;
