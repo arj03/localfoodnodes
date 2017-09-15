@@ -346,11 +346,17 @@ class Node extends BaseModel implements EventOwnerInterface
         }
 
         $nextDelivery = $this->getNextDelivery($firstProductionDate);
+
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
-        \Log::debug(var_export($this->delivery_interval, true));
-        $interval = \DateInterval::createFromDateString($this->delivery_interval);
+        $deliveryInterval = $this->delivery_interval;
+        if ($this->delivery_interval === '+1 months') {
+            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
+        }
+
+        $interval = \DateInterval::createFromDateString($deliveryInterval);
 
         $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
 
@@ -397,7 +403,14 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getFirstDeliveryDate()
     {
-        $firstDate = date('Y-m-d', strtotime('next ' . $this->delivery_weekday, $this->delivery_startdate->getTimestamp()));
+        $deliveryInterval = 'next ' . $this->delivery_weekday;
+
+        if ($this->delivery_interval === '+1 months') {
+            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
+        }
+
+        $firstDate = date('Y-m-d', strtotime($deliveryInterval, $this->delivery_startdate->getTimestamp()));
 
         return new \DateTime($firstDate);
     }
@@ -512,18 +525,25 @@ class Node extends BaseModel implements EventOwnerInterface
      * @param  [type] $date [description]
      * @return [type]       [description]
      */
-    private function weekOfMonth($date) {
-        $firstDate = $this->getFirstDeliveryDate();
+    private function weekOfMonth(\DateTime $date, $asInt = false) {
+        $firstOfMonth = strtotime(date('Y-m-01', $date->getTimestamp()));
+        $week = intval(date('W', $date->getTimestamp())) - intval(date('W', $firstOfMonth)) + 1; // Starts at 1
+        $week = $week - 1;
+        if ($asInt) {
+            return $week;
+        }
 
-        //Get the first day of the month.
-        $firstOfMonth = strtotime(date("Y-m-01", $firstDate));
+        $formats = [
+            '1' => 'first',
+            '2' => 'second',
+            '3' => 'third',
+            '4' => 'forth',
+            '5' => 'fifth'
+        ];
 
-        //Apply above formula.
-        return intval(date('W', $firstDate)) - intval(date('W', $firstOfMonth)) + 1;
+        return $formats[$week];
 
-
-        return (new \DateTime())->setISODate((int)$date->format('o') + 1, (int)$date->format('W'), (int)$date->format('N'));
-
+        // return (new \DateTime())->setISODate((int)$date->format('o') + 1, (int)$date->format('W'), (int)$date->format('N'));
     }
 
     /**

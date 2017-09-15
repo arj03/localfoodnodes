@@ -40,12 +40,14 @@
                     $('.picker.datetime:not(.bound)').addClass('bound').flatpickr({
                         enableTime: true,
                         time_24hr: true,
-                        dateFormat: 'Y-m-d H:i'
+                        dateFormat: 'Y-m-d H:i',
+                        locale: {firstDayOfWeek: 1},
                     });
 
                     // Date picker
                     $('.picker.date:not(.bound)').addClass('bound').flatpickr({
-                        dateFormat: 'Y-m-d'
+                        dateFormat: 'Y-m-d',
+                        locale: {firstDayOfWeek: 1},
                     });
 
                     // Time picker
@@ -53,7 +55,7 @@
                         noCalendar: true,
                         enableTime: true,
                         time_24hr: true,
-                        dateFormat: 'H:i'
+                        dateFormat: 'H:i',
                     });
                 };
 
