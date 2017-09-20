@@ -78,7 +78,6 @@ class ProductFilter
             $nodeId = $this->request->has('node_id');
             $date = new \DateTime($this->request->get('date'));
 
-
             $query = DB::table('product_node_delivery_links')
             ->join('products', 'products.id', '=', 'product_node_delivery_links.product_id')
             ->select('products.id');
@@ -88,9 +87,13 @@ class ProductFilter
             }
 
             $query->where('product_node_delivery_links.date', '=', $date->format('Y-m-d'))
-            ->whereRaw('DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()');
+            ->whereRaw('(
+                DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()
+                OR products.deadline IS NULL
+            )');
 
-            $productIds = $query->get()->pluck('id');
+            $productIds = $query->get()->pluck('id')->unique();
+
             $this->products = $this->products->whereIn('id', $productIds);
 
             // Only include visible products
