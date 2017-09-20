@@ -512,6 +512,13 @@ class Product extends \App\BaseModel
 
             return (bool) $deliveryLink->getAvailableQuantity();
         } else {
+            $dates = null;
+
+            if ($date) {
+                $dates = new Collection();
+                $dates->push($date);
+            }
+
             $deliveryLinks = $this->deliveryLinks($nodeId, $dates);
 
             if ($deliveryLinks->count() === 0) {
