@@ -943,26 +943,34 @@ body.public-node-node .product-filter {
   background: #c1534c;
 }
 
+body.public-node-node .product-filter b {
+  color: #fff;
+  display: block;
+  margin-bottom: 10px;
+}
+
 body.public-node-node .product-filter .badge {
   color: #fff;
+  border: 1px solid #daa8a4;
   margin-bottom: 5px;
 }
 
 body.public-node-node .product-filter .badge.active {
   background: #fff;
-  box-shadow: -1px -1px 0px 0px #e0918b inset;
   color: #a9322a;
+  border: 0;
 }
 
 body.public-node-node .date-filter {
-  height: 62px;
+  height: 84px;
+  border-bottom: 1px solid #ca6962;
 }
 
 body.public-node-node .date-filter .slick-nav {
   color: #fff;
   cursor: pointer;
   position: absolute;
-  top: 5px;
+  top: 8px;
   z-index: 9999;
 }
 
@@ -975,7 +983,20 @@ body.public-node-node .date-filter .slick-next {
 }
 
 body.public-node-node .date-filter .slick-disabled {
+  cursor: default;
   opacity: 0.5;
+}
+
+body.public-node-node .date-filter .date {
+  margin-top: 3px;
+}
+
+body.public-node-node .date-filter .date.active {
+  margin-top: 0;
+}
+
+body.public-node-node .date-filter .date.active a {
+  font-size: 14px;
 }
 
 body.public-node-node .node-metrics {

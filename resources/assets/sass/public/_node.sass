@@ -18,28 +18,41 @@ body.public-node-node
 
   .product-filter
     background: #c1534c
+    b
+      color: #fff
+      display: block
+      margin-bottom: 10px
     .badge
       color: #fff
+      border: 1px solid #daa8a4
       margin-bottom: 5px
       &.active
         background: #fff
-        box-shadow: -1px -1px 0px 0px #e0918b inset
         color: #a9322a
+        border: 0
 
   .date-filter
-    height: 62px
+    height: 84px
+    border-bottom: 1px solid #ca6962
     .slick-nav
       color: #fff
       cursor: pointer
       position: absolute
-      top: 5px
+      top: 8px
       z-index: 9999
     .slick-prev
       left: 0
     .slick-next
       right: 0
     .slick-disabled
+      cursor: default
       opacity: 0.5
+    .date
+      margin-top: 3px
+      &.active
+        margin-top: 0
+        a
+          font-size: 14px
 
 
   .node-metrics

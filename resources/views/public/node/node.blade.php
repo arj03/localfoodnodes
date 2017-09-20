@@ -39,7 +39,21 @@
                         @endif
                     </div>
 
+                    <div class="card-block product-filter tag-filter">
+                        <b>{{ trans('public/node.tags') }}</b>
+                        <div class="tags">
+                            @foreach ($tags as $label => $tag)
+                                @if ($tag['active'])
+                                    <a href="{{ $tag['url'] }}" class="badge active">{{ $label }}</a>
+                                @else
+                                    <a href="{{ $tag['url'] }}" class="badge">{{ $label }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+
                     <div class="card-block product-filter date-filter">
+                        <b>{{ trans('public/node.select_pickup') }}</b>
                         <div class="tags dates">
                             @foreach ($node->getDeliveryDates() as $deliveryDate)
                                 @if (Request::input('date') === $deliveryDate)
@@ -57,7 +71,7 @@
                             $('.date-filter .dates').hide();
                             $(document).ready(function() {
                                 var activeIndex = parseInt($('.date-filter .dates .active').index());
-                                var centeredIndex = activeIndex - 2; // Moves active item to center of slide
+                                var centeredIndex = activeIndex - 1; // Moves active item to center of slide
                                 var centeredIndex = centeredIndex < 0 ? 0 : centeredIndex;
 
                                 $('.date-filter .dates').slick({
@@ -66,31 +80,12 @@
                                   initialSlide: centeredIndex,
                                   nextArrow: '<i class="fa fa-chevron-right slick-nav slick-next"></i>',
                                   prevArrow: '<i class="fa fa-chevron-left slick-nav slick-prev"></i>',
-                                  slidesToScroll: 5,
-                                  slidesToShow: 5,
-                                  responsive: [{
-                                    breakpoint: 576,
-                                    settings: {
-                                      slidesToShow: 3,
-                                      slidesToScroll: 3,
-                                    }
-                                  }]
+                                  slidesToScroll: 3,
+                                  slidesToShow: 3,
                                 });
                                 $('.date-filter .dates').show();
                             });
                         </script>
-                    </div>
-
-                    <div class="card-block product-filter tag-filter">
-                        <div class="tags">
-                            @foreach ($tags as $label => $tag)
-                                @if ($tag['active'])
-                                    <a href="{{ $tag['url'] }}" class="badge active">{{ $label }}</a>
-                                @else
-                                    <a href="{{ $tag['url'] }}" class="badge">{{ $label }}</a>
-                                @endif
-                            @endforeach
-                        </div>
                     </div>
 
                     @if ($products->count() > 0)
