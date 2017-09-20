@@ -347,6 +347,8 @@ class Node extends BaseModel implements EventOwnerInterface
 
         $nextDelivery = $this->getNextDelivery($firstProductionDate);
 
+        \Log::debug(var_export($nextDelivery, true));
+
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
@@ -405,12 +407,14 @@ class Node extends BaseModel implements EventOwnerInterface
     {
         $deliveryInterval = 'next ' . $this->delivery_weekday;
 
+        \Log::debug($deliveryInterval);
+
         if ($this->delivery_interval === '+1 months') {
             $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
             $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
         }
 
-        $firstDate = date('Y-m-d', strtotime($deliveryInterval, $this->delivery_startdate->getTimestamp()));
+        $firstDate = date('Y-m-d', strtotime($deliveryInterval));
 
         return new \DateTime($firstDate);
     }

@@ -306,7 +306,7 @@ class CartController extends Controller
                     $errors->add('quantity_changed_no_date', trans('public/product.quantity_changed_no_date'));
                 } else {
                     $errors->add('quantity_changed', trans('public/product.quantity_changed', [
-                        'date' => $cartDateItemLink->getDate()->date('Y-m-d')
+                        'date' => $cartDate->date('Y-m-d')
                     ]));
                 }
 
