@@ -28,33 +28,39 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-7 mb-3">
-                                    <div class="form-group">
-                                        <select name="product[{{ $product->id}}][variant_id]" class="form-control">
-                                            @foreach ($product->variants() as $index => $variant)
-                                                <option value="{{ $variant->id}}">
-                                                    {{ $product->name }} - {{ $variant->name }}
-
-                                                    @if ($variant->getPackageAmountUnit())
-                                                        - {{ $variant->getPackageAmountUnit() }}
-                                                    @endif
-
-                                                    - {{ $variant->getPriceWithUnit() }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                @if (!$product->isInStock($node->id, $date))
+                                    <div class="col-12">
+                                        <span class="text-danger">{{ trans('public/product.sold_out') }}</span>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="col-7 mb-3">
+                                        <div class="form-group">
+                                            <select name="product[{{ $product->id}}][variant_id]" class="form-control">
+                                                @foreach ($product->variants() as $index => $variant)
+                                                    <option value="{{ $variant->id}}">
+                                                        {{ $product->name }} - {{ $variant->name }}
 
-                                <div class="col-5">
-                                    <div class="form-group">
-                                        <div class="input-group quantity-component">
-                                            <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
-                                            <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
-                                            <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
+                                                        @if ($variant->getPackageAmountUnit())
+                                                            - {{ $variant->getPackageAmountUnit() }}
+                                                        @endif
+
+                                                        - {{ $variant->getPriceWithUnit() }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <div class="input-group quantity-component">
+                                                <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
+                                                <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
+                                                <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         @else
                             <div class="row">
@@ -65,23 +71,29 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-7 mb-3">
-                                    <select name="product_id" class="form-control">
-                                        <option value="{{ $product->id }}">
-                                            {{ $product->name }} - {{ $product->getPriceWithUnit() }}
-                                        </option>
-                                    </select>
-                                </div>
+                                @if (!$product->isInStock($node->id, $date))
+                                    <div class="col-12">
+                                        <span class="text-danger">{{ trans('public/product.sold_out') }}</span>
+                                    </div>
+                                @else
+                                    <div class="col-7 mb-3">
+                                        <select name="product_id" class="form-control">
+                                            <option value="{{ $product->id }}">
+                                                {{ $product->name }} - {{ $product->getPriceWithUnit() }}
+                                            </option>
+                                        </select>
+                                    </div>
 
-                                <div class="col-5">
-                                    <div class="form-group">
-                                        <div class="input-group quantity-component">
-                                            <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
-                                            <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
-                                            <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <div class="input-group quantity-component">
+                                                <span class="input-group-addon decrease"><i class="fa fa-minus-circle"></i></span>
+                                                <input type="number" min="0" name="product[{{ $product->id }}][quantity]" class="form-control" value="0" />
+                                                <span class="input-group-addon increase"><i class="fa fa-plus-circle"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         @endif
 

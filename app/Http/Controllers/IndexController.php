@@ -99,6 +99,7 @@ class IndexController extends Controller
             'products' => $filteredProducts,
             'calendar'=> $calendar->get($request),
             'calendarMonth' => $calendarMonth,
+            'date' => $date,
             'tags' => $productFilter->getTagFilter($request),
         ] + $fbMeta);
     }
