@@ -85,7 +85,7 @@
 
     <div class="container frontpage-section upcoming-events">
         <h2 class="thin">{{ trans('public/index.upcoming') }}</h2>
-        <div class="events slick-slider">
+        <div class="events slick-slider-wrapper">
             @foreach ($events as $event)
                 @include('public.components.event')
             @endforeach

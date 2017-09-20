@@ -429,6 +429,12 @@ body.public .page .card .card-header {
   border: 0;
 }
 
+body.public .page .card .card-header .badge {
+  background: #fff;
+  color: #a9322a;
+  text-transform: none;
+}
+
 body.public .page .header #map {
   height: 500px;
   width: 100%;
@@ -938,14 +944,38 @@ body.public-node-node .product-filter {
 }
 
 body.public-node-node .product-filter .badge {
-  background: #fff;
-  color: #a9322a;
+  color: #fff;
   margin-bottom: 5px;
 }
 
 body.public-node-node .product-filter .badge.active {
-  background: #a9322a;
+  background: #fff;
+  box-shadow: -1px -1px 0px 0px #e0918b inset;
+  color: #a9322a;
+}
+
+body.public-node-node .date-filter {
+  height: 62px;
+}
+
+body.public-node-node .date-filter .slick-nav {
   color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  z-index: 9999;
+}
+
+body.public-node-node .date-filter .slick-prev {
+  left: 0;
+}
+
+body.public-node-node .date-filter .slick-next {
+  right: 0;
+}
+
+body.public-node-node .date-filter .slick-disabled {
+  opacity: 0.5;
 }
 
 body.public-node-node .node-metrics {

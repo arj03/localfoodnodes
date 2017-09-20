@@ -23,8 +23,7 @@
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/slick.css') }}"/>
     </head>
     <body class="public {{ $viewName }} {{ Auth::check() && Auth::user()->active ? 'logged-in' : '' }}">
         <div id="fb-root"></div>
@@ -58,10 +57,10 @@
         <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.6/dist/js/bootstrap.min.js"></script>
         <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>
         <script src="https://unpkg.com/vue"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
         <script>
             $(function() {
-                $('.slick-slider').slick({
+                $('.slick-slider-wrapper').slick({
                     arrows: false,
                     autoplay: true,
                     autoplaySpeed: 5000,

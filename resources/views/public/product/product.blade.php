@@ -23,7 +23,7 @@
                         <div class="row">
                             @if ($product->images()->count() > 0)
                                 <div class="col-12 col-lg-6">
-                                    <div class="images slick-slider">
+                                    <div class="images slick-slider-wrapper">
                                         @foreach ($product->images() as $image)
                                             <a data-fancybox="gallery" href="{{ $image->url('medium') }}">
                                                 <img class="card-image-bottom" src="{{ $image->url('small') }}">

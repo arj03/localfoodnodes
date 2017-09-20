@@ -30,4 +30,6 @@ return [
     'select_variant' => 'Select variant',
     'select_pickup' => 'Select pick-up dates',
     'share' => 'Share',
+    'switch_product_view' => 'Switch to product view',
+    'switch_weekly_view' => 'Switch to weekly view',
 ];

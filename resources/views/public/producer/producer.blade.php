@@ -100,7 +100,7 @@
                 @if ($producer->images()->count() > 0)
                     <div class="card image-card">
                         <div class="card-header">{{ trans('public/producer.images') }}</div>
-                        <div class="images slick-slider">
+                        <div class="images slick-slider-wrapper">
                             @foreach ($producer->images() as $image)
                                 <a data-fancybox="gallery" href="{{ $image->url('medium') }}">
                                     <img class="card-image-bottom" src="{{ $image->url('small') }}">

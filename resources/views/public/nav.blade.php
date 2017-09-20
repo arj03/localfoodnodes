@@ -8,7 +8,7 @@
 
                 <a class="navbar-brand" href="/">
                     <img src="/images/nav-logo-dark.png">
-                    {{ trans('public/nav.local_food_nodes') }} - BETA
+                    {{ trans('public/nav.local_food_nodes') }}
                 </a>
 
                 <div class="collapse navbar-collapse" id="main-navbar">

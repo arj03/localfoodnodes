@@ -28,16 +28,61 @@
             <div class="col-12 col-lg-8">
 
                 <!-- Products -->
-                @if ($products->count() > 0 || $tags->contains('active', true))
-                    <div class="card">
-                        <div class="card-header">
-                            {{ trans('public/node.products') }}
-                            @if (Request::has('date'))
-                                - {{ Request::get('date') }} <a href="{{ $node->permalink()->url }}"><i class="fa fa-times-circle"></i></a>
-                            @endif
-                        </div>
+                <div class="card">
+                    <div class="card-header">
+                        {{ trans('public/node.products') }}
 
-                        <div class="card-block product-filter">
+                        @if (Request::has('date'))
+                            <a class="badge" href="{{ $node->permalink()->url }}">{{ trans('public/node.switch_product_view') }}</a>
+                        @else
+                            <a class="badge" href="{{ $node->permalink()->url }}?date={{ $node->getDeliveryDates()->first() }}">{{ trans('public/node.switch_weekly_view') }}</a>
+                        @endif
+                    </div>
+
+                    <div class="card-block product-filter date-filter">
+                        <div class="tags dates">
+                            @foreach ($node->getDeliveryDates() as $deliveryDate)
+                                @if (Request::input('date') === $deliveryDate)
+                                    <div class="date text-center active">
+                                        <a href="{{ $node->permalink()->url }}?date={{ $deliveryDate }}" class="badge active">{{ $deliveryDate }}</a>
+                                    </div>
+                                @else
+                                    <div class="date text-center">
+                                        <a href="{{ $node->permalink()->url }}?date={{ $deliveryDate }}" class="badge">{{ $deliveryDate }}</a>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                        <script>
+                            $('.date-filter .dates').hide();
+                            $(document).ready(function() {
+                                var activeIndex = parseInt($('.date-filter .dates .active').index());
+                                var centeredIndex = activeIndex - 2; // Moves active item to center of slide
+                                var centeredIndex = centeredIndex < 0 ? 0 : centeredIndex;
+
+                                $('.date-filter .dates').slick({
+                                  arrows: true,
+                                  infinite: false,
+                                  initialSlide: centeredIndex,
+                                  nextArrow: '<i class="fa fa-chevron-right slick-nav slick-next"></i>',
+                                  prevArrow: '<i class="fa fa-chevron-left slick-nav slick-prev"></i>',
+                                  slidesToScroll: 5,
+                                  slidesToShow: 5,
+                                  responsive: [{
+                                    breakpoint: 576,
+                                    settings: {
+                                      slidesToShow: 3,
+                                      slidesToScroll: 3,
+                                    }
+                                  }]
+                                });
+                                $('.date-filter .dates').show();
+                            });
+                        </script>
+                    </div>
+
+                    <div class="card-block product-filter tag-filter">
+                        <div class="tags">
                             @foreach ($tags as $label => $tag)
                                 @if ($tag['active'])
                                     <a href="{{ $tag['url'] }}" class="badge active">{{ $label }}</a>
@@ -46,14 +91,20 @@
                                 @endif
                             @endforeach
                         </div>
+                    </div>
 
+                    @if ($products->count() > 0)
                         @if (Request::has('date'))
                             @include('public.node.product-weekly-view')
                         @else
                             @include('public.node.product-default-view')
                         @endif
-                    </div>
-                @endif <!-- Product end -->
+                    @else
+                        <div class="card-block">
+                            {{ trans('public/node.no_products') }}
+                        </div>
+                    @endif
+                </div> <!-- Product end -->
 
                 <!-- Events -->
                 @if ($events->count() > 0)
@@ -114,7 +165,7 @@
                         <p>
                             <b>{{ trans('public/node.pick_up_order') }}</b><br>
                             {{ $node->address }} {{ $node->zip }} {{ $node->city }}<br>
-                            {{ $node->delivery_weekday }} {{ $node->delivery_time }}
+                            {{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}
                         </p>
                         <p>
                             <a href="{{ $node->link_facebook }}" target="_blank">{{ trans('public/node.find_communication') }}</a>
@@ -187,7 +238,7 @@
                 @if ($node->images()->count() > 0)
                     <div class="card image-card">
                         <div class="card-header">{{ trans('public/node.images') }}</div>
-                        <div class="images slick-slider">
+                        <div class="images slick-slider-wrapper">
                             @foreach ($node->images() as $image)
                                 <a data-fancybox="gallery" href="{{ $image->url('medium') }}">
                                     <img class="card-image-bottom" src="{{ $image->url('small') }}">

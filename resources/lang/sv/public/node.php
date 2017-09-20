@@ -31,4 +31,6 @@ return [
     'select_variant' => 'Välj variant',
     'select_pickup' => 'Välj utlämningsdatum',
     'share' => 'Dela',
+    'switch_product_view' => 'Ändra till produktvy',
+    'switch_weekly_view' => 'Ändra till veckovy',
 ];

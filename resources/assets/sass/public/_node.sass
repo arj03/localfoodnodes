@@ -19,12 +19,28 @@ body.public-node-node
   .product-filter
     background: #c1534c
     .badge
-      background: #fff
-      color: #a9322a
+      color: #fff
       margin-bottom: 5px
       &.active
-        background: #a9322a
-        color: #fff
+        background: #fff
+        box-shadow: -1px -1px 0px 0px #e0918b inset
+        color: #a9322a
+
+  .date-filter
+    height: 62px
+    .slick-nav
+      color: #fff
+      cursor: pointer
+      position: absolute
+      top: 5px
+      z-index: 9999
+    .slick-prev
+      left: 0
+    .slick-next
+      right: 0
+    .slick-disabled
+      opacity: 0.5
+
 
   .node-metrics
     padding-top: 40px
