@@ -66,14 +66,14 @@ class IndexController extends Controller
     /**
      * Show content of a node and connected producers
      */
-    public function node(Request $request, $id)
+    public function node(Request $request, $nodeId)
     {
-        $node = Node::where('id', $id)->with('producerLinksRelationship', 'productNodeDeliveryLinksRelationship')->first();
-        $producers = ProducerNodeLink::where('node_id', $id)->get()->map->getProducer();
+        $node = Node::where('id', $nodeId)->with('producerLinksRelationship', 'productNodeDeliveryLinksRelationship')->first();
+        $producers = ProducerNodeLink::where('node_id', $nodeId)->get()->map->getProducer();
         $products = $node->products();
 
         $productFilter = new ProductFilter($products, $request);
-        $filteredProducts = $productFilter->filterDate()->filterTags()->get();
+        $filteredProducts = $productFilter->filterDate($nodeId)->filterTags()->get();
         $calendarMonth = $productFilter->getMonthDate();
         $calendar = new NodeCalendar($node);
 

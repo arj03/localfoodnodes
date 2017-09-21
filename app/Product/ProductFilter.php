@@ -72,17 +72,20 @@ class ProductFilter
      *
      * @return ProductFilter
      */
-    public function filterDate()
+    public function filterDate($nodeId = null)
     {
         if ($this->request->has('date')) {
-            $nodeId = $this->request->has('node_id');
+            if ($this->request->has('node_id') && !$nodeId) {
+                $nodeId = $this->request->get('node_id');
+            }
+
             $date = new \DateTime($this->request->get('date'));
 
             $query = DB::table('product_node_delivery_links')
             ->join('products', 'products.id', '=', 'product_node_delivery_links.product_id')
             ->select('products.id');
 
-            if ($this->request->has('node_id')) {
+            if ($nodeId) {
                 $query->where('product_node_delivery_links.node_id', '=', $nodeId);
             }
 
@@ -95,11 +98,6 @@ class ProductFilter
             $productIds = $query->get()->pluck('id')->unique();
 
             $this->products = $this->products->whereIn('id', $productIds);
-
-            // Only include visible products
-            $this->products = $this->products->filter(function($product) use ($nodeId) {
-                return $product->isVisible($nodeId) === true;
-            });
         }
 
         return $this;
