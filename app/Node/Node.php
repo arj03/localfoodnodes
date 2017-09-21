@@ -517,7 +517,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryIntervalAttribute($value)
     {
-        return $value ?: '+ 1 weeks'; // Fallback to +1 weeks interval
+        return $value ?: '+1 weeks'; // Fallback to +1 weeks interval
     }
 
     /**
@@ -553,7 +553,9 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     public function getDeliveryIntervalAsString()
     {
-        return strtolower(trans('admin/node.' . $this->delivery_interval));
+        $deliveryInterval = array_search($this->delivery_interval, $this->intervals);
+
+        return strtolower(trans('admin/node.' . $deliveryInterval));
     }
 
     /**
