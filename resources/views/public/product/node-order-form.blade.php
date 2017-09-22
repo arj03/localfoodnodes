@@ -10,7 +10,7 @@
                 @if ($product->variants()->count() > 0)
                     <label class="form-control-label">
                         {{ trans('public/node.select_variant') }}
-                        @include('admin.field-error', ['field' => 'variant_id'])
+                        @include('account.field-error', ['field' => 'variant_id'])
                     </label>
                     @foreach ($product->variants() as $index => $variant)
                         <div class="form-check">
@@ -27,7 +27,7 @@
                 @else
                     <label class="form-control-label">
                         {{ trans('public/node.product') }}
-                        @include('admin.field-error', ['field' => 'product_id'])
+                        @include('account.field-error', ['field' => 'product_id'])
                     </label>
                     <div class="form-check">
                         <label class="form-check-label w-100">
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label class="form-control-label" for="quantity">
                     {{ trans('public/node.how_many') }}
-                    @include('admin.field-error', ['field' => 'quantity'])
+                    @include('account.field-error', ['field' => 'quantity'])
                 </label>
                 <div class="input-group">
                     <input type="number" min="0" name="quantity" class="form-control" id="quantity" placeholder="{{ trans('public/node.placeholder_qty') }}" />
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label class="form-control-label">
                     {{ trans('public/node.select_pickup') }}
-                    @include('admin.field-error', ['field' => 'delivery_dates'])
+                    @include('account.field-error', ['field' => 'delivery_dates'])
                     @if ($product->deadline > 0)
                         <div class="text-muted">{{ trans('public/product.book_days_before', ['deadline' => $product->deadline]) }}</div>
                     @endif
