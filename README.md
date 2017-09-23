@@ -12,6 +12,11 @@
 ### Setup dev environment
 * Follow the Homestead documentation
 
+### Elasticsearch
+* Make sure the docker-machine is running.
+* SSH to docker-machine with `docker-machine ssh` and run `sudo sysctl -w vm.max_map_count=262144` to increase value.
+* Run `docker-compose up -d` to start elasticsearch container
+
 ### Build assets
 We're using elixir, just run `gulp watch` in terminal.
 

@@ -37,9 +37,9 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-12 col-lg-8">
                 @if (Auth::check())
-                    @include('admin.user.membership-form')
+                    @include('account.user.membership-form')
                 @else
-                    @include('admin.user.create-card')
+                    @include('account.user.create-card')
                 @endif
             </div>
         </div>

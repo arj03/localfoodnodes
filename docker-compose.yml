@@ -1,29 +1,27 @@
 version: '2'
-
 services:
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "8080:80"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.1
+    container_name: elasticsearch
     environment:
-      PMA_USER: root
-      PMA_PASSWORD: root
-      PMA_HOST: db
-      PMA_PORT: 3306
-    links:
-      - mysql:db
-
-  mysql:
-    build:
-      context: .
-      dockerfile: dockerfile-mysql
-    command: --skip-name-resolve
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
     ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+      - 9200:9200
+    networks:
+      - esnet
 
-  redis:
-    image: redis
-    ports:
-      - "6379:6379"
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  esnet:

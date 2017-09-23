@@ -16,7 +16,7 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('public.sass');
-    mix.sass('admin.sass');
+    mix.sass('account.sass');
 
     mix.version([
         './public/css/public.css',

@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="email" class="form-control-label">
                                 {{ trans('admin/user.email') }}
-                                @include('admin.field-error', ['field' => 'email'])
+                                @include('account.field-error', ['field' => 'email'])
                             </label>
                             <input id="email" type="text" class="form-control" name="email" value="{{ Request::old('email') }}">
                         </div>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="password" class="form-control-label">
                                 {{ trans('admin/user.new_password') }}
-                                @include('admin.field-error', ['field' => 'password'])
+                                @include('account.field-error', ['field' => 'password'])
                             </label>
                             <input id="password" type="password" class="form-control" name="password">
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label for="password-confirm" class="form-control-label">
                                 {{ trans('admin/user.confirm_password') }}
-                                @include('admin.field-error', ['field' => 'password'])
+                                @include('account.field-error', ['field' => 'password'])
                             </label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                         </div>

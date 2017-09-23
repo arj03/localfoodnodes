@@ -14,7 +14,7 @@
                             <div class="form-group">
                                 <label for="email" class="form-control-label">
                                     {{ trans('admin/user.email') }}
-                                    @include('admin.field-error', ['field' => 'email'])
+                                    @include('account.field-error', ['field' => 'email'])
                                 </label>
                                 <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}">
                             </div>
