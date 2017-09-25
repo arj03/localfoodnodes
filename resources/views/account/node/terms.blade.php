@@ -2,7 +2,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">{{ trans('admin/node.node_terms') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 {!! trans('admin/terms.node') !!}
             </div>
             <div class="card-footer">

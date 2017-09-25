@@ -8,13 +8,13 @@
             <div class="d-flex justify-content-between">
                 <div>
                     <h1>{{ $node->name }}</h1>
-                    <div class="hidden-xl-up">
+                    <div class="d-block d-xl-none">
                         {{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}
                         {{ $node->getDeliveryIntervalAsString() }}
                     </div>
                     <div>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
                 </div>
-                <div class="col-12 col-xl-5 hidden-lg-down text-right">
+                <div class="col-12 col-xl-5 d-none d-xl-block text-right">
                     <h1>{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
                     <div>{{ $node->getDeliveryIntervalAsString() }}</div>
                 </div>
@@ -39,7 +39,7 @@
                         @endif
                     </div>
 
-                    <div class="card-block product-filter tag-filter">
+                    <div class="card-body product-filter tag-filter">
                         <b>{{ trans('public/node.tags') }}</b>
                         <div class="tags">
                             @foreach ($tags as $label => $tag)
@@ -52,7 +52,7 @@
                         </div>
                     </div>
 
-                    <div class="card-block product-filter date-filter">
+                    <div class="card-body product-filter date-filter">
                         <b>{{ trans('public/node.select_pickup') }}</b>
                         <div class="tags dates">
                             @foreach ($node->getDeliveryDates() as $deliveryDate)
@@ -95,7 +95,7 @@
                             @include('public.node.product-default-view')
                         @endif
                     @else
-                        <div class="card-block">
+                        <div class="card-body">
                             {{ trans('public/node.no_products') }}
                         </div>
                     @endif
@@ -114,7 +114,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="card-block">
+                                <div class="card-body">
                                     @foreach ($events as $event)
                                         @include('public.components.event')
                                     @endforeach
@@ -126,7 +126,7 @@
 
                 <div class="card">
                     <div class="card-header">{{ $node->name }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {!! $node->info !!}
                         <div class="row">
                             <div class="col-12">
@@ -140,7 +140,7 @@
             <div class="col-12 col-lg-4">
                 <div class="card">
                     <div class="card-header">{{ trans('public/node.info') }}</div>
-                    <div class="card-block node-metrics">
+                    <div class="card-body node-metrics">
                         <div class="row">
                             <div class="metric col-4">
                                 <div class="value">{{ $node->userLinks()->count() }}</div>
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <p>
                             <b>{{ trans('public/node.pick_up_order') }}</b><br>
                             {{ $node->address }} {{ $node->zip }} {{ $node->city }}<br>
@@ -220,7 +220,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <div class="calendar-explanation">
                                 <p><i class="fa fa-square text-success"></i> {{ trans('public/node.pickup') }}</p>
                                 <p><i class="fa fa-square text-event"></i> {{ trans('public/node.event') }}</p>
@@ -247,7 +247,7 @@
                 @if ($node->producerLinks()->count() > 0)
                     <div class="card">
                         <div class="card-header">{{ trans('public/node.producers') }}</div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <div class="producers">
                                 @foreach ($node->producerLinks() as $producerLink)
                                     <div class="producer">

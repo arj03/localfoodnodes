@@ -10,7 +10,7 @@
             {{ trans('admin/node.producers') }}
             <a href="mailto:{{ $producerEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
         </div>
-        <div class="card-block">
+        <div class="card-body">
             @if ($node->producerLinks()->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">

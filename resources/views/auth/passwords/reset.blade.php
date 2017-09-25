@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">{{ trans('admin/user.reset_password') }}</div>
 
-                <div class="card-block">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

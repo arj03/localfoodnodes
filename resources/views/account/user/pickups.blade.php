@@ -13,7 +13,7 @@
                         <div class="card-header d-flex justify-content-between">
                             <span>{{ trans('admin/user.pickup') }} {{ $orderDate->date('Y-m-d') }}</span>
                         </div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -58,7 +58,7 @@
             @else
                 <div class="card">
                     <div class="card-header">{{ trans('admin/user.orders') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {{ trans('admin/user.no_orders') }}
                     </div>
                 </div>

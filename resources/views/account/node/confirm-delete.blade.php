@@ -9,7 +9,7 @@
         <div class="col-12 col-xl-8">
             <div class="card">
                 <div class="card-header">{{ trans('admin/node.confirm_delete') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     {{ trans('admin/node.confirm_delete_info') }}
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="row page-header hidden-md-down">
+<div class="row page-header d-none d-lg-flex">
     <div class="col-12 d-flex justify-content-between">
         @if (isset($breadcrumbs))
             <div class="breadcrumbs">

@@ -3,7 +3,7 @@
         <!-- Paid -->
         <div class="card">
             <div class="card-header">{{ trans('admin/user.membership_paid_title') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <p>{{ trans('admin/user.membership_paid', [
                     'date' => $user->getLatestMembershipPayment()->getDateOneYearForward()->format('Y-m-d'),
                     'days' => $user->getLatestMembershipPayment()->expiresInDays()
@@ -19,7 +19,7 @@
         <!-- Unpaid -->
         <div class="card">
             <div class="card-header">{{ trans('admin/user.membership_unpaid_title') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <p>{{ trans('admin/user.membership_unpaid') }}</p>
                 <p><a class="btn btn-success" href="/membership">{{ trans('admin/user.membership_unpaid_link') }}</a></p>
             </div>

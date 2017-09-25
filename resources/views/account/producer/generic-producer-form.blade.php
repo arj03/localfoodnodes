@@ -2,7 +2,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">{{ trans('admin/producer.producer_information') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="form-control-label" for="name">
                         {{ trans('admin/producer.company_name') }}
@@ -61,7 +61,7 @@
 
         <div class="card">
             <div class="card-header">{{ trans('admin/producer.payment_info') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="row">
                     <div class="form-group col-12 col-lg-6">
                         <label for="currency">{{ trans('admin/producer.currency') }}</label>
@@ -82,7 +82,7 @@
 
         <div class="card">
             <div class="card-header">Social</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="form-control-label" for="link_homepage">Homepage</label>
                     <input type="text" name="link_homepage" class="form-control" id="link_homepage" placeholder="Homepage" value="{{ $producer->link_homepage or '' }}">

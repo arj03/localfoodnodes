@@ -1,24 +1,24 @@
 @if (!Auth::check() || (Auth::user() && Auth::user()->active !== true))
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-light navbar-toggleable-md">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+            <nav class="navbar navbar-light navbar-expand-md">
                 <a class="navbar-brand" href="/">
                     <img src="/images/nav-logo-dark.png">
                     {{ trans('public/nav.local_food_nodes') }}
                 </a>
 
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="navbar-nav ml-auto">
                         <!-- Visible links on mobile -->
-                        <li class="nav-item hidden-lg-up"><a class="nav-link" href="/login">{{ trans('public/nav.login') }}</a></li>
-                        <li class="nav-item hidden-lg-up"><a class="nav-link" href="/account/user/create">{{ trans('public/nav.create') }}</a></li>
+                        <li class="nav-item d-xs-block d-md-none"><a class="nav-link" href="/login">{{ trans('public/nav.login') }}</a></li>
+                        <li class="nav-item d-xs-block d-md-none"><a class="nav-link" href="/account/user/create">{{ trans('public/nav.create') }}</a></li>
 
                         <!-- Fast login hidden on mobile -->
-                        <li class="dropdown hidden-md-down">
+                        <li class="dropdown d-none d-md-block">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i> {{ trans('public/nav.login_or_create') }}
                             </a>
@@ -54,7 +54,7 @@
                         </li>
 
                         <!-- Fast login hidden on mobile -->
-                        <li class="dropdown hidden-md-down">
+                        <li class="dropdown d-none d-md-block">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ config('app.locales')[App::getLocale()] }}</a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 @foreach (config('app.locales') as $key => $value)

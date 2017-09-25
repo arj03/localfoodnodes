@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ $orderDateItemLinks->first()->getItem()->product['name'] }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

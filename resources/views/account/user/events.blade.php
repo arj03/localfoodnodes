@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ trans('admin/user.events') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($user->eventLinks()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">

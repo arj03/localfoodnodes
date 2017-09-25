@@ -7,11 +7,11 @@
 
     <div class="card">
         <div class="card-header">{{ $node['name'] }} - {{ $orderDate->date('Y-m-d') }}</div>
-        <div class="card-block">
+        <div class="card-body">
             @foreach ($orderItemsGroupedByUserId as $userId => $orderDateItemLinks)
                 <div class="card">
                     <div class="card-header">{{ $orderDateItemLinks->first()->getItem()->user['name'] }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>

@@ -4,7 +4,7 @@
             <div class="card-header">
                 {{ trans('admin/product.product') }}
             </div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="form-control-label" for="name">
                         {{ trans('admin/product.product_name') }}

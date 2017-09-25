@@ -2,7 +2,7 @@
     <div class="card-header">
         {{ trans('admin/product.other_options') }}
     </div>
-    <div class="card-block">
+    <div class="card-body">
         <div class="form-group">
             <label for="payment-info">
                 {{ trans('admin/product.product_payment_info') }}

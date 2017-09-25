@@ -8,7 +8,7 @@
                 <i class="fa fa-chevron-down toggle"></i>
             @endif
         </div>
-        <div class="card-block">
+        <div class="card-body">
             <div class="row calendar product-calendar">
                 @foreach ($node->getDeliveryDatesByMonths($product) as $firstDateOfMonth => $deliveryDates)
                     <div class="col-6 col-sm-3 mt-3">

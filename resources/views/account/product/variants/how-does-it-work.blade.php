@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">{{ trans('admin/product.how_does_it_work') }}</div>
-    <div class="card-block">
+    <div class="card-body">
         {{ trans('admin/product.hdiw_intro_variants') }}
         <ul class="info-list">
             <li>

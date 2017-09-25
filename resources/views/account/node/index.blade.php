@@ -9,7 +9,7 @@
         <div class="col-12 col-lg-6 card-deck">
             <div class="card">
                 <div class="card-header">{{ trans('admin/node.node_info') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     <ul>
                         <li>{{ $node->name }}</li>
                         <li>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</li>
@@ -25,7 +25,7 @@
         <div class="col-12 col-lg-6 card-deck">
             <div class="card">
                 <div class="card-header">{{ trans('admin/node.events') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($node->events()->count() > 0)
                         <div class="table-responsive">
                             <table class="table">
@@ -65,7 +65,7 @@
                     {{ trans('admin/node.users') }}
                     <a href="mailto:{{ $userEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($node->userLinks()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -105,7 +105,7 @@
                     {{ trans('admin/node.producers') }}
                     <a href="mailto:{{ $producerEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($node->producerLinks()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -165,7 +165,7 @@
             <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">{{ trans('admin/node.administrators') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

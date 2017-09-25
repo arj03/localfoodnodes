@@ -19,7 +19,7 @@
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-header">{{ trans('public/product.product_info') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="row">
                             @if ($product->images()->count() > 0)
                                 <div class="col-12 col-lg-6">
@@ -48,7 +48,7 @@
 
                 <div class="card">
                     <div class="card-header">{{ trans('public/product.producer') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="mb-3">
                             <a href="{{ $producer->permalink()->url }}">{{ $producer->name }}</a><br>
                             {{ $producer->address }}, {{ $producer->zip }} {{ $producer->city }}

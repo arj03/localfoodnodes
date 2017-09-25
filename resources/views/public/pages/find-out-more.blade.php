@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card top-card">
-                <div class="card-block body-text">
+                <div class="card-body body-text">
                     <p>{{ trans('public/pages/find-out-more.paragraph_1_1') }}</p>
                     <p>{{ trans('public/pages/find-out-more.paragraph_1_2') }}</p>
                     <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>

@@ -13,7 +13,7 @@
                         <div class="card-header">
                             {{ trans('admin/producer.delivery') }} {{ $orderDate->date('Y-m-d') }}
                         </div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -61,7 +61,7 @@
             @else
                 <div class="card">
                     <div class="card-header">{{ trans('admin/producer.deliveries') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {{ trans('admin/producer.no_upcoming_deliveries') }}
                     </div>
                 </div>

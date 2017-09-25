@@ -5,7 +5,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">{{ trans('admin/event.information') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="name">
                         {{ trans('admin/event.name') }}
@@ -62,7 +62,7 @@
 
         <div class="card">
             <div class="card-header">{{ trans('admin/event.address') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="address">
                         {{ trans('admin/event.address') }}
@@ -92,7 +92,7 @@
 
         <div class="card">
             <div class="card-header">{{ trans('admin/event.visibility') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-check">
                     <fieldset class="form-group">
                         <legend class="col-form-legend">{{ trans('admin/event.visibility') }}</legend>
@@ -110,7 +110,7 @@
     <div class="col-12 col-xl-4">
         <div class="card">
             <div class="card-header">How does it work?</div>
-            <div class="card-block">
+            <div class="card-body">
                 {{ trans('admin/event.hdiw_intro') }}
                 <ul class="info-list">
                     <li><span class="info-count">1</span><p>{{ trans('admin/event.hdiw_item_1') }}</p></li>

@@ -10,7 +10,7 @@
     @if ($product->productionType !== 'weekly')
         <div class="card">
             <div class="card-header">{{ trans('admin/product.adjust_production_quantity_per_week') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 This feature is only available for weekly produced products.
             </div>
         </div>
@@ -24,7 +24,7 @@
                             <div class="col-12 col-xl-6 card-deck">
                                 <div class="card">
                                     <div class="card-header">{{ trans('months.' . date('F', strtotime($firstDateOfMonth))) }} {{ date('Y', strtotime($firstDateOfMonth)) }}</div>
-                                    <div class="card-block">
+                                    <div class="card-body">
                                         @foreach ($dates as $date)
                                             <div class="form-group">
                                                 <div class="input-group">

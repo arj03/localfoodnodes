@@ -138,7 +138,7 @@
             <div class="col col-12 col-xl-4 card-deck">
                 <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_436974091_crate.jpg">
-                    <div class="card-block">
+                    <div class="card-body">
                         <h3>{{ trans('public/pages/find-out-more.header_3') }}</h3>
                         <p>{{ trans('public/pages/find-out-more.paragraph_3_1') }}</p>
                         <p>{{ trans('public/pages/find-out-more.paragraph_3_2') }}</p>
@@ -148,7 +148,7 @@
             <div class="col col-12 col-xl-4 card-deck">
                 <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_326785574_gettogether.jpg">
-                    <div class="card-block">
+                    <div class="card-body">
                         <h3>{{ trans('public/pages/find-out-more.header_4') }}</h3>
                         <p>{{ trans('public/pages/find-out-more.paragraph_4_1') }}</p>
                     </div>
@@ -157,7 +157,7 @@
             <div class="col col-12 col-xl-4 card-deck">
                 <div class="card">
                     <img class="card-img-top" src="/images/shutterstock_271622087_producer_carrots.jpg">
-                    <div class="card-block">
+                    <div class="card-body">
                         <h3>{{ trans('public/pages/find-out-more.header_5') }}</h3>
                         <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
                         <p>{{ trans('public/pages/find-out-more.paragraph_5_2') }}</p>
@@ -174,5 +174,5 @@
     <link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-    <script src="{{ elixir('/js-apps/node-map.js') }}"></script>
+    <script src="{{ URL::asset('/js-apps/node-map.js') }}"></script>
 @endsection

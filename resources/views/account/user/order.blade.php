@@ -9,7 +9,7 @@
         <div class="col-12 col-xl-8">
             <div class="card">
                 <div class="card-header">{{ trans('admin/user.order') }} #{{ $orderDateItemLink->ref }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <ul>
@@ -26,14 +26,14 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <!-- Right align -->
-                            <ul class="text-right hidden-md-down">
+                            <ul class="text-right d-none d-lg-block">
                                 <li><b>{{ $orderItem->node['name'] }}</b></li>
                                 <li><a href="mailto:{{ $orderItem->node['email'] }}">{{ $orderItem->node['email'] }}</a></li>
                                 <li>{{ $orderItem->node['address'] }}</li>
                                 <li>{{ $orderItem->node['zip'] }} {{ $orderItem->node['city'] }}</li>
                             </ul>
                             <!-- Left align -->
-                            <ul class="hidden-lg-up">
+                            <ul class="d-block d-lg-none">
                                 <li><b>{{ $orderItem->node['name'] }}</b></li>
                                 <li><a href="mailto:{{ $orderItem->node['email'] }}">{{ $orderItem->node['email'] }}</a></li>
                                 <li>{{ $orderItem->node['address'] }}</li>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

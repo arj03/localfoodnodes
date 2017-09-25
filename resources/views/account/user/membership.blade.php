@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">History</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($user->membershipPayments()->count() > 0)
                         <table class="table">
                             <thead>

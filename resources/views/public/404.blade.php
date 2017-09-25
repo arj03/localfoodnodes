@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="card mt-5">
-            <div class="card-block">
+            <div class="card-body">
                 {!! trans('public/404.no-page') !!}
             </div>
         </div>
@@ -28,5 +28,5 @@
     <link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-    <script src="{{ elixir('/js-apps/node-map.js') }}"></script>
+    <script src="{{ mix('/js-apps/node-map.js') }}"></script>
 @endsection

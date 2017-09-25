@@ -11,7 +11,7 @@
         <div class="col-12 col-xl-8">
             <div class="card">
                 <div class="card-header">{{ trans('admin/product.variants') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($product->variants()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -67,7 +67,7 @@
         <div class="col-12 col-xl-4">
             <div class="card">
                 <div class="card-header">{{ trans('admin/product.product_content') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     <form action="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/set-package-unit" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">

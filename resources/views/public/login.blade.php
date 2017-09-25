@@ -9,7 +9,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="card error-message">
                         <div class="card-header">{{ trans('public/login.error_' . Request::input('error')) }}</div>
-                        <div class="card-block">{{ trans('public/login.error_' . Request::input('error') . '_content') }}</div>
+                        <div class="card-body">{{ trans('public/login.error_' . Request::input('error') . '_content') }}</div>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="card success-message">
                         <div class="card-header">{{ trans('public/login.message_' . Request::input('message')) }}</div>
-                        <div class="card-block">{{ trans('public/login.message_' . Request::input('message') . '_content') }}</div>
+                        <div class="card-body">{{ trans('public/login.message_' . Request::input('message') . '_content') }}</div>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="col-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">{{ trans('public/login.title') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <form action="/authenticate" method="post" class="mb-5">
                             {{ csrf_field() }}
                             <div class="form-group">

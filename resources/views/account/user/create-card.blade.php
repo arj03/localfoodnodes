@@ -2,7 +2,7 @@
     {{ csrf_field() }}
     <div class="card">
         <div class="card-header">{{ trans('admin/user.create_account') }}</div>
-        <div class="card-block">
+        <div class="card-body">
             <div class="form-group">
                 <label for="name">
                     {{ trans('admin/user.name') }}

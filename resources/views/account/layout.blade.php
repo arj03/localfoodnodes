@@ -6,10 +6,11 @@
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ elixir('css/public.css') }}">
-        <link rel="stylesheet" href="{{ elixir('css/account.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/public.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/account.css') }}">
+
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src="/js/jquery-ui.1.12.1.min.js"></script>
         <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
@@ -87,10 +88,10 @@
         <script>
             jQuery(document).ready(function() {
                 // Hide card block on load if class is chevron-down
-                $('.card-header.toggle .fa-chevron-down').closest('.card').find('.card-block').hide();
+                $('.card-header.toggle .fa-chevron-down').closest('.card').find('.card-body').hide();
 
                 $('.card-header.toggle').on('click', function() {
-                    var cardBlock = $(this).closest('.card').find('.card-block');
+                    var cardBlock = $(this).closest('.card').find('.card-body');
                     var toggleIcon = $(this).find('.fa.toggle');
 
                     if (cardBlock.is(':visible')) {

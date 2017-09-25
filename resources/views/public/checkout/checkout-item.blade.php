@@ -1,6 +1,6 @@
     <div class="cart-item">
         <div class="row cart-item-inner">
-            <div class="col-md-2 hidden-sm-down">
+            <div class="col-md-2 d-none d-md-block">
                 @if ($cartDateItemLink->getItem()->getProduct() && $cartDateItemLink->getItem()->getProduct()->images()->count() > 0)
                     <img src="{{ $cartDateItemLink->getItem()->getProduct()->images()->first()->url('medium') }}">
                 @else
@@ -34,7 +34,7 @@
             </div>
 
             <!-- Desktop only -->
-            <div class="col-2 hidden-sm-down text-right">
+            <div class="col-2 d-none d-md-block text-right">
                 <form action="/checkout/item/{{ $cartDateItemLink->id }}/update" method="post">
                     {{ csrf_field() }}
                     <div class="input-group">
@@ -49,7 +49,7 @@
             </div>
 
             <!-- Mobile only -->
-            <div class="col-4 col-sm-3 col-xs-6 hidden-md-up text-right mt-3">
+            <div class="col-4 col-sm-3 col-xs-6 d-block d-md-none text-right mt-3">
                 <form action="/checkout/item/{{ $cartDateItemLink->id }}/update" method="post">
                     {{ csrf_field() }}
                     <div class="input-group">

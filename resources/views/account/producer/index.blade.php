@@ -11,7 +11,7 @@
                 <div class="card-header">
                     {{ $producer->name }}
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <ul>
                         <li>{{ $producer->name }}</li>
                         <li>{{ $producer->address }} {{ $producer->zip }} {{ $producer->city }}</li>
@@ -19,7 +19,7 @@
                         <li>{{ $producer->link_homepage }}</li>
                     </ul>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <ul>
                         <li>Currency: {{ $producer->currency }}</li>
                         <li>Payment info: {{ $producer->payment_info }}</li>
@@ -48,7 +48,7 @@
                         {{ $producer->getNextOrderDate()->date('Y-m-d') }}
                     @endif
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($producer->getNextOrderDate() && $producer->getNextOrderDate()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -96,7 +96,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ trans('admin/producer.your_products') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($producer->products()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -167,7 +167,7 @@
                 <!-- Producer admin -->
                 <div class="card">
                     <div class="card-header">{{ trans('admin/producer.administrators') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -224,7 +224,7 @@
         <div class="col-12 col-lg-6 card-deck">
             <div class="card">
                 <div class="card-header">{{ trans('admin/producer.events') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($producer->events()->count() > 0)
                         <div class="table-responsive">
                             <table class="table">

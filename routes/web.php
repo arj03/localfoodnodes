@@ -42,7 +42,7 @@ Route::post('/account/user/migrate-update', 'Account\UserController@migrateUpdat
 
 Route::get('/account/user/activate/token/{token}', 'Account\UserController@activateToken'); // Activate account even if user is not logged in
 
-// Admin routes
+// Account routes
 Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function () {
     // User
     Route::group(['prefix' => '/user'], function () {
@@ -167,17 +167,6 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth.route'], function ()
     // Image
     Route::group(['prefix' => '/image'], function () {
         Route::get('/{imageId}/delete', 'Account\ImageController@delete');
-    });
-});
-
-// Admin
-Route::group(['prefix' => '/admin'], function () {
-    // Email
-    Route::group(['prefix' => '/email'], function () {
-        Route::get('/user/activation/{userId}', 'Account\EmailController@userActivation');
-        Route::get('/user/reset-password/{userId}', 'Account\EmailController@resetPassword');
-        Route::get('/order/producer', 'Account\EmailController@orderProducer');
-        Route::get('/order/customer', 'Account\EmailController@orderCustomer');
     });
 });
 

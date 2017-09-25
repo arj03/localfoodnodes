@@ -10,14 +10,14 @@
             @if ($user->nodeAdminInvites()->count() > 0 || $user->producerAdminInvites()->count() > 0)
                 <div class="card">
                     <div class="card-header">Messages</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="row">
                             @if ($user->nodeAdminInvites())
                                 @foreach ($user->nodeAdminInvites() as $nodeAdminLink)
                                     <div class="col-6">
                                         <div class="card">
                                             <div class="card-header">You have been added as node admin</div>
-                                            <div class="card-block">
+                                            <div class="card-body">
                                                 <p>You have been added as an admin to {{ $nodeAdminLink->getNode()->name }}</p>
                                                 <a class="btn btn-success" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/accept">Accept</a>
                                                 <a class="btn btn-danger" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
@@ -32,7 +32,7 @@
                                     <div class="col-6">
                                         <div class="card">
                                             <div class="card-header">You have been added as admin</div>
-                                            <div class="card-block">
+                                            <div class="card-body">
                                                 <p>You have been added as an admin to {{ $producerAdminLink->getProducer()->name }}</p>
                                                 <a class="btn btn-success" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/accept">Accept</a>
                                                 <a class="btn btn-danger" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
@@ -54,7 +54,7 @@
         <div class="col-12 col-xl-4 card-deck">
             <div class="card">
                 <div class="card-header">{{ $user->name }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     <div>{{ $user->name }}</div>
                     <div>{{ $user->email }}</div>
                     <div>{{ $user->address }}</div>
@@ -73,7 +73,7 @@
         <div class="col-12 col-xl-4 card-deck">
             <div class="card">
                 <div class="card-header">{{ trans('admin/user.nodes_you_follow') }}</div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($user->nodeLinks()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -110,7 +110,7 @@
                         {{ $user->getNextOrderDate()->date('Y-m-d') }}
                     @endif
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     @if ($user->getNextOrderDate() && $user->getNextOrderDate()->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover">

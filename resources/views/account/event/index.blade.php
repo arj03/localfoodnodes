@@ -7,7 +7,7 @@
 
     <div class="card">
         <div class="card-header">Events</div>
-        <div class="card-block">
+        <div class="card-body">
             @if ($eventOwner->events()->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">

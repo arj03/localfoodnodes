@@ -10,7 +10,7 @@
             {{ trans('admin/node.users') }}
             <a href="mailto:{{ $userEmails->implode(',') }}" target="_blank"><i class="fa fa-envelope"></i></a>
         </div>
-        <div class="card-block">
+        <div class="card-body">
             @if ($node->userLinks()->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">

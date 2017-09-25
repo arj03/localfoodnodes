@@ -21,14 +21,14 @@
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-header">{{ $producer->name }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {!! $producer->info !!}
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">{{ trans('public/producer.products') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         @if ($producer->products()->count() > 0)
                             <div class="row">
                                 @foreach ($producer->products() as $product)
@@ -41,7 +41,7 @@
                                                     <img class="card-image-top" src="/images/product-image-placeholder.jpg">
                                                 @endif
 
-                                                <div class="card-block">
+                                                <div class="card-body">
                                                     <div class="producer-info">
                                                         <div class="name">{{ $product->producer()->name }}</div>
                                                     </div>
@@ -67,7 +67,7 @@
 
                 <div class="card image-card">
                     <div class="card-header">{{ trans('public/producer.events') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         @if ($producer->events()->count() > 0)
                             @foreach ($producer->events() as $event)
                                 <a href="{{ $event->permalink()->url }}">{{ $event->name }}</a>
@@ -82,7 +82,7 @@
             <div class="col-12 col-lg-4">
                 <div class="card">
                     <div class="card-header">{{ trans('public/product.order') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {{ trans('public/product.nav_to_node') }}.
                         <ul class="mt-3">
                             @foreach ($producer->nodeLinks() as $nodeLink)

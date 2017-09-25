@@ -3,12 +3,15 @@ body.admin .page {
   min-height: 100vh;
   background: #f1f0ea;
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: stretch;
-  align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 body.admin .page .content {
@@ -28,11 +31,14 @@ body.admin .page .page-header {
   height: 60px;
   margin-bottom: 2rem;
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-transform: uppercase;
-  box-shadow: #ccc 0 1px 8px -2px;
+  -webkit-box-shadow: #ccc 0 1px 8px -2px;
+          box-shadow: #ccc 0 1px 8px -2px;
 }
 
 body.admin .page .card .card-header {
@@ -49,8 +55,10 @@ body.admin .page .card .card-header {
   body.admin .page {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
+
   body.admin .page .content {
     width: calc(100% - 300px);
   }
@@ -134,14 +142,18 @@ body.admin .page .card .card-header {
   width: 100%;
   position: relative;
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   color: #ccc;
   font-family: 'montserrat';
@@ -180,6 +192,7 @@ body.admin .page .card .card-header {
 }
 
 /* THIRD PARTY */
+
 .mce-toolbar-grp {
   background-color: #fafafa !important;
 }
@@ -225,6 +238,7 @@ body.admin .page .card .card-header {
 }
 
 /* Node block */
+
 .node-block {
   position: relative;
   border: 1px solid #ccc;
@@ -266,10 +280,13 @@ body.admin-product-edit .table .marker-column {
 
 ul.product-quick-links {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  justify-content: space-between;
-  flex-wrap: wrap;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow: hidden;
 }
 
@@ -280,18 +297,24 @@ ul.product-quick-links li {
 ul.product-quick-links li a,
 ul.product-quick-links li span {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: 'montserrat';
   text-transform: uppercase;
   color: #999;
 }
 
-ul.product-quick-links li a:hover, ul.product-quick-links li a:active, ul.product-quick-links li a:focus, ul.product-quick-links li a:visited,
+ul.product-quick-links li a:hover,
+ul.product-quick-links li a:active,
+ul.product-quick-links li a:focus,
+ul.product-quick-links li a:visited,
 ul.product-quick-links li span:hover,
 ul.product-quick-links li span:active,
 ul.product-quick-links li span:focus,
@@ -337,7 +360,8 @@ ul.product-quick-links li.active span i {
   line-height: 50px;
   background: #efcb6b;
   color: #fff;
-  box-shadow: #ccc 0 1px 8px -2px;
+  -webkit-box-shadow: #ccc 0 1px 8px -2px;
+          box-shadow: #ccc 0 1px 8px -2px;
 }
 
 .admin-user-index .payment-errors {
@@ -374,11 +398,14 @@ ul.product-quick-links li.active span i {
   width: calc(100% - 20px);
   height: 10px;
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .delivery-date-add:hover {
@@ -414,3 +441,4 @@ ul.product-quick-links li.active span i {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+

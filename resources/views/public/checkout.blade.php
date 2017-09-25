@@ -20,14 +20,14 @@
                     @foreach ($user->cartDates() as $cartDate)
                         <div class="card">
                             <div class="card-header">{{ trans_choice('public/checkout.delivery', 1) }} {{ $cartDate->date('Y-m-d') }}</div>
-                            <div class="card-block cart-items-block hidden-md-down">
+                            <div class="card-body cart-items-block d-none d-md-block">
                                 <div class="cart-items-block-header row">
                                     <div class="col-8">{{ trans('public/checkout.product') }}</div>
                                     <div class="col-2 text-right">{{ trans('public/checkout.quantity') }}</div>
                                     <div class="col-2 text-right">{{ trans('public/checkout.total') }}</div>
                                 </div>
                             </div>
-                            <div class="card-block">
+                            <div class="card-body">
                                 @foreach ($cartDate->cartDateItemLinks() as $cartDateItemLink)
                                     @include('public.checkout.checkout-item')
                                 @endforeach
@@ -37,7 +37,7 @@
                 @else
                     <div class="card">
                         <div class="card-header">{{ trans('public/checkout.cart') }}</div>
-                        <div class="card-block">
+                        <div class="card-body">
                             {{ trans('public/checkout.cart_empty') }}
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                 @if ($user->cartDates()->count() > 0)
                     <div class="card summary">
                         <div class="card-header">{{ trans('public/checkout.summary') }}</div>
-                        <div class="card-block red">
+                        <div class="card-body red">
                             <b class="d-flex justify-content-between">
                                 <span>{{ trans('public/checkout.products') }}</span>
                                 <span>{{ trans('public/checkout.quantity') }}</span>
@@ -75,7 +75,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="card-block">
+                        <div class="card-body">
                             @if ($user->isMember())
                                 {{ trans('public/checkout.after_placing_order') }}
                                 <ul class="info-list">

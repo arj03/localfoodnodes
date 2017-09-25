@@ -9,8 +9,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">{{ $orderItems->first()->getUser()['name'] }}</div>
-                <div class="card-block order-header">{{ $orderItems->first()->getUser()['email'] }}</div>
-                <div class="card-block">
+                <div class="card-body order-header">{{ $orderItems->first()->getUser()['email'] }}</div>
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

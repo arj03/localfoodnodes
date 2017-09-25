@@ -1,5 +1,5 @@
 @if (Auth::user() && Auth::user()->active)
-    <div class="user-nav hidden-md-down">
+    <div class="user-nav d-none d-lg-block">
         <div class="scrollfix">
             <div class="logo">
                 <img src="/images/nav-logo.png">

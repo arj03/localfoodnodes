@@ -2,7 +2,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">{{ trans('admin/node.information') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="form-control-label" for="name">
                         {{ trans('admin/node.name_node') }}
@@ -58,7 +58,7 @@
 
         <div class="card">
             <div class="card-header">{{ trans('admin/node.deliveries') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="delivery_weekday">{{ trans('admin/node.weekday') }} @include('account.field-error', ['field' => 'delivery_weekday'])</label>
                     <select name="delivery_weekday" id="delivery_weekday" class="form-control">
@@ -121,7 +121,7 @@
 
         <div class="card">
             <div class="card-header">Facebook</div>
-            <div class="card-block">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="link_facebook">{{ trans('admin/node.facebook_page') }}</label>
                     <input type="text" name="link_facebook" class="form-control" id="address" placeholder="{{ trans('admin/node.facebook_page') }}" value="{{ $node->link_facebook }}">

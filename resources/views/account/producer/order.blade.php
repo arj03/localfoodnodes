@@ -9,7 +9,7 @@
         <div class="col-12 col-xl-8">
             <div class="card">
                 <div class="card-header">{{ trans('admin/user.order') }} #{{ $orderDateItemLink->ref }}</div>
-                <div class="card-block d-flex justify-content-between">
+                <div class="card-body d-flex justify-content-between">
                     <ul>
                         <li><b>{{ $orderItem->user['name'] }}</b></li>
                         <li><a href="mailto:{{ $orderItem->user['email'] }}">{{ $orderItem->user['email'] }}</a></li>
@@ -24,7 +24,7 @@
                         <li>{{ $orderItem->node['zip'] }} {{ $orderItem->node['city'] }}</li>
                     </ul>
                 </div>
-                <div class="card-block">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

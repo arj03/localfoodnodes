@@ -7,7 +7,7 @@
 
     <div class="card">
         <div class="card-header">{{ trans('admin/event.guests_in') }} {{ $event->name }}</div>
-        <div class="card-block">
+        <div class="card-body">
             @if ($event->userLinks()->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">

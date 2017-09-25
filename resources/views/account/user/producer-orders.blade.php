@@ -10,8 +10,8 @@
             @if ($orderDateItemLinks->count() > 0)
                 <div class="card">
                     <div class="card-header">{{ $orderDateItemLinks->first()->getItem()->producer['name'] }}</div>
-                    <div class="card-block order-header">{{ $orderDateItemLinks->first()->getItem()->producer['email'] }}</div>
-                    <div class="card-block">
+                    <div class="card-body order-header">{{ $orderDateItemLinks->first()->getItem()->producer['email'] }}</div>
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -47,7 +47,7 @@
             @else
                 <div class="card">
                     <div class="card-header">{{ trans('admin/user.orders') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         {{ trans('admin/user.no_orders') }}
                     </div>
                 </div>

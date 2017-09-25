@@ -29,7 +29,7 @@
 
     <div class="row no-gutters contact">
         <div class="col-12">
-            <img class="logo hidden-lg-down" src="/images/nav-logo.png" />
+            <img class="logo d-none d-lg-block" src="/images/nav-logo.png" />
             <span><a href="mailto:info@localfoodnodes.org">info@localfoodnodes.org</a></span>
             <span>+46(0) 735 325945</span>
             <span>Backavägen 8 26868 Röstånga</span>

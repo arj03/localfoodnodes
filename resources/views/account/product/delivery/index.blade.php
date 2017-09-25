@@ -18,7 +18,7 @@
                 @else
                     <div class="card">
                         <div class="card-header">{{ trans('admin/product.delivery_dates') }}</div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <p>{{ trans('admin/product.delivery_dates_no_nodes') }}</p>
                             <a class="btn btn-success" href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/deliveries">{{ trans('admin/product.reload_page') }}</a>
                         </div>

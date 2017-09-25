@@ -11,7 +11,7 @@
             <div class="col-12 col-xl-8">
                 <div class="card">
                     <div class="card-header">{{ trans('admin/user.edit_information') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="form-group">
                             <label class="form-control-label" for="name">
                                 {{ trans('admin/user.name') }}

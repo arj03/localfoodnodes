@@ -1,7 +1,7 @@
 <div class="col-12 col-xl-4">
     <div class="card">
         <div class="card-header">{{ trans('admin/producer.how_does_it_work') }}</div>
-        <div class="card-block">
+        <div class="card-body">
             {{ trans('admin/producer.hdiw_intro') }}
             <ul class="info-list">
                 <li><span class="info-count">1</span><p>{{ trans('admin/producer.hdiw_item_1') }}</p></li>

@@ -6,7 +6,7 @@
     {{ csrf_field() }}
     <div class="card">
         <div class="card-header">{{ trans('admin/user.membership') }}</div>
-        <div class="card-block">
+        <div class="card-body">
             <div class="form-group">
                 <label class="form-control-label" for="amount">{{ trans('admin/user.amount') }} (SEK)</label>
                 <div class="input-group">
@@ -44,7 +44,7 @@
             </div>
             <span>{!! trans('admin/user.payment_info') !!}</span>
         </div>
-        <div class="card-block">
+        <div class="card-body">
             <input type="submit" class="submit btn btn-success" value="{{ trans('admin/user.submit_payment') }}">
         </div>
     </div>

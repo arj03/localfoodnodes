@@ -8,7 +8,7 @@
             <div class="col-12 col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-header">{{ trans('admin/user.reset_password') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <form method="post" action="/password/email">
                             {{ csrf_field() }}
                             <div class="form-group">

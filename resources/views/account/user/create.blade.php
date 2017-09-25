@@ -9,7 +9,7 @@
             <div class="row justify-content-center mt-5">
                 <div class="col-12 col-xl-8">
                     <div class="card">
-                        <div class="card-block body-text">
+                        <div class="card-body body-text">
                             @if (Request::route('type') === 'user')
                                 {!! trans('public/create-account.user') !!}
                             @elseif (Request::route('type') === 'node')

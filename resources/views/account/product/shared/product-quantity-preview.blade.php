@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">Quantity preview</div>
-    <div class="card-block">
+    <div class="card-body">
         @if ($product->variants()->count() > 0)
             @if ($product->productionType === 'occasional')
                 @foreach ($product->productions() as $index => $production)
@@ -13,7 +13,7 @@
                                 <i class="fa fa-chevron-down"></i>
                             @endif
                         </div>
-                        <div class="card-block">
+                        <div class="card-body">
                             <table class="table">
                                 <thead>
                                     <tr>

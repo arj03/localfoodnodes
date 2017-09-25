@@ -5,7 +5,7 @@
             {{ $images->count() }} / {{ $limit }}
         </span>
     </div>
-    <div class="card-block">
+    <div class="card-body">
         @if ($errors->has('image'))
             <div class="mb-3">@include('account.field-error', ['field' => 'image'])</div>
         @endif

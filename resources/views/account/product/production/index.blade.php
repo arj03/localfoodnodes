@@ -13,7 +13,7 @@
             <div class="col-12 col-xl-8">
                 <div class="card">
                     <div class="card-header">{{ trans('admin/product.production_type_header') }}</div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <ul class="list">
                             <li>
                                 <b class="d-block">{{ trans('admin/product.recurring_products_weekly') }}</b>
@@ -36,7 +36,7 @@
                         {{ trans('admin/product.production') }}
                         <i class="fa fa-chevron-up toggle"></i>
                     </div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
@@ -72,11 +72,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-block">
+                    <div class="card-body">
                         <!-- CSA -->
                         <div class="card type-card" id="type-card-csa">
                             <div class="card-header">{{ trans('admin/product.csa_products') }}</div>
-                            <div class="card-block">
+                            <div class="card-body">
                                 <div class="form-group col-6">
                                     <label class="form-control-label" for="csa_quantity">
                                         {{ trans('admin/product.enter_total_csa_subscribers') }}
@@ -90,7 +90,7 @@
                         <!-- Weekly -->
                         <div class="card type-card" id="type-card-weekly">
                             <div class="card-header">{{ trans('admin/product.recurring_products_weekly') }}</div>
-                            <div class="card-block">
+                            <div class="card-body">
                                 <div class="form-group col-6">
                                     <label class="form-control-label" for="weekly_quantity">
                                         {{ trans('admin/product.specify_number_products') }}
@@ -98,7 +98,7 @@
                                     </label>
                                     <input type="number" min="0" name="weekly_quantity" class="form-control" id="weekly_quantity" placeholder="{{ trans('admin/product.number_of_products') }}" value="{{ $product->productions()->first()->quantity or '' }}">
                                 </div>
-                                <div class="card-block">
+                                <div class="card-body">
                                     <p>{{ trans('admin/product.weekly_adjustment') }}</p>
                                     <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/adjustment">{{ trans('admin/product.adjust_production_quantity_per_week') }}</a>
                                 </div>
@@ -108,7 +108,7 @@
                         <!-- Occasional -->
                         <div class="card type-card" id="type-card-occasional">
                             <div class="card-header">{{ trans('admin/product.occasional_products') }}</div>
-                            <div class="card-block">
+                            <div class="card-body">
                                 <div class="text-muted mb-3"><i class="fa fa-info-circle"></i> {{ trans('admin/product.occasional_specify_date_quantity') }}</div>
                                 <div class="row">
                                     <div class="col-12 col-lg-6">

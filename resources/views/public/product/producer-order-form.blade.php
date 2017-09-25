@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">{{ trans('public/product.order') }}</div>
-    <div class="card-block">
+    <div class="card-body">
         {{ trans('public/product.nav_to_node') }}.
         <ul class="mt-3">
             @foreach ($producer->getNodeLinksWhereProductIsSold($product->id) as $nodeLink)

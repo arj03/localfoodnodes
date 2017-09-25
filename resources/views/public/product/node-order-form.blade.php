@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">{{ trans('public/node.order') }}</div>
     <form action="/checkout/item/add" method="post" class="order-form">
-        <div class="card-block">
+        <div class="card-body">
             {{ csrf_field() }}
             <input type="hidden" name="node_id" value="{{ $node->id }}" />
             <input type="hidden" name="product_id" value="{{ $product->id }}" />
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="card-block">
+        <div class="card-body">
             <div class="form-group">
                 <label class="form-control-label" for="quantity">
                     {{ trans('public/node.how_many') }}
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="card-block">
+        <div class="card-body">
             <div class="form-group">
                 <label class="form-control-label">
                     {{ trans('public/node.select_pickup') }}
@@ -96,14 +96,14 @@
             </div>
         </div>
 
-        <div class="card-block">
+        <div class="card-body">
             <div class="form-group">
                 <label for="exampleTextarea">{{ trans('public/product.message_producer') }}</label>
                 <textarea class="form-control" name="message" rows="3" placeholder="{{ trans('public/product.message_producer_placeholder') }}"></textarea>
             </div>
         </div>
 
-        <div class="card-block">
+        <div class="card-body">
             @if (!Auth::check())
                 <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login_needed') }}</button>
             @else

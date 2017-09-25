@@ -73,7 +73,7 @@ class IndexController extends Controller
         $products = $node->products();
 
         $productFilter = new ProductFilter($products, $request);
-        $filteredProducts = $productFilter->filterDate($nodeId)->filterTags()->get();
+        $filteredProducts = $productFilter->filterDate($nodeId)->filterTags()->filterVisibility()->get();
         $calendarMonth = $productFilter->getMonthDate();
         $calendar = new NodeCalendar($node);
 
@@ -96,7 +96,7 @@ class IndexController extends Controller
         return view('public.node.node', [
             'node' => $node,
             'events' => $events,
-            'products' => $filteredProducts,
+            'products' => $filteredProducts->sortBy('name')->values(),
             'calendar'=> $calendar->get($request),
             'calendarMonth' => $calendarMonth,
             'date' => $date,

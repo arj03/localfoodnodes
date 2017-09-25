@@ -2,7 +2,7 @@
     <div class="col-12 col-xl-8">
         <div class="card">
             <div class="card-header">{{ trans('admin/product.edit_variant') }}</div>
-            <div class="card-block">
+            <div class="card-body">
                 {{ csrf_field() }}
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="form-group">

@@ -3,14 +3,14 @@
     <input type="hidden" name="node_id" value="{{ $node->id }}" />
     <input type="hidden" name="delivery_date" value="{{ Request::input('date') }}" />
 
-    <div class="card-block product-list">
+    <div class="card-body product-list">
         @foreach ($products->sortBy('name') as $product)
             <input type="hidden" name="product[{{ $product->id }}][product_id]" value="{{ $product->id }}" />
             <input type="hidden" name="product[{{ $product->id }}][producer_id]" value="{{ $product->producer()->id }}" />
 
             @if ($product->isVisible($node->id) === true)
                 <div class="row product-item">
-                    <div class="col-3 hidden-xs-down">
+                    <div class="col-3 d-none d-sm-block">
                         @if ($product->images()->count() > 0)
                             <img class="card-image-top" src="{{ $product->images()->first()->url('small') }}">
                         @else
