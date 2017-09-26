@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests;
 
-class ResetPasswordController extends Controller
+class AdminResetPasswordController extends \App\Http\Controllers\Controller
 {
     # use RedirectsUsers;
 
@@ -22,7 +22,7 @@ class ResetPasswordController extends Controller
      */
     public function initForm()
     {
-        return view('auth.passwords.email');
+        return view('admin.auth.passwords.email');
     }
 
     /**
@@ -38,11 +38,16 @@ class ResetPasswordController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // if (\App\User\Admin::where('email', '=', $request->get('email'))->exists() === false) {
+        //     $request->session()->flash('message', ['User is not an administrator']);
+        //     return redirect()->back()->withInput();
+        // }
+
         $response = $this->broker()->sendResetLink($request->only('email'));
 
         if ($response === Password::RESET_LINK_SENT) {
             $request->session()->flash('message', [trans('admin/messages.password_reset_email_sent')]);
-            return redirect('/');
+            return redirect()->back();
         }
 
         return redirect()->back()->withErrors(
@@ -55,7 +60,7 @@ class ResetPasswordController extends Controller
      */
     public function resetForm(Request $request, $token = null)
     {
-        return view('auth.passwords.reset', [
+        return view('admin.auth.passwords.reset', [
             'token' => $token,
             'email' => $request->email
         ]);
@@ -130,7 +135,7 @@ class ResetPasswordController extends Controller
     protected function sendResetResponse($request, $response)
     {
         $request->session()->flash('message', [trans('admin/messages.user_password_changed')]);
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 
     /**
@@ -153,7 +158,7 @@ class ResetPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker();
+        return Password::broker('admin');
     }
 
     /**
@@ -163,6 +168,6 @@ class ResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('user');
+        return Auth::guard('admin');
     }
 }

@@ -69,9 +69,6 @@ class PermalinkController extends IndexController
      */
     private function errorPage404($request, $message, $data)
     {
-        $error = $message . ' for ' . $request->fullUrl() . "\n";
-        $error .= 'Referer: ' . url()->previous() . "\n";
-
-        return view('public/404');
+        return view('errors.404');
     }
 }

@@ -4,6 +4,7 @@ namespace App\User;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use App\BaseModel;
 
 class BaseUser extends Authenticatable

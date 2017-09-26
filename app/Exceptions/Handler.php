@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof NotFoundHttpException) {
             $params = ['viewName' => '404'];
-            return response()->view('public/404', $params, 404);
+            return response()->view('errors.404', $params, 404);
         }
 
         if ($exception instanceof TokenMismatchException) {

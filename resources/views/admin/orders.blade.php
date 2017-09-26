@@ -1,5 +1,5 @@
 @extends('admin.layout')
 
 @section('content')
-    <user-page></user-page>
+    <order-page></order-page>
 @endsection

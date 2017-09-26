@@ -2,23 +2,13 @@
 
 namespace App\User;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
-
-use App\User\BaseUser;
-use App\Producer\Producer;
-use App\Node\NodeAdminLink;
-use App\Order\OrderItemDateLink;
 use App\Mail\ResetPassword as ResetPasswordNotification;
-
 use Mail;
 
-class User extends BaseUser
+class User extends \App\User\BaseUser
 {
-    use Notifiable;
-
     protected $appends = ['location'];
 
     protected $validationRules = [

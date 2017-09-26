@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.moment = require('moment');
+window._ = require('lodash');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,7 +17,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('users', require('./admin/users.vue'));
+Vue.component('user-page', require('./admin/users/user-page.vue'));
+Vue.component('order-page', require('./admin/orders/order-page.vue'));
 
 const app = new Vue({
     el: '#admin-app',

@@ -21,7 +21,7 @@ class AuthController extends Controller
             return redirect()->intended('/account/user');
         }
 
-        return view('public/login');
+        return view('public.login');
     }
 
     /**

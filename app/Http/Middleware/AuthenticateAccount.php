@@ -5,21 +5,19 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticateRoute
+class AuthenticateAccount
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param \Illuminate\Http\Request  $request
+     * @param \Closure  $next
+     * @param string|null  $guard
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::check()) {
-            // return redirect('/login');
-            // return view('public/login');
             return response(view('public.login', ['viewName' => 'public-login']));
         } else {
             $user = Auth::user();

@@ -35,22 +35,43 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        $this->mapAccountRoutes();
         $this->mapApiRoutes();
         $this->mapAdminRoutes();
-        $this->mapWebRoutes();
+        $this->mapAuthRoutes();
+
+        // Needs to be last since the permalink controller tries to match all request
+        // and returns a 404 is fail.
+        $this->mapPublicRoutes();
     }
 
     /**
-     * Define the "api" routes for the application.
+     * Define the account routes for the application.
      *
-     * These routes are typically stateless.
+     * @return void
+     */
+    protected function mapAccountRoutes()
+    {
+        $options = [
+            'middleware' => ['web', 'auth.account'],
+            'namespace' => $this->namespace,
+            'prefix' => 'account',
+        ];
+
+        Route::group($options, function ($router) {
+            require base_path('routes/account.php');
+        });
+    }
+
+    /**
+     * Define the api routes for the application.
      *
      * @return void
      */
     protected function mapApiRoutes()
     {
         $options = [
-            'middleware' => 'api',
+            'middleware' => 'auth.api',
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ];
@@ -61,16 +82,14 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "admin" routes for the application.
-     *
-     * These routes are typically stateless.
+     * Define the admin routes for the application.
      *
      * @return void
      */
     protected function mapAdminRoutes()
     {
         $options = [
-            // 'middleware' => 'admin',
+            'middleware' => ['web', 'auth.admin'],
             'namespace' => $this->namespace,
             'prefix' => 'admin',
         ];
@@ -81,13 +100,11 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
+     * Define the auth and password routes for the application.
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapAuthRoutes()
     {
         $options = [
             'middleware' => 'web',
@@ -95,7 +112,24 @@ class RouteServiceProvider extends ServiceProvider
         ];
 
         Route::group($options, function ($router) {
-            require base_path('routes/web.php');
+            require base_path('routes/auth.php');
+        });
+    }
+
+    /**
+     * Define the public routes for the application.
+     *
+     * @return void
+     */
+    protected function mapPublicRoutes()
+    {
+        $options = [
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
+        ];
+
+        Route::group($options, function ($router) {
+            require base_path('routes/public.php');
         });
     }
 }
