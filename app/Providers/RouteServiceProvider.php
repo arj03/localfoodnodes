@@ -71,7 +71,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         $options = [
-            'middleware' => 'auth.api',
+            'middleware' => 'client_credentials',
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ];

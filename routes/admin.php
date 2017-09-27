@@ -3,6 +3,7 @@
 Route::get('/', 'Admin\AdminController@index');
 Route::get('/users', 'Admin\AdminController@users');
 Route::get('/orders', 'Admin\AdminController@orders');
+Route::get('/api', 'Admin\AdminController@api');
 
 // Email
 Route::group(['prefix' => '/email'], function () {

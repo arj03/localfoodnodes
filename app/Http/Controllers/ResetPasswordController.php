@@ -163,6 +163,6 @@ class ResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('user');
+        return Auth::guard();
     }
 }

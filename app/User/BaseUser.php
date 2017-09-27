@@ -4,12 +4,11 @@ namespace App\User;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-use App\BaseModel;
+use Laravel\Passport\HasApiTokens;
 
 class BaseUser extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * Proxy to BaseModel validate.
@@ -24,7 +23,7 @@ class BaseUser extends Authenticatable
             $messages = array_merge($this->validationMessages, $messages);
         }
 
-        $baseModel = new BaseModel();
+        $baseModel = new \App\BaseModel();
         return $baseModel->validate($data, $rules, $messages);
     }
 
@@ -37,7 +36,7 @@ class BaseUser extends Authenticatable
             $rules = $this->validationRules;
         }
 
-        $baseModel = new baseModel();
+        $baseModel = new \App\BaseModel();
         return $baseModel->sanitize($data, $rules);
     }
 }

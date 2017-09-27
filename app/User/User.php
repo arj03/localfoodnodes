@@ -19,7 +19,7 @@ class User extends \App\User\BaseUser
         'zip' => '',
         'city' => '',
         'language' => '',
-        'active' => ''
+        'active' => '',
     ];
 
     /**

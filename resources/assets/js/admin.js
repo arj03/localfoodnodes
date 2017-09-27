@@ -17,8 +17,14 @@ window._ = require('lodash');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('user-page', require('./admin/users/user-page.vue'));
-Vue.component('order-page', require('./admin/orders/order-page.vue'));
+Vue.component('user-page', require('./components/admin/users/UserPage.vue'));
+Vue.component('order-page', require('./components/admin/orders/OrderPage.vue'));
+Vue.component('api-page', require('./components/admin/api/ApiPage.vue'));
+
+// Passport
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 const app = new Vue({
     el: '#admin-app',

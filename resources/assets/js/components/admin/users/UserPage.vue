@@ -12,8 +12,8 @@
 <script>
     export default {
         components: {
-            'user-signups': require('./user-signups'),
-            'user-list': require('./user-list'),
+            'user-signups': require('./UserSignups'),
+            'user-list': require('./UserList'),
         },
         data: function() {
             return {

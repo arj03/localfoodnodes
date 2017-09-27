@@ -24,4 +24,9 @@ class AdminController extends Controller
     {
         return view('admin.orders');
     }
+
+    public function api(Request $request)
+    {
+        return view('admin.api');
+    }
 }
