@@ -1,13 +1,3 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
     <div>
         <div v-if="tokens.length > 0">
@@ -16,7 +6,7 @@
 
                 <div class="card-body">
                     <!-- Authorized Tokens -->
-                    <table class="table table-borderless m-b-none">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -28,19 +18,19 @@
                         <tbody>
                             <tr v-for="token in tokens">
                                 <!-- Client Name -->
-                                <td style="vertical-align: middle;">
+                                <td>
                                     {{ token.client.name }}
                                 </td>
 
                                 <!-- Scopes -->
-                                <td style="vertical-align: middle;">
+                                <td>
                                     <span v-if="token.scopes.length > 0">
                                         {{ token.scopes.join(', ') }}
                                     </span>
                                 </td>
 
                                 <!-- Revoke Button -->
-                                <td style="vertical-align: middle;">
+                                <td>
                                     <a class="action-link text-danger" @click="revoke(token)">
                                         Revoke
                                     </a>

@@ -21,8 +21,15 @@
                 ready: false
             }
         },
-        created() {
-            axios.get('/api/users')
+        mounted() {
+            axios.get('/admin/token')
+            .then(response => {
+                return axios.get('/api/users', {
+                    headers: {
+                        'Authorization': response.data
+                    }
+                });
+            })
             .then(response => {
                 this.users = response.data;
                 this.ready = true;

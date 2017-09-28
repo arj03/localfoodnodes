@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthenticationException;
 
 class AuthenticateAccount
 {
@@ -18,7 +19,7 @@ class AuthenticateAccount
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::check()) {
-            return response(view('public.login', ['viewName' => 'public-login']));
+            throw new AuthenticationException();
         } else {
             $user = Auth::user();
             if (!$user->active && !($request->is('account/user/activate') || $request->is('account/user/activate/*'))) {

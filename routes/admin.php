@@ -1,9 +1,12 @@
 <?php
 
+Route::get('/token', 'Admin\AdminController@getApiAccessToken');
 Route::get('/', 'Admin\AdminController@index');
 Route::get('/users', 'Admin\AdminController@users');
 Route::get('/orders', 'Admin\AdminController@orders');
 Route::get('/api', 'Admin\AdminController@api');
+
+Route::get('/api/auth/callback', 'Aadmin\AdminController@apiAuthCallback');
 
 // Email
 Route::group(['prefix' => '/email'], function () {

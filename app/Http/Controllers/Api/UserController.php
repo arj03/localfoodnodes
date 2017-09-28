@@ -13,6 +13,6 @@ class UserController extends \App\Http\Controllers\Controller
      */
     public function index(Request $request)
     {
-        return User::all();
+        return User::exclude(['email'])->get();
     }
 }

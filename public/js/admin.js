@@ -1615,6 +1615,30 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/admin/orders/OrderPage.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'order-list': __webpack_require__("./resources/assets/js/components/admin/orders/OrderList.vue")
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/admin/users/UserList.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1681,10 +1705,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             ready: false
         };
     },
-    created: function created() {
+    mounted: function mounted() {
         var _this = this;
 
-        axios.get('/api/users').then(function (response) {
+        axios.get('/admin/token').then(function (response) {
+            return axios.get('/api/users', {
+                headers: {
+                    'Authorization': response.data
+                }
+            });
+        }).then(function (response) {
             _this.users = response.data;
             _this.ready = true;
         });
@@ -1749,16 +1779,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2041,57 +2061,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     /*
@@ -2181,9 +2150,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * Edit the given client.
          */
         edit: function edit(client) {
+            console.log('EDIT', client);
             this.editForm.id = client.id;
             this.editForm.name = client.name;
             this.editForm.redirect = client.redirect;
+
+            console.log($('#modal-edit-client'));
 
             $('#modal-edit-client').modal('show');
         },
@@ -2245,27 +2217,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2481,14 +2432,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
         /**
-         * Show the form for creating new tokens.
-         */
-        showCreateTokenForm: function showCreateTokenForm() {
-            $('#modal-create-token').modal('show');
-        },
-
-
-        /**
          * Create a new personal access token.
          */
         store: function store() {
@@ -2543,9 +2486,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          */
         showAccessToken: function showAccessToken(accessToken) {
             $('#modal-create-token').modal('hide');
-
             this.accessToken = accessToken;
-
             $('#modal-access-token').modal('show');
         },
 
@@ -4945,134 +4886,6 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.action-link[data-v-27871930] {\n    cursor: pointer;\n}\n.m-b-none[data-v-27871930] {\n    margin-bottom: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.action-link[data-v-59bb3fd3] {\n    cursor: pointer;\n}\n.m-b-none[data-v-59bb3fd3] {\n    margin-bottom: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/Clients.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.action-link[data-v-652d0fc3] {\n    cursor: pointer;\n}\n.m-b-none[data-v-652d0fc3] {\n    margin-bottom: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
 
 
 /***/ }),
@@ -48667,7 +48480,47 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27871930\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-00e3105a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/admin/orders/OrderList.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [_vm._v("Orders")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _vm._v("\n                    List orders here\n                ")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-00e3105a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27871930\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48683,63 +48536,51 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _c("table", { staticClass: "table table-borderless m-b-none" }, [
+              _c("table", { staticClass: "table" }, [
                 _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "tbody",
                   _vm._l(_vm.tokens, function(token) {
                     return _c("tr", [
-                      _c(
-                        "td",
-                        { staticStyle: { "vertical-align": "middle" } },
-                        [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(token.client.name) +
-                              "\n                            "
-                          )
-                        ]
-                      ),
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(token.client.name) +
+                            "\n                            "
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticStyle: { "vertical-align": "middle" } },
-                        [
-                          token.scopes.length > 0
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(token.scopes.join(", ")) +
-                                    "\n                                "
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticStyle: { "vertical-align": "middle" } },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "action-link text-danger",
-                              on: {
-                                click: function($event) {
-                                  _vm.revoke(token)
-                                }
-                              }
-                            },
-                            [
+                      _c("td", [
+                        token.scopes.length > 0
+                          ? _c("span", [
                               _vm._v(
-                                "\n                                    Revoke\n                                "
+                                "\n                                    " +
+                                  _vm._s(token.scopes.join(", ")) +
+                                  "\n                                "
                               )
-                            ]
-                          )
-                        ]
-                      )
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "action-link text-danger",
+                            on: {
+                              click: function($event) {
+                                _vm.revoke(token)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Revoke\n                                "
+                            )
+                          ]
+                        )
+                      ])
                     ])
                   })
                 )
@@ -48820,27 +48661,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-12" },
-        [_vm._m(0), _vm._v(" "), _c("order-list")],
-        1
-      )
+      _c("div", { staticClass: "col-12" }, [_c("order-list")], 1)
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("User singups")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -48951,7 +48776,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-59bb3fd3\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-59bb3fd3\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48961,38 +48786,7 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _c("div", { staticClass: "card mb-5" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                display: "flex",
-                "justify-content": "space-between",
-                "align-items": "center"
-              }
-            },
-            [
-              _c("span", [
-                _vm._v(
-                  "\n                        Personal Access Tokens\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "action-link",
-                  on: { click: _vm.showCreateTokenForm }
-                },
-                [
-                  _vm._v(
-                    "\n                        Create New Token\n                    "
-                  )
-                ]
-              )
-            ]
-          )
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _vm.tokens.length === 0
@@ -49005,46 +48799,34 @@ var render = function() {
           _vm._v(" "),
           _vm.tokens.length > 0
             ? _c("table", { staticClass: "table table-borderless m-b-none" }, [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "tbody",
                   _vm._l(_vm.tokens, function(token) {
                     return _c("tr", [
-                      _c(
-                        "td",
-                        { staticStyle: { "vertical-align": "middle" } },
-                        [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(token.name) +
-                              "\n                            "
-                          )
-                        ]
-                      ),
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(token.name) +
+                            "\n                            "
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticStyle: { "vertical-align": "middle" } },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "action-link text-danger",
-                              on: {
-                                click: function($event) {
-                                  _vm.revoke(token)
-                                }
+                      _c("td", { staticClass: "text-right" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "text-danger",
+                            on: {
+                              click: function($event) {
+                                _vm.revoke(token)
                               }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    Delete\n                                "
-                              )
-                            ]
-                          )
-                        ]
-                      )
+                            }
+                          },
+                          [_vm._v("Delete")]
+                        )
+                      ])
                     ])
                   })
                 )
@@ -49057,18 +48839,18 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal",
         attrs: { id: "modal-create-token", tabindex: "-1", role: "dialog" }
       },
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(1),
+            _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _vm.form.errors.length > 0
                 ? _c("div", { staticClass: "alert alert-danger" }, [
-                    _vm._m(2),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
@@ -49159,7 +48941,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    "\n\n                                                " +
+                                    "\n                                                " +
                                       _vm._s(scope.id) +
                                       "\n                                        "
                                   )
@@ -49206,13 +48988,13 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal",
         attrs: { id: "modal-access-token", tabindex: "-1", role: "dialog" }
       },
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(3),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("p", [
@@ -49224,7 +49006,7 @@ var render = function() {
               _c("pre", [_c("code", [_vm._v(_vm._s(_vm.accessToken))])])
             ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm._m(5)
           ])
         ])
       ]
@@ -49232,6 +49014,46 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c(
+        "div",
+        {
+          staticStyle: {
+            display: "flex",
+            "justify-content": "space-between",
+            "align-items": "center"
+          }
+        },
+        [
+          _c("span", [
+            _vm._v(
+              "\n                        Personal Access Tokens\n                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "action-link",
+              attrs: {
+                "data-toggle": "modal",
+                "data-target": "#modal-create-token"
+              }
+            },
+            [
+              _vm._v(
+                "\n                        Create New Token\n                    "
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -49245,6 +49067,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Create Token")]),
+      _vm._v(" "),
       _c(
         "button",
         {
@@ -49256,11 +49080,7 @@ var staticRenderFns = [
           }
         },
         [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [
-        _vm._v("\n                        Create Token\n                    ")
-      ])
+      )
     ])
   },
   function() {
@@ -49277,24 +49097,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [
+        _vm._v("Personal Access Token")
+      ]),
+      _vm._v(" "),
       _c(
         "button",
         {
           staticClass: "close",
           attrs: {
-            type: "button ",
+            type: "button",
             "data-dismiss": "modal",
             "aria-hidden": "true"
           }
         },
         [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [
-        _vm._v(
-          "\n                        Personal Access Token\n                    "
-        )
-      ])
+      )
     ])
   },
   function() {
@@ -49324,7 +49142,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-652d0fc3\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/Clients.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-652d0fc3\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/Clients.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49344,29 +49162,18 @@ var render = function() {
             }
           },
           [
-            _c("span", [
-              _vm._v("\n                    OAuth Clients\n                ")
-            ]),
+            _c("span", [_vm._v("OAuth Clients")]),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "action-link",
-                on: { click: _vm.showCreateClientForm }
-              },
-              [
-                _vm._v(
-                  "\n                    Create New Client\n                "
-                )
-              ]
-            )
+            _c("a", { on: { click: _vm.showCreateClientForm } }, [
+              _vm._v("Create New Client")
+            ])
           ]
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _vm.clients.length === 0
-          ? _c("p", { staticClass: "m-b-none" }, [
+          ? _c("p", [
               _vm._v(
                 "\n                You have not created any OAuth clients.\n            "
               )
@@ -49374,68 +49181,45 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.clients.length > 0
-          ? _c("table", { staticClass: "table table-borderless m-b-none" }, [
+          ? _c("table", { staticClass: "table" }, [
               _vm._m(0),
               _vm._v(" "),
               _c(
                 "tbody",
                 _vm._l(_vm.clients, function(client) {
                   return _c("tr", [
-                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(client.id) +
-                          "\n                        "
-                      )
-                    ]),
+                    _c("td", [_vm._v(_vm._s(client.id))]),
                     _vm._v(" "),
-                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(client.name) +
-                          "\n                        "
-                      )
-                    ]),
+                    _c("td", [_vm._v(_vm._s(client.name))]),
                     _vm._v(" "),
-                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
-                      _c("code", [_vm._v(_vm._s(client.secret))])
-                    ]),
+                    _c("td", [_c("code", [_vm._v(_vm._s(client.secret))])]),
                     _vm._v(" "),
-                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                    _c("td", { staticClass: "text-right" }, [
                       _c(
                         "a",
                         {
-                          staticClass: "action-link",
                           on: {
                             click: function($event) {
                               _vm.edit(client)
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                                Edit\n                            "
-                          )
-                        ]
+                        [_vm._v("Edit")]
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", { staticStyle: { "vertical-align": "middle" } }, [
+                    _c("td", { staticClass: "text-right" }, [
                       _c(
                         "a",
                         {
-                          staticClass: "action-link text-danger",
+                          staticClass: "text-danger",
                           on: {
                             click: function($event) {
                               _vm.destroy(client)
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                                Delete\n                            "
-                          )
-                        ]
+                        [_vm._v("Delete")]
                       )
                     ])
                   ])
@@ -49449,7 +49233,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal",
         attrs: { id: "modal-create-client", tabindex: "-1", role: "dialog" }
       },
       [
@@ -49593,11 +49377,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: { click: _vm.store }
                 },
-                [
-                  _vm._v(
-                    "\n                        Create\n                    "
-                  )
-                ]
+                [_vm._v("Create")]
               )
             ])
           ])
@@ -49608,7 +49388,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal",
         attrs: { id: "modal-edit-client", tabindex: "-1", role: "dialog" }
       },
       [
@@ -49789,6 +49569,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Create Client")]),
+      _vm._v(" "),
       _c(
         "button",
         {
@@ -49800,11 +49582,7 @@ var staticRenderFns = [
           }
         },
         [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [
-        _vm._v("\n                        Create Client\n                    ")
-      ])
+      )
     ])
   },
   function() {
@@ -49821,6 +49599,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Edit Client")]),
+      _vm._v(" "),
       _c(
         "button",
         {
@@ -49832,11 +49612,7 @@ var staticRenderFns = [
           }
         },
         [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [
-        _vm._v("\n                        Edit Client\n                    ")
-      ])
+      )
     ])
   },
   function() {
@@ -49893,343 +49669,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-774964cc", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("03dba6ec", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AuthorizedClients.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("dfd8bd7c", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PersonalAccessTokens.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/Clients.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/Clients.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("d5af5b46", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Clients.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/lib/addStylesClient.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__("./node_modules/vue-style-loader/lib/listToStyles.js")
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction) {
-  isProduction = _isProduction
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/lib/listToStyles.js":
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
 
 /***/ }),
 
@@ -60634,13 +60073,60 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/admin/orders/OrderPage.vue":
+/***/ "./resources/assets/js/components/admin/orders/OrderList.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-00e3105a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/admin/orders/OrderList.vue")
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/admin/orders/OrderList.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] OrderList.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-00e3105a", Component.options)
+  } else {
+    hotAPI.reload("data-v-00e3105a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/admin/orders/OrderPage.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/admin/orders/OrderPage.vue")
 /* template */
 var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-382f3c6a\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/admin/orders/OrderPage.vue")
 /* styles */
@@ -60826,19 +60312,15 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27871930\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27871930\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27871930\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/AuthorizedClients.vue")
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-27871930"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -60877,19 +60359,15 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-652d0fc3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/Clients.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/passport/Clients.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-652d0fc3\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/Clients.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-652d0fc3\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/Clients.vue")
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-652d0fc3"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -60928,19 +60406,15 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59bb3fd3\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-59bb3fd3\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-59bb3fd3\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/passport/PersonalAccessTokens.vue")
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-59bb3fd3"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(

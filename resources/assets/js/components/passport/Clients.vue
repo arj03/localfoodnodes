@@ -1,35 +1,20 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
     <div>
         <div class="card mb-5">
             <div class="card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span>
-                        OAuth Clients
-                    </span>
-
-                    <a class="action-link" @click="showCreateClientForm">
-                        Create New Client
-                    </a>
+                    <span>OAuth Clients</span>
+                    <a @click="showCreateClientForm">Create New Client</a>
                 </div>
             </div>
 
             <div class="card-body">
                 <!-- Current Clients -->
-                <p class="m-b-none" v-if="clients.length === 0">
+                <p v-if="clients.length === 0">
                     You have not created any OAuth clients.
                 </p>
 
-                <table class="table table-borderless m-b-none" v-if="clients.length > 0">
+                <table class="table" v-if="clients.length > 0">
                     <thead>
                         <tr>
                             <th>Client ID</th>
@@ -39,37 +24,13 @@
                             <th></th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr v-for="client in clients">
-                            <!-- ID -->
-                            <td style="vertical-align: middle;">
-                                {{ client.id }}
-                            </td>
-
-                            <!-- Name -->
-                            <td style="vertical-align: middle;">
-                                {{ client.name }}
-                            </td>
-
-                            <!-- Secret -->
-                            <td style="vertical-align: middle;">
-                                <code>{{ client.secret }}</code>
-                            </td>
-
-                            <!-- Edit Button -->
-                            <td style="vertical-align: middle;">
-                                <a class="action-link" @click="edit(client)">
-                                    Edit
-                                </a>
-                            </td>
-
-                            <!-- Delete Button -->
-                            <td style="vertical-align: middle;">
-                                <a class="action-link text-danger" @click="destroy(client)">
-                                    Delete
-                                </a>
-                            </td>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.name }}</td>
+                            <td><code>{{ client.secret }}</code></td>
+                            <td class="text-right"><a @click="edit(client)">Edit</a></td>
+                            <td class="text-right"><a class="text-danger" @click="destroy(client)">Delete</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,15 +38,12 @@
         </div>
 
         <!-- Create Client Modal -->
-        <div class="modal fade" id="modal-create-client" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-create-client" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 class="modal-title">Create Client</h5>
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
-                            Create Client
-                        </h4>
                     </div>
 
                     <div class="modal-body">
@@ -107,8 +65,7 @@
                                 <label class="col-md-3 control-label">Name</label>
 
                                 <div class="col-md-7">
-                                    <input id="create-client-name" type="text" class="form-control"
-                                                                @keyup.enter="store" v-model="createForm.name">
+                                    <input id="create-client-name" type="text" class="form-control" @keyup.enter="store" v-model="createForm.name">
 
                                     <span class="help-block">
                                         Something your users will recognize and trust.
@@ -121,8 +78,7 @@
                                 <label class="col-md-3 control-label">Redirect URL</label>
 
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="redirect"
-                                                    @keyup.enter="store" v-model="createForm.redirect">
+                                    <input type="text" class="form-control" name="redirect" @keyup.enter="store" v-model="createForm.redirect">
 
                                     <span class="help-block">
                                         Your application's authorization callback URL.
@@ -135,25 +91,19 @@
                     <!-- Modal Actions -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                        <button type="button" class="btn btn-primary" @click="store">
-                            Create
-                        </button>
+                        <button type="button" class="btn btn-primary" @click="store">Create</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Edit Client Modal -->
-        <div class="modal fade" id="modal-edit-client" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-edit-client" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 class="modal-title">Edit Client</h5>
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
-                            Edit Client
-                        </h4>
                     </div>
 
                     <div class="modal-body">
@@ -175,8 +125,7 @@
                                 <label class="col-md-3 control-label">Name</label>
 
                                 <div class="col-md-7">
-                                    <input id="edit-client-name" type="text" class="form-control"
-                                                                @keyup.enter="update" v-model="editForm.name">
+                                    <input id="edit-client-name" type="text" class="form-control" @keyup.enter="update" v-model="editForm.name">
 
                                     <span class="help-block">
                                         Something your users will recognize and trust.
@@ -272,9 +221,9 @@
              */
             getClients() {
                 axios.get('/oauth/clients')
-                        .then(response => {
-                            this.clients = response.data;
-                        });
+                .then(response => {
+                    this.clients = response.data;
+                });
             },
 
             /**
@@ -289,8 +238,10 @@
              */
             store() {
                 this.persistClient(
-                    'post', '/oauth/clients',
-                    this.createForm, '#modal-create-client'
+                    'post',
+                    '/oauth/clients',
+                    this.createForm,
+                    '#modal-create-client'
                 );
             },
 
@@ -298,9 +249,12 @@
              * Edit the given client.
              */
             edit(client) {
+                console.log('EDIT', client);
                 this.editForm.id = client.id;
                 this.editForm.name = client.name;
                 this.editForm.redirect = client.redirect;
+
+                console.log($('#modal-edit-client'));
 
                 $('#modal-edit-client').modal('show');
             },
@@ -310,8 +264,10 @@
              */
             update() {
                 this.persistClient(
-                    'put', '/oauth/clients/' + this.editForm.id,
-                    this.editForm, '#modal-edit-client'
+                    'put',
+                    '/oauth/clients/' + this.editForm.id,
+                    this.editForm,
+                    '#modal-edit-client'
                 );
             },
 
@@ -345,9 +301,9 @@
              */
             destroy(client) {
                 axios.delete('/oauth/clients/' + client.id)
-                        .then(response => {
-                            this.getClients();
-                        });
+                .then(response => {
+                    this.getClients();
+                });
             }
         }
     }

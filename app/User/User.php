@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use App\Mail\ResetPassword as ResetPasswordNotification;
 use Mail;
+use App\Traits\Excludable;
 
 class User extends \App\User\BaseUser
 {
+    use Excludable;
+
     protected $appends = ['location'];
 
     protected $validationRules = [
@@ -48,7 +51,6 @@ class User extends \App\User\BaseUser
         'remember_token',
     ];
 
-
     /**
      * Lifecycle events.
      */
@@ -71,6 +73,15 @@ class User extends \App\User\BaseUser
         });
     }
 
+    protected function modifyTableColumnsBeforeQuery($tableColumns)
+    {
+        // if(($column = array_search('location', $tableColumns)) !== false) {
+        //     unset($tableColumns[$column]);
+        // }
+
+        return $tableColumns;
+    }
+
     /**
      * Get all address fields.
      *
@@ -85,7 +96,7 @@ class User extends \App\User\BaseUser
     }
 
     /**
-     * Set location.
+     * Custom setter for location.
      *
      * @param string $value
      */
@@ -103,7 +114,7 @@ class User extends \App\User\BaseUser
         if (isset($this->attributes['location'])) {
             $location = substr($this->attributes['location'], 6);
             $location = substr($location, 0, strpos($location, ')'));
-            list ($lat, $lng) = explode(' ', $location);
+            list($lat, $lng) = explode(' ', $location);
 
             return ['lat' => $lat, 'lng' => $lng];
         } else {

@@ -23,8 +23,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -35,14 +33,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapAccountRoutes();
-        $this->mapApiRoutes();
-        $this->mapAdminRoutes();
-        $this->mapAuthRoutes();
+        $this->accountRoutes();
+        $this->apiRoutes();
+        $this->adminRoutes();
+        $this->authRoutes();
 
         // Needs to be last since the permalink controller tries to match all request
         // and returns a 404 is fail.
-        $this->mapPublicRoutes();
+        $this->publicRoutes();
     }
 
     /**
@@ -50,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapAccountRoutes()
+    protected function accountRoutes()
     {
         $options = [
             'middleware' => ['web', 'auth.account'],
@@ -68,10 +66,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function apiRoutes()
     {
         $options = [
-            'middleware' => 'client_credentials',
+            'middleware' => 'client',
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ];
@@ -86,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapAdminRoutes()
+    protected function adminRoutes()
     {
         $options = [
             'middleware' => ['web', 'auth.admin'],
@@ -104,7 +102,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapAuthRoutes()
+    protected function authRoutes()
     {
         $options = [
             'middleware' => 'web',
@@ -121,7 +119,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapPublicRoutes()
+    protected function publicRoutes()
     {
         $options = [
             'middleware' => 'web',

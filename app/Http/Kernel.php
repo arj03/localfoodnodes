@@ -48,15 +48,13 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.account' => \App\Http\Middleware\AuthenticateAccount::class,
+        'auth.admin' => \App\Http\Middleware\AuthenticateAdmin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'client_credentials' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
-
-        'auth.account' => \App\Http\Middleware\AuthenticateAccount::class,
-        'auth.admin' => \App\Http\Middleware\AuthenticateAdmin::class,
-        'auth.api' => \App\Http\Middleware\AuthenticateApi::class,
     ];
 }

@@ -1,13 +1,3 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-
-    .m-b-none {
-        margin-bottom: 0;
-    }
-</style>
-
 <template>
     <div>
         <div>
@@ -18,7 +8,7 @@
                             Personal Access Tokens
                         </span>
 
-                        <a class="action-link" @click="showCreateTokenForm">
+                        <a class="action-link" data-toggle="modal" data-target="#modal-create-token">
                             Create New Token
                         </a>
                     </div>
@@ -42,15 +32,13 @@
                         <tbody>
                             <tr v-for="token in tokens">
                                 <!-- Client Name -->
-                                <td style="vertical-align: middle;">
+                                <td>
                                     {{ token.name }}
                                 </td>
 
                                 <!-- Delete Button -->
-                                <td style="vertical-align: middle;">
-                                    <a class="action-link text-danger" @click="revoke(token)">
-                                        Delete
-                                    </a>
+                                <td class="text-right">
+                                    <a class="text-danger" @click="revoke(token)">Delete</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -60,15 +48,12 @@
         </div>
 
         <!-- Create Token Modal -->
-        <div class="modal fade" id="modal-create-token" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-create-token" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 class="modal-title">Create Token</h5>
                         <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
-                            Create Token
-                        </h4>
                     </div>
 
                     <div class="modal-body">
@@ -97,7 +82,6 @@
                             <!-- Scopes -->
                             <div class="form-group" v-if="scopes.length > 0">
                                 <label class="col-md-4 control-label">Scopes</label>
-
                                 <div class="col-md-6">
                                     <div v-for="scope in scopes">
                                         <div class="checkbox">
@@ -105,7 +89,6 @@
                                                 <input type="checkbox"
                                                     @click="toggleScope(scope.id)"
                                                     :checked="scopeIsAssigned(scope.id)">
-
                                                     {{ scope.id }}
                                             </label>
                                         </div>
@@ -118,7 +101,6 @@
                     <!-- Modal Actions -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
                         <button type="button" class="btn btn-primary" @click="store">
                             Create
                         </button>
@@ -128,15 +110,12 @@
         </div>
 
         <!-- Access Token Modal -->
-        <div class="modal fade" id="modal-access-token" tabindex="-1" role="dialog">
+        <div class="modal" id="modal-access-token" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                        <h4 class="modal-title">
-                            Personal Access Token
-                        </h4>
+                        <h5 class="modal-title">Personal Access Token</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
                     <div class="modal-body">
@@ -210,9 +189,9 @@
              */
             getTokens() {
                 axios.get('/oauth/personal-access-tokens')
-                        .then(response => {
-                            this.tokens = response.data;
-                        });
+                .then(response => {
+                    this.tokens = response.data;
+                });
             },
 
             /**
@@ -220,16 +199,9 @@
              */
             getScopes() {
                 axios.get('/oauth/scopes')
-                        .then(response => {
-                            this.scopes = response.data;
-                        });
-            },
-
-            /**
-             * Show the form for creating new tokens.
-             */
-            showCreateTokenForm() {
-                $('#modal-create-token').modal('show');
+                .then(response => {
+                    this.scopes = response.data;
+                });
             },
 
             /**
@@ -241,22 +213,22 @@
                 this.form.errors = [];
 
                 axios.post('/oauth/personal-access-tokens', this.form)
-                        .then(response => {
-                            this.form.name = '';
-                            this.form.scopes = [];
-                            this.form.errors = [];
+                .then(response => {
+                    this.form.name = '';
+                    this.form.scopes = [];
+                    this.form.errors = [];
 
-                            this.tokens.push(response.data.token);
+                    this.tokens.push(response.data.token);
 
-                            this.showAccessToken(response.data.accessToken);
-                        })
-                        .catch(error => {
-                            if (typeof error.response.data === 'object') {
-                                this.form.errors = _.flatten(_.toArray(error.response.data));
-                            } else {
-                                this.form.errors = ['Something went wrong. Please try again.'];
-                            }
-                        });
+                    this.showAccessToken(response.data.accessToken);
+                })
+                .catch(error => {
+                    if (typeof error.response.data === 'object') {
+                        this.form.errors = _.flatten(_.toArray(error.response.data));
+                    } else {
+                        this.form.errors = ['Something went wrong. Please try again.'];
+                    }
+                });
             },
 
             /**
@@ -282,9 +254,7 @@
              */
             showAccessToken(accessToken) {
                 $('#modal-create-token').modal('hide');
-
                 this.accessToken = accessToken;
-
                 $('#modal-access-token').modal('show');
             },
 
@@ -293,9 +263,9 @@
              */
             revoke(token) {
                 axios.delete('/oauth/personal-access-tokens/' + token.id)
-                        .then(response => {
-                            this.getTokens();
-                        });
+                .then(response => {
+                    this.getTokens();
+                });
             }
         }
     }
