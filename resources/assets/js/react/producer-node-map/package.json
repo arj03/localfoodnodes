@@ -1,11 +1,11 @@
 {
-  "name": "node-map",
+  "name": "producer-node-map",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack --watch",
-    "build": "webpack"
+    "stats": "webpack --json > stats.json"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +23,6 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
-    "react-spinkit": "^1.1.11",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",

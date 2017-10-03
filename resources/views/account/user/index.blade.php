@@ -48,58 +48,54 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="card-deck">
         @include('account.user.membership-card')
 
-        <div class="col-12 col-xl-4 card-deck">
-            <div class="card">
-                <div class="card-header">{{ $user->name }}</div>
-                <div class="card-body">
-                    <div>{{ $user->name }}</div>
-                    <div>{{ $user->email }}</div>
-                    <div>{{ $user->address }}</div>
-                    <div>{{ $user->zip }}</div>
-                    <div>{{ $user->city }}</div>
-                    <div>{{ trans('admin/user.language') }}: <a href="/account/user/edit">{{ $user->getLanguageName() }}</a></div>
-                </div>
+        <div class="card">
+            <div class="card-header">{{ $user->name }}</div>
+            <div class="card-body">
+                <div>{{ $user->name }}</div>
+                <div>{{ $user->email }}</div>
+                <div>{{ $user->address }}</div>
+                <div>{{ $user->zip }}</div>
+                <div>{{ $user->city }}</div>
+                <div>{{ trans('admin/user.language') }}: <a href="/account/user/edit">{{ $user->getLanguageName() }}</a></div>
+            </div>
 
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="/account/user/edit">{{ trans('admin/user.edit_information') }}</a>
-                    <a href="/account/user/password/edit">{{ trans('admin/user.change_password') }}</a>
-                </div>
+            <div class="card-footer d-flex justify-content-between">
+                <a href="/account/user/edit">{{ trans('admin/user.edit_information') }}</a>
+                <a href="/account/user/password/edit">{{ trans('admin/user.change_password') }}</a>
             </div>
         </div>
 
-        <div class="col-12 col-xl-4 card-deck">
-            <div class="card">
-                <div class="card-header">{{ trans('admin/user.nodes_you_follow') }}</div>
-                <div class="card-body">
-                    @if ($user->nodeLinks()->count() > 0)
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
+        <div class="card">
+            <div class="card-header">{{ trans('admin/user.nodes_you_follow') }}</div>
+            <div class="card-body">
+                @if ($user->nodeLinks()->count() > 0)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>{{ trans('admin/user.node_name') }}</td>
+                                    <td class="text-right"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->nodeLinks() as $nodeLink)
                                     <tr>
-                                        <td>{{ trans('admin/user.node_name') }}</td>
-                                        <td class="text-right"></td>
+                                        <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
+                                        <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($user->nodeLinks() as $nodeLink)
-                                        <tr>
-                                            <td><a href="{{ $nodeLink->getNode()->permalink()->url }}">{{ $nodeLink->getNode()->name }}</a></td>
-                                            <td class="text-right"><a href="/account/user/node/{{ $nodeLink->getNode()->id }}"><i class="fa fa-times-circle"></i></a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        {{ trans('admin/user.no_nodes') }}
-                    @endif
-                </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    {{ trans('admin/user.no_nodes') }}
+                @endif
             </div>
         </div>
-    </div>
+    </div> <!-- End carddeck -->
 
     <div class="row">
         <div class="col-12">

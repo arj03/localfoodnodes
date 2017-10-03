@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import promise from 'promise';
 import superagentPromise from 'superagent-promise';
 import superagent from 'superagent';

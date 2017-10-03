@@ -9,3 +9,4 @@ Homestead.yaml
 node_modules
 npm-debug.log
 .sass-cache
+stats.json

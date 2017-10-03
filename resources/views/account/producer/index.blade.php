@@ -5,35 +5,33 @@
 @section('content')
     @include('account.page-header')
 
-    <div class="row">
-        <div class="col-12 col-lg-6 card-deck">
-            <div class="card">
-                <div class="card-header">
-                    {{ $producer->name }}
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>{{ $producer->name }}</li>
-                        <li>{{ $producer->address }} {{ $producer->zip }} {{ $producer->city }}</li>
-                        <li>{{ $producer->email }}</li>
-                        <li>{{ $producer->link_homepage }}</li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>Currency: {{ $producer->currency }}</li>
-                        <li>Payment info: {{ $producer->payment_info }}</li>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-header">
+                {{ $producer->name }}
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>{{ $producer->name }}</li>
+                    <li>{{ $producer->address }} {{ $producer->zip }} {{ $producer->city }}</li>
+                    <li>{{ $producer->email }}</li>
+                    <li>{{ $producer->link_homepage }}</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Currency: {{ $producer->currency }}</li>
+                    <li>Payment info: {{ $producer->payment_info }}</li>
 
-                        @if ($producer->link_facebook || $producer->link_twitter || $producer->link_instagram)
-                            <li>Facebook: {{ $producer->link_facebook }}</li>
-                            <li>Twitter: {{ $producer->link_twitter }}</li>
-                            <li>Instagram: {{ $producer->link_instagram }}</li>
-                        @endif
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <a href="/account/producer/{{ $producer->id }}/edit">{{ trans('admin/producer.edit_producer') }}</a>
-                </div>
+                    @if ($producer->link_facebook || $producer->link_twitter || $producer->link_instagram)
+                        <li>Facebook: {{ $producer->link_facebook }}</li>
+                        <li>Twitter: {{ $producer->link_twitter }}</li>
+                        <li>Instagram: {{ $producer->link_instagram }}</li>
+                    @endif
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="/account/producer/{{ $producer->id }}/edit">{{ trans('admin/producer.edit_producer') }}</a>
             </div>
         </div>
     </div>

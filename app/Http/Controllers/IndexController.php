@@ -72,6 +72,7 @@ class IndexController extends Controller
         $producers = ProducerNodeLink::where('node_id', $nodeId)->get()->map->getProducer();
         $products = $node->products();
 
+
         $productFilter = new ProductFilter($products, $request);
         $filteredProducts = $productFilter->filterDate($nodeId)->filterTags()->filterVisibility()->get();
         $calendarMonth = $productFilter->getMonthDate();

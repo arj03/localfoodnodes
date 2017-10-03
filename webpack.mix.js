@@ -14,4 +14,4 @@ let mix = require('laravel-mix');
 mix.sass('resources/assets/sass/public.sass', 'public/css').version();
 mix.sass('resources/assets/sass/account.sass', 'public/css').version();
 mix.sass('resources/assets/sass/admin.sass', 'public/css').version();
-mix.js('resources/assets/js/admin.js', 'public/js').version();
+mix.js('resources/assets/js/vue/admin.js', 'public/js').version();

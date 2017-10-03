@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import _ from 'underscore';
-import uuid from 'uuid';
-import $ from 'jquery';
 
 import SearchResultComponent from '../components/SearchResultComponent';
 
@@ -251,7 +249,7 @@ class NodeMapContainer extends Component {
                 <div className='body-text'>
                     <h2>{trans.go_local}</h2>
                     <div className='row no-gutters map-search'>
-                        <div className='col-12 col-lg-6 offset-lg-3'>
+                        <div className='col-12 col-lg-6'>
                             <div className='input-group'>
                                 <span className="input-group-addon"><i className="fa fa-search" /></span>
                                 <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />

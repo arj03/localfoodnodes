@@ -174,5 +174,5 @@
     <link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
-    <script src="{{ URL::asset('/js-apps/node-map.js') }}"></script>
+    <script src="{{ URL::asset('/js/node-map.js') }}"></script>
 @endsection

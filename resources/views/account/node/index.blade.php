@@ -5,55 +5,51 @@
 @section('content')
     @include('account.page-header')
 
-    <div class="row">
-        <div class="col-12 col-lg-6 card-deck">
-            <div class="card">
-                <div class="card-header">{{ trans('admin/node.node_info') }}</div>
-                <div class="card-body">
-                    <ul>
-                        <li>{{ $node->name }}</li>
-                        <li>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</li>
-                        <li>{{ $node->email }}</li>
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <a href="/account/node/{{ $node->id }}/edit">{{ trans('admin/node.edit_node') }}</a>
-                </div>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-header">{{ trans('admin/node.node_info') }}</div>
+            <div class="card-body">
+                <ul>
+                    <li>{{ $node->name }}</li>
+                    <li>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</li>
+                    <li>{{ $node->email }}</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="/account/node/{{ $node->id }}/edit">{{ trans('admin/node.edit_node') }}</a>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 card-deck">
-            <div class="card">
-                <div class="card-header">{{ trans('admin/node.events') }}</div>
-                <div class="card-body">
-                    @if ($node->events()->count() > 0)
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+        <div class="card">
+            <div class="card-header">{{ trans('admin/node.events') }}</div>
+            <div class="card-body">
+                @if ($node->events()->count() > 0)
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('admin/node.name') }}</th>
+                                    <th>{{ trans('admin/node.date') }}</th>
+                                    <th>{{ trans('admin/node.guests') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($node->events() as $event)
                                     <tr>
-                                        <th>{{ trans('admin/node.name') }}</th>
-                                        <th>{{ trans('admin/node.date') }}</th>
-                                        <th>{{ trans('admin/node.guests') }}</th>
+                                        <td><a href="/account/node/{{ $node->id }}/event/{{ $event->id }}/edit">{{ $event->name }}</a></td>
+                                        <td>{{ $event->start_datetime->format('Y-m-d H:i') }} - {{ $event->end_datetime->format('Y-m-d H:i') }}</td>
+                                        <td><a href="/account/node/{{ $node->id }}/event/{{ $event->id }}/guests">{{ $event->userLinks()->count() }} {{ trans('admin/node.guests') }}</a></td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($node->events() as $event)
-                                        <tr>
-                                            <td><a href="/account/node/{{ $node->id }}/event/{{ $event->id }}/edit">{{ $event->name }}</a></td>
-                                            <td>{{ $event->start_datetime->format('Y-m-d H:i') }} - {{ $event->end_datetime->format('Y-m-d H:i') }}</td>
-                                            <td><a href="/account/node/{{ $node->id }}/event/{{ $event->id }}/guests">{{ $event->userLinks()->count() }} {{ trans('admin/node.guests') }}</a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p>{{ trans('admin/node.no_events') }}</p>
-                    @endif
-                </div>
-                <div class="card-footer">
-                    <a href="/account/node/{{ $node->id }}/event/create">{{ trans('admin/node.create_event') }}</a>
-                </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <p>{{ trans('admin/node.no_events') }}</p>
+                @endif
+            </div>
+            <div class="card-footer">
+                <a href="/account/node/{{ $node->id }}/event/create">{{ trans('admin/node.create_event') }}</a>
             </div>
         </div>
     </div>

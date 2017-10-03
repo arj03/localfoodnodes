@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
-import _ from 'underscore';
 
 const logger = createLogger();
 const store = compose(applyMiddleware(thunk, logger))(createStore)(reducers);
