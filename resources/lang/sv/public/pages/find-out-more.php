@@ -26,7 +26,7 @@ return [
 
     'paragraph_3_2' => 'Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn, men innan du kan skicka iväg dina ordrar behöver du först bli stödmedlem på plattformen. Du blir det genom att betala en årlig användaravgift och storleken på avgiften bestämmer du själv. Det är upp till dig att avgöra vad du känner att du har råd med och vad du tycker att denna tjänst är värd för dig och för vårt samhälle. Vad än summan blir, medfinansierar och medskapar du en hälsosammare framtid. Snyggt jobbat! ',
 
-    'header_4' => 'Hitta utlämningsplatser och förboka din lokala mat',
+    'header_4' => 'Hitta utlämningsplats och förboka din lokala mat',
 
     'paragraph_4_1' => 'Nu när du är inloggad, kan du enkelt hitta de utlämningsplatser som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (man behöver inte gå med i en nod för att beställa mat på den men det gör användandet av siten lättare).',
 
