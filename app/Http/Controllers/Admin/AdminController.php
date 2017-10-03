@@ -33,7 +33,7 @@ class AdminController extends Controller
         $this->http = new Client;
 
         if (!$this->accessToken) {
-            $response = $this->http->post('/oauth/token', [
+            $response = $this->http->post(app('url')->to('/oauth/token'), [
                 'form_params' => [
                     'grant_type' => 'client_credentials',
                     'client_id' => env('ADMIN_APP_CLIENT_ID'),
