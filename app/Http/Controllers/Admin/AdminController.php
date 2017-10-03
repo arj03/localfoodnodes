@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use GuzzleHttp\Exception\RequestException;
 
 use GuzzleHttp\Client;
 
@@ -33,18 +34,23 @@ class AdminController extends Controller
         $this->http = new Client;
 
         if (!$this->accessToken) {
-            $response = $this->http->post(app('url')->to('/oauth/token'), [
-                'form_params' => [
-                    'grant_type' => 'client_credentials',
-                    'client_id' => env('ADMIN_APP_CLIENT_ID'),
-                    'client_secret' => env('ADMIN_APP_SECRET'),
-                    'scope' => '',
-                ],
-            ]);
+            try {
+                $response = $this->http->post(app('url')->to('/oauth/token'), [
+                    'form_params' => [
+                        'grant_type' => 'client_credentials',
+                        'client_id' => env('ADMIN_APP_CLIENT_ID'),
+                        'client_secret' => env('ADMIN_APP_SECRET'),
+                        'scope' => '',
+                    ],
+                ]);
 
-            $token = json_decode((string) $response->getBody(), true);
+                $token = json_decode((string) $response->getBody(), true);
 
-            $this->accessToken = $token['access_token'];
+                $this->accessToken = $token['access_token'];
+            } catch (RequestException $e) {
+                header('Location: /');
+                exit;
+            }
         }
     }
 
