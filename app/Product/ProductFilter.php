@@ -91,7 +91,7 @@ class ProductFilter
 
             $query->where('product_node_delivery_links.date', '=', $date->format('Y-m-d'))
             ->whereRaw('(
-                DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) > NOW()
+                DATE(DATE_ADD(product_node_delivery_links.date, INTERVAL -products.deadline DAY)) >= CURDATE()
                 OR products.deadline IS NULL
             )');
 

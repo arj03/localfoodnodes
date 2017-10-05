@@ -44,14 +44,9 @@
     background: #fff
 
 .dropdown-action-component
-  float: right
-  .dropdown-toggle
-    &::after
-      content: none
-
-.dropdown-action-component
-  display: inline-block
   background-color: transparent
+  display: inline-block
+  float: right
   font-family: 'Raleway', sans-serif
   text-transform: none
   .dropdown-toggle
@@ -62,6 +57,8 @@
     cursor: pointer
     text-transform: capitalize
     font-family: 'Raleway'
+    &::after
+      content: none
     &:hover,
     &:active,
     &:focus

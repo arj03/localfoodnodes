@@ -1,6 +1,8 @@
 {
     "/js/admin.js": "/js/admin.js?id=c85c5ecf69aced6cc8cb",
-    "/css/public.css": "/css/public.css?id=83fcc3eece8b0022594b",
+    "/css/public.css": "/css/public.css?id=ebec463ba48317ca7609",
     "/css/account.css": "/css/account.css?id=a25b2c488781c7af29b1",
-    "/css/admin.css": "/css/admin.css?id=19900a2255dad42ece14"
+    "/css/admin.css": "/css/admin.css?id=7dbb9443e215accece84",
+    "/js/producer-node-map.js": "/js/producer-node-map.js?id=95b60c312b91fa72a921",
+    "/js/node-map.js": "/js/node-map.js?id=99950eb36948be76cac1"
 }

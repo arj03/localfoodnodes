@@ -7,8 +7,8 @@ module.exports = {
   entry: ['babel-polyfill', './index'],
   output: {
       path: __dirname,
-      publicPath: '../../../../../public/',
-      filename: '../../../../../public/js/producer-node-map.js'
+      // publicPath: '../../../../../public/',
+      filename: '../dist/producer-node-map.js'
   },
   plugins: [
     new webpack.DefinePlugin({
