@@ -340,21 +340,18 @@ class Node extends BaseModel implements EventOwnerInterface
     {
         $deliveryDates = new Collection();
 
-        $firstProductionDate = null;
-        if ($product && $product->production_type === 'occasional') {
-            $firstProductionDate = $product->productions()->first()->date;
-        }
-
-        $nextDelivery = $this->getNextDelivery($firstProductionDate);
+        $nextDelivery = $this->getNextDelivery($product);
 
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
-        $deliveryInterval = $this->delivery_interval;
-        if ($this->delivery_interval === '+1 months') {
-            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
-            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
-        }
+        $deliveryInterval = $this->getDeliveryInterval();
+
+        // $deliveryInterval = $this->delivery_interval;
+        // if ($this->delivery_interval === '+1 months') {
+        //     $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+        //     $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
+        // }
 
         $interval = \DateInterval::createFromDateString($deliveryInterval);
 
@@ -384,12 +381,17 @@ class Node extends BaseModel implements EventOwnerInterface
      *
      * @return Date
      */
-    private function getNextDelivery(\DateTime $productFirstProductionDate = null)
+    private function getNextDelivery($product = null)
     {
-        $firstDate = $this->getFirstDeliveryDate();
+        $firstDate = $this->getFirstDeliveryDate($product);
 
-        if ($productFirstProductionDate) {
-            while ($productFirstProductionDate > $firstDate) {
+        $firstProductionDate = null;
+        if ($product && $product->production_type === 'occasional') {
+            $firstProductionDate = $product->productions()->first()->date;
+        }
+
+        if ($firstProductionDate) {
+            while ($firstProductionDate > $firstDate) {
                 $firstDate->modify($this->delivery_interval);
             }
         }
@@ -398,21 +400,82 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
-     * Get first delivery depending
-     * @return [type] [description]
+     * Get first delivery with regard to current date and product deadline.
+     *
+     * @param Product $product
+     * @return DateTIme
      */
-    private function getFirstDeliveryDate()
+    private function getFirstDeliveryDate($product = null)
     {
+        // Create first delivery date from current date and node delivery interval
+        $deliveryInterval = $this->getDeliveryInterval();
+        $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
+
+        // If product has deadline
+        if ($product && $product->deadline > 0) {
+            // Calculate what date the deadline is
+            $currentDate = new \DateTime();
+            $deadlineDate = new \DateTime($deliveryDate->format('Y-m-d'));
+            $deadlineDate->modify('-' . $product->deadline . 'days');
+
+            // If deadline is before current date calculate how many weeks ahead the first delivery date must be.
+            // Get new delivery interval string and create a new first $deliveryDate
+            if ($deadlineDate <= $currentDate) {
+                $diff = $currentDate->diff($deadlineDate);
+                $weeks = (int) ceil($diff->days / 7); // Round up
+                $deliveryInterval = $this->getDeliveryInterval($weeks);
+
+                $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
+            }
+        }
+
+        return $deliveryDate;
+    }
+
+    /**
+     * Get delivery interval.
+     *
+     * @param integer $modifier
+     * @return string
+     */
+    private function getDeliveryInterval($modifier = 0) {
         $deliveryInterval = 'next ' . $this->delivery_weekday;
+        if ($modifier > 0) {
+            $deliveryInterval = '+' . $modifier . ' week ' . $this->delivery_weekday;
+        }
 
         if ($this->delivery_interval === '+1 months') {
             $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
-            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
+            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of +1 month';
         }
 
-        $firstDate = date('Y-m-d', strtotime($deliveryInterval));
+        return $deliveryInterval;
+    }
 
-        return new \DateTime($firstDate);
+    /**
+     * Get week number of month
+     * @param DateTime $date
+     * @param Boolean $asInt
+     * @return string|int
+     */
+    private function weekOfMonth(\DateTime $date, $asInt = false) {
+        $firstOfMonth = strtotime(date('Y-m-01', $date->getTimestamp()));
+        $week = intval(date('W', $date->getTimestamp())) - intval(date('W', $firstOfMonth)) + 1; // Starts at 1
+        $week = $week - 1;
+
+        if ($asInt) {
+            return $week;
+        }
+
+        $formats = [
+            '1' => 'first',
+            '2' => 'second',
+            '3' => 'third',
+            '4' => 'forth',
+            '5' => 'fifth'
+        ];
+
+        return $formats[$week];
     }
 
     /**
@@ -518,32 +581,6 @@ class Node extends BaseModel implements EventOwnerInterface
     public function getDeliveryIntervalAttribute($value)
     {
         return $value ?: '+1 weeks'; // Fallback to +1 weeks interval
-    }
-
-    /**
-     * [weekOfMonth description]
-     * @param  [type] $date [description]
-     * @return [type]       [description]
-     */
-    private function weekOfMonth(\DateTime $date, $asInt = false) {
-        $firstOfMonth = strtotime(date('Y-m-01', $date->getTimestamp()));
-        $week = intval(date('W', $date->getTimestamp())) - intval(date('W', $firstOfMonth)) + 1; // Starts at 1
-        $week = $week - 1;
-        if ($asInt) {
-            return $week;
-        }
-
-        $formats = [
-            '1' => 'first',
-            '2' => 'second',
-            '3' => 'third',
-            '4' => 'forth',
-            '5' => 'fifth'
-        ];
-
-        return $formats[$week];
-
-        // return (new \DateTime())->setISODate((int)$date->format('o') + 1, (int)$date->format('W'), (int)$date->format('N'));
     }
 
     /**

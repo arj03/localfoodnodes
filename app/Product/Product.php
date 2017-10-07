@@ -260,11 +260,11 @@ class Product extends \App\BaseModel
      * @param string $date
      * @return ProductNodeDeliveryLink
      */
-    public function deliveryLink($nodeId, $date)
+    public function deliveryLink($nodeId, $date, $ignoreDeadline = false)
     {
-        return $this->deliveryLinks($nodeId)->first(function($deliveryLink) use ($date) {
-            return $deliveryLink->date->format('Y-m-d') === $date;
-        });
+        $dates = new Collection([$date]);
+
+        return $this->deliveryLinks($nodeId, $dates, $ignoreDeadline)->first();
     }
 
     /**

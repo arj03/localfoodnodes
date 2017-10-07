@@ -23,12 +23,8 @@
                             <div class="days">
                                 @foreach ($deliveryDates as $deliveryDate)
                                     <div class="day">
-                                        <input
-                                        type="checkbox"
-                                        id="{{ $node->id }}-{{ $deliveryDate }}"
-                                        name="delivery_dates[{{ $node->id }}][]"
-                                        value="{{ $deliveryDate }}"
-                                        {{ $product->deliveryLink($node->id, $deliveryDate) ? 'checked' : '' }}>
+                                        <input type="checkbox" id="{{ $node->id }}-{{ $deliveryDate }}" name="delivery_dates[{{ $node->id }}][]" value="{{ $deliveryDate }}"
+                                        {{ $product->deliveryLink($node->id, $deliveryDate, true) ? 'checked' : '' }}>
                                         <label for="{{ $node->id }}-{{ $deliveryDate }}">
                                             <div class="date">{{ date('d', strtotime($deliveryDate)) }}</div>
                                         </label>

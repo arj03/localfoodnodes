@@ -154,6 +154,10 @@ class ProductController extends Controller
 
     /**
      * Product update action.
+     *
+     * @param Request $request
+     * @param int $producerId
+     * @param int $productId
      */
     public function update(Request $request, $producerId, $productId)
     {
@@ -214,12 +218,13 @@ class ProductController extends Controller
     }
 
     /**
-     * [validateProduct description]
-     * @param  [type] $request  [description]
-     * @param  [type] $producer [description]
-     * @return [type]           [description]
+     * Validate product.
+     *
+     * @param Request $request
+     * @param Producer $producer
+     * @return MessageBag
      */
-    private function validateProduct($request, $producer)
+    private function validateProduct(Request $request, $producer)
     {
         $data = $request->all();
         $data['producer_id'] = $producer->id;
@@ -235,12 +240,14 @@ class ProductController extends Controller
     }
 
     /**
-     * [saveProduct description]
-     * @param  [type] $request [description]
-     * @param  [type] $product [description]
-     * @return [type]          [description]
+     * Save product.
+     *
+     * @param Request $request
+     * @param Producer $producer
+     * @param Product $product
+     * @return Product
      */
-    private function saveProduct($request, $producer, $product = null)
+    private function saveProduct(Request $request, Producer $producer, Product $product = null)
     {
         if (!$product) {
             $product = new Product();
@@ -315,6 +322,10 @@ class ProductController extends Controller
 
     /**
      * Product deliveries edit action.
+     *
+     * @param Request $request
+     * @param int  $producerId
+     * @param int  $productId
      */
     public function editDeliveries(Request $request, $producerId, $productId)
     {
@@ -385,6 +396,11 @@ class ProductController extends Controller
     }
 
     /**
+     * Set package unit.
+     *
+     * @param Request $request
+     * @param int $producerId
+     * @param int $productId
      */
     public function setPackageUnit(Request $request, $producerId, $productId)
     {
