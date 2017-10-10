@@ -53,7 +53,10 @@
                         {{ trans('admin/product.estimate_package_amount') }}
                         @include('account.field-error', ['field' => 'package_amount'])
                     </label>
-                    <input type="text" name="package_amount" class="form-control" id="price" placeholder="{{ trans('admin/product.estimate_package_amount') }}" value="{{ $product->package_amount or '' }}">
+                    <div class="input-group">
+                        <input type="text" name="package_amount" class="form-control" id="price" placeholder="{{ trans('admin/product.estimate_package_amount') }}" value="{{ $product->package_amount or '' }}">
+                        <span class="input-group-addon" id="package-amount-unit"></span>
+                    </div>
                     <div class="form-text text-muted">
                         {{ trans('admin/product.package_amount_info') }}
                     </div>
@@ -64,6 +67,7 @@
                         var packageAmount = function(val) {
                             if (val !== 'product') {
                                 $('#package-amount').show();
+                                $('#package-amount-unit').text(val);
                             } else {
                                 $('#package-amount').hide();
                             }
