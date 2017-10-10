@@ -63,7 +63,7 @@ class Node extends BaseModel implements EventOwnerInterface
         'week_2' => '+2 weeks',
         'week_3' => '+3 weeks',
         'week_4' => '+4 weeks',
-        'month_1' => '+1 months',
+        'month_1' => '+1 month',
     ];
 
     /**
@@ -345,13 +345,13 @@ class Node extends BaseModel implements EventOwnerInterface
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
 
-        $deliveryInterval = $this->getDeliveryInterval();
+        $deliveryInterval = $this->delivery_interval;
 
-        // $deliveryInterval = $this->delivery_interval;
-        // if ($this->delivery_interval === '+1 months') {
-        //     $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
-        //     $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
-        // }
+        // Month intervals needs some modification
+        if ($this->delivery_interval === '+1 month') {
+            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of next month';
+        }
 
         $interval = \DateInterval::createFromDateString($deliveryInterval);
 
@@ -408,22 +408,27 @@ class Node extends BaseModel implements EventOwnerInterface
     private function getFirstDeliveryDate($product = null)
     {
         // Create first delivery date from current date and node delivery interval
-        $deliveryInterval = $this->getDeliveryInterval();
+        $deliveryInterval = $this->getDeliveryIntervalFormat();
         $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
 
         // If product has deadline
         if ($product && $product->deadline > 0) {
             // Calculate what date the deadline is
-            $currentDate = new \DateTime();
+            $currentDate = new \DateTime(date('Y-m-d'));
             $deadlineDate = new \DateTime($deliveryDate->format('Y-m-d'));
-            $deadlineDate->modify('-' . $product->deadline . 'days');
+            $deadlineDate->modify('-' . $product->deadline . ' days');
 
             // If deadline is before current date calculate how many weeks ahead the first delivery date must be.
             // Get new delivery interval string and create a new first $deliveryDate
-            if ($deadlineDate <= $currentDate) {
+            if ($deadlineDate < $currentDate) {
                 $diff = $currentDate->diff($deadlineDate);
-                $weeks = (int) ceil($diff->days / 7); // Round up
-                $deliveryInterval = $this->getDeliveryInterval($weeks);
+                $modifier = (int) ceil($diff->days / 7); // Round up
+
+                if ($this->hasMonthlyDeliveries()) {
+                    $modifier = $diff->m + 1; // Round up
+                }
+
+                $deliveryInterval = $this->getDeliveryIntervalFormat($modifier);
 
                 $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
             }
@@ -438,15 +443,25 @@ class Node extends BaseModel implements EventOwnerInterface
      * @param integer $modifier
      * @return string
      */
-    private function getDeliveryInterval($modifier = 0) {
-        $deliveryInterval = 'next ' . $this->delivery_weekday;
-        if ($modifier > 0) {
-            $deliveryInterval = '+' . $modifier . ' week ' . $this->delivery_weekday;
-        }
+    private function getDeliveryIntervalFormat($modifier = 0) {
+        // Weekly
+        if ($this->hasWeeklyDeliveries()) {
+            $deliveryInterval = 'next ' . $this->delivery_weekday;
 
-        if ($this->delivery_interval === '+1 months') {
-            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
-            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of +1 month';
+            if ($modifier > 0) {
+                $deliveryInterval = '+' . $modifier . ' week ' . $this->delivery_weekday;
+            }
+        }
+        // Monthly
+        else {
+            if ($this->delivery_interval === '+1 month') {
+                $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+                $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of';
+
+                if ($modifier > 0) {
+                    $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of +' . $modifier . ' month';
+                }
+            }
         }
 
         return $deliveryInterval;
@@ -471,11 +486,28 @@ class Node extends BaseModel implements EventOwnerInterface
             '1' => 'first',
             '2' => 'second',
             '3' => 'third',
-            '4' => 'forth',
-            '5' => 'fifth'
+            '4' => 'fourth',
+            '5' => 'last'
         ];
 
         return $formats[$week];
+    }
+
+    /**
+     * Check if node deliveries have a weekly interval.
+     * @return boolean
+     */
+    private function hasWeeklyDeliveries() {
+        return strpos($this->delivery_interval, 'week');
+    }
+
+    /**
+     * Check if node deliveries have a monthly interval.
+     *
+     * @return boolean
+     */
+    private function hasMonthlyDeliveries() {
+        return strpos($this->delivery_interval, 'month');
     }
 
     /**
