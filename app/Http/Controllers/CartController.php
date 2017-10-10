@@ -218,6 +218,10 @@ class CartController extends Controller
 
         $cartDateItemLink = $user->cartDateItemLink($cartDateItemLinkId);
 
+        if (!$cartDateItemLink) {
+            return redirect()->back();
+        }
+
         if (isset($cartDateItemLink->getItem()->product['production_type']) && $cartDateItemLink->getItem()->product['production_type'] === 'csa') {
             // CSA is all or nothing
             $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) {

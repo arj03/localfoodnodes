@@ -55,7 +55,7 @@ return [
     'occasional_specify_date_quantity' => 'Ange de datum och kvantitet från då produkten kommer kunna levereras.',
     'other_options' => 'Andra inställningar (valfritt)',
     'package_amount_info' => '
-        Du har angivit att priset anges i kg eller hg. Uppskatta vikten av en produkts innehåll så slutsumman blir rätt mot kund vid utcheckningen i butiken.
+        Du har angivit att priset anges i en viktenhet. Uppskatta vikten av en produkts innehåll så slutsumman blir rätt mot kund vid utcheckningen i butiken.
     ',
     'price' => 'Pris',
     'price_per' => 'Pris anges per...',

@@ -62,12 +62,18 @@ class BaseModel extends Model
                 continue;
             }
 
+            $sanitizedFields[$key] = $value;
+
             if (strpos($rule, 'integer') !== false) {
                 $sanitizedFields[$key] = (int) $value;
-            } else if (strpos($rule, 'boolean') !== false) {
+            }
+
+            if (strpos($rule, 'numeric') !== false) {
+                $sanitizedFields[$key] = str_replace(',', '.', $value);
+            }
+
+            if (strpos($rule, 'boolean') !== false) {
                 $sanitizedFields[$key] = (bool) $value;
-            } else {
-                $sanitizedFields[$key] = $value;
             }
         }
 

@@ -57,7 +57,7 @@ return [
     'occasional_specify_date_quantity' => 'Specify the date and quantity from which the product is available for delivery.',
     'other_options' => 'Other options (optional)',
     'package_amount_info' => '
-        You have specified a price in kg or hg. Estimate the weight of the product content so that the total price for the customer is correct in checkout.
+        You have specified a price in a weight unit. Estimate the weight of the product content so that the total price for the customer is correct in checkout.
     ',
     'price' => 'Price',
     'price_per' => 'Price is set per...',

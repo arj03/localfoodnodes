@@ -233,10 +233,10 @@ class ProductController extends Controller
         $rules = $product->validationRules;
 
         if (\UnitsHelper::isStandardUnit($data['price_unit'])) {
-            $rules['package_amount'] = 'required';
+            $rules['package_amount'] = 'required|numeric|min:0.01';
         }
 
-        return $product->validate($product->sanitize($data), $rules);
+        return $product->validate($product->sanitize($data, $rules), $rules);
     }
 
     /**

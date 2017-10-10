@@ -16,6 +16,14 @@ return [
     'cl' => 'cl',
     'ml' => 'ml',
 
+    // Customary units
+    'lb' => 'lb',
+    'oz' => 'oz',
+    'gr' => 'gr',
+    'floz' => 'fl oz',
+    'pint' => 'pt',
+    'gallon' => 'gal',
+
     // Product price units
     'product' => 'st',
     'package' => 'st',
