@@ -46,6 +46,7 @@ class ProductFilter
             'artisan_food' => trans('public/tags.artisan_food'),
             'beer' => trans('public/tags.beer'),
             'beverage' => trans('public/tags.beverage'),
+            'bread' => trans('public/tags.bread'),
             'csa' => trans('public/tags.csa'),
             'dairy_cheese' => trans('public/tags.dairy_cheese'),
             'eggs' => trans('public/tags.eggs'),
