@@ -16,12 +16,19 @@
                             <table class="table">
                                 <tr>
                                     <th>Produkt</th>
+                                    <th></th>
                                     <th>Antal</th>
                                     <th>Summa</th>
                                 </tr>
                                 @foreach ($orderDateItemLinks as $orderDateItemLink)
                                     <tr>
-                                        <td>{{ $orderDateItemLink->getItem()->product['name'] }}</td>
+                                        <td>
+                                            {{ $orderDateItemLink->getItem()->product['name'] }}
+                                            @if ($orderDateItemLink->getItem()->variant_id)
+                                                - {{ $orderDateItemLink->getItem()->variant['name'] }}
+                                            @endif
+                                        </td>
+                                        <td>{{ $orderDateItemLink->getItem()->message }}</td>
                                         <td>{{ $orderDateItemLink->quantity }}</td>
                                         <td>{!! $orderDateItemLink->getPriceWithUnit() !!}</td>
                                     </tr>
