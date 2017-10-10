@@ -49,6 +49,7 @@ return [
     'invite_no_user' => 'Invited user does not exist.',
     'invite_cancelled' => 'Admin invite has been cancelled.',
     'invite_accepted' => 'Your are now an admin of :name.',
+    'invite_sent' => 'Invite has been sent.',
     'user_invited' => 'User is already invited.',
     'user_is_admin' => 'User is already an admin.',
 

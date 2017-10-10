@@ -6,46 +6,37 @@
     @include('account.page-header')
 
     <div class="row">
-        <div class="col-12">
-            @if ($user->nodeAdminInvites()->count() > 0 || $user->producerAdminInvites()->count() > 0)
-                <div class="card">
-                    <div class="card-header">Messages</div>
-                    <div class="card-body">
-                        <div class="row">
-                            @if ($user->nodeAdminInvites())
-                                @foreach ($user->nodeAdminInvites() as $nodeAdminLink)
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-header">You have been added as node admin</div>
-                                            <div class="card-body">
-                                                <p>You have been added as an admin to {{ $nodeAdminLink->getNode()->name }}</p>
-                                                <a class="btn btn-success" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/accept">Accept</a>
-                                                <a class="btn btn-danger" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
-
-                            @if ($user->producerAdminInvites())
-                                @foreach ($user->producerAdminInvites() as $producerAdminLink)
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-header">You have been added as admin</div>
-                                            <div class="card-body">
-                                                <p>You have been added as an admin to {{ $producerAdminLink->getProducer()->name }}</p>
-                                                <a class="btn btn-success" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/accept">Accept</a>
-                                                <a class="btn btn-danger" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
+        @if ($user->nodeAdminInvites()->count() > 0 || $user->producerAdminInvites()->count() > 0)
+            @if ($user->nodeAdminInvites())
+                @foreach ($user->nodeAdminInvites() as $nodeAdminLink)
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">You have been added as node admin</div>
+                            <div class="card-body">
+                                <p>You have been added as an admin to {{ $nodeAdminLink->getNode()->name }}</p>
+                                <a class="btn btn-success" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/accept">Accept</a>
+                                <a class="btn btn-danger" href="/account/node/{{ $nodeAdminLink->getNode()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             @endif
-        </div>
+
+            @if ($user->producerAdminInvites())
+                @foreach ($user->producerAdminInvites() as $producerAdminLink)
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">You have been added as admin</div>
+                            <div class="card-body">
+                                <p>You have been added as an admin to {{ $producerAdminLink->getProducer()->name }}</p>
+                                <a class="btn btn-success" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/accept">Accept</a>
+                                <a class="btn btn-danger" href="/account/producer/{{ $producerAdminLink->getProducer()->id }}/invite/{{ $user->id }}/cancel">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        @endif
     </div>
 
     <div class="card-deck">
