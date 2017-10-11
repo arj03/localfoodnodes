@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <div class="row">
         @if ($user->nodeAdminInvites()->count() > 0 || $user->producerAdminInvites()->count() > 0)
             @if ($user->nodeAdminInvites())

@@ -16,10 +16,15 @@
     </head>
     <body class="admin {{ $viewName }} logged-in">
         <div class="page">
-            @include('account.user-nav')
-            @include('account.user-nav-mobile')
+            <!-- @include('account.user-nav')-->
+            <!-- @include('account.user-nav-mobile')-->
+
+            <div class="container-fluid">
+                @include('account.page-header')
+            </div>
+
             <div class="content">
-                <div class="container-fluid">
+                <div class="container">
                     @include('shared.errors')
                     @yield('content')
                 </div>
