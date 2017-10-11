@@ -91,7 +91,7 @@ class ProductVariantController extends Controller
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
-        return view('admin/product/variants.index', [
+        return view('account/product.variants.index', [
             'product' => $product,
             'producer' => $producer,
             'breadcrumbs' => [
@@ -117,7 +117,7 @@ class ProductVariantController extends Controller
         $variant = new ProductVariant();
         $variant->fill($request->old());
 
-        return view('admin/product/variants.create', [
+        return view('account/product.variants.create', [
             'product' => $product,
             'variant' => $variant,
             'breadcrumbs' => [
@@ -180,7 +180,7 @@ class ProductVariantController extends Controller
 
         $variant->fill($request->old());
 
-        return view('admin/product/variants.edit', [
+        return view('account/product.variants.edit', [
             'producer' => $producer,
             'product' => $product,
             'variant' => $variant,
