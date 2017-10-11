@@ -434,19 +434,10 @@ class Node extends BaseModel implements EventOwnerInterface
             $deadlineDate = new \DateTime($deliveryDate->format('Y-m-d'));
             $deadlineDate->modify('-' . $product->deadline . ' days');
 
-            // If deadline is before current date calculate how many weeks ahead the first delivery date must be.
-            // Get new delivery interval string and create a new first $deliveryDate
-            if ($deadlineDate < $currentDate) {
-                $diff = $currentDate->diff($deadlineDate);
-                $modifier = (int) ceil($diff->days / 7); // Round up
-
-                if ($this->hasMonthlyDeliveries()) {
-                    $modifier = $diff->m + 1; // Round up
-                }
-
-                $deliveryInterval = $this->getDeliveryIntervalFormat($modifier);
-
-                $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
+            // If deadline is before current date jump forward to next delivery date and make the same check again
+            while ($deadlineDate < $currentDate) {
+                $deliveryDate->modify($this->delivery_interval);
+                $deadlineDate->modify($this->delivery_interval);
             }
         }
 
@@ -456,28 +447,14 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Get delivery interval.
      *
-     * @param integer $modifier
      * @return string
      */
-    private function getDeliveryIntervalFormat($modifier = 0) {
-        // Weekly
+    private function getDeliveryIntervalFormat() {
         if ($this->hasWeeklyDeliveries()) {
             $deliveryInterval = 'next ' . $this->delivery_weekday;
-
-            if ($modifier > 0) {
-                $deliveryInterval = '+' . $modifier . ' week ' . $this->delivery_weekday;
-            }
-        }
-        // Monthly
-        else {
-            if ($this->delivery_interval === '+1 month') {
-                $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
-                $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of';
-
-                if ($modifier > 0) {
-                    $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of +' . $modifier . ' month';
-                }
-            }
+        } else {
+            $weekOfMonth = $this->weekOfMonth($this->delivery_startdate);
+            $deliveryInterval = $weekOfMonth . ' ' . $this->delivery_weekday . ' of';
         }
 
         return $deliveryInterval;
