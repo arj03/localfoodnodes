@@ -55,7 +55,7 @@
                     <div class="card-body product-filter date-filter">
                         <b>{{ trans('public/node.select_pickup') }}</b>
                         <div class="tags dates">
-                            @foreach ($node->getDeliveryDates() as $deliveryDate)
+                            @foreach ($node->getDeliveryDatesWithProducts() as $deliveryDate)
                                 @if (Request::input('date') === $deliveryDate)
                                     <div class="date text-center active">
                                         <a href="{{ $node->permalink()->url }}?date={{ $deliveryDate }}" class="badge active">{{ $deliveryDate }}</a>

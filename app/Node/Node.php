@@ -332,6 +332,22 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
+     * Get all delivery dates where there are products.
+     *
+     * @return Collection
+     */
+    public function getDeliveryDatesWithProducts()
+    {
+        $dates = DB::table('product_node_delivery_links')->distinct()->select('date')->where('node_id', $this->id)->where('date', '>', date('Y-m-d'))->get();
+
+        $dates = $dates->map(function($date) {
+            return $date->date;
+        });
+
+        return $dates->unique()->sort();
+    }
+
+    /**
      * Get delivery dates for the next 52 weeks.
      *
      * @return Collection
