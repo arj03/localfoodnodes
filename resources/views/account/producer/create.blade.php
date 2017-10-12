@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     @if (app('request')->input('terms') === "approved")
         <form action="/account/producer/insert" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}

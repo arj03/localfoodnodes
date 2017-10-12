@@ -3,8 +3,6 @@
 @section('title', 'Product variants')
 
 @section('content')
-    @include('account.page-header')
-
     @include('account.product.shared.quick-links')
 
     <div class="row">

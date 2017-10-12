@@ -3,8 +3,6 @@
 @section('title', trans('admin/product.title'))
 
 @section('content')
-    @include('account.page-header')
-
     @include('account.product.shared.quick-links')
 
     <form action="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/production/update" method="post" enctype="multipart/form-data">

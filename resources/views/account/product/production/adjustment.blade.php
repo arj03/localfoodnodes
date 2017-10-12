@@ -3,8 +3,6 @@
 @section('title', 'Product production adjustment')
 
 @section('content')
-    @include('account.page-header')
-
     @include('account.product.shared.quick-links')
 
     @if ($product->productionType !== 'weekly')

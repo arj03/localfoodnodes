@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <form action="/account/node/{{ $node->id }}/update" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         @include('account.node.generic-node-form')

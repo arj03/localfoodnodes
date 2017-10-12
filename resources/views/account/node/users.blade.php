@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <div class="card">
         <div class="card-header">
             {{ trans('admin/node.users') }}

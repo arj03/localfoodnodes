@@ -3,7 +3,6 @@
 @section('title', 'Product variants')
 
 @section('content')
-    @include('account.page-header')
     <form action="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/insert" method="post">
         @include('account.product.variants.variant-form')
 

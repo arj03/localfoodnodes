@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <form action="/account/producer/{{ $producer->id }}/update" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $producer->id }}">

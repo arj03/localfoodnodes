@@ -3,8 +3,6 @@
 @section('title', 'Node')
 
 @section('content')
-    @include('account.page-header')
-
     <div class="card-deck">
         <div class="card">
             <div class="card-header">{{ trans('admin/node.node_info') }}</div>

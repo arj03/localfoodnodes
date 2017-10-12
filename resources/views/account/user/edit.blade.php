@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <form id="user-edit-form" action="/account/user/update" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">

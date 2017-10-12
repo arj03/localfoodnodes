@@ -3,8 +3,6 @@
 @section('title', 'Product variants')
 
 @section('content')
-    @include('account.page-header')
-
     @include('account.product.shared.quick-links')
 
     <form action="/account/producer/{{ $product->producer()->id }}/product/{{ $product->id }}/variant/{{ $variant->id }}/update" method="post">

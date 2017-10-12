@@ -3,8 +3,6 @@
 @section('title', join(array_keys($breadcrumbs), ' - '))
 
 @section('content')
-    @include('account.page-header')
-
     <form action="/account/user/password/update" method="post">
         <div class="row">
             <div class="col-12 col-xl-8">

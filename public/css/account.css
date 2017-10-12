@@ -26,10 +26,8 @@ body.admin .page .content > .container-fluid {
   min-height: 100vh;
 }
 
-body.admin .page .page-header {
-  background: #fff;
+body.admin .page .breadcrumbs {
   height: 60px;
-  margin-bottom: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,8 +35,6 @@ body.admin .page .page-header {
       -ms-flex-align: center;
           align-items: center;
   text-transform: uppercase;
-  -webkit-box-shadow: #ccc 0 1px 8px -2px;
-          box-shadow: #ccc 0 1px 8px -2px;
 }
 
 body.admin .page .card .card-header {

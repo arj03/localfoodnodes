@@ -3,8 +3,6 @@
 @section('title', 'Create product')
 
 @section('content')
-    @include('account.page-header')
-
     <div class="row">
         <ul class="product-quick-links col-12 col-xl-8">
             <li class="active"><span><i class="fa fa-cube"></i> {{ trans('admin/producer.product') }}</span></li>

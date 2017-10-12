@@ -36,9 +36,8 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
         <div class="page">
-            @include('account.user-nav')
-            @include('public.nav')
-            @include('account.user-nav-mobile')
+            @include('account.nav')
+
             <div class="content">
                 <div class="container-fluid">
                     @include('shared.errors')
