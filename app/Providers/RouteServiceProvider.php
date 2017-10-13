@@ -120,6 +120,8 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Producer custom domains routes.
      *
+     * Todo: If no domain match redirect to .env domain
+     *
      * @return void
      */
     protected function producerDomainRoutes()
