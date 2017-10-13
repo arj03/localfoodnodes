@@ -38,6 +38,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->adminRoutes();
         $this->authRoutes();
 
+        // Custom producer domains
+        $this->producerDomainRoutes();
+
         // Needs to be last since the permalink controller tries to match all request
         // and returns a 404 is fail.
         $this->publicRoutes();
@@ -112,6 +115,27 @@ class RouteServiceProvider extends ServiceProvider
         Route::group($options, function ($router) {
             require base_path('routes/auth.php');
         });
+    }
+
+    /**
+     * Producer custom domains routes.
+     *
+     * @return void
+     */
+    protected function producerDomainRoutes()
+    {
+        $producers = [
+            // ['id' => '2', 'domain' => 'test.dev'],
+            // ['id' => '3', 'domain' => 'dev.test']
+        ];
+
+        foreach ($producers as $producer) {
+            Route::domain($producer['domain'])->group(function() use ($producer) {
+                Route::get('/', function(\Illuminate\Http\Request $request) use ($producer) {
+                    return app('App\Http\Controllers\IndexController')->producer($request, $producer['id']);
+                });
+            });
+        }
     }
 
     /**
