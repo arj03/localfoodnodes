@@ -61,7 +61,7 @@ class OrderStatus extends \App\BaseModel
     public function getHtmlClass()
     {
         if (!$this->active) {
-            return 'badge badge-default';
+            return 'badge badge-secondary';
         } else if ($this->status === 'cancelled') {
             return 'badge badge-danger';
         } else {

@@ -30,7 +30,7 @@
                         <i class="fa fa-map-marker"></i> {{ $product->producer()->getDistance($node) }} {{ trans('public/node.km') }}
                         <div class="tags">
                             @foreach ($product->tags() as $tag)
-                                <div class="badge badge-default">{{ trans('public/tags.' . $tag->tag) }}</div>
+                                <div class="badge badge-secondary">{{ trans('public/tags.' . $tag->tag) }}</div>
                             @endforeach
                         </div>
                     </div>
