@@ -7,7 +7,7 @@
                     {{ trans('public/nav.local_food_nodes') }}
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 

@@ -6,7 +6,8 @@
     <div class="row">
         <div class="col-12 col-xl-8">
             @include('account.user.membership-form')
-
+        </div>
+        <div class="col-12 col-xl-4">
             <div class="card">
                 <div class="card-header">History</div>
                 <div class="card-body">

@@ -36,7 +36,7 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
         <div class="page">
-            @include('account.nav')
+            @include('navigation.public')
 
             <div class="content">
                 <div class="container-fluid">

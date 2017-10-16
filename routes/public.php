@@ -12,8 +12,6 @@ Route::get('/map/content', 'MapController@getMapContent');
 // Account create
 Route::get('/account/user/create/{type?}', 'Account\UserController@create');
 Route::post('/account/user/insert', 'Account\UserController@insert');
-Route::get('/account/user/migrate', 'Account\UserController@migrateEditAccount');
-Route::post('/account/user/migrate-update', 'Account\UserController@migrateUpdateAccount');
 Route::get('/account/user/activate/token/{token}', 'Account\UserController@activateToken'); // Activate account even if user is not logged in
 
 // Cart - needs auth since cart only works for logged in users

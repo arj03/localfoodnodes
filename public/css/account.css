@@ -1,7 +1,7 @@
 body.admin .page {
   padding-bottom: 0;
   min-height: 100vh;
-  background: #f1f0ea;
+  background: #e6e6e0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,35 +16,14 @@ body.admin .page {
 
 body.admin .page .content {
   width: 100%;
-  background: #f1f0ea;
   z-index: 1;
   min-height: 100vh;
-}
-
-body.admin .page .content > .container-fluid {
-  background: #f1f0ea;
-  min-height: 100vh;
-}
-
-body.admin .page .breadcrumbs {
-  height: 60px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-transform: uppercase;
+  margin-bottom: 100px;
 }
 
 body.admin .page .card .card-header {
-  background: #ccba89;
-  color: #fff;
-  font-family: 'montserrat';
-  font-size: 16px;
+  color: #ccc;
   font-weight: bold;
-  border: 0;
-  border-radius: 0;
 }
 
 .product-quantity-group label {
@@ -196,28 +175,52 @@ body.admin .page .card .card-header {
   background-color: #fff;
 }
 
-.breadcrumbs .crumb {
+.breadcrumbs-wrapper {
+  background: #f1f0ea;
+  -webkit-box-shadow: #ccc 0 1px 6px 0px;
+          box-shadow: #ccc 0 1px 6px 0px;
+  padding: 1.25rem;
+  z-index: 2;
+}
+
+.breadcrumbs-wrapper .breadcrumbs .crumb {
   color: #333;
 }
 
-.breadcrumbs .crumb a {
+.breadcrumbs-wrapper .breadcrumbs .crumb a {
   color: #333;
 }
 
-.breadcrumbs .crumb::after {
+.breadcrumbs-wrapper .breadcrumbs .crumb::after {
   content: '>';
   position: relative;
   top: -2px;
   margin: 0 8px 0 10px;
 }
 
-.breadcrumbs .crumb:last-child {
+.breadcrumbs-wrapper .breadcrumbs .crumb:last-child {
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.breadcrumbs .crumb:last-child::after {
+.breadcrumbs-wrapper .breadcrumbs .crumb:last-child::after {
   content: '';
+}
+
+.form-control-bar {
+  background: #fff;
+  bottom: 0px;
+  -webkit-box-shadow: #ccc 0 -1px 6px 0px;
+          box-shadow: #ccc 0 -1px 6px 0px;
+  left: 0px;
+  padding: 1.25rem;
+  position: fixed;
+  z-index: 9999;
+}
+
+.form-control-bar button,
+.form-control-bar a {
+  margin-right: 10px;
 }
 
 /* Node block */

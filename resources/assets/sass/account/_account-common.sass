@@ -2,36 +2,21 @@ body.admin
   .page
     padding-bottom: 0
     min-height: 100vh
-    background: #f1f0ea
+    background: #e6e6e0
     display: flex
     align-items: stretch
     flex-direction: column
 
     .content
       width: 100%
-      background: #f1f0ea
       z-index: 1
       min-height: 100vh
-      > .container-fluid
-       background: #f1f0ea
-       min-height: 100vh
-
-    // Breadcrumbs
-    .breadcrumbs
-      height: 60px
-      display: flex
-      align-items: center
-      text-transform: uppercase
+      margin-bottom: 100px
 
     .card
       .card-header
-        background: #ccba89
-        color: #fff
-        font-family: 'montserrat'
-        font-size: 16px
+        color: #ccc
         font-weight: bold
-        border: 0
-        border-radius: 0
 
 .product-quantity-group
   label
@@ -137,18 +122,34 @@ body.admin
     &:read-only
       background-color: #fff
 
-.breadcrumbs
-  .crumb
-    color: #333
-    a
+.breadcrumbs-wrapper
+  background: #f1f0ea
+  box-shadow: #ccc 0 1px 6px 0px
+  padding: 1.25rem
+  z-index: 2
+  .breadcrumbs
+    .crumb
       color: #333
-    &::after
-      content: '>'
-      position: relative
-      top: -2px
-      margin: 0 8px 0 10px
-    &:last-child
-      font-size: 1.2em
-      font-weight: bold
+      a
+        color: #333
       &::after
-        content: ''
+        content: '>'
+        position: relative
+        top: -2px
+        margin: 0 8px 0 10px
+      &:last-child
+        font-size: 1.2em
+        font-weight: bold
+        &::after
+          content: ''
+
+.form-control-bar
+  background: #fff
+  bottom: 0px
+  box-shadow: #ccc 0 -1px 6px 0px
+  left: 0px
+  padding: 1.25rem
+  position: fixed
+  z-index: 9999
+  button, a
+    margin-right: 10px

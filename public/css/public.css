@@ -26,23 +26,23 @@
 
 .card {
   margin-bottom: 30px;
-  -webkit-box-shadow: #ccc 0 1px 8px -2px;
-          box-shadow: #ccc 0 1px 8px -2px;
+  -webkit-box-shadow: #ccc 0 1px 6px 0px;
+          box-shadow: #ccc 0 1px 6px 0px;
   border: 0;
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 .card .card-header {
   background: #fff;
   border-bottom: 1px solid #f1f0ec;
-  text-transform: uppercase;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-radius: 0;
+  border-radius: 2px 2px 0 0;
+  border: 0;
 }
 
 .card .card-header a {
@@ -631,16 +631,20 @@ body.page .page .card .body-text {
   padding: 15px;
 }
 
-.navbar {
+.navbar-wrapper {
   background: #fff;
+  -webkit-box-shadow: #ccc 0 1px 6px 0px;
+          box-shadow: #ccc 0 1px 6px 0px;
+  z-index: 3;
+}
+
+.navbar {
   border: 0;
   border-radius: 0;
   color: #333;
   font-family: 'montserrat';
+  height: 60px;
   text-transform: uppercase;
-  padding-top: 0;
-  padding-bottom: 0;
-  width: 100vw;
 }
 
 .navbar .navbar-brand {
@@ -659,21 +663,43 @@ body.page .page .card .body-text {
   width: auto;
 }
 
-.navbar .navbar-toggler {
-  color: #333;
-}
-
-.navbar .navbar-toggler-right {
-  right: 2rem;
-}
-
-.navbar .navbar-nav .nav-link {
-  font-family: 'montserrat';
-  color: #333;
-}
-
-.navbar .navbar-collapse {
+#main-nav .navbar-nav .nav-item {
+  height: 60px;
   padding: 10px;
+  width: 60px;
+  text-align: center;
+}
+
+#main-nav .navbar-nav .nav-item.active {
+  background: #666;
+}
+
+#main-nav .navbar-nav .nav-item.active a {
+  color: #fff;
+}
+
+#main-nav .navbar-nav .nav-item:hover {
+  background: #999;
+}
+
+#main-nav .navbar-nav .nav-item:hover a {
+  color: #fff;
+}
+
+#main-nav .navbar-nav .nav-item .fa {
+  font-size: 24px;
+}
+
+#main-nav .navbar-nav .nav-item .nav-link {
+  color: #aaa;
+}
+
+#main-nav .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+#main-nav .navbar-nav .nav-item.dropdown .dropdown-menu a {
+  color: #333;
 }
 
 .login-dropdown {
@@ -685,12 +711,6 @@ body.page .page .card .body-text {
 
 .login-dropdown li {
   padding: 20px;
-}
-
-.login-helper a {
-  font-family: 'Raleway';
-  display: block;
-  line-height: 1.3em;
 }
 
 .leaflet-popup-pane {

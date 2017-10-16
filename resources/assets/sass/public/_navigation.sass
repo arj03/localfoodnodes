@@ -1,13 +1,14 @@
-.navbar
+.navbar-wrapper
   background: #fff
+  box-shadow: #ccc 0 1px 6px 0px
+  z-index: 3
+.navbar
   border: 0
   border-radius: 0
   color: #333
   font-family: 'montserrat'
+  height: 60px
   text-transform: uppercase
-  padding-top: 0
-  padding-bottom: 0
-  width: 100vw
   .navbar-brand
     color: #333
     font-weight: bold
@@ -18,16 +19,34 @@
     img
       height: 35px
       width: auto
-  .navbar-toggler
-    color: #333
-  .navbar-toggler-right
-    right: 2rem
+
+#main-nav
   .navbar-nav
-    .nav-link
-      font-family: 'montserrat'
-      color: #333
-  .navbar-collapse
-    padding: 10px
+    .nav-item
+      height: 60px
+      padding: 10px
+      width: 60px
+      text-align: center
+      &.active
+        background: #666
+        a
+          color: #fff
+      &:hover
+        background: #999
+        a
+          color: #fff
+
+      .fa
+        font-size: 24px
+      .nav-link
+        color: #aaa
+      &.dropdown
+        .dropdown-toggle
+          &::after
+            display: none
+        .dropdown-menu
+          a
+            color: #333
 
 .login-dropdown
   text-transform: none
@@ -36,9 +55,3 @@
   padding: 0
   li
     padding: 20px
-
-.login-helper
-  a
-    font-family: 'Raleway'
-    display: block
-    line-height: 1.3em
