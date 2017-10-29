@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => '/users'], function () {
     Route::get('/', 'Api\UserController@index');
+    Route::post('/login', 'Api\UserController@login');
+    Route::get('/logout', 'Api\UserController@logout');
 });
 
 Route::group(['prefix' => '/orders'], function () {

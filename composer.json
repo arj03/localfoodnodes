@@ -13,7 +13,8 @@
         "predis/predis": "^1.1.1",
         "webpatser/laravel-uuid": "2.*",
         "barryvdh/laravel-debugbar": "3.*",
-        "laravel/passport": "^4.0"
+        "laravel/passport": "^4.0",
+        "barryvdh/laravel-cors": "^0.10.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
