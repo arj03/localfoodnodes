@@ -476,6 +476,7 @@ class Node extends BaseModel implements EventOwnerInterface
         }
 
         $formats = [
+            '0' => 'first',
             '1' => 'first',
             '2' => 'second',
             '3' => 'third',
