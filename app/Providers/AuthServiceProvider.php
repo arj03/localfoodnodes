@@ -26,8 +26,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes(null, ['middleware' => [ \Barryvdh\Cors\HandleCors::class ]]);
-        // Passport::routes();
+        Passport::tokensCan([
+            'users-read-self' => '',
+            'users-orders-read' => '',
+            'users-orders-modify' => '',
+            'users-nodes-read' => '',
+            'users-nodes-modify' => '',
+        ]);
+
+        Passport::routes(null, ['middleware' => [\Barryvdh\Cors\HandleCors::class]]);
         Passport::enableImplicitGrant();
     }
 }

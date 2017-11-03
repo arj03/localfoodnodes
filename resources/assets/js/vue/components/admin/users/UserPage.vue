@@ -26,7 +26,7 @@
             .then(response => {
                 return axios.get('/api/users', {
                     headers: {
-                        'Authorization': response.data
+                        'Authorization': 'Bearer ' + response.data
                     }
                 });
             })

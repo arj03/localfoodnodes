@@ -72,9 +72,9 @@ class RouteServiceProvider extends ServiceProvider
     protected function apiRoutes()
     {
         $options = [
-            'middleware' => 'client',
+            // 'middleware' => 'auth:api', // Set middleware in routes file instead
             'namespace' => $this->namespace,
-            'prefix' => 'api',
+            'prefix' => 'api/v1',
         ];
 
         Route::group($options, function ($router) {

@@ -2,6 +2,8 @@
 
 namespace App\Order;
 
+use App\DateTime;
+
 use Illuminate\Database\Eloquent\Collection;
 
 class OrderDate extends \App\BaseModel
@@ -38,7 +40,7 @@ class OrderDate extends \App\BaseModel
      */
     public function getDateAttribute($value)
     {
-        return new \DateTime($value);
+        return new DateTime($value);
     }
 
     /**
