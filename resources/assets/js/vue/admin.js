@@ -17,8 +17,10 @@ window._ = require('lodash');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('index-page', require('./components/admin/index/IndexPage.vue'));
 Vue.component('user-page', require('./components/admin/users/UserPage.vue'));
 Vue.component('order-page', require('./components/admin/orders/OrderPage.vue'));
+Vue.component('economy-page', require('./components/admin/economy/EconomyPage.vue'));
 Vue.component('api-page', require('./components/admin/api/ApiPage.vue'));
 
 // Passport

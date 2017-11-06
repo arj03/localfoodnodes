@@ -2,22 +2,19 @@
     <div class="card">
         <div class="card-header">Users</div>
         <div class="card-body">
-            <table class="table table-sm table-hover">
+            <i v-show="loading" class="fa fa-spinner fa-spin"></i>
+            <table v-show="!loading" class="table table-sm table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Active</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in users">
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.active ? 'yes' : 'no' }}</td>
-                    </tr>
+                    <user-item v-for="user in users" v-bind:user="user" :key="user.id"></user-item>
                 </tbody>
             </table>
         </div>
@@ -26,6 +23,21 @@
 
 <script>
     export default {
-        props: ['users']
+        props: ['users'],
+        components: {
+            'user-item': require('./UserItem')
+        },
+        data: function() {
+            return {
+                loading: true
+            }
+        },
+        watch: {
+            users: function(users) {
+                if (users) {
+                    this.loading = false;
+                }
+            }
+        }
     }
 </script>

@@ -4,23 +4,35 @@ namespace App\Http\Controllers\Api\v1\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User\User;
 
 class UsersController extends \App\Http\Controllers\Controller
 {
     public function users(Request $request)
     {
-        return Auth::guard('api')->user();
-
-        return User::exclude(['email'])->get();
+        if ($request->user()->tokenCan('users-read-all')) {
+            if ($request->user()->tokenCan('users-read-emails')) {
+                return User::all();
+            } else {
+                return User::exclude(['email'])->get();
+            }
+        } else if ($request->user()->tokenCan('users-read-self')) {
+            return Auth::guard('api')->user();
+        } else {
+            return response('Unauthorized', 403);
+        }
     }
 
-    public function nodes(Request $request)
+    public function update(Request $request)
     {
-        $user = Auth::guard('api')->user();
-        $nodeLinks = $user->nodeLinks();
+        $user = User::find($request->input('id'));
 
-        return $nodeLinks->map(function($nodeLink) {
-            return $nodeLink->getNode();
-        });
+        foreach($request->input('fields') as $key => $value) {
+            $user->{$key} = $value;
+        }
+
+        $user->save();
+
+        return $user;
     }
 }

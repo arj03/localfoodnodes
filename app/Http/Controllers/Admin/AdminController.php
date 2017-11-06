@@ -35,12 +35,14 @@ class AdminController extends Controller
 
         if (!$this->accessToken) {
             try {
-                $response = $this->http->post(app('url')->to('/oauth/token'), [
+                $response = $this->http->post(env('ADMIN_API_URL') . '/oauth/token', [
                     'form_params' => [
-                        'grant_type' => 'client_credentials',
-                        'client_id' => env('ADMIN_APP_CLIENT_ID'),
-                        'client_secret' => env('ADMIN_APP_SECRET'),
-                        'scope' => '',
+                        'grant_type' => 'password',
+                        'client_id' => env('ADMIN_CLIENT_ID'),
+                        'client_secret' => env('ADMIN_SECRET'),
+                        'username' => env('ADMIN_USERNAME'),
+                        'password' => env('ADMIN_PASSWORD'),
+                        'scope' => '*',
                     ],
                 ]);
 
@@ -48,7 +50,7 @@ class AdminController extends Controller
 
                 $this->accessToken = $token['access_token'];
             } catch (RequestException $e) {
-                header('Location: /');
+                header('Location: /', 404); // return 404
                 exit;
             }
         }
@@ -77,6 +79,11 @@ class AdminController extends Controller
     public function orders(Request $request)
     {
         return view('admin.orders');
+    }
+
+    public function economy(Request $request)
+    {
+        return view('admin.economy');
     }
 
     public function api(Request $request)
