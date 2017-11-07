@@ -14,7 +14,7 @@ class Transaction extends \App\BaseModel
      * @var array
      */
     public $validationRules = [
-        'hash' => 'required|unique',
+        'hash' => 'required|unique:economy_transactions',
         'date' => 'required|date',
         'ref' => 'required',
         'description' => 'required',
@@ -32,5 +32,6 @@ class Transaction extends \App\BaseModel
         'ref',
         'description',
         'amount',
+        'category',
     ];
 }

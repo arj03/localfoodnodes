@@ -4,7 +4,7 @@
             <div class="card-header">Costs</div>
             <div class="card-body">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <div id="costs-chart"></div>
+                <div id="costs-chart" style="height: 300px;"></div>
             </div>
         </div>
     </div>
@@ -48,7 +48,9 @@
                         return category.id == categoryId;
                     });
 
+                    let sumString = '\r' + sum + ' SEK';
                     let label = (categoryObject && categoryObject.label) ? categoryObject.label : 'Uncategorized';
+                    label += sumString;
 
                     return [label, -sum]; // Convert to positive
                 })
@@ -68,12 +70,13 @@
 
                     var options = {
                         chartArea: {
-                            left: 20,
                             top: 20,
-                            width: '80%',
-                            height: '80%',
+                            left: 20,
+                            width: '90%',
+                            height: '90%',
                         },
-                        pieHole: 0.5,
+                        pieHole: 0.4,
+                        tooltip: { trigger: 'selection' },
                     };
 
                     var chart = new google.visualization.PieChart(document.getElementById('costs-chart'));

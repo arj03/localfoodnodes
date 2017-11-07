@@ -1636,6 +1636,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         'transaction-list': __webpack_require__("./resources/assets/js/vue/components/admin/economy/TransactionList.vue"),
         'file-upload': __webpack_require__("./resources/assets/js/vue/components/admin/economy/FileUpload.vue")
+    },
+    data: function data() {
+        return {
+            fetching: true,
+            uploadInProgress: false,
+            transactions: null,
+            categories: null
+        };
+    },
+    mounted: function mounted() {
+        this.fetch();
+    },
+
+    methods: {
+        fetch: function fetch() {
+            var _this = this;
+
+            this.fetching = true;
+            axios.get('/admin/token').then(function (response) {
+                return axios.get('/api/v1/economy/transactions', {
+                    headers: {
+                        'Authorization': 'Bearer ' + response.data
+                    }
+                });
+            }).then(function (response) {
+                _this.transactions = response.data.transactions;
+                _this.categories = response.data.categories;
+                _this.fetching = false;
+            });
+        },
+        uploadFile: function uploadFile(event) {
+            var _this2 = this;
+
+            this.uploadInProgress = true;
+            event.preventDefault();
+            axios.get('/admin/token').then(function (response) {
+                var file = document.querySelector('#upload-form input[type=file]');
+                var formData = new FormData();
+                formData.append('file', file.files[0]);
+
+                return axios.post('/api/v1/economy/transactions', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Authorization': 'Bearer ' + response.data
+                    }
+                });
+            }).then(function (response) {
+                _this2.uploadInProgress = false;
+                var file = document.querySelector('#upload-form input[type=file]');
+                file.value = '';
+                _this2.fetch();
+            });
+        }
     }
 });
 
@@ -1663,36 +1716,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['uploadFile', 'uploadInProgress'],
     data: function data() {
         return {
-            file: false
+            enableSubmit: false
         };
+    },
+    watch: {
+        uploadInProgress: function uploadInProgress(status) {
+            this.uploadInProgress = status;
+            if (status === false) {
+                this.enableSubmit = false;
+            }
+        }
     },
     methods: {
         updateFile: function updateFile() {
-            var file = document.querySelector('#upload-form input[type=file]');
-
-            if (file.files[0]) {
-                this.file = file.files[0];
-            }
+            this.enableSubmit = true;
         },
         submit: function submit(event) {
-            event.preventDefault();
-
-            axios.get('/admin/token').then(function (response) {
-                var file = document.querySelector('#upload-form input[type=file]');
-                var formData = new FormData();
-                formData.append('file', file.files[0]);
-
-                return axios.post('/api/v1/economy/transactions', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Authorization': 'Bearer ' + response.data
-                    }
-                });
-            }).then(function (response) {});
+            this.uploadFile(event);
         }
     }
 });
@@ -1809,32 +1855,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['transactions', 'categories', 'fetching'],
     components: {
         'transaction-item': __webpack_require__("./resources/assets/js/vue/components/admin/economy/TransactionItem.vue")
     },
     data: function data() {
         return {
-            transactions: null,
-            categories: null,
-            loading: true
+            filteredCategory: null,
+            filteredTransactions: null
         };
     },
-    mounted: function mounted() {
-        var _this = this;
+    watch: {
+        transactions: function transactions(_transactions) {
+            this.filteredTransactions = _transactions;
+        }
+    },
+    methods: {
+        filterCategory: function filterCategory(event) {
+            var filteredCategory = event.target.value;
 
-        axios.get('/admin/token').then(function (response) {
-            return axios.get('/api/v1/economy/transactions', {
-                headers: {
-                    'Authorization': 'Bearer ' + response.data
-                }
-            });
-        }).then(function (response) {
-            _this.transactions = response.data.transactions;
-            _this.categories = response.data.categories;
-            _this.loading = false;
-        });
+            if (filteredCategory == 'null') {
+                this.filteredTransactions = this.transactions;
+            } else if (filteredCategory == '-1') {
+                this.filteredTransactions = _.filter(this.transactions, function (transaction) {
+                    return transaction.category == null;
+                });
+            } else {
+                this.filteredTransactions = _.filter(this.transactions, function (transaction) {
+                    return transaction.category == filteredCategory;
+                });
+            }
+        }
     }
 });
 
@@ -1896,7 +1970,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return category.id == categoryId;
                 });
 
+                var sumString = '\r' + sum + ' SEK';
                 var label = categoryObject && categoryObject.label ? categoryObject.label : 'Uncategorized';
+                label += sumString;
 
                 return [label, -sum]; // Convert to positive
             }).value();
@@ -1915,12 +1991,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 var options = {
                     chartArea: {
-                        left: 20,
                         top: 20,
-                        width: '80%',
-                        height: '80%'
+                        left: 20,
+                        width: '90%',
+                        height: '90%'
                     },
-                    pieHole: 0.5
+                    pieHole: 0.4,
+                    tooltip: { trigger: 'selection' }
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('costs-chart'));
@@ -1988,7 +2065,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return category.id == categoryId;
                 });
 
+                var sumString = '\r' + sum + ' SEK';
                 var label = categoryObject && categoryObject.label ? categoryObject.label : 'Uncategorized';
+                label += sumString;
 
                 return [label, sum];
             }).value();
@@ -2009,10 +2088,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     chartArea: {
                         left: 20,
                         top: 20,
-                        width: '80%',
-                        height: '80%'
+                        width: '90%',
+                        height: '90%'
                     },
-                    pieHole: 0.5
+                    tooltip: { trigger: 'selection' },
+                    pieHole: 0.4
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('income-chart'));
@@ -5641,6 +5721,21 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 // module
 exports.push([module.i, "\ntd[data-v-2e148258] {\n    vertical-align: middle;\n}\ntd.status[data-v-2e148258] {\n    width: 40px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\nth[data-v-37df28ac] {\n    vertical-align: middle !important;\n}\nselect.form-control[data-v-37df28ac]:not([size]):not([multiple]) {\n    height: 100% !important;\n}\n", ""]);
 
 // exports
 
@@ -49668,7 +49763,22 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-12" },
-        [_c("file-upload"), _vm._v(" "), _c("transaction-list")],
+        [
+          _c("file-upload", {
+            attrs: {
+              uploadFile: _vm.uploadFile,
+              uploadInProgress: _vm.uploadInProgress
+            }
+          }),
+          _vm._v(" "),
+          _c("transaction-list", {
+            attrs: {
+              transactions: _vm.transactions,
+              categories: _vm.categories,
+              fetching: _vm.fetching
+            }
+          })
+        ],
         1
       )
     ])
@@ -49725,7 +49835,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-37df28ac\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-37df28ac\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49741,8 +49851,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.loading,
-            expression: "loading"
+            value: _vm.fetching,
+            expression: "fetching"
           }
         ],
         staticClass: "fa fa-spinner fa-spin"
@@ -49755,18 +49865,83 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: !_vm.loading,
-              expression: "!loading"
+              value: !_vm.fetching,
+              expression: "!fetching"
             }
           ],
           staticClass: "table table-hover"
         },
         [
-          _vm._m(0),
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Ref")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Description")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Amount")]),
+              _vm._v(" "),
+              _c("th", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filteredCategory,
+                        expression: "filteredCategory"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.filteredCategory = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        _vm.filterCategory
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "null" } }, [
+                      _vm._v("All categories")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.categories, function(category) {
+                      return _c(
+                        "option",
+                        { domProps: { value: category.id } },
+                        [_vm._v(_vm._s(category.label))]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "-1" } }, [
+                      _vm._v("Uncategorized")
+                    ])
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("th")
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.transactions, function(transaction) {
+            _vm._l(_vm.filteredTransactions, function(transaction) {
               return _c("transaction-item", {
                 key: transaction.hash,
                 attrs: { transaction: transaction, categories: _vm.categories }
@@ -49778,26 +49953,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Ref")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Amount")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Category")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50331,7 +50487,10 @@ var render = function() {
           staticClass: "fa fa-spinner fa-spin"
         }),
         _vm._v(" "),
-        _c("div", { attrs: { id: "costs-chart" } })
+        _c("div", {
+          staticStyle: { height: "300px" },
+          attrs: { id: "costs-chart" }
+        })
       ])
     ])
   ])
@@ -50452,7 +50611,10 @@ var render = function() {
           staticClass: "fa fa-spinner fa-spin"
         }),
         _vm._v(" "),
-        _c("div", { attrs: { id: "income-chart" } })
+        _c("div", {
+          staticStyle: { height: "300px" },
+          attrs: { id: "income-chart" }
+        })
       ])
     ])
   ])
@@ -51123,34 +51285,60 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [_vm._v("File upload")]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("form", { attrs: { id: "upload-form" } }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "input-file",
-            attrs: { type: "file", name: "file" },
-            on: { change: _vm.updateFile }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "button",
+      _c("i", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.uploadInProgress,
+            expression: "uploadInProgress"
+          }
+        ],
+        staticClass: "fa fa-spinner fa-spin"
+      }),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          directives: [
             {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.file,
-                  expression: "file"
-                }
-              ],
-              staticClass: "btn btn-success",
-              on: { click: _vm.submit }
-            },
-            [_vm._v("Upload transactions")]
-          )
-        ])
-      ])
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.uploadInProgress,
+              expression: "!uploadInProgress"
+            }
+          ],
+          attrs: { id: "upload-form" }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              staticClass: "input-file",
+              attrs: { type: "file", name: "file" },
+              on: { change: _vm.updateFile }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.enableSubmit,
+                    expression: "enableSubmit"
+                  }
+                ],
+                staticClass: "btn btn-success",
+                on: { click: _vm.submit }
+              },
+              [_vm._v("Upload transactions")]
+            )
+          ])
+        ]
+      )
     ])
   ])
 }
@@ -51210,6 +51398,33 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e148258\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserItem.vue", function() {
      var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e148258\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserItem.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("3af0c120", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TransactionList.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TransactionList.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -62028,15 +62243,19 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-37df28ac\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue")
+}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-37df28ac\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-37df28ac\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue")
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-37df28ac"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(

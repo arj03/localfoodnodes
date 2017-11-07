@@ -51,16 +51,27 @@ class Swedbank
      * @return [type]           [description]
      */
     public function parse($callback) {
+        $imported = [];
+        $failed = [];
+
         if (($handle = fopen($this->file->getRealPath(), "r")) !== false) {
             while (($row = fgetcsv($handle, 0, "\t")) !== false) {
                 $data = $this->validate($row);
                 if ($data !== false) {
-                    $callback($data);
+                    $res = $callback($data);
+
+                    if ($res) {
+                        $success[] = $data;
+                    } else {
+                        $failed[] = $data;
+                    }
                 }
             }
 
             fclose($handle);
         }
+
+        return [$imported, $failed];
     }
 
     /**
@@ -84,9 +95,9 @@ class Swedbank
 
         if ($validation->fails()) {
             return false;
+        } else {
+            return $this->mapKeys($keyValue);
         }
-
-        return $this->mapKeys($keyValue);
     }
 
     /**

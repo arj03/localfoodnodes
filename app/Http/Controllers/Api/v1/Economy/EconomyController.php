@@ -14,7 +14,8 @@ class EconomyController extends \App\Http\Controllers\Controller
         ["id" => 2, "label" => "Backers"],
         ["id" => 3, "label" => "Travel"],
         ["id" => 4, "label" => "Bank and service fees"],
-        ["id" => 5, "label" => "Uncategorized costs"],
+        ["id" => 5, "label" => "Other costs"],
+        ["id" => 6, "label" => "Operating costs"],
     ];
 
     /**
@@ -25,7 +26,7 @@ class EconomyController extends \App\Http\Controllers\Controller
      */
     public function transactions(Request $request)
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderByDesc('date')->get();
 
         return [
             'transactions' => $transactions,
@@ -56,11 +57,18 @@ class EconomyController extends \App\Http\Controllers\Controller
             $swedbankParser = new Swedbank($request->file('file'));
 
             $swedbankParser->parse(function($validTransaction) {
-                Transaction::firstOrCreate($validTransaction);
+                if ($validTransaction['ref'] === 'STRIPE') {
+                    $validTransaction['category'] = 2;
+                }
+
+                $transaction = new Transaction();
+                $errors = $transaction->validate($validTransaction);
+
+                if ($errors->isEmpty()) {
+                    Transaction::create($validTransaction);
+                }
             });
         }
-
-        // Return values here
     }
 
     /**

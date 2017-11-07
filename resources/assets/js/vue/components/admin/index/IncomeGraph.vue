@@ -4,7 +4,7 @@
             <div class="card-header">Income</div>
             <div class="card-body">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <div id="income-chart"></div>
+                <div id="income-chart" style="height: 300px;"></div>
             </div>
         </div>
     </div>
@@ -48,7 +48,9 @@
                         return category.id == categoryId;
                     });
 
+                    let sumString = '\r' + sum + ' SEK';
                     let label = (categoryObject && categoryObject.label) ? categoryObject.label : 'Uncategorized';
+                    label += sumString;
 
                     return [label, sum];
                 })
@@ -70,10 +72,11 @@
                         chartArea: {
                             left: 20,
                             top: 20,
-                            width: '80%',
-                            height: '80%',
+                            width: '90%',
+                            height: '90%',
                         },
-                        pieHole: 0.5,
+                        tooltip: { trigger: 'selection' },
+                        pieHole: 0.4,
                     };
 
                     var chart = new google.visualization.PieChart(document.getElementById('income-chart'));
