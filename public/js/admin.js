@@ -2205,7 +2205,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var ordersByNode = _(orders).groupBy(function (order) {
                 return order.order_item_relationship[0].node.id;
             }).map(function (orders, nodeId) {
-
                 var node = orders[0].order_item_relationship[0].node.name;
 
                 var sum = _.sumBy(orders, function (order) {
@@ -2215,18 +2214,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return price * quantity;
                 });
 
-                // let categoryObject = _.find(categories, category => {
-                //     return category.id == categoryId;
-                // });
-                //
-                // let label = (categoryObject && categoryObject.label) ? categoryObject.label : 'Uncategorized';
-
                 return [node, orders.length, sum]; // Convert to positive
             }).value();
 
-            console.log(ordersByNode);
-
-            // // Add headers
+            // Add headers
             ordersByNode.unshift(['Node', 'Number of orders', 'Money']);
 
             return ordersByNode;
@@ -2889,12 +2880,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * Edit the given client.
          */
         edit: function edit(client) {
-            console.log('EDIT', client);
             this.editForm.id = client.id;
             this.editForm.name = client.name;
             this.editForm.redirect = client.redirect;
-
-            console.log($('#modal-edit-client'));
 
             $('#modal-edit-client').modal('show');
         },

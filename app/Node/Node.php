@@ -399,7 +399,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery($product = null)
     {
-        $firstDate = $this->getFirstDeliveryDate($product);
+        $firstDate = $this->getFirstDeliveryDate();
 
         $firstProductionDate = null;
         if ($product && $product->production_type === 'occasional') {
@@ -416,29 +416,40 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
-     * Get first delivery with regard to current date and product deadline.
+     * Recursive function that finds the first delivery with regard to current date or start date and product deadline.
      *
      * @param Product $product
-     * @return DateTIme
+     * @param DateTime $currentDate used in loop
+     * @return DateTime
      */
-    private function getFirstDeliveryDate($product = null)
+    private function getFirstDeliveryDate(\DateTime $currentDate = null)
     {
+        // Current date is the first possible date for a delivery
+        if (!$currentDate) {
+            $currentDate = new \DateTime(date('Y-m-d'));
+            $startDate = new \DateTime($this->delivery_startdate->format('Y-m-d'));
+
+            // If current date is smaller than the nodes start date
+            if ($currentDate < $startDate) {
+                $currentDate = $startDate;
+            }
+        }
+
         // Create first delivery date from current date and node delivery interval
         $deliveryInterval = $this->getDeliveryIntervalFormat();
+        if ($this->delivery_interval === '+1 month') {
+            // Add current month to improve accuracy
+            $deliveryInterval .= ' ' . $currentDate->format('Y-m');
+        }
+
         $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
 
-        // If product has deadline
-        if ($product && $product->deadline > 0) {
-            // Calculate what date the deadline is
-            $currentDate = new \DateTime(date('Y-m-d'));
-            $deadlineDate = new \DateTime($deliveryDate->format('Y-m-d'));
-            $deadlineDate->modify('-' . $product->deadline . ' days');
-
-            // If deadline is before current date jump forward to next delivery date and make the same check again
-            while ($deadlineDate < $currentDate) {
-                $deliveryDate->modify($this->delivery_interval);
-                $deadlineDate->modify($this->delivery_interval);
-            }
+        // Check if delivery date is before current date
+        if ($deliveryDate < $currentDate) {
+            // Modify with interval
+            $currentDate->modify($deliveryInterval);
+            // And call recursive
+            $deliveryDate = $this->getFirstDeliveryDate($currentDate);
         }
 
         return $deliveryDate;
@@ -477,10 +488,10 @@ class Node extends BaseModel implements EventOwnerInterface
 
         $formats = [
             '0' => 'first',
-            '1' => 'first',
-            '2' => 'second',
-            '3' => 'third',
-            '4' => 'fourth',
+            '1' => 'second',
+            '2' => 'third',
+            '3' => 'fourth',
+            '4' => 'fifth',
             '5' => 'last'
         ];
 

@@ -32,7 +32,6 @@
                     return order.order_item_relationship[0].node.id;
                 })
                 .map(function(orders, nodeId) {
-
                     let node = orders[0].order_item_relationship[0].node.name;
 
                     let sum = _.sumBy(orders, order => {
@@ -42,19 +41,11 @@
                         return price * quantity;
                     });
 
-                    // let categoryObject = _.find(categories, category => {
-                    //     return category.id == categoryId;
-                    // });
-                    //
-                    // let label = (categoryObject && categoryObject.label) ? categoryObject.label : 'Uncategorized';
-
                     return [node, orders.length, sum]; // Convert to positive
                 })
                 .value();
 
-                console.log(ordersByNode);
-
-                // // Add headers
+                // Add headers
                 ordersByNode.unshift(['Node', 'Number of orders', 'Money']);
 
                 return ordersByNode;

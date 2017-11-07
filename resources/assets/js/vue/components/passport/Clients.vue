@@ -249,12 +249,9 @@
              * Edit the given client.
              */
             edit(client) {
-                console.log('EDIT', client);
                 this.editForm.id = client.id;
                 this.editForm.name = client.name;
                 this.editForm.redirect = client.redirect;
-
-                console.log($('#modal-edit-client'));
 
                 $('#modal-edit-client').modal('show');
             },
