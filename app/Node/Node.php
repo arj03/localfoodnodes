@@ -356,7 +356,11 @@ class Node extends BaseModel implements EventOwnerInterface
     {
         $deliveryDates = new Collection();
 
+        \Log::debug('yayaya');
+
         $nextDelivery = $this->getNextDelivery($product);
+
+        \Log::debug(var_export($nextDelivery, true));
 
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
@@ -374,6 +378,7 @@ class Node extends BaseModel implements EventOwnerInterface
         $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
 
         foreach ($period as $date) {
+            \Log::debug(var_export($date, true));
             $deliveryDates->push($date->format('Y-m-d'));
         }
 
@@ -399,7 +404,10 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery($product = null)
     {
+        \Log::debug('next delivery');
         $firstDate = $this->getFirstDeliveryDate();
+
+        \Log::debug(var_export($firstDate, true));
 
         $firstProductionDate = null;
         if ($product && $product->production_type === 'occasional') {
@@ -427,29 +435,26 @@ class Node extends BaseModel implements EventOwnerInterface
         // Current date is the first possible date for a delivery
         if (!$currentDate) {
             $currentDate = new \DateTime(date('Y-m-d'));
-            $startDate = new \DateTime($this->delivery_startdate->format('Y-m-d'));
 
             // If current date is smaller than the nodes start date
-            if ($currentDate < $startDate) {
-                $currentDate = $startDate;
+            if ($currentDate < $this->delivery_startdate) {
+                \Log::debug('SET CURRENT AS START DATE');
+                $currentDate = $this->delivery_startdate;
             }
         }
 
         // Create first delivery date from current date and node delivery interval
         $deliveryInterval = $this->getDeliveryIntervalFormat();
-        if ($this->delivery_interval === '+1 month') {
-            // Add current month to improve accuracy
-            $deliveryInterval .= ' ' . $currentDate->format('Y-m');
-        }
+        $deliveryInterval .= ' ' . $currentDate->format('Y-m'); // Add current date for looping to work
 
         $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
 
         // Check if delivery date is before current date
         if ($deliveryDate < $currentDate) {
             // Modify with interval
-            $currentDate->modify($deliveryInterval);
+            $deliveryDate->modify($deliveryInterval);
             // And call recursive
-            $deliveryDate = $this->getFirstDeliveryDate($currentDate);
+            $deliveryDate = $this->getFirstDeliveryDate($deliveryDate);
         }
 
         return $deliveryDate;
