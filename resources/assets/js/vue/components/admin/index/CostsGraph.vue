@@ -4,7 +4,8 @@
             <div class="card-header">Costs</div>
             <div class="card-body">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <div id="costs-chart" style="height: 300px;"></div>
+                <h2 v-show="!loading" class="text-center">Costs 2017 - Total {{ total }} SEK</h2>
+                <div v-show="!loading" id="costs-chart" style="height: 300px;"></div>
             </div>
         </div>
     </div>
@@ -16,6 +17,7 @@
             return {
                 loading: true,
                 incomeTransactions: null,
+                total: null,
             }
         },
         mounted() {
@@ -35,9 +37,11 @@
         },
         methods: {
             formatData(transactions, categories) {
-                let incomes = _(transactions).filter(transaction => {
+                let filteredTransactions = _.filter(transactions, transaction => {
                     return transaction.amount < 0;
-                }).groupBy(transaction => {
+                })
+
+                let costs = _(filteredTransactions).groupBy(transaction => {
                     return transaction.category;
                 }).map(function(category, categoryId) {
                     let sum = _.sumBy(category, transactions => {
@@ -56,10 +60,16 @@
                 })
                 .value();
 
-                // Add headers
-                incomes.unshift(['Category', 'Amount']);
+                let total = _.sumBy(filteredTransactions, transaction => {
+                    return transaction.amount;
+                });
 
-                return incomes;
+                this.total = -total;
+
+                // Add headers
+                costs.unshift(['Category', 'Amount']);
+
+                return costs;
             },
             draw(dataArray) {
                 google.charts.load("current", {packages:["corechart"]});
@@ -77,6 +87,9 @@
                         },
                         pieHole: 0.4,
                         tooltip: { trigger: 'selection' },
+                        legend: {
+                            alignment: 'center',
+                        }
                     };
 
                     var chart = new google.visualization.PieChart(document.getElementById('costs-chart'));

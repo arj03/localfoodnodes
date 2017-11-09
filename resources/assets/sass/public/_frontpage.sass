@@ -1,17 +1,9 @@
-// @mixin input-placeholder($color)
-//   &::-webkit-input-placeholder
-//     color: $color
-//   &:-moz-placeholder
-//     color: $color
-//   &::-moz-placeholder
-//     color: $color
-//   &:-ms-input-placeholder
-//     color: $color
-
 .public-index
   .frontpage-section
     position: relative
     height: 100%
+    &.bg-white
+      background: #fff
     h2
       font-size: 4em
       text-align: center
@@ -25,7 +17,7 @@
 
   // Header
   .frontpage-header
-    background: url('/images/shutterstock_152320880_tomato_hands.jpg') center center
+    background: url('/images/shutterstock_384205462.jpg') center center
     background-size: cover
     color: #fff
     height: 80vh
@@ -33,68 +25,78 @@
     justify-content: center
     align-items: center
     text-align: center
+    .push
+      background: #fff
+      opacity: 0.9
+      color: #333
+      width: 70vw
+      padding: 20px
+      font-weight: 500
     a
       color: #fff
       width: 300px
       margin-top: 50px
 
-  .local-food-impact
-    background: #90c0c5
-    padding: 15px 15px 0
-    h2
-      margin-bottom: 50px
-      color: #fff
+  .what-is-lfn
+    img
+      width: auto
+      max-width: 100%
+
+  .map-wrapper
+    position: relative
     .metrics
-      display: flex
-      justify-content: space-between
+      width: auto
+      position: absolute
+      bottom: 15px
+      left: 15px
+      z-index: 999
+      background: rgba(255, 255, 255, 0.9)
+      padding: 15px
+      border-radius: 3px
       .metric
         margin: 0 auto
         padding: 10px
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        color: #fff
+        color: #333
         b
           font-weight: 700
-          font-size: 26px
+          font-size: 20px
           line-height: 1.1em
 
-  .create-pushes
-    > h2
-      padding-top: 50px
-      padding-bottom: 50px
-      color: #333
-    .row
-      display: flex
-      align-items: stretch
-      color: #fff
-      .users,
-      .nodes,
-      .producers
-        position: relative
-        background-size: cover
-        padding: 15px
-        height: 50vh
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        margin: 15px
-        h2
-          font-size: 2rem
-        a
-          text-align: center
-          font-size: 16px
-          line-height: 1.3em
-          font-weight: bold
-          width: calc(100% - 30px)
-
-      .users
-        background-image: url('/images/shutterstock_436974091_crate.jpg')
-      .nodes
-        background-image: url('/images/shutterstock_326785574_gettogether.jpg')
-      .producers
-        background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
+  // .create-pushes
+  //   > h2
+  //     padding-top: 50px
+  //     padding-bottom: 50px
+  //     color: #333
+  //   .row
+  //     display: flex
+  //     align-items: stretch
+  //     color: #fff
+  //     .users,
+  //     .nodes,
+  //     .producers
+  //       position: relative
+  //       background-size: cover
+  //       padding: 15px
+  //       height: 50vh
+  //       display: flex
+  //       flex-direction: column
+  //       justify-content: space-between
+  //       margin: 15px
+  //       h2
+  //         font-size: 2rem
+  //       a
+  //         text-align: center
+  //         font-size: 16px
+  //         line-height: 1.3em
+  //         font-weight: bold
+  //         width: calc(100% - 30px)
+  //
+  //     .users
+  //       background-image: url('/images/shutterstock_436974091_crate.jpg')
+  //     .nodes
+  //       background-image: url('/images/shutterstock_326785574_gettogether.jpg')
+  //     .producers
+  //       background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
 
 
   .upcoming-events
@@ -159,9 +161,9 @@
               top: -3px
         .label
           margin-top: 15px
-          font-size: 1.75rem
           font-family: 'montserrat'
           text-transform: uppercase
+          font-weight: bold
           color: #dec286
           text-align: center
 
@@ -206,10 +208,15 @@
     &:hover
       background: rgba(255, 255, 255, 0.4)
       text-decoration: none
+    &.dark
+      color: #333
+      border-color: #333
 
 @media (max-width: 991px)
   .public-index
     .frontpage-section
+      h2
+        font-size: 2.5em
       .left,
       .right
         width: 100vw

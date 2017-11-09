@@ -8746,7 +8746,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			} }, { key: "componentDidUpdate", value: function value(t, e) {
 				this.props.dispatch;this.props.userLocation !== t.userLocation && this.createMap(), this.props.nodes !== t.nodes && this.createMarkers();
 			} }, { key: "createMap", value: function value() {
-				var t = this;x = L.map(this.refs.map, { center: [this.props.userLocation.lat, this.props.userLocation.lon], zoom: 8, scrollWheelZoom: !1 });var e = L.tileLayer("https://api.mapbox.com/styles/v1/davidajnered/cj1nwwm82002u2ss6j5e9zrt6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw", { attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: "abcd", maxZoom: 18 });e.addTo(x), x.on("zoomend dragend", function (e) {
+				var t = this;x = L.map(this.refs.map, { center: [this.props.userLocation.lat, this.props.userLocation.lon], zoom: 8, scrollWheelZoom: !1 });var e = "https://api.mapbox.com/styles/v1/davidajnered/cj1nwwm82002u2ss6j5e9zrt6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw",
+				    n = L.tileLayer(e, { attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: "abcd", maxZoom: 18 });n.addTo(x), x.on("zoomend dragend", function (e) {
 					var n = x.getBounds();t.createMarkersOnEvent(n);
 				}), this.setState({ action: "mapCreated", position: { lat: this.props.userLocation.lat, lng: this.props.userLocation.lon } }), this.createMarkersOnEvent(x.getBounds());
 			} }, { key: "createMarkersOnEvent", value: function value(t) {
@@ -8788,7 +8789,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var e = this.props.dispatch;m.searchGeo(e, t.target.value);
 			} }, { key: "render", value: function value() {
 				var t = this.props.fetching || !this.props.userLocation ? this.getMapLoader() : null,
-				    e = null;return this.props.searchResults && (e = f.default.createElement(_.default, { data: this.props.searchResults, onSelect: this.onSelect })), f.default.createElement("div", { className: "map container-fluid" }, f.default.createElement("div", { className: "body-text" }, f.default.createElement("h2", null, E.go_local), f.default.createElement("div", { className: "row no-gutters map-search" }, f.default.createElement("div", { className: "col-12 col-lg-6" }, f.default.createElement("div", { className: "input-group" }, f.default.createElement("span", { className: "input-group-addon" }, f.default.createElement("i", { className: "fa fa-search" })), f.default.createElement("input", { value: this.state.searchString, type: "text", className: "form-control", placeholder: E.find_node_near_you, onChange: this.search.bind(this) })), e)), f.default.createElement("div", { className: "map-holder", ref: "map" }, t)));
+				    e = null;return this.props.searchResults && (e = f.default.createElement(_.default, { data: this.props.searchResults, onSelect: this.onSelect })), f.default.createElement("div", { className: "map container-fluid" }, f.default.createElement("div", { className: "body-text" }, f.default.createElement("h2", { className: "d-none d-sm-block" }, E.go_local), f.default.createElement("div", { className: "row no-gutters map-search" }, f.default.createElement("div", { className: "col-12 col-lg-6" }, f.default.createElement("div", { className: "input-group" }, f.default.createElement("span", { className: "input-group-addon" }, f.default.createElement("i", { className: "fa fa-search" })), f.default.createElement("input", { value: this.state.searchString, type: "text", className: "form-control", placeholder: E.find_node_near_you, onChange: this.search.bind(this) })), e)), f.default.createElement("div", { className: "map-holder", ref: "map" }, t)));
 			} }]), e;
 	}(l.Component);e.default = (0, h.connect)(s)(k);
 }, function (t, e, n) {
@@ -9210,8 +9211,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	    m = n(554),
 	    y = n(555),
 	    g = t.exports = n(556).bind(null, p);g.getXHR = function () {
-		if (!(!h.XMLHttpRequest || h.location && "file:" == h.location.protocol && h.ActiveXObject)) return new XMLHttpRequest();
-		try {
+		if (!(!h.XMLHttpRequest || h.location && "file:" == h.location.protocol && h.ActiveXObject)) return new XMLHttpRequest();try {
 			return new ActiveXObject("Microsoft.XMLHTTP");
 		} catch (t) {}try {
 			return new ActiveXObject("Msxml2.XMLHTTP.6.0");

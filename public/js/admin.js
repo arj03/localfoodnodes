@@ -1931,12 +1931,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loading: true,
-            incomeTransactions: null
+            incomeTransactions: null,
+            total: null
         };
     },
     mounted: function mounted() {
@@ -1957,9 +1959,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         formatData: function formatData(transactions, categories) {
-            var incomes = _(transactions).filter(function (transaction) {
+            var filteredTransactions = _.filter(transactions, function (transaction) {
                 return transaction.amount < 0;
-            }).groupBy(function (transaction) {
+            });
+
+            var costs = _(filteredTransactions).groupBy(function (transaction) {
                 return transaction.category;
             }).map(function (category, categoryId) {
                 var sum = _.sumBy(category, function (transactions) {
@@ -1977,10 +1981,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return [label, -sum]; // Convert to positive
             }).value();
 
-            // Add headers
-            incomes.unshift(['Category', 'Amount']);
+            var total = _.sumBy(filteredTransactions, function (transaction) {
+                return transaction.amount;
+            });
 
-            return incomes;
+            this.total = -total;
+
+            // Add headers
+            costs.unshift(['Category', 'Amount']);
+
+            return costs;
         },
         draw: function draw(dataArray) {
             google.charts.load("current", { packages: ["corechart"] });
@@ -1997,7 +2007,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         height: '90%'
                     },
                     pieHole: 0.4,
-                    tooltip: { trigger: 'selection' }
+                    tooltip: { trigger: 'selection' },
+                    legend: {
+                        alignment: 'center'
+                    }
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('costs-chart'));
@@ -2026,12 +2039,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loading: true,
-            incomeTransactions: null
+            incomeTransactions: null,
+            total: null
         };
     },
     mounted: function mounted() {
@@ -2052,9 +2067,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         formatData: function formatData(transactions, categories) {
-            var incomes = _(transactions).filter(function (transaction) {
+            var filteredTransactions = _.filter(transactions, function (transaction) {
                 return transaction.amount > 0;
-            }).groupBy(function (transaction) {
+            });
+
+            var incomes = _(filteredTransactions).groupBy(function (transaction) {
                 return transaction.category;
             }).map(function (category, categoryId) {
                 var sum = _.sumBy(category, function (transactions) {
@@ -2071,6 +2088,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 return [label, sum];
             }).value();
+
+            var total = _.sumBy(filteredTransactions, function (transaction) {
+                return transaction.amount;
+            });
+
+            this.total = total;
 
             // Add headers
             incomes.unshift(['Category', 'Amount']);
@@ -2092,7 +2115,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         height: '90%'
                     },
                     tooltip: { trigger: 'selection' },
-                    pieHole: 0.4
+                    pieHole: 0.4,
+                    legend: {
+                        alignment: 'center'
+                    }
                 };
 
                 var chart = new google.visualization.PieChart(document.getElementById('income-chart'));
@@ -2337,6 +2363,88 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/users/SignupGraph.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['data'],
+    data: function data() {
+        return {
+            loading: true
+        };
+    },
+    watch: {
+        data: function data(_data) {
+            if (_data) {
+                var graphData = this.formatData(_data);
+                this.draw(graphData);
+                this.loading = false;
+            }
+        }
+    },
+    methods: {
+        getEntityData: function getEntityData(type, data) {
+            var entitiesData = data[type];
+
+            var entityByMonth = _(entitiesData).sortBy(function (entity) {
+                return moment(entity.created_at).unix();
+            }).groupBy(function (entity) {
+                return moment(entity.created_at).format('MMMM YYYY');
+            }).map(function (entities, date) {
+                return [date, entities.length];
+            }).value();
+
+            return entityByMonth;
+        },
+        formatData: function formatData(data) {
+            // Users
+            var usersByMonth = this.getEntityData('users', data);
+            var producersByMonth = this.getEntityData('producers', data);
+            var nodesByMonth = this.getEntityData('nodes', data);
+
+            var zipped = _.zipWith(usersByMonth, producersByMonth, nodesByMonth, function (u, p, n) {
+                return [u[0], u[1], p[1], n[1]];
+            });
+
+            // Add headers
+            zipped.unshift(['Date', 'Users', 'Producers', 'Nodes']);
+
+            return zipped;
+        },
+        draw: function draw(dataArray) {
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart.bind(this));
+
+            function drawChart() {
+                var options = {
+
+                    isStacked: true
+                };
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('user-signup-chart'));
+
+                var dataTable = google.visualization.arrayToDataTable(dataArray);
+                chart.draw(dataTable, options);
+            }
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/users/UserItem.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2487,97 +2595,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        'user-signup-graph': __webpack_require__("./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue"),
+        'signup-graph': __webpack_require__("./resources/assets/js/vue/components/admin/users/SignupGraph.vue"),
         'user-list': __webpack_require__("./resources/assets/js/vue/components/admin/users/UserList.vue")
     },
     data: function data() {
         return {
-            users: null
+            data: {
+                users: null,
+                nodes: null,
+                producers: null
+            }
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('/admin/token').then(function (response) {
-            return axios.get('/api/v1/users', {
-                headers: {
-                    'Authorization': 'Bearer ' + response.data
-                }
-            });
-        }).then(function (response) {
-            _this.users = response.data;
-        });
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['users'],
-    data: function data() {
-        return {
-            loading: true
-        };
+        axios.all([this.getUsers(), this.getNodes(), this.getProducers()]).then(axios.spread(function (users, nodes, producers) {
+            _this.data = {
+                users: users.data,
+                nodes: nodes.data,
+                producers: producers.data
+            };
+        }));
     },
-    watch: {
-        users: function users(_users) {
-            if (_users) {
-                var data = this.formatData();
-                this.draw(data);
-            }
-        }
-    },
+
     methods: {
-        formatData: function formatData() {
-            var users = _.sortedIndexBy(this.users, 'created_at');
-
-            var first = this.users[0];
-            var last = this.users[_.size(this.users) - 1];
-            var usersByCreatedAt = _.groupBy(this.users, function (user) {
-                return moment(user.created_at).format('YYYY-MM-DD');
+        getUsers: function getUsers() {
+            return axios.get('/admin/token').then(function (response) {
+                return axios.get('/api/v1/users', {
+                    headers: {
+                        'Authorization': 'Bearer ' + response.data
+                    }
+                });
+            }).catch(function (error) {
+                console.error('Error in getUsers', error);
             });
-
-            var data = [['Date', 'Signups']];
-
-            // If you want an exclusive end date (half-open interval)
-            for (var m = moment(first.created_at); m.isBefore(last.created_at); m.add(1, 'days')) {
-                data.push([m.format('YYYY-MM-DD'), _.size(usersByCreatedAt[m.format('YYYY-MM-DD')])]);
-            }
-
-            return data;
         },
-        draw: function draw(dataArray) {
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart.bind(this));
-
-            function drawChart() {
-                var options = {
-                    legend: { position: 'none' },
-                    hAxis: { textPosition: 'none' }
-                };
-
-                var chart = new google.visualization.ColumnChart(document.getElementById('user-signup-chart'));
-
-                var dataTable = google.visualization.arrayToDataTable(dataArray);
-                chart.draw(dataTable, options);
-                this.loading = false;
-            }
+        getNodes: function getNodes() {
+            return axios.get('/admin/token').then(function (response) {
+                return axios.get('/api/v1/nodes', {
+                    headers: {
+                        'Authorization': 'Bearer ' + response.data
+                    }
+                });
+            }).catch(function (error) {
+                console.error('Error in getNodes', error);
+            });
+        },
+        getProducers: function getProducers() {
+            return axios.get('/admin/token').then(function (response) {
+                return axios.get('/api/v1/producers', {
+                    headers: {
+                        'Authorization': 'Bearer ' + response.data
+                    }
+                });
+            }).catch(function (error) {
+                console.error('Error in getProducers', error);
+            });
         }
     }
 });
@@ -49496,6 +49570,48 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1c366fa0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/users/SignupGraph.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card mb-5" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v("User singups")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("i", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.loading,
+            expression: "loading"
+          }
+        ],
+        staticClass: "fa fa-spinner fa-spin"
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticStyle: { height: "300px" },
+        attrs: { id: "user-signup-chart" }
+      })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1c366fa0", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-27dd7be5\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/index/IndexPage.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49796,45 +49912,6 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3410d836\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card mb-5" }, [
-    _c("div", { staticClass: "card-header" }, [_vm._v("User singups")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("i", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.loading,
-            expression: "loading"
-          }
-        ],
-        staticClass: "fa fa-spinner fa-spin"
-      }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "user-signup-chart" } })
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3410d836", module.exports)
-  }
-}
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-37df28ac\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/economy/TransactionList.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49978,9 +50055,9 @@ var render = function() {
         "div",
         { staticClass: "col-12" },
         [
-          _c("user-signup-graph", { attrs: { users: _vm.users } }),
+          _c("signup-graph", { attrs: { data: _vm.data } }),
           _vm._v(" "),
-          _c("user-list", { attrs: { users: _vm.users } })
+          _c("user-list", { attrs: { users: _vm.data.users } })
         ],
         1
       )
@@ -50487,7 +50564,31 @@ var render = function() {
           staticClass: "fa fa-spinner fa-spin"
         }),
         _vm._v(" "),
+        _c(
+          "h2",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.loading,
+                expression: "!loading"
+              }
+            ],
+            staticClass: "text-center"
+          },
+          [_vm._v("Costs 2017 - Total " + _vm._s(_vm.total) + " SEK")]
+        ),
+        _vm._v(" "),
         _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "!loading"
+            }
+          ],
           staticStyle: { height: "300px" },
           attrs: { id: "costs-chart" }
         })
@@ -50611,7 +50712,31 @@ var render = function() {
           staticClass: "fa fa-spinner fa-spin"
         }),
         _vm._v(" "),
+        _c(
+          "h2",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.loading,
+                expression: "!loading"
+              }
+            ],
+            staticClass: "text-center"
+          },
+          [_vm._v("Income 2017 - Total " + _vm._s(_vm.total) + " SEK")]
+        ),
+        _vm._v(" "),
         _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "!loading"
+            }
+          ],
           staticStyle: { height: "300px" },
           attrs: { id: "income-chart" }
         })
@@ -62619,6 +62744,53 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/vue/components/admin/users/SignupGraph.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/users/SignupGraph.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1c366fa0\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/users/SignupGraph.vue")
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/vue/components/admin/users/SignupGraph.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] SignupGraph.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c366fa0", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c366fa0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/vue/components/admin/users/UserItem.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -62753,53 +62925,6 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-53feef60", Component.options)
   } else {
     hotAPI.reload("data-v-53feef60", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
-/* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue")
-/* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-3410d836\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/admin/users/UserSignupGraph.vue")
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/vue/components/admin/users/UserSignupGraph.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] UserSignupGraph.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3410d836", Component.options)
-  } else {
-    hotAPI.reload("data-v-3410d836", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

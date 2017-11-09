@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <user-signup-graph v-bind:users="users"></user-signup-graph>
-                <user-list v-bind:users="users"></user-list>
+                <signup-graph :data="data"></signup-graph>
+                <user-list :users="data.users"></user-list>
             </div>
         </div>
     </div>
@@ -12,26 +12,72 @@
 <script>
     export default {
         components: {
-            'user-signup-graph': require('./UserSignupGraph'),
+            'signup-graph': require('./SignupGraph'),
             'user-list': require('./UserList'),
         },
         data: function() {
             return {
-                users: null,
+                data: {
+                    users: null,
+                    nodes: null,
+                    producers: null
+                },
             }
         },
         mounted() {
-            axios.get('/admin/token')
-            .then(response => {
-                return axios.get('/api/v1/users', {
-                    headers: {
-                        'Authorization': 'Bearer ' + response.data
-                    }
+            axios.all([
+                this.getUsers(),
+                this.getNodes(),
+                this.getProducers()
+            ])
+            .then(axios.spread((users, nodes, producers) => {
+                this.data = {
+                    users: users.data,
+                    nodes: nodes.data,
+                    producers: producers.data,
+                };
+            }));
+        },
+        methods: {
+            getUsers() {
+                return axios.get('/admin/token')
+                .then(response => {
+                    return axios.get('/api/v1/users', {
+                        headers: {
+                            'Authorization': 'Bearer ' + response.data
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error in getUsers', error);
                 });
-            })
-            .then(response => {
-                this.users = response.data;
-            });
+            },
+            getNodes() {
+                return axios.get('/admin/token')
+                .then(response => {
+                    return axios.get('/api/v1/nodes', {
+                        headers: {
+                            'Authorization': 'Bearer ' + response.data
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error in getNodes', error);
+                });
+            },
+            getProducers() {
+                return axios.get('/admin/token')
+                .then(response => {
+                    return axios.get('/api/v1/producers', {
+                        headers: {
+                            'Authorization': 'Bearer ' + response.data
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error in getProducers', error);
+                });
+            },
         }
     }
 </script>

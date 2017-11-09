@@ -425,7 +425,6 @@ a.btn:focus {
 }
 
 body.public .page {
-  background: #f1f0ea;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -442,7 +441,6 @@ body.public .page {
 body.public .page .content {
   width: 100%;
   float: left;
-  background: #f1f0ea;
   z-index: 0;
 }
 
@@ -857,6 +855,7 @@ body.page .page .card .body-text {
 }
 
 .node-map {
+  background: #eadcb7;
   position: relative;
   text-align: center;
   min-height: 70vh;
@@ -866,7 +865,7 @@ body.page .page .card .body-text {
   padding-top: 50px;
   font-size: 4em;
   font-weight: 200;
-  color: #333;
+  color: #fff;
 }
 
 .node-map .map-search {
@@ -876,11 +875,11 @@ body.page .page .card .body-text {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 50px;
+  padding: 50px;
 }
 
 .node-map .map-search .input-group {
-  background: #c3b07b;
+  background: #fff;
 }
 
 .node-map .map-search .input-group .input-group-addon {
@@ -888,7 +887,7 @@ body.page .page .card .body-text {
   border: 0;
   font-size: 2rem;
   padding: 20px;
-  color: #fff;
+  color: #eadcb7;
 }
 
 .node-map .map-search .input-group input {
@@ -896,37 +895,34 @@ body.page .page .card .body-text {
   padding: 20px;
   border: 0;
   border-radius: 0;
-  background: #d6c69b;
-  color: #fff;
+  background: #fff;
+  color: #333;
 }
 
 .node-map .map-search .input-group input::-webkit-input-placeholder {
-  color: #fff;
+  color: #666;
 }
 
 .node-map .map-search .input-group input:-moz-placeholder {
-  color: #fff;
+  color: #666;
 }
 
 .node-map .map-search .input-group input::-moz-placeholder {
-  color: #fff;
+  color: #666;
 }
 
 .node-map .map-search .input-group input:-ms-input-placeholder {
-  color: #fff;
+  color: #666;
 }
 
 .node-map .map-search .search-results {
-  background: #e4d8bc;
-  border-top: 1px solid #d0c4a8;
+  background: #fff;
   text-align: left;
   font-family: 'montserrat';
   position: absolute;
   z-index: 9999;
   width: 100%;
   left: 0;
-  -webkit-box-shadow: #ccc 0 1px 8px -2px;
-          box-shadow: #ccc 0 1px 8px -2px;
 }
 
 .node-map .map-search .search-results li {
@@ -934,19 +930,20 @@ body.page .page .card .body-text {
   cursor: pointer;
 }
 
-.node-map .map-search .search-results li.selected {
-  background: #f2e6ca;
+.node-map .map-search .search-results li.selected b {
+  border-color: #666;
 }
 
 .node-map .map-search .search-results li b {
   text-transform: uppercase;
-  color: #fff;
+  color: #666;
+  border-bottom: 2px solid transparent;
 }
 
 .node-map .map-search .search-results li p {
   font-size: 12px;
   margin: 0;
-  color: #807762;
+  color: #ccc;
 }
 
 .node-map .map-holder {
@@ -1195,6 +1192,10 @@ body.public-node-node .product-card .card-footer .badge {
   height: 100%;
 }
 
+.public-index .frontpage-section.bg-white {
+  background: #fff;
+}
+
 .public-index .frontpage-section h2 {
   font-size: 4em;
   text-align: center;
@@ -1214,7 +1215,7 @@ body.public-node-node .product-card .card-footer .badge {
 }
 
 .public-index .frontpage-header {
-  background: url("/images/shutterstock_152320880_tomato_hands.jpg") center center;
+  background: url("/images/shutterstock_384205462.jpg") center center;
   background-size: cover;
   color: #fff;
   height: 80vh;
@@ -1230,118 +1231,51 @@ body.public-node-node .product-card .card-footer .badge {
   text-align: center;
 }
 
+.public-index .frontpage-header .push {
+  background: #fff;
+  opacity: 0.9;
+  color: #333;
+  width: 70vw;
+  padding: 20px;
+  font-weight: 500;
+}
+
 .public-index .frontpage-header a {
   color: #fff;
   width: 300px;
   margin-top: 50px;
 }
 
-.public-index .local-food-impact {
-  background: #90c0c5;
-  padding: 15px 15px 0;
+.public-index .what-is-lfn img {
+  width: auto;
+  max-width: 100%;
 }
 
-.public-index .local-food-impact h2 {
-  margin-bottom: 50px;
-  color: #fff;
+.public-index .map-wrapper {
+  position: relative;
 }
 
-.public-index .local-food-impact .metrics {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.public-index .map-wrapper .metrics {
+  width: auto;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 3px;
 }
 
-.public-index .local-food-impact .metrics .metric {
+.public-index .map-wrapper .metrics .metric {
   margin: 0 auto;
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #fff;
-}
-
-.public-index .local-food-impact .metrics .metric b {
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 1.1em;
-}
-
-.public-index .create-pushes > h2 {
-  padding-top: 50px;
-  padding-bottom: 50px;
   color: #333;
 }
 
-.public-index .create-pushes .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  color: #fff;
-}
-
-.public-index .create-pushes .row .users,
-.public-index .create-pushes .row .nodes,
-.public-index .create-pushes .row .producers {
-  position: relative;
-  background-size: cover;
-  padding: 15px;
-  height: 50vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 15px;
-}
-
-.public-index .create-pushes .row .users h2,
-.public-index .create-pushes .row .nodes h2,
-.public-index .create-pushes .row .producers h2 {
-  font-size: 2rem;
-}
-
-.public-index .create-pushes .row .users a,
-.public-index .create-pushes .row .nodes a,
-.public-index .create-pushes .row .producers a {
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.3em;
-  font-weight: bold;
-  width: calc(100% - 30px);
-}
-
-.public-index .create-pushes .row .users {
-  background-image: url("/images/shutterstock_436974091_crate.jpg");
-}
-
-.public-index .create-pushes .row .nodes {
-  background-image: url("/images/shutterstock_326785574_gettogether.jpg");
-}
-
-.public-index .create-pushes .row .producers {
-  background-image: url("/images/shutterstock_271622087_producer_carrots.jpg");
+.public-index .map-wrapper .metrics .metric b {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.1em;
 }
 
 .public-index .upcoming-events {
@@ -1447,9 +1381,9 @@ body.public-node-node .product-card .card-footer .badge {
 
 .public-index .membership .metrics .metric .label {
   margin-top: 15px;
-  font-size: 1.75rem;
   font-family: 'montserrat';
   text-transform: uppercase;
+  font-weight: bold;
   color: #dec286;
   text-align: center;
 }
@@ -1503,7 +1437,16 @@ body.public-node-node .product-card .card-footer .badge {
   text-decoration: none;
 }
 
+.public-index .btn-outline.dark {
+  color: #333;
+  border-color: #333;
+}
+
 @media (max-width: 991px) {
+  .public-index .frontpage-section h2 {
+    font-size: 2.5em;
+  }
+
   .public-index .frontpage-section .left,
   .public-index .frontpage-section .right {
     width: 100vw;

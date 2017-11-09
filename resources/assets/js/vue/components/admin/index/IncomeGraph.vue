@@ -4,7 +4,8 @@
             <div class="card-header">Income</div>
             <div class="card-body">
                 <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <div id="income-chart" style="height: 300px;"></div>
+                <h2 v-show="!loading" class="text-center">Income 2017 - Total {{ total }} SEK</h2>
+                <div v-show="!loading" id="income-chart" style="height: 300px;"></div>
             </div>
         </div>
     </div>
@@ -16,6 +17,7 @@
             return {
                 loading: true,
                 incomeTransactions: null,
+                total: null
             }
         },
         mounted() {
@@ -35,9 +37,11 @@
         },
         methods: {
             formatData(transactions, categories) {
-                let incomes = _(transactions).filter(transaction => {
+                let filteredTransactions = _.filter(transactions, transaction => {
                     return transaction.amount > 0;
-                }).groupBy(transaction => {
+                })
+
+                let incomes = _(filteredTransactions).groupBy(transaction => {
                     return transaction.category;
                 }).map(function(category, categoryId) {
                     let sum = _.sumBy(category, transactions => {
@@ -55,6 +59,12 @@
                     return [label, sum];
                 })
                 .value();
+
+                let total = _.sumBy(filteredTransactions, transaction => {
+                    return transaction.amount;
+                });
+
+                this.total = total;
 
                 // Add headers
                 incomes.unshift(['Category', 'Amount']);
@@ -77,6 +87,9 @@
                         },
                         tooltip: { trigger: 'selection' },
                         pieHole: 0.4,
+                        legend: {
+                            alignment: 'center',
+                        }
                     };
 
                     var chart = new google.visualization.PieChart(document.getElementById('income-chart'));

@@ -358,7 +358,7 @@ class ProductController extends Controller
     public function updateDeliveries(Request $request, $producerId, $productId)
     {
         $user = Auth::user();
-        $producer = $user->producerAdminLink($producerId)->getProducer();;
+        $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
         $this->saveNodeDeliveries($request, $product);

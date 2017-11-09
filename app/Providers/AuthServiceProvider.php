@@ -38,6 +38,8 @@ class AuthServiceProvider extends ServiceProvider
             'organization-transactions-read' => '',
             'organization-transactions-modify' => '',
             'orders-read-all' => '',
+            'nodes-read-all' => '',
+            'producers-read-all' => '',
         ]);
 
         Passport::routes(null, ['middleware' => [\Barryvdh\Cors\HandleCors::class]]);
