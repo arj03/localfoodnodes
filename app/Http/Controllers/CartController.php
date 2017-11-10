@@ -77,12 +77,12 @@ class CartController extends Controller
             $errors->add('no_delivery_dates', trans('public/product.no_delivery_dates'));
         }
 
-        if (!$request->has('quantity')) {
+        if (!$request->has('quantity') || empty($request->input('quantity'))) {
             $errors->add('no_quantity', trans('public/product.no_quantity'));
         }
 
         if (!$errors->isEmpty()) {
-            $request->session()->flash('error', [trans('public/product.required_fields_missing')]);
+            $request->session()->flash('error', $errors->all());
             return redirect()->back()->withInput()->withErrors($errors);
         }
 
