@@ -14,6 +14,7 @@ use App\Producer\Producer;
 use App\Producer\ProducerNodeLink;
 use App\Producer\ProducerAdminLink;
 use App\Product\Product;
+use App\Product\ProductNodeDeliveryLink;
 use App\Node\Node;
 use App\Order\Order;
 use App\Image\Image;
@@ -467,9 +468,17 @@ class ProducerController extends Controller
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $data = $request->all();
 
+        // Remove producer node link
         $producerNodeLink = ProducerNodeLink::where('producer_id', $producer->id)->where('node_id', $data['nodeId'])->first();
         $producerNodeLink->delete();
 
+        // Find all product ids and remove product node delivery link too
+        $productIds = $producer->products()->map(function($product) {
+            return $product->id;
+        });
+        ProductNodeDeliveryLink::whereIn('product_id', $productIds)->where('node_id', $data['nodeId'])->delete();
+
+        // Return new selection
         $selectedNodes = [];
         $links = ProducerNodeLink::where('producer_id', $producer->id)->get();
         foreach ($links as $link) {

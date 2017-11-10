@@ -45,7 +45,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
      */
     public function productRelationship()
     {
-        return $this->hasOne('App\Product\Product', 'id', 'product_id');
+        return $this->hasOne('App\Product\Product', 'id', 'product_id')->with(['productionsRelationship']);
     }
 
     /**
@@ -53,9 +53,13 @@ class ProductNodeDeliveryLink extends \App\BaseModel
      *
      * @return Producer
      */
-    public function getProduct()
+    public function getProduct($with = [])
     {
-        return $this->productRelationship;
+        if (empty($with)) {
+            return $this->productRelationship;
+        } else {
+            return $this->productRelationship;
+        }
     }
 
     /**
