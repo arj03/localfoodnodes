@@ -21,13 +21,10 @@
             }
         },
         mounted() {
-            axios.get('/admin/token')
-            .then(response => {
-                return axios.get('/api/v1/orders', {
-                    headers: {
-                        'Authorization': 'Bearer ' + response.data
-                    }
-                });
+            axios.get('/admin/api-proxy', {
+                params: {
+                    url: '/api/v1/orders'
+                }
             })
             .then(response => {
                 this.orders = response.data;

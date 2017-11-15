@@ -40,39 +40,30 @@
         },
         methods: {
             getUsers() {
-                return axios.get('/admin/token')
-                .then(response => {
-                    return axios.get('/api/v1/users', {
-                        headers: {
-                            'Authorization': 'Bearer ' + response.data
-                        }
-                    });
+                return axios.get('/admin/api-proxy', {
+                    params: {
+                        url: '/api/v1/users'
+                    }
                 })
                 .catch(error => {
                     console.error('Error in getUsers', error);
                 });
             },
             getNodes() {
-                return axios.get('/admin/token')
-                .then(response => {
-                    return axios.get('/api/v1/nodes', {
-                        headers: {
-                            'Authorization': 'Bearer ' + response.data
-                        }
-                    });
+                return axios.get('/admin/api-proxy', {
+                    params: {
+                        url: '/api/v1/nodes'
+                    }
                 })
                 .catch(error => {
                     console.error('Error in getNodes', error);
                 });
             },
             getProducers() {
-                return axios.get('/admin/token')
-                .then(response => {
-                    return axios.get('/api/v1/producers', {
-                        headers: {
-                            'Authorization': 'Bearer ' + response.data
-                        }
-                    });
+                return axios.get('/admin/api-proxy', {
+                    params: {
+                        url: '/api/v1/producers'
+                    }
                 })
                 .catch(error => {
                     console.error('Error in getProducers', error);

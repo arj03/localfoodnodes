@@ -1,18 +1,14 @@
 <template>
-    <div class="col-12 col-lg-6 mb-5">
-        <div class="card">
-            <div class="card-header">Costs</div>
-            <div class="card-body">
-                <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <h2 v-show="!loading" class="text-center">Costs 2017 - Total {{ total }} SEK</h2>
-                <div v-show="!loading" id="costs-chart" style="height: 300px;"></div>
-            </div>
-        </div>
+    <div>
+        <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
+        <h3 v-show="!loading" class="text-center">{{ trans.costs }} 2017 - {{ trans.total }} {{ total }} SEK</h3>
+        <div v-show="!loading" id="costs-chart" class="chart" style="height: 300px;"></div>
     </div>
 </template>
 
 <script>
     export default {
+        props: ['trans'],
         data: function() {
             return {
                 loading: true,
@@ -21,13 +17,10 @@
             }
         },
         mounted() {
-            axios.get('/admin/token')
-            .then(response => {
-                return axios.get('/api/v1/economy/transactions', {
-                    headers: {
-                        'Authorization': 'Bearer ' + response.data
-                    }
-                });
+            axios.get('/api-proxy', {
+                params: {
+                    url: '/api/v1/economy/transactions',
+                }
             })
             .then(response => {
                 let data = this.formatData(response.data.transactions, response.data.categories);
@@ -37,6 +30,8 @@
         },
         methods: {
             formatData(transactions, categories) {
+                let trans = this.trans;
+
                 let filteredTransactions = _.filter(transactions, transaction => {
                     return transaction.amount < 0;
                 })
@@ -52,8 +47,8 @@
                         return category.id == categoryId;
                     });
 
-                    let sumString = '\r' + sum + ' SEK';
-                    let label = (categoryObject && categoryObject.label) ? categoryObject.label : 'Uncategorized';
+                    let sumString = '\r' + -sum + ' SEK';
+                    let label = (categoryObject && categoryObject.label) ? trans['category_' + categoryObject.id] : trans.uncategorized;
                     label += sumString;
 
                     return [label, -sum]; // Convert to positive
@@ -89,6 +84,12 @@
                         tooltip: { trigger: 'selection' },
                         legend: {
                             alignment: 'center',
+                        },
+                        slices: {
+                            0: { color: '#f2e3b4' },
+                            1: { color: '#e7d7a6' },
+                            2: { color: '#d2c08b' },
+                            3: { color: '#c8b67f' },
                         }
                     };
 

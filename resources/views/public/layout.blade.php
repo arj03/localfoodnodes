@@ -3,6 +3,7 @@
     <head>
         <title>@yield('title') - Local Food Nodes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Facebook meta -->
         <meta property="fb:app_id" content="923888444420982" />
@@ -54,7 +55,6 @@
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <script src="/js/underscore-min.js"></script>
         <script src="{{ URL::asset('js/jquery.fancybox.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::asset('js/slick.min.js') }}"></script>
         <script>
@@ -67,7 +67,6 @@
                 });
             });
         </script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -77,6 +76,7 @@
             ga('create', 'UA-90169652-1', 'auto');
             ga('send', 'pageview');
         </script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://embed.small.chat/T0Z3AQJK1G5Q08NBRS.js"></script>
     </body>
 </html>

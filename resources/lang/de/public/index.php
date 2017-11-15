@@ -9,7 +9,7 @@ return [
     'food_producer' => 'Are you a local food producer?',
     'grey_map_marker_info' => 'Grey icons are delivery locations where orders are made through Facebook.',
     'link_to_fb' => 'Facebook group for',
-    'list' => 'List your products',
+    'list' => 'Sell your products',
     'locals' => 'Locals',
     'local_nodes' => 'Local nodes',
     'local_producers' => 'Local producers',

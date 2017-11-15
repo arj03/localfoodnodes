@@ -27,7 +27,9 @@
     "redux-thunk": "^2.1.0",
     "superagent": "^2.3.0",
     "superagent-promise": "^1.1.0",
-    "underscore": "^1.8.3",
     "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }

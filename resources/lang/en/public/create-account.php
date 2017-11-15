@@ -19,7 +19,7 @@ return [
             Hey there you local organiser and warm welcome to Local Food Nodes. It is fantastic that you wish to start a node in you area. It is free and very simple. To be able to do this you first have to create an account, or simply sign in using Facebook if you prefer.
         </p>',
     'producer' => '
-        <h1 class="mb-3">List your products</h1>
+        <h1 class="mb-3">Sell your products</h1>
         <p>
             Hey there you local food hero and welcome to Local Food Nodes. This is a free and open producer tool for co-creating the future of local food together with other producers and your local consumers. Here you can list, administrate and sell your product directly to end-consumers, without a middleman. To be able to do this, you first need to create an account, or simply sign in using Facebook if you prefer.
         </p>

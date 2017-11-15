@@ -2,8 +2,8 @@
     <div class="card mb-5">
         <div class="card-header">User singups</div>
         <div class="card-body">
-            <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-            <div id="user-signup-chart" style="height: 300px;"></div>
+            <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
+            <div id="user-signup-chart" class="chart" style="height: 300px;"></div>
         </div>
     </div>
 </template>

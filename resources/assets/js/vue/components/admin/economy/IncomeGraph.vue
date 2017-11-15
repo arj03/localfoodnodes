@@ -1,13 +1,8 @@
 <template>
-    <div class="col-12 col-lg-6 mb-5">
-        <div class="card">
-            <div class="card-header">Income</div>
-            <div class="card-body">
-                <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <h2 v-show="!loading" class="text-center">Income 2017 - Total {{ total }} SEK</h2>
-                <div v-show="!loading" id="income-chart" style="height: 300px;"></div>
-            </div>
-        </div>
+    <div>
+        <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
+        <h2 v-show="!loading" class="text-center">Income 2017 - Total {{ total }} SEK</h2>
+        <div v-show="!loading" id="income-chart" class="chart" style="height: 300px;"></div>
     </div>
 </template>
 
@@ -21,13 +16,10 @@
             }
         },
         mounted() {
-            axios.get('/admin/token')
-            .then(response => {
-                return axios.get('/api/v1/economy/transactions', {
-                    headers: {
-                        'Authorization': 'Bearer ' + response.data
-                    }
-                });
+            axios.get('/admin/api-proxy', {
+                params: {
+                    url: '/api/v1/economy/transactions',
+                }
             })
             .then(response => {
                 let data = this.formatData(response.data.transactions, response.data.categories);
@@ -89,6 +81,10 @@
                         pieHole: 0.4,
                         legend: {
                             alignment: 'center',
+                            position: 'left',
+                            textStyle: {
+                                float: 'right'
+                            }
                         }
                     };
 

@@ -1,8 +1,9 @@
 {
-    "/js/admin.js": "/js/admin.js?id=a3aad13ac14c307e8320",
-    "/css/public.css": "/css/public.css?id=e36a235060e3e611ed4e",
+    "/js/admin.js": "/js/admin.js?id=7385d3441e6a85df03fd",
+    "/css/public.css": "/css/public.css?id=003ea380b324fc603c07",
     "/css/account.css": "/css/account.css?id=bee69a669d680c4705cb",
     "/css/admin.css": "/css/admin.css?id=8dee00b314d18b500be9",
-    "/js/producer-node-map.js": "/js/producer-node-map.js?id=6eb97feee2e8270fa0bc",
-    "/js/node-map.js": "/js/node-map.js?id=fbf0057b227f2698b64b"
+    "/js/frontpage.js": "/js/frontpage.js?id=cd5cb350706b9345521a",
+    "/js/producer-node-map.js": "/js/producer-node-map.js?id=1aff2ba1e5f4c80bae74",
+    "/js/node-map.js": "/js/node-map.js?id=f0692fae9c3ec3b80fb0"
 }

@@ -1,5 +1,5 @@
 import constants from '../constants';
-import _ from 'underscore';
+import _ from 'lodash';
 
 function nodeMap(state, action) {
     switch (action.type) {

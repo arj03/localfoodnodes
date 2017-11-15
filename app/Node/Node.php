@@ -356,11 +356,7 @@ class Node extends BaseModel implements EventOwnerInterface
     {
         $deliveryDates = new Collection();
 
-        \Log::debug('yayaya');
-
         $nextDelivery = $this->getNextDelivery($product);
-
-        \Log::debug(var_export($nextDelivery, true));
 
         $endDelivery = new \DateTime($nextDelivery->format('Y-m-d'));
         $endDelivery->modify('+1 year');
@@ -378,7 +374,6 @@ class Node extends BaseModel implements EventOwnerInterface
         $period = new \DatePeriod($nextDelivery, $interval, $endDelivery);
 
         foreach ($period as $date) {
-            \Log::debug(var_export($date, true));
             $deliveryDates->push($date->format('Y-m-d'));
         }
 
@@ -404,10 +399,7 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery($product = null)
     {
-        \Log::debug('next delivery');
         $firstDate = $this->getFirstDeliveryDate();
-
-        \Log::debug(var_export($firstDate, true));
 
         $firstProductionDate = null;
         if ($product && $product->production_type === 'occasional') {
@@ -438,7 +430,6 @@ class Node extends BaseModel implements EventOwnerInterface
 
             // If current date is smaller than the nodes start date
             if ($currentDate < $this->delivery_startdate) {
-                \Log::debug('SET CURRENT AS START DATE');
                 $currentDate = $this->delivery_startdate;
             }
         }

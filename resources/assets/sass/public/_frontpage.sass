@@ -12,7 +12,7 @@
       &.thin
         font-weight: 200
     p
-      font-size: 18px
+      font-size: 16px
       line-height: 1.5em
 
   // Header
@@ -37,11 +37,6 @@
       width: 300px
       margin-top: 50px
 
-  .what-is-lfn
-    img
-      width: auto
-      max-width: 100%
-
   .map-wrapper
     position: relative
     .metrics
@@ -50,60 +45,27 @@
       bottom: 15px
       left: 15px
       z-index: 999
-      background: rgba(255, 255, 255, 0.9)
-      padding: 15px
+      background: #fff
       border-radius: 3px
       .metric
         margin: 0 auto
-        padding: 10px
+        padding: 15px 15px 10px
         color: #333
-        b
+        float: left
+        text-align: center
+        .value
           font-weight: 700
           font-size: 20px
-          line-height: 1.1em
+        .label
+          font-size: 12px
 
-  // .create-pushes
-  //   > h2
-  //     padding-top: 50px
-  //     padding-bottom: 50px
-  //     color: #333
-  //   .row
-  //     display: flex
-  //     align-items: stretch
-  //     color: #fff
-  //     .users,
-  //     .nodes,
-  //     .producers
-  //       position: relative
-  //       background-size: cover
-  //       padding: 15px
-  //       height: 50vh
-  //       display: flex
-  //       flex-direction: column
-  //       justify-content: space-between
-  //       margin: 15px
-  //       h2
-  //         font-size: 2rem
-  //       a
-  //         text-align: center
-  //         font-size: 16px
-  //         line-height: 1.3em
-  //         font-weight: bold
-  //         width: calc(100% - 30px)
-  //
-  //     .users
-  //       background-image: url('/images/shutterstock_436974091_crate.jpg')
-  //     .nodes
-  //       background-image: url('/images/shutterstock_326785574_gettogether.jpg')
-  //     .producers
-  //       background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
-
-
-  .upcoming-events
-    padding-top: 50px
-    padding-bottom: 50px
-    h2
-      margin-bottom: 50px
+  .card-deck
+    .card
+      .card-footer
+        border-top: 0
+        text-align: center
+        .btn
+          margin-bottom: 15px
 
   .membership
     > .col-12
@@ -212,6 +174,16 @@
       color: #333
       border-color: #333
 
+#frontpage-metrics
+  background: #fff
+  .chart
+    width: 100%
+  .loader
+    color: #ccc
+    display: block
+    font-size: 24px
+    text-align: center
+
 @media (max-width: 991px)
   .public-index
     .frontpage-section
@@ -221,14 +193,8 @@
       .right
         width: 100vw
 
-    .create-pushes
-      .row
-        .users,
-        .nodes,
-        .producers
-          margin-left: 0
-          margin-right: 0
-          padding: 20px 0
+    .card-deck
+      display: block
 
 // Hide things on front page when logged in
 body.public-index

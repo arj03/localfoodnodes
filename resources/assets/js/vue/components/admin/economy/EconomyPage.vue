@@ -29,13 +29,10 @@
         methods: {
             fetch() {
                 this.fetching = true;
-                axios.get('/admin/token')
-                .then(response => {
-                    return axios.get('/api/v1/economy/transactions', {
-                        headers: {
-                            'Authorization': 'Bearer ' + response.data
-                        }
-                    });
+                axios.get('/admin/api-proxy', {
+                    params: {
+                        url: '/api/v1/economy/transactions'
+                    }
                 })
                 .then(response => {
                     this.transactions = response.data.transactions;

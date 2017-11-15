@@ -5,6 +5,7 @@ Route::get('/settings/locale/{locale}', 'SettingsController@changeLocale');
 
 // Index
 Route::get('/', 'IndexController@index');
+Route::get('/api-proxy', 'IndexController@apiProxy');
 
 // Map
 Route::get('/map/content', 'MapController@getMapContent');

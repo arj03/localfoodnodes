@@ -9,13 +9,35 @@ use App\Admin\Economy\Parsers\Swedbank;
 class EconomyController extends \App\Http\Controllers\Controller
 {
     private $categories = [
-        ["id" => 0, "label" => "External events"],
-        ["id" => 1, "label" => "Starting capital"],
-        ["id" => 2, "label" => "Backers"],
-        ["id" => 3, "label" => "Travel"],
-        ["id" => 4, "label" => "Bank and service fees"],
-        ["id" => 5, "label" => "Other costs"],
-        ["id" => 6, "label" => "Operating costs"],
+        [
+            "id" => 0,
+            "label" => "External events",
+            "type_label" => "Income - External events"
+        ], [
+            "id" => 1,
+            "label" => "Starting capital",
+            "type_label" => "Income - Starting capital"
+        ], [
+            "id" => 2,
+            "label" => "Backers",
+            "type_label" => "Income - Backers"
+        ], [
+            "id" => 3,
+            "label" => "Travel",
+            "type_label" => "Cost - Travel"
+        ], [
+            "id" => 4,
+            "label" => "Bank and service fees",
+            "type_label" => "Cost - Bank and service fees"
+        ], [
+            "id" => 5,
+            "label" => "Other costs",
+            "type_label" => "Cost - Other"
+        ], [
+            "id" => 6,
+            "label" => "Web services",
+            "type_label" => "Cost - Web services"
+        ],
     ];
 
     /**

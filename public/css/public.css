@@ -164,6 +164,7 @@
 }
 
 .btn {
+  border-radius: 0;
   cursor: pointer;
 }
 
@@ -207,7 +208,7 @@ html {
 }
 
 body {
-  background: #f1f0ea;
+  background: #f9f8f5;
   font-family: 'Raleway', sans-serif;
   color: #333;
   font-weight: 400;
@@ -253,7 +254,7 @@ ul li ul.list {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
 }
 
 h1,
@@ -1210,7 +1211,7 @@ body.public-node-node .product-card .card-footer .badge {
 }
 
 .public-index .frontpage-section p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5em;
 }
 
@@ -1246,11 +1247,6 @@ body.public-node-node .product-card .card-footer .badge {
   margin-top: 50px;
 }
 
-.public-index .what-is-lfn img {
-  width: auto;
-  max-width: 100%;
-}
-
 .public-index .map-wrapper {
   position: relative;
 }
@@ -1261,30 +1257,34 @@ body.public-node-node .product-card .card-footer .badge {
   bottom: 15px;
   left: 15px;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 15px;
+  background: #fff;
   border-radius: 3px;
 }
 
 .public-index .map-wrapper .metrics .metric {
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px 15px 10px;
   color: #333;
+  float: left;
+  text-align: center;
 }
 
-.public-index .map-wrapper .metrics .metric b {
+.public-index .map-wrapper .metrics .metric .value {
   font-weight: 700;
   font-size: 20px;
-  line-height: 1.1em;
 }
 
-.public-index .upcoming-events {
-  padding-top: 50px;
-  padding-bottom: 50px;
+.public-index .map-wrapper .metrics .metric .label {
+  font-size: 12px;
 }
 
-.public-index .upcoming-events h2 {
-  margin-bottom: 50px;
+.public-index .card-deck .card .card-footer {
+  border-top: 0;
+  text-align: center;
+}
+
+.public-index .card-deck .card .card-footer .btn {
+  margin-bottom: 15px;
 }
 
 .public-index .membership {
@@ -1442,6 +1442,21 @@ body.public-node-node .product-card .card-footer .badge {
   border-color: #333;
 }
 
+#frontpage-metrics {
+  background: #fff;
+}
+
+#frontpage-metrics .chart {
+  width: 100%;
+}
+
+#frontpage-metrics .loader {
+  color: #ccc;
+  display: block;
+  font-size: 24px;
+  text-align: center;
+}
+
 @media (max-width: 991px) {
   .public-index .frontpage-section h2 {
     font-size: 2.5em;
@@ -1452,12 +1467,8 @@ body.public-node-node .product-card .card-footer .badge {
     width: 100vw;
   }
 
-  .public-index .create-pushes .row .users,
-  .public-index .create-pushes .row .nodes,
-  .public-index .create-pushes .row .producers {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 20px 0;
+  .public-index .card-deck {
+    display: block;
   }
 }
 

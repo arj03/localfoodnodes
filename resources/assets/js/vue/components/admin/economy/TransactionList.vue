@@ -15,7 +15,7 @@
                         <th>
                             <select class="form-control" v-model="filteredCategory" @change="filterCategory">
                                 <option value="null">All categories</option>
-                                <option v-for="category in categories" :value="category.id">{{ category.label }}</option>
+                                <option v-for="category in categories" :value="category.id">{{ category.type_label }}</option>
                                 <option value="-1">Uncategorized</option>
                             </select>
                         </th>

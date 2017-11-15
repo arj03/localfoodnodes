@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-header">Orders by node</div>
             <div class="card-body">
-                <i v-show="loading" class="fa fa-spinner fa-spin"></i>
-                <div id="orders-by-node-chart" style="height: 600px"></div>
+                <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
+                <div id="orders-by-node-chart" class="chart" style="height: 600px"></div>
             </div>
         </div>
     </div>
