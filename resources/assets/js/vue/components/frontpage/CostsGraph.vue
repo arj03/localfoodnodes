@@ -1,14 +1,15 @@
 <template>
-    <div>
+    <div class="col-12 col-xl-6 justify-content-center">
+        <h3 class="text-center">{{ trans.costs }} 2017</h3>
         <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
-        <h3 v-show="!loading" class="text-center">{{ trans.costs }} 2017 - {{ trans.total }} {{ total }} SEK</h3>
-        <div v-show="!loading" id="costs-chart" class="chart" style="height: 300px;"></div>
+        <div v-show="!loading" class="text-center">{{ total }} SEK</div>
+        <div v-show="!loading" id="costs-chart" class="chart" style="height:300px; width: 100%;"></div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['trans'],
+        props: ['trans', 'data'],
         data: function() {
             return {
                 loading: true,
@@ -16,17 +17,12 @@
                 total: null,
             }
         },
-        mounted() {
-            axios.get('/api-proxy', {
-                params: {
-                    url: '/api/v1/economy/transactions',
-                }
-            })
-            .then(response => {
-                let data = this.formatData(response.data.transactions, response.data.categories);
-                this.draw(data);
+        watch: {
+            data(data) {
+                let formattedData = this.formatData(data.transactions, data.categories);
+                this.draw(formattedData);
                 this.loading = false;
-            });
+            }
         },
         methods: {
             formatData(transactions, categories) {
@@ -74,22 +70,19 @@
                     var dataTable = google.visualization.arrayToDataTable(dataArray);
 
                     var options = {
-                        chartArea: {
-                            top: 20,
-                            left: 20,
-                            width: '90%',
-                            height: '90%',
-                        },
                         pieHole: 0.4,
                         tooltip: { trigger: 'selection' },
                         legend: {
-                            alignment: 'center',
+                            textStyle: {
+                                fontName: 'Raleway',
+                                fontSize: '12'
+                            }
                         },
                         slices: {
-                            0: { color: '#f2e3b4' },
-                            1: { color: '#e7d7a6' },
-                            2: { color: '#d2c08b' },
-                            3: { color: '#c8b67f' },
+                            0: { color: '#7d809d' },
+                            1: { color: '#777a97' },
+                            2: { color: '#717491' },
+                            3: { color: '#6b6e8c' },
                         }
                     };
 

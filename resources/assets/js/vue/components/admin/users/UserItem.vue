@@ -51,13 +51,9 @@
                     }
                 };
 
-                axios.get('/admin/token')
-                .then(response => {
-                    return axios.put('/api/v1/users', data, {
-                        headers: {
-                            'Authorization': 'Bearer ' + response.data
-                        }
-                    });
+                axios.put('/admin/api-proxy', {
+                    url: '/api/v1/users',
+                    data: data
                 })
                 .then(response => {
                     this.loading = false;

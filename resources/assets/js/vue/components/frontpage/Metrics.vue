@@ -1,10 +1,11 @@
 <template>
     <div class="row">
-        <div class="col-12 col-xl-6 d-flex justify-content-center">
-            <income-graph :trans="trans"></income-graph>
-        </div>
-        <div class="col-12 col-xl-6 d-flex justify-content-center">
-            <costs-graph :trans="trans"></costs-graph>
+        <income-graph :trans="trans" :data="data"></income-graph>
+        <costs-graph :trans="trans" :data="data"></costs-graph>
+        <div v-show="!loading" class="col-12">
+            <div class="text-center">
+                {{ trans.available_balance }}: {{ data.total.income - data.total.cost }} SEK
+            </div>
         </div>
     </div>
 </template>
@@ -13,12 +14,32 @@
     export default {
         data: function() {
             return {
+                data: {
+                    total: {
+                        income: null,
+                        cost: null
+                    },
+                    categories: null,
+                    transactions: null
+                },
+                loading: true,
                 trans: economyTrans,
             }
         },
         components: {
             'costs-graph': require('./CostsGraph'),
             'income-graph': require('./IncomeGraph'),
+        },
+        mounted() {
+            axios.get('/api-proxy', {
+                params: {
+                    url: '/api/v1/economy/transactions',
+                }
+            })
+            .then(response => {
+                this.loading = false;
+                this.data = response.data;
+            });
         },
     }
 </script>

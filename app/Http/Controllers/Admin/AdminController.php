@@ -34,11 +34,11 @@ class AdminController extends Controller
      */
     public function apiProxy(Request $request)
     {
-        $method = $request->has('method') ? $request->input('method') : 'get';
+        $method = $request->method();
         $url = $request->input('url');
         $data = $request->has('data') ? $request->input('data') : [];
 
-        return $this->api->request($method, $url, $data);
+        return $this->api->{$method}($url, $data);
     }
 
     /**

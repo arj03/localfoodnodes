@@ -1,7 +1,7 @@
 <?php
 
 // Route::get('/token', 'Admin\AdminController@getApiAccessToken');
-Route::get('/api-proxy', 'Admin\AdminController@apiProxy');
+Route::any('/api-proxy', 'Admin\AdminController@apiProxy');
 
 Route::get('/', 'Admin\AdminController@index');
 Route::get('/users', 'Admin\AdminController@users');

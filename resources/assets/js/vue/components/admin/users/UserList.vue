@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card mb-5">
         <div class="card-header">Users</div>
         <div class="card-body">
             <i v-show="loading" class="fa fa-spinner fa-spin"></i>

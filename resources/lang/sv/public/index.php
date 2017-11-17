@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'available_balance' => 'Tillgängliga medel',
     'co_create' => 'Tillsammans gör vi maten lokal',
     'create_node' => 'Skapa en utlämningsplats',
     'find_out_more' => 'Läs mer',
@@ -13,9 +14,9 @@ return [
     'local_nodes' => 'Noder',
     'local_producers' => 'Producenter',
     'no_node' => 'Hittade du ingen utlämningsplats nära dig?',
-    'sign_up' => 'Skapa konto och börja handla lokalt',
+    'sign_up' => 'Skapa konto, bli medlem och börja handla lokalt',
     'sign_up_button' => 'Skapa konto',
-    'subheader' => 'Digital bokning av mat, fysiska möten och lokal cirkulation',
+    'subheader' => 'Förboka lokalproducerad mat. Hämta upp på gemensam utlämningsplats, direkt från producenterna.',
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',
     'where' => 'Var: ',
@@ -25,7 +26,7 @@ return [
     'visit_node' => 'Besök utlämningsplatsen',
     'what_is_lfn' => 'Vad är Local Food Nodes',
     'what_is_lfn_info' => '
-        Anledningen till att vi skapar Local Food Nodes är att vi vill skapa nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.
+        Local Food Nodes vill skapa nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.
     ',
 
     //co-funding part
@@ -44,9 +45,9 @@ return [
     'category_1' => 'Startkapital',
     'category_2' => 'Medlemmar',
     'category_3' => 'Resor',
-    'category_4' => 'Bank och service',
+    'category_4' => 'Tjänster',
     'category_5' => 'Övrigt',
-    'category_6' => 'Drift',
+    'category_6' => 'Kontor',
     'Uncategorized' => 'Okategoriserat',
 
     'monday' => 'Måndagar',

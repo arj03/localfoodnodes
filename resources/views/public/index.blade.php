@@ -5,12 +5,12 @@
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
         <div class="push">
-            <h2 class="bold">{{ trans('public/index.header') }}</h2>
+            <h1 class="bold">{{ trans('public/index.header') }}</h1>
             <p>{!! trans('public/index.subheader') !!}</p>
         </div>
     </div>
 
-    <div class="container-fluid frontpage-section bg-white">
+    <div class="container-fluid frontpage-section bg-white what-is-lfn">
         <div class="container d-flex justify-content-center">
             <div class="col-12 col-lg-10 pt-5 pb-5">
                 <h2 class="thin">{{ trans('public/index.what_is_lfn') }}</h2>
@@ -42,60 +42,44 @@
         </div>
     </div>
 
-    @if (Auth::check())
-        <div class="container-fluid frontpage-section create-pushes">
-            <h2 class="thin">{{ trans('public/index.co_create') }}</h2>
-            <div class="row no-gutters">
-                <div class="col-12 col-lg nodes">
-                    <h2 class="bold">{{ trans('public/index.no_node') }}</h2>
-                    <a class="btn-outline" href="/account/node/create">{{ trans('public/index.create_node') }}</a>
+    <div class="container frontpage-section create-pushes mt-5">
+        <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
+
+        <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <!-- <h4 class="card-title">{{ trans('public/index.sign_up') }}</h4> -->
+                    <p class="card-text">Du kan enkelt skapa ett konto helt gratis. Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn. Innan du kan boka din mat behöver du bli stödmedlem, sedan kommer producenten med dina varor till utlämningensplatsen.</p>
                 </div>
-                <div class="col-12 col-lg producers">
-                    <h2 class="bold">{{ trans('public/index.food_producer') }}</h2>
-                    <a class="btn-outline" href="/account/producer/create">{{ trans('public/index.list') }}</a>
+                <div class="card-footer">
+                    <a class="btn btn-success" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <!-- <h4 class="card-title">{{ trans('public/index.no_node') }}</h4> -->
+                    <p class="card-text">En utlämningsplats kan startas och drivas av en förening, ett kooperativ, annan organisation eller av en enskild person. Allt som behövs är en adress.</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <!-- <h4 class="card-title">{{ trans('public/index.food_producer') }}</h4> -->
+                    <p class="card-text">Lägg upp dina produkter och koppla dem mot utlämningsplatser i din närhet. Leverans och betalning sker direkt till kund på utlämningen. All förtjänst går obruten till dig så att du kan utvecklas och fortsätta med det du gör. Ingen annan än du ska tjäna pengar på att du producerar bra mat!</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
                 </div>
             </div>
         </div>
-    @else
-        <div class="container frontpage-section create-pushes mt-5">
-            <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
-
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ trans('public/index.sign_up') }}</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ trans('public/index.no_node') }}</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ trans('public/index.food_producer') }}</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+    </div>
 
     <div class="container-fluid frontpage-section membership mt-5">
         <div class="col-12">

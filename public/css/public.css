@@ -1197,6 +1197,11 @@ body.public-node-node .product-card .card-footer .badge {
   background: #fff;
 }
 
+.public-index .frontpage-section h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
 .public-index .frontpage-section h2 {
   font-size: 4em;
   text-align: center;
@@ -1472,7 +1477,8 @@ body.public-node-node .product-card .card-footer .badge {
   }
 }
 
-body.public-index.logged-in .frontpage-header {
+body.public-index.logged-in .frontpage-header,
+body.public-index.logged-in .what-is-lfn {
   display: none;
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    //page
+    'available_balance' => 'Available balance',
     'co_create' => 'Co-create the local food supply',
     'create_node' => 'Create a node',
     'find_out_more' => 'Find out more',
@@ -16,7 +16,7 @@ return [
     'no_node' => 'Couldn\'t find a node near you?',
     'sign_up' => 'Sign up and lets get local',
     'sign_up_button' => 'Sign up',
-    'subheader' => 'Digital booking of food, physical meetings and local circulation',
+    'subheader' => 'Pre-order locally produced food. Pick-up streight from the producers',
     'title' => 'Find Nodes',
     'upcoming' => 'Upcoming events',
     'where' => 'Where: ',
@@ -37,17 +37,17 @@ return [
 
     // Economy
     'economy' => 'Economy',
-    'economy_info' => 'Vi på Local Food Nodes har 100% financiell transparens. Här under ser ni alla årets inkomster och kostnader summerade. Gå till vår finans sida för mer detaljerade finanser och förklaring kring varför vi tror på transparens.',
+    'economy_info' => 'Local Food Nodes practices 100% financial transparency. All of our income and expenses are summarised below. Go to finances page for more information about why and more detailed financials.',
     'income' => 'Incomes',
     'costs' => 'Costs',
     'total' => 'total',
     'category_0' => 'External events',
     'category_1' => 'Starting capital',
-    'category_2' => 'Backers',
+    'category_2' => 'Membership',
     'category_3' => 'Travels',
-    'category_4' => 'Bank and service fees',
-    'category_5' => 'Other fees',
-    'category_6' => 'Operating cost',
+    'category_4' => 'Services',
+    'category_5' => 'Other costs',
+    'category_6' => 'Office',
     'Uncategorized' => 'Uncategorized',
 
     'monday' => 'Mondays',

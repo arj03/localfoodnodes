@@ -1615,7 +1615,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/CostsGraph.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/CostsGraph.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1628,9 +1628,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['trans'],
+    props: ['trans', 'data'],
     data: function data() {
         return {
             loading: true,
@@ -1638,20 +1639,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             total: null
         };
     },
-    mounted: function mounted() {
-        var _this = this;
-
-        axios.get('/api-proxy', {
-            params: {
-                url: '/api/v1/economy/transactions'
-            }
-        }).then(function (response) {
-            var data = _this.formatData(response.data.transactions, response.data.categories);
-            _this.draw(data);
-            _this.loading = false;
-        });
+    watch: {
+        data: function data(_data) {
+            var formattedData = this.formatData(_data.transactions, _data.categories);
+            this.draw(formattedData);
+            this.loading = false;
+        }
     },
-
     methods: {
         formatData: function formatData(transactions, categories) {
             var trans = this.trans;
@@ -1697,22 +1691,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var dataTable = google.visualization.arrayToDataTable(dataArray);
 
                 var options = {
-                    chartArea: {
-                        top: 20,
-                        left: 20,
-                        width: '90%',
-                        height: '90%'
-                    },
                     pieHole: 0.4,
                     tooltip: { trigger: 'selection' },
                     legend: {
-                        alignment: 'center'
+                        textStyle: {
+                            fontName: 'Raleway',
+                            fontSize: '12'
+                        }
                     },
                     slices: {
-                        0: { color: '#f2e3b4' },
-                        1: { color: '#e7d7a6' },
-                        2: { color: '#d2c08b' },
-                        3: { color: '#c8b67f' }
+                        0: { color: '#7d809d' },
+                        1: { color: '#777a97' },
+                        2: { color: '#717491' },
+                        3: { color: '#6b6e8c' }
                     }
                 };
 
@@ -1725,7 +1716,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1738,9 +1729,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['trans'],
+    props: ['trans', 'data'],
     data: function data() {
         return {
             loading: true,
@@ -1748,20 +1740,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             total: null
         };
     },
-    mounted: function mounted() {
-        var _this = this;
-
-        axios.get('/api-proxy', {
-            params: {
-                url: '/api/v1/economy/transactions'
-            }
-        }).then(function (response) {
-            var data = _this.formatData(response.data.transactions, response.data.categories);
-            _this.draw(data);
-            _this.loading = false;
-        });
+    watch: {
+        data: function data(_data) {
+            var formattedData = this.formatData(_data.transactions, _data.categories);
+            this.draw(formattedData);
+            this.loading = false;
+        }
     },
-
     methods: {
         formatData: function formatData(transactions, categories) {
             var trans = this.trans;
@@ -1807,26 +1792,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var dataTable = google.visualization.arrayToDataTable(dataArray);
 
                 var options = {
-                    chartArea: {
-                        left: 20,
-                        top: 20,
-                        width: '90%',
-                        height: '90%'
-                    },
                     tooltip: { trigger: 'selection' },
                     pieHole: 0.4,
                     legend: {
-                        alignment: 'center',
-                        position: 'left',
                         textStyle: {
-                            float: 'right'
+                            fontName: 'Raleway',
+                            fontSize: '12'
                         }
                     },
                     slices: {
-                        0: { color: '#f2e3b4' },
-                        1: { color: '#e7d7a6' },
-                        2: { color: '#d2c08b' },
-                        3: { color: '#c8b67f' }
+                        0: { color: '#e3d5af' },
+                        1: { color: '#dacca5' },
+                        2: { color: '#d2c39c' },
+                        3: { color: '#cabb94' }
                     }
                 };
 
@@ -1839,7 +1817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/Metrics.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/Metrics.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1855,16 +1833,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            data: {
+                total: {
+                    income: null,
+                    cost: null
+                },
+                categories: null,
+                transactions: null
+            },
+            loading: true,
             trans: economyTrans
         };
     },
     components: {
         'costs-graph': __webpack_require__("./resources/assets/js/vue/components/frontpage/CostsGraph.vue"),
         'income-graph': __webpack_require__("./resources/assets/js/vue/components/frontpage/IncomeGraph.vue")
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api-proxy', {
+            params: {
+                url: '/api/v1/economy/transactions'
+            }
+        }).then(function (response) {
+            _this.loading = false;
+            _this.data = response.data;
+        });
     }
 });
 
@@ -48502,49 +48502,18 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2bdfe0e6\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/Metrics.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-0fb915e6\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/CostsGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c(
-      "div",
-      { staticClass: "col-12 col-xl-6 d-flex justify-content-center" },
-      [_c("income-graph", { attrs: { trans: _vm.trans } })],
-      1
-    ),
+  return _c("div", { staticClass: "col-12 col-xl-6 justify-content-center" }, [
+    _c("h3", { staticClass: "text-center" }, [
+      _vm._v(_vm._s(_vm.trans.costs) + " 2017")
+    ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-12 col-xl-6 d-flex justify-content-center" },
-      [_c("costs-graph", { attrs: { trans: _vm.trans } })],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2bdfe0e6", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2de1364e\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/CostsGraph.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
     _c("i", {
       directives: [
         {
@@ -48558,7 +48527,7 @@ var render = function() {
     }),
     _vm._v(" "),
     _c(
-      "h3",
+      "div",
       {
         directives: [
           {
@@ -48570,16 +48539,7 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [
-        _vm._v(
-          _vm._s(_vm.trans.costs) +
-            " 2017 - " +
-            _vm._s(_vm.trans.total) +
-            " " +
-            _vm._s(_vm.total) +
-            " SEK"
-        )
-      ]
+      [_vm._v(_vm._s(_vm.total) + " SEK")]
     ),
     _vm._v(" "),
     _c("div", {
@@ -48592,7 +48552,7 @@ var render = function() {
         }
       ],
       staticClass: "chart",
-      staticStyle: { height: "300px" },
+      staticStyle: { height: "300px", width: "100%" },
       attrs: { id: "costs-chart" }
     })
   ])
@@ -48603,20 +48563,24 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2de1364e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0fb915e6", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5c5c1422\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4fd78f10\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "col-12 col-xl-6 justify-content-center" }, [
+    _c("h3", { staticClass: "text-center" }, [
+      _vm._v(_vm._s(_vm.trans.income) + " 2017")
+    ]),
+    _vm._v(" "),
     _c("i", {
       directives: [
         {
@@ -48630,7 +48594,7 @@ var render = function() {
     }),
     _vm._v(" "),
     _c(
-      "h3",
+      "div",
       {
         directives: [
           {
@@ -48642,16 +48606,7 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [
-        _vm._v(
-          _vm._s(_vm.trans.income) +
-            " 2017 - " +
-            _vm._s(_vm.trans.total) +
-            " " +
-            _vm._s(_vm.total) +
-            " SEK"
-        )
-      ]
+      [_vm._v(_vm._s(_vm.total) + " SEK")]
     ),
     _vm._v(" "),
     _c("div", {
@@ -48664,7 +48619,7 @@ var render = function() {
         }
       ],
       staticClass: "chart",
-      staticStyle: { height: "300px" },
+      staticStyle: { height: "300px", width: "100%" },
       attrs: { id: "income-chart" }
     })
   ])
@@ -48675,7 +48630,63 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5c5c1422", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4fd78f10", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-a36d3da4\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/Metrics.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row" },
+    [
+      _c("income-graph", { attrs: { trans: _vm.trans, data: _vm.data } }),
+      _vm._v(" "),
+      _c("costs-graph", { attrs: { trans: _vm.trans, data: _vm.data } }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.loading,
+              expression: "!loading"
+            }
+          ],
+          staticClass: "col-12"
+        },
+        [
+          _c("div", { staticClass: "text-center" }, [
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.trans.available_balance) +
+                ": " +
+                _vm._s(_vm.data.total.income - _vm.data.total.cost) +
+                " SEK\n        "
+            )
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a36d3da4", module.exports)
   }
 }
 
@@ -59427,9 +59438,11 @@ if (token) {
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/CostsGraph.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/CostsGraph.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2de1364e\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/CostsGraph.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-0fb915e6\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/CostsGraph.vue")
+/* template functional */
+var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -59439,13 +59452,13 @@ var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __vue_script__,
   __vue_template__,
+  __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/vue/components/frontpage/CostsGraph.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] CostsGraph.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -59454,10 +59467,10 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2de1364e", Component.options)
+    hotAPI.createRecord("data-v-0fb915e6", Component.options)
   } else {
-    hotAPI.reload("data-v-2de1364e", Component.options)
-  }
+    hotAPI.reload("data-v-0fb915e6", Component.options)
+' + '  }
   module.hot.dispose(function (data) {
     disposed = true
   })
@@ -59474,9 +59487,11 @@ module.exports = Component.exports
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-5c5c1422\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4fd78f10\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/IncomeGraph.vue")
+/* template functional */
+var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -59486,13 +59501,13 @@ var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __vue_script__,
   __vue_template__,
+  __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/vue/components/frontpage/IncomeGraph.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] IncomeGraph.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -59501,10 +59516,10 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5c5c1422", Component.options)
+    hotAPI.createRecord("data-v-4fd78f10", Component.options)
   } else {
-    hotAPI.reload("data-v-5c5c1422", Component.options)
-  }
+    hotAPI.reload("data-v-4fd78f10", Component.options)
+' + '  }
   module.hot.dispose(function (data) {
     disposed = true
   })
@@ -59521,9 +59536,11 @@ module.exports = Component.exports
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/vue/components/frontpage/Metrics.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/components/frontpage/Metrics.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2bdfe0e6\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/vue/components/frontpage/Metrics.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-a36d3da4\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/components/frontpage/Metrics.vue")
+/* template functional */
+var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -59533,13 +59550,13 @@ var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __vue_script__,
   __vue_template__,
+  __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/vue/components/frontpage/Metrics.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Metrics.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -59548,10 +59565,10 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2bdfe0e6", Component.options)
+    hotAPI.createRecord("data-v-a36d3da4", Component.options)
   } else {
-    hotAPI.reload("data-v-2bdfe0e6", Component.options)
-  }
+    hotAPI.reload("data-v-a36d3da4", Component.options)
+' + '  }
   module.hot.dispose(function (data) {
     disposed = true
   })
