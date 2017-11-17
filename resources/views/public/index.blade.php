@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
-        <div class="push">
+        <div class="header-block">
             <h1 class="bold">{{ trans('public/index.header') }}</h1>
             <p>{!! trans('public/index.subheader') !!}</p>
         </div>

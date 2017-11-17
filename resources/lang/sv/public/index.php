@@ -6,27 +6,28 @@ return [
     'create_node' => 'Skapa en utlämningsplats',
     'find_out_more' => 'Läs mer',
     'header' => 'Local Food Nodes',
+    'find_node_near_you' => 'Hitta din lokala utlämningsplats',
     'food_producer' => 'Är du matproducent?',
     'grey_map_marker_info' => 'Grå ikoner är utlämningsplatser där beställningar görs genom Facebook.',
+    'go_local' => 'Hitta din lokala utlämningsplats',
     'link_to_fb' => 'Facebookgruppen för',
     'list' => 'Sälj dina produkter',
     'locals' => 'Användare',
     'local_nodes' => 'Noder',
     'local_producers' => 'Producenter',
+    'meta_keywords' => 'Lokal mat, Lokal...',
     'no_node' => 'Hittade du ingen utlämningsplats nära dig?',
     'sign_up' => 'Skapa konto, bli medlem och börja handla lokalt',
     'sign_up_button' => 'Skapa konto',
     'subheader' => 'Förboka lokalproducerad mat. Hämta upp på gemensam utlämningsplats, direkt från producenterna.',
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',
+    'visit_node' => 'Besök utlämningsplatsen',
     'where' => 'Var: ',
     'when' => 'När: ',
-    'go_local' => 'Hitta din lokala utlämningsplats',
-    'find_node_near_you' => 'Hitta din lokala utlämningsplats',
-    'visit_node' => 'Besök utlämningsplatsen',
     'what_is_lfn' => 'Vad är Local Food Nodes',
     'what_is_lfn_info' => '
-        Local Food Nodes vill skapa nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.
+        Local Food Nodes skapar nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som stärker de lokala kopplingar som redan finns. Vi möjliggör direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.
     ',
 
     //co-funding part

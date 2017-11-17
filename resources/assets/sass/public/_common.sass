@@ -10,6 +10,14 @@ body
   > .page
     min-height: calc(100vh - 250px)
 
+.header-block
+  background: #fff
+  opacity: 0.9
+  color: #333
+  width: auto
+  padding: 20px
+  font-weight: 500
+
 .body-text
   line-height: 1.7em
   color: #333
@@ -40,6 +48,11 @@ img
 h1, h2, h3, h4, h5, h6
   font-family: 'montserrat'
   text-transform: uppercase
+  font-weight: 500
+  &.bold
+    font-weight: 700
+  &.thin
+    font-weight: 300
 
 a
   color: #188092
@@ -154,3 +167,9 @@ a
       margin: 0
   .fa
     cursor: pointer
+
+.loader
+  color: #ccc
+  display: block
+  font-size: 24px
+  text-align: center

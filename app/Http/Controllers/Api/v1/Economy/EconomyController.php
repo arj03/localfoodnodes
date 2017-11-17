@@ -40,6 +40,7 @@ class EconomyController extends \App\Http\Controllers\Controller
 
         $totalIncome = 0;
         $totalCost = 0;
+
         $transactions->each(function($transaction) use (&$totalIncome, &$totalCost) {
             if ($this->incomeCategories->contains('id', $transaction->category)) {
                 $totalIncome += (int) $transaction->amount;
@@ -50,7 +51,11 @@ class EconomyController extends \App\Http\Controllers\Controller
 
         return [
             'transactions' => $transactions,
-            'categories' => $this->incomeCategories->concat($this->costCategories),
+            'categories' => [
+                'all' => $this->incomeCategories->concat($this->costCategories),
+                'income' => $this->incomeCategories->pluck('id'),
+                'cost' => $this->costCategories->pluck('id'),
+            ],
             'total' => [
                 'income' => $totalIncome,
                 'cost' => $totalCost

@@ -52,4 +52,19 @@ class PageController extends Controller
             'averageMembership' => round($averageMembershipPayments)
         ]);
     }
+
+    public function economy()
+    {
+        return view('public.pages.economy');
+    }
+
+    public function transactions()
+    {
+        return view('public.pages.transactions');
+    }
+
+    public function team()
+    {
+        return view('public.pages.team');
+    }
 }

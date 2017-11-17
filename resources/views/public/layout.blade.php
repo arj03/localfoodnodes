@@ -4,13 +4,15 @@
         <title>@yield('title') - Local Food Nodes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="keywords" content="{{ trans('public/index.meta_keywords') }}">
+        <meta name="description" content="{!! $fbDescription or 'Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}">
 
         <!-- Facebook meta -->
         <meta property="fb:app_id" content="923888444420982" />
         <meta property="og:url" content="{{ $fbUrl or app('url')->to('/') }}">
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{{ $fbTitle or 'Local Food Nodes' }}">
-        <meta property="og:description" content="{!! $fbDescription or 'We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
+        <meta property="og:description" content="{!! $fbDescription or 'Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
         <meta property="og:image" content="{{ $fbImage or URL::asset('images/facebook-share.jpg') }}">
 
         <!-- Scripts -->

@@ -220,6 +220,15 @@ body > .page {
   min-height: calc(100vh - 250px);
 }
 
+.header-block {
+  background: #fff;
+  opacity: 0.9;
+  color: #333;
+  width: auto;
+  padding: 20px;
+  font-weight: 500;
+}
+
 .body-text {
   line-height: 1.7em;
   color: #333;
@@ -265,6 +274,25 @@ h5,
 h6 {
   font-family: 'montserrat';
   text-transform: uppercase;
+  font-weight: 500;
+}
+
+h1.bold,
+h2.bold,
+h3.bold,
+h4.bold,
+h5.bold,
+h6.bold {
+  font-weight: 700;
+}
+
+h1.thin,
+h2.thin,
+h3.thin,
+h4.thin,
+h5.thin,
+h6.thin {
+  font-weight: 300;
 }
 
 a {
@@ -412,6 +440,13 @@ a.btn:focus {
   cursor: pointer;
 }
 
+.loader {
+  color: #ccc;
+  display: block;
+  font-size: 24px;
+  text-align: center;
+}
+
 @media (min-width: 992px) {
   body.public.logged-in .page {
     -webkit-box-orient: horizontal;
@@ -450,7 +485,7 @@ body.public .page .content .container-fluid {
 }
 
 body.public .page .top-container {
-  margin-top: -200px;
+  margin-top: -60px;
 }
 
 body.public .page .card .card-header {
@@ -489,10 +524,11 @@ body.public .page .header .top a {
 }
 
 body.page .page .header {
-  background: url("/images/co-own.jpg") center center;
+  background-position: center center;
   background-size: cover;
+  background-color: #eadcb7;
   color: #fff;
-  height: 80vh;
+  height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,19 +541,6 @@ body.page .page .header {
   text-align: center;
 }
 
-body.page .page .header h2 {
-  font-size: 4em;
-  text-align: center;
-}
-
-body.page .page .header h2.bold {
-  font-weight: 700;
-}
-
-body.page .page .header h2.thin {
-  font-weight: 200;
-}
-
 body.page .page .top-container .card {
   padding: 50px;
 }
@@ -528,7 +551,6 @@ body.page .page .card h2 {
 }
 
 body.page .page .card .body-text {
-  font-size: 18px;
   line-height: 1.5em;
 }
 
@@ -1237,15 +1259,6 @@ body.public-node-node .product-card .card-footer .badge {
   text-align: center;
 }
 
-.public-index .frontpage-header .push {
-  background: #fff;
-  opacity: 0.9;
-  color: #333;
-  width: auto;
-  padding: 20px;
-  font-weight: 500;
-}
-
 .public-index .frontpage-header a {
   color: #fff;
   width: 300px;
@@ -1453,13 +1466,6 @@ body.public-node-node .product-card .card-footer .badge {
 
 #frontpage-metrics .chart {
   width: 100%;
-}
-
-#frontpage-metrics .loader {
-  color: #ccc;
-  display: block;
-  font-size: 24px;
-  text-align: center;
 }
 
 @media (max-width: 991px) {

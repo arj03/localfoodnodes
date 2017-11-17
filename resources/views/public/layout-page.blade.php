@@ -1,12 +1,19 @@
 @extends('public.layout')
 
 @section('content')
+
+    @if (isset($image))
+        <style>
+            body.page .page .header {
+                background-image: url({{ $image }});
+            }
+        </style>
+    @endif
+
     <div class="container-fluid header">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="bold">{{ $header }}</h2>
-                <h3 class="mb-5">{{ $subHeader }}</h3>
-            </div>
+        <div class="header-block">
+            <h1 class="bold">{{ $header }}</h1>
+            <h2>{{ $subHeader or '' }}</h2>
         </div>
     </div>
 

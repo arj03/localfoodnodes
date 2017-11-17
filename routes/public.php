@@ -30,6 +30,9 @@ Route::group(['prefix' => '/checkout', 'middleware' => 'auth.account'], function
 // Static pages
 Route::get('/find-out-more', 'PageController@findOutMore');
 Route::get('/membership', 'PageController@membership');
+Route::get('/economy', 'PageController@economy');
+Route::get('/economy/transactions', 'PageController@transactions');
+Route::get('/team', 'PageController@team');
 
 // Landing page catcher
 Route::get('/landing-page/{segments}', function() {

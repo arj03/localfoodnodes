@@ -1,6 +1,7 @@
 @extends('public.layout-page', [
     'header' => trans('public/pages/membership.header'),
-    'subHeader' => trans('public/pages/membership.sub_header')
+    'subHeader' => trans('public/pages/membership.sub_header'),
+    'image' => 'test.jpg'
 ])
 
 @section('title', trans('public/pages/membership.title'))
