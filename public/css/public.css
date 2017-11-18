@@ -164,8 +164,21 @@
 }
 
 .btn {
-  border-radius: 0;
+  border: 0;
+  border-radius: 2rem;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0.6rem 1rem 0.5rem;
+  text-decoration: none;
+}
+
+.btn.btn-primary {
+  background: #eaddb7;
+}
+
+.btn.btn-primary:hover {
+  background: #dacda7;
 }
 
 input[type=submit],
@@ -222,26 +235,37 @@ body > .page {
 
 .header-block {
   background: #fff;
-  opacity: 0.9;
   color: #333;
-  width: auto;
-  padding: 20px;
+  display: inline-block;
   font-weight: 500;
+  padding: 20px;
+  width: auto;
 }
 
 .body-text {
-  line-height: 1.7em;
+  line-height: 1.5em;
   color: #333;
+  font-size: 16px;
+  padding: 50px;
 }
 
-.body-text h1 span,
-.body-text h2 span,
-.body-text h3 span,
-.body-text h4 span {
-  display: block;
-  font-size: 1.3rem;
-  color: #aaa;
-  text-transform: none;
+.body-text h2,
+.body-text h3,
+.body-text h4,
+.body-text h4,
+.body-text h5,
+.body-text h6 {
+  font-weight: 700;
+  margin: 5rem 0 3rem;
+}
+
+.body-text h2:first-child,
+.body-text h3:first-child,
+.body-text h4:first-child,
+.body-text h4:first-child,
+.body-text h5:first-child,
+.body-text h6:first-child {
+  margin-top: 0 !important;
 }
 
 ul {
@@ -292,7 +316,38 @@ h3.thin,
 h4.thin,
 h5.thin,
 h6.thin {
-  font-weight: 300;
+  font-weight: 200;
+}
+
+h1 .sub-header,
+h2 .sub-header,
+h3 .sub-header,
+h4 .sub-header,
+h5 .sub-header,
+h6 .sub-header {
+  font-size: 0.3em;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2em;
+  }
 }
 
 a {
@@ -501,29 +556,28 @@ body.public .page .card .card-header .badge {
   text-transform: none;
 }
 
-body.public .page .header #map {
-  height: 500px;
+body.public .page .shop-header #map {
+  height: 350px;
   width: 100%;
   z-index: 0;
   border-bottom: 5px solid #e2d7b9;
 }
 
-body.public .page .header .top {
+body.public .page .shop-header .top {
   background: #a9322a;
   color: #fff;
   padding: 30px;
 }
 
-body.public .page .header .top h1 {
+body.public .page .shop-header .top h1 {
   margin: 0;
-  font-weight: 700;
 }
 
-body.public .page .header .top a {
+body.public .page .shop-header .top a {
   color: #fff;
 }
 
-body.page .page .header {
+.page-header {
   background-position: center center;
   background-size: cover;
   background-color: #eadcb7;
@@ -541,29 +595,25 @@ body.page .page .header {
   text-align: center;
 }
 
-body.page .page .top-container .card {
-  padding: 50px;
+.page-header h1 {
+  margin: 0;
 }
 
-body.page .page .card h2 {
-  font-weight: bold;
-  color: #666;
+.page-header p {
+  margin: 0;
 }
 
-body.page .page .card .body-text {
-  line-height: 1.5em;
-}
-
-.public-pages-membership .metrics {
+.membership-metrics {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-top: 20px;
 }
 
-.public-pages-membership .metrics .metric {
+.membership-metrics .metric {
   margin: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -577,23 +627,34 @@ body.page .page .card .body-text {
           align-items: center;
 }
 
-.public-pages-membership .metrics .metric .value {
-  background: #efcb6b;
+.membership-metrics .metric .value {
+  background: #dec286;
   color: #fff;
-  font-size: 50px;
-  width: 200px;
-  line-height: 200px;
+  font-size: 40px;
+  width: 180px;
+  line-height: 180px;
   border-radius: 100px;
   text-align: center;
   font-weight: bold;
+  font-family: 'montserrat';
 }
 
-.public-pages-membership .metrics .metric .label {
+.membership-metrics .metric .value .value-unit {
+  font-size: 30px;
+  padding-left: 10px;
+}
+
+.membership-metrics .metric .value .value-unit.fa {
+  position: relative;
+  top: -3px;
+}
+
+.membership-metrics .metric .label {
   margin-top: 15px;
+  font-family: 'montserrat';
+  text-transform: uppercase;
   font-weight: bold;
-  font-size: 26px;
-  line-height: 26px;
-  color: #ad9350;
+  color: #dec286;
   text-align: center;
 }
 
@@ -886,8 +947,6 @@ body.page .page .card .body-text {
 
 .node-map h2 {
   padding-top: 50px;
-  font-size: 4em;
-  font-weight: 200;
   color: #fff;
 }
 
@@ -1210,6 +1269,19 @@ body.public-node-node .product-card .card-footer .badge {
   text-decoration: none;
 }
 
+.public-index a {
+  color: #333;
+}
+
+.public-index h1,
+.public-index h2,
+.public-index h3,
+.public-index h4,
+.public-index h5,
+.public-index h6 {
+  text-align: center;
+}
+
 .public-index .frontpage-section {
   position: relative;
   height: 100%;
@@ -1217,24 +1289,6 @@ body.public-node-node .product-card .card-footer .badge {
 
 .public-index .frontpage-section.bg-white {
   background: #fff;
-}
-
-.public-index .frontpage-section h1 {
-  font-size: 4em;
-  text-align: center;
-}
-
-.public-index .frontpage-section h2 {
-  font-size: 4em;
-  text-align: center;
-}
-
-.public-index .frontpage-section h2.bold {
-  font-weight: 700;
-}
-
-.public-index .frontpage-section h2.thin {
-  font-weight: 200;
 }
 
 .public-index .frontpage-section p {
@@ -1322,88 +1376,9 @@ body.public-node-node .product-card .card-footer .badge {
   text-align: center;
 }
 
-.public-index .membership > .col-12 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.public-index .membership .membership-content {
-  font-family: 'montserrat';
-  text-transform: none;
-  font-size: 18px;
-  line-height: 32px;
-  margin-top: 50px;
-}
-
-.public-index .membership .membership-content.big {
-  font-size: 40px;
-  line-height: 40px;
-}
-
-.public-index .membership .membership-content.uppercase {
-  text-transform: uppercase;
-}
-
-.public-index .membership a {
-  width: 300px;
-  margin-top: 50px;
-  color: #dec286;
-  border-color: #dec286;
-}
-
-.public-index .membership .metrics {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 20px;
-}
-
-.public-index .membership .metrics .metric {
-  margin: 2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.public-index .membership .metrics .metric .value {
+.public-index .membership .btn {
   background: #dec286;
   color: #fff;
-  font-size: 40px;
-  width: 180px;
-  line-height: 180px;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'montserrat';
-}
-
-.public-index .membership .metrics .metric .value .value-unit {
-  font-size: 30px;
-  padding-left: 10px;
-}
-
-.public-index .membership .metrics .metric .value .value-unit.fa {
-  position: relative;
-  top: -3px;
-}
-
-.public-index .membership .metrics .metric .label {
-  margin-top: 15px;
-  font-family: 'montserrat';
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #dec286;
-  text-align: center;
 }
 
 .public-index .find-out-more .logo {
@@ -1436,28 +1411,6 @@ body.public-node-node .product-card .card-footer .badge {
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-}
-
-.public-index .btn-outline {
-  border: 1px solid #fff;
-  padding: 20px;
-  text-transform: uppercase;
-  display: block;
-  -webkit-transition: background-color 1s;
-  transition: background-color 1s;
-  font-weight: bold;
-  margin: 20px auto;
-  color: #fff;
-}
-
-.public-index .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.4);
-  text-decoration: none;
-}
-
-.public-index .btn-outline.dark {
-  color: #333;
-  border-color: #333;
 }
 
 #frontpage-metrics {

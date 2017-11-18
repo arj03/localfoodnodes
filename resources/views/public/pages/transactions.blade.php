@@ -10,7 +10,7 @@
     <div class="container top-container">
         <div class="row justify-content-center">
             <div class="col-12">
-                <div class="card top-card">
+                <div class="card">
                     <div class="card-body body-text">
                         <div id="transactions">
                             <transactions-list></transactions-list>
@@ -20,5 +20,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
+    </script>
     <script src="{{ mix('/js/transactions.js') }}"></script>
 @endsection

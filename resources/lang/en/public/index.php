@@ -1,10 +1,9 @@
 <?php
 
 return [
-    'available_balance' => 'Available balance',
     'co_create' => 'Co-create the local food supply',
     'create_node' => 'Create a node',
-    'find_out_more' => 'Find out more',
+    'find_out_more' => 'Read more about Local Food Nodes',
     'header' => 'Local Food Nodes',
     'find_node_near_you' => 'Find a node near you',
     'food_producer' => 'Are you a local food producer?',
@@ -35,21 +34,6 @@ return [
     'co_fund_subheading' => 'You choose the membership fee',
     'co_fund_paragraph' => 'By becoming a member you are co-funding the future of food. Together, all of us as supporting members gives ourselves the financial means to choose the direction of local food development.',
     'co_fund_read_more' => 'Read more about memberships',
-
-    // Economy
-    'economy' => 'Economy',
-    'economy_info' => 'Local Food Nodes practices 100% financial transparency. All of our income and expenses are summarised below. Go to finances page for more information about why and more detailed financials.',
-    'income' => 'Incomes',
-    'costs' => 'Costs',
-    'total' => 'total',
-    'category_0' => 'External events',
-    'category_1' => 'Starting capital',
-    'category_2' => 'Membership',
-    'category_3' => 'Travels',
-    'category_4' => 'Services',
-    'category_5' => 'Other costs',
-    'category_6' => 'Office',
-    'Uncategorized' => 'Uncategorized',
 
     'monday' => 'Mondays',
     'tuesday' => 'Tuesdays',

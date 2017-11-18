@@ -3863,7 +3863,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	    h = r(p),
 	    d = n(535),
 	    v = r(d),
-	    g = n(538),
+	    g = n(539),
 	    y = r(g),
 	    m = (0, h.default)(),
 	    _ = (0, c.compose)((0, c.applyMiddleware)(f.default, m))(c.createStore)(v.default);a.default.render(i.default.createElement(s.Provider, { store: _ }, i.default.createElement(y.default, null)), document.getElementById("node-map-component-root"));
@@ -8170,7 +8170,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				return Object.assign({}, t, {});}
 	}Object.defineProperty(e, "__esModule", { value: !0 });var i = n(536),
 	    u = r(i),
-	    a = n(556);r(a);e.default = o;
+	    a = n(538);r(a);e.default = o;
 }, function (t, e, n) {
 	"use strict";
 	var r = n(537),
@@ -8183,711 +8183,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			t.hasOwnProperty(e) && (n[e] = e);
 		}return n;
 	};t.exports = n;
-}, function (t, e, n) {
-	"use strict";
-	function r(t) {
-		if (t && t.__esModule) return t;var e = {};if (null != t) for (var n in t) {
-			Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
-		}return e.default = t, e;
-	}function o(t) {
-		return t && t.__esModule ? t : { default: t };
-	}function i(t, e) {
-		if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
-	}function u(t, e) {
-		if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return !e || "object" != (typeof e === "undefined" ? "undefined" : _typeof(e)) && "function" != typeof e ? t : e;
-	}function a(t, e) {
-		if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + (typeof e === "undefined" ? "undefined" : _typeof(e)));t.prototype = Object.create(e && e.prototype, { constructor: { value: t, enumerable: !1, writable: !0, configurable: !0 } }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
-	}function c(t) {
-		return t;
-	}Object.defineProperty(e, "__esModule", { value: !0 });var s = function () {
-		function t(t, e) {
-			for (var n = 0; n < e.length; n++) {
-				var r = e[n];r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(t, r.key, r);
-			}
-		}return function (e, n, r) {
-			return n && t(e.prototype, n), r && t(e, r), e;
-		};
-	}(),
-	    l = n(327),
-	    f = o(l),
-	    p = n(357),
-	    h = o(p),
-	    d = n(517),
-	    v = n(539),
-	    g = r(v),
-	    y = n(556),
-	    m = o(y),
-	    _ = n(557),
-	    b = o(_),
-	    w = document.getElementById("node-map-component-root"),
-	    x = JSON.parse(w.dataset.trans),
-	    E = null,
-	    C = [],
-	    S = [],
-	    k = [],
-	    P = function (t) {
-		function e(t) {
-			i(this, e);var n = u(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this, t));return n.debouncedSearch = n.debouncedSearch.bind(n), n.getNodePreview = n.getNodePreview.bind(n), n.onSelect = n.onSelect.bind(n), n.state = { searchString: "", action: "", position: {} }, n;
-		}return a(e, t), s(e, [{ key: "componentDidMount", value: function value() {
-				var t = this.props.dispatch;g.fetchUserLocation(t);
-			} }, { key: "componentDidUpdate", value: function value(t, e) {
-				this.props.dispatch;this.props.userLocation !== t.userLocation && this.createMap(), this.props.nodes !== t.nodes && this.createMarkers();
-			} }, { key: "createMap", value: function value() {
-				var t = this;E = L.map(this.refs.map, { center: [this.props.userLocation.lat, this.props.userLocation.lon], zoom: 8, scrollWheelZoom: !1 });var e = "https://api.mapbox.com/styles/v1/davidajnered/cj9r1s64b0pc12snzmvgt6lup/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw",
-				    n = L.tileLayer(e, { attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: "abcd", maxZoom: 18 });n.addTo(E), E.on("zoomend dragend", function (e) {
-					var n = E.getBounds();t.createMarkersOnEvent(n);
-				}), this.setState({ action: "mapCreated", position: { lat: this.props.userLocation.lat, lng: this.props.userLocation.lon } }), this.createMarkersOnEvent(E.getBounds());
-			} }, { key: "createMarkersOnEvent", value: function value(t) {
-				var e = this.props.dispatch;k = [], g.fetchContent(e, this.getSanitizedBoundsObject(t));
-			} }, { key: "createMarkers", value: function value() {
-				var t = this,
-				    e = L.markerClusterGroup({ iconCreateFunction: function iconCreateFunction(t) {
-						return L.divIcon({ html: '<div class="leaflet-cluster-marker"></div>' });
-					}, showCoverageOnHover: !1, spiderLegPolylineOptions: { opacity: 0 } }),
-				    n = L.icon({ iconSize: [36, 36], iconAnchor: [36, 36], popupAnchor: [-16, -20], iconUrl: "/css/leaflet/images/marker-icon.png" }),
-				    r = L.icon({ iconSize: [32, 32], iconAnchor: [32, 32], popupAnchor: [-16, -20], iconUrl: "/css/leaflet/images/reko-icon.png" });(0, m.default)(this.props.nodes).each(function (r, o) {
-					if (C.indexOf(r.id) === -1) {
-						var i = L.marker([r.location.lat, r.location.lng], { icon: n }),
-						    u = document.createElement("div");h.default.render(t.getNodePreview(r), u), i.bindPopup(u), e.addLayer(i), C.push(r.id);
-					}
-				}), (0, m.default)(this.props.reko).each(function (n, o) {
-					if (S.indexOf(n.id) === -1) {
-						var i = L.marker([n.location.lat, n.location.lng], { icon: r }),
-						    u = document.createElement("div");h.default.render(t.getRekoPreview(n), u), i.bindPopup(u), e.addLayer(i), S.push(n.id);
-					}
-				}), E.addLayer(e), "search" !== this.state.action && "mapCreated" !== this.state.action || this.setBounds();
-			} }, { key: "setBounds", value: function value() {
-				k.push([this.state.position.lat, this.state.position.lng]), (0, m.default)(this.props.nodes).each(function (t) {
-					k.push([t.location.lat, t.location.lng]);
-				});var t = new L.LatLngBounds(k);E.fitBounds(t), this.setState({ action: null, position: {} });
-			} }, { key: "getSanitizedBoundsObject", value: function value(t) {
-				return t._southWest ? { bounds: { sw: { lat: t._southWest.lat, lng: t._southWest.lng }, ne: { lat: t._northEast.lat, lng: t._northEast.lng } } } : m.default.isArray(t) && 4 === t.length ? { bounds: { sw: { lat: t[0], lng: t[2] }, ne: { lat: t[1], lng: t[3] } } } : void 0;
-			} }, { key: "getNodePreview", value: function value(t) {
-				return f.default.createElement("div", { className: "map-preview" }, f.default.createElement("a", { href: t.permalink.url, className: "header" }, f.default.createElement("h3", null, t.name), f.default.createElement("div", { className: "meta" }, f.default.createElement("div", null, f.default.createElement("i", { className: "fa fa-home" }), t.address, " ", t.zip, " ", t.city), f.default.createElement("div", null, f.default.createElement("i", {
-					className: "fa fa-clock-o" }), x[t.delivery_weekday], " ", t.delivery_time))), f.default.createElement("div", { className: "body-text" }, f.default.createElement("p", null, "Välkommen till utlämningsplatsen ", t.name), f.default.createElement("a", { href: t.permalink.url, className: "btn btn-success" }, x.visit_node, " ", f.default.createElement("i", { className: "fa fa-caret-right", style: { float: "right" } }))));
-			} }, { key: "getRekoPreview", value: function value(t) {
-				return f.default.createElement("div", { className: "map-preview" }, f.default.createElement("a", { href: t.link, target: "_blank", className: "header" }, f.default.createElement("h3", null, t.name)), f.default.createElement("div", { className: "body-text" }, f.default.createElement("p", null, f.default.createElement("a", { href: t.link, target: "_blank" }, x.link_to_fb, " ", t.name)), f.default.createElement("p", { className: "reko-fb-info" }, f.default.createElement("img", { src: "/css/leaflet/images/reko-icon.png" }), f.default.createElement("span", null, x.grey_map_marker_info))));
-			} }, { key: "getMapLoader", value: function value() {
-				return f.default.createElement("div", { className: "map-loader" }, f.default.createElement("img", { src: "/images/loader.svg" }));
-			} }, { key: "search", value: function value(t) {
-				t.persist(), this.setState({ searchString: t.target.value }), this.debouncedSearch(t);
-			} }, { key: "onSelect", value: function value(t) {
-				var e = this.props.dispatch;k = [], E.panTo(new L.LatLng(t.lat, t.lon)), this.setState({ searchString: t.display_name, action: "search", position: { lat: t.lat, lng: t.lon } }), g.fetchContent(e, this.getSanitizedBoundsObject(t.boundingbox));
-			} }, { key: "debouncedSearch", value: function value(t) {
-				var e = this.props.dispatch;g.searchGeo(e, t.target.value);
-			} }, { key: "render", value: function value() {
-				var t = this.props.fetching || !this.props.userLocation ? this.getMapLoader() : null,
-				    e = null;return this.props.searchResults && (e = f.default.createElement(b.default, { data: this.props.searchResults, onSelect: this.onSelect })), f.default.createElement("div", { className: "map container-fluid" }, f.default.createElement("div", { className: "body-text" }, f.default.createElement("h2", { className: "d-none d-sm-block" }, x.go_local), f.default.createElement("div", { className: "row no-gutters map-search" }, f.default.createElement("div", { className: "col-12 col-lg-6" }, f.default.createElement("div", { className: "input-group" }, f.default.createElement("span", { className: "input-group-addon" }, f.default.createElement("i", { className: "fa fa-search" })), f.default.createElement("input", { value: this.state.searchString, type: "text", className: "form-control", placeholder: x.find_node_near_you, onChange: this.search.bind(this) })), e)), f.default.createElement("div", { className: "map-holder", ref: "map" }, t)));
-			} }]), e;
-	}(l.Component);e.default = (0, d.connect)(c)(P);
-}, function (t, e, n) {
-	"use strict";
-	function r(t) {
-		return t && t.__esModule ? t : { default: t };
-	}function o(t, e) {
-		t(i());var n = void 0;return e.location ? n = { location: e.location } : e.bounds && (n = { bounds: e.bounds }), x.get("/map/content").query(n).end(function (t, e) {
-			return t && console.error(t), e;
-		}).then(function (t) {
-			return t.body;
-		}).then(function (e) {
-			return t(u(e));
-		}).catch(function (t) {
-			return console.error("error", t);
-		});
-	}function i() {
-		return { type: w.default.REQUEST_CONTENT, fetching: !0 };
-	}function u(t) {
-		return { type: w.default.RECEIVE_CONTENT, data: t, fetching: !1, received: Date.now() };
-	}function a(t, e) {
-		return t(c()), x.get("https://nominatim.openstreetmap.org/search").query({ q: e, format: "json", addressdetails: 1, featuretype: "settlement" }).end(function (t, e) {
-			return t && console.error(t), e;
-		}).then(function (t) {
-			return t.body;
-		}).then(function (e) {
-			return t(s(e));
-		}).catch(function (t) {
-			return console.error("error", t);
-		});
-	}function c() {
-		return { type: w.default.REQUEST_SEARCH_GEO, fetching: !0 };
-	}function s(t) {
-		return { type: w.default.RECEIVE_SEARCH_GEO, data: t, fetching: !1, received: Date.now() };
-	}function l(t) {
-		if (E.dataset.userLocation) {
-			var e = JSON.parse(E.dataset.userLocation);if (e) return t(h({ latitude: e.lat, longitude: e.lng }));f(t);
-		} else f(t);
-	}function f(t) {
-		p().then(function (t) {
-			return x.get("https://freegeoip.net/json/?q=" + t).end(function (t, e) {
-				t && console.error(t);
-			}).then(function (t) {
-				return t.body;
-			});
-		}).then(function (e) {
-			return t(h(e));
-		}).catch(function (t) {
-			return console.error("error", t);
-		});
-	}function p() {
-		var t = E.dataset.ip;return "::1" === t ? new v.default(function (t, e) {
-			return x.get("http://ip.localfoodnodes.org").end(function (t, e) {
-				t && console.error(t);
-			}).then(function (t) {
-				return t.body;
-			}).then(function (e) {
-				return t(e.ip);
-			}).catch(function (t) {
-				return e(t);
-			});
-		}) : v.default.resolve(t);
-	}function h(t) {
-		return t || (t = { lat: 65, lon: 22 }), { type: w.default.RECEIVE_USER_LOCATION, data: { lat: t.latitude, lon: t.longitude }, fetching: !1, received: Date.now() };
-	}Object.defineProperty(e, "__esModule", { value: !0 }), e.fetchContent = o, e.requestContent = i, e.receiveContent = u, e.searchGeo = a, e.requestSearchGeo = c, e.receiveSearchGeo = s, e.fetchUserLocation = l, e.receiveUserLocation = h;var d = n(540),
-	    v = r(d),
-	    g = n(550),
-	    y = r(g),
-	    m = n(551),
-	    _ = r(m),
-	    b = n(536),
-	    w = r(b),
-	    x = (0, y.default)(_.default, v.default),
-	    E = document.getElementById("node-map-component-root");
-}, function (t, e, n) {
-	"use strict";
-	t.exports = n(541);
-}, function (t, e, n) {
-	"use strict";
-	t.exports = n(542), n(544), n(545), n(546), n(547), n(549);
-}, function (t, e, n) {
-	"use strict";
-	function r() {}function o(t) {
-		try {
-			return t.then;
-		} catch (t) {
-			return y = t, m;
-		}
-	}function i(t, e) {
-		try {
-			return t(e);
-		} catch (t) {
-			return y = t, m;
-		}
-	}function u(t, e, n) {
-		try {
-			t(e, n);
-		} catch (t) {
-			return y = t, m;
-		}
-	}function a(t) {
-		if ("object" != _typeof(this)) throw new TypeError("Promises must be constructed via new");if ("function" != typeof t) throw new TypeError("Promise constructor's argument is not a function");this._40 = 0, this._65 = 0, this._55 = null, this._72 = null, t !== r && v(t, this);
-	}function c(t, e, n) {
-		return new t.constructor(function (o, i) {
-			var u = new a(r);u.then(o, i), s(t, new d(e, n, u));
-		});
-	}function s(t, e) {
-		for (; 3 === t._65;) {
-			t = t._55;
-		}return a._37 && a._37(t), 0 === t._65 ? 0 === t._40 ? (t._40 = 1, void (t._72 = e)) : 1 === t._40 ? (t._40 = 2, void (t._72 = [t._72, e])) : void t._72.push(e) : void l(t, e);
-	}function l(t, e) {
-		g(function () {
-			var n = 1 === t._65 ? e.onFulfilled : e.onRejected;if (null === n) return void (1 === t._65 ? f(e.promise, t._55) : p(e.promise, t._55));var r = i(n, t._55);r === m ? p(e.promise, y) : f(e.promise, r);
-		});
-	}function f(t, e) {
-		if (e === t) return p(t, new TypeError("A promise cannot be resolved with itself."));if (e && ("object" == (typeof e === "undefined" ? "undefined" : _typeof(e)) || "function" == typeof e)) {
-			var n = o(e);if (n === m) return p(t, y);if (n === t.then && e instanceof a) return t._65 = 3, t._55 = e, void h(t);if ("function" == typeof n) return void v(n.bind(e), t);
-		}t._65 = 1, t._55 = e, h(t);
-	}function p(t, e) {
-		t._65 = 2, t._55 = e, a._87 && a._87(t, e), h(t);
-	}function h(t) {
-		if (1 === t._40 && (s(t, t._72), t._72 = null), 2 === t._40) {
-			for (var e = 0; e < t._72.length; e++) {
-				s(t, t._72[e]);
-			}t._72 = null;
-		}
-	}function d(t, e, n) {
-		this.onFulfilled = "function" == typeof t ? t : null, this.onRejected = "function" == typeof e ? e : null, this.promise = n;
-	}function v(t, e) {
-		var n = !1,
-		    r = u(t, function (t) {
-			n || (n = !0, f(e, t));
-		}, function (t) {
-			n || (n = !0, p(e, t));
-		});n || r !== m || (n = !0, p(e, y));
-	}var g = n(543),
-	    y = null,
-	    m = {};t.exports = a, a._37 = null, a._87 = null, a._61 = r, a.prototype.then = function (t, e) {
-		if (this.constructor !== a) return c(this, t, e);var n = new a(r);return s(this, new d(t, e, n)), n;
-	};
-}, function (t, e) {
-	(function (e) {
-		"use strict";
-		function n(t) {
-			a.length || (u(), c = !0), a[a.length] = t;
-		}function r() {
-			for (; s < a.length;) {
-				var t = s;if (s += 1, a[t].call(), s > l) {
-					for (var e = 0, n = a.length - s; e < n; e++) {
-						a[e] = a[e + s];
-					}a.length -= s, s = 0;
-				}
-			}a.length = 0, s = 0, c = !1;
-		}function o(t) {
-			var e = 1,
-			    n = new p(t),
-			    r = document.createTextNode("");return n.observe(r, { characterData: !0 }), function () {
-				e = -e, r.data = e;
-			};
-		}function i(t) {
-			return function () {
-				function e() {
-					clearTimeout(n), clearInterval(r), t();
-				}var n = setTimeout(e, 0),
-				    r = setInterval(e, 50);
-			};
-		}t.exports = n;var u,
-		    a = [],
-		    c = !1,
-		    s = 0,
-		    l = 1024,
-		    f = "undefined" != typeof e ? e : self,
-		    p = f.MutationObserver || f.WebKitMutationObserver;u = "function" == typeof p ? o(r) : i(r), n.requestFlush = u, n.makeRequestCallFromTimer = i;
-	}).call(e, function () {
-		return this;
-	}());
-}, function (t, e, n) {
-	"use strict";
-	var r = n(542);t.exports = r, r.prototype.done = function (t, e) {
-		var n = arguments.length ? this.then.apply(this, arguments) : this;n.then(null, function (t) {
-			setTimeout(function () {
-				throw t;
-			}, 0);
-		});
-	};
-}, function (t, e, n) {
-	"use strict";
-	var r = n(542);t.exports = r, r.prototype.finally = function (t) {
-		return this.then(function (e) {
-			return r.resolve(t()).then(function () {
-				return e;
-			});
-		}, function (e) {
-			return r.resolve(t()).then(function () {
-				throw e;
-			});
-		});
-	};
-}, function (t, e, n) {
-	"use strict";
-	function r(t) {
-		var e = new o(o._61);return e._65 = 1, e._55 = t, e;
-	}var o = n(542);t.exports = o;var i = r(!0),
-	    u = r(!1),
-	    a = r(null),
-	    c = r(void 0),
-	    s = r(0),
-	    l = r("");o.resolve = function (t) {
-		if (t instanceof o) return t;if (null === t) return a;if (void 0 === t) return c;if (t === !0) return i;if (t === !1) return u;if (0 === t) return s;if ("" === t) return l;if ("object" == (typeof t === "undefined" ? "undefined" : _typeof(t)) || "function" == typeof t) try {
-			var e = t.then;if ("function" == typeof e) return new o(e.bind(t));
-		} catch (t) {
-			return new o(function (e, n) {
-				n(t);
-			});
-		}return r(t);
-	}, o.all = function (t) {
-		var e = Array.prototype.slice.call(t);return new o(function (t, n) {
-			function r(u, a) {
-				if (a && ("object" == (typeof a === "undefined" ? "undefined" : _typeof(a)) || "function" == typeof a)) {
-					if (a instanceof o && a.then === o.prototype.then) {
-						for (; 3 === a._65;) {
-							a = a._55;
-						}return 1 === a._65 ? r(u, a._55) : (2 === a._65 && n(a._55), void a.then(function (t) {
-							r(u, t);
-						}, n));
-					}var c = a.then;if ("function" == typeof c) {
-						var s = new o(c.bind(a));return void s.then(function (t) {
-							r(u, t);
-						}, n);
-					}
-				}e[u] = a, 0 === --i && t(e);
-			}if (0 === e.length) return t([]);for (var i = e.length, u = 0; u < e.length; u++) {
-				r(u, e[u]);
-			}
-		});
-	}, o.reject = function (t) {
-		return new o(function (e, n) {
-			n(t);
-		});
-	}, o.race = function (t) {
-		return new o(function (e, n) {
-			t.forEach(function (t) {
-				o.resolve(t).then(e, n);
-			});
-		});
-	}, o.prototype.catch = function (t) {
-		return this.then(null, t);
-	};
-}, function (t, e, n) {
-	"use strict";
-	function r(t, e) {
-		for (var n = [], r = 0; r < e; r++) {
-			n.push("a" + r);
-		}var o = ["return function (" + n.join(",") + ") {", "var self = this;", "return new Promise(function (rs, rj) {", "var res = fn.call(", ["self"].concat(n).concat([a]).join(","), ");", "if (res &&", '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ") {rs(res);}", "});", "};"].join("");return Function(["Promise", "fn"], o)(i, t);
-	}function o(t) {
-		for (var e = Math.max(t.length - 1, 3), n = [], r = 0; r < e; r++) {
-			n.push("a" + r);
-		}var o = ["return function (" + n.join(",") + ") {", "var self = this;", "var args;", "var argLength = arguments.length;", "if (arguments.length > " + e + ") {", "args = new Array(arguments.length + 1);", "for (var i = 0; i < arguments.length; i++) {", "args[i] = arguments[i];", "}", "}", "return new Promise(function (rs, rj) {", "var cb = " + a + ";", "var res;", "switch (argLength) {", n.concat(["extra"]).map(function (t, e) {
-			return "case " + e + ":res = fn.call(" + ["self"].concat(n.slice(0, e)).concat("cb").join(",") + ");break;";
-		}).join(""), "default:", "args[argLength] = cb;", "res = fn.apply(self, args);", "}", "if (res &&", '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ") {rs(res);}", "});", "};"].join("");return Function(["Promise", "fn"], o)(i, t);
-	}var i = n(542),
-	    u = n(548);t.exports = i, i.denodeify = function (t, e) {
-		return "number" == typeof e && e !== 1 / 0 ? r(t, e) : o(t);
-	};var a = "function (err, res) {if (err) { rj(err); } else { rs(res); }}";i.nodeify = function (t) {
-		return function () {
-			var e = Array.prototype.slice.call(arguments),
-			    n = "function" == typeof e[e.length - 1] ? e.pop() : null,
-			    r = this;try {
-				return t.apply(this, arguments).nodeify(n, r);
-			} catch (t) {
-				if (null === n || "undefined" == typeof n) return new i(function (e, n) {
-					n(t);
-				});u(function () {
-					n.call(r, t);
-				});
-			}
-		};
-	}, i.prototype.nodeify = function (t, e) {
-		return "function" != typeof t ? this : void this.then(function (n) {
-			u(function () {
-				t.call(e, null, n);
-			});
-		}, function (n) {
-			u(function () {
-				t.call(e, n);
-			});
-		});
-	};
-}, function (t, e, n) {
-	"use strict";
-	function r() {
-		if (c.length) throw c.shift();
-	}function o(t) {
-		var e;e = a.length ? a.pop() : new i(), e.task = t, u(e);
-	}function i() {
-		this.task = null;
-	}var u = n(543),
-	    a = [],
-	    c = [],
-	    s = u.makeRequestCallFromTimer(r);t.exports = o, i.prototype.call = function () {
-		try {
-			this.task.call();
-		} catch (t) {
-			o.onerror ? o.onerror(t) : (c.push(t), s());
-		} finally {
-			this.task = null, a[a.length] = this;
-		}
-	};
-}, function (t, e, n) {
-	"use strict";
-	var r = n(542);t.exports = r, r.enableSynchronous = function () {
-		r.prototype.isPending = function () {
-			return 0 == this.getState();
-		}, r.prototype.isFulfilled = function () {
-			return 1 == this.getState();
-		}, r.prototype.isRejected = function () {
-			return 2 == this.getState();
-		}, r.prototype.getValue = function () {
-			if (3 === this._65) return this._55.getValue();if (!this.isFulfilled()) throw new Error("Cannot get a value of an unfulfilled promise.");return this._55;
-		}, r.prototype.getReason = function () {
-			if (3 === this._65) return this._55.getReason();if (!this.isRejected()) throw new Error("Cannot get a rejection reason of a non-rejected promise.");return this._55;
-		}, r.prototype.getState = function () {
-			return 3 === this._65 ? this._55.getState() : this._65 === -1 || this._65 === -2 ? 0 : this._65;
-		};
-	}, r.disableSynchronous = function () {
-		r.prototype.isPending = void 0, r.prototype.isFulfilled = void 0, r.prototype.isRejected = void 0, r.prototype.getValue = void 0, r.prototype.getReason = void 0, r.prototype.getState = void 0;
-	};
-}, function (t, e) {
-	function n(t, e) {
-		function n() {
-			t.Request.apply(this, arguments);
-		}n.prototype = Object.create(t.Request.prototype), n.prototype.end = function (n) {
-			var r = t.Request.prototype.end,
-			    o = this;return new e(function (t, e) {
-				r.call(o, function (r, o) {
-					n && n(r, o), r ? (r.response = o, e(r)) : t(o);
-				});
-			});
-		}, n.prototype.then = function (n, r) {
-			var o = t.Request.prototype.end,
-			    i = this;return new e(function (t, e) {
-				o.call(i, function (n, r) {
-					n ? (n.response = r, e(n)) : t(r);
-				});
-			}).then(n, r);
-		};var r = function r(t, e) {
-			return new n(t, e);
-		};return r.options = function (t) {
-			return r("OPTIONS", t);
-		}, r.head = function (t, e) {
-			var n = r("HEAD", t);return e && n.send(e), n;
-		}, r.get = function (t, e) {
-			var n = r("GET", t);return e && n.query(e), n;
-		}, r.post = function (t, e) {
-			var n = r("POST", t);return e && n.send(e), n;
-		}, r.put = function (t, e) {
-			var n = r("PUT", t);return e && n.send(e), n;
-		}, r.patch = function (t, e) {
-			var n = r("PATCH", t);return e && n.send(e), n;
-		}, r.del = function (t) {
-			return r("DELETE", t);
-		}, r;
-	}t.exports = n;
-}, function (t, e, n) {
-	function r() {}function o(t) {
-		if (!y(t)) return t;var e = [];for (var n in t) {
-			i(e, n, t[n]);
-		}return e.join("&");
-	}function i(t, e, n) {
-		if (null != n) {
-			if (Array.isArray(n)) n.forEach(function (n) {
-				i(t, e, n);
-			});else if (y(n)) for (var r in n) {
-				i(t, e + "[" + r + "]", n[r]);
-			} else t.push(encodeURIComponent(e) + "=" + encodeURIComponent(n));
-		} else null === n && t.push(encodeURIComponent(e));
-	}function u(t) {
-		for (var e, n, r = {}, o = t.split("&"), i = 0, u = o.length; i < u; ++i) {
-			e = o[i], n = e.indexOf("="), n == -1 ? r[decodeURIComponent(e)] = "" : r[decodeURIComponent(e.slice(0, n))] = decodeURIComponent(e.slice(n + 1));
-		}return r;
-	}function a(t) {
-		var e,
-		    n,
-		    r,
-		    o,
-		    i = t.split(/\r?\n/),
-		    u = {};i.pop();for (var a = 0, c = i.length; a < c; ++a) {
-			n = i[a], e = n.indexOf(":"), r = n.slice(0, e).toLowerCase(), o = _(n.slice(e + 1)), u[r] = o;
-		}return u;
-	}function c(t) {
-		return (/[\/+]json\b/.test(t)
-		);
-	}function s(t) {
-		return t.split(/ *; */).shift();
-	}function l(t) {
-		return t.split(/ *; */).reduce(function (t, e) {
-			var n = e.split(/ *= */),
-			    r = n.shift(),
-			    o = n.shift();return r && o && (t[r] = o), t;
-		}, {});
-	}function f(t, e) {
-		e = e || {}, this.req = t, this.xhr = this.req.xhr, this.text = "HEAD" != this.req.method && ("" === this.xhr.responseType || "text" === this.xhr.responseType) || "undefined" == typeof this.xhr.responseType ? this.xhr.responseText : null, this.statusText = this.req.xhr.statusText, this._setStatusProperties(this.xhr.status), this.header = this.headers = a(this.xhr.getAllResponseHeaders()), this.header["content-type"] = this.xhr.getResponseHeader("content-type"), this._setHeaderProperties(this.header), this.body = "HEAD" != this.req.method ? this._parseBody(this.text ? this.text : this.xhr.response) : null;
-	}function p(t, e) {
-		var n = this;this._query = this._query || [], this.method = t, this.url = e, this.header = {}, this._header = {}, this.on("end", function () {
-			var t = null,
-			    e = null;try {
-				e = new f(n);
-			} catch (e) {
-				return t = new Error("Parser is unable to parse the response"), t.parse = !0, t.original = e, t.rawResponse = n.xhr && n.xhr.responseText ? n.xhr.responseText : null, t.statusCode = n.xhr && n.xhr.status ? n.xhr.status : null, n.callback(t);
-			}n.emit("response", e);var r;try {
-				(e.status < 200 || e.status >= 300) && (r = new Error(e.statusText || "Unsuccessful HTTP response"), r.original = t, r.response = e, r.status = e.status);
-			} catch (t) {
-				r = t;
-			}r ? n.callback(r, e) : n.callback(null, e);
-		});
-	}function h(t, e) {
-		var n = m("DELETE", t);return e && n.end(e), n;
-	}var d;"undefined" != typeof window ? d = window : "undefined" != typeof self ? d = self : (console.warn("Using browser-only version of superagent in non-browser environment"), d = this);var v = n(552),
-	    g = n(553),
-	    y = n(554),
-	    m = t.exports = n(555).bind(null, p);m.getXHR = function () {
-		if (!(!d.XMLHttpRequest || d.location && "file:" == d.location.protocol && d.ActiveXObject)) return new XMLHttpRequest();try {
-			return new ActiveXObject("Microsoft.XMLHTTP");
-		} catch (t) {}try {
-			return new ActiveXObject("Msxml2.XMLHTTP.6.0");
-		} catch (t) {}try {
-			return new ActiveXObject("Msxml2.XMLHTTP.3.0");
-		} catch (t) {}try {
-			return new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (t) {}throw Error("Browser-only verison of superagent could not find XHR");
-	};var _ = "".trim ? function (t) {
-		return t.trim();
-	} : function (t) {
-		return t.replace(/(^\s*|\s*$)/g, "");
-	};m.serializeObject = o, m.parseString = u, m.types = { html: "text/html", json: "application/json", xml: "application/xml", urlencoded: "application/x-www-form-urlencoded", form: "application/x-www-form-urlencoded", "form-data": "application/x-www-form-urlencoded" }, m.serialize = { "application/x-www-form-urlencoded": o, "application/json": JSON.stringify }, m.parse = { "application/x-www-form-urlencoded": u, "application/json": JSON.parse }, f.prototype.get = function (t) {
-		return this.header[t.toLowerCase()];
-	}, f.prototype._setHeaderProperties = function (t) {
-		var e = this.header["content-type"] || "";this.type = s(e);var n = l(e);for (var r in n) {
-			this[r] = n[r];
-		}
-	}, f.prototype._parseBody = function (t) {
-		var e = m.parse[this.type];return !e && c(this.type) && (e = m.parse["application/json"]), e && t && (t.length || t instanceof Object) ? e(t) : null;
-	}, f.prototype._setStatusProperties = function (t) {
-		1223 === t && (t = 204);var e = t / 100 | 0;this.status = this.statusCode = t, this.statusType = e, this.info = 1 == e, this.ok = 2 == e, this.clientError = 4 == e, this.serverError = 5 == e, this.error = (4 == e || 5 == e) && this.toError(), this.accepted = 202 == t, this.noContent = 204 == t, this.badRequest = 400 == t, this.unauthorized = 401 == t, this.notAcceptable = 406 == t, this.notFound = 404 == t, this.forbidden = 403 == t;
-	}, f.prototype.toError = function () {
-		var t = this.req,
-		    e = t.method,
-		    n = t.url,
-		    r = "cannot " + e + " " + n + " (" + this.status + ")",
-		    o = new Error(r);return o.status = this.status, o.method = e, o.url = n, o;
-	}, m.Response = f, v(p.prototype);for (var b in g) {
-		p.prototype[b] = g[b];
-	}p.prototype.type = function (t) {
-		return this.set("Content-Type", m.types[t] || t), this;
-	}, p.prototype.responseType = function (t) {
-		return this._responseType = t, this;
-	}, p.prototype.accept = function (t) {
-		return this.set("Accept", m.types[t] || t), this;
-	}, p.prototype.auth = function (t, e, n) {
-		switch (n || (n = { type: "basic" }), n.type) {case "basic":
-				var r = btoa(t + ":" + e);this.set("Authorization", "Basic " + r);break;case "auto":
-				this.username = t, this.password = e;}return this;
-	}, p.prototype.query = function (t) {
-		return "string" != typeof t && (t = o(t)), t && this._query.push(t), this;
-	}, p.prototype.attach = function (t, e, n) {
-		return this._getFormData().append(t, e, n || e.name), this;
-	}, p.prototype._getFormData = function () {
-		return this._formData || (this._formData = new d.FormData()), this._formData;
-	}, p.prototype.callback = function (t, e) {
-		var n = this._callback;this.clearTimeout(), n(t, e);
-	}, p.prototype.crossDomainError = function () {
-		var t = new Error("Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.");t.crossDomain = !0, t.status = this.status, t.method = this.method, t.url = this.url, this.callback(t);
-	}, p.prototype._timeoutError = function () {
-		var t = this._timeout,
-		    e = new Error("timeout of " + t + "ms exceeded");e.timeout = t, this.callback(e);
-	}, p.prototype._appendQueryString = function () {
-		var t = this._query.join("&");t && (this.url += ~this.url.indexOf("?") ? "&" + t : "?" + t);
-	}, p.prototype.end = function (t) {
-		var e = this,
-		    n = this.xhr = m.getXHR(),
-		    o = this._timeout,
-		    i = this._formData || this._data;this._callback = t || r, n.onreadystatechange = function () {
-			if (4 == n.readyState) {
-				var t;try {
-					t = n.status;
-				} catch (e) {
-					t = 0;
-				}if (0 == t) {
-					if (e.timedout) return e._timeoutError();if (e._aborted) return;return e.crossDomainError();
-				}e.emit("end");
-			}
-		};var u = function u(t, n) {
-			n.total > 0 && (n.percent = n.loaded / n.total * 100), n.direction = t, e.emit("progress", n);
-		};if (this.hasListeners("progress")) try {
-			n.onprogress = u.bind(null, "download"), n.upload && (n.upload.onprogress = u.bind(null, "upload"));
-		} catch (t) {}if (o && !this._timer && (this._timer = setTimeout(function () {
-			e.timedout = !0, e.abort();
-		}, o)), this._appendQueryString(), this.username && this.password ? n.open(this.method, this.url, !0, this.username, this.password) : n.open(this.method, this.url, !0), this._withCredentials && (n.withCredentials = !0), "GET" != this.method && "HEAD" != this.method && "string" != typeof i && !this._isHost(i)) {
-			var a = this._header["content-type"],
-			    s = this._serializer || m.serialize[a ? a.split(";")[0] : ""];!s && c(a) && (s = m.serialize["application/json"]), s && (i = s(i));
-		}for (var l in this.header) {
-			null != this.header[l] && n.setRequestHeader(l, this.header[l]);
-		}return this._responseType && (n.responseType = this._responseType), this.emit("request", this), n.send("undefined" != typeof i ? i : null), this;
-	}, m.Request = p, m.get = function (t, e, n) {
-		var r = m("GET", t);return "function" == typeof e && (n = e, e = null), e && r.query(e), n && r.end(n), r;
-	}, m.head = function (t, e, n) {
-		var r = m("HEAD", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
-	}, m.options = function (t, e, n) {
-		var r = m("OPTIONS", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
-	}, m.del = h, m.delete = h, m.patch = function (t, e, n) {
-		var r = m("PATCH", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
-	}, m.post = function (t, e, n) {
-		var r = m("POST", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
-	}, m.put = function (t, e, n) {
-		var r = m("PUT", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
-	};
-}, function (t, e, n) {
-	function r(t) {
-		if (t) return o(t);
-	}function o(t) {
-		for (var e in r.prototype) {
-			t[e] = r.prototype[e];
-		}return t;
-	}t.exports = r, r.prototype.on = r.prototype.addEventListener = function (t, e) {
-		return this._callbacks = this._callbacks || {}, (this._callbacks["$" + t] = this._callbacks["$" + t] || []).push(e), this;
-	}, r.prototype.once = function (t, e) {
-		function n() {
-			this.off(t, n), e.apply(this, arguments);
-		}return n.fn = e, this.on(t, n), this;
-	}, r.prototype.off = r.prototype.removeListener = r.prototype.removeAllListeners = r.prototype.removeEventListener = function (t, e) {
-		if (this._callbacks = this._callbacks || {}, 0 == arguments.length) return this._callbacks = {}, this;var n = this._callbacks["$" + t];if (!n) return this;if (1 == arguments.length) return delete this._callbacks["$" + t], this;for (var r, o = 0; o < n.length; o++) {
-			if (r = n[o], r === e || r.fn === e) {
-				n.splice(o, 1);break;
-			}
-		}return this;
-	}, r.prototype.emit = function (t) {
-		this._callbacks = this._callbacks || {};var e = [].slice.call(arguments, 1),
-		    n = this._callbacks["$" + t];if (n) {
-			n = n.slice(0);for (var r = 0, o = n.length; r < o; ++r) {
-				n[r].apply(this, e);
-			}
-		}return this;
-	}, r.prototype.listeners = function (t) {
-		return this._callbacks = this._callbacks || {}, this._callbacks["$" + t] || [];
-	}, r.prototype.hasListeners = function (t) {
-		return !!this.listeners(t).length;
-	};
-}, function (t, e, n) {
-	var r = n(554);e.clearTimeout = function () {
-		return this._timeout = 0, clearTimeout(this._timer), this;
-	}, e.parse = function (t) {
-		return this._parser = t, this;
-	}, e.serialize = function (t) {
-		return this._serializer = t, this;
-	}, e.timeout = function (t) {
-		return this._timeout = t, this;
-	}, e.then = function (t, e) {
-		if (!this._fullfilledPromise) {
-			var n = this;this._fullfilledPromise = new Promise(function (t, e) {
-				n.end(function (n, r) {
-					n ? e(n) : t(r);
-				});
-			});
-		}return this._fullfilledPromise.then(t, e);
-	}, e.catch = function (t) {
-		return this.then(void 0, t);
-	}, e.use = function (t) {
-		return t(this), this;
-	}, e.get = function (t) {
-		return this._header[t.toLowerCase()];
-	}, e.getHeader = e.get, e.set = function (t, e) {
-		if (r(t)) {
-			for (var n in t) {
-				this.set(n, t[n]);
-			}return this;
-		}return this._header[t.toLowerCase()] = e, this.header[t] = e, this;
-	}, e.unset = function (t) {
-		return delete this._header[t.toLowerCase()], delete this.header[t], this;
-	}, e.field = function (t, e) {
-		if (null === t || void 0 === t) throw new Error(".field(name, val) name can not be empty");if (r(t)) {
-			for (var n in t) {
-				this.field(n, t[n]);
-			}return this;
-		}if (null === e || void 0 === e) throw new Error(".field(name, val) val can not be empty");return this._getFormData().append(t, e), this;
-	}, e.abort = function () {
-		return this._aborted ? this : (this._aborted = !0, this.xhr && this.xhr.abort(), this.req && this.req.abort(), this.clearTimeout(), this.emit("abort"), this);
-	}, e.withCredentials = function () {
-		return this._withCredentials = !0, this;
-	}, e.redirects = function (t) {
-		return this._maxRedirects = t, this;
-	}, e.toJSON = function () {
-		return { method: this.method, url: this.url, data: this._data, headers: this._header };
-	}, e._isHost = function (t) {
-		var e = {}.toString.call(t);switch (e) {case "[object File]":case "[object Blob]":case "[object FormData]":
-				return !0;default:
-				return !1;}
-	}, e.send = function (t) {
-		var e = r(t),
-		    n = this._header["content-type"];if (e && r(this._data)) for (var o in t) {
-			this._data[o] = t[o];
-		} else "string" == typeof t ? (n || this.type("form"), n = this._header["content-type"], "application/x-www-form-urlencoded" == n ? this._data = this._data ? this._data + "&" + t : t : this._data = (this._data || "") + t) : this._data = t;return !e || this._isHost(t) ? this : (n || this.type("json"), this);
-	};
-}, function (t, e) {
-	function n(t) {
-		return null !== t && "object" == (typeof t === "undefined" ? "undefined" : _typeof(t));
-	}t.exports = n;
-}, function (t, e) {
-	function n(t, e, n) {
-		return "function" == typeof n ? new t("GET", e).end(n) : 2 == arguments.length ? new t("GET", e) : new t(e, n);
-	}t.exports = n;
 }, function (t, e, n) {
 	var r;(function (t, o) {
 		(function () {
@@ -11234,14 +10529,718 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 }, function (t, e, n) {
 	"use strict";
 	function r(t) {
+		if (t && t.__esModule) return t;var e = {};if (null != t) for (var n in t) {
+			Object.prototype.hasOwnProperty.call(t, n) && (e[n] = t[n]);
+		}return e.default = t, e;
+	}function o(t) {
+		return t && t.__esModule ? t : { default: t };
+	}function i(t, e) {
+		if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+	}function u(t, e) {
+		if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+		return !e || "object" != (typeof e === "undefined" ? "undefined" : _typeof(e)) && "function" != typeof e ? t : e;
+	}function a(t, e) {
+		if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + (typeof e === "undefined" ? "undefined" : _typeof(e)));t.prototype = Object.create(e && e.prototype, { constructor: { value: t, enumerable: !1, writable: !0, configurable: !0 } }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
+	}function c(t) {
+		return t;
+	}Object.defineProperty(e, "__esModule", { value: !0 });var s = function () {
+		function t(t, e) {
+			for (var n = 0; n < e.length; n++) {
+				var r = e[n];r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(t, r.key, r);
+			}
+		}return function (e, n, r) {
+			return n && t(e.prototype, n), r && t(e, r), e;
+		};
+	}(),
+	    l = n(327),
+	    f = o(l),
+	    p = n(357),
+	    h = o(p),
+	    d = n(517),
+	    v = n(540),
+	    g = r(v),
+	    y = n(538),
+	    m = o(y),
+	    _ = n(557),
+	    b = o(_),
+	    w = document.getElementById("node-map-component-root"),
+	    x = JSON.parse(w.dataset.trans),
+	    E = null,
+	    C = [],
+	    S = [],
+	    k = [],
+	    P = function (t) {
+		function e(t) {
+			i(this, e);var n = u(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this, t));return n.debouncedSearch = n.debouncedSearch.bind(n), n.getNodePreview = n.getNodePreview.bind(n), n.onSelect = n.onSelect.bind(n), n.state = { searchString: "", action: "", position: {} }, n;
+		}return a(e, t), s(e, [{ key: "componentDidMount", value: function value() {
+				var t = this.props.dispatch;g.fetchUserLocation(t);
+			} }, { key: "componentDidUpdate", value: function value(t, e) {
+				this.props.dispatch;this.props.userLocation !== t.userLocation && this.createMap(), this.props.nodes !== t.nodes && this.createMarkers();
+			} }, { key: "createMap", value: function value() {
+				var t = this;E = L.map(this.refs.map, { center: [this.props.userLocation.lat, this.props.userLocation.lon], zoom: 8, scrollWheelZoom: !1 });var e = "https://api.mapbox.com/styles/v1/davidajnered/cj9r1s64b0pc12snzmvgt6lup/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw",
+				    n = L.tileLayer(e, { attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: "abcd", maxZoom: 18 });n.addTo(E), E.on("zoomend dragend", function (e) {
+					var n = E.getBounds();t.createMarkersOnEvent(n);
+				}), this.setState({ action: "mapCreated", position: { lat: this.props.userLocation.lat, lng: this.props.userLocation.lon } }), this.createMarkersOnEvent(E.getBounds());
+			} }, { key: "createMarkersOnEvent", value: function value(t) {
+				var e = this.props.dispatch;k = [], g.fetchContent(e, this.getSanitizedBoundsObject(t));
+			} }, { key: "createMarkers", value: function value() {
+				var t = this,
+				    e = L.markerClusterGroup({ iconCreateFunction: function iconCreateFunction(t) {
+						return L.divIcon({ html: '<div class="leaflet-cluster-marker"></div>' });
+					}, showCoverageOnHover: !1, spiderLegPolylineOptions: { opacity: 0 } }),
+				    n = L.icon({ iconSize: [36, 36], iconAnchor: [36, 36], popupAnchor: [-16, -20], iconUrl: "/css/leaflet/images/marker-icon.png" }),
+				    r = L.icon({ iconSize: [32, 32], iconAnchor: [32, 32], popupAnchor: [-16, -20], iconUrl: "/css/leaflet/images/reko-icon.png" });(0, m.default)(this.props.nodes).each(function (r, o) {
+					if (C.indexOf(r.id) === -1) {
+						var i = L.marker([r.location.lat, r.location.lng], { icon: n }),
+						    u = document.createElement("div");h.default.render(t.getNodePreview(r), u), i.bindPopup(u), e.addLayer(i), C.push(r.id);
+					}
+				}), (0, m.default)(this.props.reko).each(function (n, o) {
+					if (S.indexOf(n.id) === -1) {
+						var i = L.marker([n.location.lat, n.location.lng], { icon: r }),
+						    u = document.createElement("div");h.default.render(t.getRekoPreview(n), u), i.bindPopup(u), e.addLayer(i), S.push(n.id);
+					}
+				}), E.addLayer(e), "search" !== this.state.action && "mapCreated" !== this.state.action || this.setBounds();
+			} }, { key: "setBounds", value: function value() {
+				k.push([this.state.position.lat, this.state.position.lng]), (0, m.default)(this.props.nodes).each(function (t) {
+					k.push([t.location.lat, t.location.lng]);
+				});var t = new L.LatLngBounds(k);E.fitBounds(t), this.setState({ action: null, position: {} });
+			} }, { key: "getSanitizedBoundsObject", value: function value(t) {
+				return t._southWest ? { bounds: { sw: { lat: t._southWest.lat, lng: t._southWest.lng }, ne: { lat: t._northEast.lat, lng: t._northEast.lng } } } : m.default.isArray(t) && 4 === t.length ? { bounds: { sw: { lat: t[0], lng: t[2] }, ne: { lat: t[1], lng: t[3] } } } : void 0;
+			} }, { key: "getNodePreview", value: function value(t) {
+				return f.default.createElement("div", { className: "map-preview" }, f.default.createElement("a", { href: t.permalink.url, className: "header" }, f.default.createElement("h3", null, t.name), f.default.createElement("div", { className: "meta" }, f.default.createElement("div", null, f.default.createElement("i", { className: "fa fa-home" }), t.address, " ", t.zip, " ", t.city), f.default.createElement("div", null, f.default.createElement("i", { className: "fa fa-clock-o" }), x[t.delivery_weekday], " ", t.delivery_time))), f.default.createElement("div", { className: "body-text" }, f.default.createElement("p", null, "Välkommen till utlämningsplatsen ", t.name), f.default.createElement("a", { href: t.permalink.url, className: "btn btn-success" }, x.visit_node, " ", f.default.createElement("i", { className: "fa fa-caret-right", style: { float: "right" } }))));
+			} }, { key: "getRekoPreview", value: function value(t) {
+				return f.default.createElement("div", { className: "map-preview" }, f.default.createElement("a", { href: t.link, target: "_blank", className: "header" }, f.default.createElement("h3", null, t.name)), f.default.createElement("div", { className: "body-text" }, f.default.createElement("p", null, f.default.createElement("a", { href: t.link, target: "_blank" }, x.link_to_fb, " ", t.name)), f.default.createElement("p", { className: "reko-fb-info" }, f.default.createElement("img", { src: "/css/leaflet/images/reko-icon.png" }), f.default.createElement("span", null, x.grey_map_marker_info))));
+			} }, { key: "getMapLoader", value: function value() {
+				return f.default.createElement("div", { className: "map-loader" }, f.default.createElement("img", { src: "/images/loader.svg" }));
+			} }, { key: "search", value: function value(t) {
+				t.persist(), this.setState({ searchString: t.target.value }), this.debouncedSearch(t);
+			} }, { key: "onSelect", value: function value(t) {
+				var e = this.props.dispatch;k = [], E.panTo(new L.LatLng(t.lat, t.lon)), this.setState({ searchString: t.display_name, action: "search", position: { lat: t.lat, lng: t.lon } }), g.fetchContent(e, this.getSanitizedBoundsObject(t.boundingbox));
+			} }, { key: "debouncedSearch", value: function value(t) {
+				var e = this.props.dispatch;g.searchGeo(e, t.target.value);
+			} }, { key: "render", value: function value() {
+				var t = this.props.fetching || !this.props.userLocation ? this.getMapLoader() : null,
+				    e = null;return this.props.searchResults && (e = f.default.createElement(b.default, { data: this.props.searchResults, onSelect: this.onSelect })), f.default.createElement("div", { className: "map container-fluid" }, f.default.createElement("h2", { className: "d-none d-sm-block thin" }, x.go_local), f.default.createElement("div", { className: "row no-gutters map-search" }, f.default.createElement("div", { className: "col-12 col-lg-6" }, f.default.createElement("div", { className: "input-group" }, f.default.createElement("span", { className: "input-group-addon" }, f.default.createElement("i", { className: "fa fa-search" })), f.default.createElement("input", { value: this.state.searchString, type: "text", className: "form-control", placeholder: x.find_node_near_you, onChange: this.search.bind(this) })), e)), f.default.createElement("div", { className: "map-holder", ref: "map" }, t));
+			} }]), e;
+	}(l.Component);e.default = (0, d.connect)(c)(P);
+}, function (t, e, n) {
+	"use strict";
+	function r(t) {
+		return t && t.__esModule ? t : { default: t };
+	}function o(t, e) {
+		t(i());var n = void 0;return e.location ? n = { location: e.location } : e.bounds && (n = { bounds: e.bounds }), x.get("/map/content").query(n).end(function (t, e) {
+			return t && console.error(t), e;
+		}).then(function (t) {
+			return t.body;
+		}).then(function (e) {
+			return t(u(e));
+		}).catch(function (t) {
+			return console.error("error", t);
+		});
+	}function i() {
+		return { type: w.default.REQUEST_CONTENT, fetching: !0 };
+	}function u(t) {
+		return { type: w.default.RECEIVE_CONTENT, data: t, fetching: !1, received: Date.now() };
+	}function a(t, e) {
+		return t(c()), x.get("https://nominatim.openstreetmap.org/search").query({ q: e, format: "json", addressdetails: 1, featuretype: "settlement" }).end(function (t, e) {
+			return t && console.error(t), e;
+		}).then(function (t) {
+			return t.body;
+		}).then(function (e) {
+			return t(s(e));
+		}).catch(function (t) {
+			return console.error("error", t);
+		});
+	}function c() {
+		return { type: w.default.REQUEST_SEARCH_GEO, fetching: !0 };
+	}function s(t) {
+		return { type: w.default.RECEIVE_SEARCH_GEO, data: t, fetching: !1, received: Date.now() };
+	}function l(t) {
+		if (E.dataset.userLocation) {
+			var e = JSON.parse(E.dataset.userLocation);if (e) return t(h({ latitude: e.lat, longitude: e.lng }));f(t);
+		} else f(t);
+	}function f(t) {
+		p().then(function (t) {
+			return x.get("https://freegeoip.net/json/?q=" + t).end(function (t, e) {
+				t && console.error(t);
+			}).then(function (t) {
+				return t.body;
+			});
+		}).then(function (e) {
+			return t(h(e));
+		}).catch(function (t) {
+			return console.error("error", t);
+		});
+	}function p() {
+		var t = E.dataset.ip;return "::1" === t ? new v.default(function (t, e) {
+			return x.get("http://ip.localfoodnodes.org").end(function (t, e) {
+				t && console.error(t);
+			}).then(function (t) {
+				return t.body;
+			}).then(function (e) {
+				return t(e.ip);
+			}).catch(function (t) {
+				return e(t);
+			});
+		}) : v.default.resolve(t);
+	}function h(t) {
+		return t || (t = { lat: 65, lon: 22 }), { type: w.default.RECEIVE_USER_LOCATION, data: { lat: t.latitude, lon: t.longitude }, fetching: !1, received: Date.now() };
+	}Object.defineProperty(e, "__esModule", { value: !0 }), e.fetchContent = o, e.requestContent = i, e.receiveContent = u, e.searchGeo = a, e.requestSearchGeo = c, e.receiveSearchGeo = s, e.fetchUserLocation = l, e.receiveUserLocation = h;var d = n(541),
+	    v = r(d),
+	    g = n(551),
+	    y = r(g),
+	    m = n(552),
+	    _ = r(m),
+	    b = n(536),
+	    w = r(b),
+	    x = (0, y.default)(_.default, v.default),
+	    E = document.getElementById("node-map-component-root");
+}, function (t, e, n) {
+	"use strict";
+	t.exports = n(542);
+}, function (t, e, n) {
+	"use strict";
+	t.exports = n(543), n(545), n(546), n(547), n(548), n(550);
+}, function (t, e, n) {
+	"use strict";
+	function r() {}function o(t) {
+		try {
+			return t.then;
+		} catch (t) {
+			return y = t, m;
+		}
+	}function i(t, e) {
+		try {
+			return t(e);
+		} catch (t) {
+			return y = t, m;
+		}
+	}function u(t, e, n) {
+		try {
+			t(e, n);
+		} catch (t) {
+			return y = t, m;
+		}
+	}function a(t) {
+		if ("object" != _typeof(this)) throw new TypeError("Promises must be constructed via new");if ("function" != typeof t) throw new TypeError("Promise constructor's argument is not a function");this._40 = 0, this._65 = 0, this._55 = null, this._72 = null, t !== r && v(t, this);
+	}function c(t, e, n) {
+		return new t.constructor(function (o, i) {
+			var u = new a(r);u.then(o, i), s(t, new d(e, n, u));
+		});
+	}function s(t, e) {
+		for (; 3 === t._65;) {
+			t = t._55;
+		}return a._37 && a._37(t), 0 === t._65 ? 0 === t._40 ? (t._40 = 1, void (t._72 = e)) : 1 === t._40 ? (t._40 = 2, void (t._72 = [t._72, e])) : void t._72.push(e) : void l(t, e);
+	}function l(t, e) {
+		g(function () {
+			var n = 1 === t._65 ? e.onFulfilled : e.onRejected;if (null === n) return void (1 === t._65 ? f(e.promise, t._55) : p(e.promise, t._55));var r = i(n, t._55);r === m ? p(e.promise, y) : f(e.promise, r);
+		});
+	}function f(t, e) {
+		if (e === t) return p(t, new TypeError("A promise cannot be resolved with itself."));if (e && ("object" == (typeof e === "undefined" ? "undefined" : _typeof(e)) || "function" == typeof e)) {
+			var n = o(e);if (n === m) return p(t, y);if (n === t.then && e instanceof a) return t._65 = 3, t._55 = e, void h(t);if ("function" == typeof n) return void v(n.bind(e), t);
+		}t._65 = 1, t._55 = e, h(t);
+	}function p(t, e) {
+		t._65 = 2, t._55 = e, a._87 && a._87(t, e), h(t);
+	}function h(t) {
+		if (1 === t._40 && (s(t, t._72), t._72 = null), 2 === t._40) {
+			for (var e = 0; e < t._72.length; e++) {
+				s(t, t._72[e]);
+			}t._72 = null;
+		}
+	}function d(t, e, n) {
+		this.onFulfilled = "function" == typeof t ? t : null, this.onRejected = "function" == typeof e ? e : null, this.promise = n;
+	}function v(t, e) {
+		var n = !1,
+		    r = u(t, function (t) {
+			n || (n = !0, f(e, t));
+		}, function (t) {
+			n || (n = !0, p(e, t));
+		});n || r !== m || (n = !0, p(e, y));
+	}var g = n(544),
+	    y = null,
+	    m = {};t.exports = a, a._37 = null, a._87 = null, a._61 = r, a.prototype.then = function (t, e) {
+		if (this.constructor !== a) return c(this, t, e);var n = new a(r);return s(this, new d(t, e, n)), n;
+	};
+}, function (t, e) {
+	(function (e) {
+		"use strict";
+		function n(t) {
+			a.length || (u(), c = !0), a[a.length] = t;
+		}function r() {
+			for (; s < a.length;) {
+				var t = s;if (s += 1, a[t].call(), s > l) {
+					for (var e = 0, n = a.length - s; e < n; e++) {
+						a[e] = a[e + s];
+					}a.length -= s, s = 0;
+				}
+			}a.length = 0, s = 0, c = !1;
+		}function o(t) {
+			var e = 1,
+			    n = new p(t),
+			    r = document.createTextNode("");return n.observe(r, { characterData: !0 }), function () {
+				e = -e, r.data = e;
+			};
+		}function i(t) {
+			return function () {
+				function e() {
+					clearTimeout(n), clearInterval(r), t();
+				}var n = setTimeout(e, 0),
+				    r = setInterval(e, 50);
+			};
+		}t.exports = n;var u,
+		    a = [],
+		    c = !1,
+		    s = 0,
+		    l = 1024,
+		    f = "undefined" != typeof e ? e : self,
+		    p = f.MutationObserver || f.WebKitMutationObserver;u = "function" == typeof p ? o(r) : i(r), n.requestFlush = u, n.makeRequestCallFromTimer = i;
+	}).call(e, function () {
+		return this;
+	}());
+}, function (t, e, n) {
+	"use strict";
+	var r = n(543);t.exports = r, r.prototype.done = function (t, e) {
+		var n = arguments.length ? this.then.apply(this, arguments) : this;n.then(null, function (t) {
+			setTimeout(function () {
+				throw t;
+			}, 0);
+		});
+	};
+}, function (t, e, n) {
+	"use strict";
+	var r = n(543);t.exports = r, r.prototype.finally = function (t) {
+		return this.then(function (e) {
+			return r.resolve(t()).then(function () {
+				return e;
+			});
+		}, function (e) {
+			return r.resolve(t()).then(function () {
+				throw e;
+			});
+		});
+	};
+}, function (t, e, n) {
+	"use strict";
+	function r(t) {
+		var e = new o(o._61);return e._65 = 1, e._55 = t, e;
+	}var o = n(543);t.exports = o;var i = r(!0),
+	    u = r(!1),
+	    a = r(null),
+	    c = r(void 0),
+	    s = r(0),
+	    l = r("");o.resolve = function (t) {
+		if (t instanceof o) return t;if (null === t) return a;if (void 0 === t) return c;if (t === !0) return i;if (t === !1) return u;if (0 === t) return s;if ("" === t) return l;if ("object" == (typeof t === "undefined" ? "undefined" : _typeof(t)) || "function" == typeof t) try {
+			var e = t.then;if ("function" == typeof e) return new o(e.bind(t));
+		} catch (t) {
+			return new o(function (e, n) {
+				n(t);
+			});
+		}return r(t);
+	}, o.all = function (t) {
+		var e = Array.prototype.slice.call(t);return new o(function (t, n) {
+			function r(u, a) {
+				if (a && ("object" == (typeof a === "undefined" ? "undefined" : _typeof(a)) || "function" == typeof a)) {
+					if (a instanceof o && a.then === o.prototype.then) {
+						for (; 3 === a._65;) {
+							a = a._55;
+						}return 1 === a._65 ? r(u, a._55) : (2 === a._65 && n(a._55), void a.then(function (t) {
+							r(u, t);
+						}, n));
+					}var c = a.then;if ("function" == typeof c) {
+						var s = new o(c.bind(a));return void s.then(function (t) {
+							r(u, t);
+						}, n);
+					}
+				}e[u] = a, 0 === --i && t(e);
+			}if (0 === e.length) return t([]);for (var i = e.length, u = 0; u < e.length; u++) {
+				r(u, e[u]);
+			}
+		});
+	}, o.reject = function (t) {
+		return new o(function (e, n) {
+			n(t);
+		});
+	}, o.race = function (t) {
+		return new o(function (e, n) {
+			t.forEach(function (t) {
+				o.resolve(t).then(e, n);
+			});
+		});
+	}, o.prototype.catch = function (t) {
+		return this.then(null, t);
+	};
+}, function (t, e, n) {
+	"use strict";
+	function r(t, e) {
+		for (var n = [], r = 0; r < e; r++) {
+			n.push("a" + r);
+		}var o = ["return function (" + n.join(",") + ") {", "var self = this;", "return new Promise(function (rs, rj) {", "var res = fn.call(", ["self"].concat(n).concat([a]).join(","), ");", "if (res &&", '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ") {rs(res);}", "});", "};"].join("");return Function(["Promise", "fn"], o)(i, t);
+	}function o(t) {
+		for (var e = Math.max(t.length - 1, 3), n = [], r = 0; r < e; r++) {
+			n.push("a" + r);
+		}var o = ["return function (" + n.join(",") + ") {", "var self = this;", "var args;", "var argLength = arguments.length;", "if (arguments.length > " + e + ") {", "args = new Array(arguments.length + 1);", "for (var i = 0; i < arguments.length; i++) {", "args[i] = arguments[i];", "}", "}", "return new Promise(function (rs, rj) {", "var cb = " + a + ";", "var res;", "switch (argLength) {", n.concat(["extra"]).map(function (t, e) {
+			return "case " + e + ":res = fn.call(" + ["self"].concat(n.slice(0, e)).concat("cb").join(",") + ");break;";
+		}).join(""), "default:", "args[argLength] = cb;", "res = fn.apply(self, args);", "}", "if (res &&", '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ") {rs(res);}", "});", "};"].join("");return Function(["Promise", "fn"], o)(i, t);
+	}var i = n(543),
+	    u = n(549);t.exports = i, i.denodeify = function (t, e) {
+		return "number" == typeof e && e !== 1 / 0 ? r(t, e) : o(t);
+	};var a = "function (err, res) {if (err) { rj(err); } else { rs(res); }}";i.nodeify = function (t) {
+		return function () {
+			var e = Array.prototype.slice.call(arguments),
+			    n = "function" == typeof e[e.length - 1] ? e.pop() : null,
+			    r = this;try {
+				return t.apply(this, arguments).nodeify(n, r);
+			} catch (t) {
+				if (null === n || "undefined" == typeof n) return new i(function (e, n) {
+					n(t);
+				});u(function () {
+					n.call(r, t);
+				});
+			}
+		};
+	}, i.prototype.nodeify = function (t, e) {
+		return "function" != typeof t ? this : void this.then(function (n) {
+			u(function () {
+				t.call(e, null, n);
+			});
+		}, function (n) {
+			u(function () {
+				t.call(e, n);
+			});
+		});
+	};
+}, function (t, e, n) {
+	"use strict";
+	function r() {
+		if (c.length) throw c.shift();
+	}function o(t) {
+		var e;e = a.length ? a.pop() : new i(), e.task = t, u(e);
+	}function i() {
+		this.task = null;
+	}var u = n(544),
+	    a = [],
+	    c = [],
+	    s = u.makeRequestCallFromTimer(r);t.exports = o, i.prototype.call = function () {
+		try {
+			this.task.call();
+		} catch (t) {
+			o.onerror ? o.onerror(t) : (c.push(t), s());
+		} finally {
+			this.task = null, a[a.length] = this;
+		}
+	};
+}, function (t, e, n) {
+	"use strict";
+	var r = n(543);t.exports = r, r.enableSynchronous = function () {
+		r.prototype.isPending = function () {
+			return 0 == this.getState();
+		}, r.prototype.isFulfilled = function () {
+			return 1 == this.getState();
+		}, r.prototype.isRejected = function () {
+			return 2 == this.getState();
+		}, r.prototype.getValue = function () {
+			if (3 === this._65) return this._55.getValue();if (!this.isFulfilled()) throw new Error("Cannot get a value of an unfulfilled promise.");return this._55;
+		}, r.prototype.getReason = function () {
+			if (3 === this._65) return this._55.getReason();if (!this.isRejected()) throw new Error("Cannot get a rejection reason of a non-rejected promise.");return this._55;
+		}, r.prototype.getState = function () {
+			return 3 === this._65 ? this._55.getState() : this._65 === -1 || this._65 === -2 ? 0 : this._65;
+		};
+	}, r.disableSynchronous = function () {
+		r.prototype.isPending = void 0, r.prototype.isFulfilled = void 0, r.prototype.isRejected = void 0, r.prototype.getValue = void 0, r.prototype.getReason = void 0, r.prototype.getState = void 0;
+	};
+}, function (t, e) {
+	function n(t, e) {
+		function n() {
+			t.Request.apply(this, arguments);
+		}n.prototype = Object.create(t.Request.prototype), n.prototype.end = function (n) {
+			var r = t.Request.prototype.end,
+			    o = this;return new e(function (t, e) {
+				r.call(o, function (r, o) {
+					n && n(r, o), r ? (r.response = o, e(r)) : t(o);
+				});
+			});
+		}, n.prototype.then = function (n, r) {
+			var o = t.Request.prototype.end,
+			    i = this;return new e(function (t, e) {
+				o.call(i, function (n, r) {
+					n ? (n.response = r, e(n)) : t(r);
+				});
+			}).then(n, r);
+		};var r = function r(t, e) {
+			return new n(t, e);
+		};return r.options = function (t) {
+			return r("OPTIONS", t);
+		}, r.head = function (t, e) {
+			var n = r("HEAD", t);return e && n.send(e), n;
+		}, r.get = function (t, e) {
+			var n = r("GET", t);return e && n.query(e), n;
+		}, r.post = function (t, e) {
+			var n = r("POST", t);return e && n.send(e), n;
+		}, r.put = function (t, e) {
+			var n = r("PUT", t);return e && n.send(e), n;
+		}, r.patch = function (t, e) {
+			var n = r("PATCH", t);return e && n.send(e), n;
+		}, r.del = function (t) {
+			return r("DELETE", t);
+		}, r;
+	}t.exports = n;
+}, function (t, e, n) {
+	function r() {}function o(t) {
+		if (!y(t)) return t;var e = [];for (var n in t) {
+			i(e, n, t[n]);
+		}return e.join("&");
+	}function i(t, e, n) {
+		if (null != n) {
+			if (Array.isArray(n)) n.forEach(function (n) {
+				i(t, e, n);
+			});else if (y(n)) for (var r in n) {
+				i(t, e + "[" + r + "]", n[r]);
+			} else t.push(encodeURIComponent(e) + "=" + encodeURIComponent(n));
+		} else null === n && t.push(encodeURIComponent(e));
+	}function u(t) {
+		for (var e, n, r = {}, o = t.split("&"), i = 0, u = o.length; i < u; ++i) {
+			e = o[i], n = e.indexOf("="), n == -1 ? r[decodeURIComponent(e)] = "" : r[decodeURIComponent(e.slice(0, n))] = decodeURIComponent(e.slice(n + 1));
+		}return r;
+	}function a(t) {
+		var e,
+		    n,
+		    r,
+		    o,
+		    i = t.split(/\r?\n/),
+		    u = {};i.pop();for (var a = 0, c = i.length; a < c; ++a) {
+			n = i[a], e = n.indexOf(":"), r = n.slice(0, e).toLowerCase(), o = _(n.slice(e + 1)), u[r] = o;
+		}return u;
+	}function c(t) {
+		return (/[\/+]json\b/.test(t)
+		);
+	}function s(t) {
+		return t.split(/ *; */).shift();
+	}function l(t) {
+		return t.split(/ *; */).reduce(function (t, e) {
+			var n = e.split(/ *= */),
+			    r = n.shift(),
+			    o = n.shift();return r && o && (t[r] = o), t;
+		}, {});
+	}function f(t, e) {
+		e = e || {}, this.req = t, this.xhr = this.req.xhr, this.text = "HEAD" != this.req.method && ("" === this.xhr.responseType || "text" === this.xhr.responseType) || "undefined" == typeof this.xhr.responseType ? this.xhr.responseText : null, this.statusText = this.req.xhr.statusText, this._setStatusProperties(this.xhr.status), this.header = this.headers = a(this.xhr.getAllResponseHeaders()), this.header["content-type"] = this.xhr.getResponseHeader("content-type"), this._setHeaderProperties(this.header), this.body = "HEAD" != this.req.method ? this._parseBody(this.text ? this.text : this.xhr.response) : null;
+	}function p(t, e) {
+		var n = this;this._query = this._query || [], this.method = t, this.url = e, this.header = {}, this._header = {}, this.on("end", function () {
+			var t = null,
+			    e = null;try {
+				e = new f(n);
+			} catch (e) {
+				return t = new Error("Parser is unable to parse the response"), t.parse = !0, t.original = e, t.rawResponse = n.xhr && n.xhr.responseText ? n.xhr.responseText : null, t.statusCode = n.xhr && n.xhr.status ? n.xhr.status : null, n.callback(t);
+			}n.emit("response", e);var r;try {
+				(e.status < 200 || e.status >= 300) && (r = new Error(e.statusText || "Unsuccessful HTTP response"), r.original = t, r.response = e, r.status = e.status);
+			} catch (t) {
+				r = t;
+			}r ? n.callback(r, e) : n.callback(null, e);
+		});
+	}function h(t, e) {
+		var n = m("DELETE", t);return e && n.end(e), n;
+	}var d;"undefined" != typeof window ? d = window : "undefined" != typeof self ? d = self : (console.warn("Using browser-only version of superagent in non-browser environment"), d = this);var v = n(553),
+	    g = n(554),
+	    y = n(555),
+	    m = t.exports = n(556).bind(null, p);m.getXHR = function () {
+		if (!(!d.XMLHttpRequest || d.location && "file:" == d.location.protocol && d.ActiveXObject)) return new XMLHttpRequest();try {
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		} catch (t) {}try {
+			return new ActiveXObject("Msxml2.XMLHTTP.6.0");
+		} catch (t) {}try {
+			return new ActiveXObject("Msxml2.XMLHTTP.3.0");
+		} catch (t) {}try {
+			return new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (t) {}throw Error("Browser-only verison of superagent could not find XHR");
+	};var _ = "".trim ? function (t) {
+		return t.trim();
+	} : function (t) {
+		return t.replace(/(^\s*|\s*$)/g, "");
+	};m.serializeObject = o, m.parseString = u, m.types = { html: "text/html", json: "application/json", xml: "application/xml", urlencoded: "application/x-www-form-urlencoded", form: "application/x-www-form-urlencoded", "form-data": "application/x-www-form-urlencoded" }, m.serialize = { "application/x-www-form-urlencoded": o, "application/json": JSON.stringify }, m.parse = { "application/x-www-form-urlencoded": u, "application/json": JSON.parse }, f.prototype.get = function (t) {
+		return this.header[t.toLowerCase()];
+	}, f.prototype._setHeaderProperties = function (t) {
+		var e = this.header["content-type"] || "";this.type = s(e);var n = l(e);for (var r in n) {
+			this[r] = n[r];
+		}
+	}, f.prototype._parseBody = function (t) {
+		var e = m.parse[this.type];return !e && c(this.type) && (e = m.parse["application/json"]), e && t && (t.length || t instanceof Object) ? e(t) : null;
+	}, f.prototype._setStatusProperties = function (t) {
+		1223 === t && (t = 204);var e = t / 100 | 0;this.status = this.statusCode = t, this.statusType = e, this.info = 1 == e, this.ok = 2 == e, this.clientError = 4 == e, this.serverError = 5 == e, this.error = (4 == e || 5 == e) && this.toError(), this.accepted = 202 == t, this.noContent = 204 == t, this.badRequest = 400 == t, this.unauthorized = 401 == t, this.notAcceptable = 406 == t, this.notFound = 404 == t, this.forbidden = 403 == t;
+	}, f.prototype.toError = function () {
+		var t = this.req,
+		    e = t.method,
+		    n = t.url,
+		    r = "cannot " + e + " " + n + " (" + this.status + ")",
+		    o = new Error(r);return o.status = this.status, o.method = e, o.url = n, o;
+	}, m.Response = f, v(p.prototype);for (var b in g) {
+		p.prototype[b] = g[b];
+	}p.prototype.type = function (t) {
+		return this.set("Content-Type", m.types[t] || t), this;
+	}, p.prototype.responseType = function (t) {
+		return this._responseType = t, this;
+	}, p.prototype.accept = function (t) {
+		return this.set("Accept", m.types[t] || t), this;
+	}, p.prototype.auth = function (t, e, n) {
+		switch (n || (n = { type: "basic" }), n.type) {case "basic":
+				var r = btoa(t + ":" + e);this.set("Authorization", "Basic " + r);break;case "auto":
+				this.username = t, this.password = e;}return this;
+	}, p.prototype.query = function (t) {
+		return "string" != typeof t && (t = o(t)), t && this._query.push(t), this;
+	}, p.prototype.attach = function (t, e, n) {
+		return this._getFormData().append(t, e, n || e.name), this;
+	}, p.prototype._getFormData = function () {
+		return this._formData || (this._formData = new d.FormData()), this._formData;
+	}, p.prototype.callback = function (t, e) {
+		var n = this._callback;this.clearTimeout(), n(t, e);
+	}, p.prototype.crossDomainError = function () {
+		var t = new Error("Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.");t.crossDomain = !0, t.status = this.status, t.method = this.method, t.url = this.url, this.callback(t);
+	}, p.prototype._timeoutError = function () {
+		var t = this._timeout,
+		    e = new Error("timeout of " + t + "ms exceeded");e.timeout = t, this.callback(e);
+	}, p.prototype._appendQueryString = function () {
+		var t = this._query.join("&");t && (this.url += ~this.url.indexOf("?") ? "&" + t : "?" + t);
+	}, p.prototype.end = function (t) {
+		var e = this,
+		    n = this.xhr = m.getXHR(),
+		    o = this._timeout,
+		    i = this._formData || this._data;this._callback = t || r, n.onreadystatechange = function () {
+			if (4 == n.readyState) {
+				var t;try {
+					t = n.status;
+				} catch (e) {
+					t = 0;
+				}if (0 == t) {
+					if (e.timedout) return e._timeoutError();if (e._aborted) return;return e.crossDomainError();
+				}e.emit("end");
+			}
+		};var u = function u(t, n) {
+			n.total > 0 && (n.percent = n.loaded / n.total * 100), n.direction = t, e.emit("progress", n);
+		};if (this.hasListeners("progress")) try {
+			n.onprogress = u.bind(null, "download"), n.upload && (n.upload.onprogress = u.bind(null, "upload"));
+		} catch (t) {}if (o && !this._timer && (this._timer = setTimeout(function () {
+			e.timedout = !0, e.abort();
+		}, o)), this._appendQueryString(), this.username && this.password ? n.open(this.method, this.url, !0, this.username, this.password) : n.open(this.method, this.url, !0), this._withCredentials && (n.withCredentials = !0), "GET" != this.method && "HEAD" != this.method && "string" != typeof i && !this._isHost(i)) {
+			var a = this._header["content-type"],
+			    s = this._serializer || m.serialize[a ? a.split(";")[0] : ""];!s && c(a) && (s = m.serialize["application/json"]), s && (i = s(i));
+		}for (var l in this.header) {
+			null != this.header[l] && n.setRequestHeader(l, this.header[l]);
+		}return this._responseType && (n.responseType = this._responseType), this.emit("request", this), n.send("undefined" != typeof i ? i : null), this;
+	}, m.Request = p, m.get = function (t, e, n) {
+		var r = m("GET", t);return "function" == typeof e && (n = e, e = null), e && r.query(e), n && r.end(n), r;
+	}, m.head = function (t, e, n) {
+		var r = m("HEAD", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
+	}, m.options = function (t, e, n) {
+		var r = m("OPTIONS", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
+	}, m.del = h, m.delete = h, m.patch = function (t, e, n) {
+		var r = m("PATCH", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
+	}, m.post = function (t, e, n) {
+		var r = m("POST", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
+	}, m.put = function (t, e, n) {
+		var r = m("PUT", t);return "function" == typeof e && (n = e, e = null), e && r.send(e), n && r.end(n), r;
+	};
+}, function (t, e, n) {
+	function r(t) {
+		if (t) return o(t);
+	}function o(t) {
+		for (var e in r.prototype) {
+			t[e] = r.prototype[e];
+		}return t;
+	}t.exports = r, r.prototype.on = r.prototype.addEventListener = function (t, e) {
+		return this._callbacks = this._callbacks || {}, (this._callbacks["$" + t] = this._callbacks["$" + t] || []).push(e), this;
+	}, r.prototype.once = function (t, e) {
+		function n() {
+			this.off(t, n), e.apply(this, arguments);
+		}return n.fn = e, this.on(t, n), this;
+	}, r.prototype.off = r.prototype.removeListener = r.prototype.removeAllListeners = r.prototype.removeEventListener = function (t, e) {
+		if (this._callbacks = this._callbacks || {}, 0 == arguments.length) return this._callbacks = {}, this;var n = this._callbacks["$" + t];if (!n) return this;if (1 == arguments.length) return delete this._callbacks["$" + t], this;for (var r, o = 0; o < n.length; o++) {
+			if (r = n[o], r === e || r.fn === e) {
+				n.splice(o, 1);break;
+			}
+		}return this;
+	}, r.prototype.emit = function (t) {
+		this._callbacks = this._callbacks || {};var e = [].slice.call(arguments, 1),
+		    n = this._callbacks["$" + t];if (n) {
+			n = n.slice(0);for (var r = 0, o = n.length; r < o; ++r) {
+				n[r].apply(this, e);
+			}
+		}return this;
+	}, r.prototype.listeners = function (t) {
+		return this._callbacks = this._callbacks || {}, this._callbacks["$" + t] || [];
+	}, r.prototype.hasListeners = function (t) {
+		return !!this.listeners(t).length;
+	};
+}, function (t, e, n) {
+	var r = n(555);e.clearTimeout = function () {
+		return this._timeout = 0, clearTimeout(this._timer), this;
+	}, e.parse = function (t) {
+		return this._parser = t, this;
+	}, e.serialize = function (t) {
+		return this._serializer = t, this;
+	}, e.timeout = function (t) {
+		return this._timeout = t, this;
+	}, e.then = function (t, e) {
+		if (!this._fullfilledPromise) {
+			var n = this;this._fullfilledPromise = new Promise(function (t, e) {
+				n.end(function (n, r) {
+					n ? e(n) : t(r);
+				});
+			});
+		}return this._fullfilledPromise.then(t, e);
+	}, e.catch = function (t) {
+		return this.then(void 0, t);
+	}, e.use = function (t) {
+		return t(this), this;
+	}, e.get = function (t) {
+		return this._header[t.toLowerCase()];
+	}, e.getHeader = e.get, e.set = function (t, e) {
+		if (r(t)) {
+			for (var n in t) {
+				this.set(n, t[n]);
+			}return this;
+		}return this._header[t.toLowerCase()] = e, this.header[t] = e, this;
+	}, e.unset = function (t) {
+		return delete this._header[t.toLowerCase()], delete this.header[t], this;
+	}, e.field = function (t, e) {
+		if (null === t || void 0 === t) throw new Error(".field(name, val) name can not be empty");if (r(t)) {
+			for (var n in t) {
+				this.field(n, t[n]);
+			}return this;
+		}if (null === e || void 0 === e) throw new Error(".field(name, val) val can not be empty");return this._getFormData().append(t, e), this;
+	}, e.abort = function () {
+		return this._aborted ? this : (this._aborted = !0, this.xhr && this.xhr.abort(), this.req && this.req.abort(), this.clearTimeout(), this.emit("abort"), this);
+	}, e.withCredentials = function () {
+		return this._withCredentials = !0, this;
+	}, e.redirects = function (t) {
+		return this._maxRedirects = t, this;
+	}, e.toJSON = function () {
+		return { method: this.method, url: this.url, data: this._data, headers: this._header };
+	}, e._isHost = function (t) {
+		var e = {}.toString.call(t);switch (e) {case "[object File]":case "[object Blob]":case "[object FormData]":
+				return !0;default:
+				return !1;}
+	}, e.send = function (t) {
+		var e = r(t),
+		    n = this._header["content-type"];if (e && r(this._data)) for (var o in t) {
+			this._data[o] = t[o];
+		} else "string" == typeof t ? (n || this.type("form"), n = this._header["content-type"], "application/x-www-form-urlencoded" == n ? this._data = this._data ? this._data + "&" + t : t : this._data = (this._data || "") + t) : this._data = t;return !e || this._isHost(t) ? this : (n || this.type("json"), this);
+	};
+}, function (t, e) {
+	function n(t) {
+		return null !== t && "object" == (typeof t === "undefined" ? "undefined" : _typeof(t));
+	}t.exports = n;
+}, function (t, e) {
+	function n(t, e, n) {
+		return "function" == typeof n ? new t("GET", e).end(n) : 2 == arguments.length ? new t("GET", e) : new t(e, n);
+	}t.exports = n;
+}, function (t, e, n) {
+	"use strict";
+	function r(t) {
 		return t && t.__esModule ? t : { default: t };
 	}function o(t, e) {
 		if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
 	}function i(t, e) {
 		if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return !e || "object" != (typeof e === "undefined" ? "undefined" : _typeof(e)) && "function" != typeof e ? t : e;
 	}function u(t, e) {
-		if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + (typeof e === "undefined" ? "undefined" : _typeof(e)));
-		t.prototype = Object.create(e && e.prototype, { constructor: { value: t, enumerable: !1, writable: !0, configurable: !0 } }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
+		if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + (typeof e === "undefined" ? "undefined" : _typeof(e)));t.prototype = Object.create(e && e.prototype, { constructor: { value: t, enumerable: !1, writable: !0, configurable: !0 } }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
 	}var a = function () {
 		function t(t, e) {
 			for (var n = 0; n < e.length; n++) {
@@ -11254,7 +11253,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	    c = n(327),
 	    s = r(c),
 	    l = n(357),
-	    f = (r(l), n(556)),
+	    f = (r(l), n(538)),
 	    p = r(f),
 	    h = function (t) {
 		function e(t) {
@@ -11295,7 +11294,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					    u = n === o ? "selected" : "";return s.default.createElement("li", { key: o, className: u, onClick: e.onSelect.bind(t, r) }, s.default.createElement("b", null, p.default.head(i)), s.default.createElement("p", null, p.default.drop(i, 1).join(", ")));
 				});
 			} }, { key: "render", value: function value() {
-				if (!this.props.data || 0 === this.props.data.length || this.state.closed === !0) return null;var t = this.resultList();return s.default.createElement("ul", { className: "search-results" }, t);
+				if (!this.props.data || 0 === this.props.data.length || this.state.closed === !0) return null;
+				var t = this.resultList();return s.default.createElement("ul", { className: "search-results" }, t);
 			} }]), e;
 	}(c.Component);t.exports = h;
 }, function (t, e, n, r) {

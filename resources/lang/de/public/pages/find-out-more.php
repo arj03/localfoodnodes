@@ -4,7 +4,7 @@ return [
     'title' => 'Find Out More',
 
     'header_1' => 'Local Food Nodes',
-    'subheader_1' => 'From a desire to co-create a healthier food system',
+    'subheader_1' => 'A healthier food system',
 
     'paragraph_1_1' => 'We are creating local food nodes in order to connect local food producers to local food consumers as well as strengthening those relationships that already exist. We want to enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.',
 

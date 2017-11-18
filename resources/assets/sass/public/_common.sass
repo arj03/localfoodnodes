@@ -12,22 +12,23 @@ body
 
 .header-block
   background: #fff
-  opacity: 0.9
   color: #333
-  width: auto
-  padding: 20px
+  display: inline-block
   font-weight: 500
+  padding: 20px
+  width: auto
 
 .body-text
-  line-height: 1.7em
+  line-height: 1.5em
   color: #333
+  font-size: 16px
+  padding: 50px
 
-  h1, h2, h3, h4
-    span
-      display: block
-      font-size: 1.3rem
-      color: #aaa
-      text-transform: none
+  h2, h3, h4, h4, h5, h6
+    font-weight: 700
+    margin: 5rem 0 3rem
+    &:first-child
+      margin-top: 0 !important
 
 ul
   padding-left: 0
@@ -52,7 +53,25 @@ h1, h2, h3, h4, h5, h6
   &.bold
     font-weight: 700
   &.thin
-    font-weight: 300
+    font-weight: 200
+  .sub-header
+    font-size: 0.3em
+    font-weight: 500
+    margin-top: 0.5rem
+
+h1
+  font-size: 4rem
+h2
+  font-size: 3.5rem
+
+
+@media (max-width: 991px)
+  h1
+    font-size: 3em
+
+@media (max-width: 767px)
+  h1
+    font-size: 2em
 
 a
   color: #188092

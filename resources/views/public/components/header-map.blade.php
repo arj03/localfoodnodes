@@ -11,7 +11,7 @@
     var centerLat = lat || 56;
     var centerLng = lng || 13
     var center = [
-        centerLat - 0.004,
+        centerLat,
         centerLng
     ];
 

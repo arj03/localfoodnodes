@@ -5,8 +5,8 @@
         <div v-show="!loading" class="col-12">
             <div class="text-center">
                 <div>{{ trans.available_balance }}: {{ data.total.income - data.total.cost }} SEK</div>
-                <a class="btn btn-success mt-5" href="/economy">Read more about our economy here</a>
-                <a class="d-block mt-1" href="/economy/transactions">View all of our transactions</a>
+                <a class="btn btn-primary mt-5" href="/economy">{{ trans.read_more_economy }}</a>
+                <a class="d-block mt-2" href="/economy/transactions">{{ trans.view_all_transactions }}</a>
             </div>
         </div>
     </div>

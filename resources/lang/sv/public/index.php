@@ -1,10 +1,9 @@
 <?php
 
 return [
-    'available_balance' => 'Tillgängliga medel',
     'co_create' => 'Tillsammans gör vi maten lokal',
     'create_node' => 'Skapa en utlämningsplats',
-    'find_out_more' => 'Läs mer',
+    'find_out_more' => 'Läs mer om Local Food Nodes',
     'header' => 'Local Food Nodes',
     'find_node_near_you' => 'Hitta din lokala utlämningsplats',
     'food_producer' => 'Är du matproducent?',
@@ -19,7 +18,7 @@ return [
     'no_node' => 'Hittade du ingen utlämningsplats nära dig?',
     'sign_up' => 'Skapa konto, bli medlem och börja handla lokalt',
     'sign_up_button' => 'Skapa konto',
-    'subheader' => 'Förboka lokalproducerad mat. Hämta upp på gemensam utlämningsplats, direkt från producenterna.',
+    'subheader' => 'Förboka lokalproducerad mat. Hämta på utlämningsplats, direkt från producenterna',
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',
     'visit_node' => 'Besök utlämningsplatsen',
@@ -31,25 +30,11 @@ return [
     ',
 
     //co-funding part
-    'co_fund_heading' => 'Bli delaktig i framtidens matförsörjning!',
+    'co_fund_heading' => 'Framtidens matförsörjning',
     'co_fund_subheading' => 'Välj själv hur mycket du vill vara med och betala',
     'co_fund_paragraph' => 'Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad. Med våra gemensamma insatser kan vi tillsammans staka ut riktingen för framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.',
     'co_fund_read_more' => 'Läs mer om medlemskap',
 
-    // Economy
-    'economy' => 'Ekonomi',
-    'economy_info' => 'Vi på Local Food Nodes har 100% financiell transparens. Här under ser ni alla årets inkomster och kostnader summerade. Gå till vår finans sida för mer detaljerade finanser och förklaring kring varför vi tror på transparens.',
-    'income' => 'Intäkter',
-    'costs' => 'Kostnader',
-    'total' => 'totalt',
-    'category_0' => 'Externa evenemang',
-    'category_1' => 'Startkapital',
-    'category_2' => 'Medlemmar',
-    'category_3' => 'Resor',
-    'category_4' => 'Tjänster',
-    'category_5' => 'Övrigt',
-    'category_6' => 'Kontor',
-    'Uncategorized' => 'Okategoriserat',
 
     'monday' => 'Måndagar',
     'tuesday' => 'Tisdagar',

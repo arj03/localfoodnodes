@@ -3,11 +3,11 @@
 @section('title', $node->name)
 
 @section('content')
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1>{{ $node->name }}</h1>
+                    <h1 class="bold">{{ $node->name }}</h1>
                     <div class="d-block d-xl-none">
                         {{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}
                         {{ $node->getDeliveryIntervalAsString() }}
@@ -15,7 +15,7 @@
                     <div>{{ $node->address }} {{ $node->zip }} {{ $node->city }}</div>
                 </div>
                 <div class="col-12 col-xl-5 d-none d-xl-block text-right">
-                    <h1>{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
+                    <h1 class="bold">{{ trans_choice('public/weekdays.' . $node->delivery_weekday, 2) }} {{ $node->delivery_time }}</h1>
                     <div>{{ $node->getDeliveryIntervalAsString() }}</div>
                 </div>
             </div>

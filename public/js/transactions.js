@@ -1712,7 +1712,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 all: null,
                 income: null,
                 cost: null
-            }
+            },
+            trans: economyTrans
         };
     },
     mounted: function mounted() {
@@ -4144,7 +4145,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.btn[data-v-2607b541] {\n    text-transform: capitalize;\n    font-size: 12px;\n    margin: 1px;\n    padding: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.btn[data-v-2607b541] {\n    text-transform: capitalize;\n    font-size: 12px;\n    margin: 5px;\n    padding: 5px 10px;\n}\n", ""]);
 
 // exports
 
@@ -48514,7 +48515,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("All")]
+          [_vm._v(_vm._s(_vm.trans.all))]
         ),
         _c(
           "button",
@@ -48526,7 +48527,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("All incomes")]
+          [_vm._v(_vm._s(_vm.trans.all_incomes))]
         ),
         _c(
           "button",
@@ -48538,7 +48539,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("All costs")]
+          [_vm._v(_vm._s(_vm.trans.all_costs))]
         ),
         _vm._l(this.categories.all, function(category) {
           return _c(
@@ -48551,7 +48552,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v(_vm._s(category.label))]
+            [_vm._v(_vm._s(_vm.trans["category_" + category.id]))]
           )
         })
       ],
@@ -48584,7 +48585,19 @@ var render = function() {
         staticClass: "table table-hover"
       },
       [
-        _vm._m(0),
+        _c("thead", [
+          _c("tr", [
+            _c("th", [_vm._v(_vm._s(_vm.trans.date))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.trans.ref))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.trans.description))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.trans.amount))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.trans.category))])
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "tbody",
@@ -48602,26 +48615,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Ref")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Description")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Amount")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Category")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

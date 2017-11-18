@@ -1641,7 +1641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         data: function data(_data) {
-            var formattedData = this.formatData(_data.transactions, _data.categories);
+            var formattedData = this.formatData(_data.transactions, _data.categories.all);
             this.draw(formattedData);
             this.loading = false;
         }
@@ -1742,7 +1742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         data: function data(_data) {
-            var formattedData = this.formatData(_data.transactions, _data.categories);
+            var formattedData = this.formatData(_data.transactions, _data.categories.all);
             this.draw(formattedData);
             this.loading = false;
         }
@@ -48511,7 +48511,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-12 col-xl-6 justify-content-center" }, [
+  return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
     _c("h3", { staticClass: "text-center" }, [
       _vm._v(_vm._s(_vm.trans.costs) + " 2017")
     ]),
@@ -48578,7 +48578,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-12 col-xl-6 justify-content-center" }, [
+  return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
     _c("h3", { staticClass: "text-center" }, [
       _vm._v(_vm._s(_vm.trans.income) + " 2017")
     ]),
@@ -48680,19 +48680,19 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "btn btn-success mt-5",
+                staticClass: "btn btn-primary mt-5",
                 attrs: { href: "/economy" }
               },
-              [_vm._v("Read more about our economy here")]
+              [_vm._v(_vm._s(_vm.trans.read_more_economy))]
             ),
             _vm._v(" "),
             _c(
               "a",
               {
-                staticClass: "d-block mt-1",
+                staticClass: "d-block mt-2",
                 attrs: { href: "/economy/transactions" }
               },
-              [_vm._v("View all of our transactions")]
+              [_vm._v(_vm._s(_vm.trans.view_all_transactions))]
             )
           ])
         ]

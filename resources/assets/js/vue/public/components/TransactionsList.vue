@@ -1,18 +1,18 @@
 <template>
     <div>
         <div v-show="!loading" class="filters mb-5">
-            <button class="btn btn-secondary" v-on:click="filterTransactions(-1, $event)">All</button><button class="btn btn-secondary" v-on:click="filterTransactions(categories.income, $event)">All incomes</button><button class="btn btn-secondary" v-on:click="filterTransactions(categories.cost, $event)">All costs</button><button class="btn btn-secondary" v-for="category in this.categories.all" v-on:click="(filterTransactions(category.id, $event))">{{ category.label }}</button>
+            <button class="btn btn-secondary" v-on:click="filterTransactions(-1, $event)">{{ trans.all }}</button><button class="btn btn-secondary" v-on:click="filterTransactions(categories.income, $event)">{{ trans.all_incomes }}</button><button class="btn btn-secondary" v-on:click="filterTransactions(categories.cost, $event)">{{ trans.all_costs}}</button><button class="btn btn-secondary" v-for="category in this.categories.all" v-on:click="(filterTransactions(category.id, $event))">{{ trans['category_' + category.id] }}</button>
         </div>
 
         <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
         <table v-show="!loading" class="table table-hover">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Ref</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Category</th>
+                    <th>{{ trans.date }}</th>
+                    <th>{{ trans.ref }}</th>
+                    <th>{{ trans.description }}</th>
+                    <th>{{ trans.amount }}</th>
+                    <th>{{ trans.category }}</th>
                 </tr>
             </thead>
 
@@ -32,8 +32,8 @@
     .btn {
         text-transform: capitalize;
         font-size: 12px;
-        margin: 1px;
-        padding: 5px;
+        margin: 5px;
+        padding: 5px 10px;
     }
 </style>
 
@@ -52,6 +52,7 @@
                     income: null,
                     cost: null
                 },
+                trans: economyTrans,
             };
         },
         mounted() {

@@ -4,16 +4,22 @@
 
     @if (isset($image))
         <style>
-            body.page .page .header {
+            .page-header {
                 background-image: url({{ $image }});
             }
         </style>
     @endif
 
-    <div class="container-fluid header">
-        <div class="header-block">
-            <h1 class="bold">{{ $header }}</h1>
-            <h2>{{ $subHeader or '' }}</h2>
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="col-12 header-block">
+                <h1 class="bold">
+                    {{ $header }}
+                    @if (isset($subHeader))
+                        <div class="sub-header">{{ $subHeader }}</div>
+                    @endif
+                </h1>
+            </div>
         </div>
     </div>
 

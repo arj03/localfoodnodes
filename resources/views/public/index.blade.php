@@ -5,18 +5,21 @@
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
         <div class="header-block">
-            <h1 class="bold">{{ trans('public/index.header') }}</h1>
-            <p>{!! trans('public/index.subheader') !!}</p>
+            <h1 class="bold">
+                {{ trans('public/index.header') }}
+                <div class="sub-header">{!! trans('public/index.subheader') !!}</div>
+            </h1>
         </div>
     </div>
 
     <div class="container-fluid frontpage-section bg-white what-is-lfn">
-        <div class="container d-flex justify-content-center">
-            <div class="col-12 col-lg-10 pt-5 pb-5">
+        <div class="container d-flex justify-content-center text-center">
+            <div class="col-12 pt-5 pb-5">
                 <h2 class="thin">{{ trans('public/index.what_is_lfn') }}</h2>
-                <p class="pt-5 pb-5">{{ trans('public/index.what_is_lfn_info') }}</p>
-                <div class="text-center">
-                    <img src="/images/infographic.jpg">
+                <p class="pt-5 pb-5 text-left">{{ trans('public/index.what_is_lfn_info') }}</p>
+                <img src="/images/infographic.jpg">
+                <div>
+                    <a href="/find-out-more" class="btn btn-primary">{{ trans('public/index.find_out_more') }}</a>
                 </div>
             </div>
         </div>
@@ -44,6 +47,7 @@
 
     <div class="container frontpage-section create-pushes mt-5">
         <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
+        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         <div class="card-deck">
             <div class="card">
@@ -53,7 +57,7 @@
                     <p class="card-text">Du kan enkelt skapa ett konto helt gratis. Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn. Innan du kan boka din mat behöver du bli stödmedlem, sedan kommer producenten med dina varor till utlämningensplatsen.</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-success" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
+                    <a class="btn btn-primary" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
                 </div>
             </div>
 
@@ -64,7 +68,7 @@
                     <p class="card-text">En utlämningsplats kan startas och drivas av en förening, ett kooperativ, annan organisation eller av en enskild person. Allt som behövs är en adress.</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-success" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                    <a class="btn btn-primary" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
                 </div>
             </div>
 
@@ -75,7 +79,7 @@
                     <p class="card-text">Lägg upp dina produkter och koppla dem mot utlämningsplatser i din närhet. Leverans och betalning sker direkt till kund på utlämningen. All förtjänst går obruten till dig så att du kan utvecklas och fortsätta med det du gör. Ingen annan än du ska tjäna pengar på att du producerar bra mat!</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                    <a class="btn btn-primary" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
                 </div>
             </div>
         </div>
@@ -83,13 +87,16 @@
 
     <div class="container-fluid frontpage-section membership mt-5">
         <div class="col-12">
-            <h2 class="bold">{{ trans('public/index.co_fund_heading') }}</h2>
-            <h3 class="mb-5">{{ trans('public/index.co_fund_subheading') }}</h3>
-            <div class="membership-content container">
-                {{ trans('public/index.co_fund_paragraph') }}
+            <h2 class="bold mb-5">
+                {{ trans('public/index.co_fund_heading') }}
+                <div class="sub-header">{{ trans('public/index.co_fund_subheading') }}</div>
+            </h2>
+
+            <div class="container">
+                <p>{{ trans('public/index.co_fund_paragraph') }}</p>
             </div>
 
-            <div class="metrics row">
+            <div class="membership-metrics row">
                 <div class="metric col">
                     <div class="value">{{ $members }}<i class="fa fa-user value-unit"></i></div>
                     <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
@@ -100,20 +107,20 @@
                 </div>
             </div>
 
-            <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
+            <a href="/membership" class="btn btn-primary">{{ trans('public/index.co_fund_read_more') }}</a>
         </div>
     </div>
 
     <script>
-        var economyTrans = <?php echo json_encode(trans('public/index')); ?>;
+        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
     </script>
 
     <div id="frontpage-metrics" class="frontpage-section">
         <div class="container pt-5 pb-5">
-            <h2 class="thin mb-5">{{ trans('public/index.economy') }}</h2>
+            <h2 class="thin mb-5">{{ trans('public/economy.economy') }}</h2>
             <div class="row justify-content-center mb-5">
-                <div class="col-12 col-lg-10 body-text">
-                    <p>{{ trans('public/index.economy_info') }}</p>
+                <div class="col-12">
+                    <p>{{ trans('public/economy.economy_info') }}</p>
                 </div>
             </div>
             <metrics></metrics>
@@ -125,7 +132,7 @@
         <h2 class="thin">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
 
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 body-text">
+            <div class="col-12">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_1') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_2') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>

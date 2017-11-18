@@ -10,7 +10,7 @@
     <div class="container top-container">
         <div class="row justify-content-center">
             <div class="col-12">
-                <div class="card top-card">
+                <div class="card">
                     <div class="card-body body-text">
                         Viktors ekonomitext här
                     </div>

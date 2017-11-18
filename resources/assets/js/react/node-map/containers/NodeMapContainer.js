@@ -249,19 +249,17 @@ class NodeMapContainer extends Component {
 
         return (
             <div className='map container-fluid'>
-                <div className='body-text'>
-                    <h2 className='d-none d-sm-block'>{trans.go_local}</h2>
-                    <div className='row no-gutters map-search'>
-                        <div className='col-12 col-lg-6'>
-                            <div className='input-group'>
-                                <span className="input-group-addon"><i className="fa fa-search" /></span>
-                                <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />
-                            </div>
-                            {searchResults}
+                <h2 className='d-none d-sm-block thin'>{trans.go_local}</h2>
+                <div className='row no-gutters map-search'>
+                    <div className='col-12 col-lg-6'>
+                        <div className='input-group'>
+                            <span className="input-group-addon"><i className="fa fa-search" /></span>
+                            <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />
                         </div>
+                        {searchResults}
                     </div>
-                    <div className='map-holder' ref='map'>{loader}</div>
                 </div>
+                <div className='map-holder' ref='map'>{loader}</div>
             </div>
         );
     }

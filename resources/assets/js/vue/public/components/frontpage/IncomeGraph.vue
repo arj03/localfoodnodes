@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-xl-6 justify-content-center">
+    <div class="col-12 col-lg-6 justify-content-center">
         <h3 class="text-center">{{ trans.income }} 2017</h3>
         <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
         <div v-show="!loading" class="text-center">{{ total }} SEK</div>
@@ -19,7 +19,7 @@
         },
         watch: {
             data(data) {
-                let formattedData = this.formatData(data.transactions, data.categories);
+                let formattedData = this.formatData(data.transactions, data.categories.all);
                 this.draw(formattedData);
                 this.loading = false;
             }

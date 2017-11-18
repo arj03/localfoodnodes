@@ -170,13 +170,23 @@ class UserController extends Controller
     /**
      * User create action.
      */
-    public function create(Request $request)
+    public function create(Request $request, $type = null)
     {
         if (Auth::check()) {
             return redirect('/account/user');
         }
 
-        return view('account.user.create', [
+        $header = trans('public/create-account.user_header');
+        $content = '';
+
+        if ($type) {
+            $header = trans('public/create-account.' . $type . '_header');
+            $content = trans('public/create-account.' . $type);
+        }
+
+        return view('public.user.create', [
+            'header' => $header,
+            'content' => $content,
             'breadcrumbs' => [
                 trans('admin/user-nav.create_account') => ''
             ]

@@ -6,6 +6,7 @@ return [
     'facebook' => 'Facebook',
     'forgot' => 'Forgot Password?',
     'login' => 'Login',
+    'or_login' => 'or login',
     'password' => 'Password',
     'title' => 'Login',
 
