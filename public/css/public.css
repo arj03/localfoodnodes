@@ -299,6 +299,7 @@ h6 {
   font-family: 'montserrat';
   text-transform: uppercase;
   font-weight: 500;
+  word-break: break-word;
 }
 
 h1.bold,
@@ -325,8 +326,9 @@ h3 .sub-header,
 h4 .sub-header,
 h5 .sub-header,
 h6 .sub-header {
-  font-size: 0.3em;
+  font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5rem;
   margin-top: 0.5rem;
 }
 
@@ -338,15 +340,23 @@ h2 {
   font-size: 3.5rem;
 }
 
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.75em;
+  }
+}
+
 @media (max-width: 991px) {
   h1 {
     font-size: 3em;
   }
-}
 
-@media (max-width: 767px) {
-  h1 {
-    font-size: 2em;
+  h2 {
+    font-size: 2.5em;
   }
 }
 
@@ -737,8 +747,6 @@ body.public .page .shop-header .top a {
   font-family: 'montserrat';
   text-transform: uppercase;
   color: #333;
-  padding-top: 0;
-  padding-bottom: 0;
   width: 100vw;
 }
 
@@ -769,10 +777,6 @@ body.public .page .shop-header .top a {
 .navbar .navbar-nav .nav-link {
   font-family: 'montserrat';
   color: #333;
-}
-
-.navbar .navbar-collapse {
-  padding: 10px;
 }
 
 .login-dropdown {
@@ -957,7 +961,7 @@ body.public .page .shop-header .top a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 50px;
+  padding: 15px;
 }
 
 .node-map .map-search .input-group {
@@ -1386,31 +1390,6 @@ body.public-node-node .product-card .card-footer .badge {
   width: 10vw;
   display: block;
   margin: 0 auto;
-}
-
-.public-index .find-out-more > h2 {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  color: #333;
-}
-
-.public-index .find-out-more .row {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.public-index .find-out-more .row .card h3 {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
-  word-break: break-word;
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 }
 
 #frontpage-metrics {

@@ -50,13 +50,15 @@ h1, h2, h3, h4, h5, h6
   font-family: 'montserrat'
   text-transform: uppercase
   font-weight: 500
+  word-break: break-word
   &.bold
     font-weight: 700
   &.thin
     font-weight: 200
   .sub-header
-    font-size: 0.3em
+    font-size: 1rem
     font-weight: 500
+    line-height: 1.5rem
     margin-top: 0.5rem
 
 h1
@@ -64,14 +66,17 @@ h1
 h2
   font-size: 3.5rem
 
+@media (max-width: 767px)
+  h1
+    font-size: 2em
+  h2
+    font-size: 1.75em
 
 @media (max-width: 991px)
   h1
     font-size: 3em
-
-@media (max-width: 767px)
-  h1
-    font-size: 2em
+  h2
+    font-size: 2.5em
 
 a
   color: #188092

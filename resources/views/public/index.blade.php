@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="container-fluid frontpage-section membership mt-5">
+    <div class="container-fluid frontpage-section membership mt-5 pt-5 pb-5">
         <div class="col-12">
             <h2 class="bold mb-5">
                 {{ trans('public/index.co_fund_heading') }}
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            <a href="/membership" class="btn btn-primary">{{ trans('public/index.co_fund_read_more') }}</a>
+            <a href="/membership" class="btn btn-primary mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
         </div>
     </div>
 
@@ -129,7 +129,7 @@
 
     <div class="container frontpage-section find-out-more mt-5" id="find-out-more">
         <img class="logo" src="/images/nav-logo-dark.png">
-        <h2 class="thin">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
+        <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
 
         <div class="row justify-content-center">
             <div class="col-12">
