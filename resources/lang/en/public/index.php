@@ -18,7 +18,7 @@ return [
     'no_node' => 'Couldn\'t find a node near you?',
     'sign_up' => 'Sign up and lets get local',
     'sign_up_button' => 'Sign up',
-    'subheader' => 'Pre-order locally produced food. Pick-up streight from the producers',
+    'subheader' => 'Pre-order locally produced food. Pick-up straight from the producers',
     'title' => 'Find Nodes',
     'upcoming' => 'Upcoming events',
     'visit_node' => 'Visit node',
