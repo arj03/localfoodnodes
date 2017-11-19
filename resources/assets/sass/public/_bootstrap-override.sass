@@ -131,8 +131,11 @@
   text-decoration: none
   &.btn-primary
     background: #eaddb7
-    &:hover
-      background: #dacda7
+    &:active,
+    &:hover,
+    &:focus
+      background: #dacda7 !important
+      box-shadow: none !important
 
 input[type=submit],
 .btn

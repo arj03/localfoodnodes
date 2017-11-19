@@ -190,8 +190,12 @@
   background: #eaddb7;
 }
 
-.btn.btn-primary:hover {
-  background: #dacda7;
+.btn.btn-primary:active,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background: #dacda7 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 input[type=submit],

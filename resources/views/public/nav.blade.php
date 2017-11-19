@@ -63,7 +63,7 @@
                 </li>
 
                 <!-- Fast login hidden on mobile -->
-                <li class="dropdown d-none d-md-block">
+                <li class="dropdown d-none d-md-block mr-2">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         {{ trans('public/nav.language') }}
                     </a>

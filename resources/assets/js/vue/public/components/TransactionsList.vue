@@ -5,30 +5,35 @@
         </div>
 
         <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
-        <table v-show="!loading" class="table table-hover">
-            <thead>
-                <tr>
-                    <th>{{ trans.date }}</th>
-                    <th>{{ trans.ref }}</th>
-                    <th>{{ trans.description }}</th>
-                    <th>{{ trans.amount }}</th>
-                    <th>{{ trans.category }}</th>
-                </tr>
-            </thead>
+        <div class="table-responsive">
+            <table v-show="!loading" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{ trans.date }}</th>
+                        <th>{{ trans.ref }}</th>
+                        <th>{{ trans.description }}</th>
+                        <th>{{ trans.amount }}</th>
+                        <th>{{ trans.category }}</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <transaction-item
-                    v-for="transaction in filteredTransactions"
-                    :transaction="transaction"
-                    :categories="categories.all"
-                    :key="transaction.hash">
-                </transaction-item>
-            </tbody>
-        </table>
+                <tbody>
+                    <transaction-item
+                        v-for="transaction in filteredTransactions"
+                        :transaction="transaction"
+                        :categories="categories.all"
+                        :key="transaction.hash">
+                    </transaction-item>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
 <style scoped>
+    .table th {
+        font-size: 14px;
+    }
     .btn {
         text-transform: capitalize;
         font-size: 12px;
