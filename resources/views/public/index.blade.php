@@ -4,11 +4,13 @@
 
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
-        <div class="header-block">
-            <h1 class="bold">
-                {{ trans('public/index.header') }}
-                <div class="sub-header">{!! trans('public/index.subheader') !!}</div>
-            </h1>
+        <div class="container">
+            <div class="col-12 header-block">
+                <h1 class="bold">
+                    {{ trans('public/index.header') }}
+                    <div class="sub-header">{!! trans('public/index.subheader') !!}</div>
+                </h1>
+            </div>
         </div>
     </div>
 
