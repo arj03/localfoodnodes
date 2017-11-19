@@ -250,7 +250,7 @@ class NodeMapContainer extends Component {
         return (
             <div className='map container-fluid'>
                 <h2 className='thin'>{trans.go_local}</h2>
-                <div className='row no-gutters map-search'>
+                <div className='row no-gutters map-search mb-5'>
                     <div className='col-12 col-md-6'>
                         <div className='input-group'>
                             <span className="input-group-addon"><i className="fa fa-search" /></span>

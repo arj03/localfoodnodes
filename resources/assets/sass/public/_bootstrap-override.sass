@@ -79,7 +79,8 @@
       &:focus,
         color: #333
 
-.form-group
+.form-group,
+.input-group
   .disabled
     opacity: 0.5
   label
@@ -92,6 +93,10 @@
     font-weight: 400
     font-size: inherit
   input
+    &:focus
+      outline: none
+      box-shadow: none
+      border: 1px solid #ccc
     &:disabled
       background: #eee
 

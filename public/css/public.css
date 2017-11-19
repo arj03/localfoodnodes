@@ -117,26 +117,39 @@
   color: #333;
 }
 
-.form-group .disabled {
+.form-group .disabled,
+.input-group .disabled {
   opacity: 0.5;
 }
 
-.form-group label {
+.form-group label,
+.input-group label {
   font-family: 'montserrat';
   font-weight: 400;
 }
 
-.form-group label.form-check-label {
+.form-group label.form-check-label,
+.input-group label.form-check-label {
   font-family: inherit;
 }
 
-.form-group legend {
+.form-group legend,
+.input-group legend {
   font-family: 'montserrat';
   font-weight: 400;
   font-size: inherit;
 }
 
-.form-group input:disabled {
+.form-group input:focus,
+.input-group input:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #ccc;
+}
+
+.form-group input:disabled,
+.input-group input:disabled {
   background: #eee;
 }
 
@@ -340,16 +353,6 @@ h2 {
   font-size: 3.5rem;
 }
 
-@media (max-width: 767px) {
-  h1 {
-    font-size: 2em;
-  }
-
-  h2 {
-    font-size: 1.75em;
-  }
-}
-
 @media (max-width: 991px) {
   h1 {
     font-size: 3em;
@@ -357,6 +360,26 @@ h2 {
 
   h2 {
     font-size: 2.5em;
+  }
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.75em;
   }
 }
 
@@ -675,15 +698,11 @@ body.public .page .shop-header .top a {
 }
 
 .footer a {
-  color: #fff;
-}
-
-.footer a:active,
-.footer avisited {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
 }
 
+.footer a:focus,
 .footer a:hover {
   color: #fff;
 }
@@ -724,7 +743,7 @@ body.public .page .shop-header .top a {
 }
 
 .footer #mc_embed_signup .input-group {
-  width: 360px;
+  max-width: 360px;
   margin: 0 auto;
 }
 
@@ -738,6 +757,7 @@ body.public .page .shop-header .top a {
   background: #fff;
   color: #333;
   padding: 15px;
+  border-radius: 3px;
 }
 
 .navbar {
@@ -779,21 +799,39 @@ body.public .page .shop-header .top a {
   color: #333;
 }
 
-.login-dropdown {
+.login-card {
   text-transform: none;
-  min-width: 350px;
   color: #333;
   padding: 0;
 }
 
-.login-dropdown li {
+.login-card .card-header {
+  background: #fff !important;
+  border-bottom: 1px solid #eee !important;
   padding: 20px;
 }
 
-.login-helper a {
-  font-family: 'Raleway';
-  display: block;
-  line-height: 1.3em;
+.login-card .card-body {
+  padding: 20px;
+}
+
+.login-card .btn-facebook {
+  background: #4267b2;
+  width: 100%;
+}
+
+.login-card .card-footer {
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  padding: 20px;
+}
+
+.login-card .card-footer a {
+  color: #666;
+}
+
+.login-dropdown {
+  min-width: 350px;
 }
 
 .leaflet-popup-pane {

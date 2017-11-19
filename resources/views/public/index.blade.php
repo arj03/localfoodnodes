@@ -50,7 +50,7 @@
         <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         <div class="card-deck">
-            <div class="card">
+            <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
                 <div class="card-body">
                     <!-- <h4 class="card-title">{{ trans('public/index.sign_up') }}</h4> -->
@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
                 <div class="card-body">
                     <!-- <h4 class="card-title">{{ trans('public/index.no_node') }}</h4> -->
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
                 <div class="card-body">
                     <!-- <h4 class="card-title">{{ trans('public/index.food_producer') }}</h4> -->
