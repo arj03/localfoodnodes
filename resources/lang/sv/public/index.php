@@ -2,6 +2,31 @@
 
 return [
     'co_create' => 'Tillsammans gör vi maten lokal',
+    'co_create_info' => '
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <p>Vi tror på människors möjlighet till egenmakt och medbestämmande runt våra grundläggande behov.  Att gemensamt kunna skapa oss högre resiliens som individer och samhällen i alla flöden vi är beroende av. Mat, ekologi, ekonomi och vår personlig integritet.</p>
+
+                <p>Local food nodes är ett öppet verktyg som gör det möjligt för vem som helst att sätta upp lokala utlämningsplaster, var som helst.</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <p>För lokala producenter att tillgängliggöra sina produkter direkt mot en lokal marknad, helt utan mellanhänder och för dig som konsument att få tillgång till förstklassig lokalproducerad mat, och bygga relationer direkt med dem som faktiskt ligger bakom den.</p>
+            </div>
+        </div>
+    ',
+    'create_node' => 'Skapa en utlämningsplats',
+    'create_node_info' => '
+        Vill du stärka den lokala maten i ditt närområde? Vem som helst kan skapa en utlämningsplats var som helst och göra den sökbar på kartan för båda producenter och konsumenter.
+    ',
+    'create_user' => 'Skapa konto',
+    'create_user_info' => '
+        Skapa ett användarkonto enkelt och gratis. Hitta lokala utlämningsplatser som passar dig och börja botanisera bland tillgänglig mat. Bli stöttande medlem och förboka sedan mat direkt från dina lokala producenter och hämta upp den på givna tider och platser.
+    ',
+    'create_producer' => 'Sälj dina produkter',
+    'create_producer_info' => '
+        Sälj dina produkter direkt mot slutkonsument, helt utan mellanhänder.  Leverera till de utlämningsplatser som passar dig. Administrera dina ordrar och ta betalt på det sätt som passar dig, direkt av dina kunder och helt utan intäktsbortfall.
+    ',
+
     'create_node' => 'Skapa en utlämningsplats',
     'find_out_more' => 'Läs mer om Local Food Nodes',
     'header' => 'Local Food Nodes',
@@ -15,9 +40,6 @@ return [
     'local_nodes' => 'Noder',
     'local_producers' => 'Producenter',
     'meta_keywords' => 'Lokal mat, Lokal...',
-    'no_node' => 'Hittade du ingen utlämningsplats nära dig?',
-    'sign_up' => 'Skapa konto, bli medlem och börja handla lokalt',
-    'sign_up_button' => 'Skapa konto',
     'subheader' => 'Förboka lokalproducerad mat. Hämta på utlämningsplats, direkt från producenterna',
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',

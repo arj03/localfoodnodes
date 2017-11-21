@@ -64,6 +64,12 @@
 .card .card-footer {
   border-color: #eee;
   background: #fff;
+  padding: 1.25rem;
+}
+
+.card .card-footer .btn {
+  width: 100%;
+  margin-bottom: 0;
 }
 
 .dropdown-action-component {
@@ -178,43 +184,45 @@
 
 .btn {
   border: 0;
-  border-radius: 2rem;
+  border-radius: 0;
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
-  padding: 0.6rem 1rem 0.5rem;
+  padding: 1rem 2rem;
   text-decoration: none;
 }
 
+.btn:active,
+.btn:hover,
+.btn:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .btn.btn-primary {
-  background: #eaddb7;
+  background: #67b475;
 }
 
 .btn.btn-primary:active,
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
-  background: #dacda7 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  background: #57a465 !important;
+}
+
+.btn.btn-success {
+  background: #67b475;
+}
+
+.btn.btn-success:hover,
+.btn.btn-success:active,
+.btn.btn-success:focus {
+  background: #57a465;
 }
 
 input[type=submit],
 .btn {
   text-transform: uppercase;
   font-family: 'montserrat';
-}
-
-.btn-success {
-  background: #8fb773;
-  color: #fff;
-  border: 0;
-}
-
-.btn-success:hover,
-.btn-success:active,
-.btn-success:focus {
-  color: #fff;
-  background: #8fb773;
 }
 
 .text-success {
@@ -1399,10 +1407,6 @@ body.public-node-node .product-card .card-footer .badge {
 .public-index .card-deck .card .card-footer {
   border-top: 0;
   text-align: center;
-}
-
-.public-index .card-deck .card .card-footer .btn {
-  margin-bottom: 15px;
 }
 
 .public-index .membership {

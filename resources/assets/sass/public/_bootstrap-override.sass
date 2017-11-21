@@ -42,6 +42,10 @@
   .card-footer
     border-color: #eee
     background: #fff
+    padding: 1.25rem
+    .btn
+      width: 100%
+      margin-bottom: 0
 
 .dropdown-action-component
   background-color: transparent
@@ -123,34 +127,34 @@
 
 .btn
   border: 0
-  border-radius: 2rem
+  border-radius: 0
   cursor: pointer
   font-weight: bold
   font-size: 14px
-  padding: 0.6rem 1rem 0.5rem
+  padding: 1rem 2rem
   text-decoration: none
+  &:active,
+  &:hover,
+  &:focus
+    box-shadow: none !important
   &.btn-primary
-    background: #eaddb7
+    background: #67b475
     &:active,
     &:hover,
     &:focus
-      background: #dacda7 !important
-      box-shadow: none !important
+      background: #57a465 !important
+  &.btn-success
+    background: #67b475
+    &:hover,
+    &:active,
+    &:focus
+      background: #57a465
 
 input[type=submit],
 .btn
   text-transform: uppercase
   font-family: 'montserrat'
 
-.btn-success
-  background: #8fb773
-  color: #fff
-  border: 0
-  &:hover,
-  &:active,
-  &:focus
-    color: #fff
-    background: #8fb773
 
 .text-success
   color: #8fb773 !important

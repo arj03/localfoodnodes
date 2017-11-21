@@ -79,10 +79,10 @@
                             }
                         },
                         slices: {
-                            0: { color: '#e3d5af' },
-                            1: { color: '#dacca5' },
-                            2: { color: '#d2c39c' },
-                            3: { color: '#cabb94' },
+                            0: { color: '#8ac594' },
+                            1: { color: '#79bc84' },
+                            2: { color: '#68b475' },
+                            3: { color: '#57ab65' },
                         }
                     };
 

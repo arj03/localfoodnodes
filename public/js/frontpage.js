@@ -1700,10 +1700,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     },
                     slices: {
-                        0: { color: '#7d809d' },
-                        1: { color: '#777a97' },
-                        2: { color: '#717491' },
-                        3: { color: '#6b6e8c' }
+                        0: { color: '#d36262' },
+                        1: { color: '#cd4e4e' },
+                        2: { color: '#c73a3a' },
+                        3: { color: '#b53333' }
                     }
                 };
 
@@ -1801,10 +1801,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     },
                     slices: {
-                        0: { color: '#e3d5af' },
-                        1: { color: '#dacca5' },
-                        2: { color: '#d2c39c' },
-                        3: { color: '#cabb94' }
+                        0: { color: '#8ac594' },
+                        1: { color: '#79bc84' },
+                        2: { color: '#68b475' },
+                        3: { color: '#57ab65' }
                     }
                 };
 
@@ -1822,7 +1822,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -46283,33 +46282,14 @@ var render = function() {
           staticClass: "col-12"
         },
         [
-          _c("div", { staticClass: "text-center" }, [
+          _c("div", { staticClass: "text-center mb-5" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.trans.available_balance))]),
+            _vm._v(" "),
             _c("div", [
               _vm._v(
-                _vm._s(_vm.trans.available_balance) +
-                  ": " +
-                  _vm._s(_vm.data.total.income - _vm.data.total.cost) +
-                  " SEK"
+                _vm._s(_vm.data.total.income - _vm.data.total.cost) + " SEK"
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary mt-5",
-                attrs: { href: "/economy" }
-              },
-              [_vm._v(_vm._s(_vm.trans.read_more_economy))]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "d-block mt-2",
-                attrs: { href: "/economy/transactions" }
-              },
-              [_vm._v(_vm._s(_vm.trans.view_all_transactions))]
-            )
+            ])
           ])
         ]
       )

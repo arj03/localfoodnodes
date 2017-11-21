@@ -31,7 +31,7 @@
                 <!-- Fast login hidden on mobile -->
                 <li class="dropdown d-none d-md-block">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user"></i> {{ trans('public/nav.login_or_create') }}
+                        {{ trans('public/nav.login_or_create') }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right login-card login-dropdown">
                         <li class="card-header">

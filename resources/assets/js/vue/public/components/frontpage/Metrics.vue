@@ -3,10 +3,9 @@
         <income-graph :trans="trans" :data="data"></income-graph>
         <costs-graph :trans="trans" :data="data"></costs-graph>
         <div v-show="!loading" class="col-12">
-            <div class="text-center">
-                <div>{{ trans.available_balance }}: {{ data.total.income - data.total.cost }} SEK</div>
-                <a class="btn btn-primary mt-5" href="/economy">{{ trans.read_more_economy }}</a>
-                <a class="d-block mt-2" href="/economy/transactions">{{ trans.view_all_transactions }}</a>
+            <div class="text-center mb-5">
+                <h3>{{ trans.available_balance }}</h3>
+                <div>{{ data.total.income - data.total.cost }} SEK</div>
             </div>
         </div>
     </div>

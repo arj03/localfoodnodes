@@ -49,25 +49,24 @@
 
     <div class="container frontpage-section create-pushes mt-5">
         <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
-        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <div class="card-deck">
+        {!! trans('public/index.co_create_info') !!}
+
+        <div class="card-deck mt-5">
             <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">{{ trans('public/index.sign_up') }}</h4> -->
-                    <p class="card-text">Du kan enkelt skapa ett konto helt gratis. Kolla runt på siten, hitta utlämningsplatser nära dig och lägg god, lokal mat i din digitala shoppingvagn. Innan du kan boka din mat behöver du bli stödmedlem, sedan kommer producenten med dina varor till utlämningensplatsen.</p>
+                    <p class="card-text">{{ trans('public/index.create_user_info') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
+                    <a class="btn btn-primary" href="/account/user/create/user">{{ trans('public/index.create_user') }}</a>
                 </div>
             </div>
 
             <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">{{ trans('public/index.no_node') }}</h4> -->
-                    <p class="card-text">En utlämningsplats kan startas och drivas av en förening, ett kooperativ, annan organisation eller av en enskild person. Allt som behövs är en adress.</p>
+                    <p class="card-text">{{ trans('public/index.create_node_info') }}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
@@ -77,8 +76,7 @@
             <div class="card mb-5">
                 <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">{{ trans('public/index.food_producer') }}</h4> -->
-                    <p class="card-text">Lägg upp dina produkter och koppla dem mot utlämningsplatser i din närhet. Leverans och betalning sker direkt till kund på utlämningen. All förtjänst går obruten till dig så att du kan utvecklas och fortsätta med det du gör. Ingen annan än du ska tjäna pengar på att du producerar bra mat!</p>
+                    <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
@@ -94,8 +92,10 @@
                 <div class="sub-header">{{ trans('public/index.co_fund_subheading') }}</div>
             </h2>
 
-            <div class="container">
-                <p>{{ trans('public/index.co_fund_paragraph') }}</p>
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <p>{{ trans('public/index.co_fund_paragraph') }}</p>
+                </div>
             </div>
 
             <div class="membership-metrics row">
@@ -120,12 +120,14 @@
     <div id="frontpage-metrics" class="frontpage-section">
         <div class="container pt-5 pb-5">
             <h2 class="thin mb-5">{{ trans('public/economy.economy') }}</h2>
-            <div class="row justify-content-center mb-5">
-                <div class="col-12">
-                    <p>{{ trans('public/economy.economy_info') }}</p>
-                </div>
+            <div class="row mb-5">
+                {!! trans('public/economy.economy_info') !!}
             </div>
             <metrics></metrics>
+            <div class="text-center">
+                <a class="btn btn-primary mt-5" href="/economy">{{ trans('public/economy.read_more_economy') }}</a>
+                <a class="d-block mt-2" href="/economy/transactions">{{ trans('public/economy.view_all_transactions') }}</a>
+            </div>
         </div>
     </div>
 
@@ -134,10 +136,12 @@
         <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
 
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_1') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_2') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>
+            </div>
+            <div class="col-12 col-md-6">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_4') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_5') }}</p>
                 <p><i>{{ trans('public/pages/find-out-more.paragraph_1_6') }}</i></p>
