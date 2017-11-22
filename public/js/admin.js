@@ -1761,7 +1761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).then(function (response) {
                 _this.transactions = response.data.transactions;
-                _this.categories = response.data.categories;
+                _this.categories = response.data.categories.all;
                 _this.fetching = false;
             });
         },

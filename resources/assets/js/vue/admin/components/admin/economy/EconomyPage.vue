@@ -36,7 +36,7 @@
                 })
                 .then(response => {
                     this.transactions = response.data.transactions;
-                    this.categories = response.data.categories;
+                    this.categories = response.data.categories.all;
                     this.fetching = false;
                 });
             },
