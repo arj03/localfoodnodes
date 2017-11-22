@@ -29,10 +29,8 @@ return [
     'view_all_transactions' => 'View all transactions',
 
     'economy_info' => '
-        <div class="row">
-            <div class="col-12">
-                <p class="ingress">Local Food Nodes is building on full transparency economy. All transactions are open to see and reported here with regular updates. <a href="/economy">Go to our economy page</a> for more detailed information regarding our economic stand points, and on how we work inclusively and create posibilitys for co-deciding in how money will flow and be distributed trough the platform.</p>
-            </div>
+        <div class="col-12 text-center">
+            <p class="ingress">Local Food Nodes is building on full transparency economy. All transactions are open to see and reported here with regular updates. <a href="/economy">Go to our economy page</a> for more detailed information regarding our economic stand points, and on how we work inclusively and create posibilitys for co-deciding in how money will flow and be distributed trough the platform.</p>
         </div>
     ',
     'economy_page' => '

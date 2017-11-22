@@ -18,7 +18,7 @@
         <div class="container d-flex justify-content-center text-center">
             <div class="col-12 pt-5 pb-5">
                 <h2 class="thin">{{ trans('public/index.what_is_lfn') }}</h2>
-                <p class="pt-5 pb-5 text-left ingress">{{ trans('public/index.what_is_lfn_info') }}</p>
+                <p class="pt-5 pb-5 ingress">{{ trans('public/index.what_is_lfn_info') }}</p>
                 <img src="/images/infographic.jpg">
                 <div>
                     <a href="/find-out-more" class="btn btn-primary">{{ trans('public/index.find_out_more') }}</a>

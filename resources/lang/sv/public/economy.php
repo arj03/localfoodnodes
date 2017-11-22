@@ -29,10 +29,8 @@ return [
     'view_all_transactions' => 'Visa alla transaktioner',
 
     'economy_info' => '
-        <div class="row">
-            <div class="col-12">
-                <p class="ingress">Local Food Nodes bygger på full transparens i sitt ekonomiska resonemang. Alla transaktioner som sker i föreningen är öppna och redovisas här med regelbundna uppdateringar. <a href="/economy">Gå till ekonomisidan</a> för mer detaljerad information och redovisning av de ekonomiska ställningstagandena och hur vi jobbar inkluderande för alla som väljer att stötta projektet.</p>
-            </div>
+        <div class="col-12 text-center">
+            <p class="ingress">Local Food Nodes bygger på full transparens i sitt ekonomiska resonemang. Alla transaktioner som sker i föreningen är öppna och redovisas här med regelbundna uppdateringar. <a href="/economy">Gå till ekonomisidan</a> för mer detaljerad information och redovisning av de ekonomiska ställningstagandena och hur vi jobbar inkluderande för alla som väljer att stötta projektet.</p>
         </div>
     ',
     'economy_page' => '
