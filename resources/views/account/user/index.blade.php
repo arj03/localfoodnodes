@@ -39,7 +39,7 @@
         @endif
     </div>
 
-    <div class="card-deck">
+    <div class="card-deck mb-5">
         @include('account.user.membership-card')
 
         <div class="card">

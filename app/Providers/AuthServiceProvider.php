@@ -26,21 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::tokensCan([
-            'users-read-self' => '',
-            'users-read-all' => '',
-            'users-read-emails' => '',
-            'users-modify' => '',
-            'users-orders-read' => '',
-            'users-orders-modify' => '',
-            'users-nodes-read' => '',
-            'users-nodes-modify' => '',
-            'organization-transactions-read' => '',
-            'organization-transactions-modify' => '',
-            'orders-read-all' => '',
-        ]);
-
+        Passport::tokensCan(config('api.tokensCan'));
         Passport::routes(null, ['middleware' => [\Barryvdh\Cors\HandleCors::class]]);
         Passport::enableImplicitGrant();
+
+        Passport::tokensExpireIn((new \DateTime())->modify('+1 days'));
+        Passport::refreshTokensExpireIn((new \DateTime())->modify('+1 months'));
     }
 }

@@ -3,11 +3,11 @@
 @section('title', $producer->name)
 
 @section('content')
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1>{{ $producer->name }}</h1>
+                    <h1 class="bold">{{ $producer->name }}</h1>
                     {{ $producer->address }} {{ $producer->zip }} {{ $producer->city }}
                 </div>
             </div>

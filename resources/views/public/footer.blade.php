@@ -6,8 +6,10 @@
                 <div id="mc_embed_signup">
                     <form action="//localfoodnodes.us14.list-manage.com/subscribe/post?u=b0c489d97c7e5e101ff469799&amp;id=4293a604c7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
-                        <h2>{{ trans('public/footer.newsletter') }}</h2>
-                        <p>{{ trans('public/footer.join') }}</p>
+                        <h2 class="mb-5">
+                            {{ trans('public/footer.newsletter') }}
+                            <div class="sub-header">{{ trans('public/footer.join') }}</div>
+                        </h2>
                         <div class="input-group">
                             <input type="email" value="" name="EMAIL" class="email form-control" placeholder="{{ trans('public/footer.your_email') }}" required>
 

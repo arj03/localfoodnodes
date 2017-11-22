@@ -6,6 +6,7 @@ return [
     'facebook' => 'Facebook',
     'forgot' => 'Glömt lösenord?',
     'login' => 'Logga in',
+    'or_login' => 'eller logga in',
     'password' => 'Lösenord',
     'title' => 'Logga in',
 

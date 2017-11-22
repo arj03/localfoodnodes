@@ -2,7 +2,7 @@
 
 return [
     'title' => 'Membership',
-    'header' => 'Co-fund the future of food!',
+    'header' => 'The future of food',
     'sub_header' => 'Become a member, become a part of the future of food',
     'body' => '
         <p>When you become a supporting member you are co-funding the future of food. Together, all of us as supporting members, can choose the direction of local food development in the future.</p>

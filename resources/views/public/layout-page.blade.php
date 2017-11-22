@@ -1,11 +1,24 @@
 @extends('public.layout')
 
 @section('content')
-    <div class="container-fluid header">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="bold">{{ $header }}</h2>
-                <h3 class="mb-5">{{ $subHeader }}</h3>
+
+    @if (isset($image))
+        <style>
+            .page-header {
+                background-image: url({{ $image }});
+            }
+        </style>
+    @endif
+
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="col-12 header-block">
+                <h1 class="bold">
+                    {{ $header }}
+                    @if (isset($subHeader))
+                        <div class="sub-header">{{ $subHeader }}</div>
+                    @endif
+                </h1>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
+use LocalFoodNodes\Sdk\LocalFoodNodes;
 
 use App\Http\Requests;
 use App\Node\Node;
@@ -25,6 +26,30 @@ use DateTime;
 
 class IndexController extends Controller
 {
+    /**
+     * @var LocalFoodNodes
+     */
+    private $api;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->api = new LocalFoodNodes(env('API_URL'), env('PUBLIC_API_CLIENT_ID'), env('PUBLIC_API_SECRET'), env('PUBLIC_API_USERNAME'), env('PUBLIC_API_PASSWORD'));
+    }
+
+    public function apiProxy(Request $request)
+    {
+        $method = $request->has('method') ? $request->input('method') : 'get';
+        $url = $request->input('url');
+        $data = $request->has('data') ? $request->input('data') : [];
+
+        return $this->api->request($method, $url, $data);
+    }
+
     /**
      * Show all nodes
      */

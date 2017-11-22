@@ -4,103 +4,110 @@
 
 @section('content')
     <div class="container-fluid frontpage-section frontpage-header">
-        <div class="col-12">
-            <h2 class="bold">{{ trans('public/index.food_matters') }}</h2>
-            <h3>{{ trans('public/index.recreating') }}</h3>
-            <a href="#find-out-more" class="btn-outline">{{ trans('public/index.find_out_more') }}</a>
-        </div>
-    </div>
-
-    <?php $jsonTrans = json_encode(trans('public/index')); ?>
-    <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ $jsonTrans }}"></div>
-
-    <div class="container-fluid frontpage-section local-food-impact">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row metrics">
-                        <div class="col-12 col-sm-4">
-                            <div class="metric">
-                                <b>{{ $metrics['userCount'] }}</b>
-                                <div>{{ trans('public/index.locals') }}</div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="metric">
-                                <b>{{ $metrics['nodeCount'] }}</b>
-                                <div>{{ trans('public/index.local_nodes') }}</div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4">
-                            <div class="metric">
-                                <b>{{ $metrics['producerCount'] }}</b>
-                                <div>{{ trans('public/index.local_producers') }}</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-12 header-block">
+                <h1 class="bold">
+                    {{ trans('public/index.header') }}
+                    <div class="sub-header">{!! trans('public/index.subheader') !!}</div>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid frontpage-section bg-white what-is-lfn">
+        <div class="container d-flex justify-content-center text-center">
+            <div class="col-12 pt-5 pb-5">
+                <h2 class="thin">{{ trans('public/index.what_is_lfn') }}</h2>
+                <p class="pt-5 pb-5 text-left ingress">{{ trans('public/index.what_is_lfn_info') }}</p>
+                <img src="/images/infographic.jpg">
+                <div>
+                    <a href="/find-out-more" class="btn btn-primary">{{ trans('public/index.find_out_more') }}</a>
                 </div>
             </div>
         </div>
     </div>
 
-    @if (Auth::check())
-        <div class="container-fluid frontpage-section create-pushes">
-            <h2 class="thin">{{ trans('public/index.co_create') }}</h2>
-            <div class="row no-gutters">
-                <div class="col-12 col-lg nodes">
-                    <h2 class="bold">{{ trans('public/index.no_node') }}</h2>
-                    <a class="btn-outline" href="/account/node/create">{{ trans('public/index.create_node') }}</a>
-                </div>
-                <div class="col-12 col-lg producers">
-                    <h2 class="bold">{{ trans('public/index.food_producer') }}</h2>
-                    <a class="btn-outline" href="/account/producer/create">{{ trans('public/index.list') }}</a>
-                </div>
-            </div>
-        </div>
-    @else
-        <div class="container-fluid frontpage-section create-pushes">
-            <h2 class="thin">{{ trans('public/index.co_create') }}</h2>
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="users">
-                        <h2 class="bold">{{ trans('public/index.sign_up') }}</h2>
-                        <a class="btn-outline" href="/account/user/create/user">{{ trans('public/index.sign_up_button') }}</a>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="nodes">
-                        <h2 class="bold">{{ trans('public/index.no_node') }}</h2>
-                        <a class="btn-outline" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="producers">
-                        <h2 class="bold">{{ trans('public/index.food_producer') }}</h2>
-                        <a class="btn-outline" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+    <div class="map-wrapper">
+        <?php $jsonTrans = json_encode(trans('public/index')); ?>
+        <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ $jsonTrans }}"></div>
 
-    <div class="container frontpage-section upcoming-events">
-        <h2 class="thin">{{ trans('public/index.upcoming') }}</h2>
-        <div class="events slick-slider-wrapper">
-            @foreach ($events as $event)
-                @include('public.components.event')
-            @endforeach
+        <div class="metrics">
+            <div class="metric">
+                <div class="value">{{ $metrics['userCount'] }}</div>
+                <div class="label">{{ trans('public/index.locals') }}</div>
+            </div>
+            <div class="metric">
+                <div class="value">{{ $metrics['nodeCount'] }}</div>
+                <div class="label">{{ trans('public/index.local_nodes') }}</div>
+            </div>
+            <div class="metric">
+                <div class="value">{{ $metrics['producerCount'] }}</div>
+                <div class="label">{{ trans('public/index.local_producers') }}</div>
+            </div>
         </div>
     </div>
 
-    <div class="container-fluid frontpage-section membership">
+    <div class="container frontpage-section create-pushes mt-5">
+        <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
+
+        {!! trans('public/index.co_create_info') !!}
+
+        <div class="card-deck mt-5">
+            <div class="card mb-5">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Handla lokalt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ trans('public/index.create_user_info') }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="/account/user/create/user">{{ trans('public/index.create_user') }}</a>
+                </div>
+            </div>
+
+            <div class="card mb-5">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Starta utlämningsplats</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ trans('public/index.create_node_info') }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                </div>
+            </div>
+
+            <div class="card mb-5">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Sälj lokalt</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid frontpage-section membership mt-5 pt-5 pb-5">
         <div class="col-12">
-            <h2 class="bold">{{ trans('public/index.co_fund_heading') }}</h2>
-            <h3 class="mb-5">{{ trans('public/index.co_fund_subheading') }}</h3>
-            <div class="membership-content container">
-                {{ trans('public/index.co_fund_paragraph') }}
+            <h2 class="bold mb-5">
+                {{ trans('public/index.co_fund_heading') }}
+                <div class="sub-header">{{ trans('public/index.co_fund_subheading') }}</div>
+            </h2>
+
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <p>{{ trans('public/index.co_fund_paragraph') }}</p>
+                </div>
             </div>
 
-            <div class="metrics row">
+            <div class="membership-metrics row">
                 <div class="metric col">
                     <div class="value">{{ $members }}<i class="fa fa-user value-unit"></i></div>
                     <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
@@ -111,64 +118,52 @@
                 </div>
             </div>
 
-            <a href="/membership" class="btn-outline">{{ trans('public/index.co_fund_read_more') }}</a>
+            <a href="/membership" class="btn mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
+        </div>
+    </div>
+
+    <script>
+        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
+    </script>
+
+    <div id="frontpage-metrics" class="frontpage-section">
+        <div class="container pt-5 pb-5">
+            <h2 class="thin mb-5">{{ trans('public/economy.economy') }}</h2>
+            <div class="row mb-5">
+                {!! trans('public/economy.economy_info') !!}
+            </div>
+            <metrics></metrics>
+            <div class="text-center">
+                <a class="btn btn-primary mt-5" href="/economy">{{ trans('public/economy.read_more_economy') }}</a>
+                <a class="d-block mt-2" href="/economy/transactions">{{ trans('public/economy.view_all_transactions') }}</a>
+            </div>
         </div>
     </div>
 
     <div class="container frontpage-section find-out-more mt-5" id="find-out-more">
         <img class="logo" src="/images/nav-logo-dark.png">
-        <h2 class="thin">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
+        <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.subheader_1') }}</h2>
 
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 body-text">
+            <div class="col-12 col-md-6">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_1') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_2') }}</p>
+            </div>
+            <div class="col-12 col-md-6">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_4') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_5') }}</p>
-                <p><i>{{ trans('public/pages/find-out-more.paragraph_1_6') }}</i></p>
-            </div>
-        </div>
-
-        <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.header_2') }}</h2>
-    </div>
-
-    <div class="container-fluid frontpage-section find-out-more">
-        <div class="row">
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_436974091_crate.jpg">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ trans('public/pages/find-out-more.header_3') }}</h3>
-                        <p>{{ trans('public/pages/find-out-more.paragraph_3_1') }}</p>
-                        <p>{{ trans('public/pages/find-out-more.paragraph_3_2') }}</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_326785574_gettogether.jpg">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ trans('public/pages/find-out-more.header_4') }}</h3>
-                        <p>{{ trans('public/pages/find-out-more.paragraph_4_1') }}</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="/images/shutterstock_271622087_producer_carrots.jpg">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ trans('public/pages/find-out-more.header_5') }}</h3>
-                        <p>{{ trans('public/pages/find-out-more.paragraph_5_1') }}</p>
-                        <p>{{ trans('public/pages/find-out-more.paragraph_5_2') }}</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
     <div class="container frontpage-section">
-        <h2 class="thin mt-5 mb-5">{{ trans('public/pages/find-out-more.quip') }}</h2>
+        <h2 class="thin mt-5 mb-5">#{{ trans('public/pages/find-out-more.quip') }}</h2>
     </div>
 
     <link rel="stylesheet" href="/css/leaflet/leaflet.min.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
     <script src="{{ mix('/js/node-map.js') }}"></script>
+    <script src="{{ mix('/js/frontpage.js') }}"></script>
 @endsection

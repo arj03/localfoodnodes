@@ -1,7 +1,7 @@
 html
   font-size: 14px !important
 body
-  background: #f1f0ea
+  background: #f9f8f5
   font-family: 'Raleway', sans-serif
   color: #333
   font-weight: 400
@@ -10,16 +10,25 @@ body
   > .page
     min-height: calc(100vh - 250px)
 
-.body-text
-  line-height: 1.7em
+.header-block
+  background: #fff
   color: #333
+  display: inline-block
+  font-weight: 500
+  padding: 20px
+  width: auto
 
-  h1, h2, h3, h4
-    span
-      display: block
-      font-size: 1.3rem
-      color: #aaa
-      text-transform: none
+.body-text
+  line-height: 1.5em
+  color: #333
+  font-size: 16px
+  padding: 50px
+
+  h2, h3, h4, h4, h5, h6
+    font-weight: 700
+    margin: 5rem 0 3rem
+    &:first-child
+      margin-top: 0 !important
 
 ul
   padding-left: 0
@@ -35,11 +44,45 @@ ul
       &.list
         list-style: circle
 img
-  width: 100%
+  max-width: 100%
 
 h1, h2, h3, h4, h5, h6
   font-family: 'montserrat'
   text-transform: uppercase
+  font-weight: 500
+  word-break: break-word
+  &.bold
+    font-weight: 700
+  &.thin
+    font-weight: 200
+  .sub-header
+    font-size: 1rem
+    font-weight: 500
+    line-height: 1.5rem
+    margin-top: 0.5rem
+
+h1
+  font-size: 4rem
+h2
+  font-size: 3.5rem
+
+@media (max-width: 991px)
+  h1
+    font-size: 3em
+  h2
+    font-size: 2.5em
+
+@media (max-width: 575px)
+  h1
+    font-size: 1.5em
+  h2
+    font-size: 1.25em
+
+@media (max-width: 767px)
+  h1
+    font-size: 2em
+  h2
+    font-size: 1.75em
 
 a
   color: #188092
@@ -154,3 +197,9 @@ a
       margin: 0
   .fa
     cursor: pointer
+
+.loader
+  color: #ccc
+  display: block
+  font-size: 24px
+  text-align: center

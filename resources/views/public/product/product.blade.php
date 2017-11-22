@@ -3,11 +3,11 @@
 @section('title', $product->name . ' - ' . $producer->name)
 
 @section('content')
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1>{{ $product->name }}</h1>
+                    <h1 class="bold">{{ $product->name }}</h1>
                     <a href="{{ $producer->permalink()->url }}">{{ $producer->name }}</a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <div class="card-body">
     @if ($products->count() > 0)
-        <div class="card-deck">
+        <div class="card-deck mb-5">
             @foreach ($products as $index => $product)
                 <a class="card product-card" href="{{ $node->permalink()->url }}{{ $product->permalink()->url }}">
                     @if ($product->images()->count() > 0)
@@ -37,7 +37,7 @@
                 </a>
 
                 @if ($index > 0 && ($index + 1) % 3 === 0)
-                    </div><div class="card-deck">
+            </div><div class="card-deck mb-5">
                 @endif
             @endforeach
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import _ from 'underscore';
+import _ from 'lodash';
 
 import SearchResultComponent from '../components/SearchResultComponent';
 
@@ -17,7 +17,8 @@ let visibleLatLng = [];
 class NodeMapContainer extends Component {
     constructor(props) {
         super(props);
-        this.debouncedSearch = _.debounce(this.debouncedSearch, 300).bind(this);
+        // this.debouncedSearch = _.debounce(this.debouncedSearch, 300).bind(this);
+        this.debouncedSearch = this.debouncedSearch.bind(this);
         this.getNodePreview = this.getNodePreview.bind(this);
         this.onSelect = this.onSelect.bind(this);
 
@@ -55,7 +56,9 @@ class NodeMapContainer extends Component {
             scrollWheelZoom: false,
         });
 
-        let tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/davidajnered/cj1nwwm82002u2ss6j5e9zrt6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw', {
+        let mapboxUrl = 'https://api.mapbox.com/styles/v1/davidajnered/cj9r1s64b0pc12snzmvgt6lup/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw';
+
+        let tileLayer = L.tileLayer(mapboxUrl, {
         	attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         	subdomains: 'abcd',
         	maxZoom: 18
@@ -246,19 +249,17 @@ class NodeMapContainer extends Component {
 
         return (
             <div className='map container-fluid'>
-                <div className='body-text'>
-                    <h2>{trans.go_local}</h2>
-                    <div className='row no-gutters map-search'>
-                        <div className='col-12 col-lg-6'>
-                            <div className='input-group'>
-                                <span className="input-group-addon"><i className="fa fa-search" /></span>
-                                <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />
-                            </div>
-                            {searchResults}
+                <h2 className='thin'>{trans.go_local}</h2>
+                <div className='row no-gutters map-search mb-5'>
+                    <div className='col-12 col-md-6'>
+                        <div className='input-group'>
+                            <span className="input-group-addon"><i className="fa fa-search" /></span>
+                            <input value={this.state.searchString} type="text" className="form-control" placeholder={trans.find_node_near_you} onChange={this.search.bind(this)} />
                         </div>
+                        {searchResults}
                     </div>
-                    <div className='map-holder' ref='map'>{loader}</div>
                 </div>
+                <div className='map-holder' ref='map'>{loader}</div>
             </div>
         );
     }

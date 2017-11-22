@@ -112,6 +112,7 @@
         </div>
     </div>
 
+    <script src="/js/underscore-min.js"></script>
     <script>
         $(function() {
             $('.quantity-input').on('keyup', _.debounce(function() {

@@ -5,24 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use LocalFoodNodes\Sdk\LocalFoodNodes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use GuzzleHttp\Exception\RequestException;
-
-use GuzzleHttp\Client;
 
 class AdminController extends Controller
 {
     /**
-     * @var GuzzleHttp\Client
+     * @var LocalFoodNodes
      */
-    protected $http;
-
-    /**
-     * @var string
-     */
-    protected $accessToken;
+    private $api;
 
     /**
      * Constructor.
@@ -31,39 +24,31 @@ class AdminController extends Controller
     {
         parent::__construct();
 
-        $this->http = new Client;
-
-        if (!$this->accessToken) {
-            try {
-                $response = $this->http->post(env('ADMIN_API_URL') . '/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => env('ADMIN_CLIENT_ID'),
-                        'client_secret' => env('ADMIN_SECRET'),
-                        'username' => env('ADMIN_USERNAME'),
-                        'password' => env('ADMIN_PASSWORD'),
-                        'scope' => '*',
-                    ],
-                ]);
-
-                $token = json_decode((string) $response->getBody(), true);
-
-                $this->accessToken = $token['access_token'];
-            } catch (RequestException $e) {
-                header('Location: /', 404); // return 404
-                exit;
-            }
-        }
+        $this->api = new LocalFoodNodes(env('API_URL'), env('ADMIN_API_CLIENT_ID'), env('ADMIN_API_SECRET'), env('ADMIN_API_USERNAME'), env('ADMIN_API_PASSWORD'));
     }
 
     /**
-     * Get token from API.
+     * [apiProxy description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function apiProxy(Request $request)
+    {
+        $method = $request->method();
+        $url = $request->input('url');
+        $data = $request->has('data') ? $request->input('data') : [];
+
+        return $this->api->{$method}($url, $data);
+    }
+
+    /**
+     * Get API token.
      *
-     * @return token
+     * @return array
      */
     public function getApiAccessToken()
     {
-        return $this->accessToken;
+        return $this->api->getToken();
     }
 
     public function index(Request $request)

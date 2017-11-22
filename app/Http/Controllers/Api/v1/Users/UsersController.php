@@ -27,7 +27,7 @@ class UsersController extends \App\Http\Controllers\Controller
     {
         $user = User::find($request->input('id'));
 
-        foreach($request->input('fields') as $key => $value) {
+        foreach ($request->input('fields') as $key => $value) {
             $user->{$key} = $value;
         }
 

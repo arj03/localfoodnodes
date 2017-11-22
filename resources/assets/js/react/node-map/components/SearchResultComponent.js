@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 
 class SearchResultComponent extends Component {
     constructor(props) {
@@ -115,14 +116,14 @@ class SearchResultComponent extends Component {
         let that = this;
         let selectedIndex = this.getCurrentIndex();
 
-        return _(this.props.data).map((place, index) => {
+        return _.map(this.props.data, (place, index) => {
             let parts = place.display_name.split(',');
             let selected = selectedIndex === index ? 'selected' : '';
 
             return (
                 <li key={index} className={selected} onClick={that.onSelect.bind(this, place)}>
-                    <b>{_(parts).first()}</b>
-                    <p>{_(parts).rest(1).join(', ')}</p>
+                    <b>{_.head(parts)}</b>
+                    <p>{_.drop(parts, 1).join(', ')}</p>
                 </li>
             );
         });

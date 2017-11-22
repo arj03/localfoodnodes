@@ -1,8 +1,11 @@
-@extends('public.layout')
+@extends('public.layout-page', [
+    'header' => trans('public/login.title'),
+    'image' => '/images/shutterstock_326785574.jpg'
+])
 
 @section('title', trans('public/login.title'))
 
-@section('content')
+@section('page-content')
     @if (Request::has('error'))
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -29,13 +32,15 @@
         </div>
     @endif
 
-    <div class="container mt-5">
+    <div class="container top-container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-6">
-                <div class="card">
-                    <div class="card-header">{{ trans('public/login.title') }}</div>
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card login-card">
+                    <div class="card-header">
+                        <a href="/login/facebook" class="btn btn-facebook"><i class="fa fa-facebook-square"></i> {{ trans('public/nav.facebook') }}</a>
+                    </div>
                     <div class="card-body">
-                        <form action="/authenticate" method="post" class="mb-5">
+                        <form action="/authenticate" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="email">{{ trans('public/login.email') }}</label>
@@ -45,17 +50,12 @@
                                 <label for="password">{{ trans('public/login.password') }}</label>
                                 <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('public/login.password') }}">
                             </div>
-                            <div class="row">
-                                <div class="col login-helper">
-                                    <a href="/account/user/create">{{ trans('public/login.create') }}</a>
-                                    <a href="/password/reset">{{ trans('public/login.forgot') }}</a>
-                                </div>
-                                <div class="col text-right">
-                                    <button type="submit" class="btn btn-success">{{ trans('public/login.login') }}</button>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-success">{{ trans('public/login.login') }}</button>
                         </form>
-                        <a href="/login/facebook" class="btn btn-success"><i class="fa fa-facebook-square"></i> {{ trans('public/nav.facebook') }}</a>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="/account/user/create">{{ trans('public/login.create') }}</a>
+                        <a href="/password/reset">{{ trans('public/login.forgot') }}</a>
                     </div>
                 </div>
             </div>

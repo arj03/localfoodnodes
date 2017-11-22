@@ -5,8 +5,6 @@
   font-family: 'montserrat'
   text-transform: uppercase
   color: #333
-  padding-top: 0
-  padding-bottom: 0
   width: 100vw
   .navbar-brand
     color: #333
@@ -26,19 +24,26 @@
     .nav-link
       font-family: 'montserrat'
       color: #333
-  .navbar-collapse
-    padding: 10px
 
-.login-dropdown
+.login-card
   text-transform: none
-  min-width: 350px
   color: #333
   padding: 0
-  li
+  .card-header
+    background: #fff !important
+    border-bottom: 1px solid #eee !important
     padding: 20px
+  .card-body
+    padding: 20px
+  .btn-facebook
+    background: #4267b2
+    width: 100%
+  .card-footer
+    background: #fafafa
+    border-top: 1px solid #eee
+    padding: 20px
+    a
+      color: #666
 
-.login-helper
-  a
-    font-family: 'Raleway'
-    display: block
-    line-height: 1.3em
+.login-dropdown
+  min-width: 350px

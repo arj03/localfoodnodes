@@ -1,3 +1,11 @@
+.btn {
+  padding: 0.375rem 0.75rem;
+}
+
+.card .card-footer .btn {
+  width: auto;
+}
+
 body.admin .page {
   padding-bottom: 0;
   min-height: 100vh;

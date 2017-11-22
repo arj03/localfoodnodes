@@ -23,6 +23,17 @@
   box-shadow: #ccc 0 1px 8px -2px
   border: 0
   border-radius: 0
+  .card-img-wrapper
+    position: relative
+    .card-img-header
+      position: absolute
+      bottom: 15px
+      left: 15px
+      background: #fff
+      color: #333
+      max-width: calc(100% - 30px)
+      padding: 15px
+      text-align: left
   .card-header
     background: #fff
     border-bottom: 1px solid #f1f0ec
@@ -42,6 +53,10 @@
   .card-footer
     border-color: #eee
     background: #fff
+    padding: 1.25rem
+    .btn
+      width: 100%
+      margin-bottom: 0
 
 .dropdown-action-component
   background-color: transparent
@@ -79,7 +94,8 @@
       &:focus,
         color: #333
 
-.form-group
+.form-group,
+.input-group
   .disabled
     opacity: 0.5
   label
@@ -92,6 +108,10 @@
     font-weight: 400
     font-size: inherit
   input
+    &:focus
+      outline: none
+      box-shadow: none
+      border: 1px solid #ccc
     &:disabled
       background: #eee
 
@@ -117,22 +137,35 @@
           color: #333
 
 .btn
+  border: 0
+  border-radius: 0
   cursor: pointer
+  font-weight: bold
+  font-size: 14px
+  padding: 1rem 2rem
+  text-decoration: none
+  &:active,
+  &:hover,
+  &:focus
+    box-shadow: none !important
+  &.btn-primary
+    background: #67b475
+    &:active,
+    &:hover,
+    &:focus
+      background: #57a465 !important
+  &.btn-success
+    background: #67b475
+    &:hover,
+    &:active,
+    &:focus
+      background: #57a465
 
 input[type=submit],
 .btn
   text-transform: uppercase
   font-family: 'montserrat'
 
-.btn-success
-  background: #8fb773
-  color: #fff
-  border: 0
-  &:hover,
-  &:active,
-  &:focus
-    color: #fff
-    background: #8fb773
 
 .text-success
   color: #8fb773 !important

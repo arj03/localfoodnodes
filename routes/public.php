@@ -5,6 +5,7 @@ Route::get('/settings/locale/{locale}', 'SettingsController@changeLocale');
 
 // Index
 Route::get('/', 'IndexController@index');
+Route::get('/api-proxy', 'IndexController@apiProxy');
 
 // Map
 Route::get('/map/content', 'MapController@getMapContent');
@@ -29,6 +30,9 @@ Route::group(['prefix' => '/checkout', 'middleware' => 'auth.account'], function
 // Static pages
 Route::get('/find-out-more', 'PageController@findOutMore');
 Route::get('/membership', 'PageController@membership');
+Route::get('/economy', 'PageController@economy');
+Route::get('/economy/transactions', 'PageController@transactions');
+Route::get('/team', 'PageController@team');
 
 // Landing page catcher
 Route::get('/landing-page/{segments}', function() {
@@ -39,11 +43,6 @@ Route::get('/launch/{segments}', function() {
 })->where('segments', '(.*)');
 
 Route::get('/landing-page/{wildcard?}', 'IndexController@index');
-
-// Certificate
-Route::get('/.well-known/acme-challenge/{id}', function($id) {
-    return Redirect::to('/.well-known/acme-challenge/' . $id);
-});
 
 // Page - There routes must be in the bottom of this file because else they'll match every request
 Route::get('/{type}/{slug}/{subType?}/{subSlug?}', 'PermalinkController@route');

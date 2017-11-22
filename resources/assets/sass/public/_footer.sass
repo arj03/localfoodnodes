@@ -3,11 +3,11 @@
   padding: 50px 0 0
   color: #fff
   a
-    color: #fff
+    color: #fff !important
+    text-decoration: none
     &:active,
-    &visited
-      color: #fff
-      text-decoration: none
+    &:visited
+    &:focus,
     &:hover
       color: #fff
   .row
@@ -35,7 +35,7 @@
 
   #mc_embed_signup
     .input-group
-      width: 360px
+      max-width: 360px
       margin: 0 auto
       input[type=email]
         border: 2px solid #fff
@@ -46,3 +46,4 @@
           background: #fff
           color: #333
           padding: 15px
+          border-radius: 3px

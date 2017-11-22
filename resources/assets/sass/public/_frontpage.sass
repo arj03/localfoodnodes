@@ -1,31 +1,23 @@
-// @mixin input-placeholder($color)
-//   &::-webkit-input-placeholder
-//     color: $color
-//   &:-moz-placeholder
-//     color: $color
-//   &::-moz-placeholder
-//     color: $color
-//   &:-ms-input-placeholder
-//     color: $color
-
 .public-index
+  a
+    color: #188092
+  h1, h2, h3, h4, h5, h6
+    text-align: center
   .frontpage-section
     position: relative
     height: 100%
-    h2
-      font-size: 4em
-      text-align: center
-      &.bold
-        font-weight: 700
-      &.thin
-        font-weight: 200
+    &.bg-white
+      background: #fff
     p
-      font-size: 18px
+      font-size: 16px
       line-height: 1.5em
+      &.ingress
+        font-size: 20px
+        color: #666
 
   // Header
   .frontpage-header
-    background: url('/images/shutterstock_152320880_tomato_hands.jpg') center center
+    background: url('/images/shutterstock_384205462.jpg') center center
     background-size: cover
     color: #fff
     height: 80vh
@@ -38,75 +30,35 @@
       width: 300px
       margin-top: 50px
 
-  .local-food-impact
-    background: #90c0c5
-    padding: 15px 15px 0
-    h2
-      margin-bottom: 50px
-      color: #fff
+  .map-wrapper
+    position: relative
     .metrics
-      display: flex
-      justify-content: space-between
+      width: auto
+      position: absolute
+      bottom: 15px
+      left: 15px
+      z-index: 999
+      background: #fff
+      border-radius: 3px
       .metric
         margin: 0 auto
-        padding: 10px
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        color: #fff
-        b
+        padding: 15px 15px 10px
+        color: #333
+        float: left
+        text-align: center
+        .value
           font-weight: 700
-          font-size: 26px
-          line-height: 1.1em
+          font-size: 20px
+        .label
+          font-size: 12px
 
-  .create-pushes
-    > h2
-      padding-top: 50px
-      padding-bottom: 50px
-      color: #333
-    .row
-      display: flex
-      align-items: stretch
-      color: #fff
-      .users,
-      .nodes,
-      .producers
-        position: relative
-        background-size: cover
-        padding: 15px
-        height: 50vh
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        margin: 15px
-        h2
-          font-size: 2rem
-        a
-          text-align: center
-          font-size: 16px
-          line-height: 1.3em
-          font-weight: bold
-          width: calc(100% - 30px)
-
-      .users
-        background-image: url('/images/shutterstock_436974091_crate.jpg')
-      .nodes
-        background-image: url('/images/shutterstock_326785574_gettogether.jpg')
-      .producers
-        background-image: url('/images/shutterstock_271622087_producer_carrots.jpg')
-
-
-  .upcoming-events
-    padding-top: 50px
-    padding-bottom: 50px
-    h2
-      margin-bottom: 50px
+  .card-deck
+    .card
+      .card-footer
+        border-top: 0
+        text-align: center
 
   .membership
-    > .col-12
-      padding-top: 30px
-      padding-bottom: 30px
     background: url('/images/cows-bw.jpg') center center
     background-size: cover
     color: #dec286
@@ -115,55 +67,11 @@
     justify-content: center
     align-items: center
     text-align: center
-    .membership-content
-      font-family: 'montserrat'
-      text-transform: none
-      font-size: 18px
-      line-height: 32px
-      margin-top: 50px
-      &.big
-        font-size: 40px
-        line-height: 40px
-      &.uppercase
-        text-transform: uppercase
-    a
-      width: 300px
-      margin-top: 50px
-      color: #dec286
-      border-color: #dec286
-
-    .metrics
-      display: flex
-      justify-content: center
-      margin-top: 20px
-      .metric
-        margin: 2vw
-        display: flex
-        flex-direction: column
-        align-items: center
-        .value
-          background: #dec286
-          color: #fff
-          font-size: 40px
-          width: 180px
-          line-height: 180px
-          border-radius: 100px
-          text-align: center
-          font-weight: bold
-          font-family: 'montserrat'
-          .value-unit
-            font-size: 30px
-            padding-left: 10px
-            &.fa
-              position: relative
-              top: -3px
-        .label
-          margin-top: 15px
-          font-size: 1.75rem
-          font-family: 'montserrat'
-          text-transform: uppercase
-          color: #dec286
-          text-align: center
+    .btn
+      background: #dec286
+      color: #fff
+      &:hover
+        background: #ceb276
 
   .find-out-more
     .logo
@@ -171,60 +79,27 @@
       width: 10vw
       display: block
       margin: 0 auto
-    > h2
-      padding-top: 50px
-      padding-bottom: 50px
-      color: #333
-    .row
-      margin-left: 15px
-      margin-right: 15px
-      .card
-        h3
-          overflow-wrap: break-word
-          word-wrap: break-word
-          -ms-word-break: break-all
-          /* This is the dangerous one in WebKit, as it breaks things wherever */
-          word-break: break-all
-          /* Instead use this non-standard one: */
-          word-break: break-word
-          /* Adds a hyphen where the word breaks, if supported (No Blink) */
-          -ms-hyphens: auto
-          -moz-hyphens: auto
-          -webkit-hyphens: auto
-          hyphens: auto
 
-  .btn-outline
-    border: 1px solid #fff
-    padding: 20px
-    text-transform: uppercase
-    display: block
-    -webkit-transition: background-color 1s
-    transition: background-color 1s
-    font-weight: bold
-    margin: 20px auto
-    color: #fff
-    &:hover
-      background: rgba(255, 255, 255, 0.4)
-      text-decoration: none
+#frontpage-metrics
+  background: #fff
+  .chart
+    width: 100%
 
 @media (max-width: 991px)
   .public-index
     .frontpage-section
+      h2
+        font-size: 2.5em
       .left,
       .right
         width: 100vw
 
-    .create-pushes
-      .row
-        .users,
-        .nodes,
-        .producers
-          margin-left: 0
-          margin-right: 0
-          padding: 20px 0
+    .card-deck
+      display: block
 
 // Hide things on front page when logged in
 body.public-index
   &.logged-in
-    .frontpage-header
+    .frontpage-header,
+    .what-is-lfn
       display: none
