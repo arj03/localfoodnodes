@@ -826,6 +826,10 @@ body.public .page .shop-header .top a {
   color: #333;
 }
 
+.navbar a.dropdown-item {
+  color: #333;
+}
+
 .login-card {
   text-transform: none;
   color: #333;

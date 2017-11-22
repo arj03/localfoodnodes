@@ -10,14 +10,17 @@ return [
         </div>
     ',
     'create_node' => 'Skapa en utlämningsplats',
+    'create_node_header' => 'Starta utlämningsplats',
     'create_node_info' => '
         Vill du stärka den lokala maten i ditt närområde? Vem som helst kan skapa en utlämningsplats var som helst och göra den sökbar på kartan för båda producenter och konsumenter.
     ',
     'create_user' => 'Skapa konto',
+    'create_user_header' => 'Handla lokalt',
     'create_user_info' => '
         Skapa ett användarkonto enkelt och gratis. Hitta lokala utlämningsplatser som passar dig och börja botanisera bland tillgänglig mat. Bli stöttande medlem och förboka sedan mat direkt från dina lokala producenter och hämta upp den på givna tider och platser.
     ',
     'create_producer' => 'Sälj dina produkter',
+    'create_producer_header' => 'Sälj lokalt',
     'create_producer_info' => '
         Sälj dina produkter direkt mot slutkonsument, helt utan mellanhänder.  Leverera till de utlämningsplatser som passar dig. Administrera dina ordrar och ta betalt på det sätt som passar dig, direkt av dina kunder och helt utan intäktsbortfall.
     ',

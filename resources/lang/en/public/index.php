@@ -15,14 +15,17 @@ return [
         </div>
     ',
     'create_node' => 'Create a node',
+    'create_node_header' => 'Start a node',
     'create_node_info' => '
         Want to see a local food node in your area? Create one. Anyone can create a delivery spot anywhere. All you need is a location were producers and consumers can meet up.
     ',
     'create_user' => 'Sign up',
+    'create_user_header' => 'Buy local',
     'create_user_info' => '
         Create a user account for free. Find local food nodes in your area. Start to pre-order local food, directly from your local producers, (you need to become a supporting member to place order) and then pick it up at the local deliver points.
     ',
     'create_producer' => 'Sell your products',
+    'create_producer_header' => 'Sell local',
     'create_producer_info' => '
         Sell your products directly to end consumers, without intermediaries. Deliver to the local delivery spots that suits you best. Manage your orders and get payed in the ways that suits you best, without loss of revenue, and start building relationships first hand with your customers.
     ',

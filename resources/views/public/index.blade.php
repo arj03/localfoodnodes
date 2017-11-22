@@ -56,7 +56,7 @@
             <div class="card mb-5">
                 <div class="card-img-wrapper">
                     <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
-                    <h3 class="card-img-header bold">Handla lokalt</h3>
+                    <h3 class="card-img-header bold">{{ trans('public/index.create_user_header') }}</h3>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_user_info') }}</p>
@@ -69,7 +69,7 @@
             <div class="card mb-5">
                 <div class="card-img-wrapper">
                     <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
-                    <h3 class="card-img-header bold">Starta utlämningsplats</h3>
+                    <h3 class="card-img-header bold">{{ trans('public/index.create_node_header') }}</h3>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_node_info') }}</p>
@@ -82,7 +82,7 @@
             <div class="card mb-5">
                 <div class="card-img-wrapper">
                     <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
-                    <h3 class="card-img-header bold">Sälj lokalt</h3>
+                    <h3 class="card-img-header bold">{{ trans('public/index.create_producer_header') }}</h3>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
