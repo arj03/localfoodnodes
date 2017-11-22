@@ -46140,7 +46140,7 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [_vm._v(_vm._s(_vm.total.toLocaleString("sv")) + " SEK")]
+      [_vm._v(_vm._s(parseInt(_vm.total).toLocaleString("sv")) + " SEK")]
     ),
     _vm._v(" "),
     _c(
@@ -46219,7 +46219,7 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [_vm._v(_vm._s(_vm.total.toLocaleString("sv")) + " SEK")]
+      [_vm._v(_vm._s(parseInt(_vm.total).toLocaleString("sv")) + " SEK")]
     ),
     _vm._v(" "),
     _c(

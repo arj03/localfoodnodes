@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 col-lg-6 justify-content-center">
-        <h3 v-show="!loading" class="text-center">{{ total.toLocaleString('sv') }} SEK</h3>
+        <h3 v-show="!loading" class="text-center">{{ parseInt(total).toLocaleString('sv') }} SEK</h3>
         <div v-show="!loading" class="text-center">{{ trans.costs }} 2017</div>
         <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
         <div v-show="!loading" id="costs-chart" class="chart" style="height:300px; width: 100%;"></div>
