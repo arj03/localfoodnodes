@@ -32,6 +32,21 @@
   border-radius: 0;
 }
 
+.card .card-img-wrapper {
+  position: relative;
+}
+
+.card .card-img-wrapper .card-img-header {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: #fff;
+  color: #333;
+  max-width: calc(100% - 30px);
+  padding: 15px;
+  text-align: left;
+}
+
 .card .card-header {
   background: #fff;
   border-bottom: 1px solid #f1f0ec;
@@ -1324,7 +1339,7 @@ body.public-node-node .product-card .card-footer .badge {
 }
 
 .public-index a {
-  color: #333;
+  color: #188092;
 }
 
 .public-index h1,
@@ -1348,6 +1363,11 @@ body.public-node-node .product-card .card-footer .badge {
 .public-index .frontpage-section p {
   font-size: 16px;
   line-height: 1.5em;
+}
+
+.public-index .frontpage-section p.ingress {
+  font-size: 20px;
+  color: #666;
 }
 
 .public-index .frontpage-header {
@@ -1429,6 +1449,10 @@ body.public-node-node .product-card .card-footer .badge {
 .public-index .membership .btn {
   background: #dec286;
   color: #fff;
+}
+
+.public-index .membership .btn:hover {
+  background: #ceb276;
 }
 
 .public-index .find-out-more .logo {

@@ -4,8 +4,8 @@
         <costs-graph :trans="trans" :data="data"></costs-graph>
         <div v-show="!loading" class="col-12">
             <div class="text-center mb-5">
-                <h3>{{ trans.available_balance }}</h3>
-                <div>{{ data.total.income - data.total.cost }} SEK</div>
+                <h3>{{ (data.total.income - data.total.cost).toLocaleString('sv') }} SEK</h3>
+                <div>{{ trans.available_balance }}</div>
             </div>
         </div>
     </div>

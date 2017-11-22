@@ -4,13 +4,8 @@ return [
     'co_create' => 'Tillsammans gör vi maten lokal',
     'co_create_info' => '
         <div class="row">
-            <div class="col-12 col-md-6">
-                <p>Vi tror på människors möjlighet till egenmakt och medbestämmande runt våra grundläggande behov.  Att gemensamt kunna skapa oss högre resiliens som individer och samhällen i alla flöden vi är beroende av. Mat, ekologi, ekonomi och vår personlig integritet.</p>
-
-                <p>Local food nodes är ett öppet verktyg som gör det möjligt för vem som helst att sätta upp lokala utlämningsplaster, var som helst.</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p>För lokala producenter att tillgängliggöra sina produkter direkt mot en lokal marknad, helt utan mellanhänder och för dig som konsument att få tillgång till förstklassig lokalproducerad mat, och bygga relationer direkt med dem som faktiskt ligger bakom den.</p>
+            <div class="col-12">
+                <p class="ingress">Vi tror på människors möjlighet till egenmakt och medbestämmande runt våra grundläggande behov.  Att gemensamt kunna skapa oss högre resiliens som individer och samhällen i alla flöden vi är beroende av. Mat, ekologi, ekonomi och vår personlig integritet.</p>
             </div>
         </div>
     ',
@@ -46,9 +41,9 @@ return [
     'visit_node' => 'Besök utlämningsplatsen',
     'where' => 'Var: ',
     'when' => 'När: ',
-    'what_is_lfn' => 'Vad är Local Food Nodes',
+    'what_is_lfn' => 'Det här är Local Food Nodes',
     'what_is_lfn_info' => '
-        Local Food Nodes skapar nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som stärker de lokala kopplingar som redan finns. Vi möjliggör direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.
+        Local Food Nodes skapar kopplingar direkt mellan matproducenter och matkonsumenter utan mellanhänder. Samtidigt stärker vi möjligheterna att öka andelen lokalproducerad mat som utan omvägar hamnar på våra tallrikar. Vi möjliggör direkta transaktioner, resilienta samhällen och att sätt att återfå närheten till maten vi äter och hur den är producerad. Local Food Nodes är ett öppet, transparant verktyg som bygger på en vilja att göra maten lokal igen.
     ',
 
     //co-funding part

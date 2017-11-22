@@ -18,7 +18,7 @@
         <div class="container d-flex justify-content-center text-center">
             <div class="col-12 pt-5 pb-5">
                 <h2 class="thin">{{ trans('public/index.what_is_lfn') }}</h2>
-                <p class="pt-5 pb-5 text-left">{{ trans('public/index.what_is_lfn_info') }}</p>
+                <p class="pt-5 pb-5 text-left ingress">{{ trans('public/index.what_is_lfn_info') }}</p>
                 <img src="/images/infographic.jpg">
                 <div>
                     <a href="/find-out-more" class="btn btn-primary">{{ trans('public/index.find_out_more') }}</a>
@@ -54,7 +54,10 @@
 
         <div class="card-deck mt-5">
             <div class="card mb-5">
-                <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_436974091.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Handla lokalt</h3>
+                </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_user_info') }}</p>
                 </div>
@@ -64,7 +67,10 @@
             </div>
 
             <div class="card mb-5">
-                <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_326785574.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Starta utlämningsplats</h3>
+                </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_node_info') }}</p>
                 </div>
@@ -74,7 +80,10 @@
             </div>
 
             <div class="card mb-5">
-                <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
+                <div class="card-img-wrapper">
+                    <img class="card-img-top" src="/images/shutterstock_271622087.jpg" alt="Card image cap">
+                    <h3 class="card-img-header bold">Sälj lokalt</h3>
+                </div>
                 <div class="card-body">
                     <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
                 </div>
@@ -109,7 +118,7 @@
                 </div>
             </div>
 
-            <a href="/membership" class="btn btn-primary mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
+            <a href="/membership" class="btn mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
         </div>
     </div>
 
@@ -139,12 +148,11 @@
             <div class="col-12 col-md-6">
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_1') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_2') }}</p>
-                <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>
             </div>
             <div class="col-12 col-md-6">
+                <p>{{ trans('public/pages/find-out-more.paragraph_1_3') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_4') }}</p>
                 <p>{{ trans('public/pages/find-out-more.paragraph_1_5') }}</p>
-                <p><i>{{ trans('public/pages/find-out-more.paragraph_1_6') }}</i></p>
             </div>
         </div>
     </div>

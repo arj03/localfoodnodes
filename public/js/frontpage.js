@@ -46127,21 +46127,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
-    _c("h3", { staticClass: "text-center" }, [
-      _vm._v(_vm._s(_vm.trans.costs) + " 2017")
-    ]),
-    _vm._v(" "),
-    _c("i", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.loading,
-          expression: "loading"
-        }
-      ],
-      staticClass: "fa fa-spinner fa-spin loader"
-    }),
+    _c(
+      "h3",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.loading,
+            expression: "!loading"
+          }
+        ],
+        staticClass: "text-center"
+      },
+      [_vm._v(_vm._s(_vm.total.toLocaleString("sv")) + " SEK")]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -46156,8 +46156,20 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [_vm._v(_vm._s(_vm.total) + " SEK")]
+      [_vm._v(_vm._s(_vm.trans.costs) + " 2017")]
     ),
+    _vm._v(" "),
+    _c("i", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.loading,
+          expression: "loading"
+        }
+      ],
+      staticClass: "fa fa-spinner fa-spin loader"
+    }),
     _vm._v(" "),
     _c("div", {
       directives: [
@@ -46194,21 +46206,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
-    _c("h3", { staticClass: "text-center" }, [
-      _vm._v(_vm._s(_vm.trans.income) + " 2017")
-    ]),
-    _vm._v(" "),
-    _c("i", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.loading,
-          expression: "loading"
-        }
-      ],
-      staticClass: "fa fa-spinner fa-spin loader"
-    }),
+    _c(
+      "h3",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.loading,
+            expression: "!loading"
+          }
+        ],
+        staticClass: "text-center"
+      },
+      [_vm._v(_vm._s(_vm.total.toLocaleString("sv")) + " SEK")]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -46223,8 +46235,20 @@ var render = function() {
         ],
         staticClass: "text-center"
       },
-      [_vm._v(_vm._s(_vm.total) + " SEK")]
+      [_vm._v(_vm._s(_vm.trans.income) + " 2017")]
     ),
+    _vm._v(" "),
+    _c("i", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.loading,
+          expression: "loading"
+        }
+      ],
+      staticClass: "fa fa-spinner fa-spin loader"
+    }),
     _vm._v(" "),
     _c("div", {
       directives: [
@@ -46283,13 +46307,17 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "text-center mb-5" }, [
-            _c("h3", [_vm._v(_vm._s(_vm.trans.available_balance))]),
-            _vm._v(" "),
-            _c("div", [
+            _c("h3", [
               _vm._v(
-                _vm._s(_vm.data.total.income - _vm.data.total.cost) + " SEK"
+                _vm._s(
+                  (_vm.data.total.income - _vm.data.total.cost).toLocaleString(
+                    "sv"
+                  )
+                ) + " SEK"
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v(_vm._s(_vm.trans.available_balance))])
           ])
         ]
       )

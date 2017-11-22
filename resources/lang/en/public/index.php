@@ -43,7 +43,7 @@ return [
     'visit_node' => 'Visit node',
     'where' => 'Where: ',
     'when' => 'When: ',
-    'what_is_lfn' => 'What is Local Food Nodes',
+    'what_is_lfn' => 'This is Local Food Nodes',
     'what_is_lfn_info' => '
         Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.
     ',
