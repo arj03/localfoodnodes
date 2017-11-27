@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1615,7 +1615,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1629,43 +1629,195 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['transaction', 'categories'],
+    props: ['trans', 'data'],
+    data: function data() {
+        return {
+            loading: true,
+            incomeTransactions: null,
+            total: null
+        };
+    },
+    watch: {
+        data: function data(_data) {
+            var formattedData = this.formatData(_data.transactions, _data.categories.all);
+            this.draw(formattedData);
+            this.loading = false;
+        }
+    },
     methods: {
-        isNegative: function isNegative(number) {
-            return Math.sign(number) < 1 ? true : false;
-        },
-        categoryName: function categoryName() {
-            var _this = this;
+        formatData: function formatData(transactions, categories) {
+            var trans = this.trans;
 
-            var category = _.find(this.categories, function (category) {
-                return category.id == _this.transaction.category;
+            var filteredTransactions = _.filter(transactions, function (transaction) {
+                return transaction.amount < 0;
             });
 
-            return category.label;
+            var costs = _(filteredTransactions).groupBy(function (transaction) {
+                return transaction.category;
+            }).map(function (category, categoryId) {
+                var sum = _.sumBy(category, function (transactions) {
+                    return transactions.amount;
+                });
+
+                var categoryObject = _.find(categories, function (category) {
+                    return category.id == categoryId;
+                });
+
+                var sumString = '\r' + -sum + ' SEK';
+                var label = categoryObject && categoryObject.label ? trans['category_' + categoryObject.id] : trans.uncategorized;
+                label += sumString;
+
+                return [label, -sum]; // Convert to positive
+            }).value();
+
+            var total = _.sumBy(filteredTransactions, function (transaction) {
+                return transaction.amount;
+            });
+
+            this.total = -total;
+
+            // Add headers
+            costs.unshift(['Category', 'Amount']);
+
+            return costs;
+        },
+        draw: function draw(dataArray) {
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var dataTable = google.visualization.arrayToDataTable(dataArray);
+
+                var options = {
+                    pieHole: 0.4,
+                    tooltip: { trigger: 'selection' },
+                    legend: {
+                        textStyle: {
+                            fontName: 'Raleway',
+                            fontSize: '12'
+                        }
+                    },
+                    slices: {
+                        0: { color: '#d36262' },
+                        1: { color: '#cd4e4e' },
+                        2: { color: '#c73a3a' },
+                        3: { color: '#b53333' }
+                    }
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('costs-chart'));
+                chart.draw(dataTable, options);
+            }
         }
     }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['trans', 'data'],
+    data: function data() {
+        return {
+            loading: true,
+            incomeTransactions: null,
+            total: null
+        };
+    },
+    watch: {
+        data: function data(_data) {
+            var formattedData = this.formatData(_data.transactions, _data.categories.all);
+            this.draw(formattedData);
+            this.loading = false;
+        }
+    },
+    methods: {
+        formatData: function formatData(transactions, categories) {
+            var trans = this.trans;
+
+            var filteredTransactions = _.filter(transactions, function (transaction) {
+                return transaction.amount > 0;
+            });
+
+            var incomes = _(filteredTransactions).groupBy(function (transaction) {
+                return transaction.category;
+            }).map(function (category, categoryId) {
+                var sum = _.sumBy(category, function (transactions) {
+                    return transactions.amount;
+                });
+
+                var categoryObject = _.find(categories, function (category) {
+                    return category.id == categoryId;
+                });
+
+                var sumString = '\r' + sum + ' SEK';
+                var label = categoryObject && categoryObject.label ? trans['category_' + categoryObject.id] : trans.uncategorized;
+                label += sumString;
+
+                return [label, sum];
+            }).value();
+
+            var total = _.sumBy(filteredTransactions, function (transaction) {
+                return transaction.amount;
+            });
+
+            this.total = total;
+
+            // Add headers
+            incomes.unshift(['Category', 'Amount']);
+
+            return incomes;
+        },
+        draw: function draw(dataArray) {
+            google.charts.load('current', { packages: ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var dataTable = google.visualization.arrayToDataTable(dataArray);
+
+                var options = {
+                    tooltip: { trigger: 'selection' },
+                    pieHole: 0.4,
+                    legend: {
+                        textStyle: {
+                            fontName: 'Raleway',
+                            fontSize: '12'
+                        }
+                    },
+                    slices: {
+                        0: { color: '#8ac594' },
+                        1: { color: '#79bc84' },
+                        2: { color: '#68b475' },
+                        3: { color: '#57ab65' }
+                    }
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('income-chart'));
+                chart.draw(dataTable, options);
+            }
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/Metrics.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1683,54 +1835,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'transaction-item': __webpack_require__("./resources/assets/js/vue/public/transactions/TransactionItem.vue")
-    },
     data: function data() {
         return {
-            loading: true,
-            transactions: null,
-            filteredTransactions: null,
-            categories: {
-                all: null,
-                income: null,
-                cost: null
+            data: {
+                total: {
+                    income: null,
+                    cost: null
+                },
+                categories: null,
+                transactions: null
             },
+            loading: true,
             trans: economyTrans
         };
+    },
+    components: {
+        'costs-graph': __webpack_require__("./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue"),
+        'income-graph': __webpack_require__("./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue")
     },
     mounted: function mounted() {
         var _this = this;
@@ -1740,145 +1863,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 url: '/api/v1/economy/transactions'
             }
         }).then(function (response) {
-            _this.transactions = response.data.transactions;
-            _this.filteredTransactions = response.data.transactions;
-            _this.categories = response.data.categories;
             _this.loading = false;
+            _this.data = response.data;
         });
-    },
-
-    methods: {
-        getFilter: function getFilter() {
-            var filters = this.categories.all.concat();
-        },
-        filterTransactions: function filterTransactions(filteredCategory, event) {
-            if (!_.isArray(filteredCategory)) {
-                filteredCategory = [filteredCategory];
-            }
-
-            if (_.includes(filteredCategory, -1)) {
-                this.filteredTransactions = this.transactions;
-            } else {
-                this.filteredTransactions = _.filter(this.transactions, function (transaction) {
-                    return _.includes(filteredCategory, parseInt(transaction.category));
-                });
-            }
-        }
     }
 });
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.table th[data-v-03a10922] {\n    font-size: 14px;\n}\n.btn[data-v-03a10922] {\n    text-transform: capitalize;\n    font-size: 12px;\n    margin: 5px;\n    padding: 5px 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.table td[data-v-6bad9dd2] {\n    font-size: 14px;\n    text-transform: capitalize;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
 
 /***/ }),
 
@@ -29819,14 +29808,30 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03a10922\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-30933012\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
+    _c(
+      "h3",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.loading,
+            expression: "!loading"
+          }
+        ],
+        staticClass: "text-center"
+      },
+      [_vm._v(_vm._s(parseInt(_vm.total).toLocaleString("sv")) + " SEK")]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -29838,61 +29843,9 @@ var render = function() {
             expression: "!loading"
           }
         ],
-        staticClass: "filters mb-5"
+        staticClass: "text-center"
       },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(-1, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all))]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(_vm.categories.income, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all_incomes))]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(_vm.categories.cost, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all_costs))]
-        ),
-        _vm._l(this.categories.all, function(category) {
-          return _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary",
-              on: {
-                click: function($event) {
-                  _vm.filterTransactions(category.id, $event)
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.trans["category_" + category.id]))]
-          )
-        })
-      ],
-      2
+      [_vm._v(_vm._s(_vm.trans.costs) + " 2017")]
     ),
     _vm._v(" "),
     _c("i", {
@@ -29907,9 +29860,50 @@ var render = function() {
       staticClass: "fa fa-spinner fa-spin loader"
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
+    _c("div", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.loading,
+          expression: "!loading"
+        }
+      ],
+      staticClass: "chart",
+      staticStyle: { height: "300px", width: "100%" },
+      attrs: { id: "costs-chart" }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-30933012", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-42e36684\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/Metrics.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row" },
+    [
+      _c("income-graph", { attrs: { trans: _vm.trans, data: _vm.data } }),
+      _vm._v(" "),
+      _c("costs-graph", { attrs: { trans: _vm.trans, data: _vm.data } }),
+      _vm._v(" "),
       _c(
-        "table",
+        "div",
         {
           directives: [
             {
@@ -29919,39 +29913,27 @@ var render = function() {
               expression: "!loading"
             }
           ],
-          staticClass: "table table-hover"
+          staticClass: "col-12"
         },
         [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v(_vm._s(_vm.trans.date))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.ref))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.description))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.amount))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.category))])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.filteredTransactions, function(transaction) {
-              return _c("transaction-item", {
-                key: transaction.hash,
-                attrs: {
-                  transaction: transaction,
-                  categories: _vm.categories.all
-                }
-              })
-            })
-          )
+          _c("div", { staticClass: "text-center mb-5" }, [
+            _c("h3", [
+              _vm._v(
+                _vm._s(
+                  (_vm.data.total.income - _vm.data.total.cost).toLocaleString(
+                    "sv"
+                  )
+                ) + " SEK"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v(_vm._s(_vm.trans.available_balance))])
+          ])
         ]
       )
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -29959,44 +29941,77 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-03a10922", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-42e36684", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6bad9dd2\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-52a2f966\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td", [_vm._v(_vm._s(_vm.transaction.date))]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.transaction.ref.toLowerCase()))]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.transaction.description))]),
-    _vm._v(" "),
-    _c("td", [
-      _c(
-        "div",
-        {
-          class: {
-            "text-danger": _vm.isNegative(_vm.transaction.amount),
-            "text-success": !_vm.isNegative(_vm.transaction.amount)
+  return _c("div", { staticClass: "col-12 col-lg-6 justify-content-center" }, [
+    _c(
+      "h3",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.loading,
+            expression: "!loading"
           }
-        },
-        [
-          _vm._v(
-            "\n            " + _vm._s(_vm.transaction.amount) + "\n        "
-          )
-        ]
-      )
-    ]),
+        ],
+        staticClass: "text-center"
+      },
+      [_vm._v(_vm._s(parseInt(_vm.total).toLocaleString("sv")) + " SEK")]
+    ),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.categoryName()))])
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.loading,
+            expression: "!loading"
+          }
+        ],
+        staticClass: "text-center"
+      },
+      [_vm._v(_vm._s(_vm.trans.income) + " 2017")]
+    ),
+    _vm._v(" "),
+    _c("i", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.loading,
+          expression: "loading"
+        }
+      ],
+      staticClass: "fa fa-spinner fa-spin loader"
+    }),
+    _vm._v(" "),
+    _c("div", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.loading,
+          expression: "!loading"
+        }
+      ],
+      staticClass: "chart",
+      staticStyle: { height: "300px", width: "100%" },
+      attrs: { id: "income-chart" }
+    })
   ])
 }
 var staticRenderFns = []
@@ -30005,319 +30020,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6bad9dd2", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-52a2f966", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6e6af85c", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionsList.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionsList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("bb5a5adc", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionItem.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionItem.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/lib/addStylesClient.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__("./node_modules/vue-style-loader/lib/listToStyles.js")
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction) {
-  isProduction = _isProduction
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/lib/listToStyles.js":
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
 
 /***/ }),
 
@@ -41059,25 +40764,21 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/assets/js/vue/public/transactions/TransactionItem.vue":
+/***/ "./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6bad9dd2\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-30933012\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/CostsGraph.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-6bad9dd2"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -41088,7 +40789,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/vue/public/transactions/TransactionItem.vue"
+Component.options.__file = "resources/assets/js/vue/public/economy-in-out/CostsGraph.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -41098,9 +40799,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6bad9dd2", Component.options)
+    hotAPI.createRecord("data-v-30933012", Component.options)
   } else {
-    hotAPI.reload("data-v-6bad9dd2", Component.options)
+    hotAPI.reload("data-v-30933012", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41112,25 +40813,21 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03a10922\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-52a2f966\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-03a10922"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -41141,7 +40838,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/vue/public/transactions/TransactionsList.vue"
+Component.options.__file = "resources/assets/js/vue/public/economy-in-out/IncomeGraph.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -41151,9 +40848,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-03a10922", Component.options)
+    hotAPI.createRecord("data-v-52a2f966", Component.options)
   } else {
-    hotAPI.reload("data-v-03a10922", Component.options)
+    hotAPI.reload("data-v-52a2f966", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41165,25 +40862,74 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vue/public/transactions/transactions.js":
+/***/ "./resources/assets/js/vue/public/economy-in-out/Metrics.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/Metrics.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-42e36684\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-in-out/Metrics.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/vue/public/economy-in-out/Metrics.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-42e36684", Component.options)
+  } else {
+    hotAPI.reload("data-v-42e36684", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/public/economy-in-out/economy-in-out.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/js/vue/bootstrap.js");
 
 window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 
-Vue.component('transactions-list', __webpack_require__("./resources/assets/js/vue/public/transactions/TransactionsList.vue"));
+Vue.component('metrics', __webpack_require__("./resources/assets/js/vue/public/economy-in-out/Metrics.vue"));
 
 var app = new Vue({
-    el: '#transactions'
+    el: '#economy-in-out'
 });
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./resources/assets/js/vue/public/transactions/transactions.js");
+module.exports = __webpack_require__("./resources/assets/js/vue/public/economy-in-out/economy-in-out.js");
 
 
 /***/ })

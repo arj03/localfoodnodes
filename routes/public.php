@@ -33,6 +33,7 @@ Route::get('/membership', 'PageController@membership');
 Route::get('/economy', 'PageController@economy');
 Route::get('/economy/transactions', 'PageController@transactions');
 Route::get('/team', 'PageController@team');
+Route::get('/statistics', 'PageController@statistics');
 
 // Landing page catcher
 Route::get('/landing-page/{segments}', function() {

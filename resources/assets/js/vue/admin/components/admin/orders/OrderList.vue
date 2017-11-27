@@ -10,10 +10,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Active</th>
-                                    <th></th>
+                                    <th>Node</th>
+                                    <th>Product</th>
+                                    <th>Date</th>
+                                    <th>Sum</th>
                                 </tr>
                             </thead>
                             <tbody>

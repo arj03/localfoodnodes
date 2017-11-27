@@ -2168,6 +2168,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['order']
@@ -48594,13 +48597,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Node")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
+        _c("th", [_vm._v("Product")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Active")]),
+        _c("th", [_vm._v("Date")]),
         _vm._v(" "),
-        _c("th")
+        _c("th", [_vm._v("Sum")])
       ])
     ])
   }
@@ -49166,7 +49169,15 @@ var render = function() {
   return _c("tr", [
     _c("td", [_vm._v(_vm._s(_vm.order.id))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.order.order_item_relationship[0].node.name))])
+    _c("td", [_vm._v(_vm._s(_vm.order.item.node.name))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.order.item.product.name))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.order.created_at))]),
+    _vm._v(" "),
+    _c("td", [
+      _vm._v(_vm._s(_vm.order.quantity * _vm.order.item.product.price))
+    ])
   ])
 }
 var staticRenderFns = []

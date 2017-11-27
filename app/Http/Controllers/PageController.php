@@ -67,4 +67,9 @@ class PageController extends Controller
     {
         return view('public.pages.team');
     }
+
+    public function statistics()
+    {
+        return view('public.pages.statistics');
+    }
 }

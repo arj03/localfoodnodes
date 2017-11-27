@@ -109,11 +109,11 @@ class IndexController extends Controller
 
         $events = $node->getAllEvents($date);
 
-        $fbMeta = [
-            'fbUrl' => app('url')->to($node->permalink()->url),
-            'fbTitle' => trim($node->name),
-            'fbDescription' => trim(strip_tags($node->info)),
-            'fbImage' => $node->images()->count() > 0 ? $node->images()->first()->url('small') : null
+        $shareMeta = [
+            'shareUrl' => $this->shareUrl($node->permalink()->url),
+            'shareTitle' => trim($node->name),
+            'shareDescription' => trim(strip_tags($node->info)),
+            'shareImage' => $node->images()->count() > 0 ? $node->images()->first()->url('small') : null
         ];
 
         return view('public.node.node', [
@@ -124,7 +124,7 @@ class IndexController extends Controller
             'calendarMonth' => $calendarMonth,
             'date' => $date,
             'tags' => $productFilter->getTagFilter($request),
-        ] + $fbMeta);
+        ] + $shareMeta);
     }
 
     /**
@@ -137,19 +137,18 @@ class IndexController extends Controller
 
         $producer = Producer::where('id', $product->producer_id)->first();
 
-        $fbUrl = $node->permalink()->url . $product->permalink()->url;
-        $fbMeta = [
-            'fbUrl' => app('url')->to($fbUrl),
-            'fbTitle' => trim($product->name),
-            'fbDescription' => trim(strip_tags($product->info)),
-            'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
+        $shareMeta = [
+            'shareUrl' => $this->shareUrl($node->permalink()->url, $product->permalink()->url),
+            'shareTitle' => trim($product->name),
+            'shareDescription' => trim(strip_tags($product->info)),
+            'shareImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
         return view('public.product.product', [
             'node' => $node,
             'product' => $product,
             'producer' => $producer
-        ] + $fbMeta);
+        ] + $shareMeta);
     }
 
     /**
@@ -159,16 +158,16 @@ class IndexController extends Controller
     {
         $producer = Producer::find($id);
 
-        $fbMeta = [
-            'fbUrl' => app('url')->to($producer->permalink()->url),
-            'fbTitle' => trim($producer->name),
-            'fbDescription' => trim(strip_tags($producer->info)),
-            'fbImage' => $producer->images()->count() > 0 ? $producer->images()->first()->url('small') : null
+        $shareMeta = [
+            'shareUrl' => $this->shareUrl($producer->permalink()->url),
+            'shareTitle' => trim($producer->name),
+            'shareDescription' => trim(strip_tags($producer->info)),
+            'shareImage' => $producer->images()->count() > 0 ? $producer->images()->first()->url('small') : null
         ];
 
         return view('public.producer.producer', [
             'producer' => $producer,
-        ] + $fbMeta);
+        ] + $shareMeta);
     }
 
     /**
@@ -179,18 +178,17 @@ class IndexController extends Controller
         $producer = Producer::find($producerId);
         $product = Product::where('id', $productId)->with('productionsRelationship')->first();
 
-        $fbUrl = $producer->permalink()->url . $product->permalink()->url;
-        $fbMeta = [
-            'fbUrl' => app('url')->to($fbUrl),
-            'fbTitle' => trim($product->name),
-            'fbDescription' => trim(strip_tags($product->info)),
-            'fbImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
+        $shareMeta = [
+            'shareUrl' => $this->shareUrl($producer->permalink()->url, $product->permalink()->url),
+            'shareTitle' => trim($product->name),
+            'shareDescription' => trim(strip_tags($product->info)),
+            'shareImage' => $product->images()->count() > 0 ? $product->images()->first()->url('small') : null
         ];
 
         return view('public.product.product', [
             'product' => $product,
             'producer' => $producer
-        ] + $fbMeta);
+        ] + $shareMeta);
     }
 
     /**
@@ -200,16 +198,16 @@ class IndexController extends Controller
     {
         $event = Event::find($eventId);
 
-        $fbMeta = [
-            'fbUrl' => app('url')->to($event->permalink()->url),
-            'fbTitle' => trim($event->name),
-            'fbDescription' => trim(strip_tags($event->info)),
-            'fbImage' => $event->images()->count() > 0 ? $event->images()->first()->url('small') : null
+        $shareMeta = [
+            'shareUrl' => $this->shareUrl($event->permalink()->url),
+            'shareTitle' => trim($event->name),
+            'shareDescription' => trim(strip_tags($event->info)),
+            'shareImage' => $event->images()->count() > 0 ? $event->images()->first()->url('small') : null
         ];
 
         return view('public.event', [
             'event' => $event
-        ] + $fbMeta);
+        ] + $shareMeta);
     }
 
     /**
@@ -226,10 +224,28 @@ class IndexController extends Controller
         ];
     }
 
-    // Static pages
-
     public function findOutMore()
     {
         return view('public.pages.find-out-more');
+    }
+
+    /**
+     * Get share url with language.
+     *
+     * @param string $firstUrl
+     * @param string $secondUrl
+     * @return string
+     */
+    private function shareUrl($firstUrl, $secondUrl = null)
+    {
+        $shareUrl = $firstUrl;
+
+        if ($secondUrl) {
+            $shareUrl .= $secondUrl;
+        }
+
+        $shareUrl .= '?lang=' . $this->getLang();
+
+        return app('url')->to($shareUrl);
     }
 }

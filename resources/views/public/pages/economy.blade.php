@@ -29,5 +29,5 @@
         </div>
     </div>
 
-    <script src="{{ mix('/js/frontpage.js') }}"></script>
+    <script src="{{ mix('/js/economy-in-out.js') }}"></script>
 @endsection

@@ -9,11 +9,11 @@
 
         <!-- Facebook meta -->
         <meta property="fb:app_id" content="923888444420982" />
-        <meta property="og:url" content="{{ $fbUrl or app('url')->to('/') }}">
+        <meta property="og:url" content="{{ $shareUrl or app('url')->to('/') }}">
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="{{ $fbTitle or 'Local Food Nodes' }}">
-        <meta property="og:description" content="{!! $fbDescription or 'Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
-        <meta property="og:image" content="{{ $fbImage or URL::asset('images/facebook-share.jpg') }}">
+        <meta property="og:title" content="{{ $shareTitle or 'Local Food Nodes' }}">
+        <meta property="og:description" content="{!! $shareDescription or 'Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}" />
+        <meta property="og:image" content="{{ $shareImage or URL::asset('images/facebook-share.jpg') }}">
 
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

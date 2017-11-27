@@ -8,9 +8,12 @@ use \App\Product\Product;
 use \App\Variant\Variant;
 use \App\Node\Node;
 use \App\Order\OrderStatus;
+use \App\Traits\Excludable;
 
 class OrderItem extends \App\BaseModel
 {
+    use Excludable;
+
     public $timestamps = false;
 
     /**

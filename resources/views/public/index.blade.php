@@ -47,9 +47,21 @@
         </div>
     </div>
 
-    <div class="container frontpage-section create-pushes mt-5">
-        <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
+    <div class="container-fluid frontpage-section bg-white pt-5">
+        <div class="container mb-5 text-center">
+            <h2 class="thin mb-5">
+                {{ trans('public/pages/statistics.header') }}
+                <div class="sub-header">{{ trans('public/pages/statistics.subheader') }}</div>
+            </h2>
+            <div id="economy-circulation">
+                <economy-circulation></economy-circulation>
+            </div>
+            <a href="/statistics">{{ trans('public/pages/statistics.more_link') }}</a>
+        </div>
+    </div>
 
+    <div class="container frontpage-section mt-5">
+        <h2 class="thin mb-5">{{ trans('public/index.co_create') }}</h2>
         {!! trans('public/index.co_create_info') !!}
 
         <div class="card-deck mt-5">
@@ -126,7 +138,7 @@
         var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
     </script>
 
-    <div id="frontpage-metrics" class="frontpage-section">
+    <div id="economy-in-out" class="frontpage-section">
         <div class="container pt-5 pb-5">
             <h2 class="thin mb-5">{{ trans('public/economy.economy') }}</h2>
             <div class="row mb-5">
@@ -165,5 +177,6 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
     <script src="{{ mix('/js/node-map.js') }}"></script>
-    <script src="{{ mix('/js/frontpage.js') }}"></script>
+    <script src="{{ mix('/js/economy-in-out.js') }}"></script>
+    <script src="{{ mix('/js/economy-circulation.js') }}"></script>
 @endsection

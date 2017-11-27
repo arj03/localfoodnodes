@@ -4,13 +4,8 @@ return [
     'co_create' => 'Co-create the local food supply',
     'co_create_info' => '
         <div class="row">
-            <div class="col-12 col-md-6">
-            <p>We believe in the possibilitys to self-determination around our basic needs. To jointly create higher resilience as individuals and communities in all flows we depend on. Food, ecology, economy and our personal integrity.</p>
-
-            <p>Local food nodes are an open tool that makes it possible for anyone to set up local delivery points, anywhere.</p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p>For local producers to make their products available directly to a local market, without intermediaries. For you as a consumer to have access to quality local food, and build relationships directly with those who actually produce it.</p>
+            <div class="col-12 text-center">
+                <p class="ingress">We believe in the possibilitys to self-determination around our basic needs. To jointly create higher resilience as individuals and communities in all flows we depend on. Food, ecology, economy and our personal integrity.</p>
             </div>
         </div>
     ',

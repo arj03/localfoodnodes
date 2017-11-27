@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1615,57 +1615,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['transaction', 'categories'],
-    methods: {
-        isNegative: function isNegative(number) {
-            return Math.sign(number) < 1 ? true : false;
-        },
-        categoryName: function categoryName() {
-            var _this = this;
-
-            var category = _.find(this.categories, function (category) {
-                return category.id == _this.transaction.category;
-            });
-
-            return category.label;
-        }
-    }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1712,24 +1662,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'transaction-item': __webpack_require__("./resources/assets/js/vue/public/transactions/TransactionItem.vue")
-    },
     data: function data() {
         return {
-            loading: true,
-            transactions: null,
-            filteredTransactions: null,
-            categories: {
-                all: null,
-                income: null,
-                cost: null
+            data: {
+                orders: null
             },
-            trans: economyTrans
+            loading: true
         };
     },
     mounted: function mounted() {
@@ -1737,39 +1677,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         axios.get('/api-proxy', {
             params: {
-                url: '/api/v1/economy/transactions'
+                url: '/api/v1/orders'
             }
         }).then(function (response) {
-            _this.transactions = response.data.transactions;
-            _this.filteredTransactions = response.data.transactions;
-            _this.categories = response.data.categories;
             _this.loading = false;
+            _this.data = _this.formatData(response.data);
         });
     },
 
     methods: {
-        getFilter: function getFilter() {
-            var filters = this.categories.all.concat();
-        },
-        filterTransactions: function filterTransactions(filteredCategory, event) {
-            if (!_.isArray(filteredCategory)) {
-                filteredCategory = [filteredCategory];
-            }
+        formatData: function formatData(orders) {
+            var totalSum = _.sumBy(orders, function (order) {
+                var price = order.order_item_relationship[0].product.price;
+                var quantity = order.quantity;
 
-            if (_.includes(filteredCategory, -1)) {
-                this.filteredTransactions = this.transactions;
-            } else {
-                this.filteredTransactions = _.filter(this.transactions, function (transaction) {
-                    return _.includes(filteredCategory, parseInt(transaction.category));
-                });
-            }
+                return price * quantity;
+            });
+
+            return {
+                orders: orders.length,
+                sum: totalSum
+            };
         }
     }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
@@ -1777,22 +1712,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.table th[data-v-03a10922] {\n    font-size: 14px;\n}\n.btn[data-v-03a10922] {\n    text-transform: capitalize;\n    font-size: 12px;\n    margin: 5px;\n    padding: 5px 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.table td[data-v-6bad9dd2] {\n    font-size: 14px;\n    text-transform: capitalize;\n}\n", ""]);
+exports.push([module.i, "\n.metrics[data-v-1c103fe5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.metric[data-v-1c103fe5] {\n    text-align: center;\n}\n.metric .value[data-v-1c103fe5] {\n    font-family: 'montserrat';\n    font-size: 40px;\n    font-weight: 700;\n    padding: 10px 40px 0;\n    margin-bottom: -5px;\n    color: #999;\n}\n.metric .label[data-v-1c103fe5] {\n    font-family: 'montserrat';\n    text-transform: uppercase;\n    font-weight: bold;\n    color: #999;\n}\n", ""]);
 
 // exports
 
@@ -29819,97 +29739,29 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03a10922\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1c103fe5\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
+  return _c("div", { staticClass: "row justify-content-center mt-5" }, [
+    _c("div", { staticClass: "col-12 col-md-8 col-lg-6 mb-5" }, [
+      _c("i", {
         directives: [
           {
             name: "show",
             rawName: "v-show",
-            value: !_vm.loading,
-            expression: "!loading"
+            value: _vm.loading,
+            expression: "loading"
           }
         ],
-        staticClass: "filters mb-5"
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(-1, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all))]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(_vm.categories.income, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all_incomes))]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            on: {
-              click: function($event) {
-                _vm.filterTransactions(_vm.categories.cost, $event)
-              }
-            }
-          },
-          [_vm._v(_vm._s(_vm.trans.all_costs))]
-        ),
-        _vm._l(this.categories.all, function(category) {
-          return _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary",
-              on: {
-                click: function($event) {
-                  _vm.filterTransactions(category.id, $event)
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.trans["category_" + category.id]))]
-          )
-        })
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c("i", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.loading,
-          expression: "loading"
-        }
-      ],
-      staticClass: "fa fa-spinner fa-spin loader"
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
+        staticClass: "fa fa-spinner fa-spin loader"
+      }),
+      _vm._v(" "),
       _c(
-        "table",
+        "div",
         {
           directives: [
             {
@@ -29919,35 +29771,26 @@ var render = function() {
               expression: "!loading"
             }
           ],
-          staticClass: "table table-hover"
+          staticClass: "metrics"
         },
         [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v(_vm._s(_vm.trans.date))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.ref))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.description))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.amount))]),
-              _vm._v(" "),
-              _c("th", [_vm._v(_vm._s(_vm.trans.category))])
-            ])
+          _c("div", { staticClass: "metric" }, [
+            _c("h3", { staticClass: "value" }, [
+              _vm._v(_vm._s(_vm.data.orders))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "label" }, [_vm._v("Orders")])
           ]),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.filteredTransactions, function(transaction) {
-              return _c("transaction-item", {
-                key: transaction.hash,
-                attrs: {
-                  transaction: transaction,
-                  categories: _vm.categories.all
-                }
-              })
-            })
-          )
+          _c("div", { staticClass: "metric" }, [
+            _c("h3", { staticClass: "value" }, [
+              _vm._v(_vm._s(parseInt(_vm.data.sum).toLocaleString("sv")))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "label" }, [
+              _vm._v("Money Circulated Locally (sek)")
+            ])
+          ])
         ]
       )
     ])
@@ -29959,102 +29802,29 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-03a10922", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1c103fe5", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6bad9dd2\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td", [_vm._v(_vm._s(_vm.transaction.date))]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.transaction.ref.toLowerCase()))]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.transaction.description))]),
-    _vm._v(" "),
-    _c("td", [
-      _c(
-        "div",
-        {
-          class: {
-            "text-danger": _vm.isNegative(_vm.transaction.amount),
-            "text-success": !_vm.isNegative(_vm.transaction.amount)
-          }
-        },
-        [
-          _vm._v(
-            "\n            " + _vm._s(_vm.transaction.amount) + "\n        "
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.categoryName()))])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6bad9dd2", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("6e6af85c", content, false);
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("db9d62a0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionsList.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionsList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("bb5a5adc", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionItem.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TransactionItem.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TotalOrdersMoneyChart.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TotalOrdersMoneyChart.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -41059,25 +40829,25 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/assets/js/vue/public/transactions/TransactionItem.vue":
+/***/ "./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bad9dd2\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c103fe5\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue")
 }
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6bad9dd2\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionItem.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-1c103fe5\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-6bad9dd2"
+var __vue_scopeId__ = "data-v-1c103fe5"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -41088,7 +40858,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/vue/public/transactions/TransactionItem.vue"
+Component.options.__file = "resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -41098,9 +40868,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6bad9dd2", Component.options)
+    hotAPI.createRecord("data-v-1c103fe5", Component.options)
   } else {
-    hotAPI.reload("data-v-6bad9dd2", Component.options)
+    hotAPI.reload("data-v-1c103fe5", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41112,78 +40882,25 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/vue/public/transactions/TransactionsList.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-03a10922\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
-}
-var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
-/* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\"]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
-/* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-03a10922\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/vue/public/transactions/TransactionsList.vue")
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-03a10922"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/vue/public/transactions/TransactionsList.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-03a10922", Component.options)
-  } else {
-    hotAPI.reload("data-v-03a10922", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/vue/public/transactions/transactions.js":
+/***/ "./resources/assets/js/vue/public/economy-circulation/economy-circulation.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/js/vue/bootstrap.js");
 
 window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 
-Vue.component('transactions-list', __webpack_require__("./resources/assets/js/vue/public/transactions/TransactionsList.vue"));
+Vue.component('economy-circulation', __webpack_require__("./resources/assets/js/vue/public/economy-circulation/TotalOrdersMoneyChart.vue"));
 
 var app = new Vue({
-    el: '#transactions'
+    el: '#economy-circulation'
 });
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./resources/assets/js/vue/public/transactions/transactions.js");
+module.exports = __webpack_require__("./resources/assets/js/vue/public/economy-circulation/economy-circulation.js");
 
 
 /***/ })
