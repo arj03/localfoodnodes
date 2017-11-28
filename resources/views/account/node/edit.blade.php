@@ -7,7 +7,7 @@
 
     <form action="/account/node/{{ $node->id }}/update" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
-        @include('account.node.generic-node-form')
+        @include('account.node.generic-node-form', ['showDeliverySettings' => false])
         @component('account.form-control-bar')
             <button type="submit" class="btn btn-success">{{ trans('admin/node.save_node') }}</button>
             @if ($node->adminLinks()->count() > 1)

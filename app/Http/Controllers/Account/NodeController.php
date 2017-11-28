@@ -227,6 +227,53 @@ class NodeController extends Controller
     }
 
     /**
+     * Edit node action.
+     */
+    public function deliveryEdit(Request $request, $nodeId)
+    {
+        $user = Auth::user();
+        $node = $user->nodeAdminLink($nodeId)->getNode();
+
+        return view('account.node.delivery-edit', [
+            'node' => $node,
+            'breadcrumbs' => [
+                $node->name => 'node/' . $node->id,
+                trans('admin/user-nav.edit') => 'node/' . $node->id . '/edit',
+                'delivery settings' => ''
+            ]
+        ]);
+    }
+
+    /**
+     * Update node action.
+     */
+    public function deliveryUpdate(Request $request, $id)
+    {
+        \Log::debug('Update');
+        $user = Auth::user();
+        $data = $request->all();
+        $node = Node::find($id);
+
+        $weekday = $data['delivery_weekday'] !== $node->delivery_weekday;
+        $interval = $data['delivery_interval'] !== $node->delivery_interval;
+        $startDate = $data['delivery_startdate'] !== $node->delivery_startdate;
+
+        $errors = $node->validate($data);
+        if ($errors->isEmpty()) {
+            // Delete all product node delivery links if weekday, interval or start date change,
+            // otherwise product dates and node dates won't match.
+            if ($weekday || $interval || $startDate) {
+                $node->fill($node->sanitize($data));
+                $node->save();
+                $node->productNodeDeliveryLinks()->each->delete();
+                $request->session()->flash('message', [trans('admin/messages.node_updated')]);
+            }
+        }
+
+        return redirect()->back()->withInput()->withErrors($errors);
+    }
+
+    /**
      * Node leave action.
      */
     public function leave(Request $request, $nodeId)

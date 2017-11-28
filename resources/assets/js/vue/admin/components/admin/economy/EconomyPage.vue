@@ -43,6 +43,7 @@
             uploadFile(event) {
                 this.uploadInProgress = true;
                 event.preventDefault();
+
                 axios.get('/admin/token')
                 .then(response => {
                     let file = document.querySelector('#upload-form input[type=file]');
@@ -52,7 +53,7 @@
                     return axios.post('/api/v1/economy/transactions', formData, {
                         headers: {
                           'Content-Type': 'multipart/form-data',
-                          'Authorization': 'Bearer ' + response.data
+                          'Authorization': 'Bearer ' + response.data.access_token
                         }
                     });
                 })

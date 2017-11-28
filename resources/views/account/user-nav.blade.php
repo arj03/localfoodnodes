@@ -2,7 +2,7 @@
     <div class="user-nav d-none d-lg-block">
         <div class="scrollfix">
             <div class="logo">
-                <img src="/images/nav-logo.png">
+                <a href="/"><img src="/images/nav-logo.png"></a>
             </div>
 
             @include('public.cart')

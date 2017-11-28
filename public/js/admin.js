@@ -1770,6 +1770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.uploadInProgress = true;
             event.preventDefault();
+
             axios.get('/admin/token').then(function (response) {
                 var file = document.querySelector('#upload-form input[type=file]');
                 var formData = new FormData();
@@ -1778,7 +1779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return axios.post('/api/v1/economy/transactions', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Authorization': 'Bearer ' + response.data
+                        'Authorization': 'Bearer ' + response.data.access_token
                     }
                 });
             }).then(function (response) {

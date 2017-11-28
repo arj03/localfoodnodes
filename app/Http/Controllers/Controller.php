@@ -84,8 +84,12 @@ class Controller extends BaseController
         }
 
         // Use browser language setting
-        else {
+        else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        }
+
+        else {
+            $lang = config('app.locale');
         }
 
         return $lang;

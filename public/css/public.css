@@ -1929,17 +1929,19 @@ body.public-checkout .summary .card-body.red a {
   margin: 15px auto;
 }
 
+.cart {
+  padding: 15px;
+}
+
 .cart a {
   display: block;
-  background: #ccba89;
-  border-top: 2px solid #ccba89;
+  background: #c1534c;
   padding: 10px 15px;
   color: #fff;
 }
 
 .cart a:hover {
-  background: #c3b07b;
-  border-top: 2px solid #ccba89;
+  background: #b1433c;
 }
 
 .cart a .fa-shopping-cart {

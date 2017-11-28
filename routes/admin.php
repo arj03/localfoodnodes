@@ -1,7 +1,7 @@
 <?php
 
-// Route::get('/token', 'Admin\AdminController@getApiAccessToken');
-Route::any('/api-proxy', 'Admin\AdminController@apiProxy');
+Route::get('/token', 'Admin\AdminController@getApiAccessToken'); // Only needed for file uploads...
+Route::any('/api-proxy', 'Admin\AdminController@apiProxy'); // Use /api-proxy for everything else
 
 Route::get('/', 'Admin\AdminController@index');
 Route::get('/users', 'Admin\AdminController@users');
