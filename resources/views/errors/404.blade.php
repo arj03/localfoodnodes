@@ -4,18 +4,10 @@
 
 @section('content')
 
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="d-flex justify-content-between">
-                <h1>{!! trans('public/404.title') !!}</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="card mt-5">
-            <div class="card-body">
-                {!! trans('public/404.no-page') !!}
+                <h3 class="bold"><i class="fa fa-warning"></i> {!! trans('public/404.title') !!}</h3>
             </div>
         </div>
     </div>
