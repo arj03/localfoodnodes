@@ -668,38 +668,45 @@ body.public .page .shop-header .top a {
   margin: 0;
 }
 
-.membership-metrics {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.metrics {
   margin-top: 20px;
 }
 
-.membership-metrics .metric .value {
-  color: #dec286;
+.metrics .metric {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.metrics .metric .fa {
+  font-size: 5rem;
+  margin-right: 15px;
+}
+
+.metrics .metric .metric-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.metrics .metric .metric-inner .value {
   font-size: 32px;
-  text-align: center;
   font-weight: bold;
   font-family: 'montserrat';
   line-height: 1em;
 }
 
-.membership-metrics .metric .value .value-unit {
-  font-size: 20px;
-}
-
-.membership-metrics .metric .value .value-unit.fa {
-  position: relative;
-  top: -3px;
-}
-
-.membership-metrics .metric .label {
+.metrics .metric .metric-inner .label {
   font-family: 'montserrat';
-  color: #dec286;
-  text-align: center;
 }
 
 .footer {

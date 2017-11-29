@@ -33,7 +33,6 @@ return [
     'grey_map_marker_info' => 'Grå ikoner är utlämningsplatser där beställningar görs genom Facebook.',
     'go_local' => 'Hitta utlämningsplats',
     'link_to_fb' => 'Facebookgruppen för',
-    'list' => 'Sälj dina produkter',
     'locals' => 'Användare',
     'local_nodes' => 'Noder',
     'local_producers' => 'Producenter',

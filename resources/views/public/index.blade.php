@@ -86,7 +86,7 @@
                     <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                    <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.create_producer') }}</a>
                 </div>
             </div>
         </div>
@@ -118,14 +118,20 @@
                     <div class="col-12 col-md-8">
                         <p>{{ trans('public/index.co_fund_paragraph') }}</p>
 
-                        <div class="membership-metrics row mt-5">
+                        <div class="metrics row mt-5">
                             <div class="metric col-12 col-sm-6">
-                                <div class="value">{{ $members }} <i class="fa fa-user value-unit"></i></div>
-                                <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
+                                <i class="fa fa-user"></i>
+                                <div class="metric-inner">
+                                    <div class="value">{{ $members }}</div>
+                                    <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
+                                </div>
                             </div>
                             <div class="metric col-12 col-sm-6">
-                                <div class="value">{{ $averageMembership }} <span class="value-unit">SEK</span></div>
-                                <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
+                                <i class="fa fa-money"></i>
+                                <div class="metric-inner">
+                                    <div class="value">{{ $averageMembership }} SEK</div>
+                                    <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>

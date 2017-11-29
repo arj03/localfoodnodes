@@ -66,24 +66,23 @@ body.public
     margin: 0
 
 // Used on front page and membership page
-.membership-metrics
-  display: flex
-  justify-content: center
+.metrics
   margin-top: 20px
   .metric
-    .value
-      color: #dec286
-      font-size: 32px
-      text-align: center
-      font-weight: bold
-      font-family: 'montserrat'
-      line-height: 1em
-      .value-unit
-        font-size: 20px
-        &.fa
-          position: relative
-          top: -3px
-    .label
-      font-family: 'montserrat'
-      color: #dec286
-      text-align: center
+    display: flex
+    text-align: left
+    margin-bottom: 15px
+    .fa
+      font-size: 5rem
+      margin-right: 15px
+    .metric-inner
+      display: flex
+      flex-direction: column
+      justify-content: center
+      .value
+        font-size: 32px
+        font-weight: bold
+        font-family: 'montserrat'
+        line-height: 1em
+      .label
+        font-family: 'montserrat'
