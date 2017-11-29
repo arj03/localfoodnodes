@@ -1716,11 +1716,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['translations'],
     components: {
         'transaction-item': __webpack_require__("./resources/assets/js/vue/public/transactions/TransactionItem.vue")
     },
     data: function data() {
         return {
+            trans: {},
             loading: true,
             transactions: null,
             filteredTransactions: null,
@@ -1728,12 +1730,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 all: null,
                 income: null,
                 cost: null
-            },
-            trans: economyTrans
+            }
         };
     },
     mounted: function mounted() {
         var _this = this;
+
+        this.trans = JSON.parse(this.translations);
 
         axios.get('/api-proxy', {
             params: {

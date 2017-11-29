@@ -44,11 +44,13 @@
 
 <script>
     export default {
+        props: ['translations'],
         components: {
             'transaction-item': require('./TransactionItem'),
         },
         data: function() {
             return {
+                trans: {},
                 loading: true,
                 transactions: null,
                 filteredTransactions: null,
@@ -57,10 +59,11 @@
                     income: null,
                     cost: null
                 },
-                trans: economyTrans,
             };
         },
         mounted() {
+            this.trans = JSON.parse(this.translations);
+
             axios.get('/api-proxy', {
                 params: {
                     url: '/api/v1/economy/transactions'

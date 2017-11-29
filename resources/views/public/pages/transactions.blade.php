@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body body-text">
                         <div id="transactions">
-                            <transactions-list></transactions-list>
+                            <transactions-list translations="{{ json_encode(trans('public/economy')) }}"></transactions-list>
                         </div>
                     </div>
                 </div>
@@ -21,8 +21,5 @@
         </div>
     </div>
 
-    <script>
-        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
-    </script>
     <script src="{{ mix('/js/transactions.js') }}"></script>
 @endsection

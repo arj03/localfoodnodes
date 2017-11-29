@@ -20,6 +20,8 @@ return [
     'economy' => 'Ekonomi',
     'header' => 'Ekonomi',
     'income' => 'In',
+    'money_circulated' => 'Lokal pengacirkulation (SEK)',
+    'orders' => 'Bokningar',
     'read_more_economy' => 'Lär mer om vår ekonomi',
     'ref' => 'Referens',
     'subheader' => '',

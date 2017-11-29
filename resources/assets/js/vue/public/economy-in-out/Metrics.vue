@@ -13,6 +13,7 @@
 
 <script>
     export default {
+        props: ['translations'],
         data: function() {
             return {
                 data: {
@@ -24,7 +25,7 @@
                     transactions: null
                 },
                 loading: true,
-                trans: economyTrans,
+                trans: {},
             }
         },
         components: {
@@ -32,6 +33,8 @@
             'income-graph': require('./IncomeGraph'),
         },
         mounted() {
+            this.trans = JSON.parse(this.translations);
+
             axios.get('/api-proxy', {
                 params: {
                     url: '/api/v1/economy/transactions',

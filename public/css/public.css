@@ -678,35 +678,17 @@ body.public .page .shop-header .top a {
   margin-top: 20px;
 }
 
-.membership-metrics .metric {
-  margin: 2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .membership-metrics .metric .value {
-  background: #dec286;
-  color: #fff;
-  font-size: 40px;
-  width: 180px;
-  line-height: 180px;
-  border-radius: 100px;
+  color: #dec286;
+  font-size: 32px;
   text-align: center;
   font-weight: bold;
   font-family: 'montserrat';
+  line-height: 1em;
 }
 
 .membership-metrics .metric .value .value-unit {
-  font-size: 30px;
-  padding-left: 10px;
+  font-size: 20px;
 }
 
 .membership-metrics .metric .value .value-unit.fa {
@@ -715,10 +697,7 @@ body.public .page .shop-header .top a {
 }
 
 .membership-metrics .metric .label {
-  margin-top: 15px;
   font-family: 'montserrat';
-  text-transform: uppercase;
-  font-weight: bold;
   color: #dec286;
   text-align: center;
 }

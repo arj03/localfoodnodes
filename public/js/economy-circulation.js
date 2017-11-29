@@ -1662,19 +1662,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['translations'],
     data: function data() {
         return {
             data: {
                 orders: null
             },
-            loading: true
+            loading: true,
+            trans: {}
         };
     },
     mounted: function mounted() {
         var _this = this;
 
+        this.trans = JSON.parse(this.translations);
         axios.get('/api-proxy', {
             params: {
                 url: '/api/v1/orders'
@@ -1712,7 +1716,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.metrics[data-v-1c103fe5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.metric[data-v-1c103fe5] {\n    text-align: center;\n}\n.metric .value[data-v-1c103fe5] {\n    font-family: 'montserrat';\n    font-size: 40px;\n    font-weight: 700;\n    padding: 10px 40px 0;\n    margin-bottom: -5px;\n    color: #999;\n}\n.metric .label[data-v-1c103fe5] {\n    font-family: 'montserrat';\n    text-transform: uppercase;\n    font-weight: bold;\n    color: #999;\n}\n", ""]);
+exports.push([module.i, "\n.metrics[data-v-1c103fe5] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\n.metric[data-v-1c103fe5] {\n    text-align: center;\n}\n.metric .value[data-v-1c103fe5] {\n    font-family: 'montserrat';\n    font-size: 32px;\n    font-weight: 700;\n    padding: 10px 40px 0;\n    margin-bottom: 0;\n    color: #dec285;\n    white-space: nowrap;\n}\n.metric .value .fa[data-v-1c103fe5] {\n    position: relative;\n    top: -3px;\n    font-size: 20px;\n    white-space: nowrap;\n}\n", ""]);
 
 // exports
 
@@ -29747,7 +29751,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row justify-content-center mt-5" }, [
-    _c("div", { staticClass: "col-12 col-md-8 col-lg-6 mb-5" }, [
+    _c("div", { staticClass: "col-12 col-md-8 mb-5" }, [
       _c("i", {
         directives: [
           {
@@ -29771,24 +29775,28 @@ var render = function() {
               expression: "!loading"
             }
           ],
-          staticClass: "metrics"
+          staticClass: "row metrics"
         },
         [
-          _c("div", { staticClass: "metric" }, [
+          _c("div", { staticClass: "metric col-12 col-sm-6" }, [
             _c("h3", { staticClass: "value" }, [
-              _vm._v(_vm._s(_vm.data.orders))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "label" }, [_vm._v("Orders")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "metric" }, [
-            _c("h3", { staticClass: "value" }, [
-              _vm._v(_vm._s(parseInt(_vm.data.sum).toLocaleString("sv")))
+              _vm._v(_vm._s(_vm.data.orders) + " "),
+              _c("i", { staticClass: "fa fa-shopping-cart" })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "label" }, [
-              _vm._v("Money Circulated Locally (sek)")
+              _vm._v(_vm._s(this.trans.orders))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "metric col-12 col-sm-6" }, [
+            _c("h3", { staticClass: "value" }, [
+              _vm._v(_vm._s(parseInt(_vm.data.sum).toLocaleString("sv")) + " "),
+              _c("i", { staticClass: "fa fa-refresh" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "label" }, [
+              _vm._v(_vm._s(this.trans.money_circulated))
             ])
           ])
         ]

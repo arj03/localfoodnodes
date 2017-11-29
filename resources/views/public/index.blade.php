@@ -28,8 +28,7 @@
     </div>
 
     <div class="map-wrapper">
-        <?php $jsonTrans = json_encode(trans('public/index')); ?>
-        <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ $jsonTrans }}"></div>
+        <div class="node-map" id="node-map-component-root" data-ip="{{ Request::ip() }}" data-user-location="{{ json_encode($user->location) }}" data-trans="{{ json_encode(trans('public/index')) }}"></div>
 
         <div class="metrics">
             <div class="metric">
@@ -44,19 +43,6 @@
                 <div class="value">{{ $metrics['producerCount'] }}</div>
                 <div class="label">{{ trans('public/index.local_producers') }}</div>
             </div>
-        </div>
-    </div>
-
-    <div class="container-fluid frontpage-section bg-white pt-5">
-        <div class="container mb-5 text-center">
-            <h2 class="thin mb-5">
-                {{ trans('public/pages/statistics.header') }}
-                <div class="sub-header">{{ trans('public/pages/statistics.subheader') }}</div>
-            </h2>
-            <div id="economy-circulation">
-                <economy-circulation></economy-circulation>
-            </div>
-            <a href="/statistics">{{ trans('public/pages/statistics.more_link') }}</a>
         </div>
     </div>
 
@@ -106,37 +92,49 @@
         </div>
     </div>
 
-    <div class="container-fluid frontpage-section membership mt-5 pt-5 pb-5">
-        <div class="col-12">
-            <h2 class="bold mb-5">
-                {{ trans('public/index.co_fund_heading') }}
-                <div class="sub-header">{{ trans('public/index.co_fund_subheading') }}</div>
+    <div class="container-fluid frontpage-section bg-white pt-5 pb-5">
+        <div class="container text-center">
+            <h2 class="thin mb-5">
+                {{ trans('public/pages/statistics.header') }}
+                <div class="sub-header">{{ trans('public/pages/statistics.subheader') }}</div>
             </h2>
 
-            <div class="d-flex justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <p>{{ trans('public/index.co_fund_paragraph') }}</p>
-                </div>
+            <div id="economy-circulation">
+                <economy-circulation translations="{{ json_encode(trans('public/economy')) }}"></economy-circulation>
             </div>
-
-            <div class="membership-metrics row">
-                <div class="metric col">
-                    <div class="value">{{ $members }}<i class="fa fa-user value-unit"></i></div>
-                    <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
-                </div>
-                <div class="metric col">
-                    <div class="value">{{ $averageMembership }}<span class="value-unit">SEK</span></div>
-                    <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
-                </div>
-            </div>
-
-            <a href="/membership" class="btn mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
+            <a href="/statistics">{{ trans('public/pages/statistics.more_link') }}</a>
         </div>
     </div>
 
-    <script>
-        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
-    </script>
+    <div class="container-fluid frontpage-section membership pt-5 pb-5">
+        <div class="container">
+            <div class="col-12">
+                <h2 class="bold mb-5">
+                    {{ trans('public/index.co_fund_heading') }}
+                    <div class="sub-header">{{ trans('public/index.co_fund_subheading') }}</div>
+                </h2>
+
+                <div class="d-flex justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <p>{{ trans('public/index.co_fund_paragraph') }}</p>
+
+                        <div class="membership-metrics row mt-5">
+                            <div class="metric col-12 col-sm-6">
+                                <div class="value">{{ $members }} <i class="fa fa-user value-unit"></i></div>
+                                <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
+                            </div>
+                            <div class="metric col-12 col-sm-6">
+                                <div class="value">{{ $averageMembership }} <span class="value-unit">SEK</span></div>
+                                <div class="label">{{ trans('public/pages/membership.avg_fee') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/membership" class="btn mt-5">{{ trans('public/index.co_fund_read_more') }}</a>
+            </div>
+        </div>
+    </div>
 
     <div id="economy-in-out" class="frontpage-section">
         <div class="container pt-5 pb-5">
@@ -144,7 +142,7 @@
             <div class="row mb-5">
                 {!! trans('public/economy.economy_info') !!}
             </div>
-            <metrics></metrics>
+            <metrics translations="{{ json_encode(trans('public/economy')) }}"></metrics>
             <div class="text-center">
                 <a class="btn btn-success mt-5" href="/economy">{{ trans('public/economy.read_more_economy') }}</a>
                 <a class="d-block mt-2" href="/economy/transactions">{{ trans('public/economy.view_all_transactions') }}</a>

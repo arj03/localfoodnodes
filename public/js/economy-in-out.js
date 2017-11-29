@@ -1837,6 +1837,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['translations'],
     data: function data() {
         return {
             data: {
@@ -1848,7 +1849,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 transactions: null
             },
             loading: true,
-            trans: economyTrans
+            trans: {}
         };
     },
     components: {
@@ -1857,6 +1858,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         var _this = this;
+
+        this.trans = JSON.parse(this.translations);
 
         axios.get('/api-proxy', {
             params: {

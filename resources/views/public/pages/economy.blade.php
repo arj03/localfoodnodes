@@ -7,10 +7,6 @@
 @section('title', trans('public/economy.title'))
 
 @section('page-content')
-    <script>
-        var economyTrans = <?php echo json_encode(trans('public/economy')); ?>;
-    </script>
-
     <div class="container top-container">
         <div class="row justify-content-center">
             <div class="col-12">
@@ -19,7 +15,7 @@
                         {!! trans('public/economy.economy_page') !!}
                     </div>
                     <div class="card-body" id="frontpage-metrics">
-                        <metrics></metrics>
+                        <metrics translations="{{ json_encode(trans('public/economy')) }}"></metrics>
                         <div class="text-center">
                             <a class="d-block mt-2" href="/economy/transactions">{{ trans('public/economy.view_all_transactions') }}</a>
                         </div>
