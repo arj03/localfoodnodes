@@ -56,17 +56,7 @@
             </div>
         </div>
 
-        @if ($showDeliverySettings)
-            @include('account.node.delivery-settings-form')
-        @else
-            <div class="card">
-                <div class="card-header">{{ trans('admin/node.deliveries') }}</div>
-                <div class="card-body">
-                    <p>{{ trans('admin/node.change_weekday_warning') }}</p>
-                    <a href="/account/node/{{ $node->id }}/delivery/edit">Edit delivery settings</a>
-                </div>
-            </div>
-        @endif
+        @include('account.node.delivery-settings-form')
 
         @include('account.image-card', [
             'images' => $node->images(),

@@ -52,10 +52,12 @@ class Permalink extends BaseModel
     {
         // Replace non letter or digits by -
         $slug = preg_replace('~[^\pL\d]+~u', '-', $string);
-        // Transliterate
-        $slug = iconv('utf-8', 'us-ascii//TRANSLIT//IGNORE', $slug);
         // Remove unwanted characters
         $slug = preg_replace('~[^-\w]+~', '', $slug);
+        // Convert special chars
+        $pattern = array('é','è','ë','ê','É','È','Ë','Ê','á','à','ä','â','å','Á','À','Ä','Â','Å','ó','ò','ö','ô','Ó','Ò','Ö','Ô','í','ì','ï','î','Í','Ì','Ï','Î','ú','ù','ü','û','Ú','Ù','Ü','Û','ý','ÿ','Ý','ø','Ø','œ','Œ','Æ','ç','Ç');
+        $replace = array('e','e','e','e','E','E','E','E','a','a','a','a','a','A','A','A','A','A','o','o','o','o','O','O','O','O','i','i','i','I','I','I','I','I','u','u','u','u','U','U','U','U','y','y','Y','o','O','a','A','A','c','C');
+        $slug = str_replace($pattern, $replace, $slug);
         // Trim
         $slug = trim($slug, '-');
         // Remove duplicate -

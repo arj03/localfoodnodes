@@ -1935,13 +1935,6 @@ body.public-checkout .summary .card-body.red a {
 
 .cart a {
   display: block;
-  background: #c1534c;
-  padding: 10px 15px;
-  color: #fff;
-}
-
-.cart a:hover {
-  background: #b1433c;
 }
 
 .cart a .fa-shopping-cart {

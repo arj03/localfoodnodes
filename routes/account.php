@@ -31,8 +31,6 @@ Route::group(['prefix' => '/node'], function () {
     Route::post('/insert', 'Account\NodeController@insert');
     Route::get('/{nodeId}', 'Account\NodeController@index');
     Route::get('/{nodeId}/edit', 'Account\NodeController@edit');
-    Route::get('/{nodeId}/delivery/edit', 'Account\NodeController@deliveryEdit');
-    Route::post('/{nodeId}/delivery/update', 'Account\NodeController@deliveryUpdate');
     Route::post('/{nodeId}/update', 'Account\NodeController@update');
     Route::get('/{nodeId}/delete', 'Account\NodeController@delete');
     Route::get('/{nodeId}/delete/confirm', 'Account\NodeController@deleteConfirm');
