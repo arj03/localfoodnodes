@@ -54,7 +54,7 @@
                 .then(response => {
                     return axios.put('/api/v1/economy/transactions', data, {
                         headers: {
-                            'Authorization': 'Bearer ' + response.data
+                            'Authorization': 'Bearer ' + response.data.access_token
                         }
                     });
                 })
