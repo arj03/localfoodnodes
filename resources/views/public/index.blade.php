@@ -32,16 +32,22 @@
 
         <div class="metrics">
             <div class="metric">
-                <div class="value">{{ $metrics['userCount'] }}</div>
-                <div class="label">{{ trans('public/index.locals') }}</div>
+                <div class="metric-inner">
+                    <div class="value">{{ $metrics['userCount'] }}</div>
+                    <div class="label">{{ trans('public/index.locals') }}</div>
+                </div>
             </div>
             <div class="metric">
-                <div class="value">{{ $metrics['nodeCount'] }}</div>
-                <div class="label">{{ trans('public/index.local_nodes') }}</div>
+                <div class="metric-inner">
+                    <div class="value">{{ $metrics['nodeCount'] }}</div>
+                    <div class="label">{{ trans('public/index.local_nodes') }}</div>
+                </div>
             </div>
             <div class="metric">
-                <div class="value">{{ $metrics['producerCount'] }}</div>
-                <div class="label">{{ trans('public/index.local_producers') }}</div>
+                <div class="metric-inner">
+                    <div class="value">{{ $metrics['producerCount'] }}</div>
+                    <div class="label">{{ trans('public/index.local_producers') }}</div>
+                </div>
             </div>
         </div>
     </div>
