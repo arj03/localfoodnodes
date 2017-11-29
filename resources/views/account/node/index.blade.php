@@ -202,7 +202,7 @@
                             {{ csrf_field() }}
                             <div class="input-group">
                                 <input type="email" name="email" id="email" class="form-control" placeholder="User email">
-                                <button type="submit" class="input-group-addon btn btn-success">{{ trans('admin/node.invite_admin') }}</button>
+                                <button type="submit" class="input-group-addon btn btn-primary">{{ trans('admin/node.invite_admin') }}</button>
                             </div>
                         </form>
                     </div>

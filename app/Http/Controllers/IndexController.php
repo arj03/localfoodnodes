@@ -41,13 +41,18 @@ class IndexController extends Controller
         $this->api = new LocalFoodNodes(env('API_URL'), env('PUBLIC_API_CLIENT_ID'), env('PUBLIC_API_SECRET'), env('PUBLIC_API_USERNAME'), env('PUBLIC_API_PASSWORD'));
     }
 
+    /**
+     * Proxy for the frontend to communicating with API
+     *
+     * @param Request $request
+     * @return string json
+     */
     public function apiProxy(Request $request)
     {
         $method = $request->has('method') ? $request->input('method') : 'get';
         $url = $request->input('url');
-        $data = $request->has('data') ? $request->input('data') : [];
 
-        return $this->api->request($method, $url, $data);
+        return $this->api->request($method, $url, $request->all());
     }
 
     /**

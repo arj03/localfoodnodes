@@ -197,6 +197,10 @@
   color: #333;
 }
 
+.form-control {
+  border: 1px solid #c5c5bc;
+}
+
 .btn {
   border: 0;
   border-radius: 0;
@@ -205,6 +209,7 @@
   font-size: 14px;
   padding: 1rem 2rem;
   text-decoration: none;
+  color: #fff;
 }
 
 .btn:active,
@@ -215,13 +220,13 @@
 }
 
 .btn.btn-primary {
-  background: #67b475;
+  background: #c5c5bc;
 }
 
 .btn.btn-primary:active,
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
-  background: #57a465 !important;
+  background: #b5b5ac !important;
 }
 
 .btn.btn-success {
@@ -241,7 +246,7 @@ input[type=submit],
 }
 
 .text-success {
-  color: #8fb773 !important;
+  color: #67b475 !important;
 }
 
 .badge {
@@ -249,7 +254,7 @@ input[type=submit],
 }
 
 .badge.badge-success {
-  background: #8fb773;
+  background: #67b475;
 }
 
 a.badge {
@@ -525,11 +530,11 @@ a.btn:focus {
 }
 
 .tags .tag input[type=checkbox]:checked + label {
-  background-color: #8fb773;
+  background-color: #67b475;
 }
 
 .success-message .card-header {
-  background: #8fb773 !important;
+  background: #67b475 !important;
 }
 
 .quantity-component .input-group-addon {
@@ -1660,7 +1665,7 @@ body.public-checkout .summary .card-body.red a {
 }
 
 .product-calendar .month .days .day input:checked + label .date {
-  background-color: #8fb773;
+  background-color: #67b475;
   color: #fff;
 }
 
@@ -1789,12 +1794,12 @@ body.public-checkout .summary .card-body.red a {
 }
 
 .node-calendar .month .days .day.delivery {
-  background: #8fb773;
+  background: #67b475;
   color: #fff;
 }
 
 .node-calendar .month .days .day.delivery.event {
-  background: repeating-linear-gradient(135deg, #e6ba7b, #e6ba7b 50%, #8fb773 50%, #8fb773 100%);
+  background: repeating-linear-gradient(135deg, #e6ba7b, #e6ba7b 50%, #67b475 50%, #67b475 100%);
   color: #fff;
 }
 

@@ -21,7 +21,7 @@
                 <p class="pt-5 pb-5 ingress">{{ trans('public/index.what_is_lfn_info') }}</p>
                 <img src="/images/infographic.jpg">
                 <div>
-                    <a href="/find-out-more" class="btn btn-primary">{{ trans('public/index.find_out_more') }}</a>
+                    <a href="/find-out-more" class="btn btn-success">{{ trans('public/index.find_out_more') }}</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                     <p class="card-text">{{ trans('public/index.create_user_info') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/account/user/create/user">{{ trans('public/index.create_user') }}</a>
+                    <a class="btn btn-success" href="/account/user/create/user">{{ trans('public/index.create_user') }}</a>
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
                     <p class="card-text">{{ trans('public/index.create_node_info') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
+                    <a class="btn btn-success" href="/account/user/create/node">{{ trans('public/index.create_node') }}</a>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@
                     <p class="card-text">{{ trans('public/index.create_producer_info') }}</p>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
+                    <a class="btn btn-success" href="/account/user/create/producer">{{ trans('public/index.list') }}</a>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
             </div>
             <metrics></metrics>
             <div class="text-center">
-                <a class="btn btn-primary mt-5" href="/economy">{{ trans('public/economy.read_more_economy') }}</a>
+                <a class="btn btn-success mt-5" href="/economy">{{ trans('public/economy.read_more_economy') }}</a>
                 <a class="d-block mt-2" href="/economy/transactions">{{ trans('public/economy.view_all_transactions') }}</a>
             </div>
         </div>

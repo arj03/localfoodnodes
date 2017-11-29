@@ -36,7 +36,9 @@ class ProducerNodeMapContainer extends Component {
             scrollWheelZoom: false,
         });
 
-        let tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/davidajnered/cj1nwwm82002u2ss6j5e9zrt6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw', {
+        let mapboxUrl = 'https://api.mapbox.com/styles/v1/davidajnered/cj9r1s64b0pc12snzmvgt6lup/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGF2aWRham5lcmVkIiwiYSI6ImNpenZxcWhoMzAwMGcyd254dGU4YzNkMjQifQ.DJncF9-KJ5RQAozfIwlKDw';
+
+        let tileLayer = L.tileLayer(mapboxUrl, {
             attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         	subdomains: 'abcd',
         	maxZoom: 19
@@ -136,7 +138,7 @@ class ProducerNodeMapContainer extends Component {
                 );
             });
         } else {
-            return <span>{trans.no_nodes_selected}</span>;
+            return <div className='card-body'>{trans.no_nodes_selected}</div>;
         }
 
         return (
