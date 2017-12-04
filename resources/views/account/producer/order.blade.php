@@ -13,6 +13,13 @@
                     <ul>
                         <li><b>{{ $orderItem->user['name'] }}</b></li>
                         <li><a href="mailto:{{ $orderItem->user['email'] }}">{{ $orderItem->user['email'] }}</a></li>
+
+                        @if (isset($orderItem->user['phone']))
+                            <li>
+                                <a href="tel:{{ $orderItem->user['phone'] }}">{{ $orderItem->user['phone'] }}</a>
+                            </li>
+                        @endif
+
                         <li>{{ $orderItem->user['address'] }}</li>
                         <li>{{ $orderItem->user['zip'] }} {{ $orderItem->user['city'] }}</li>
                     </ul>

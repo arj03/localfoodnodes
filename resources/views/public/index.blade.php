@@ -125,14 +125,14 @@
                         <p>{{ trans('public/index.co_fund_paragraph') }}</p>
 
                         <div class="metrics row mt-5">
-                            <div class="metric col-12 col-sm-6">
+                            <div class="metric col-6">
                                 <i class="fa fa-user"></i>
                                 <div class="metric-inner">
                                     <div class="value">{{ $members }}</div>
                                     <div class="label">{{ trans('public/pages/membership.supporting') }}</div>
                                 </div>
                             </div>
-                            <div class="metric col-12 col-sm-6">
+                            <div class="metric col-6">
                                 <i class="fa fa-money"></i>
                                 <div class="metric-inner">
                                     <div class="value">{{ $averageMembership }} SEK</div>

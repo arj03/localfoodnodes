@@ -7,15 +7,20 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Order\Order;
+use App\Order\OrderDate;
 use App\User\User;
 use Mail;
 
 class EmailController extends Controller
 {
-    public function userActivation(Request $request, $userId)
+    public function index(Request $request)
     {
-        $user = User::find($userId);
+        return view('admin.email');
+    }
+
+    public function userActivation(Request $request)
+    {
+        $user = User::orderBy('created_at', 'desc')->first();
 
         $data = [
             'title' => 'Activate account',
@@ -23,30 +28,18 @@ class EmailController extends Controller
             'token' => 'testtesttest'
         ];
 
-        // Mail::send('email.activate-user', $data, function ($message) {
-        //     $message->from('info@localfoodnodes.org', 'Local Food Nodes');
-        //     $message->to('davidajnered@gmail.com');
-        //     $message->subject('Incoming order');
-        // });
-
         return view('email.activate-user', $data);
     }
 
-    public function resetPassword(Request $request, $userId)
+    public function resetPassword(Request $request)
     {
-        $user = User::find($userId);
+        $user = User::orderBy('created_at', 'desc')->first();
 
         $data = [
             'title' => 'Reset password',
             'user' => $user,
             'token' => 'testtesttest'
         ];
-
-        // Mail::send('email.activate-user', $data, function ($message) {
-        //     $message->from('info@localfoodnodes.org', 'Local Food Nodes');
-        //     $message->to('davidajnered@gmail.com');
-        //     $message->subject('Incoming order');
-        // });
 
         return view('email.reset-password', $data);
     }
@@ -63,12 +56,6 @@ class EmailController extends Controller
             'orderDates' => $orderDates
         ];
 
-        // Mail::send('email.order-producer', $data, function ($message) {
-        //     $message->from('info@localfoodnodes.org', 'Local Food Nodes');
-        //     $message->to('davidajnered@gmail.com');
-        //     $message->subject('Incoming order');
-        // });
-
         return view('email.producer-order', $data);
     }
 
@@ -81,12 +68,6 @@ class EmailController extends Controller
             'title' => 'Order confirmation',
             'orderDates' => $orderDates
         ];
-
-        // Mail::send('email.order-customer', $data, function ($message) {
-        //     $message->from('info@localfoodnodes.org', 'Local Food Nodes');
-        //     $message->to('davidajnered@gmail.com');
-        //     $message->subject('Order confirmation');
-        // });
 
         return view('email.customer-order', $data);
     }

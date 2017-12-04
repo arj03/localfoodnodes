@@ -93,13 +93,15 @@ class AuthController extends Controller
             $error = 'invalid_access_token';
         }
 
-        $userData = $this->facebookGetUser($accessToken);
-        if (!$userData) {
-            $error = 'invalid_user_data';
-        }
+        if ($accessToken) {
+            $userData = $this->facebookGetUser($accessToken);
+            if (!$userData) {
+                $error = 'invalid_user_data';
+            }
 
-        if (!isset($userData->name) || !isset($userData->email)) {
-            $error = 'invalid_user_data';
+            if (!isset($userData->name) || !isset($userData->email)) {
+                $error = 'invalid_user_data';
+            }
         }
 
         if ($error) {
@@ -121,18 +123,22 @@ class AuthController extends Controller
      */
     private function facebookGetAccessToken($code)
     {
-        $appId = env('FACEBOOK_APP_ID');
-        $redirectUri = url('/login/facebook/callback');
-        $appSecret = env('FACEBOOK_APP_SECRET');
-        $code = $code;
+        try {
+            $appId = env('FACEBOOK_APP_ID');
+            $redirectUri = url('/login/facebook/callback');
+            $appSecret = env('FACEBOOK_APP_SECRET');
+            $code = $code;
 
-        $url = 'https://graph.facebook.com/v2.8/oauth/access_token?client_id=' . $appId . '&redirect_uri='. $redirectUri  . '&client_secret=' . $appSecret . '&code=' . $code;
+            $url = 'https://graph.facebook.com/v2.8/oauth/access_token?client_id=' . $appId . '&redirect_uri='. $redirectUri  . '&client_secret=' . $appSecret . '&code=' . $code;
 
-        $client = new Client();
-        $res = $client->request('GET', $url);
-        $data = json_decode($res->getBody());
+            $client = new Client();
+            $res = $client->request('GET', $url);
+            $data = json_decode($res->getBody());
 
-        return $data->access_token ?: null;
+            return $data->access_token ?: null;
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            return null;
+        }
     }
 
     /**
@@ -143,12 +149,16 @@ class AuthController extends Controller
      */
     private function facebookGetUser($accessToken)
     {
-        $client = new Client();
-        $url = 'https://graph.facebook.com/v2.8/me?fields=name,email&access_token=' . $accessToken;
-        $res = $client->request('GET', $url);
-        $userData = json_decode($res->getBody());
+        try {
+            $client = new Client();
+            $url = 'https://graph.facebook.com/v2.8/me?fields=name,email&access_token=' . $accessToken;
+            $res = $client->request('GET', $url);
+            $userData = json_decode($res->getBody());
 
-        return $userData;
+            return $userData;
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+           return null;
+       }
     }
 
     /**

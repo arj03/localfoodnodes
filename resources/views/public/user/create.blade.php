@@ -8,14 +8,14 @@
 @section('page-content')
     <div class="container top-container">
         <div class="row justify-content-center mb-5">
-            <div class="col-12 col-md-8 mt-5">
+            <div class="col-12 col-md-8">
                 <div class="card">
                     <div class="card-body body-text">
                         @if ($content)
                             {!! $content !!}
                         @endif
 
-                        <div class="mt-5">
+                        <div>
                             @include('public.user.create-user-form')
                         </div>
                     </div>

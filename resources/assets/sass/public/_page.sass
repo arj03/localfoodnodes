@@ -72,13 +72,14 @@ body.public
     display: flex
     text-align: left
     margin-bottom: 15px
+    justify-content: start
     .fa
       font-size: 5rem
       margin-right: 15px
     .metric-inner
       display: flex
       flex-direction: column
-      justify-content: center
+      justify-content: start
       .value
         font-size: 32px
         font-weight: bold
@@ -86,3 +87,11 @@ body.public
         line-height: 1em
       .label
         font-family: 'montserrat'
+
+@media (max-width: 575px)
+  .metrics
+    .metric
+      .fa
+        font-size: 28px
+      .value
+        font-size: 24px !important

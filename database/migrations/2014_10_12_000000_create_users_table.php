@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('zip')->nullable();
             $table->string('city')->nullable();
+            $table->string('phone')->nullable();
             $table->tinyInteger('active')->default(0);
             $table->string('language')->nullable();
             $table->boolean('admin')->default(false);

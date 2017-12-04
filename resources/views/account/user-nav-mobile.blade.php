@@ -1,10 +1,9 @@
 @if (Auth::user() && Auth::user()->active)
-    <div class="container-fluid d-lg-none">
+    <div class="container-fluid d-lg-none mb-5">
         <div class="row">
             <nav class="navbar navbar-light user-nav-responsive">
                 <a class="navbar-brand" href="/">
                     <img src="/images/nav-logo-dark.png">
-                    Local Food Nodes
                 </a>
 
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

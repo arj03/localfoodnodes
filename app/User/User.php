@@ -21,6 +21,7 @@ class User extends \App\User\BaseUser
         'address' => '',
         'zip' => '',
         'city' => '',
+        'phone' => '',
         'language' => '',
         'active' => '',
     ];
@@ -37,6 +38,7 @@ class User extends \App\User\BaseUser
         'address',
         'zip',
         'city',
+        'phone',
         'language',
         'active'
     ];
@@ -620,6 +622,7 @@ class User extends \App\User\BaseUser
             'zip' => $this->zip,
             'city' => $this->city,
             'email' => $this->email,
+            'phone' => $this->phone,
         ];
     }
 }

@@ -30,6 +30,15 @@
                             </label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="{{ trans('admin/user.email') }}" value="{{ $user->email }}">
                         </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="phone">
+                                {{ trans('admin/user.phone') }}
+                                @if ($errors->has('phone'))
+                                    <div class="badge badge-danger">{{ $errors->first('phone') }}</div>
+                                @endif
+                            </label>
+                            <input type="phone" name="phone" class="form-control" id="phone" placeholder="{{ trans('admin/user.phone') }}" value="{{ $user->phone }}">
+                        </div>
                         <div class="row">
                             <div class="form-group col-12 col-lg-4">
                                 <label class="form-control-label" for="address">{{ trans('admin/user.address') }}</label>

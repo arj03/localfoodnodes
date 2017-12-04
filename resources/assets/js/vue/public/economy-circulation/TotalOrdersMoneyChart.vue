@@ -3,14 +3,14 @@
         <div class="col-12 col-md-8 mb-5">
             <i v-show="loading" class="fa fa-spinner fa-spin loader"></i>
             <div v-show="!loading" class="row metrics">
-                <div class="metric col-12 col-sm-6">
+                <div class="metric col-6">
                     <i class="fa fa-shopping-cart"></i>
                     <div class="metric-inner">
                         <div class="value">{{ data.orders }}</div>
                         <div class="label">{{ this.trans.orders }}</div>
                     </div>
                 </div>
-                <div class="metric col-12 col-sm-6">
+                <div class="metric col-6">
                     <i class="fa fa-refresh"></i>
                     <div class="metric-inner">
                         <div class="value">{{ parseInt(data.sum).toLocaleString('sv') }}</div>
@@ -25,7 +25,7 @@
 <style scoped>
     .metric .fa,
     .metric .value {
-        color: #dec285;
+        color: #666
     }
 </style>
 

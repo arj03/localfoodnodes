@@ -3,7 +3,8 @@
 @section('content')
     <div style="margin-bottom: 20px;">
         <h1 style="margin: 0px; color: #333;">{{ trans('public/email.order_from') }} {{ $user->name }}</h1>
-        <a style="color: #333" href="mailto: {{ $user->email }}">{{ $user->email }}</a>
+        <a style="color: #333; display: block;" href="mailto: {{ $user->email }}">{{ $user->email }}</a>
+        <a style="color: #333; display: block;" href="tel: {{ $user->phone }}">{{ $user->phone }}</a>
     </div>
     @foreach ($orderDates as $orderDate)
         <div class="order-date" style="margin-bottom: 40px; background: #fff; box-shadow: #ccc 0 1px 8px -2px;">

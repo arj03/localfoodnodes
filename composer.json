@@ -12,6 +12,7 @@
         "laravel/framework": "~5.5",
         "laravel/passport": "^4.0",
         "localfoodnodes/localfoodnodes-php-sdk": "^0.1.1",
+        "localfoodnodes/language-table": "^0.1.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "php": ">=5.6.4",
         "predis/predis": "^1.1.1",

@@ -206,6 +206,7 @@ class UserController extends Controller
             $userData = $user->sanitize($data);
             $userData['password'] = \Hash::make($userData['password']);
             $user->fill($userData);
+            $user->language = $this->getLang();
 
             // Default location Röstånga
             $user->setLocation('56.002490 13.293257');
