@@ -3,7 +3,7 @@
 @section('title', trans('public/checkout.title'))
 
 @section('content')
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="d-flex justify-content-between">
                 <div>

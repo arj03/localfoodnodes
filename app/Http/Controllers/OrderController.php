@@ -41,7 +41,7 @@ class OrderController extends Controller
             $orderDateItemLinks = $this->saveOrder($user);
 
             $this->sendCustomerOrderEmail($orderDateItemLinks, $user);
-            $this->sendProducerOrderEmails($orderDateItemLinks);
+            $this->sendProducerOrderEmails($orderDateItemLinks, $user);
             $user->cartDateItemLinks()->each->delete();
 
             \App\Helpers\SlackHelper::message('notification', $user->name . ' placed an order.');
@@ -86,7 +86,7 @@ class OrderController extends Controller
      *
      * @param Collection $orderDateItemLinks
      */
-    private function sendProducerOrderEmails($orderDateItemLinks)
+    private function sendProducerOrderEmails($orderDateItemLinks, $user)
     {
         // Create array with the order refs grouped by producer id
         $orderRefsByProducerId = [];
@@ -114,12 +114,12 @@ class OrderController extends Controller
         });
 
         // Loop each producer and send emails
-        $orderDatesByProducerId->each(function($orderDates, $producerId) use ($orderRefsByProducerId) {
+        $orderDatesByProducerId->each(function($orderDates, $producerId) use ($orderRefsByProducerId, $user) {
             $producer = Producer::find($producerId);
             $orderRefs = $orderRefsByProducerId[$producerId];
             $orderDates->each->setOrderFilter($orderRefs);
 
-            \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $orderDates));
+            \Mail::to($producer->email)->send(new \App\Mail\ProducerOrder($producer, $user, $orderDates));
         });
     }
 

@@ -12,6 +12,7 @@ class ProducerOrder extends Mailable
     use Queueable, SerializesModels;
 
     public $producer;
+    public $user;
     public $orderDates;
 
     /**
@@ -19,9 +20,10 @@ class ProducerOrder extends Mailable
      *
      * @return void
      */
-    public function __construct($producer, $orderDates)
+    public function __construct($producer, $user, $orderDates)
     {
         $this->producer = $producer;
+        $this->user = $user;
         $this->orderDates = $orderDates;
     }
 
@@ -32,8 +34,10 @@ class ProducerOrder extends Mailable
      */
     public function build()
     {
+        $subject = trans('public/email.incoming_order') . ' - ' . $this->user->name;
+
         return $this->from(['address' => 'info@localfoodnodes.org', 'name' => 'Local Food Nodes'])
-        ->subject(trans('public/email.incoming_order'))
+        ->subject($subject)
         ->view('email.producer-order');
     }
 }
