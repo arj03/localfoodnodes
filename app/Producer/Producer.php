@@ -342,9 +342,13 @@ class Producer extends BaseModel implements EventOwnerInterface
     /**
      * Get events.
      */
-    public function events(\DateTime $date = null)
+    public function events(\DateTime $date = null, $ignoreHidden = true)
     {
         $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'producer')->get();
+
+        if ($ignoreHidden) {
+            $events = $events->where('is_hidden', 0);
+        }
 
         if ($date) {
             $startDatetime = new \DateTime($date->format('Y-m-d'));

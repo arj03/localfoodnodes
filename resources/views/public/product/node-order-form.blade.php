@@ -105,7 +105,7 @@
 
         <div class="card-body">
             @if (!Auth::check())
-                <button type="submit" class="btn btn-success pull-left" disabled>{{ trans('public/node.login_needed') }}</button>
+                <a href="/login" class="btn btn-success pull-left">{{ trans('public/node.login_needed') }}</a>
             @else
                 <button type="submit" class="btn btn-success pull-left">{{ trans('public/node.add_to_cart') }}</button>
             @endif

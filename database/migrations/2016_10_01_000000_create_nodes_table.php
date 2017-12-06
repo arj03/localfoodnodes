@@ -24,6 +24,7 @@ class CreateNodesTable extends Migration
             $table->string('city')->nullable();
             $table->string('link_facebook')->nullable();
             $table->string('link_facebook_producers')->nullable();
+            $table->boolean('is_hidden')->nullable();
             $table->string('delivery_weekday')->nullable();
             $table->string('delivery_time')->nullable();
             $table->timestamps();

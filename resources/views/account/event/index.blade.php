@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-header">Events</div>
         <div class="card-body">
-            @if ($eventOwner->events()->count() > 0)
+            @if ($eventOwner->events(null, false)->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($eventOwner->events() as $event)
+                            @foreach ($eventOwner->events(null, false) as $event)
                                 <tr>
                                     <td><a href="/account/{{ $eventOwner->eventOwnerUrl() }}/event/{{ $event->id }}/edit">{{ $event->name }}</a></td>
                                     <td>{{ $event->owner()->name }}</td>

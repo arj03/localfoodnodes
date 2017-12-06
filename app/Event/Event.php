@@ -30,7 +30,7 @@ class Event extends BaseModel
         'start_datetime' => 'required',
         'end_datetime' => 'required',
         'fee' => 'integer',
-        'is_hidden' => 'boolean',
+        'is_hidden' => '',
     ];
 
     /**

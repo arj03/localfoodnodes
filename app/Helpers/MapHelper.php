@@ -26,6 +26,7 @@ class MapHelper
 
         $nodeIds = DB::table('nodes')
         ->select('id')
+        ->where('is_hidden', 0)
         ->whereRaw($polygonQuery)
         ->get();
 

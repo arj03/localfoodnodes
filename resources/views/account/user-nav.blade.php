@@ -28,13 +28,13 @@
                         </ul>
                     </li>
 
-                    @if ($user->nodeLinks()->count() > 0)
+                    @if ($user->nodes()->count() > 0)
                         <li>
                             <div class="block-section-header">{{ trans('admin/user-nav.nodes_you_follow') }}</div>
                             <ul>
-                                @foreach ($user->nodeLinks() as $nodeLink)
+                                @foreach ($user->nodes() as $node)
                                     <li>
-                                        <a class="{{ Request::is($nodeLink->getNode()->permalink()->urlWithoutSlash . '*') ? 'active' : '' }}" href="{{ $nodeLink->getNode()->permalink()->url }}">- {{ $nodeLink->getNode()->name }}</a>
+                                        <a class="{{ Request::is($node->permalink()->urlWithoutSlash . '*') ? 'active' : '' }}" href="{{ $node->permalink()->url }}">- {{ $node->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>

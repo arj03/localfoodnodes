@@ -1,6 +1,6 @@
 @extends('public.layout-page', [
     'header' => trans('public/economy.header'),
-    'subHeader' => trans('public/economy.subheader'),
+    'subHeader' => '',
     'image' => '/images/money-ladder.jpg'
 ])
 

@@ -55,6 +55,11 @@ class MapController extends Controller
         return $nodes;
     }
 
+    /**
+     * Get reko.
+     *
+     * @return Collection
+     */
     private function getReko()
     {
         return Reko::all();

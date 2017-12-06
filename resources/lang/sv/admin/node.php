@@ -29,6 +29,7 @@ return [
     'facebook_page' => 'Facebook-sida',
     'facebook_page_producers' => 'Facebook-sida för producenter',
     'guests' => 'Gäster',
+    'hide_from_map' => 'Dölj noden på kartan',
     'information' => 'Information',
     'information_placeholder' => 'Information om din nod',
     'invite_admin' => 'Bjud in admin',
@@ -44,6 +45,7 @@ return [
     'no_events' => 'Inga evenemang.',
     'no_producers' => 'Inga producenter har anslutet till din nod.',
     'no_users' => 'Inga användare har anslutet till din nod.',
+    'other_settings' => 'Övriga inställningar',
     'producers' => 'Producenter',
     'remove_node' => 'Ta bort utlämningsplats',
     'save_node' => 'Spara nod',
@@ -55,6 +57,7 @@ return [
     'time_placeholder' => 'Leveranstid',
     'unblock_producer' => 'Avblockera producent',
     'users' => 'Användare',
+    'visibility' => 'Synlighet',
     'weekday' => 'Veckodag',
     'zip' => 'Postnummer',
 

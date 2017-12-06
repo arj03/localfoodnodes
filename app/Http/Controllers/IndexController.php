@@ -62,15 +62,6 @@ class IndexController extends Controller
     {
         $metrics = $this->getFrontpageMetrics();
 
-        $nodes = null;
-        if (Auth::user()) {
-            $nodes = Auth::user()->nodeLinks()->map(function($nodeLink) {
-                return $nodeLink->getNode();
-            });
-        }
-
-        $events = Event::where('start_datetime', '>', date('Y-m-d', time()))->limit(5)->orderBy('start_datetime')->get();
-
         $users = User::with(['membershipPaymentsRelationship'])->get();
         $members = $users->filter(function($user) {
             return $user->isMember(true);
@@ -86,8 +77,6 @@ class IndexController extends Controller
 
         return view('public.index', [
             'metrics' => $metrics,
-            'nodes' => $nodes,
-            'events' => $events,
             'members' => $members,
             'averageMembership' => round($averageMembershipPayments)
         ]);
@@ -99,6 +88,15 @@ class IndexController extends Controller
     public function node(Request $request, $nodeId)
     {
         $node = Node::where('id', $nodeId)->with('producerLinksRelationship', 'productNodeDeliveryLinksRelationship')->first();
+
+        if ($node->is_hidden) {
+            $request->session()->flash('message', [
+                trans('admin/messages.node_doesnt_exist')
+            ]);
+
+            return redirect('/');
+        }
+
         $producers = ProducerNodeLink::where('node_id', $nodeId)->get()->map->getProducer();
         $products = $node->products();
 

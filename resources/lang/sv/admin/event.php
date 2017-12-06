@@ -27,6 +27,6 @@ return [
     // How does it work
     'hdiw_intro' => 'Skapa gärna evenemang någon gång per år kopplat till din verksamhet, som ett sätt att bygga relationer med dina konsumenter.',
     'hdiw_item_1' => 'Skapa ditt event med formuläret till vänster.',
-    'hdiw_item_5' => 'Gör evenemangert synligt.',
-    'hdiw_item_6' => 'Bjud in.',
+    'hdiw_item_2' => 'Gör evenemangert synligt.',
+    'hdiw_item_3' => 'Bjud in.',
 ];

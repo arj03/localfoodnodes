@@ -489,26 +489,4 @@ class ProducerController extends Controller
             'selectedNodes' => $selectedNodes
         ]);
     }
-
-    /**
-     * List events.
-     *
-     * @param Request $request
-     * @param int $prducerId
-     */
-    public function events(Request $request, $producerId)
-    {
-        $user = Auth::user();
-        $producer = $user->producerAdminLink($producerId)->getProducer();
-        $events = $producer->events();
-
-        return view('account.event.index', [
-            'events' => $events,
-            'createEventUrl' => '/account/producer/' . $producerId . '/event/create',
-            'breadcrumbs' => [
-                $producer->name => 'producer/' . $producer->id,
-                trans('admin/user-nav.events') => ''
-            ]
-        ]);
-    }
 }

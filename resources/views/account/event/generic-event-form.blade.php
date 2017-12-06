@@ -97,8 +97,8 @@
                     <fieldset class="form-group">
                         <legend class="col-form-legend">{{ trans('admin/event.visibility') }}</legend>
                         <label class="form-check-label">
-                            <input class="form-check-input" name="hidden" type="hidden" value="0" />
-                            <input class="form-check-input" name="hidden" type="checkbox" value="1" {{ $event->hidden == 1 ? 'checked' : '' }} />
+                            <input class="form-check-input" name="is_hidden" type="hidden" value="0" />
+                            <input class="form-check-input" name="is_hidden" type="checkbox" value="1" {{ $event->is_hidden == 1 ? 'checked' : '' }} />
                             {{ trans('admin/event.hide_from_map') }}
                         </label>
                     </fieldset>

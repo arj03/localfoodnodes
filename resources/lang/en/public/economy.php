@@ -24,7 +24,6 @@ return [
     'orders' => 'Orders',
     'read_more_economy' => 'Read more about our economy',
     'ref' => 'Reference',
-    'subheader' => '',
     'title' => 'Economy',
     'total' => 'total',
     'uncategorized' => 'Uncategorized',

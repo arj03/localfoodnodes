@@ -67,7 +67,7 @@ return [
     'product' => 'Product',
     'production' => 'Production',
     'price' => 'Price',
-    'Print' => 'Print',
+    'print' => 'Print',
     'quantity' => 'Quantity',
     'save_producer' => 'Save producer',
     'select_currency' => 'Select currency',

@@ -34,7 +34,7 @@ return [
     'locals' => 'Locals',
     'local_nodes' => 'Local nodes',
     'local_producers' => 'Local producers',
-    'meta_keywords' => '',
+    'meta_keywords' => 'Local Food, Local Food Market, Food Market, Local Circulation, Local Producers',
     'subheader' => 'Pre-order locally produced food. Pick-up straight from the producers',
     'title' => 'Find Nodes',
     'upcoming' => 'Upcoming events',

@@ -33,6 +33,7 @@ class Node extends BaseModel implements EventOwnerInterface
         'delivery_time' => 'required',
         'link_facebook' => '',
         'link_facebook_producers' => '',
+        'is_hidden' => '',
     ];
 
     /**
@@ -52,6 +53,7 @@ class Node extends BaseModel implements EventOwnerInterface
         'delivery_time',
         'link_facebook',
         'link_facebook_producers',
+        'is_hidden',
     ];
 
     /**
@@ -206,9 +208,13 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Get events.
      */
-    public function events(\DateTime $date = null)
+    public function events(\DateTime $date = null, $ignoreHidden = true)
     {
         $events = $this->hasMany('App\Event\Event', 'owner_id')->where('owner_type', 'node')->get();
+
+        if ($ignoreHidden) {
+            $events = $events->where('is_hidden', 0);
+        }
 
         if ($date) {
             $events = $events->where('start_datetime', '<=', $date)->where('end_datetime', '>=', $date);
@@ -231,12 +237,12 @@ class Node extends BaseModel implements EventOwnerInterface
     /**
      * Get node and producer events.
      *
-     * @param DateTIme $date
+     * @param DateTime $date
      * @return Collection
      */
     public function getAllEvents(\DateTime $date = null)
     {
-        $allEvents = $this->events($date);
+        $allEvents = $this->events($date, true);
         $allEvents = $allEvents->merge($this->getProducerEvents($date));
 
         return $allEvents->sortBy('start_datetime');
@@ -250,18 +256,18 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getProducerEvents(\DateTime $date = null)
     {
-        $producerEvents = new Collection();
+        $allProducerEvents = new Collection();
 
         if ($this->producerLinks()->count() > 0) {
-            $this->producerLinks()->each(function($producerLink) use (&$producerEvents, $date) {
-                if ($producerLink->getProducer()->events($date)->count() > 0) {
-                    $events = $producerLink->getProducer()->events($date);
-                    $producerEvents = $producerEvents->merge($events);
+            $this->producerLinks()->each(function($producerLink) use (&$allProducerEvents, $date) {
+                $producerEvents = $producerLink->getProducer()->events($date, true);
+                if ($producerEvents->count() > 0) {
+                    $allProducerEvents = $allProducerEvents->merge($producerEvents);
                 }
             });
         }
 
-        return $producerEvents;
+        return $allProducerEvents;
     }
 
     /**

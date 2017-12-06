@@ -132,7 +132,7 @@ class NodeCalendar
             $eventOwners->push($this->node->producerLinks()->map->producer_id->toArray());
         }
 
-        $events = Event::whereIn('owner_id', $eventOwners->flatten())->get();
+        $events = Event::where('is_hidden', 0)->whereIn('owner_id', $eventOwners->flatten())->get();
 
         $eventDates = [];
         $events->each(function($event) use (&$eventDates) {

@@ -29,6 +29,7 @@ return [
     'facebook_page' => 'Facebook page',
     'facebook_page_producers' => 'Facebook page for producers',
     'guests' => 'Guests',
+    'hide_from_map' => 'Hide node on map',
     'information' => 'Information',
     'information_placeholder' => 'Information about your node',
     'invite_admin' => 'Invite admin',
@@ -44,6 +45,7 @@ return [
     'no_events' => 'No events.',
     'no_producers' => 'No producers have joined your node.',
     'no_users' => 'No users have joined your node.',
+    'other_settings' => 'Other settings',
     'producers' => 'Producers',
     'remove_node' => 'Remove node',
     'save_node' => 'Save node',
@@ -55,6 +57,7 @@ return [
     'time_placeholder' => 'Ready for delivery',
     'unblock_producer' => 'Unblock producer',
     'users' => 'Users',
+    'visibility' => 'Visibility',
     'weekday' => 'Weekday',
     'zip' => 'Zip',
 

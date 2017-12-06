@@ -65,8 +65,18 @@
         ])
 
         <div class="card">
-            <div class="card-header">Facebook</div>
+            <div class="card-header">{{ trans('admin/node.other_settings') }}</div>
             <div class="card-body">
+                <div class="form-check">
+                    <fieldset class="form-group">
+                        <legend class="col-form-legend">{{ trans('admin/node.visibility') }}</legend>
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="is_hidden" type="hidden" value="0" />
+                            <input class="form-check-input" name="is_hidden" type="checkbox" value="1" {{ $node->is_hidden == 1 ? 'checked' : '' }} />
+                            {{ trans('admin/node.hide_from_map') }}
+                        </label>
+                    </fieldset>
+                </div>
                 <div class="form-group">
                     <label for="link_facebook">{{ trans('admin/node.facebook_page') }}</label>
                     <input type="text" name="link_facebook" class="form-control" id="address" placeholder="{{ trans('admin/node.facebook_page') }}" value="{{ $node->link_facebook }}">

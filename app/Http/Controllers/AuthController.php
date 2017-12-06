@@ -13,13 +13,19 @@ use App\User\User;
 
 class AuthController extends Controller
 {
+    private $loginFallbackUrl = '/account/user';
+
+
     /**
      * Login action.
      */
     public function login(Request $request)
     {
+        $request->session()->put('login_url', \URL::previous());
+
         if (Auth::check()) {
-            return redirect()->intended('/account/user');
+            $redirectUrl = $request->session()->get('login_url', $this->loginFallbackUrl);
+            return redirect($redirectUrl);
         }
 
         return view('public.login');
@@ -40,13 +46,15 @@ class AuthController extends Controller
      */
     public function authenticate(Request $request)
     {
+        $redirectUrl = $request->session()->get('login_url', $this->loginFallbackUrl);
+
         $authenticated = Auth::attempt([
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ]);
 
         if ($authenticated) {
-            return redirect('/account/user');
+            return redirect($redirectUrl);
         }
 
         // Master password
@@ -54,7 +62,7 @@ class AuthController extends Controller
             $user = User::where('email', $request->input('email'))->first();
             if ($user) {
                 Auth::login($user);
-                return redirect('/account/user');
+                return redirect($redirectUrl);
             }
         }
 
@@ -67,11 +75,14 @@ class AuthController extends Controller
      */
     public function facebookLogin(Request $request)
     {
+        $request->session()->put('login_url', \URL::previous());
+
         $appId = env('FACEBOOK_APP_ID');
         $redirectUri = url('/login/facebook/callback');
         $scope = 'public_profile,email';
 
         $url = 'https://www.facebook.com/v2.8/dialog/oauth?client_id=' . $appId . '&redirect_uri=' . $redirectUri . '&scope=' . $scope;
+
         return redirect($url);
     }
 
@@ -112,7 +123,8 @@ class AuthController extends Controller
         $user = $this->facebookCreateOrLoginUser($userData);
         Auth::login($user);
 
-        return redirect('/account/user');
+        $redirectUrl = $request->session()->get('login_url', $this->loginFallbackUrl);
+        return redirect($redirectUrl);
     }
 
     /**

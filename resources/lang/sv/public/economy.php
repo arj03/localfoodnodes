@@ -24,7 +24,6 @@ return [
     'orders' => 'Bokningar',
     'read_more_economy' => 'Lär mer om vår ekonomi',
     'ref' => 'Referens',
-    'subheader' => '',
     'title' => 'Ekonomi',
     'total' => 'totalt',
     'uncategorized' => 'Okategoriserat',

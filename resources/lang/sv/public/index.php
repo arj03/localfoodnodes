@@ -36,7 +36,7 @@ return [
     'locals' => 'Användare',
     'local_nodes' => 'Noder',
     'local_producers' => 'Producenter',
-    'meta_keywords' => 'Lokal mat, Lokal...',
+    'meta_keywords' => 'Lokal mat, Lokal matmarknad, Matmarknad, Local handel, Lokala producenter',
     'subheader' => 'Förboka lokalproducerad mat. Hämta på utlämningsplats, direkt från producenterna',
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',

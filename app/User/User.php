@@ -77,10 +77,6 @@ class User extends \App\User\BaseUser
 
     protected function modifyTableColumnsBeforeQuery($tableColumns)
     {
-        // if(($column = array_search('location', $tableColumns)) !== false) {
-        //     unset($tableColumns[$column]);
-        // }
-
         return $tableColumns;
     }
 
@@ -402,11 +398,25 @@ class User extends \App\User\BaseUser
     }
 
     /**
-     * Get node links.
+     * Define user relationship with node links.
      */
     public function nodeLinks()
     {
-        return $this->hasMany('App\User\UserNodeLink')->get();
+        return $this->hasMany('App\User\UserNodeLink');
+    }
+
+    /**
+     * Nodes that the user follows.
+     *
+     * @return Collection
+     */
+    public function nodes()
+    {
+        return $this->nodeLinks()->get()->map(function($nodeLink) {
+            $node = $nodeLink->getNode();
+
+            return $node->is_hidden ? null : $node;
+        })->filter();
     }
 
     /**
