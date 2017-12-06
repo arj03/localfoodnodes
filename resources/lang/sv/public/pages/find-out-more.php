@@ -6,13 +6,13 @@ return [
     'header_1' => 'Local Food Nodes',
     'subheader_1' => 'Längtan att göra maten lokal igen',
 
-    'paragraph_1_1' => 'Anledningen till att vi skapar Local Food Nodes är att vi vill skapa nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. En vilja att göra maten lokal igen.',
+    'paragraph_1_1' => 'Vi skapar Local Food Nodes för att möjliggöra nya kopplingar direkt mellan matproducenter och matkonsumenter samtidigt som vi vill stärka de lokala kopplingar som redan finns. Vi vill möjliggöra direkta transaktioner, resilienta samhällen och återfå närheten till maten vi äter och hur den är producerad. Vårt mål är att maten ska bli lokal igen.',
 
-    'paragraph_1_2' => 'Resultatet är ett öppet digitalt verktyg där producenten presenterar sina varor, konsumenten bokar det man vill ha och betalar direkt till producenten. Utlämning och upphämtning av varorna sker sedan på en förutbestämd tid och plats, en nod (namnet kommer från konceptet “noder i ett nätverk”), där alla konsumenter och producenter samlas. På det viset kan du som konsument hämta upp varor från flera producenter på samma gång och som producent kan du lämna ut till flera kunder samtidigt.',
+    'paragraph_1_2' => 'Resultatet är ett öppet digitalt verktyg där producenten presenterar sina varor, konsumenten bokar mat och betalar direkt till producenten. Utlämning och upphämtning av varorna sker sedan på en förutbestämd tid och plats, en nod (namnet kommer från konceptet “noder i ett nätverk”), där alla konsumenter och producenter samlas. På det viset kan du som konsument hämta upp varor från flera producenter på samma gång och som producent kan du lämna ut till flera kunder samtidigt.',
 
-    'paragraph_1_3' => 'Med Local food nodes vill vi också skapa ett öppet och kollaborativt crowdfunding-verktyg för att främja utvecklingen av framtida matsystem, friskare jordbruk och mer lokalekonomisk aktivitet. ',
+    'paragraph_1_3' => 'Med Local Food Nodes vill vi också skapa ett öppet och kollaborativt crowdfunding-verktyg för att främja utvecklingen av framtida matsystem, friskare jordbruk och mer lokalekonomisk aktivitet. ',
 
-    'paragraph_1_4' => 'Genom att använda plattformen och stötta projektet blir du medskapare och medfinansiär till en ny modell för produktion och distribution av lokal mat. Årliga medlemsavgifter, som du som användare själv sätter storleken på, kommer att hjälpa till att göra denna modell precis så användbar som vi, tillsammans, bestämmer oss för att göra den.',
+    'paragraph_1_4' => 'Genom att använda plattformen och stötta projektet blir du medskapare och medfinansiär till en ny modell för produktion och distribution av lokal mat. Årliga medlemsavgifter, som du som användare själv sätter storleken på, kommer att hjälpa till att göra denna modell precis så användbar som vi tillsammans bestämmer oss för att göra den.',
 
     'paragraph_1_5' => 'Välkommen till Local Food Nodes, en plattform där vi skapar lokala matsystem, tillsammans.',
 
@@ -28,7 +28,7 @@ return [
 
     'header_4' => 'Hitta utlämningsplats och förboka din lokala mat',
 
-    'paragraph_4_1' => 'Nu när du är inloggad, kan du enkelt hitta de utlämningsplatser som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (man behöver inte gå med i en nod för att beställa mat på den men det gör användandet av siten lättare).',
+    'paragraph_4_1' => 'När du är inloggad, kan du enkelt hitta de utlämningsplatser som är närmast dig genom att klicka på Local Food Nodes-ikonen längst upp till vänster. Utforska kartan eller sök och gå med i noder som passar dig. Börja sen göra beställningar (du behöver inte gå med i en nod för att beställa mat på den, men det gör användandet av siten lättare).',
 
     'header_5' => 'Hämta mat',
 
