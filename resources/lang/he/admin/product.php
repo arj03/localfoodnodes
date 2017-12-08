@@ -41,8 +41,6 @@ return [
     'name_first_variant' => 'Name your first variant',
     'number_of_csa_subscribers' => 'Number of CSA subscribers',
     'number_of_products' => 'Number of products',
-    'no_delivery_dates' => 'Select delivery dates',
-    'no_production' => 'Create production',
     'no_variants' => 'No variants',
     'occasional_products' => 'Occasional product',
     'occasional_products_fresh_meat' => 'Occasional product - Fresh meat',

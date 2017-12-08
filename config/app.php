@@ -82,7 +82,8 @@ return [
     // Array with all the available locales
     'locales' => [
         'en' => 'English',
-        'sv' => 'Svenska'
+        'sv' => 'Svenska',
+        'es' => 'Español',
     ],
 
     /*

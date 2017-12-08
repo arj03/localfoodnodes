@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'artisan_food' => 'Gastronomía',
+    'beer' => 'Cerveza',
+    'beverage' => 'Bebida',
+    'bread' => 'Pan',
+    'csa' => 'CSA (Agricultura Apoyada por la Comunidad)',
+    'dairy_cheese' => 'Productos lácteos y queso',
+    'eggs' => 'Huevos',
+    'fish' => 'Del mar',
+    'fruit_berries' => 'Frutas y bayas',
+    'icecream' => 'Helado',
+    'grain_flour' => 'Arenilla y harinal',
+    'jam_marmelade' => 'Mermelada',
+    'meat' => 'Carne',
+    'mushroom' => 'Seta',
+    'other' => 'Otro',
+    'pickled' => 'Escabechado',
+    'potatoes' => 'Patata',
+    'poultry' => 'Aves',
+    'sample' => 'Muestra',
+    'seeds' => 'Semillas',
+    'vegetable' => 'Verduras',
+    'honey' => 'Miel',
+];
