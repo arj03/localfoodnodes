@@ -29,6 +29,7 @@ return [
     'facebook_page' => 'Página de Facebook',
     'facebook_page_producers' => 'Página de Facebook para productores',
     'guests' => 'Invitados',
+    'hide_from_map' => 'Ocultar nodo en el mapa',
     'information' => 'Información',
     'information_placeholder' => 'Información sobre tu nodo',
     'invite_admin' => 'Invitar a un administrador',
@@ -44,6 +45,7 @@ return [
     'no_events' => 'No hay eventos.',
     'no_producers' => 'No hay productores conectados a tu nodo.',
     'no_users' => 'No hay usarios conectados a tu nodo.',
+    'other_settings' => 'Otros ajustes',
     'producers' => 'Productores',
     'remove_node' => 'Eliminar punto de entrega',
     'save_node' => 'Guardar nodo',
@@ -55,6 +57,7 @@ return [
     'time_placeholder' => 'Hora de entrega',
     'unblock_producer' => 'Desbloquear productor',
     'users' => 'Usario',
+    'visibility' => 'Visibilidad',
     'weekday' => 'Día',
     'zip' => 'Código postal',
 

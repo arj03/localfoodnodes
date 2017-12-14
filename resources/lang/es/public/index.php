@@ -42,6 +42,7 @@ return [
     'title' => 'Encontrar puntos de entregas locales',
     'upcoming' => 'Próximas eventos',
     'visit_node' => 'Visitar punto de entrega',
+    'welcome_to' => 'Bienvenido a',
     'where' => 'Dónde: ',
     'when' => 'Cuando: ',
     'what_is_lfn' => 'Esto es Local Food Nodes',

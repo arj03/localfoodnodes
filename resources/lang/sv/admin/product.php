@@ -2,6 +2,7 @@
 
 return [
     'add_date' => 'Lägg till datum',
+    'add_production' => 'Lägg till produktion',
     'adjust_production_quantity_per_delivery' => 'Justera produktion specifikt per utlämning',
     'adjust_production_quantity_per_week' => 'Justera produktionskvantitet per vecka',
     'amount_per_package' => 'Kvantitet per förpackning',
@@ -75,7 +76,7 @@ return [
     'production_for_week' => 'Produktion för vecka',
     'production_type_header' => 'Vad är detta för typ av produkt?',
     'quantity' => 'Kvantitet',
-    'quantity_available' => 'Kvantitet tillgänglig från datumet ovan',
+    'quantity_available' => 'Kvantitet tillgänglig från datumet nedan',
     'recurring_products_weekly' => 'Återkommande produkt med veckosaldo',
     'recurring_products_per_delivery' => 'Återkommande produkt med leveranssaldo',
     'recurring_products_info' => '
@@ -97,8 +98,10 @@ return [
     'select_tags' => 'Välj passande taggar till produkten',
     'select_unit_product_content' => 'Välj enhet på produktinnehåll',
     'set_main_variant' => 'Välj som huvudvariant',
+    'sold' => 'Sålda',
     'specify_number_products' => 'Ange antalet produkter tillgänliga per vecka',
     'title' => 'Produkt produktion',
+    'total' => 'Totalt',
     'update_deliveries' => 'Uppdatera leveransdatum',
     'update_production' => 'Uppdatera produktion',
     'variants' => 'Varianter',

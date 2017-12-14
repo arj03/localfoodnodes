@@ -61,7 +61,7 @@ return [
     'user_account_updated' => 'Tu información ha sido editada',
     'user_account_deleted' => 'Tu cuenta ha sido eliminada',
     'user_password_changed' => 'Tu contraseña ha sido cambiada',
-    'user_password_changed' => 'Tu contraseña ha sido cambiada',
+    'user_password_not_changed' => 'Tu contraseña no se pudo cambiar.',
     'user_membership_amount_not_numeric' => 'La sifra tiene que ser un número.',
     'user_membership_success' => 'Ahora tu membresía ha sido pagada.',
     'user_membership_error' => 'No se pudo realizar el pago de tu membresía. :errors',

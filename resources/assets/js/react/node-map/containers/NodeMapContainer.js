@@ -179,7 +179,7 @@ class NodeMapContainer extends Component {
                     </div>
                 </a>
                 <div className='body-text'>
-                    <p>Välkommen till utlämningsplatsen {node.name}</p>
+                    <p>{trans.welcome_to} {node.name}</p>
                     <a href={node.permalink.url} className='btn btn-success'>{trans.visit_node} <i className='fa fa-caret-right' style={{float: 'right'}}/></a>
                 </div>
             </div>

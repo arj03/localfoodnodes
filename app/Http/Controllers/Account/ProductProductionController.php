@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Account;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\Collection;
@@ -81,6 +82,12 @@ class ProductProductionController extends Controller
         $producer = $user->producerAdminLink($producerId)->getProducer();
         $product = $producer->product($productId);
 
+        $orderQuantity = DB::table('order_items')
+        ->join('order_date_item_links', 'order_date_item_links.order_item_id', 'order_items.id')
+        ->select(DB::raw('SUM(order_date_item_links.quantity) AS order_quantity'))
+        ->where('order_items.product_id', $product->id)
+        ->value('order_quantity');
+
         if ($request->old('prodution_type')) {
             $product->production_type = $request->old('production_type');
         }
@@ -88,6 +95,7 @@ class ProductProductionController extends Controller
         return view('account.product.production.index', [
             'producer' => $producer,
             'product' => $product,
+            'orderQuantity' => $orderQuantity,
             'breadcrumbs' => [
                 $producer->name => 'producer/' . $producer->id,
                 trans('admin/user-nav.products') => 'producer/' . $producer->id . '/products',

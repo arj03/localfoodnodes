@@ -2,6 +2,7 @@
 
 return [
     'add_date' => 'Añadir fecha',
+    'add_production' => 'Añadir producción',
     'adjust_production_quantity_per_delivery' => 'Ajustar producción específicamente por la entrega',
     'adjust_production_quantity_per_week' => 'Ajustar cantidad de producción cada semana',
     'amount_per_package' => 'Cantidad por paquete',
@@ -75,7 +76,7 @@ return [
     'production_for_week' => 'Producción para semana',
     'production_type_header' => 'Qué tipo de producto es?',
     'quantity' => 'Cantidad',
-    'quantity_available' => 'Cantidad disponible a partir de la fecha arriba',
+    'quantity_available' => 'Cantidad disponible a partir de la fecha abajo',
     'recurring_products_weekly' => 'Producto regular con saldo semanal',
     'recurring_products_per_delivery' => 'Producto regular con saldo de entrega',
     'recurring_products_info' => '
@@ -97,8 +98,10 @@ return [
     'select_tags' => 'Eligir etiquetas que se ajusta al producto',
     'select_unit_product_content' => 'Eligir unidad del contenido del producto',
     'set_main_variant' => 'Eligir como variante principal',
+    'sold' => 'Vendido',
     'specify_number_products' => 'Ingresar la cantidad de productos disponible cada semana',
     'title' => 'Producto producción',
+    'total' => 'Total',
     'update_deliveries' => 'Actualizar la fecha de entrega',
     'update_production' => 'Actualizar la producción',
     'variants' => 'Variantes',

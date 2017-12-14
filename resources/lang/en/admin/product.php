@@ -2,6 +2,7 @@
 
 return [
     'add_date' => 'Add date',
+    'add_production' => 'Add production',
     'adjust_production_quantity_per_delivery' => 'Adjust production for specific deliveries',
     'adjust_production_quantity_per_week' => 'Adjust production quantity for each week',
     'amount_per_package' => 'Amount per package',
@@ -75,7 +76,7 @@ return [
     'production_for_week' => 'Production for week',
     'production_type_header' => 'What type of product is this?',
     'quantity' => 'Quantity',
-    'quantity_available' => 'Quantity available from the date above',
+    'quantity_available' => 'Quantity available from the date below',
     'recurring_products_weekly' => 'Recurring product with stock set weekly',
     'recurring_products_per_delivery' => 'Recurring product with stock set per delivery',
     'recurring_products_info' => '
@@ -97,8 +98,10 @@ return [
     'select_tags' => 'Select suitable tags for the product',
     'select_unit_product_content' => 'Select unit for product content',
     'set_main_variant' => 'Set as main variant',
+    'sold' => 'Sold',
     'specify_number_products' => 'Specifiy the number of products for each delivery occasion',
     'title' => 'Product production',
+    'total' => 'Total',
     'update_deliveries' => 'Update deliveries',
     'update_production' => 'Update production',
     'variants' => 'Variants',

@@ -109,88 +109,36 @@
                         <div class="card type-card" id="type-card-occasional">
                             <div class="card-header">{{ trans('admin/product.occasional_products') }}</div>
                             <div class="card-body">
-                                <div class="text-muted mb-3"><i class="fa fa-info-circle"></i> {{ trans('admin/product.occasional_specify_date_quantity') }}</div>
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <div class="form-part-container">
-                                            @if (Request::old('occasional_date'))
-                                                @foreach (Request::old('occasional_date') as $index => $occasional_date)
-                                                    <div class="{{ $index === 1 ? 'form-part-template' : '' }}">
-                                                        <div class="form-group">
-                                                            <label>
-                                                                {{ trans('admin/product.production_date') }}
-                                                                @include('account.field-error', ['field' => 'occasional_date[' . $index . ']'])
-                                                            </label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                <input type="text" name="occasional_date[]" class="form-control picker date" placeholder="Date" value="{{ $occasional_date }}" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>
-                                                                {{ trans('admin/product.quantity_available') }}
-                                                                @include('account.field-error', ['field' => 'occasional_quantity[' . $index . ']'])
-                                                            </label>
-                                                            <input type="number" min="0" name="occasional_quantity[]" class="form-control" placeholder="Quantity" value="{{ Request::old('occasional_quantity')[$index] }}"/>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <div class="form-part-template">
-                                                    <div class="form-group">
-                                                        <label>{{ trans('admin/product.production_date') }}</label>
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input type="text" name="occasional_date[]" class="form-control picker date" placeholder="{{ trans('admin/product.production_date') }}" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>{{ trans('admin/product.quantity_available') }}</label>
-                                                        <input type="number" min="0" name="occasional_quantity[]" class="form-control" placeholder="{{ trans('admin/product.quantity') }}" />
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <div class="form-group add-date-action hidden">
-                                            <a href="#">{{ trans('admin/product.add_date') }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    jQuery(document).ready(function($) {
-                                        $('.add-date-action').show();
-                                        $('.add-date-action a').on('click', function(event) {
-                                            event.preventDefault();
-
-                                            var clone = $('.form-part-template').clone(true);
-                                            clone.removeClass('form-part-template').appendTo('.form-part-container');
-
-                                            // Reset clone and re-bind datepickers
-                                            clone.find('.picker.date').removeClass('bound');
-                                            clone.find('input').val('');
-                                            $(document).trigger('bindDatepicker');
-                                        });
-                                    });
-                                </script>
 
                                 <div class="row">
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12">
                                         @if ($product->productionType === 'occasional')
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>{{ trans('admin/product.production_date') }}</th>
                                                         <th class="text-right">{{ trans('admin/product.quantity') }}</th>
+                                                        <th class="text-right">{{ trans('admin/product.sold') }}</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $totalOrder = $orderQuantity;
+                                                        $totalProduction = 0;
+                                                    @endphp
+
                                                     @foreach ($product->productions()->sortBy('date')->all() as $production)
                                                         <tr>
                                                             <td>{{ $production->date->format('Y-m-d') }}</td>
                                                             <td class="text-right">{{ $production->quantity }}</td>
+                                                            <td class="text-right">
+                                                                @if ($orderQuantity > $production->quantity)
+                                                                    {{ $production->quantity }}
+                                                                @else
+                                                                    {{ $orderQuantity }}
+                                                                @endif
+                                                            </td>
                                                             <td>
                                                                 <div class="dropdown dropdown-action-component">
                                                                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -202,12 +150,91 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        @php
+                                                            $orderQuantity = $orderQuantity - $production->quantity;
+                                                            $totalProduction += $production->quantity;
+                                                        @endphp
                                                     @endforeach
+                                                    <tr>
+                                                        <td><b>{{ trans('admin/product.total') }}</b></td>
+                                                        <td class="text-right"><b>{{ $totalProduction }}</b></td>
+                                                        <td class="text-right"><b>{{ $totalOrder }}</b></td>
+                                                        <td></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         @endif
                                     </div>
-                                </div> <!-- Saved production end -->
+                                </div> <!-- Table end -->
+
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-part-container">
+                                            @if (Request::old('occasional_date'))
+                                                @foreach (Request::old('occasional_date') as $index => $occasional_date)
+                                                    <div class="{{ $index === 1 ? 'form-part-template' : '' }}">
+                                                        <div class="form-group">
+                                                            <label>
+                                                                {{ trans('admin/product.quantity_available') }}
+                                                                @include('account.field-error', ['field' => 'occasional_quantity[' . $index . ']'])
+                                                            </label>
+                                                            <input type="number" min="0" name="occasional_quantity[]" class="form-control" placeholder="Quantity" value="{{ Request::old('occasional_quantity')[$index] }}"/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                {{ trans('admin/product.production_date') }}
+                                                                @include('account.field-error', ['field' => 'occasional_date[' . $index . ']'])
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <input type="text" name="occasional_date[]" class="form-control picker date" placeholder="Date" value="{{ $occasional_date }}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <div class="form-part-template hidden">
+                                                    <div class="form-group">
+                                                        <label>{{ trans('admin/product.quantity_available') }}</label>
+                                                        <input type="number" min="0" name="occasional_quantity[]" class="form-control" placeholder="{{ trans('admin/product.quantity') }}" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>{{ trans('admin/product.production_date') }}</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <input type="text" name="occasional_date[]" class="form-control picker date" placeholder="{{ trans('admin/product.production_date') }}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group add-date-action hidden">
+                                    <a href="#">{{ trans('admin/product.add_production') }}</a>
+                                </div>
+
+                                <script>
+                                    jQuery(document).ready(function($) {
+                                        $('.add-date-action').show();
+                                        $('.add-date-action a').on('click', function(event) {
+                                            event.preventDefault();
+                                            var $formPartTemplate = $('.form-part-template');
+                                            if (!$formPartTemplate.is(':visible')) {
+                                                $formPartTemplate.removeClass('hidden');
+                                            } else {
+                                                var clone = $formPartTemplate.clone(true);
+                                                clone.removeClass('form-part-template').appendTo('.form-part-container');
+
+                                                // Reset clone and re-bind datepickers
+                                                clone.find('.picker.date').removeClass('bound');
+                                                clone.find('input').val('');
+                                                $(document).trigger('bindDatepicker');
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div> <!-- Card block end-->

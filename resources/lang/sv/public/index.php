@@ -41,6 +41,7 @@ return [
     'title' => 'Hitta lokala utlämningsplatser',
     'upcoming' => 'Kommande evenemang',
     'visit_node' => 'Besök utlämningsplatsen',
+    'welcome_to' => 'Välkommen till',
     'where' => 'Var: ',
     'when' => 'När: ',
     'what_is_lfn' => 'Det här är Local Food Nodes',

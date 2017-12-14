@@ -39,6 +39,7 @@ return [
     'title' => 'Find Nodes',
     'upcoming' => 'Upcoming events',
     'visit_node' => 'Visit node',
+    'welcome_to' => 'Welcome to',
     'where' => 'Where: ',
     'when' => 'When: ',
     'what_is_lfn' => 'This is Local Food Nodes',
