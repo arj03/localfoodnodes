@@ -10,7 +10,7 @@ return [
         </div>
     ',
     'create_node' => 'Crear un punto de entrega',
-    'create_node_header' => 'Empezar punto de entrega',
+    'create_node_header' => 'Crear punto de entrega',
     'create_node_info' => '
        ¿Quieres fortalecer la comida local en tu área? Cualquiera persona puede crear un punto de entrega en cualquier lugar y hacer que se pueda buscar en el mapa tanto para productores como para consumidores.
     ',
@@ -55,7 +55,6 @@ return [
     'co_fund_subheading' => 'Tu eliges cuánto quieres contribuir',
     'co_fund_paragraph' => 'Al hacerte miembro cofinancias esfuerzos para volver a hacer que la comida sea más local. Juntos creamos condiciones económicas para apoyar nuevas formas de organización local y un mercado de alimentos más local. A tráves de nuestros esfuerzos conjuntos podemos establecer la dirección para el suministro futuro de alimentos y crear recursos comunes para mejores oportunidades de impacto.',
     'co_fund_read_more' => 'Lee más sobre membresia',
-
 
     'monday' => 'Lunes',
     'tuesday' => 'Martes',
