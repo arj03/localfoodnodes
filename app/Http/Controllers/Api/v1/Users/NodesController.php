@@ -10,6 +10,6 @@ class NodesController extends \App\Http\Controllers\Controller
     public function nodes(Request $request)
     {
         $user = Auth::guard('api')->user();
-        return  $user->nodes();
+        return $user->nodes();
     }
 }

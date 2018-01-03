@@ -17,4 +17,16 @@ class NodesController extends \App\Http\Controllers\Controller
     {
         return Node::count();
     }
+
+    public function node(Request $request, $nodeId)
+    {
+        return Node::find($nodeId);
+    }
+
+    public function nodeDates(Request $request, $nodeId)
+    {
+        $node = Node::find($nodeId);
+
+        return $node->getDeliveryDatesWithProducts();
+    }
 }

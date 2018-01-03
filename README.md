@@ -29,5 +29,5 @@ We're using elixir, just run `gulp watch` in terminal.
 php artisan migrate --database='phpunit'
 php artisan db:seed --database='phpunit'
 
-# Renew certificate
-letsencrypt_webfaction --letsencrypt_account_email info@localfoodnodes.org --domains localfoodnodes.org --public ~/webapps/localfoodnodes_2/public --username [ssh username] --password [ssh password]
+# App development
+* Start ngrok with `./ngrok http -region=eu -hostname=app.localfoodnodes.org 192.168.10.10:80`

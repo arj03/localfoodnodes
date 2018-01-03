@@ -16,7 +16,14 @@ class UsersController extends \App\Http\Controllers\Controller
             } else {
                 return User::exclude(['email'])->get();
             }
-        } else if ($request->user()->tokenCan('users-read-self')) {
+        } else {
+            return response('Unauthorized', 403);
+        }
+    }
+
+    public function self(Request $request)
+    {
+        if ($request->user()->tokenCan('users-read-self')) {
             return Auth::guard('api')->user();
         } else {
             return response('Unauthorized', 403);
