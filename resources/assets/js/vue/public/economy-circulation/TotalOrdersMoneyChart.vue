@@ -49,7 +49,6 @@
                 }
             })
             .then(response => {
-                console.log(response);
                 this.loading = false;
                 this.data = this.formatData(response.data)
             });
@@ -58,6 +57,7 @@
             formatData(orders) {
                 let totalSum = _.sumBy(orders, order => {
                     let price = order.order_item_relationship[0].product.price;
+                    console.log(price);
                     let quantity = order.quantity;
 
                     return price * quantity;
