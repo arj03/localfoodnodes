@@ -49,6 +49,7 @@
                 }
             })
             .then(response => {
+                console.log(response);
                 this.loading = false;
                 this.data = this.formatData(response.data)
             });

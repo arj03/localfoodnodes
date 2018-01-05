@@ -2,7 +2,7 @@
 
 return [
     // USER
-    'user' => '<p>Smashing you came here. Signing up and using Local Food Nodes is incredible simple. Just create an account or simply just sign in via facebook if you rather.</p>
+    'user' => '<p>Smashing you came here. Signing up and using Local Food Nodes is incredible simple. Just create an account.</p>
     <p>By signing up, and becoming a supporting member you at the same time become a part of co-creating the local food supply. Now how about that!?
     But first, we have a few simple terms you need to read, understand and accept to be able to enter and go totally local.</p>
 

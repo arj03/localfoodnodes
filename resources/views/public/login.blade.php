@@ -36,9 +36,6 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card login-card">
-                    <div class="card-header">
-                        <a href="/login/facebook" class="btn btn-facebook"><i class="fa fa-facebook-square"></i> {{ trans('public/nav.facebook') }}</a>
-                    </div>
                     <div class="card-body">
                         <form action="/authenticate" method="post">
                             {{ csrf_field() }}

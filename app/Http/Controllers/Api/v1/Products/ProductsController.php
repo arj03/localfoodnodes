@@ -26,9 +26,7 @@ class ProductsController extends \App\Http\Controllers\Controller
             $productIds = $linkQuery->get()->pluck('product_id')->unique();
         }
 
-        $products = Product::where('is_hidden', 0)->whereIn('id', $productIds)->get();
-
-        return $products;
+        return Product::where('is_hidden', 0)->whereIn('id', $productIds)->get();
     }
 
     public function product(Request $request, $productId)

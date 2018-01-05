@@ -2,8 +2,6 @@
 
 // Auth
 Route::get('/login', 'AuthController@login');
-Route::get('/login/facebook', 'AuthController@facebookLogin');
-Route::get('/login/facebook/callback', 'AuthController@facebookLoginCallback');
 Route::get('/logout', 'AuthController@logout');
 Route::post('/authenticate', 'AuthController@authenticate');
 
@@ -19,8 +17,6 @@ Route::group(['prefix' => '/password'], function () {
 Route::group(['prefix' => '/admin'], function () {
     // Auth
     Route::get('/login', 'Admin\AdminAuthController@login');
-    Route::get('/login/facebook', 'Admin\AdminAuthController@facebookLogin');
-    Route::get('/login/facebook/callback', 'Admin\AdminAuthController@facebookLoginCallback');
     Route::get('/logout', 'Admin\AdminAuthController@logout');
     Route::post('/authenticate', 'Admin\AdminAuthController@authenticate');
 

@@ -34,9 +34,6 @@
                         {{ trans('public/nav.login_or_create') }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right login-card login-dropdown">
-                        <li class="card-header">
-                            <a href="/login/facebook" class="btn btn-facebook w-100"><i class="fa fa-facebook-square"></i> {{ trans('public/nav.facebook') }}</a>
-                        </li>
                         <li class="card-body">
                             <form action="/authenticate" method="post">
                                 {{ csrf_field() }}

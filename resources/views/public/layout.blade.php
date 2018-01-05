@@ -8,7 +8,6 @@
         <meta name="description" content="{!! $fbDescription or 'Local Food Nodes connects local food producers to local food consumers as well as strengthening those relationships that already exist. We enable direct transactions, resilient communities and regain control over what we eat and how it is produced. A desire to make food local again.' !!}">
 
         <!-- Facebook meta -->
-        <meta property="fb:app_id" content="923888444420982" />
         <meta property="og:url" content="{{ $shareUrl or app('url')->to('/') }}">
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{{ $shareTitle or 'Local Food Nodes' }}">
@@ -31,14 +30,6 @@
     </head>
     <body class="public {{ $viewName }} {{ Auth::check() && Auth::user()->active ? 'logged-in' : '' }}">
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.9&appId=923888444420982";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
         <div class="page">
             @include('account.user-nav')
             @include('public.nav')
