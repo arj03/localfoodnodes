@@ -400,9 +400,19 @@ class User extends \App\User\BaseUser
     /**
      * Define user relationship with node links.
      */
-    public function nodeLinks()
+    public function nodeLinkRelationship()
     {
         return $this->hasMany('App\User\UserNodeLink');
+    }
+
+    /**
+     * Node links.
+     *
+     * @return Collection
+     */
+    public function nodeLinks()
+    {
+        return $this->nodeLinkRelationship()->get();
     }
 
     /**
@@ -412,7 +422,7 @@ class User extends \App\User\BaseUser
      */
     public function nodes()
     {
-        return $this->nodeLinks()->get()->map(function($nodeLink) {
+        return $this->nodeLinkRelationship()->get()->map(function($nodeLink) {
             $node = $nodeLink->getNode();
 
             return $node->is_hidden ? null : $node;
@@ -427,7 +437,7 @@ class User extends \App\User\BaseUser
      */
     public function isAddedToNode($nodeId)
     {
-        $userNodeLink = $this->nodeLinks()->where('node_id', $nodeId);
+        $userNodeLink = $this->nodeLinkRelationship()->where('node_id', $nodeId);
         return $userNodeLink->count() === 1 ? true : false;
     }
 

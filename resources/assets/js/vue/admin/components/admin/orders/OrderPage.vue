@@ -27,7 +27,7 @@
                 }
             })
             .then(response => {
-                this.orders = response.data.reverse();
+                this.orders = _.values(response.data).reverse();
             });
         }
     }

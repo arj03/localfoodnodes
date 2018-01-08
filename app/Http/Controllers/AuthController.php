@@ -15,13 +15,15 @@ class AuthController extends Controller
 {
     private $loginFallbackUrl = '/account/user';
 
-
     /**
      * Login action.
      */
     public function login(Request $request)
     {
-        $request->session()->put('login_url', \URL::previous());
+        $previousUrl = '/account/user';
+        if ($this->shouldStoreRedirect(\URL::previous())) {
+            $request->session()->put('login_url', \URL::previous());
+        }
 
         if (Auth::check()) {
             $redirectUrl = $request->session()->get('login_url', $this->loginFallbackUrl);
@@ -29,6 +31,29 @@ class AuthController extends Controller
         }
 
         return view('public.login');
+    }
+
+    /**
+     * Check if previous url is a good url to redirect to. Avoiding to redirect back to /login for example.
+     *
+     * @return bool
+     */
+    private function shouldStoreRedirect($previousUrl)
+    {
+        $urls = [
+            '/login',
+            '/password/reset',
+        ];
+
+        $shouldStoreRedirect = true;
+
+        foreach ($urls as $url) {
+            if (strpos($previousUrl, $url)) {
+                $shouldStoreRedirect = false;
+            }
+        }
+
+        return $shouldStoreRedirect;
     }
 
     /**
