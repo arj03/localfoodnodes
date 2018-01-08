@@ -1,0 +1,30 @@
+<?php
+
+return [
+    // Breadcrumbs
+    'activate' => 'Activeer',
+    'adjust_production' => 'Productie aanpassen',
+    'change_password' => 'Wachtwoord wijzigen',
+    'create_account' => 'Account aanmaken',
+    'create_node' => 'Creër knooppunt',
+    'create_event' => 'Creër evenement',
+    'create_producer' => 'Creër producent',
+    'create_product' => 'Creër product',
+    'create_production' => 'Creër productie',
+    'create_variant' => 'Creër variant',
+    'dashboard' => 'Dashboard',
+    'delete' => 'Verwijder',
+    'deliveries' => 'Leveringen',
+    'delivery_dates' => 'Leverdata',
+    'edit' => 'Bewerken',
+    'events' => 'Evenement',
+    'guests' => 'Gast',
+    'membership' => 'Lidmaatschap',
+    'nodes' => 'Knooppunten',
+    'orders' => 'Bestellingen',
+    'order' => 'Bestelling',
+    'producers' => 'Producenten',
+    'products' => 'Product',
+    'users' => 'Gebruikers',
+    'variants' => 'Varianten',
+];

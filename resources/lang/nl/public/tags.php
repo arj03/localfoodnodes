@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'artisan_food' => 'Ambachtelijk eten',
+    'beer' => 'Bier',
+    'beverage' => 'Drank',
+    'bread' => 'Brood',
+    'csa' => 'Gemeenschapslandbouw',
+    'dairy_cheese' => 'Zuivel & kaas',
+    'eggs' => 'Eieren',
+    'fish' => 'Vis en zeevruchten',
+    'fruit_berries' => 'Fruit & bessen',
+    'grain_flour' => 'Graan & meel',
+    'icecream' => 'Ijs',
+    'jam_marmelade' => 'Jam & marmelade',
+    'meat' => 'Vlees',
+    'mushroom' => 'Paddenstoel',
+    'other' => 'Overig',
+    'pickled' => 'Ingelegd',
+    'potatoes' => 'Aardappels',
+    'poultry' => 'Gevogelte',
+    'sample' => 'Monster',
+    'seeds' => 'Zaden',
+    'vegetable' => 'Groente',
+    'honey' => 'Honing',
+];

@@ -22,11 +22,23 @@ class OrdersController extends \App\Http\Controllers\Controller
         if (!Cache::has('orders')) {
             $orders = OrderDateItemLink::all()->map(function($orderDateItemLink) {
                 // Exclude user details here
-                $orderDateItemLink->item = $orderDateItemLink->getItem();
-                $orderDateItemLink->date = $orderDateItemLink->getDate();
+                $item = $orderDateItemLink->getItem();
+                $date = $orderDateItemLink->getDate();
+
+                if ($item) {
+                    $orderDateItemLink->item = $item;
+                } else {
+                    return null;
+                }
+
+                if ($date) {
+                    $orderDateItemLink->date = $date;
+                } else {
+                    return null;
+                }
 
                 return $orderDateItemLink;
-            });
+            })->filter();
 
             Cache::put('orders', $orders, 60);
         }
