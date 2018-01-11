@@ -49,20 +49,18 @@
                 }
             })
             .then(response => {
-                console.log(response.data);
                 this.loading = false;
                 this.data = this.formatData(response.data);
             });
         },
         methods: {
             formatData(orders) {
+                orders = _.values(orders); // Convert to array
                 let totalSum = _.sumBy(orders, order => {
-                    if (order.order_item_relationship.length) {
-                        let price = order.order_item_relationship[0].product.price;
-                        let quantity = order.quantity;
+                    let price = parseInt(order.order_item_relationship[0].product.price);
+                    let quantity = parseInt(order.quantity);
 
-                        return price * quantity;
-                    }
+                    return price * quantity;
                 });
 
                 return {
