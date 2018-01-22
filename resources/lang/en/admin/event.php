@@ -25,7 +25,7 @@ return [
     'zip' => 'Zip',
 
     // How does it work
-    'hdiw_intro' => 'Skapa gärna evenemang någon gång per år kopplat till din verksamhet, som ett sätt att bygga relationer med dina konsumenter.',
+    'hdiw_intro' => 'Create events related to your business as a way to build relationships with your consumers.',
     'hdiw_item_1' => 'Create your event with the form to the left.',
     'hdiw_item_2' => 'Make the event visible through social media or other channels.',
     'hdiw_item_3' => 'Invite people.',

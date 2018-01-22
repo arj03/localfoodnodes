@@ -136,16 +136,13 @@ class ProductNodeDeliveryLink extends \App\BaseModel
         $orderDateItemLinks = $this->getOrderDateItemLinks();
 
         $orderQuantity = 0;
-        if (!$orderDateItemLinks->isEmpty()) {
+
+        if ($this->getProduct()->production_type === 'csa') {
+            $orderQuantity = $this->getOrderQuantityForCsaProduct();
+        } else if (!$orderDateItemLinks->isEmpty()) {
             $orderDateItemLinks->each(function($orderDateItemLink) use (&$orderQuantity) {
                 $orderItemQuantity = $orderDateItemLink->quantity;
                 $orderQuantity += (int) $orderItemQuantity;
-
-                // One CSA order may have many dates but since it's a subscribtion
-                // we only count the quantity for one date.
-                if ($orderDateItemLink->getItem()->product['production_type'] === 'csa') {
-                    return false; // Break
-                }
             });
         }
 
@@ -167,26 +164,27 @@ class ProductNodeDeliveryLink extends \App\BaseModel
     {
         $orderDateItemLinks = $this->getOrderDateItemLinks();
 
-        $variantOrderQuantity = new Collection();
+        $orderQuantity = 0; // Default
+
         if (!$orderDateItemLinks->isEmpty()) {
-            $orderDateItemLinks->each(function($orderDateItemLink) use (&$orderQuantity, &$variantOrderQuantity) {
-                $orderItem = $orderDateItemLink->getItem();
-                $orderItemQuantity = $orderDateItemLink->quantity;
-                $packageAmount = $orderItem->variant['package_amount'];
-                $orderQuantity = (int) $orderItemQuantity * (int) $packageAmount; // Calculated
+            if ($this->getProduct()->production_type === 'csa') {
+                $orderQuantity = $this->getOrderQuantityForCsaVariant($variant, $orderDateItemLinks);
+            } else {
+                $variantOrderQuantity = new Collection();
 
-                // One CSA order may have many dates but since it's a subscribtion
-                // we only count the quantity for one date per variant.
-                if ($orderItem->product['production_type'] === 'csa' && !$variantOrderQuantity->has($orderItem->variant['id'])) {
-                    $variantOrderQuantity->put($orderItem->variant['id'], $orderQuantity);
-                } else {
-                    // Add all
+                $orderDateItemLinks->each(function($orderDateItemLink) use (&$variantOrderQuantity) {
+                    $orderItem = $orderDateItemLink->getItem();
+                    
+                    $orderItemQuantity = $orderDateItemLink->quantity;
+                    $packageAmount = $orderItem->variant['package_amount'];
+                    $orderQuantity = (int) $orderItemQuantity * (int) $packageAmount; // Calculated
+
                     $variantOrderQuantity->put($orderDateItemLink->id, $orderQuantity);
-                }
-            });
-        }
+                });
 
-        $orderQuantity = $variantOrderQuantity->sum();
+                $orderQuantity = $variantOrderQuantity->sum();
+            }
+        }
 
         $productQuantity = $this->getProduct()->getProductionQuantity($this->date, $cartQuantity) * $this->getProduct()->mainVariant()->package_amount;
 
@@ -238,6 +236,64 @@ class ProductNodeDeliveryLink extends \App\BaseModel
         }
 
         return $orderDateItemLinks;
+    }
+
+    /**
+     * CSA products are a bit special since one order includes multiple dates.
+     * We don't want to sum the quantity for all dates, we only need one.
+     * 
+     * @return int $orderQuantity
+     */
+    private function getOrderQuantityForCsaProduct()
+    {
+        $orderQuantity = DB::table('order_date_item_links')
+        ->leftJoin('order_items', 'order_items.id', '=', 'order_date_item_links.order_item_id')
+        ->leftJoin('order_dates', 'order_dates.id', '=', 'order_date_item_links.order_date_id')
+        ->select(['order_dates.date', DB::raw('COUNT(order_date_item_links.quantity) AS quantity')])
+        ->where('order_items.product_id', $this->getProduct()->id)
+        ->groupBy('order_dates.date')
+        ->orderBy('quantity', 'desc')
+        ->pluck('quantity')
+        ->first();
+        
+        return $orderQuantity;
+    }
+
+    /**
+     * CSA products are a bit special since one order includes multiple dates.
+     * We don't want to sum the quantity for all dates, we only need one.
+     * 
+     * @return int order quantity
+     */
+    private function getOrderQuantityForCsaVariant($variant, $orderDateItemLinks)
+    { 
+        $groupedOrderDateItemLinks = new Collection();
+
+        $orderDateItemLinks->each(function($orderDateItemLink) use (&$groupedOrderDateItemLinks) {
+            $orderDateId = $orderDateItemLink->order_date_id;
+            
+            $alreadyAddedOrderDateItemLink = $orderDateItemLink;
+            
+            // If a orderDateItemLink with the same order_date_id has already
+            // been added we count up quantity for that date. We need to calculate
+            // the lowest common denominator for the addition to be correct.
+            if ($groupedOrderDateItemLinks->has($orderDateId)) {
+                $alreadyAddedOrderDateItemLink = $groupedOrderDateItemLinks->get($orderDateId);
+                
+                $orderItem = $orderDateItemLink->getItem();
+                $orderItemQuantity = $orderDateItemLink->quantity;
+                $packageAmount = $orderItem->variant['package_amount'];
+                $orderQuantity = (int) $orderItemQuantity * (int) $packageAmount; // Calculated
+
+                $alreadyAddedOrderDateItemLink->quantity += $orderQuantity;
+            }
+
+            $groupedOrderDateItemLinks->put($orderDateId, $alreadyAddedOrderDateItemLink);
+        });
+
+        // Sort by quantity and return largest number
+        $largest = $groupedOrderDateItemLinks->sortByDesc('quantity')->first();
+        return $largest->quantity;
     }
 
     /**

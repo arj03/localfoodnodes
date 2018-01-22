@@ -60,7 +60,7 @@
                     @endif
                 </div>
                 <div class="card-footer">
-                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variant/create">Create variant</a>
+                    <a href="/account/producer/{{ $producer->id }}/product/{{ $product->id }}/variant/create">{{ trans('admin/product.create_variant') }}</a>
                 </div>
             </div>
         </div>

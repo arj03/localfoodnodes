@@ -153,7 +153,7 @@ class ProductVariantController extends Controller
 
         $variant = new ProductVariant();
 
-        $errors = $variant->validate($variant->sanitize($data));
+        $errors = $variant->validate($data);
         if ($errors->isEmpty()) {
             $variant->fill($variant->sanitize($data));
             $variant->save();
