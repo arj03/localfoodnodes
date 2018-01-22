@@ -44,7 +44,6 @@ return [
     'number_of_products' => 'Cantidad de productos',
     'no_variants' => 'No hay variantes',
     'occasional_products' => 'Productes ocasional en venta',
-    'occasional_products_fresh_meat' => 'Producto ocasional en venta - Carne fresca',
     'occasional_products_info' => '
         Para productos producidos por lotes con un saldo fijo, por ejemplo miel, matanza y más.
         <ul class="list mt-3">

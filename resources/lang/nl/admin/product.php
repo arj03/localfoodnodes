@@ -2,6 +2,7 @@
 
 return [
     'add_date' => 'Datum toevoegen',
+    'add_production' => 'Productie toevoegen',
     'adjust_production_quantity_per_delivery' => 'Pas de productie aan voor specifieke leveringen',
     'adjust_production_quantity_per_week' => 'pas de hoeveelheid productie aan per week',
     'amount_per_package' => 'Hoeveelheid per verpakking',
@@ -40,9 +41,15 @@ return [
     'number_of_csa_subscribers' => 'Aantal gemeenschapslandbouw abonnees',
     'number_of_products' => 'Aantal producten',
     'no_variants' => 'Geen varianten',
-    'occasional_products' => 'Variabel product',
-    'occasional_products_fresh_meat' => 'Variabel product - vers vlees',
-    'occasional_products_info' => '',
+    'occasional_products' => 'Zelden product',
+    'occasional_products_info' => '
+		Voor producten die in vaste hoeveelheden worden geproduceerd, zoals honing, ingemaakte waren, producten van de slacht, etc. 
+		<ul class="list mt-3">
+			<li>De hoeveelheid van een product wordt vastgesteld op een vaste datum en telt af totdat het product uitverkocht is.</li>
+			<li>Je kan meerdere productiedata aanmaken. De aangegeven hoeveelheid van het product voor de nieuwe datum wordt bij de hoeveelheid van de vorige datum gevoegd. </li> 
+			<li>De hoeveelheid verloopt wanneer het product uitverkocht is, ongeacht op welke leverdata of afleverpunten het product product beschikbaar gesteld is.</li>
+		</ul>
+	',
     'occasional_specify_date_quantity' => 'Specificeer de datum en hoeveelheid vanaf wanneer het product beschikbaar is voor levering.',
     'other_options' => 'Andere opties (optioneel)',
     'package_amount_info' => 'Je hebt een prijs aangegeven in een gewichtseenheid. Schat het gewicht van de productinhoud in zodat de totale prijs voor de consument klopt bij de checkout.',
@@ -67,7 +74,14 @@ return [
     'quantity_available' => 'Hoeveelheid beschikbaar vanaf de bovenstaande datum',
     'recurring_products_weekly' => 'Terugkerend product met een wekelijks bepaalde voorraad',
     'recurring_products_per_delivery' => 'Terugkerend product met een per levering bepaalde voorraad',
-    'recurring_products_info' => '',
+    'recurring_products_info' => '
+		Voor producten die regelmatig geoogst worden en een terugkerende wekelijkse hoeveelheid hebben. Bijvoorbeeld eieren, snelgroeiende groente, etc.
+		<ul class="list mt-3">
+			<li>Wekelijkse hoeveelheid vernieuwt zichzelf elke week.</li>
+			<li>De wekelijkse hoeveelheid wordt gedeeld met meerdere afleverpunten. Dit betekent dat je aan meerdere afleverplekken kan leveren in dezelfde week, en dat de hoeveelheid van het product aftelt ongeacht bij wel afleverpunt het geboekt is.</li>
+			<li>Je kunt de hoeveelheid voor elke week individueel bepalen als je in sommige weken meer of minder produceert. Zorg er wel voor dat je dit ver van te voren doet.</li> 
+		</ul>
+	',
     'reload_page' => 'Pagina opnieuw laden',
     'save' => 'Opslaan',
     'save_product' => 'Product opslaan',
@@ -79,8 +93,10 @@ return [
     'select_tags' => 'Selecteer passende labels voor het product',
     'select_unit_product_content' => 'Selecteer eenheid voor productinhoud',
     'set_main_variant' => 'Stel in als hoofdvariant',
+    'sold' => 'Verkocht',
     'specify_number_products' => 'Specificieer de hoeveelheid producten voor elke levering',
     'title' => 'Product productie',
+    'total' => 'Totaal',
     'update_deliveries' => 'Update leveringen',
     'update_production' => 'Update productie',
     'variants' => 'Varianten',

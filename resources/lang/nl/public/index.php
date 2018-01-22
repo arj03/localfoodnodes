@@ -33,6 +33,7 @@ return [
     'title' => 'Vind knooppunten',
     'upcoming' => 'Aankomende evenementen',
     'visit_node' => 'Bezoek knooppunt',
+    'welcome_to' => 'Welkom bij',
     'where' => 'Waar: ',
     'when' => 'Wanneer: ',
     'what_is_lfn' => 'Dit is Local Food Nodes',

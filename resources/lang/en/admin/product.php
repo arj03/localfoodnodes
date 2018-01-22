@@ -44,7 +44,6 @@ return [
     'number_of_products' => 'Number of products',
     'no_variants' => 'No variants',
     'occasional_products' => 'Occasional product',
-    'occasional_products_fresh_meat' => 'Occasional product - Fresh meat',
     'occasional_products_info' => '
         For products produced in "batches" with a fixed balance, such as honey, pickling, slaughter, etc.
         <ul class="list mt-3">

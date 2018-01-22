@@ -44,7 +44,6 @@ return [
     'number_of_products' => 'Antal produkter',
     'no_variants' => 'Inga varianter',
     'occasional_products' => 'Sällanprodukt',
-    'occasional_products_fresh_meat' => 'Sällanprodukt - Färskt kött',
     'occasional_products_info' => '
         För produkter som produceras satsvis med ett fast saldo, tex honung, syltning, slakt mm.
         <ul class="list mt-3">
