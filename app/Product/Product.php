@@ -133,11 +133,19 @@ class Product extends \App\BaseModel
     }
 
     /**
+     * Define relationship with variants.
+     */
+    public function productVariantsRelationship()
+    {
+        return $this->hasMany('App\Product\ProductVariant');
+    }
+
+    /**
      * Get product variants.
      */
     public function productVariants()
     {
-        return $this->hasMany('App\Product\ProductVariant')->orderBy('price')->get();
+        return $this->productVariantsRelationship()->orderBy('price')->get();
     }
 
     /**
@@ -304,11 +312,19 @@ class Product extends \App\BaseModel
     }
 
     /**
+     * Define relationship with images.
+     */
+    public function imageRelationship()
+    {
+        return $this->hasMany('App\Image\Image', 'entity_id')->where('entity_type', 'product');
+    }
+
+    /**
      * Get images.
      */
     public function images()
     {
-        return $this->hasMany('App\Image\Image', 'entity_id')->where('entity_type', 'product')->get()->sortBy('sort');
+        return $this->imageRelationship()->get()->sortBy('sort');
     }
 
     /**

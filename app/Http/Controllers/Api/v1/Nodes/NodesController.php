@@ -10,7 +10,7 @@ class NodesController extends \App\Http\Controllers\Controller
 {
     public function nodes(Request $request)
     {
-        return Node::all();
+        return Node::with(['imageRelationship'])->get();
     }
 
     public function count(Request $request)
@@ -20,7 +20,7 @@ class NodesController extends \App\Http\Controllers\Controller
 
     public function node(Request $request, $nodeId)
     {
-        return Node::find($nodeId);
+        return Node::with(['imageRelationship'])->find($nodeId);
     }
 
     public function nodeDates(Request $request, $nodeId)

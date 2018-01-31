@@ -26,11 +26,34 @@ class ProductsController extends \App\Http\Controllers\Controller
             $productIds = $linkQuery->get()->pluck('product_id')->unique();
         }
 
-        return Product::where('is_hidden', 0)->whereIn('id', $productIds)->get();
+        return Product::with(['productVariantsRelationship', 'imageRelationship'])->where('is_hidden', 0)->whereIn('id', $productIds)->get();
     }
 
     public function product(Request $request, $productId)
     {
         return Product::find($productId);
+    }
+
+    public function dates(Request $request, $productId)
+    {
+        $product = Product::where('is_hidden', 0)->where('id', $productId)->first();
+        $nodeId = $request->input('node_id');
+        $variant = null;
+
+        if ($request->has('variant_id')) {
+            $variant = $product->variant($request->input('variant_id'));
+        }
+
+        $cartQuantity = null;
+
+        $dates = [];
+        $product->deliveryLinks($nodeId)->each(function($deliveryLink) use (&$dates, $variant, $cartQuantity) {
+            $date = $deliveryLink->date('Y-m-d');
+            $quantity = $deliveryLink->getAvailableQuantity($variant, $cartQuantity);
+
+            $dates[$date] = $quantity;
+        });
+
+        return $dates;
     }
 }

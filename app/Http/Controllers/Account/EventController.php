@@ -232,7 +232,7 @@ class EventController extends Controller
     /**
      * List all attending users for an event.
      */
-    public function guests(Request $request, $eventOwnerId, $eventId)
+    public function guests(Request $request, $eventOwnerType, $eventOwnerId, $eventId)
     {
         $user = Auth::user();
         $event = Event::find($eventId);

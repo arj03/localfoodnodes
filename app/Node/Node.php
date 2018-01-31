@@ -271,11 +271,19 @@ class Node extends BaseModel implements EventOwnerInterface
     }
 
     /**
+     * Define relationship with images.
+     */
+    public function imageRelationship()
+    {
+        return $this->hasMany('App\Image\Image', 'entity_id')->where('entity_type', 'node');
+    }
+
+    /**
      * Get images.
      */
     public function images()
     {
-        return $this->hasMany('App\Image\Image', 'entity_id')->where('entity_type', 'node')->get()->sortBy('sort');
+        return $this->imageRelationship()->get()->sortBy('sort');
     }
 
     /**

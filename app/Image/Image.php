@@ -10,6 +10,8 @@ use App\BaseModel;
 
 class Image extends BaseModel
 {
+    protected $appends = ['urls'];
+
     /**
      * Validation rules.
      *
@@ -187,8 +189,17 @@ class Image extends BaseModel
     {
         $filename = $this->getBasename($size) . $this->getExtension();
 
-        if (Storage::disk('s3')->exists($filename)) {
-            return Storage::disk('s3')->url($filename);
-        }
+        // if (Storage::disk('s3')->exists($filename)) {
+        return Storage::disk('s3')->url($filename);
+        // }
+    }
+
+    public function getUrlsAttribute()
+    {
+        return [
+            'small' => $this->url('small'),
+            'medium' => $this->url('medium'),
+            'large' => $this->url('large'),
+        ];
     }
 }
