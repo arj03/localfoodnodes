@@ -28,7 +28,7 @@ return [
     'email' => 'Correo electrónico',
     'email_placeholder' => 'Tu dirección de correo electrónico',
     'events' => 'Evento',
-    'event_name' => 'Nombre del evento',
+    'event' => 'Evento',
     'fee' => 'Entrada',
     'item_total' => 'Producto total',
     'language' => 'Idioma',

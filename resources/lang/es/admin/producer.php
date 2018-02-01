@@ -39,7 +39,7 @@ return [
     'edit_delivery_dates' => 'Editar fecha de entrega',
     'email' => 'Correo electrónico',
     'events' => 'Evento',
-    'event_name' => 'Nombre del evento',
+    'event' => 'Evento',
     'info' => 'Info',
     'invite_admin' => 'Invitar a un administrador',
     'leave_producer' => 'Dejar cuenta de productor',

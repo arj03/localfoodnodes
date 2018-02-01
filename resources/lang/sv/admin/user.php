@@ -28,7 +28,7 @@ return [
     'email' => 'Email',
     'email_placeholder' => 'Din epostadress',
     'events' => 'Evenemang',
-    'event_name' => 'Evenemangsnamn',
+    'event' => 'Evenemang',
     'fee' => 'Avgift',
     'item_total' => 'Produkt total',
     'language' => 'Språk',

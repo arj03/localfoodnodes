@@ -15,12 +15,14 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>{{ trans('admin/user.event-name') }}</th>
+                                        <th>{{ trans('admin/user.event') }}</th>
                                     </tr>
                                 </thead>
                                 @foreach ($user->eventLinks() as $eventLink)
                                     <tr>
-                                        <td>{{ $eventLink->getEvent()->name }}</td>
+                                        <td>
+                                            <a href="{{ $eventLink->getEvent()->permalink()->url }}">{{ $eventLink->getEvent()->name }}</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </table>

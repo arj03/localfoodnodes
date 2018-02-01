@@ -39,7 +39,7 @@ return [
     'edit_delivery_dates' => 'Edit delivery dates',
     'email' => 'Email',
     'events' => 'Events',
-    'event_name' => 'Event name',
+    'event' => 'Event',
     'info' => 'Info',
     'invite_admin' => 'Invite admin',
     'leave_producer' => 'Leave producer',

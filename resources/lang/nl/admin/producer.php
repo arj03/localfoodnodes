@@ -39,7 +39,7 @@ return [
     'edit_delivery_dates' => 'Bewerk leverdata',
     'email' => 'E-mail',
     'events' => 'Evenementen',
-    'event_name' => 'Naam evenement',
+    'event' => 'Evenement',
     'info' => 'Info',
     'invite_admin' => 'Nodig beheerder uit',
     'leave_producer' => 'Verlaat producent',

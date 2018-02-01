@@ -28,7 +28,7 @@ return [
     'email' => 'Email',
     'email_placeholder' => 'Your email address',
     'events' => 'Events',
-    'event_name' => 'Event name',
+    'event' => 'Event',
     'fee' => 'Fee',
     'item_total' => 'Item total',
     'language' => 'Language',

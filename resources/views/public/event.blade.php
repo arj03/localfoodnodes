@@ -3,7 +3,7 @@
 @section('title', $event->name)
 
 @section('content')
-    <div class="header">
+    <div class="shop-header">
         <div class="top">
             <div class="row">
                 <div class="col-12 col-xl-7">

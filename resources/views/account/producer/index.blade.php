@@ -217,7 +217,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>{{ trans('admin/producer.event_name') }}</th>
+                                    <th>{{ trans('admin/producer.event') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

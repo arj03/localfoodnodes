@@ -28,7 +28,7 @@ return [
     'email' => 'E-mail',
     'email_placeholder' => 'Jouw e-mailadres',
     'events' => 'Evenementen',
-    'event_name' => 'Naam van evenement',
+    'event' => 'Evenement',
     'fee' => 'Bijdrage',
     'item_total' => 'Totaal aantal items',
     'language' => 'Taal',

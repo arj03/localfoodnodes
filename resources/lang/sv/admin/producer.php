@@ -39,7 +39,7 @@ return [
     'edit_delivery_dates' => 'Redigera leveransdatum',
     'email' => 'Email',
     'events' => 'Evenemang',
-    'event_name' => 'Evenemangsnamn',
+    'event' => 'Evenemang',
     'info' => 'Info',
     'invite_admin' => 'Bjud in admin',
     'leave_producer' => 'Lämna producentkonto',
