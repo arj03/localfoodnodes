@@ -104,10 +104,10 @@ class OrderDateItemLink extends \App\BaseModel
     {
         $price = $this->getItem()->variant ?  $this->getItem()->variant['price'] : $this->getItem()->product['price'];
 
-        if ($this->getItem()->product['price_unit'] === 'product') {
-            // Sold by product
-            return $price * $this->quantity;
-        } else {
+        if ($this->getItem()->product['production_type'] === 'csa') {
+            $csaPrice = $price / $this->getItem()->getProduct()->deliveryLinks()->count();
+            return round($this->quantity * $csaPrice);
+        } else if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             // Sold by weight
             if ($this->getItem()->variant) {
                 $variant = $this->getItem()->variant;
@@ -120,6 +120,9 @@ class OrderDateItemLink extends \App\BaseModel
 
                 return $price * $this->quantity * $packageAmount;
             }
+        } else {
+            // Sold by product
+            return $price * $this->quantity;
         }
     }
 

@@ -174,7 +174,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
 
                 $orderDateItemLinks->each(function($orderDateItemLink) use (&$variantOrderQuantity) {
                     $orderItem = $orderDateItemLink->getItem();
-                    
+
                     $orderItemQuantity = $orderDateItemLink->quantity;
                     $packageAmount = $orderItem->variant['package_amount'];
                     $orderQuantity = (int) $orderItemQuantity * (int) $packageAmount; // Calculated
@@ -241,7 +241,7 @@ class ProductNodeDeliveryLink extends \App\BaseModel
     /**
      * CSA products are a bit special since one order includes multiple dates.
      * We don't want to sum the quantity for all dates, we only need one.
-     * 
+     *
      * @return int $orderQuantity
      */
     private function getOrderQuantityForCsaProduct()
@@ -255,31 +255,31 @@ class ProductNodeDeliveryLink extends \App\BaseModel
         ->orderBy('quantity', 'desc')
         ->pluck('quantity')
         ->first();
-        
+
         return $orderQuantity;
     }
 
     /**
      * CSA products are a bit special since one order includes multiple dates.
      * We don't want to sum the quantity for all dates, we only need one.
-     * 
+     *
      * @return int order quantity
      */
     private function getOrderQuantityForCsaVariant($variant, $orderDateItemLinks)
-    { 
+    {
         $groupedOrderDateItemLinks = new Collection();
 
         $orderDateItemLinks->each(function($orderDateItemLink) use (&$groupedOrderDateItemLinks) {
             $orderDateId = $orderDateItemLink->order_date_id;
-            
+
             $alreadyAddedOrderDateItemLink = $orderDateItemLink;
-            
+
             // If a orderDateItemLink with the same order_date_id has already
             // been added we count up quantity for that date. We need to calculate
             // the lowest common denominator for the addition to be correct.
             if ($groupedOrderDateItemLinks->has($orderDateId)) {
                 $alreadyAddedOrderDateItemLink = $groupedOrderDateItemLinks->get($orderDateId);
-                
+
                 $orderItem = $orderDateItemLink->getItem();
                 $orderItemQuantity = $orderDateItemLink->quantity;
                 $packageAmount = $orderItem->variant['package_amount'];

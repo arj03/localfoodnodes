@@ -36,8 +36,9 @@ class ProducerOrder extends Mailable
     {
         $subject = trans('public/email.incoming_order') . ' - ' . $this->user->name;
 
-        return $this->from(['address' => 'info@localfoodnodes.org', 'name' => 'Local Food Nodes'])
+        return $this->from(['address' => 'no-reply@localfoodnodes.org', 'name' => 'Local Food Nodes'])
         ->subject($subject)
+        ->replyTo($this->user->email, $this->user->name)
         ->view('email.producer-order');
     }
 }

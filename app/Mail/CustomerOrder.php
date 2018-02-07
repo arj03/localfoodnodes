@@ -32,7 +32,7 @@ class CustomerOrder extends Mailable
     {
         $subject = trans('public/email.order_confirmation') . ' - ' . date('Y-m-d');
 
-        return $this->from(['address' => 'info@localfoodnodes.org', 'name' => 'Local Food Nodes'])
+        return $this->from(['address' => 'no-reply@localfoodnodes.org', 'name' => 'Local Food Nodes'])
         ->subject($subject)
         ->view('email.customer-order');
     }

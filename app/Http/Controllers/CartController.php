@@ -34,7 +34,7 @@ class CartController extends Controller
         $today = new \DateTime(date('Y-m-d'));
 
         // Remove passed dates
-        // Todo: remove cart completely if there are no dates  
+        // Todo: remove cart completely if there are no dates
         $cartDates->each(function($cartDate) use ($today) {
             if ($cartDate->date < $today) {
                 $cartDateItemLinks = $cartDate->cartDateItemLinks();
@@ -62,8 +62,8 @@ class CartController extends Controller
 
         // Validate
         $errors = $this->validateAddItemRequest($request, $product);
-        
-        // Abort and display errors 
+
+        // Abort and display errors
         if (!$errors->isEmpty()) {
             $request->session()->flash('error', $errors->all());
             return redirect()->back()->withInput()->withErrors($errors);
@@ -189,17 +189,18 @@ class CartController extends Controller
 
         if ($cartDateItemLink->getItem()->product['production_type'] === 'csa') {
             // CSA is all or nothing
-            $errors = $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) use ($product, $variant, $node, $quantity) {
+            $return = $user->cartItems($cartDateItemLink->getItem()->product['id'])->map(function($cartItem) use ($product, $variant, $node, $quantity) {
                 return $cartItem->cartDateItemLinks()->map(function($cartDateItemLink) use ($product, $variant, $node, $quantity) {
                     return $this->validateAndUpdateCartDateItemLink($cartDateItemLink, $product, $variant, $node, $quantity);
                 });
             })->flatten()->first();
         } else {
-            $errors = $this->validateAndUpdateCartDateItemLink($cartDateItemLink, $product, $variant, $node, $quantity);
+            $return = $this->validateAndUpdateCartDateItemLink($cartDateItemLink, $product, $variant, $node, $quantity);
         }
 
-        // Todo: Add errors to request
-        $request->session()->flash('error', $errors->all());
+        if ($return->errors) {
+            $request->session()->flash('error', $return->errors->all());
+        }
 
         return redirect('/checkout');
     }

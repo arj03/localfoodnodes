@@ -16,10 +16,10 @@ trait CartLogic
 {
     /**
      * Validate request to add one item to cart.
-     * 
+     *
      * @param Request $reqest
      * @param Product $product
-     * @return Collection $errors 
+     * @return Collection $errors
      */
     private function validateAddItemRequest($request, $product)
     {
@@ -52,11 +52,8 @@ trait CartLogic
      */
     private function add($data, $user, $producer, $product, $variant, $node)
     {
-        // Get existing cart dates for node and create the ones missing 
+        // Get existing cart dates for node and create the ones missing
         $existingCartDates = $user->cartDates();
-
-        \Log::debug(var_export($existingCartDates, true));
-        \Log::debug(var_export($data['delivery_dates'], true));
 
         $this->createCartDates($data['delivery_dates'], $existingCartDates, $user, $node);
         $cartDates = $user->cartDates($data['delivery_dates']);
@@ -153,9 +150,9 @@ trait CartLogic
 
         if ($availableQuantity < $quantity) {
             if ($product->productionType === 'csa') {
-                $errors->add('quantity_changed_no_date', trans('public/product.quantity_changed_no_date'));
+                $errors->add('error', trans('public/product.quantity_changed_no_date'));
             } else {
-                $errors->add('quantity_changed', trans('public/product.quantity_changed', [
+                $errors->add('error', trans('public/product.quantity_changed', [
                     'date' => $cartDateItemLink->getDate()->date('Y-m-d')
                 ]));
             }
@@ -166,7 +163,10 @@ trait CartLogic
         $cartDateItemLink->quantity = $quantity;
         $cartDateItemLink->save();
 
-        return $errors;
+        return (object) [
+            'errors' => $errors->isEmpty() ? false : $errors,
+            'cartDateItemLink' => $cartDateItemLink,
+        ];
     }
 
     /**
@@ -246,9 +246,9 @@ trait CartLogic
 
     /**
      * Remove emojis from string
-     * 
+     *
      * @param string $string String with emojis
-     * @return string $string String without emojis 
+     * @return string $string String without emojis
      */
     private function removeEmojis($string){
         return preg_replace('/([0-9|#][\x{20E3}])|[\x{00ae}|\x{00a9}|\x{203C}|\x{2047}|\x{2048}|\x{2049}|\x{3030}|\x{303D}|\x{2139}|\x{2122}|\x{3297}|\x{3299}][\x{FE00}-\x{FEFF}]?|[\x{2190}-\x{21FF}][\x{FE00}-\x{FEFF}]?|[\x{2300}-\x{23FF}][\x{FE00}-\x{FEFF}]?|[\x{2460}-\x{24FF}][\x{FE00}-\x{FEFF}]?|[\x{25A0}-\x{25FF}][\x{FE00}-\x{FEFF}]?|[\x{2600}-\x{27BF}][\x{FE00}-\x{FEFF}]?|[\x{2900}-\x{297F}][\x{FE00}-\x{FEFF}]?|[\x{2B00}-\x{2BF0}][\x{FE00}-\x{FEFF}]?|[\x{1F000}-\x{1F6FF}][\x{FE00}-\x{FEFF}]?/u', '', $string);

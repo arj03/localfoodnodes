@@ -409,56 +409,20 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function getNextDelivery($product = null)
     {
-        $firstDate = $this->getFirstDeliveryDate();
+        $firstDate = $this->delivery_startdate;
 
         $firstProductionDate = null;
         if ($product && $product->production_type === 'occasional') {
             $firstProductionDate = $product->productions()->first()->date;
         }
 
-        if ($firstProductionDate) {
+        if ($firstProductionDate && $firstProductionDate > $firstDate) {
             while ($firstProductionDate > $firstDate) {
                 $firstDate->modify($this->delivery_interval);
             }
         }
 
         return $firstDate;
-    }
-
-    /**
-     * Recursive function that finds the first delivery with regard to current date or start date and product deadline.
-     *
-     * @param Product $product
-     * @param DateTime $currentDate used in loop
-     * @return DateTime
-     */
-    private function getFirstDeliveryDate(\DateTime $currentDate = null)
-    {
-        // Current date is the first possible date for a delivery
-        if (!$currentDate) {
-            $currentDate = new \DateTime(date('Y-m-d'));
-
-            // If current date is smaller than the nodes start date
-            if ($currentDate < $this->delivery_startdate) {
-                $currentDate = $this->delivery_startdate;
-            }
-        }
-
-        // Create first delivery date from current date and node delivery interval
-        $deliveryInterval = $this->getDeliveryIntervalFormat();
-        $deliveryInterval .= ' ' . $currentDate->format('Y-m'); // Add current date for looping to work
-
-        $deliveryDate = new \DateTime(date('Y-m-d', strtotime($deliveryInterval)));
-
-        // Check if delivery date is before current date
-        if ($deliveryDate < $currentDate) {
-            // Modify with interval
-            $deliveryDate->modify($deliveryInterval);
-            // And call recursive
-            $deliveryDate = $this->getFirstDeliveryDate($deliveryDate);
-        }
-
-        return $deliveryDate;
     }
 
     /**
@@ -485,21 +449,26 @@ class Node extends BaseModel implements EventOwnerInterface
      */
     private function weekOfMonth(\DateTime $date, $asInt = false) {
         $firstOfMonth = strtotime(date('Y-m-01', $date->getTimestamp()));
+        $lastOfMonth = strtotime(date('Y-m-t', $date->getTimestamp()));
+        $numberOfWeeksForMonth = intval(date('W', $lastOfMonth)) - intval(date('W', $firstOfMonth)) + 1;
+
         $week = intval(date('W', $date->getTimestamp())) - intval(date('W', $firstOfMonth)) + 1; // Starts at 1
-        $week = $week - 1;
 
         if ($asInt) {
             return $week;
         }
 
         $formats = [
-            '0' => 'first',
-            '1' => 'second',
-            '2' => 'third',
-            '3' => 'fourth',
-            '4' => 'fifth',
-            '5' => 'last'
+            '1' => 'first',
+            '2' => 'second',
+            '3' => 'third',
+            '4' => 'fourth',
+            '5' => 'fifth',
+            '6' => 'last'
         ];
+
+        // Make sure every index that is equal or larger
+        // than $numberOfWeeksForMonth is 'last'.
 
         return $formats[$week];
     }

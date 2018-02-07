@@ -108,7 +108,7 @@ class CartDateItemLink extends \App\BaseModel
 
         if ($this->getItem()->product['production_type'] === 'csa') {
             $csaPrice = $price / $this->getItem()->getProduct()->deliveryLinks()->count();
-            return round($csaPrice);
+            return round($this->quantity * $csaPrice);
         } else if (\UnitsHelper::isStandardUnit($this->getItem()->product['price_unit'])) {
             // Sold by weight
             if ($this->getItem()->variant) {
