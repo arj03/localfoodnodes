@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'newsletter' => 'Nyhetsbrev',
-    'join' => 'Få senaste informationen från Local Food Nodes.',
-    'subscribe' => 'Prenumerera',
-    'your_email' => 'Din e-post',
+    'newsletter' => 'Nyhedsbrev',
+    'join' => 'Få seneste informationen fra Local Food Nodes.',
+    'subscribe' => 'Tilmeld',
+    'your_email' => 'Din email',
 ];

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'in_cart' => 'produkt i kundvagn|produkter i kundvagn',
+    'in_cart' => 'produkt i kurven|produkter i kurven',
 ];
