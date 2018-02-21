@@ -1,28 +1,28 @@
 <?php
 
 return [
-    'user_header' => 'Skapa konto',
+    'user_header' => 'Opret konto',
     'user' => '
         <p>
-            Hej och välkommen till Local Food Nodes!
-            Hitta lokala matutlämningar nära dig och börja boka mat direkt från dina lokala producenter.
-            Skapa ett konto nedan för att börja eller logga enkelt in direkt med ditt Facebookkonto.
-
+            Hej og velkommen til Local Food Nodes!
+            Find lokale udvekslingssteder nær dig og køb direkte fra lokale producenter.
+            Opret en konto nedenfor for at begynde eller log in direkte med din facebookkonto.
         </p>
         <p class="mb-5">
-        För att kunna skicka bokningar behöver du bli stödmedlem genom att betala en årlig medlemsavgift.Avgiften är individuell och du bestämmer helt själv hur mycket du vill bidra med i avgift. Du avgör själv vad som passar för din ekonomiska situation och hur mycket du tycker att detta verktyg är värt för dig och vårt samhälle. Vad du än väljer för summa är du med och skapar och medfinansierar en hälsosammare och mer lokal matförsörning! Du kan läsa mer om stödmedlemskap här (kommer snart) eller skapa ett konto för att gå vidare.
+           Det er gratis at benytte denne side, men for at oprette ordre skal du være medlem.
+           Beløbet du betaler for dit medlemsskab bestemmer du selv! Det er dig som bestemmer hvor meget du synes, dig og dit lokale community får ud af det. Derfor uanset beløbet er du med til at finansere et sundere og mere lokalt madsystem. Læs mere om medlemskab (kommer snart), eller opret dig og gå i gang med det samme.
         </p>
     ',
-    'node_header' => 'Skapa nod',
+    'node_header' => 'Opret udvekslingspunkt',
     'node' => '
         <p class="mb-5">
-            Hej där lokalorganisatör och varmt välkommen till Local Food Nodes! Härligt att du är intresserad av att starta upp en lokal utlämningsplats (nod) i ditt närområde. Att starta en nod är gratis och väldigt enkelt. För att kunna göra det behöver du först skapa ett konto, eller bara logga in med ditt Facebookkonto om du föredrar det.
+           Hej lokale organisator og velkommen til Local Food Nodes. Det er fantastisk at du vil starte et udvekslingspunkt i dit område. Det er gratis og meget simpelt at komme i gang. Først skal du oprette en konto eller logge ind med facebook hvis du foretrækker.
         </p>
     ',
-    'producer_header' => 'Skapa producentkonto',
+    'producer_header' => 'Opret producentkonto',
     'producer' => '
         <p class="mb-5">
-        Hej där ärade matproducent och välkommen till Local Food Nodes! Det här är ett gratisverktyg för producenter att tillsammans och med era lokala konsumenter skapa framtidens matförsörjning. Här kan du tillgängliggöra, administrera och sälja produkter direkt till slutkunder, helt utan mellanhänder. För att kunna göra detta måste du först skapa ett konto, eller bara logga in med ditt Facebookkonto om du föredrar det.
+           Hej der lokale madhelt og velkommen til Local Food Nodes. Dette er et gratis og åbent værktøj for producenter til at udvikle fremtidens loakale mad sammen med andre producenter og lokale kunder. Her kan du liste, administrere og sælge dine produkter direkte til kunderne uden noget mellemmand. For at gøre dette skal du først oprette en konto eller logge ind med facebook hvis du foretrækker.
         </p>
     ',
 ];
