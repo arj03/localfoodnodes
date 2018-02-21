@@ -1,32 +1,32 @@
 <?php
 
 return [
-    'after_placing_order' => 'Vad kommer hända när jag skickat min bokning?',
-    'become_member' => 'Bli medlem',
+    'after_placing_order' => 'Hvad sker der efter jeg placerer min ordre?',
+    'become_member' => 'Bliv medlem',
     'become_member_info' => '
-        <p>Du behöver bli medlem för att kunna skicka din bokning. Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad.</p>
-        <p>Med våra gemensamma insatser kan vi tillsammans staka ut riktingen för framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.</p>
+        <p>Du skal være medlem for at oprette en ordre. Ved at blive medlem medfinanserer du udviklingen af lokal madproduktion. Sammen skaber vi de økonomiske vilkår som understøtter nye former for lokal organisering og mere lokalt mad.</p>
+        <p>Sammen laver vi fremtidens madsystem.</p>
     ',
-    'cart' => 'Varukorg',
-    'cart_empty' => 'Din varukorg är tom',
-    'cart_item_update_failed' => 'Produkten kunde inte uppdateras.',
-    'continue_shopping' => 'Fortsätt handla',
-    'delivery' => 'Utlämning|Utlämningar',
-    'go_to_checkout' => 'Gå till kassan',
-    'how_it_works' => 'Så fungerar det',
-    'message' => 'Meddelande',
-    'node' => 'Nod',
-    'pick_it_up' => 'Producenten kommer leverera dina bokade produkter på det specificerade datumet och den specificerade noden. Du behöver bara vara där och hämta.',
+    'cart' => 'Indkøbskurv',
+    'cart_empty' => 'Din indkøbskurv er tom',
+    'cart_item_update_failed' => 'Produktet kunne ikke opdateres.',
+    'continue_shopping' => 'Fortsæt med at handle',
+    'delivery' => 'Udlevering|Udleveringer',
+    'go_to_checkout' => 'Gå til kassen',
+    'how_it_works' => 'Sådan fungerer det',
+    'message' => 'Besked',
+    'node' => 'Udvekslingspunkt',
+    'pick_it_up' => 'Producenten afleverer din ordre til udvekslingspunktet på den dato du har forespurgt. Du skal bare hente den.',
     'price' => 'Pris',
     'producer' => 'Producent',
     'producers' => 'Producenter',
     'product' => 'Produkt',
     'products' => 'Produkter',
     'quantity' => 'Antal',
-    'recieve_instruction' => 'Du och producenten kommer få vars en e-postbekräftelse. Du kan titta dina kommande <a href="/account/user/pickups">utlämningar</a> för översikt och betalningsinstruktioner.',
-    'remove' => 'Ta bort',
-    'send_order' => 'Skicka bokning',
-    'summary' => 'Summering',
-    'title' => 'Varukorg',
-    'total' => 'Summa',
+    'recieve_instruction' => 'Du og producenten vil modtage en ordrebekræftelse på email. Du kan altid se dine fremtidige <a href="/account/user/pickups">afhentninger</a> og finde betalingsoplysninger.',
+    'remove' => 'Fjern',
+    'send_order' => 'Send ordre',
+    'summary' => 'Opsummering',
+    'title' => 'Køb',
+    'total' => 'Total',
 ];
