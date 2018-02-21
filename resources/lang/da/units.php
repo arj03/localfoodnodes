@@ -2,9 +2,9 @@
 
 return [
     // Variants
-    'bag' => 'Pose|Posar',
+    'bag' => 'Pose|Poser',
     'bottle' => 'Flaske|Flasker',
-    'jar' => 'Glad|Glas',
+    'jar' => 'Glas|Glas',
     'pieces' => 'Stk',
 
     // SI units
