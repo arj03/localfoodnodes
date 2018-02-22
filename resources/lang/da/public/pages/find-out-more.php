@@ -30,7 +30,7 @@ return [
 
     'paragraph_4_1' => 'Når du er logget ind kan du nemt finde de nærmeste udvekslingssteder ved at klikke på Local Food Nodes-ikonet i øverste venstre hjørne. Kig på kortet eller søg og klik på dem du synes om. Derefter kan du oprette din ordre (du behøver ikke at være tilknyttet et udvekslingssted for at bestille mad fra det, det gør det bare nemmere)',
 
-    'header_5' => 'Hent din mad',
+    'header_5' => 'Hent dine varer',
 
 'paragraph_5_1' => 'Maden du har bestilt vil være tilgængelig på et foruddefineret tidspunkt og sted som står på din ordre. Disse informationer vil blive sendt til dig via email og vil også være tilgængelige fra brugermenuen. Du kan hente dit mad direkte fra den enkelt producent og du kan lave alle betalinger direkte med producenten. Dette sikrer at producenten beholder 100% af pengene for det de producerer.',
 
