@@ -2,7 +2,7 @@
 
 return [
     'title' => 'Medlemskab',
-    'header' => 'Medfinanser fremtidens mad!',
+    'header' => 'Medfinansier fremtidens mad!',
     'sub_header' => 'Bliv medlem og vær med i et nyt madsystem',
     'body' => '
         <p>Som medlem er du med til at finansiere udviklingen af fremtidens madsystem. Vi kan alle være med og påvirke udviklingen af den mad vi spiser.</p>
