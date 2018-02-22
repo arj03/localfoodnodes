@@ -9,8 +9,8 @@ return [
             Opret en konto nedenfor for at begynde eller log in direkte med din facebookkonto.
         </p>
         <p class="mb-5">
-           Det er gratis at benytte denne side, men for at oprette ordre skal du være medlem.
-           Beløbet du betaler for dit medlemsskab bestemmer du selv! Det er dig som bestemmer hvor meget du synes, dig og dit lokale community får ud af det. Derfor uanset beløbet er du med til at finansere et sundere og mere lokalt madsystem. Læs mere om medlemskab (kommer snart), eller opret dig og gå i gang med det samme.
+           Det er gratis at benytte denne side, men for at oprette en bestilling skal du være medlem.
+           Beløbet du betaler for dit medlemskab bestemmer du selv! Det er dig som bestemmer hvor meget du synes, du og dit lokalsamfund får ud af det. Uanset beløbet er du derfor med til at finansiere et sundere og mere lokalt madsystem. Læs mere om medlemskab (kommer snart), eller opret dig og gå i gang med det samme.
         </p>
     ',
     'node_header' => 'Opret udvekslingspunkt',
