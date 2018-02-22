@@ -35,7 +35,7 @@ return [
         </div>
     ',
     'economy_page' => '
-        <p>Local Food Nodes som en organisation mener at tillid og indsigt er kerneværdier hvis vi skal bygge et bedre system. For at opbygge denne model omkring økonomi sammen skal vi være 100% transparent omkring hvordan vi bruges penge.</p>
+        <p>Local Food Nodes som organisation mener at tillid og indsigt er kerneværdier hvis vi skal bygge et bedre system. For at opbygge denne model omkring økonomi sammen skal vi være 100% transparent omkring hvordan vi bruges penge.</p>
 
         <p>Vi er community projekt og for at fungere skal vi skabe tillid ved at vise hvordan organisationen fungerer.</p>
 
