@@ -41,7 +41,7 @@ return [
 
         <p>Det vi viser her er finanserne for det indeværende år og vi gemmer data så man kan gå tilbage i tid og se hvordan vi har udviklet os historisk.</p>
 
-        <p>Herunder kan du se en grafisk repræsentation af alle indtægter og udgifter for indeværende år. Du kan også se samtlige transaktioner som er registreret i vores bankkonto så du har alle detaljerne.</p>
+        <p>Herunder kan du se en grafisk repræsentation af alle indtægter og udgifter for indeværende år. Du kan også se samtlige transaktioner som er registreret på vores bankkonto så du har alle detaljerne.</p>
 
         <p>For en længere analyse kan du læse vores artikel som er skrevet på medium (kommer snart).</p>
     ',
