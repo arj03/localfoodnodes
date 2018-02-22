@@ -9,7 +9,7 @@ return [
 
         <p>Medlemskontigentet støtter arbejdet med at øge mængden af fødevarer som produceres og spises lokalt. Det støtter lokalt jordbrug, lokal fødevaredistribution og styrker den lokale økonomi. Det bruges til at øge andelen af fødevarer der produceres af landmænd vi kender personligt.</p>
 
-        <p>Local Food Nodes er et open source værktøj som hjælper med af crowfundere det nødvendige infrastruktur, modeller og initiativer for at gøres vores mad lokalt igen. Vi gør dette sammen vha. medlemskontigent du selv bestemmer størrelsen af. </p>',
+        <p>Local Food Nodes er et open source værktøj som hjælper med af crowdfunde den nødvendige infrastruktur samt modeller og initiativer for at gøres vore fødevarer lokale igen. Vi gør dette sammen vha. medlemskontigent du selv bestemmer størrelsen af.</p>',
 
     'block_2_header' => 'Dette muliggør dit kontigent',
     'block_2_content' => '<p>Local Food Node sætter et årligt budget nødvendigt for at drive platformen, videreudvikle samt andet. Al indkomst større en budgettet vil blive geninvesteret gennem den lokale udviklingsfond. Mere information omkring fonden kommer snart.</p>',
