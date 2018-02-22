@@ -5,7 +5,7 @@ return [
     'header' => 'Medfinansier fremtidens mad!',
     'sub_header' => 'Bliv medlem og vær med i et nyt fødevaresystem',
     'body' => '
-        <p>Som medlem er du med til at finansiere udviklingen af fremtidens fødevaresystem. Vi kan alle være med og påvirke udviklingen af den mad vi spiser.</p>
+        <p>Som medlem er du med til at finansiere udviklingen af fremtidens fødevaresystem. Vi kan alle være med til at påvirke udviklingen af den mad vi spiser.</p>
 
         <p>Medlemskontigent støtter arbejdet med at øge mængden af mad som produceres og spises lokalt. Det støtter lokalt jordbrug, lokal maddistribution og styrker den lokale økonomi. Det bruges til at øge andelen af mad produceren af landmænd vi kender personligt.</p>
 
