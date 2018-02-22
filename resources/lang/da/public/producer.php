@@ -2,10 +2,10 @@
 
 return [
     'title' => 'Producent information',
-    'from' => 'Från',
+    'from' => 'Fra',
     'products' => 'Produkter',
-    'no_products' => 'Det finns inga produkter tillgängliga',
-    'events' => 'Event',
-    'no_events' => 'har inte planerat något event för tillfället',
-    'images' => 'Bilder',
+    'no_products' => 'Der er ingen produkter tilgængelig',
+    'events' => 'Begivenheder',
+    'no_events' => 'har ingen begivenheder lige nu',
+    'images' => 'Billeder',
 ];
