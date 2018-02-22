@@ -4,7 +4,7 @@ return [
     'title' => 'Find ud af mere',
 
     'header_1' => 'Local Food Nodes',
-    'subheader_1' => 'Et sundere madsystem',
+    'subheader_1' => 'Et sundere fødevaresystem',
 
     'paragraph_1_1' => 'Vi laver local food nodes for at sætte lokale producenter i forbindelse med lokale konsumenter såvel som at styrke de relationer som allerede findes. Vi vil gøre direkte transaktioner muligt, lave stærkere lokalsamfund og få magten tilbage over hvad vi spiser og hvordan det er produceret. Et ønske om at lave mad lokalt igen.
 
@@ -14,7 +14,7 @@ return [
 
     'paragraph_1_4' => 'Ved at benytte platformen og støtte projektet kan du hjælpe med at udvikle og med-financere en ny model for local madproduktion og distribution. Årligt medlemsskab, som man selv bestemmer størrelsen af, vil gøre projektet så brugbart som vi selv bestemmer.',
 
-    'paragraph_1_5' => 'Velkommen til Local Food Nodes, en platform hvor vi laver et lokalt madsystem, sammen..',
+    'paragraph_1_5' => 'Velkommen til Local Food Nodes, en platform hvor vi laver et lokalt fødevaresystem, sammen…',
 
     'paragraph_1_6' => 'Læs mere om vores vision for fremtidens mad, vores økonomiske filosofi, baggrunden for projektet og hvor vi er på vej hen her. (kommer snart)',
 
