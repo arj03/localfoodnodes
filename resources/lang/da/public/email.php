@@ -1,23 +1,23 @@
 <?php
 
 return [
-    'activate_your_account' => 'Aktivera ditt konto',
+    'activate_your_account' => 'Aktiver din konto',
     'activate_text' => '
-        Ditt konto på Local Food Nodes har skapats och för att aktivera kontot du behöver nu bekräfta din epostadress. Klicka på knappen nedan för att bekräfta din epostadress.
+        Din konto på Local Food Nodes er blevet oprettet og for at aktivere den skal du bekræfte din email adresse. Klik på knappen nedenfor for at bekræfte din email adresse.
     ',
-    'delivery' => 'Utlämning',
+    'delivery' => 'Leveringer',
     'hi' => 'Hej',
-    'incoming_order' => 'Ny bokning',
-    'order_confirmation' => 'Bokningsbekräftelse',
-    'order_from' => 'Bokning - ',
-    'pickup' => 'Utlämning',
+    'incoming_order' => 'Ny ordre',
+    'order_confirmation' => 'Ordrebekræftelse',
+    'order_from' => 'Ordre fra',
+    'pickup' => 'Til opsamling',
     'quantity' => 'Antal',
-    'reset_your_password' => 'Återställ ditt lösenord',
+    'reset_your_password' => 'Nulstil din adgangskode',
     'reset_password_text' => '
-        Du påbörjade nyligen processen för att återställa ditt lösenord på localfoodnodes.org. Klicka på knappen nedan för att fortsätta med återställningen av ditt lösenord.
+        Du har for nyligt anmodet om at få din adgangskode nulstillet for din konto på localfoodnodes.org. Klik på knappen herunder for at komme videre til siden for nulstilling af adgangskoden.
     ',
-    'reset_password_mistake' => 'Om du inte har begärt ändring av ditt lösenord ber vi dig ignorera detta mail.',
-    'view_orders' => 'Visa beställningar',
-    'view_deliveries' => 'Visa utlämningar',
-    'welcome' => 'Välkommen',
+    'reset_password_mistake' => 'Hvis du ikke har lavet denne anmodning kan du se bort fra denne email.',
+    'view_orders' => 'Vis ordre',
+    'view_deliveries' => 'Vis leveringer',
+    'welcome' => 'Velkommen',
 ];
