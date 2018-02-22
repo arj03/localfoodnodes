@@ -26,7 +26,7 @@ return [
 
     'paragraph_3_2' => 'Du er velkommen til at kigge rundt på sitet, besøge udvekslingsstedet tæt på dig og putte lækre fødevarer i din indkøbskurv, men for at kunne placere en ordre skal du først være medlem af platformen. Du kan gøre dette ved at betale et årligt beløb. Hvor meget du betaler er helt op til dig: Du bestemmer selv hvad du har råd til og hvad du synes servicen er værd for dig og fællesskabet. Uanset beløbet, er du med til at støtte sundere fødevarer i fremtiden. Tak for det!',
 
-    'header_4' => 'Besøg udvekslingsstedet du er interesseret i og bestil din lokale mad',
+    'header_4' => 'Besøg udvekslingsstedet du er interesseret i og bestil dine lokalt producerede fødevarer',
 
     'paragraph_4_1' => 'Når du er logget ind kan du nemt finde de nærmeste udvekslingssteder ved at klikke på Local Food Nodes ikonet i øverste venstre hjørne. Kig på kortet eller søg og klik på dem du kan li'. Derefter kan du oprette din ordre (du behøver ikke være følge et udvekslingssted for at bestille mad fra det, det gør det bare nemmere)',
 
