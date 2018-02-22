@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'artisan_food' => 'Håndlavet mad',
+    'artisan_food' => 'Håndlavede fødevarer',
     'beer' => 'Øl',
-    'beverage' => 'Dryck',
+    'beverage' => 'Drikkevarer',
     'bread' => 'Brød',
     'csa' => 'CSA',
     'dairy_cheese' => 'Mejeri & ost',
@@ -11,7 +11,7 @@ return [
     'fish' => 'Fisk & skaldyr',
     'fruit_berries' => 'Frugt & bær',
     'icecream' => 'Is',
-    'grain_flour' => 'Mel',
+    'grain_flour' => 'Mel & gryn',
     'jam_marmelade' => 'Marmelade',
     'meat' => 'Kød',
     'mushroom' => 'Svampe',
@@ -19,10 +19,10 @@ return [
     'other' => 'Andet',
     'pastries' => 'Kager',
     'pickled' => 'Syltet',
-    'potatoes' => 'Katofler',
+    'potatoes' => 'Kartofler',
     'poultry' => 'Fjerkræ',
     'sample' => 'Smagsprøve',
     'seeds' => 'Frø',
     'vegetable' => 'Grøntsager',
-    'honey' => 'Honing',
+    'honey' => 'Honning',
 ];
