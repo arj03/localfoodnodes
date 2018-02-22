@@ -24,7 +24,7 @@ return [
 
     'paragraph_3_1' => 'Du kan nemt oprette en konto gratis, eller simpelt logge ind vha. facebook.',
 
-    'paragraph_3_2' => 'Du er velkommen til at kigge rundt på sitet, besøge udvekslingsstedet tæt på dig og put lækkert mad i din indkøbskurv, men for at placere en ordre skal du først blive et medlem på platformen. Du kan gøre dette ved at betale et årligt beløb. Hvor meget du betaler er helt op til dig. Det er op til dig at bestemme hvad du har råd til og hvad du synes servicen er værd for dig og fællesskabet. Ligegyldigt beløbet, er du med til at støtte et sundere mad i fremtiden. Tak for det!',
+    'paragraph_3_2' => 'Du er velkommen til at kigge rundt på sitet, besøge udvekslingsstedet tæt på dig og putte lækre fødevarer i din indkøbskurv, men for at kunne placere en ordre skal du først være medlem af platformen. Du kan gøre dette ved at betale et årligt beløb. Hvor meget du betaler er helt op til dig: Du bestemmer selv hvad du har råd til og hvad du synes servicen er værd for dig og fællesskabet. Uanset beløbet, er du med til at støtte sundere fødevarer i fremtiden. Tak for det!',
 
     'header_4' => 'Besøg udvekslingsstedet du er interesseret i og bestil din lokale mad',
 
