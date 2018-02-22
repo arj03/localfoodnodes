@@ -32,7 +32,7 @@ return [
 
     'header_5' => 'Hent dine varer',
 
-'paragraph_5_1' => 'Maden du har bestilt vil være tilgængelig på et foruddefineret tidspunkt og sted som står på din ordre. Disse informationer vil blive sendt til dig via email og vil også være tilgængelige fra brugermenuen. Du kan hente dit mad direkte fra den enkelt producent og du kan lave alle betalinger direkte med producenten. Dette sikrer at producenten beholder 100% af pengene for det de producerer.',
+    'paragraph_5_1' => 'Varerne du har bestilt vil være tilgængelig på et forudbestemt tidspunkt og sted som står på din ordre. Disse oplysninger vil blive sendt til dig via email og vil også være tilgængelige fra brugermenuen. Du kan hente dine varer direkte fra den enkelt producent og du kan foretager alle betalinger direkte med producenten. Dette sikrer at producenten beholder 100% af betalingen for deres produkter.',
 
     'paragraph_5_2' => 'Betaling kan aftales mellem producent og kunde. Producenten kan indikere hvilken form for betaling de kan modtage når du bestiller. Betaling kan ske på forhånd, når I mødes eller ved en faktura. Det kunne f.eks. være kontant, mobilepay eller bankoverførsel.',
 
