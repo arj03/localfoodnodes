@@ -16,7 +16,7 @@ return [
     'node_header' => 'Opret udvekslingspunkt',
     'node' => '
         <p class="mb-5">
-           Hej lokale organisator og velkommen til Local Food Nodes. Det er fantastisk at du vil starte et udvekslingspunkt i dit område. Det er gratis og meget simpelt at komme i gang. Først skal du oprette en konto eller logge ind med facebook hvis du foretrækker.
+           Hej lokale organisator og velkommen til Local Food Nodes. Det er fantastisk at du vil starte et udvekslingspunkt i dit område. Det er gratis og meget enkelt at komme i gang. Først skal du oprette en konto eller logge ind med facebook hvis du foretrækker dét.
         </p>
     ',
     'producer_header' => 'Opret producentkonto',
