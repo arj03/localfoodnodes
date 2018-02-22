@@ -39,7 +39,7 @@ return [
 
         <p>Vi er et community-projekt og for at fungere skal vi skabe tillid ved at vise hvordan organisationen fungerer.</p>
 
-        <p>Det vi viser her er finanserne for det indeværende år og vi gemmer dataene så man kan gå tilbage i tid og se hvordan vi har udviklet os historisk.</p>
+        <p>Det vi viser her er finanserne for det indeværende år og vi gemmer data så man kan gå tilbage i tid og se hvordan vi har udviklet os historisk.</p>
 
         <p>Herunder kan du se en grafisk repræsentation af alle indtægter og udgifter for indeværende år. Du kan også se samtlige transaktioner som er registreret i vores bankkonto så du har alle detaljerne.</p>
 
