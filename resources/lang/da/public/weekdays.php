@@ -2,10 +2,10 @@
 
 return [
     'monday' => 'Mandag|Mandage',
-    'tuesday' => 'Tirsdag|Tisdage',
+    'tuesday' => 'Tirsdag|Tirsdage',
     'wednesday' => 'Onsdag|Onsdage',
     'thursday' => 'Torsdag|Torsdage',
     'friday' => 'Fredag|Fredage',
-    'saturday' => 'Lørdag|Lørdaga',
+    'saturday' => 'Lørdag|Lørdage',
     'sunday' => 'Søndag|Søndage',
 ];
