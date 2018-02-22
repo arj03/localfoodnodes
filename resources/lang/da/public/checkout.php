@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'after_placing_order' => 'Hvad sker der efter jeg placerer min ordre?',
+    'after_placing_order' => 'Hvad sker der efter jeg afgiver min ordre?',
     'become_member' => 'Bliv medlem',
     'become_member_info' => '
         <p>Du skal være medlem for at oprette en ordre. Ved at blive medlem medfinanserer du udviklingen af lokal madproduktion. Sammen skaber vi de økonomiske vilkår som understøtter nye former for lokal organisering og mere lokalt mad.</p>
