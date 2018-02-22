@@ -18,7 +18,7 @@ return [
 
     'paragraph_1_6' => 'Læs mere om vores vision for fremtidens fødevarer, vores økonomiske filosofi, baggrunden for projektet og hvor vi er på vej hen her. (kommer snart)',
 
-    'header_2' => 'Så fungerer det',
+    'header_2' => 'Sådan fungerer det',
 
     'header_3' => 'Opret en konto og bliv støttende medlem',
 
