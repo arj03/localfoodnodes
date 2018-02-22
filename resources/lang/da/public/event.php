@@ -2,6 +2,6 @@
 
 return [
     'information' => 'Information',
-    'not_going' => 'Kommer inte',
+    'not_going' => 'Kommer ikke',
     'going' => 'Kommer',
 ];
