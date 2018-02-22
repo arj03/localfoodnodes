@@ -11,8 +11,8 @@ return [
 
         <p>Local Food Nodes er et open source værktøj som hjælper med af crowdfunde den nødvendige infrastruktur samt modeller og initiativer for at gøres vore fødevarer lokale igen. Vi gør dette sammen vha. medlemskontigent du selv bestemmer størrelsen af.</p>',
 
-    'block_2_header' => 'Dette muliggør dit kontigent',
-    'block_2_content' => '<p>Local Food Node sætter et årligt budget nødvendigt for at drive platformen, videreudvikle samt andet. Al indkomst større en budgettet vil blive geninvesteret gennem den lokale udviklingsfond. Mere information omkring fonden kommer snart.</p>',
+    'block_2_header' => 'Sådan anvendes dit kontigent',
+    'block_2_content' => '<p>Local Food Node lægger et årligt budget der er nødvendigt for at drive og videreudvikle platformen. Al indkomst større end budgettet vil blive geninvesteret gennem den lokale udviklingsfond. Mere information omkring fonden kommer snart.</p>',
 
     'block_3_header' => 'Fuld transperans',
     'block_3_content' => '<p>Direkte forhold mellem producent og konsument kræver fuld transperans for at skabe tillid og for samudvikling af fødevaresystemet. På samme måde ser vi nødvendigheden af at platformen, udviklingsværtøjer og de økonomiske midler er total transperente.</p>
