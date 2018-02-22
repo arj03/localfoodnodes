@@ -7,7 +7,7 @@ return [
     'body' => '
         <p>Som medlem er du med til at finansiere udviklingen af fremtidens fødevaresystem. Vi kan alle være med til at påvirke udviklingen af den mad vi spiser.</p>
 
-        <p>Medlemskontigent støtter arbejdet med at øge mængden af mad som produceres og spises lokalt. Det støtter lokalt jordbrug, lokal maddistribution og styrker den lokale økonomi. Det bruges til at øge andelen af mad produceren af landmænd vi kender personligt.</p>
+        <p>Medlemskontigentet støtter arbejdet med at øge mængden af fødevarer som produceres og spises lokalt. Det støtter lokalt jordbrug, lokal fødevaredistribution og styrker den lokale økonomi. Det bruges til at øge andelen af fødevarer der produceres af landmænd vi kender personligt.</p>
 
         <p>Local Food Nodes er et open source værktøj som hjælper med af crowfundere det nødvendige infrastruktur, modeller og initiativer for at gøres vores mad lokalt igen. Vi gør dette sammen vha. medlemskontigent du selv bestemmer størrelsen af. </p>',
 
