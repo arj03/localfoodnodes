@@ -6,7 +6,7 @@ return [
     'header_1' => 'Local Food Nodes',
     'subheader_1' => 'Et sundere fødevaresystem',
 
-    'paragraph_1_1' => 'Vi laver Local Food Nodes for at sætte lokale producenter i forbindelse med lokale konsumenter såvel som at styrke de relationer som allerede findes. Vi vil gøre direkte transaktioner muligt, lave stærkere lokalsamfund og få magten tilbage over hvad vi spiser og hvordan det er produceret. Et ønske om at lave mad lokalt igen.
+    'paragraph_1_1' => 'Vi laver Local Food Nodes for at sætte lokale producenter i forbindelse med lokale konsumenter, såvel som for at styrke de relationer som allerede findes. Vi vil gøre direkte transaktioner mulige, lave stærkere lokalsamfund og få magten tilbage over hvad vi spiser og hvordan det er produceret. Et ønske om at lave mad lokalt igen.',
 
     'paragraph_1_2' => 'Resultatet af dette ønske er digitalt værktøj hvor fødevareproducenter fremviser deres mad, lokale kunder bestiller hvad de kan li' og betalinger går direkte mellem kunden og producenten. Folk kan hente eller få afleveret maden når det passer. Der hvor det sker kalder vi for et udveklsningspunkt, det er her kunder og producenter mødes. Denne type organisation gør producenter i stand til at levere til flere kunder på samme tid mens kunderne kan få mad fra mange forskellige producenter.',
 
