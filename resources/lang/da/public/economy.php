@@ -35,13 +35,13 @@ return [
         </div>
     ',
     'economy_page' => '
-        <p>Local Food Nodes som en organisation mener at tillid og indsigt er kerneværdier hvis vi skal bygge et bedre system. For at opbygge denne model omkring økonomi sammen skal vi være 100% transparent omkring hvordan vi bruges penge.</p>
+        <p>Local Food Nodes som organisation mener at tillid og indsigt er kerneværdier hvis vi skal bygge et bedre system. For at opbygge denne model omkring økonomi sammen skal vi være 100% transparent omkring hvordan vi bruges penge.</p>
 
-        <p>Vi er community projekt og for at fungere skal vi skabe tillid ved at vise hvordan organisationen fungerer.</p>
+        <p>Vi er et community-projekt og for at fungere skal vi skabe tillid ved at vise hvordan organisationen fungerer.</p>
 
-        <p>Det vi viser her er finanserne for det indeværende år og vi gemmer dataene så man kan gå tilbage i tid og se hvordan vi har udviklet os historisk.</p>
+        <p>Det vi viser her er finanserne for det indeværende år og vi gemmer data så man kan gå tilbage i tid og se hvordan vi har udviklet os historisk.</p>
 
-        <p>Herunder kan du se en grafisk repræsentation af alle indtægter og udgifter for indeværende år. Du kan også se samtlige transaktioner som er registreret i vores bankkonto så du har alle detaljerne.</p>
+        <p>Herunder kan du se en grafisk repræsentation af alle indtægter og udgifter for indeværende år. Du kan også se samtlige transaktioner som er registreret på vores bankkonto så du har alle detaljerne.</p>
 
         <p>For en længere analyse kan du læse vores artikel som er skrevet på medium (kommer snart).</p>
     ',
