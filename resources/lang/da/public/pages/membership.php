@@ -17,7 +17,7 @@ return [
     'block_3_header' => 'Fuld transparens',
     'block_3_content' => '<p>Direkte forhold mellem producent og konsument kræver fuld transparens for at skabe tillid og for samudvikling af fødevaresystemet. På samme måde ser vi nødvendigheden af at platformen, udviklingsværtøjer og de økonomiske midler er helt transparente.</p>
 
-    <p>Derfor er Local Food Nodes open source og alle økonomiske transaktioner, hvor mange penge vi modtager, hvordan pengene forvaltes er åbent for alle at se. Vi laver også metrikker omkring vores mål at øge antallet af lokale madrelationer, lokal cirkulering af penge og mindskelse af afstanden til mad hvilket vi vil offentligøre på sitet.</p>
+    <p>Derfor er Local Food Nodes open source og alle økonomiske transaktioner, hvor mange penge vi modtager, hvordan pengene forvaltes er åbent for alle at se. Vi laver også metrikker omkring vores mål mht. at øge antallet af lokale fødevarerelationer, lokal cirkulering af penge og mindskelse af afstanden til fødevarer, hvilket vi vil offentligøre på sitet.</p>
 
     <p>Vi laver også struktur for ejerskab for platformen og organisationen hvor udviklere, admininistratorer, producenter og forbrugere alle vil have noget at sige i hvordan udviklingen skal fortsætte og hvordan pengene skal bruges. Mere information kommer snart.</p>',
 
