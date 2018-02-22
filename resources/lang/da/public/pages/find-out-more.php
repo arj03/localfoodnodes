@@ -28,7 +28,7 @@ return [
 
     'header_4' => 'Besøg udvekslingsstedet du er interesseret i og bestil dine lokalt producerede fødevarer',
 
-    'paragraph_4_1' => 'Når du er logget ind kan du nemt finde de nærmeste udvekslingssteder ved at klikke på Local Food Nodes ikonet i øverste venstre hjørne. Kig på kortet eller søg og klik på dem du kan li'. Derefter kan du oprette din ordre (du behøver ikke være følge et udvekslingssted for at bestille mad fra det, det gør det bare nemmere)',
+    'paragraph_4_1' => 'Når du er logget ind kan du nemt finde de nærmeste udvekslingssteder ved at klikke på Local Food Nodes-ikonet i øverste venstre hjørne. Kig på kortet eller søg og klik på dem du synes om. Derefter kan du oprette din ordre (du behøver ikke at være tilknyttet et udvekslingssted for at bestille mad fra det, det gør det bare nemmere)',
 
     'header_5' => 'Hent din mad',
 
