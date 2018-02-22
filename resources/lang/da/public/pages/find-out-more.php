@@ -12,7 +12,7 @@ return [
 
     'paragraph_1_3' => 'Med Local Food Nodes vil vi lave et åbent og collaborativt crowfunding-værktøj som gør det muligt at få sundere og mere lokalt producerede fødevarer og gøre økonomien lokal igen.',
 
-    'paragraph_1_4' => 'Ved at benytte platformen og støtte projektet kan du hjælpe med at udvikle og med-financere en ny model for local madproduktion og distribution. Årligt medlemsskab, som man selv bestemmer størrelsen af, vil gøre projektet så brugbart som vi selv bestemmer.',
+    'paragraph_1_4' => 'Ved at benytte platformen og støtte projektet kan du hjælpe med at udvikle og medfinansiere en ny model for lokal fødevareproduktion og -distribution. Medlemskabet, hvis årlige kontingent man selv bestemmer størrelsen af, vil gøre projektet så brugbart som vi selv bestemmer.',
 
     'paragraph_1_5' => 'Velkommen til Local Food Nodes, en platform hvor vi laver et lokalt fødevaresystem, sammen…',
 
