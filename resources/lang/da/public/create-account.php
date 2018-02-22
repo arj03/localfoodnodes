@@ -22,7 +22,7 @@ return [
     'producer_header' => 'Opret producentkonto',
     'producer' => '
         <p class="mb-5">
-           Hej der lokale madhelt og velkommen til Local Food Nodes. Dette er et gratis og åbent værktøj for producenter til at udvikle fremtidens loakale mad sammen med andre producenter og lokale kunder. Her kan du liste, administrere og sælge dine produkter direkte til kunderne uden noget mellemmand. For at gøre dette skal du først oprette en konto eller logge ind med facebook hvis du foretrækker.
+           Hej lokale madhelt og velkommen til Local Food Nodes. Dette er et gratis og åbent værktøj for producenter til at udvikle fremtidens lokale fødevarer sammen med andre producenter og lokale kunder. Her kan du opliste, administrere og sælge dine produkter direkte til kunderne uden nogen mellemmand. For at gøre dette skal du først oprette en konto eller logge ind med facebook hvis du foretrækker dét.
         </p>
     ',
 ];
