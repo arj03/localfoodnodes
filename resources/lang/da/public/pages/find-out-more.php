@@ -10,7 +10,7 @@ return [
 
     'paragraph_1_2' => 'Resultatet af dette ønske er et digitalt værktøj hvor fødevareproducenter fremviser deres produkter, lokale kunder bestiller hvad de kan li\' og betalinger foregår direkte mellem kunden og producenten. Folk kan hente eller få afleveret varen når det passer dem. Stedet hvor det sker kalder vi for et udvekslingspunkt; det er her kunder og producenter mødes. Denne type organisation gør producenter i stand til at levere til flere kunder på samme tid, mens kunderne kan få mad fra mange forskellige producenter.',
 
-    'paragraph_1_3' => 'Med Local Food Nodes vil vi lave et åbent og collaborativt crowfunding værtktøj som gør det muligt at få mere lokalt og sundt produceret mad og gøre økonomien lokal igen.',
+    'paragraph_1_3' => 'Med Local Food Nodes vil vi lave et åbent og collaborativt crowfunding-værktøj som gør det muligt at få sundere og mere lokalt producerede fødevarer og gøre økonomien lokal igen.',
 
     'paragraph_1_4' => 'Ved at benytte platformen og støtte projektet kan du hjælpe med at udvikle og med-financere en ny model for local madproduktion og distribution. Årligt medlemsskab, som man selv bestemmer størrelsen af, vil gøre projektet så brugbart som vi selv bestemmer.',
 
