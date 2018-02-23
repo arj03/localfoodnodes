@@ -2,7 +2,7 @@
 
 return [
     'newsletter' => 'Nyhedsbrev',
-    'join' => 'Få seneste informationen fra Local Food Nodes.',
+    'join' => 'Få seneste nyt fra Local Food Nodes.',
     'subscribe' => 'Tilmeld',
     'your_email' => 'Din email',
 ];

@@ -8,7 +8,7 @@ return [
     'request_no_order' => 'Kunne ikke finde ordren.',
     'request_no_order_item' => 'Kunne ikke finde varen på ordren.',
     'request_no_event' => 'Kunne ikke finde din begivenhed.',
-    'request_no_node' => 'Kunne ikke finde node kontoen.',
+    'request_no_node' => 'Kunne ikke finde nodekontoen.',
 
     // Event
     'event_created' => 'Din begivenhed er oprettet.',
@@ -45,26 +45,26 @@ return [
     'production_deleted' => 'Produktionen er slettet.',
 
     // Admin management
-    'admin_removed' => 'Du er ikke længere admin for :name.',
+    'admin_removed' => 'Du er ikke længere administrator for :name.',
     'invite_no_user' => 'Inviterede bruger findes ikke.',
-    'invite_cancelled' => 'Admin invitation er ikke længere gyldig.',
-    'invite_accepted' => 'Din er nu admin for :name.',
+    'invite_cancelled' => 'Administratorinvitation er ikke længere gyldig.',
+    'invite_accepted' => 'Du er nu admininistrator for :name.',
     'invite_sent' => 'Invitation er blevet sendt.',
     'user_invited' => 'Bruger er allerede inviteret.',
-    'user_is_admin' => 'Bruger er allerede admin.',
+    'user_is_admin' => 'Bruger er allerede administrator.',
 
     // User
     'user_account_email_sent' => 'Der er sendt et link til at aktivere din konto på email.',
     'user_account_activated' => 'Din konto er aktiveret.',
     'user_account_activation_failed' => 'Din konto kunne ikke aktiveres. Kontakt venligst support for hjælp.',
     'user_account_created' => 'Din konto er oprettet.',
-    'user_account_updated' => 'Din oplysninger er ændret.',
+    'user_account_updated' => 'Dine oplysninger er ændret.',
     'user_account_deleted' => 'Din konto er slettet.',
     'user_password_changed' => 'Din adgangskode er ændret.',
     'user_password_not_changed' => 'Din adgangskode kunne ikke ændres.',
-    'user_membership_amount_not_numeric' => 'Beløbet for medlemsskab er ikke er tal.',
-    'user_membership_success' => 'Dit medlemsskab er nu betalt.',
-    'user_membership_error' => 'Medlemskabsbetaling kunne ikke gennemføres. :errors',
+    'user_membership_amount_not_numeric' => 'Beløbet for medlemskab skal være et tal.',
+    'user_membership_success' => 'Dit medlemskab er nu betalt.',
+    'user_membership_error' => 'Kontingentbetaling kunne ikke gennemføres. :errors',
 
     // Password reset
     'password_reset_email_sent' => 'Vi har sendt et link til at nulstille din adgangskode.',
@@ -73,17 +73,17 @@ return [
     'required_fields_missing' => 'Påkrævede felter er tomme.',
     'required' => 'Påkrævet.',
     'session_expired' => 'Din session er udløbet, log in igen.',
-    'order_deleted' => 'Order er slettet.',
+    'order_deleted' => 'Ordre er slettet.',
 
     // Auth
-    'invalid_login_request' => 'Ugyldig login forespørgsel.',
-    'invalid_access_token' => 'Ugyldig access token.',
-    'invalid_user_data' => 'Ugyldig brugerdata.',
-    'reset_link_expired' => 'Link til nulstilling af passsword er løbet ud.',
-    'invalid_login' => 'Forkert login',
+    'invalid_login_request' => 'Ugyldig login-forespørgsel.',
+    'invalid_access_token' => 'Ugyldigt access-token.',
+    'invalid_user_data' => 'Brugerdata ugyldig.',
+    'reset_link_expired' => 'Link til nulstilling af passsword er udløbet.',
+    'invalid_login' => 'Ugyldigt login',
 
     // Migration
     'user_migrate_not_valid' => 'Email kan ikke migreres. Opret venligst en ny konto.',
-    'user_migrate_already_exists' => 'Email er allerde migreret.',
-    'user_migrate_done' => 'Migræring færdig',
+    'user_migrate_already_exists' => 'Email er allerede migreret.',
+    'user_migrate_done' => 'Migrering færdig',
 ];
