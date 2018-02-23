@@ -1,66 +1,65 @@
 <?php
 
 return [
-    'co_create' => 'Tillsammans gör vi maten lokal',
+    'co_create' => 'Lav det lokale fødevaresystem sammen',
     'co_create_info' => '
         <div class="row">
             <div class="col-12">
-                <p class="ingress">Vi tror på människors möjlighet till egenmakt och medbestämmande runt våra grundläggande behov.  Att gemensamt kunna skapa oss högre resiliens som individer och samhällen i alla flöden vi är beroende av. Mat, ekologi, ekonomi och vår personlig integritet.</p>
+                <p class="ingress">Vi tror på individets ret til selv at bestemme over basale fornødninger. Sammen kan vi lave være mere robuste som individer og lokalsamfund. Fødevarer, økologi, økonomi og vores personlige integritet.</p>
             </div>
         </div>
     ',
-    'create_node' => 'Skapa en utlämningsplats',
-    'create_node_header' => 'Starta utlämningsplats',
+    'create_node' => 'Opret et udvekslingssted',
+    'create_node_header' => 'Start et udvekslingssted',
     'create_node_info' => '
-        Vill du stärka den lokala maten i ditt närområde? Vem som helst kan skapa en utlämningsplats var som helst och göra den sökbar på kartan för båda producenter och konsumenter.
+        Vil du gerne se et udvekslingssted i dit lokalområde? Opret én. Enhver kan lave et sted hvor fødevarer kan udveksles. Det eneste du behøver er et sted hvor kunder og producenter kan mødes.
     ',
-    'create_user' => 'Skapa konto',
-    'create_user_header' => 'Handla lokalt',
+    'create_user' => 'Opret konto',
+    'create_user_header' => 'Handel lokalt',
     'create_user_info' => '
-        Skapa ett användarkonto enkelt och gratis. Hitta lokala utlämningsplatser som passar dig och börja botanisera bland tillgänglig mat. Bli stöttande medlem och förboka sedan mat direkt från dina lokala producenter och hämta upp den på givna tider och platser.
+        Opret en konto gratis. Find lokale udvekslingssteder i dit lokalområde. Bestil lokale fødevarer direkte fra lokale producenter (du skal være betalende medlem for at placere en ordre) og derefter afhent dine varer ved et lokalt udvekslingspunkt.
     ',
-    'create_producer' => 'Sälj dina produkter',
-    'create_producer_header' => 'Sälj lokalt',
+    'create_producer' => 'Sælg dine produkter',
+    'create_producer_header' => 'Sælg lokalt',
     'create_producer_info' => '
-        Sälj dina produkter direkt mot slutkonsument, helt utan mellanhänder.  Leverera till de utlämningsplatser som passar dig. Administrera dina ordrar och ta betalt på det sätt som passar dig, direkt av dina kunder och helt utan intäktsbortfall.
+        Sælg dine produkter direkte til kunden uden en mellemmand. Leverer til udvekslingspunkter som passer dig. Administrer dine ordre og bliv betalt på dine vilkår uden meromkostninger, og byg relationer med direkte med dine kunder.
     ',
-
-    'create_node' => 'Skapa en utlämningsplats',
-    'find_out_more' => 'Läs mer om Local Food Nodes',
+    'create_node' => 'Opret udvekslingspunkt',
+    'find_out_more' => 'Læs mere om Local Food Nodes',
     'header' => 'Local Food Nodes',
-    'find_node_near_you' => 'Hitta utlämningsplats',
-    'food_producer' => 'Är du matproducent?',
-    'grey_map_marker_info' => 'Grå ikoner är utlämningsplatser där beställningar görs genom Facebook.',
-    'go_local' => 'Hitta utlämningsplats',
-    'link_to_fb' => 'Facebookgruppen för',
-    'locals' => 'Användare',
-    'local_nodes' => 'Noder',
-    'local_producers' => 'Producenter',
-    'meta_keywords' => 'Lokal mat, Lokal matmarknad, Matmarknad, Local handel, Lokala producenter',
-    'subheader' => 'Förboka lokalproducerad mat. Hämta på utlämningsplats, direkt från producenterna',
-    'title' => 'Hitta lokala utlämningsplatser',
-    'upcoming' => 'Kommande evenemang',
-    'visit_node' => 'Besök utlämningsplatsen',
-    'welcome_to' => 'Välkommen till',
-    'where' => 'Var: ',
-    'when' => 'När: ',
-    'what_is_lfn' => 'Det här är Local Food Nodes',
+    'find_node_near_you' => 'Find udvekslingspunkt',
+    'food_producer' => 'Er du fødevareproducent?',
+    'grey_map_marker_info' => 'Grå ikoner er udvekslingspunkter hvor ordre er lavet gennem Facebook.',
+    'go_local' => 'Gå lokalt - find dit udvekslingspunkt',
+    'link_to_fb' => 'Facebookgruppen for',
+    'locals' => 'Lokale',
+    'local_nodes' => 'Lokale udvekslingspunkter',
+    'local_producers' => 'Lokale producenter',
+    'meta_keywords' => 'Lokale fødevarer, fødevarer, lokal handel, lokale producenter',
+    'subheader' => 'Bestil lokalt produceret fødevarer. Hent direkte fra producenterne',
+    'title' => 'Find lokale udvekslingspunkter',
+    'upcoming' => 'Kommende begivenheder',
+    'visit_node' => 'Besøg udvekslingspunkt',
+    'welcome_to' => 'Velkommen til',
+    'where' => 'Hvor: ',
+    'when' => 'Hvornår: ',
+    'what_is_lfn' => 'Det her er Local Food Nodes',
     'what_is_lfn_info' => '
-        Local Food Nodes skapar kopplingar direkt mellan matproducenter och matkonsumenter utan mellanhänder. Samtidigt stärker vi möjligheterna att öka andelen lokalproducerad mat som utan omvägar hamnar på våra tallrikar. Vi möjliggör direkta transaktioner, resilienta samhällen och att sätt att återfå närheten till maten vi äter och hur den är producerad. Local Food Nodes är ett öppet, transparant verktyg som bygger på en vilja att göra maten lokal igen.
+        Local Food Nodes forbinder lokale fødevareproducenter med lokale kunder og styrker allerde eksisterende relationer. Vi laver direkte transkationer, robuste lokalsamfund og giver kontrollen over hvad vi spiser og hvordan det bliver produceret tilbage. Et ønske om at lave fødevarer lokalt igen.
     ',
 
     //co-funding part
-    'co_fund_heading' => 'Framtidens matförsörjning',
-    'co_fund_subheading' => 'Välj själv hur mycket du vill vara med och betala',
-    'co_fund_paragraph' => 'Genom att bli medlem medfinansierar du satsningar på att göra maten mer lokal igen. Tillsammans skapar vi ekonomiska förutsättningar för att stötta nya former av lokal organisering och en mer lokal matmarknad. Med våra gemensamma insatser kan vi tillsammans staka ut riktingen för framtidens matförsörjning och skapa oss gemensamma resurser för bättre möjlighet till påverkan.',
-    'co_fund_read_more' => 'Läs mer om medlemskap',
+    'co_fund_heading' => 'Ej fremtidens fødevarer sammen',
+    'co_fund_subheading' => 'Du bestemmer medlemsbeløbet',
+    'co_fund_paragraph' => 'Ved at blive medlem er du med til at skabe fremtidens fødevarer sammen. Vi giver allesammen de finansielle fornødninger til at bygge et lokalt fødevaresystem.',
+    'co_fund_read_more' => 'Læs mere om medlemskab',
 
 
-    'monday' => 'Måndagar',
-    'tuesday' => 'Tisdagar',
-    'wednesday' => 'Onsdagar',
-    'thursday' => 'Torsdagar',
-    'friday' => 'Fredagars',
-    'saturday' => 'Lördagars',
-    'sunday' => 'Söndagar',
+    'monday' => 'Mandage',
+    'tuesday' => 'Tisdage',
+    'wednesday' => 'Onsdage',
+    'thursday' => 'Torsdage',
+    'friday' => 'Fredage',
+    'saturday' => 'Lørdage',
+    'sunday' => 'Søndage',
 ];
