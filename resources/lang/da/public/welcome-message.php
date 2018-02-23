@@ -1,27 +1,28 @@
 <?php
 
 return [
-    'welcome_header' => 'Hej nya användare!',
+    'welcome_header' => 'Hej nye bruger!',
 
-    'welcome_paragraph1' => 'Välkommen till Local Food Nodes, härligt att ha dig här. Vi har sett fram emot detta länge :)',
+    'welcome_paragraph1' => 'Velkommen til Local Food Nodes, herligt at have dig her. Vi har set frem til det :)',
 
-    'welcome_paragraph2' => 'Plattformen är skapad för att att vi ser ett behov kring ny infrastruktur för lokal matproduktion. I det steget vi är nu så försöker vi hantera bokningar och skapa smidig administration kring bokningar och orderhantering. På siten kan du förboka mat som du senare hämtar upp på specificerade utlämningsställen (ibland även kallade noder).',
+    'welcome_paragraph2' => 'Platformen er ment som en infrastruktur til lokal fødevaredistribution, på nuværende tidspunkt prøver vi at at håndtere ordre og logistik. Her på sitet kan du bestille varer som du senere kan hente ved udveklslingspunkter.',
 
-    'welcome_paragraph3' => 'Denna plattform är till för att stärka relationer mellan dig som kund och dina lokala matproducenter. Betalningar görs direkt till producenten som du bokat mat av på det sätt som producenten specificerat.',
+    'welcome_paragraph3' => 'Denne platform gør det muligt at have en direkte relationsion mellem dig som kunde og producenten. Betalinger vil gå direkte til hver producent som du bestiller fra.',
 
-    'welcome_paragraph4' => 'För att kunna göra en beställning i systemet så behöver du betala en årlig medlemskapsavgift. Avgiftens storlek bestämmer du helt själv, det är upp till dig att avgöra hur mycket du tycker att denna tjänst är värd och hur det passar med din ekonomiska situation.',
+    'welcome_paragraph4' => 'For at kunne bestille skal du have et årligt medlemsskab. Du bestemmer selv hvor meget du vil betale for dette udfra din økonomiske sitationen.',
 
-    'welcome_paragraph5' => 'Som konsument så kan du följa dina ordrar och se vilka de utlämningstillfällen du behöver komma till för att hämta varorna. Inom en snar framtid så kommer du också ha en möjlighet att markera orderna som betalda samt att ge producenter en möjlighet att markera att de har mottagit betalning på ordrarna direkt i systemet.',
+    'welcome_paragraph5' => 'Som kunde kan du følge dine ordre og se hvornår du kan hente dem. I en nær fremtid vil du også få mulighed for at markere dine ordre som betalt samt for producenten at markere en ordre som betalt.',
 
-    'welcome_paragraph6' => 'Om du är producent så är du välkommen att skapa ett producentkonto (klicka på länken i menyn till vänster, eller längst upp om du är på mobilen), lägg in information om dig som producent och skapa dina produkter så att de kan bli bokade på noder som du vill leverera till. Du väljer själv vilka utlämningar du vill närvara på och med vilka produkter.',
+    'welcome_paragraph6' => 'Hvis du er producent kan du lave en specielt konto til dette (følg linket i menuen), Her kan du tilføje en beskrivelse samt oprette dine produkter så de kan leveres til de udvekslingspunkter du vælger.',
 
-    'welcome_paragraph7' => 'Administrationen för alla de tre möjliga rollerna (kund, nodadministratör eller producent) kommer du åt genom de olika delarna av menyn.',
 
-    'welcome_paragraph8' => 'Om det inte finns en utlämningsplats när dig eller om du av andra skäl vill starta en ny utlämningsplats, så gör du detta genom att klicka på länken “skapa utlämningsplats” i menyn.',
+    'welcome_paragraph7' => 'Administration af alle tre forskellige roller (kunder, udvekslingspunkter og producenter) kan tilgåes gennem menuen.',
 
-    'welcome_paragraph9' => '<b>Detta är ett en beta-release. Det betyder att det är en publik testning av tjänsten. Vi hoppas att du inte kommer mötas av för mycket buggar eller inkonsekvens på sidan. Dessutom, vill vi inte heller vänta för länge med att öppna detta verktyg för lokal organisering kring maten vi äter. Vi vill ju att det används och utvecklas med alla er. Tillsammans mer er kommer vi förhoppningsvis kunna skapa en fantastisk plattform med ett långsiktigt tänk.',
+    'welcome_paragraph8' => 'Hvis du ikke har nogen udvekslingspunkter i nærheden af dig, eller du bare ønsker at blive starte dit eget udvekslingspunkt, kan du gøre det ved at følge linket i menuen.',
 
-    'welcome_paragraph10' => 'Du kan använda kontakta oss direkt för mer support genom att klicka på pratbubblan nere till höger och skriva i chatt-fönstret.',
+    'welcome_paragraph9' => '<b>Dette er en beta-release.</b> Hvilket betyder at du er med til at teste produktet. Vi håber du ikke løber ind i alt for mange fejl, men vi har brug for din hjælp til at teste og få tingene startet op. Vi vil hellere give dig værktøjet med det samme end at vente på at det er helt færdigt.',
 
-    'welcome_paragraph11' => 'Det känns väldigt spännande att få hjälpa till med att skapa en bra framtid för lokalproducerad mat och hoppas verkligen att du kommer att gilla att använda plattformen! Återigen, varmt välkommen!',
+    'welcome_paragraph10' => 'Du kan kontakte os direkte for support ved at klikke på chatboblen i nederste højre hjørne.',
+
+    'welcome_paragraph11' => 'Vi er meget spændt på at hjælpe med at administrere fremtiden lokale fødevareproduktion og vi håber du også vil nyde at bruge platformen. Igen, velkommen hertil!',
 ];
