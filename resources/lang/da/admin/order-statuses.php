@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'cancelled' => 'Avbruten',
-    'confirmed' => 'Bekräftad',
-    'delivered' => 'Levererad',
+    'cancelled' => 'Annuleret',
+    'confirmed' => 'Bekræftet',
+    'delivered' => 'Leveret',
     'no_status' => 'Ingen status',
-    'payed' => 'Betald',
-    'received' => 'Mottagen',
+    'payed' => 'Betalt',
+    'received' => 'Modtaget',
 ];
