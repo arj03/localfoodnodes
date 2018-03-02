@@ -16,7 +16,7 @@ return [
     'how_it_works' => 'Sådan fungerer det',
     'message' => 'Besked',
     'node' => 'Udvekslingspunkt',
-    'pick_it_up' => 'Producenten afleverer din ordre til udvekslingspunktet på den dato du har forespurgt. Du skal bare hente den.',
+    'pick_it_up' => 'Producenten leverer din ordre til udvekslingspunktet på den dato du har forespurgt. Du skal bare hente den.',
     'price' => 'Pris',
     'producer' => 'Producent',
     'producers' => 'Producenter',
