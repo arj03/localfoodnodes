@@ -2,59 +2,54 @@
 
 return [
     // USER
-    'user' => '<p>Härligt att du hittat till Local Food Nodes. Att  använda sajten är otroligt enkelt. Du skapar bara ett användarkonto, eller loggar bara in via Facebook, om du hellre vill det.</p>
+    'user' => '<p>Smashing you came here. Signing up and using Local Food Nodes is incredible simple. Just create an account.</p>
+    <p>By signing up, and becoming a supporting member you at the same time become a part of co-creating the local food supply. Now how about that!?
+    But first, we have a few simple terms you need to read, understand and accept to be able to enter and go totally local.</p>
 
-    <p>Genom att registrera dig och bli en stödjande medlem (som krävs för att kunna boka) blir du samtidigt en del av att medskapa vår lokala matförsörjning.</p>
-
-    <p>Men först, några enkla förhållningsregler du behöver läsa, förstå och acceptera innan du kan kliva in och börja boka superb lokal mat, direkt från dina lokala producenter, helt utan mellanhänder.</p>
-
-    <b>Allmänt</b>
-    <p>Att registrera ett konto är gratis, men för att kunna skicka dina beställningar måste du bli en stödjande medlem. Du avgör själv storleken på din årliga medlemsavgift.(Läs mer om medlemskap här)</p>
-
-    <p>All produkt du beställer beställs direkt från ursprungsproducenterna. Detta betyder också att du alltid betalar direkt till dessa.</p>
-
-    <p>Lokal Food Nodes är aldrig en säljande part, utan samtliga producenter har själva allt ansvar för alla sina produkter, hur dessa produceras, vad de innehåller och hur det är packade och levererade. Har du frågor om produkter, priser, leveranser, kvalitet så hantera alltid detta direkt med producenten som berörs.</p>
-
-    <p>Som konsument kan du beställa från vem du vill, när du vill, hur ofta du vill.</p>
-
-    <p>Du kan gå med så få eller så många noder som du vill.</p>',
+    <b>General</b>
+    <p>Signing up an account is free, but to be able to send your food orders you need to become a supporting member. (read more about membership here)</p>
+    <p>All product you order is ordered directly from the producers. This also means you pay straight to the producers, always.</p>
+    <p>Local Food Nodes is never a selling part, and all producers have all the responsibility themselves for all their own products. How it is produced, what it contains and how its is packed and delivered. Do you have questions about products, prices, deliveries, quality, always handle this directly with the producer it concerns.</p>
+    <p>As a consumer you can order from who ever you like, how often as you like.</p>
+    <p>You can join as few or as many nodes as you like.</p>',
 
     // PRODUCER
-    'producer' => '<p>Härligt, och varmt välkommen du lokala matproducent till Local Food Nodes. Innan du skapa ditt producentkonto måste först du läsa igenom och godkänna dessa användarvillkor. Se till att du förstår dem fullt ut, sen är det bara att köra, och du det är gratis.</p>
+    'producer' => '<p>Whoop, we salute you great food producer, saviours of the world.
+    Before setting up your producer account you need to read and agree to these terms of use. Make sure you fully understand them. Then hit agree and you are set to go.</p>
 
-    <b>Allmänt</b>
-    <p>Det är alltid gratis att använda Local Food Nodes för dig som producent.
-    Du ska aldrig betala någon form av avgift till någon för att vara med vid något leveranstillfälle, ej heller betala avgift för att få sälja någon av din produkter. Om detta avkrävs av dig vid något tillfälle, för att kunna sälja, kontakta oss omgående.</p>
+    <b>General</b>
+    <p>It is always free to use Local Food nodes as producer.
+    You will and shall never pay any kind of fee to anybody to be at any delivery occasion, or any fee for selling any of your product. If this is required of you at any time, contact us immediately.</p>
 
-    <b>Produkter</b>
-    <p>Nodadministratör och/eller Local Food Nodes är aldrig en säljande part.
-    Jag som producent och bara jag är alltid den säljande parten av min produkt</p>
+    <b>Products</b>
+    <p>Node admin and/or Local Food Nodes are not a selling part.
+    Me as producer and only me am always the selling part of my product.</p>
 
-    <p>Jag som producent har det fulla ansvaret för min produkt.
-    Detta betyder att jag har det fulla ansvaret för produkten, hela vägen från hur den produceras, vad den innehåller och att den är korrekt deklarerad och uppmärkt.</p>
+    <p>Me as a producer have the full responsibility for my product.
+    This means all the way from how it is produced, what it contains, and that it is correct declared and marked.</p>
 
-    <p>Det är jag som producent som har det fulla ansvaret för att min produkt transporteras och levereras på ett säkert och enligt lag gällande sätt innan det överlämnas till konsumenten.</p>
+    <p>It\'s me as producer that has the full responsibility that my product is transported and delivered in a safe and legal way before handed over to the consumer.</p>
 
-    <p>Det är mitt ansvar som producent att kunna de lagar och regler som gäller runt min produkt, vad som krävs runt produktion, distribution och för att få sälja den direkt till slutkonsumenter.</p>
+    <p>It\'s my responsibility as producer to know my domestic laws regarding food production, and what laws there are around my product regarding producing and selling to end consumer</p>
 
-    <b>Leverans</b>
-    <p>Min produkt får aldrig levereras via en mellanhand innan den lämnas ut till slutkonsumenter.
-    Om detta ändå blir nödvändigt, kan du göra en överenskommelse med kunden om att du lämnar produkten på ett säkert sätt så att hen kan hämta den senare.
-    Detta gäller endast för produkter som inte har lagstadgade krav på bibehållen kylkedja.</p>
+    <b>Delivery</b>
+    <p>My product may never be delivered to a third part before handed out to end consumers.
+    If necessary, you can make an agreement with the customer that you leave the product for him/her to pick up later on.
+    This goes only for product that is not needed to keep a certain temperature before delivery.</p>
 
-    <p>Jag får bara ta med och leverera produkter som har förbokats inför ett utlämningstillfälle.</p>
+    <p>I may only deliver products that has been pre-booked for the delivery occasion.</p>
 
-    <p>Generellt får jag som producent inte sälja några ytterligare produkter som inte har förbeställts inför ett leveranstillfälle.
-    Men… om leveransplatsen har ett marknadstillstånd som tillåter ytterligare försäljning direkt på plats, kan du sälja ytterligare produkter som inte har förbokats. Kolla in med nodadministratören om så är fallet.</p>
+    <p>I may not sell any additional products that has not been pre-booked before delivery.
+    In case of the delivery spot has a permit that allowes additional sales, you may sell additional products that has not been pre-booked in advance. Check out with the node admin if so.</p>
 
-    <p>Jag som producent har det fulla ansvaret för att administrera mina beställningar för mina produkter och att se till så att jag dyker upp och att de förbeställda produkterna levereras till rätt personer vid rätt tillfälle.</p>
+    <p>I as producer have the full responsibility to administrate my orders for my products, and to make sure I show up, and that pre-ordered products are delivered to the right persons at the right occasions.</p>
 
-    <b>Betalningar</b>
-    <p>Det är mitt ansvar som producent att känna till vilka betalningssätt som är tillåtna för försäljning av just min produkt</p>
-    <p>Det är mitt ansvar som producent för att se till att mina produkter betalas på det sätt som passar mitt bästa.</p>
-    <p>Det är mitt ansvar som producent att se till att jag behåller behövliga kvitton och att alla mina transaktioner redovisas.</p>
-    <p>Det är mitt ansvar som producent att jag följer nationella lagar när det gäller försäljning, deklaration och skatter när det gäller min försäljning.</p>
-    <p>Det är mitt ansvar att veta vilka juridiska villkor jag måste följa för försäljning av mina produkter.</p>',
+    <b>Payments</b>
+    <p>It\'s my responsibility as producer to know what ways are legal to charge for my products</p>
+    <p>It\'s my responsibility as producer to make sure my products is payed for, in the way that suits my best.</p>
+    <p>It\'s my responsibility as producer to make sure I keep needed receipts and that all my transactions are accounted for.</p>
+    <p>It\'s my responsibility as producer that I follow domestic laws when it comes to sales, declaration and taxes regarding my selling.</p>
+    <p>It\'s my responsibility to know what legal terms I have to follow regarding sales of my products.</p>',
 
     // NODE
     'node' => '<p>Great! You want to start a Local Food Node. But first, read these simple terms of running av node, and make sure you fully understand them. Then hit agree, and you are good to go.</p>
