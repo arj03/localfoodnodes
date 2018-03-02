@@ -48,7 +48,7 @@ return [
         For products produced in "batches" with a fixed balance, such as honey, pickling, slaughter, etc.
         <ul class="list mt-3">
             <li>Product balance is set from a fixed date and then counts down until it ends.</li>
-            <li>You can create multiple production dates. The aproduct balance for the new date is added to the previous date\'s balance.</li>
+            <li>You can create multiple production dates. The product balance for the new date is added to the previous date\'s balance.</li>
             <li>The balance has expired when the product is sold out, regardless of which delivery dates or delivery nodes the product is available on.</li>
         </ul>
     ',
