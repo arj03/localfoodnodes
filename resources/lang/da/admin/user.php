@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'activate_account' => 'Aktiver konto',
+    'activate_account' => 'Aktivér konto',
     'account_activation' => 'Kontoaktivering',
     'account_activation_info' => 'Et aktiveringslink er sendt til din email. Når du klikker på linket bekræfter du din email og derefter kan du handle på Local Food Nodes.',
     'address' => 'Adresse',
@@ -15,7 +15,7 @@ return [
     'choose_password' => 'Vælg din adgangskode',
     'city' => 'By',
     'confirm_delete' => 'Bekræft sletning',
-    'confirm_delete_info' => 'Du er ved at slette din bruger og alle informationer tilknyttet denne. Er du sikker på du vil fortsætte?',
+    'confirm_delete_info' => 'Du er ved at slette din bruger og alle oplysninger tilknyttet denne. Er du sikker på du vil fortsætte?',
     'confirm_password' => 'Bekræft adgangskode',
     'create_account' => 'Opret konto',
     'date' => 'Dato',
@@ -30,7 +30,7 @@ return [
     'events' => 'Begivenheder',
     'event' => 'Begivenhed',
     'fee' => 'Gebyr',
-    'item_total' => 'Produkter total',
+    'item_total' => 'Produkter i alt',
     'language' => 'Sprog',
     'month' => 'Måned',
     'name' => 'Navn',
@@ -41,9 +41,9 @@ return [
     'node_name' => 'Navn på udvekslingspunkt',
     'no_events' => 'Du har ingen kommende begivenheder.',
     'no_nodes' => 'Du følger ingen udvekslingspunkter.',
-    'no_orders' => 'Du har ingen ordre.',
+    'no_orders' => 'Du har ingen ordrer.',
     'order' => 'Ordre',
-    'orders' => 'Ordre',
+    'orders' => 'Ordrer',
     'order_created' => 'Ordre oprettet',
     'password' => 'Adgangskode',
     'password_placeholder' => 'Mindst 8 tegn',
@@ -53,7 +53,7 @@ return [
     'pickup' => 'Afhentning',
     'pickups' => 'Afhentninger',
     'price' => 'Pris',
-    'price_per_delivery' => 'Pris per levering',
+    'price_per_delivery' => 'Pris pr. levering',
     'product' => 'Produkt',
     'producer' => 'Producent',
     'quantity' => 'Antal',
@@ -67,8 +67,8 @@ return [
     'submit_payment' => 'Send betaling',
     'term_link_pre' => 'Ved at oprette en konto indvilliger du i',
     'terms_of_use' => 'vilkårene',
-    'total' => 'Total',
-    'view_all_orders' => 'Alle ordre',
+    'total' => 'I alt',
+    'view_all_orders' => 'Alle ordrer',
     'year' => 'År',
     'new_password' => 'Ny adgangskode',
     'your_zip_code' => 'Dit postnummer',
@@ -77,18 +77,18 @@ return [
     // Membership
     'membership' => 'Bliv medlem',
     'membership_paid_title' => 'Du er medlem!',
-    'membership_paid' => 'Du har betalat medlemskab frem til :date. Udløber om :days dage.',
+    'membership_paid' => 'Du har betalt medlemskab frem til :date. Udløber om :days dage.',
     'membership_paid_link' => 'Læs mere om medlemskab',
     'membership_unpaid_title' => 'Bliv medlem',
-    'membership_unpaid' => 'For at kunnne købe lokale fødevarer skal du først være betalende medlem.  Du bestemmer selv hvor meget eller hvor lidt du vil betale for at være medlem.',
+    'membership_unpaid' => 'For at kunnne købe lokale fødevarer skal du først være betalende medlem. Du bestemmer selv hvor meget eller hvor lidt du vil betale for at være medlem.',
     'membership_unpaid_link' => 'Læs mere om at blive medlem',
-    'payment_info' => 'Vi benytter os af <a href="https://stripe.com">Stripe</a> til kortbetalningar opbevarer ikke dine kortoplysninger.',
-    'membership_modal_title' => 'Tak fordi du er et medlem',
+    'payment_info' => 'Vi benytter os af <a href="https://stripe.com">Stripe</a> til kortbetalingar og opbevarer ikke dine kortoplysninger.',
+    'membership_modal_title' => 'Tak fordi du er medlem',
     'membership_modal_no_charge' => '
         <p>Tak fordi du er blevet medlem. Dit medlemskab varer 12 måneder, og i denne periode kan du bestille lokale fødevarer direkte fra lokale producenter lige så meget du vil.</p><p>Siden du har valgt at betale mindre end 3 SEK vil vi ikke hæve nogen penge, da det koster os mere at gøre det.</p>
     ',
     'membership_modal_thanks' => '
-        <p>Stort tak fordi du er blevet medlem og endnu større tak for dit bidrag. Dit medlemsskab varer 12 måneder, og i denne periode kan du bestille lokale fødevarer direkte fra lokale producenter lige så meget du vil.</p><p>Dit bidrag bruges til at gøre Local Food Nodes bedre.</p>
+        <p>Du skal have stor tak for at være blevet medlem og endnu større tak for dit bidrag. Dit medlemskab varer 12 måneder, og i denne periode kan du bestille lokale fødevarer direkte fra lokale producenter lige så meget du vil.</p><p>Dit bidrag bruges til at gøre Local Food Nodes bedre.</p>
     ',
     'membership_no_history' => 'Du har ingen tidligere betalinger.',
     'renew_membership' => 'Forny dit medlemskab og se din betalingshistorik',
