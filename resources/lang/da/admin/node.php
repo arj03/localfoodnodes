@@ -70,17 +70,17 @@ return [
     'sunday' => 'Søndag',
 
     // How does it work
-    'how_does_it_work' => 'Så här gör du',
-    'hdiw_intro' => 'Så här skapar du en lokal utlämningsplats.',
-    'hdiw_item_1' => 'Läs igenom, förstå och godkänn villkoren för att skapa och administrera en lokal utlämningsplats.',
-    'hdiw_item_2' => 'Namnge och skapa din utlämningsplats i formuläret till vänster.',
-    'hdiw_item_3' => 'Bjud in producenter till din utlämningsplats.',
-    'hdiw_item_4' => 'Marknadsför utlämningsplatsen mot konsumenter genom sociala medier, ett pressmeddelande och kanske arrangera ett trevligt lokalt premiärevent.',
-    'hdiw_outro' => 'Läs mer i FAQ för utlämningsplatser.',
+    'how_does_it_work' => 'Hvordan fungerer det',
+    'hdiw_intro' => 'Sådan laver du et lokal udvekslingspunkt.',
+    'hdiw_item_1' => 'Læs og vær sikker på at du forstår vilkårene for siden.',
+    'hdiw_item_2' => 'Opret dit udvekslingspunkt med formularen til venstre.',
+    'hdiw_item_3' => 'Invitér producenter til dit udvekslingspunkt.',
+    'hdiw_item_4' => 'Markedsfør dit udvekslingspunkt gennem sociale medier, en pressemeddelelse eller måske en lokal opstartsfest.',
+    'hdiw_outro' => 'Læs mere i FAQ'en om udvekslingspunkter.',
 
     'week_1' => 'Hver uge',
     'week_2' => 'Hver anden uge',
     'week_3' => 'Hver tredje uge',
-    'week_4' => 'Var fjerde uge',
+    'week_4' => 'Hver fjerde uge',
     'month_1' => 'Månedligt',
 ];
