@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'cancelled' => 'Annuleret',
+    'cancelled' => 'Annulleret',
     'confirmed' => 'Bekræftet',
     'delivered' => 'Leveret',
     'no_status' => 'Ingen status',
