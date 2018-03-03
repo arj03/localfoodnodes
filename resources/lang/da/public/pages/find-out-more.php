@@ -22,7 +22,7 @@ return [
 
     'header_3' => 'Opret en konto og bliv støttende medlem',
 
-    'paragraph_3_1' => 'Du kan nemt oprette en konto gratis, eller simpelt logge ind vha. facebook.',
+    'paragraph_3_1' => 'Du kan nemt oprette en konto gratis, eller simpelt logge ind vha. Facebook.',
 
     'paragraph_3_2' => 'Du er velkommen til at kigge rundt på sitet, besøge udvekslingsstedet tæt på dig og putte lækre fødevarer i din indkøbskurv, men for at kunne placere en ordre skal du først være medlem af platformen. Du kan gøre dette ved at betale et årligt beløb. Hvor meget du betaler er helt op til dig: Du bestemmer selv hvad du har råd til og hvad du synes servicen er værd for dig og fællesskabet. Uanset beløbet, er du med til at støtte sundere fødevarer i fremtiden. Tak for det!',
 
